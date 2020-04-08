@@ -20,6 +20,9 @@
   --color-danger: #fc887f;
   --color-link: #1e80e5;
 
+  // color active
+  --color-primary-active: lighten(#3caa41, 10%);
+
   // 更抽象的颜色
   --color-desc: var(--color-second);
   --color-disabled: rgba(255, 255, 255, 0.2);
@@ -29,14 +32,14 @@
   --color-placeholder: var(--color-second);
 
   // 背景色
-  --color-bg: white;
+  --color-bg-white: white;
   --color-bg-back: #f8f8f8;
   --color-bg-second: var(--color-second);
   --color-bg-primary: var(--color-primary);
   --color-bg-disabled: #f5f5f5;
 
   // mask 背景色
-  --color-bg-mask: rgba(61, 72, 93, 0.3);
+  --color-bg-mask: rgba(0, 0, 0, 0.6);
   --color-bg-mask-white: rgba(255, 255, 255, 0.8);
 
   // border
@@ -75,6 +78,7 @@
   --z-index-popup: 2000;
   --z-index-trigger: 2000;
   --z-index-previewImage: 4000;
+  --z-index-dialog: 4000;
   --z-index-toast: 7000;
   --z-index-nprogress: 9999;
 }

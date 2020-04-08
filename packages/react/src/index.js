@@ -3,7 +3,7 @@ import Button from './component/button'
 import Loading from './component/loading'
 // import Textarea from './component/textarea'
 import NProgress from './component/nprogress'
-// import Mask from './component/mask'
+import Mask from './component/mask'
 import Toast from './component/toast'
 import Page from './component/page'
 // import Infinite from './component/infinite'
@@ -16,7 +16,7 @@ import Storage from './component/storage'
 // import { Search, SearchPage, FakeSearch } from './component/search'
 // import Square from './component/square'
 // import LazyImg from './component/lazy_img'
-// import Dialog from './component/dialog'
+import Dialog from './component/dialog'
 // import ScrollIntoView from './component/scroll_into_view'
 // import CursorFix from './component/cursor_fix'
 // import Select from './component/select'
@@ -55,9 +55,9 @@ import LayerRoot from './component/layer_root'
 // import { LetterIndex, LetterIndexMultiple } from './component/letter_index'
 // import ProgressBar from './component/progress'
 // import TimeSelect from './component/time_select'
-//
-// const Alert = Dialog.alert
-// const Confirm = Dialog.confirm
+
+const Alert = Dialog.alert
+const Confirm = Dialog.confirm
 
 export {
   Flex,
@@ -70,8 +70,7 @@ export {
   // InfiniteBox,
   // Textarea,
   NProgress,
-  // Mask,
-
+  Mask,
   // Header,
   Storage,
   // Slider,
@@ -83,7 +82,9 @@ export {
   // Square,
   // LazyImg,
 
-  // Dialog, Alert, Confirm,
+  Dialog,
+  Alert,
+  Confirm,
   // ScrollIntoView,
   // CursorFix,
   // Select,

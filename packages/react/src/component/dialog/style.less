@@ -1,0 +1,39 @@
+.m-dialog-container {
+  // 耦合mask
+  .m-mask {
+    z-index: var(--z-index-dialog);
+  }
+
+  .m-dialog {
+    position: fixed;
+    width: 320px;
+    top: 50%;
+    left: 16px;
+    right: 16px;
+    margin: 0 auto;
+    transform: translate(0, -50%);
+    z-index: var(--z-index-dialog);
+    background-color: var(--color-bg-white);
+    text-align: center;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+
+    .m-dialog-title {
+      padding: 24px 24px 0;
+    }
+
+    .m-dialog-content {
+      padding: 24px;
+      background: var(--color-bg-white);
+      color: var(--color-second);
+    }
+
+    .m-dialog-btn {
+      .mBorderTop();
+    }
+  }
+}
