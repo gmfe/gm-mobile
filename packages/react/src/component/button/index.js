@@ -10,6 +10,7 @@ const Button = ({
   plain,
   size,
   block,
+  round,
   disabled,
   onClick,
   loading,
@@ -51,6 +52,7 @@ const Button = ({
         `m-btn m-btn-${type}`,
         {
           'm-btn-block': block,
+          'm-btn-round': round,
           [`m-btn-${size}`]: size,
           'm-btn-plain': type !== 'link' && plain
         },
@@ -70,6 +72,7 @@ Button.propTypes = {
   type: PropTypes.oneOf(['default', 'primary', 'success', 'danger', 'link']),
   plain: PropTypes.bool,
   size: PropTypes.oneOf(['mini']),
+  round: PropTypes.bool,
   block: PropTypes.bool,
   /** 原生的 type */
   htmlType: PropTypes.string,

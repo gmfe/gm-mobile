@@ -1,7 +1,7 @@
 .m-btn {
   height: 30px;
   line-height: 22px;
-  border-radius: 30px;
+  border-radius: 4px;
   display: inline-block;
   text-align: center;
   vertical-align: middle;
@@ -58,12 +58,20 @@
     line-height: 24px;
     padding: 0 12px;
     font-size: 10px;
+
+    &.m-btn-round {
+      border-radius: 24px;
+    }
   }
 
   &.m-btn-block {
     border-radius: 0;
     display: block;
     width: 100%;
+  }
+
+  &.m-btn-round {
+    border-radius: 30px;
   }
 
   .m-btn-loading {

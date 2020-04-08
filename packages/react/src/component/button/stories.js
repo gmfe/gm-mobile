@@ -3,7 +3,7 @@ import Button from './'
 
 function handleClick() {
   console.log('click')
-  return new Promise(resolve => setTimeout(() => resolve(), 2000))
+  return new Promise((resolve) => setTimeout(() => resolve(), 2000))
 }
 
 export const normal = () => (
@@ -64,6 +64,13 @@ export const normal = () => (
     <div>
       <Button block>默认</Button>
     </div>
+    round
+    <div>
+      <Button round>默认</Button>
+      <Button size='mini' round>
+        默认
+      </Button>
+    </div>
   </div>
 )
 
@@ -90,5 +97,5 @@ export const loading = () => (
 )
 
 export default {
-  title: 'Button'
+  title: 'Button',
 }

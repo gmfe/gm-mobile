@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import Mask from '../mask/index'
-import LayoutRoot from '../layout_root'
+import LayerRoot from '../layer_root'
 import _ from 'lodash'
 
 const PopupStatics = {
@@ -12,11 +12,11 @@ const PopupStatics = {
       PopupStatics.hide()
       _onHide && _onHide()
     }
-    LayoutRoot.renderWith(LayoutRoot.TYPE.POPUP, <Popup {...options} show/>)
+    LayerRoot.renderWith(LayerRoot.TYPE.POPUP, <Popup {...options} show/>)
   },
 
   hide () {
-    LayoutRoot.hideWith(LayoutRoot.TYPE.POPUP)
+    LayerRoot.hideWith(LayerRoot.TYPE.POPUP)
   }
 }
 
