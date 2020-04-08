@@ -2,7 +2,7 @@ import Flex from './component/flex'
 import Button from './component/button'
 import Loading from './component/loading'
 // import Textarea from './component/textarea'
-// import NProgress from './component/nprogress'
+import NProgress from './component/nprogress'
 // import Mask from './component/mask'
 import Toast from './component/toast'
 import Page from './component/page'
@@ -69,7 +69,7 @@ export {
   // Infinite,
   // InfiniteBox,
   // Textarea,
-  // NProgress,
+  NProgress,
   // Mask,
 
   // Header,
