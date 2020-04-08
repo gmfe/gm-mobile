@@ -6,7 +6,7 @@ import SVGSuccess from '../../../svg/success.svg'
 import SVGCircle from '../../../svg/circle.svg'
 
 class Radio extends React.Component {
-  render () {
+  render() {
     const { disabled, checked, onChange, children, ...rest } = this.props
     return (
       <Flex
@@ -14,13 +14,13 @@ class Radio extends React.Component {
         alignCenter
         onClick={disabled ? _.noop : () => onChange(!checked)}
         style={{
-          opacity: disabled ? 0.7 : 1
+          opacity: disabled ? 0.7 : 1,
         }}
       >
         {checked ? (
-          <SVGSuccess className='text-18 padding-4 line-height'/>
+          <SVGSuccess className='m-text-18 m-padding-4 m-line-height m-text-primary' />
         ) : (
-          <SVGCircle className='text-18 padding-4 line-height'/>
+          <SVGCircle className='m-text-18 m-padding-4 m-line-height' />
         )}
         {children}
       </Flex>
@@ -31,11 +31,11 @@ class Radio extends React.Component {
 Radio.propTypes = {
   disabled: PropTypes.bool,
   checked: PropTypes.bool.isRequired,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
 }
 
 Radio.defaultProps = {
-  onChange: _.noop
+  onChange: _.noop,
 }
 
 export default Radio
