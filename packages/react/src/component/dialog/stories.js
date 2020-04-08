@@ -2,7 +2,33 @@ import React from 'react'
 import Dialog from './'
 
 export const normal = () => {
-  return <Dialog title='提升拉'>asdfasf</Dialog>
+  return (
+    <div>
+      <button
+        onClick={() => {
+          Dialog.alert('啦啦啦啦').then(() => {
+            console.log('resolve')
+          })
+        }}
+      >
+        alert
+      </button>
+      <button
+        onClick={() => {
+          Dialog.confirm('是否要啥啥啥').then(
+            () => {
+              console.log('resolve')
+            },
+            () => {
+              console.log('reject')
+            }
+          )
+        }}
+      >
+        confirm
+      </button>
+    </div>
+  )
 }
 
 export default {

@@ -21,19 +21,34 @@
     flex-direction: column;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
+    font-size: 16px;
 
     .m-dialog-title {
-      padding: 24px 24px 0;
+      padding: 12px 24px 0;
     }
 
     .m-dialog-content {
-      padding: 24px;
+      padding: 16px 24px;
       background: var(--color-bg-white);
       color: var(--color-second);
     }
 
     .m-dialog-btn {
-      .mBorderTop();
+      .mBorderTopBefore();
+
+      & > div {
+        color: var(--color-second);
+        padding: 12px 0;
+        cursor: pointer;
+
+        &:not(:last-child) {
+          .mBorderRightAfter();
+        }
+      }
+
+      .m-dialog-btn-confirm {
+        color: var(--color-primary);
+      }
     }
   }
 }

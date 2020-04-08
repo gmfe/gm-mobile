@@ -4,9 +4,17 @@ import PropTypes from 'prop-types'
 import LayerRoot from '../layer_root'
 import _ from 'lodash'
 import Mask from '../mask'
+import Flex from '../flex'
 
 const DialogStatics = {
-  dialog(options) {
+  dialog(options, type) {
+    if (typeof options === 'string') {
+      options = {
+        children: options,
+      }
+    }
+    options = { ...options }
+
     return new Promise((resolve, reject) => {
       const _onConfirm = options.onConfirm || _.noop
       options.onConfirm = () => {
@@ -19,38 +27,26 @@ const DialogStatics = {
         })
       }
 
-      const _onCancel = options.onCancel || _.noop
-      options.onCancel = () => {
-        DialogStatics.hide()
+      if (options.onCancel || type === 'confirm') {
+        const _onCancel = options.onCancel || _.noop
+        options.onCancel = () => {
+          DialogStatics.hide()
 
-        const reason = _onCancel()
-        setTimeout(() => {
-          reject(reason)
-        }, 50)
+          const reason = _onCancel()
+          setTimeout(() => {
+            reject(reason)
+          }, 50)
+        }
       }
 
       LayerRoot.renderWith(LayerRoot.TYPE.MODAL, <Dialog {...options} />)
     })
   },
-
   alert(options) {
-    if (typeof options === 'string') {
-      options = {
-        children: options,
-      }
-    }
-    options.alert = true
     return DialogStatics.dialog(options)
   },
-
   confirm(options) {
-    if (typeof options === 'string') {
-      options = {
-        children: options,
-      }
-    }
-    options.confirm = true
-    return DialogStatics.dialog(options)
+    return DialogStatics.dialog(options, 'confirm')
   },
   hide() {
     LayerRoot.hideWith(LayerRoot.TYPE.MODAL)
@@ -71,25 +67,33 @@ const Dialog = ({
     <div className='m-dialog-container'>
       <Mask />
       <div className='m-dialog m-animated-in m-animated-fade-in'>
-        <div className='m-dialog-title'>
-          <strong>{title}</strong>
-        </div>
+        <div className='m-dialog-title'>{title}</div>
         <div className='m-dialog-content'>{children}</div>
-        <div className='m-dialog-btn'>
+        <Flex className='m-dialog-btn'>
           {otherText && (
-            <a className='m-dialog-btn-other' onClick={onOther}>
+            <Flex flex column className='m-dialog-btn-other' onClick={onOther}>
               {otherText}
-            </a>
+            </Flex>
           )}
           {onCancel && (
-            <a className='m-dialog-btn-other-cancel' onClick={onCancel}>
+            <Flex
+              flex
+              column
+              className='m-dialog-btn-cancel'
+              onClick={onCancel}
+            >
               {cancelText}
-            </a>
+            </Flex>
           )}
-          <a className='m-dialog-btn-other-confirm' onClick={onConfirm}>
+          <Flex
+            flex
+            column
+            className='m-dialog-btn-confirm'
+            onClick={onConfirm}
+          >
             {confirmText}
-          </a>
-        </div>
+          </Flex>
+        </Flex>
       </div>
     </div>
   )
@@ -108,6 +112,7 @@ Dialog.propTypes = {
 }
 
 Dialog.defaultProps = {
+  title: getLocale('提示'),
   confirmText: getLocale('确定'),
   cancelText: getLocale('取消'),
 }
