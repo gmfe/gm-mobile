@@ -1,0 +1,20 @@
+.page {
+  width: 100vw;
+  height: 100vh;
+  background: @defaultBg;
+  overflow: hidden;
+
+  &.page-white {
+    background: @whiteBg;
+  }
+
+  .page-content {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .page-tabbar {
+    height: @tabbarHeight;
+  }
+}

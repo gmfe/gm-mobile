@@ -1,0 +1,43 @@
+.toast {
+  position: absolute;
+  top: 180px;
+  left: 0;
+  right: 0;
+
+  .toast-inner {
+    background: rgba(40, 40, 40, 0.75);
+    z-index: @toastZIndex;
+    text-align: center;
+    border-radius: 4px;
+    color: #fff;
+    display: inline-block;
+    max-width: 80%;
+
+    .loading-icon {
+      margin: 5px 32px 0;
+    }
+
+    .toast-content {
+      padding: 8px 12px;
+    }
+
+    .toast-icon {
+      font-size: 36px;
+      line-height: 1;
+    }
+
+    .weui-loading {
+      height: 36px;
+      width: 36px;
+    }
+
+    .loading-linear {
+      margin: 18px 6px 6px;
+      text-align: center;
+
+      .line {
+        background: white;
+      }
+    }
+  }
+}

@@ -1,0 +1,100 @@
+.m-btn {
+  height: 30px;
+  line-height: 22px;
+  border-radius: 30px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 4px 16px;
+  font-size: 12px;
+  user-select: none;
+
+  &.m-btn-default {
+    .m-btn-variants(var(--color-first), white);
+
+    border-color: var(--color-border);
+
+    &.m-btn-plain {
+      border-color: var(--color-border);
+      color: var(--color-first);
+    }
+  }
+
+  &.m-btn-primary {
+    .m-btn-variants(white, var(--color-primary));
+  }
+
+  &.m-btn-success {
+    .m-btn-variants(white, var(--color-success));
+  }
+
+  &.m-btn-danger {
+    .m-btn-variants(white, var(--color-danger));
+  }
+
+  &.m-btn-link {
+    background: transparent;
+    border-color: transparent;
+    color: var(--color-link);
+    box-sizing: border-box;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &.disabled,
+    &[disabled] {
+      cursor: not-allowed;
+      border-color: transparent;
+      color: var(--color-disabled);
+    }
+  }
+
+  &.m-btn-large {
+    height: 40px;
+    line-height: 32px;
+    font-size: 14px;
+  }
+
+  &.m-btn-mini {
+    height: 24px;
+    line-height: 24px;
+    padding: 0 12px;
+    font-size: 10px;
+  }
+
+  &.m-btn-block {
+    border-radius: 0;
+    display: block;
+    width: 100%;
+  }
+
+  .m-btn-loading {
+    display: inline-block;
+  }
+}
+
+.m-btn-variants(@color; @brand;) {
+  background: @brand;
+  border-color: @brand;
+  color: @color;
+
+  &.m-btn-plain {
+    background: white;
+    border-color: @brand;
+    color: @brand;
+
+    &:hover {
+      color: white;
+    }
+  }
+
+  &.disabled,
+  &[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

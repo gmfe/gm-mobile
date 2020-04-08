@@ -1,0 +1,131 @@
+// 注意，改次文件请谨慎谨慎谨慎，讨论讨论讨论
+
+/*
+规则
+--color 颜色相关
+--size 尺寸相关
+--btn 具体业务
+*/
+
+:root {
+  // 有层级关系，所以 first second
+  --color-first: #000923;
+  --color-second: #798294;
+
+  // 颜色相关
+  --color-primary: #3caa41;
+  --color-success: #3caa41;
+  --color-info: #5bc0de;
+  --color-warning: #f0ad4e;
+  --color-danger: #fc887f;
+  --color-link: #1e80e5;
+
+  // 更抽象的颜色
+  --color-desc: var(--color-second);
+  --color-disabled: rgba(255, 255, 255, 0.2);
+  --color-red: red;
+  --color-white: white;
+  --color-black: black;
+  --color-placeholder: var(--color-second);
+
+  // 背景色
+  --color-bg: white;
+  --color-bg-back: #f8f8f8;
+  --color-bg-second: var(--color-second);
+  --color-bg-primary: var(--color-primary);
+  --color-bg-disabled: #f5f5f5;
+
+  // mask 背景色
+  --color-bg-mask: rgba(61, 72, 93, 0.3);
+  --color-bg-mask-white: rgba(255, 255, 255, 0.8);
+
+  // border
+  --color-border: #d4d8d8;
+
+  // size
+  --size-4: 4px;
+  --size-8: 8px;
+  --size-12: 12px;
+  --size-16: 16px;
+  --size-20: 20px;
+  --size-24: 24px;
+
+  // 字体尺寸
+  --size-text-8: 8px;
+  --size-text-10: 10px;
+  --size-text-12: 12px;
+  --size-text-14: 14px;
+  --size-text-16: 16px;
+  --size-text-18: 18px;
+  --size-text-20: 20px;
+  --size-text-24: 24px;
+  --size-text-30: 30px;
+
+  // line-height
+  --size-line-height: 1.6;
+}
+
+// page
+//@headerHeight: 45px;
+//@tabbarHeight: 44px;
+
+// text color
+//@defaultColor: rgba(0, 0, 0, 0.9);
+//@descColor: rgba(0, 0, 0, 0.6);
+//@disabledColor: rgba(0, 0, 0, 0.3);
+//
+//// color
+//@primaryColor: #6cca28;
+//@primaryColorActive: darken(@primaryColor, 10%);
+//@primaryColorDisabledBg: lighten(@primaryColor, 10%);
+//
+//@warnColor: @weuiColorWarn; // 保留warnColor的定义，直接用weui的色值
+//
+//@redColor: #f33;
+//@linkColor: @weuiLinkColorDefault; // 保留linkColor的定义，直接用weui的色值
+//
+//@coralColor: #dd4f63;
+//@apricotColor: #ea9958;
+//@mintColor: #a4d3d1;
+//@tealColor: #4eaebb;
+//@arcticColor: #626cae;
+//@violetColor: #564180;
+//// :active
+//@activeColor: #ededed;
+//
+//// placeholder
+//@placeholderColor: #989898;
+//
+//// border
+//@borderColor: #ededed;
+//
+//// bg
+//@defaultBg: #f4f4f4;
+//@whiteBg: white;
+//@titleBg: #fafafa;
+//
+//// page head
+//@headerBg: #4ebb6e;
+//
+//// nprogress 保持和微信浏览器原生的一致
+//@nprogressBg: #3cc51f;
+//
+//// tabbar
+//@tabbarBg: white;
+//
+//// slider
+//@sliderBg: @borderColor;
+//@activeSliderBg: grey;
+//
+////counter
+//@counterMinus: #b7b6b6;
+//
+//// zIndex
+//@headerZIndex: 20;
+//@innerLayerIndex: 900;
+//@maskZIndex: 1000;
+//@popupZIndex: 2000;
+//@triggerZIndex: 2000;
+//@previewImageZIndex: 4000;
+//@toastZIndex: 7000;
+//@nprogressZIndex: 9999;

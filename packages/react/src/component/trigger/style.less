@@ -1,0 +1,23 @@
+.trigger {
+  position: relative;
+  display: inline-block;
+
+  .trigger-popup {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin: 2px 0;
+    z-index: @triggerZIndex;
+    overflow: auto;
+  }
+
+  .trigger-popup-right {
+    right: 0;
+    left: auto;
+  }
+
+  .trigger-popup-top {
+    top: auto;
+    bottom: 100%;
+  }
+}
