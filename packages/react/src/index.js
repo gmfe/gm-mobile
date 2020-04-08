@@ -9,7 +9,7 @@ import Page from './component/page'
 // import Infinite from './component/infinite'
 // import InfiniteBox from './component/infinite/infinite_box'
 // import Header from './component/header'
-// import Storage from './component/storage'
+import Storage from './component/storage'
 // import Slider from './component/slider'
 // import SliderLess from './component/slider_less'
 // import Popup from './component/popup'
@@ -66,7 +66,6 @@ export {
   LayerRoot,
   Page,
   Toast,
-
   // Infinite,
   // InfiniteBox,
   // Textarea,
@@ -74,7 +73,7 @@ export {
   // Mask,
 
   // Header,
-  // Storage,
+  Storage,
   // Slider,
   // SliderLess,
   // Popup,
