@@ -11,8 +11,8 @@ const TYPE = {
 
 let setComponentFunc = null
 
-class LayoutRoot extends React.Component {
-  constructor (props) {
+class LayerRoot extends React.Component {
+  constructor(props) {
     super(props)
     this.state = {
       innerLayer: null,
@@ -24,7 +24,7 @@ class LayoutRoot extends React.Component {
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     setComponentFunc = (type, component) => {
       this.setState({
         [type]: component
@@ -32,11 +32,11 @@ class LayoutRoot extends React.Component {
     }
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     setComponentFunc = null
   }
 
-  render () {
+  render() {
     // 有层级关系
     return (
       <div>
@@ -51,42 +51,35 @@ class LayoutRoot extends React.Component {
   }
 }
 
-LayoutRoot.TYPE = TYPE
+LayerRoot.TYPE = TYPE
 
 /* 基础功能 */
 
-LayoutRoot.setComponent = (type, com) => {
+LayerRoot.setComponent = (type, com) => {
   if (setComponentFunc) {
-    LayoutRoot.removeComponent(type)
+    LayerRoot.removeComponent(type)
     setComponentFunc(type, com)
   } else {
-    console.warn('LayoutRoot is uninitialized')
+    console.warn('LayerRoot is uninitialized')
   }
 }
 
-LayoutRoot.removeComponent = (type) => {
+LayerRoot.removeComponent = type => {
   if (setComponentFunc) {
     setComponentFunc(type, null)
   } else {
-    console.warn('LayoutRoot is uninitialized')
+    console.warn('LayerRoot is uninitialized')
   }
 }
 
-/* 耦合 history pushState go-1 */
-
-LayoutRoot.renderWith = (type, Component) => {
-  const popstate = (e) => {
-    const typeStack = [
-      TYPE.INNERLAYER,
-      TYPE.POPUP,
-      TYPE.MODAL,
-      TYPE.PICKER
-    ]
+LayerRoot.renderWith = (type, Component) => {
+  const popstate = e => {
+    const typeStack = [TYPE.INNERLAYER, TYPE.POPUP, TYPE.MODAL, TYPE.PICKER]
     // 代表还有其他state，即浮层，所以不采取任务逻辑
     if (e.state && typeStack.indexOf(e.state.type) >= typeStack.indexOf(type)) {
       return
     }
-    LayoutRoot.removeComponent(type)
+    LayerRoot.removeComponent(type)
     window.removeEventListener('popstate', popstate)
   }
 
@@ -94,13 +87,13 @@ LayoutRoot.renderWith = (type, Component) => {
 
   window.history.pushState({ type }, null)
 
-  LayoutRoot.setComponent(type, Component)
+  LayerRoot.setComponent(type, Component)
 }
 
-LayoutRoot.hideWith = (type) => {
-  LayoutRoot.removeComponent(type)
+LayerRoot.hideWith = type => {
+  LayerRoot.removeComponent(type)
 
   window.history.go(-1)
 }
 
-export default LayoutRoot
+export default LayerRoot

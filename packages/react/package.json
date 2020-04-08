@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@gm-common/tool": "^1.1.0",
+    "@gm-mobile/locales": "^0.0.0",
     "classnames": "^2.2.6"
   }
 }

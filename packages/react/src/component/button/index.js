@@ -23,7 +23,7 @@ const Button = ({
 
   const loadFlag = loading || isLoading
 
-  const handleClick = (e) => {
+  const handleClick = e => {
     if (loadFlag) {
       return
     }
@@ -45,14 +45,14 @@ const Button = ({
   return (
     <Tag
       {...rest}
-      type={href ? false : htmlType}
+      type={href ? undefined : htmlType}
       href={href}
       className={classNames(
         `m-btn m-btn-${type}`,
         {
           'm-btn-block': block,
           [`m-btn-${size}`]: size,
-          'm-btn-plain': type !== 'link' && plain,
+          'm-btn-plain': type !== 'link' && plain
         },
         className
       )}
@@ -69,7 +69,7 @@ const Button = ({
 Button.propTypes = {
   type: PropTypes.oneOf(['default', 'primary', 'success', 'danger', 'link']),
   plain: PropTypes.bool,
-  size: PropTypes.oneOf(['large', 'mini']),
+  size: PropTypes.oneOf(['mini']),
   block: PropTypes.bool,
   /** 原生的 type */
   htmlType: PropTypes.string,
@@ -80,13 +80,13 @@ Button.propTypes = {
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
   className: PropTypes.string,
-  style: PropTypes.object,
+  style: PropTypes.object
 }
 
 Button.defaultProps = {
   type: 'default',
   htmlType: 'button',
-  onClick: _.noop,
+  onClick: _.noop
 }
 
 export default Button

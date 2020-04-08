@@ -58,7 +58,6 @@ export const normal = () => (
     size
     <div>
       <Button>默认</Button>
-      <Button size='large'>大的</Button>
       <Button size='mini'>mini的</Button>
     </div>
     block

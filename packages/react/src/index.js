@@ -4,7 +4,7 @@ import Loading from './component/loading'
 // import Textarea from './component/textarea'
 // import NProgress from './component/nprogress'
 // import Mask from './component/mask'
-// import Toast from './component/toast'
+import Toast from './component/toast'
 // import Page from './component/page'
 // import Infinite from './component/infinite'
 // import InfiniteBox from './component/infinite/infinite_box'
@@ -23,7 +23,7 @@ import Loading from './component/loading'
 // import Trigger from './component/trigger'
 // import Tooltip from './component/tooltip'
 // import PreviewImage from './component/preview_image'
-// import LayoutRoot from './component/layout_root'
+import LayerRoot from './component/layer_root'
 // import Price from './component/price'
 // import Counter from './component/counter'
 
@@ -63,12 +63,15 @@ export {
   Flex,
   Button,
   Loading,
+  LayerRoot,
+  Toast
+
   // Infinite,
   // InfiniteBox,
   // Textarea,
   // NProgress,
   // Mask,
-  // Toast,
+
   // Page,
   // Header,
   // Storage,
@@ -88,7 +91,7 @@ export {
   // Trigger,
   // Tooltip,
   // PreviewImage,
-  // LayoutRoot,
+
   // Price,
   // Counter,
   // Divider,

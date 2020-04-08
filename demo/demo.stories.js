@@ -5,5 +5,5 @@ export const demo = () => {
 }
 
 export default {
-  title: 'DEMO|DEMO'
+  title: 'DEMO/DEMO'
 }

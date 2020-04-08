@@ -1,7 +1,7 @@
-import { getLocale } from '../../locales'
+import { getLocale } from '@gm-mobile/locales'
 import React from 'react'
 import PropTypes from 'prop-types'
-import LayoutRoot from '../layout_root'
+import LayerRoot from '../layer_root'
 import Loading from '../loading'
 import Mask from '../mask'
 import Flex from '../flex'
@@ -11,20 +11,24 @@ import SVGWarning from '../../../svg/warning.svg'
 import SVGClose from '../../../svg/close.svg'
 
 let timer = null
-let ToastStatics = {
-  clear () {
+const ToastStatics = {
+  clear() {
     clearTimeout(timer)
-    LayoutRoot.removeComponent(LayoutRoot.TYPE.TOAST)
+    LayerRoot.removeComponent(LayerRoot.TYPE.TOAST)
   },
-  _tip (options = {}, type) {
+  _tip(options = {}, type) {
+    clearTimeout(timer)
+
     if (typeof options === 'string') {
       options = {
         children: options
       }
     }
 
+    options = { ...options }
+
     if (options.time === undefined) {
-      options.time = 2000
+      options.time = 20000
       if (type === 'loading' || type === 'loading_linear') {
         options.time = 20000
       }
@@ -40,62 +44,66 @@ let ToastStatics = {
       }, options.time)
     }
 
-    LayoutRoot.setComponent(LayoutRoot.TYPE.TOAST, <Toast {...options}/>)
+    LayerRoot.setComponent(LayerRoot.TYPE.TOAST, <Toast {...options} />)
   },
-  tip (options) {
+  tip(options) {
     ToastStatics._tip(options)
   },
-  success (options) {
+  success(options) {
     ToastStatics._tip(options, 'success')
   },
-  info (options) {
+  info(options) {
     ToastStatics._tip(options, 'info')
   },
-  warning (options) {
+  warning(options) {
     ToastStatics._tip(options, 'warning')
   },
-  danger (options) {
+  danger(options) {
     ToastStatics._tip(options, 'danger')
   },
-  loading (options) {
+  loading(options) {
     ToastStatics._tip(options, 'loading')
   },
-  loading_linear (options) {
+  loading_linear(options) {
     ToastStatics._tip(options, 'loading_linear')
   }
 }
 
 class Toast extends React.Component {
-  render () {
-    let { children, loading, loading_linear, success, info, warning, danger } = this.props
+  render() {
+    let {
+      children,
+      loading,
+      loading_linear,
+      success,
+      info,
+      warning,
+      danger
+    } = this.props
 
     let icon = null
     if (loading) {
-      icon = <i className='weui-loading'/>
+      icon = <Loading />
       children = children || getLocale('加载中...')
-    } else if (success) {
-      icon = <SVGSuccess className='toast-icon'/>
-    } else if (info) {
-      icon = <SVGInfoCircle className='toast-icon'/>
-    } else if (warning) {
-      icon = <SVGWarning className='toast-icon'/>
-    } else if (danger) {
-      icon = <SVGClose className='toast-icon'/>
     } else if (loading_linear) {
-      icon = <Loading line/>
+      icon = <Loading line />
+    } else if (success) {
+      icon = <SVGSuccess />
+    } else if (info) {
+      icon = <SVGInfoCircle />
+    } else if (warning) {
+      icon = <SVGWarning />
+    } else if (danger) {
+      icon = <SVGClose />
     }
 
     return (
       <div>
-        {(loading || loading_linear) && <Mask show opacity={0.01}/>}
-        <Flex justifyCenter className='toast'>
-          <div className='toast-inner'>
-            {icon && (
-              <div className='loading-icon'>
-                {icon}
-              </div>
-            )}
-            <div className='toast-content'>{children}</div>
+        {(loading || loading_linear) && <Mask show opacity={0.01} />}
+        <Flex justifyCenter className='m-toast'>
+          <div className='m-toast-inner'>
+            {icon && <div className='m-toast-icon'>{icon}</div>}
+            <div className='m-toast-content'>{children}</div>
           </div>
         </Flex>
       </div>
