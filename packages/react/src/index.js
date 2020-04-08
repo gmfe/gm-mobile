@@ -5,7 +5,7 @@ import Loading from './component/loading'
 // import NProgress from './component/nprogress'
 // import Mask from './component/mask'
 import Toast from './component/toast'
-// import Page from './component/page'
+import Page from './component/page'
 // import Infinite from './component/infinite'
 // import InfiniteBox from './component/infinite/infinite_box'
 // import Header from './component/header'
@@ -64,7 +64,8 @@ export {
   Button,
   Loading,
   LayerRoot,
-  Toast
+  Page,
+  Toast,
 
   // Infinite,
   // InfiniteBox,
@@ -72,7 +73,6 @@ export {
   // NProgress,
   // Mask,
 
-  // Page,
   // Header,
   // Storage,
   // Slider,

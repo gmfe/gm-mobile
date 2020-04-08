@@ -1,20 +1,25 @@
-.page {
+.m-page {
   width: 100vw;
   height: 100vh;
-  background: @defaultBg;
+  background: var(--color-bg-back);
   overflow: hidden;
 
-  &.page-white {
-    background: @whiteBg;
+  &.m-page-white {
+    background: var(--color-bg);
   }
 
-  .page-content {
+  .m-page-content {
+    flex: 1;
     position: relative;
     overflow-x: hidden;
     overflow-y: auto;
   }
 
-  .page-tabbar {
-    height: @tabbarHeight;
+  .m-page-header {
+    height: var(--size-header-height);
+  }
+
+  .m-page-tabbar {
+    height: var(--size-tabbar-height);
   }
 }

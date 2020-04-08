@@ -4,13 +4,14 @@ import classNames from 'classnames'
 import Flex from '../flex/index'
 
 class Page extends React.Component {
-  render () {
+  render() {
     const {
       className,
       pageClassName,
       white,
       header,
       tabbar,
+      top,
       bottom,
       children,
       ...rest
@@ -20,17 +21,25 @@ class Page extends React.Component {
       <Flex
         {...rest}
         column
-        className={classNames({
-          'page': true,
-          'page-white': white
-        }, className)}
+        className={classNames(
+          'm-page',
+          {
+            'm-page-white': white,
+          },
+          className
+        )}
       >
-        {header && <Flex column none>{header}</Flex>}
-        <Flex flex column className={classNames('page-content block', pageClassName)}>
+        {header && (
+          <Flex column none className='m-page-header m-flex-none'>
+            {header}
+          </Flex>
+        )}
+        {top && <div className='m-flex-none'>{top}</div>}
+        <div className={classNames('m-page-content', pageClassName)}>
           {children}
-        </Flex>
-        {bottom}
-        {tabbar && <Flex column none className='page-tabbar'>{tabbar}</Flex>}
+        </div>
+        {bottom && <div className='m-flex-none'>{bottom}</div>}
+        {tabbar && <div className='m-page-tabbar m-flex-none'>{tabbar}</div>}
       </Flex>
     )
   }
@@ -43,7 +52,8 @@ Page.propTypes = {
   white: PropTypes.bool,
   header: PropTypes.node,
   tabbar: PropTypes.node,
-  bottom: PropTypes.node
+  top: PropTypes.node,
+  bottom: PropTypes.node,
 }
 
 export default Page
