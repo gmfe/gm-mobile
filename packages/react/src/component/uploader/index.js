@@ -1,71 +1,76 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
-import { is } from 'gm-util'
+import { is } from '@gm-common/tool'
 import classNames from 'classnames'
 
 import SVGPlus from '../../../svg/plus.svg'
 
-class Uploader extends React.Component {
-  handleUpload = (e) => {
-    e.preventDefault()
+const Uploader = ({
+  accept,
+  multiple,
+  onUpload,
+  children,
+  className,
+  ...rest
+}) => {
+  const refInput = useRef(null)
 
-    const { multiple, onUpload } = this.props
+  const handleUpload = (e) => {
     const uploadedFiles = e.dataTransfer ? e.dataTransfer.files : e.target.files
     const max = multiple ? uploadedFiles.length : 1
-    let files = []
 
+    const files = []
     for (let i = 0; i < max; i++) {
       const file = uploadedFiles[i]
       file.preview = window.URL.createObjectURL(file)
       files.push(file)
     }
+
     onUpload(files, e)
   }
 
-  handleClick = () => {
-    this.refInput.value = null
-    this.refInput.click()
+  const handleClick = () => {
+    refInput.current.value = null
+    refInput.current.click()
   }
 
-  render () {
-    const {
-      children,
-      accept,
-      multiple
-    } = this.props
-
-    const cn = classNames({ 'uploader-warp': !!children, 'uploader-default': !children })
-    return (
-      <div className='uploader'>
-        <div
-          className={cn}
-          onClick={this.handleClick}
-        >
-          {children || <div className='uploader-icon-wrap'>
-            <SVGPlus className='uploader-icon'/>
-          </div>}
-        </div>
-        <input
-          type='file'
-          ref={ref => (this.refInput = ref)}
-          className='uploader-input'
-          multiple={!is.weixin() && multiple}
-          accept={accept}
-          onChange={this.handleUpload}
-        />
+  return (
+    <div {...rest} className={classNames('m-uploader', className)}>
+      <div
+        className={classNames({
+          'm-uploader-warp': !!children,
+          'm-uploader-default': !children,
+        })}
+        onClick={handleClick}
+      >
+        {children || (
+          <div className='m-uploader-icon-wrap'>
+            <SVGPlus className='m-uploader-icon' />
+          </div>
+        )}
       </div>
-    )
-  }
-}
-
-Uploader.defaultProps = {
-  multiple: false
+      <input
+        type='file'
+        ref={refInput}
+        className='m-uploader-input'
+        multiple={!is.weixin() && multiple}
+        accept={accept}
+        onChange={handleUpload}
+      />
+    </div>
+  )
 }
 
 Uploader.propTypes = {
   multiple: PropTypes.bool,
   onUpload: PropTypes.func.isRequired,
-  accept: PropTypes.string
+  accept: PropTypes.string,
+  className: PropTypes.string,
+  style: PropTypes.object,
+}
+
+Uploader.defaultProps = {
+  multiple: false,
 }
 
 export default Uploader

@@ -28,7 +28,7 @@ import LayerRoot from './component/layer_root'
 // import Counter from './component/counter'
 
 // import Divider from './component/divider'
-// import Uploader from './component/uploader'
+import Uploader from './component/uploader'
 // import {
 //   Cells,
 //   CellsTitle,
@@ -101,7 +101,7 @@ export {
   // Counter,
   // Divider,
   // InnerLayer,
-  // Uploader,
+  Uploader,
   //
   // Cells,
   // Cell,
@@ -119,7 +119,6 @@ export {
   ConfirmPicker,
   CouplingPicker,
   ConfirmCouplingPicker,
-
   Calendar,
   //
   // FlipNumber,
