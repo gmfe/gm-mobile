@@ -1,4 +1,4 @@
-import { getLocale } from '../../locales'
+import { getLocale } from '@gm-mobile/locales'
 import React from 'react'
 import PropTypes from 'prop-types'
 import CouplingPicker from './coupling_picker'
@@ -7,16 +7,16 @@ import _ from 'lodash'
 import PickerStatics from './statics'
 
 class ConfirmCouplingPicker extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
-      values: props.values
+      values: props.values,
     }
   }
 
   handleChange = (values) => {
     this.setState({
-      values
+      values,
     })
   }
 
@@ -30,22 +30,26 @@ class ConfirmCouplingPicker extends React.Component {
     this.props.onConfirm(this.state.values)
   }
 
-  render () {
+  render() {
     const { itemHeight, datas, title, renderOption } = this.props
     const { values } = this.state
 
     return (
       <div>
-        <Flex justifyBetween className='border-1px-bottom-after'>
+        <Flex justifyBetween className='m-border-1px-bottom-after'>
           <div
-            className='text-link padding-lr-12 padding-tb-8'
+            className='m-text-link m-padding-lr-12 m-padding-tb-8'
             onClick={this.handleCancel}
-          >{getLocale('取消')}</div>
-          <div className='padding-tb-8'>{title}</div>
+          >
+            {getLocale('取消')}
+          </div>
+          <div className='m-padding-tb-8'>{title}</div>
           <div
-            className='text-link padding-lr-12 padding-tb-8'
+            className='m-text-link m-padding-lr-12 m-padding-tb-8'
             onClick={this.handleConfirm}
-          >{getLocale('确定')}</div>
+          >
+            {getLocale('确定')}
+          </div>
         </Flex>
         <CouplingPicker
           datas={datas}
@@ -71,7 +75,7 @@ ConfirmCouplingPicker.render = (props) => {
       children: (
         <ConfirmCouplingPicker
           {...props}
-          onConfirm={values => {
+          onConfirm={(values) => {
             PickerStatics.hide()
             setTimeout(() => {
               resolve(values)
@@ -84,7 +88,7 @@ ConfirmCouplingPicker.render = (props) => {
             }, 50)
           }}
         />
-      )
+      ),
     })
   })
 }
@@ -100,13 +104,13 @@ ConfirmCouplingPicker.propTypes = {
   renderOption: PropTypes.func,
   itemHeight: PropTypes.number,
   onConfirm: PropTypes.func.isRequired,
-  onCancel: PropTypes.func.isRequired
+  onCancel: PropTypes.func.isRequired,
 }
 
 ConfirmCouplingPicker.defaultProps = {
   itemHeight: 32,
   onConfirm: _.noop,
-  onCancel: _.noop
+  onCancel: _.noop,
 }
 
 export default ConfirmCouplingPicker

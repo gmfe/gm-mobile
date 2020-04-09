@@ -1,26 +1,23 @@
 import React from 'react'
 import Popup from '../popup'
-import LayoutRoot from '../layout_root'
+import LayerRoot from '../layer_root'
 
 const PickerStatics = {
-  render (options) {
+  render(options) {
     const _onHide = options.onHide
     options.onHide = () => {
       PickerStatics.hide()
       _onHide && _onHide()
     }
-    LayoutRoot.renderWith(LayoutRoot.TYPE.PICKER, (
-      <Popup
-        {...options}
-        show
-        isPickPopup
-      />
-    ))
+    LayerRoot.renderWith(
+      LayerRoot.TYPE.PICKER,
+      <Popup {...options} show isPickPopup />
+    )
   },
 
-  hide () {
-    LayoutRoot.hideWith(LayoutRoot.TYPE.PICKER)
-  }
+  hide() {
+    LayerRoot.hideWith(LayerRoot.TYPE.PICKER)
+  },
 }
 
 export default PickerStatics

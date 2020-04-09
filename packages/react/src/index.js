@@ -42,7 +42,12 @@ import LayerRoot from './component/layer_root'
 // } from './component/cell'
 
 // import Tabs from './component/tabs'
-// import { Picker, ConfirmPicker, CouplingPicker, ConfirmCouplingPicker } from './component/picker'
+import {
+  Picker,
+  ConfirmPicker,
+  CouplingPicker,
+  ConfirmCouplingPicker,
+} from './component/picker'
 // import { setLocale } from './locales'
 import Calendar from './component/calendar'
 // import FlipNumber from './component/flip_number'
@@ -109,12 +114,12 @@ export {
   // CellSwitch,
   //
   // Tabs,
-  //
-  // Picker,
-  // ConfirmPicker,
-  // CouplingPicker,
-  // ConfirmCouplingPicker,
-  //
+
+  Picker,
+  ConfirmPicker,
+  CouplingPicker,
+  ConfirmCouplingPicker,
+
   Calendar,
   //
   // FlipNumber,

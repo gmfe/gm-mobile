@@ -14,6 +14,8 @@ Mask 移除 show
 
 less 变量全部取消，改 css 变量
 
+bg-default => m-bg-back
+
 LayoutRoot => LayerRoot
 
 Storage 的 key 从 react-gmm => gm-mobile，记得做迁移

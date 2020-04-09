@@ -5,11 +5,11 @@ import _ from 'lodash'
 import PickerColumn from './picker_column'
 
 class CouplingPicker extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
-      selected: props.values
+      selected: props.values,
     }
   }
 
@@ -22,7 +22,7 @@ class CouplingPicker extends React.Component {
     onChange(selected)
   }
 
-  render () {
+  render() {
     const { selected } = this.state
     const {
       datas,
@@ -36,7 +36,7 @@ class CouplingPicker extends React.Component {
 
     const highlightStyle = {
       height: itemHeight,
-      marginTop: -(itemHeight / 2)
+      marginTop: -(itemHeight / 2),
     }
 
     const arr = []
@@ -44,36 +44,35 @@ class CouplingPicker extends React.Component {
     let subList2 = []
     for (let i = 0; i < selected.length; i++) {
       if (i === 0) {
-        arr[0] = _.map(datas, v => {
+        arr[0] = _.map(datas, (v) => {
           if (v.value === selected[i]) {
             subList1 = v.children
           }
           return {
             value: v.value,
-            text: v.text
+            text: v.text,
           }
         })
       } else if (i === 1) {
-        arr[1] = _.map(subList1, v => {
+        arr[1] = _.map(subList1, (v) => {
           if (v.value === selected[i]) {
             subList2 = v.children
           }
           return {
             value: v.value,
-            text: v.text
+            text: v.text,
           }
         })
       } else {
-        arr[i] = _.map(subList2, v => { return { value: v.value, text: v.text } })
+        arr[i] = _.map(subList2, (v) => {
+          return { value: v.value, text: v.text }
+        })
       }
     }
 
     return (
-      <div
-        {...rest}
-        className={classNames('picker', className)}
-      >
-        <div className='picker-inner' style={{ height: itemHeight * 6 }}>
+      <div {...rest} className={classNames('m-picker', className)}>
+        <div className='m-picker-inner' style={{ height: itemHeight * 6 }}>
           {_.map(arr, (v, i) => (
             <PickerColumn
               key={i}
@@ -86,24 +85,29 @@ class CouplingPicker extends React.Component {
               onChange={this.handleChange}
             />
           ))}
-          <div className='picker-highlight border-1px-top-before border-1px-bottom-after' style={highlightStyle}/>
+          <div
+            className='m-picker-highlight m-border-1px-top-before m-border-1px-bottom-after'
+            style={highlightStyle}
+          />
         </div>
       </div>
     )
   }
 }
 
-CouplingPicker.propTyps = {
+CouplingPicker.propTypes = {
   datas: PropTypes.array.isRequired, // [{value, text, children: [{value, text, children: [{value, text, children: []}]}]}]
   values: PropTypes.array.isRequired,
   itemHeight: PropTypes.number,
   onChange: PropTypes.func.isRequired,
-  renderOption: PropTypes.func
+  renderOption: PropTypes.func,
+  className: PropTypes.string,
+  style: PropTypes.object,
 }
 
 CouplingPicker.defaultProps = {
   itemHeight: 36,
-  renderOption: (dataIndex, option) => option.text // 此 dataIndex 是 datas 的所以
+  renderOption: (dataIndex, option) => option.text, // 此 dataIndex 是 datas 的所以
 }
 
 export default CouplingPicker
