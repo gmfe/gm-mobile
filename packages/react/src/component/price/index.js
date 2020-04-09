@@ -4,15 +4,15 @@ import _ from 'lodash'
 import { formatNumber } from 'gm-util'
 import storage from '../storage'
 const eventBus = {
-  add (eventName, handler) {
+  add(eventName, handler) {
     window.addEventListener(eventName, handler)
   },
-  dispatch (eventName, detail) {
+  dispatch(eventName, detail) {
     window.dispatchEvent(new window.CustomEvent(eventName, { detail }))
   },
-  remove (eventName, handler) {
+  remove(eventName, handler) {
     window.removeEventListener(eventName, handler)
-  }
+  },
 }
 
 const symbolKey = 'Price#symbol'
@@ -23,8 +23,8 @@ let _symbol = storage.get(symbolKey) || '¥'
 let _unit = storage.get(unitKey) || '元'
 // [{ symbol: '￥', type: 'CNY', unit: '元' },...]
 let _currencyList = [] // 多币种列表
-const getCurrentFromType = type =>
-  _.find(_currencyList, item => item.type === type)
+const getCurrentFromType = (type) =>
+  _.find(_currencyList, (item) => item.type === type)
 
 const format = (value, isFenUnit, formatOptions) => {
   if (isFenUnit) {
@@ -36,13 +36,16 @@ class Price extends React.Component {
   rerender = () => {
     this.forceUpdate()
   }
-  componentDidMount () {
+
+  componentDidMount() {
     eventBus.add('REACT_MGM_UPDATE_PRICE', this.rerender)
   }
-  componentWillUnmount () {
+
+  componentWillUnmount() {
     eventBus.remove('REACT_MGM_UPDATE_PRICE', this.rerender)
   }
-  render () {
+
+  render() {
     const {
       value,
       useGrouping,
@@ -62,11 +65,16 @@ class Price extends React.Component {
         {value < 0 ? '-' : ''}
         <span
           style={{
-            fontSize: `${currencyScale > 1 ? '1' : currencyScale}em`
+            fontSize: `${currencyScale > 1 ? '1' : currencyScale}em`,
           }}
         >
           {current ? current.symbol : _symbol}
-        </span>{format(Math.abs(value), isFenUnit, { useGrouping, precision, keepZero })}
+        </span>
+        {format(Math.abs(value), isFenUnit, {
+          useGrouping,
+          precision,
+          keepZero,
+        })}
       </span>
     )
   }
@@ -80,7 +88,7 @@ Price.propTypes = {
   // 是否保留小数点后无效的零
   keepZero: PropTypes.bool,
   isFenUnit: PropTypes.bool,
-  feeType: PropTypes.string
+  feeType: PropTypes.string,
 }
 
 Price.defaultProps = {
@@ -89,7 +97,7 @@ Price.defaultProps = {
   currencyScale: 0.85,
   keepZero: true,
   isFenUnit: false,
-  feeType: ''
+  feeType: '',
 }
 
 Price.format = format
@@ -100,7 +108,7 @@ Price.setCurrencyList = (list = []) => {
 }
 
 // 设置符号
-Price.setCurrency = symbol => {
+Price.setCurrency = (symbol) => {
   if (!symbol || symbol === _symbol) return
   _symbol = symbol
   storage.set(symbolKey, symbol)
@@ -109,18 +117,18 @@ Price.setCurrency = symbol => {
 
 // 获得符号
 Price.getCurrency = (type = '') => {
-  let current = type ? getCurrentFromType(type) : null
+  const current = type ? getCurrentFromType(type) : null
   return current ? current.symbol : _symbol
 }
 
-Price.setUnit = unit => {
+Price.setUnit = (unit) => {
   if (!unit || unit === _unit) return
   _unit = unit
   storage.set(unitKey, unit)
 }
 
 Price.getUnit = (type = '') => {
-  let current = type ? getCurrentFromType(type) : null
+  const current = type ? getCurrentFromType(type) : null
   return current ? current.unit : _unit
 }
 

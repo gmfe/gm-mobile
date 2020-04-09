@@ -1,23 +1,22 @@
 import React from 'react'
 import classNames from 'classnames'
+import PropTypes from 'prop-types'
 
-class Square extends React.Component {
-  render () {
-    const {
-      className,
-      children,
-      ...rest
-    } = this.props
-    const cn = classNames('square-inner', className)
+const Square = (props) => {
+  const { className, children, ...rest } = props
+  const cn = classNames('m-square-inner', className)
 
-    return (
-      <div className='square'>
-        <div {...rest} className={cn}>
-          {children}
-        </div>
+  return (
+    <div className='m-square'>
+      <div {...rest} className={cn}>
+        {children}
       </div>
-    )
-  }
+    </div>
+  )
+}
+
+Square.propTypes = {
+  className: PropTypes.string,
 }
 
 export default Square

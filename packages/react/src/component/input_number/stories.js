@@ -24,12 +24,12 @@ export const Normal = () => {
         />
       </div>
       <div>
-        最大最小值限制
+        最大最小值限制, min=0, max=100
         <InputNumber
           className='m-margin-8'
           value={store2.value}
           onChange={(value) => store2.setValue(value)}
-          min={10}
+          min={0}
           max={100}
         />
       </div>

@@ -5,7 +5,7 @@ import _ from 'lodash'
 const iPhone = window.navigator.userAgent.indexOf('iPhone') > -1
 
 class ScrollIntoView extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.__mounted = false
 
@@ -14,7 +14,7 @@ class ScrollIntoView extends React.Component {
     }
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.__mounted = true
   }
 
@@ -27,15 +27,17 @@ class ScrollIntoView extends React.Component {
       setTimeout(() => {
         if (!this.__mounted) {
           const target = findDOMNode(this)
-          target.scrollIntoViewIfNeeded ? target.scrollIntoViewIfNeeded() : target.scrollIntoView()
+          target.scrollIntoViewIfNeeded
+            ? target.scrollIntoViewIfNeeded()
+            : target.scrollIntoView()
         }
       }, 500)
     }
   }
 
-  render () {
+  render() {
     return React.cloneElement(this.props.children, {
-      onFocus: this.handleFocus
+      onFocus: this.handleFocus,
     })
   }
 }

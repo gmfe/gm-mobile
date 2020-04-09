@@ -15,7 +15,7 @@ const weekDays = [
 ]
 const Week = () => {
   return (
-    <Flex className='m-bg'>
+    <Flex className='m-bg-back'>
       {_.map(weekDays, (v, i) => (
         <Flex
           flex

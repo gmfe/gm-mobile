@@ -14,7 +14,7 @@ import Storage from './component/storage'
 // import SliderLess from './component/slider_less'
 import Popup from './component/popup'
 // import { Search, SearchPage, FakeSearch } from './component/search'
-// import Square from './component/square'
+import Square from './component/square'
 // import LazyImg from './component/lazy_img'
 import Dialog from './component/dialog'
 // import ScrollIntoView from './component/scroll_into_view'
@@ -25,7 +25,7 @@ import Dialog from './component/dialog'
 // import PreviewImage from './component/preview_image'
 import LayerRoot from './component/layer_root'
 // import Price from './component/price'
-// import Counter from './component/counter'
+import Counter from './component/counter'
 
 // import Divider from './component/divider'
 import Uploader from './component/uploader'
@@ -41,7 +41,7 @@ import Uploader from './component/uploader'
 //   CellSwitch
 // } from './component/cell'
 
-// import Tabs from './component/tabs'
+import Tabs from './component/tabs'
 import {
   Picker,
   ConfirmPicker,
@@ -84,7 +84,7 @@ export {
   // Search,
   // FakeSearch,
   // SearchPage,
-  // Square,
+  Square,
   // LazyImg,
 
   Dialog,
@@ -98,7 +98,7 @@ export {
   // PreviewImage,
 
   // Price,
-  // Counter,
+  Counter,
   // Divider,
   // InnerLayer,
   Uploader,
@@ -113,8 +113,7 @@ export {
   // CellSwipe,
   // CellSwitch,
   //
-  // Tabs,
-
+  Tabs,
   Picker,
   ConfirmPicker,
   CouplingPicker,
