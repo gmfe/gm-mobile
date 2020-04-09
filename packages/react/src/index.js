@@ -12,7 +12,7 @@ import Page from './component/page'
 import Storage from './component/storage'
 // import Slider from './component/slider'
 // import SliderLess from './component/slider_less'
-// import Popup from './component/popup'
+import Popup from './component/popup'
 // import { Search, SearchPage, FakeSearch } from './component/search'
 // import Square from './component/square'
 // import LazyImg from './component/lazy_img'
@@ -75,7 +75,7 @@ export {
   Storage,
   // Slider,
   // SliderLess,
-  // Popup,
+  Popup,
   // Search,
   // FakeSearch,
   // SearchPage,

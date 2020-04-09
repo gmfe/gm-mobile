@@ -1,21 +1,21 @@
-.popup-container {
-  .popup {
+.m-popup-container {
+  .m-popup {
     position: absolute;
-    z-index: @popupZIndex;
+    z-index: var(--z-index-popup);
 
-    .popup-content {
+    .m-popup-content {
       background: white;
       overflow-x: hidden;
       overflow-y: auto;
     }
 
-    &.popup-left {
+    &.m-popup-left {
       top: 0;
       left: 0;
       width: 70%;
       height: 100%;
 
-      .popup-content {
+      .m-popup-content {
         position: absolute;
         top: 0;
         left: 0;
@@ -24,13 +24,13 @@
       }
     }
 
-    &.popup-right {
+    &.m-popup-right {
       top: 0;
       right: 0;
       width: 70%;
       height: 100%;
 
-      .popup-content {
+      .m-popup-content {
         position: absolute;
         top: 0;
         left: 0;
@@ -39,7 +39,7 @@
       }
     }
 
-    &.popup-bottom {
+    &.m-popup-bottom {
       bottom: 0;
       left: 0;
       right: 0;
@@ -48,7 +48,7 @@
       height: auto;
       max-height: 100%;
 
-      .popup-content {
+      .m-popup-content {
         height: auto;
         position: initial;
       }
@@ -56,14 +56,15 @@
   }
 }
 
-.picker-popup-container {
+// TODO
+.m-popup-picker-container {
   z-index: 6000;
 
   .mask {
     z-index: 6001;
   }
 
-  .popup {
+  .m-popup {
     z-index: 6002;
   }
 }

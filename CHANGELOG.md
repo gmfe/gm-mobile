@@ -4,6 +4,12 @@
 
 Page 新增 top
 
+Dialog 移除 show
+
+Popup 移除 show
+
+Mask 移除 show
+
 ## breaking change
 
 less 变量全部取消，改 css 变量
