@@ -1,28 +1,25 @@
 import _ from 'lodash'
-import { is } from 'gm-util'
 
-function formatNum (number, decimals, useGroup) {
-  return number.toLocaleString(undefined, {
-    minimumFractionDigits: decimals,
-    maximumFractionDigits: decimals,
-    useGrouping: useGroup
+function formatNum(number, decimals, useGroup) {
+  return _.floor(number, decimals).toLocaleString(undefined, {
+    useGrouping: useGroup,
   })
 }
 
-function getNumLength (str1, str2) {
+function getNumLength(str1, str2) {
   return Math.max(str1.length, str2.length)
 }
 
-function filterForNum (strArr) {
-  return _.filter(strArr, (item) => is.number(item))
+function filterForNum(strArr) {
+  return _.filter(strArr, (item) => !_.isNaN(+item))
 }
 
 /**
-   * @description 根据字符串返回相应的反转字符数组以及符号数组
-   * @augments numStr 需要转换成数组的数字字符串
-   * @augments length 需要转换成的长度
-   */
-function getRawArray (numStr, length) {
+ * @description 根据字符串返回相应的反转字符数组以及符号数组
+ * @augments numStr 需要转换成数组的数字字符串
+ * @augments length 需要转换成的长度
+ */
+function getRawArray(numStr, length) {
   const alignNum = (str, len) => {
     return str.length < len ? alignNum(`0${str}`, len) : str
   }
@@ -32,7 +29,7 @@ function getRawArray (numStr, length) {
     if (item === ',' || item === '.') {
       symbolList.push({
         symbol: item,
-        position: index
+        position: index,
       })
     }
   })
@@ -43,9 +40,4 @@ function getRawArray (numStr, length) {
   return { rawList, symbolList }
 }
 
-export {
-  formatNum,
-  filterForNum,
-  getNumLength,
-  getRawArray
-}
+export { formatNum, filterForNum, getNumLength, getRawArray }

@@ -5,11 +5,11 @@ import classnames from 'classnames'
 import { getNumLength, formatNum, getRawArray, filterForNum } from './utils'
 
 class FlipNumber extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       height: 0,
-      heightList: []
+      heightList: [],
     }
 
     this.height = 0
@@ -18,12 +18,13 @@ class FlipNumber extends React.Component {
     this.doInitData(props)
   }
 
-  componentDidMount () {
-    this.height = this['flip-number-digit0'].clientHeight / (this.numberArray.length + 1)
+  componentDidMount() {
+    this.height =
+      this['flip-number-digit0'].clientHeight / (this.numberArray.length + 1)
     this.doInitView(this.props)
   }
 
-  componentWillReceiveProps (nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.to !== this.props.to) {
       window.cancelAnimationFrame(this.requestId)
       clearTimeout(this.timeoutID)
@@ -43,7 +44,7 @@ class FlipNumber extends React.Component {
     this.toNumArr = filterForNum(this.toRawArr.rawList).map(Number) // to 的去掉',' '.'后的数字数组
     this.digitLen = this.toNumArr.length
     this.fromRawArr = getRawArray(this.fromStr, totalLen)
-    this.fromNumArr = _.map([...Array(this.digitLen)], _ => 0)
+    this.fromNumArr = _.map([...Array(this.digitLen)], (_) => 0)
   }
 
   doInitView = (props) => {
@@ -54,15 +55,17 @@ class FlipNumber extends React.Component {
       const height = this.onDraw({
         from: this.fromNumArr[index],
         percent: 1,
-        alter: Math.floor((fromNum / Math.pow(10, index)))
+        alter: Math.floor(fromNum / Math.pow(10, index)),
       })
       heightList.unshift(height)
     })
     this.setState({
-      heightList: heightList
+      heightList: heightList,
     })
 
-    delay ? this.timeoutID = setTimeout(() => this.flipTo(duration), delay) : this.flipTo(duration)
+    delay
+      ? (this.timeoutID = setTimeout(() => this.flipTo(duration), delay))
+      : this.flipTo(duration)
   }
 
   /**
@@ -80,7 +83,7 @@ class FlipNumber extends React.Component {
   flipTo = (duration) => {
     const { easeFn, individually } = this.props
     this.fromNumArr = filterForNum(this.fromRawArr.rawList).map(Number)
-    const draw = percent => {
+    const draw = (percent) => {
       let temp = 0
       const heightList = []
       for (let d = this.toNumArr.length - 1; d >= 0; d--) {
@@ -89,20 +92,21 @@ class FlipNumber extends React.Component {
         const height = this.onDraw({
           from: this.fromNumArr[d],
           percent: easeFn(percent),
-          alter: individually ? temp : alter
+          alter: individually ? temp : alter,
         })
         heightList.push(height)
         temp *= 10
       }
       this.setState({
-        heightList
+        heightList,
       })
     }
     const startTime = window.performance.now()
-    const tick = now => {
-      let timeConsuming = now - startTime
+    const tick = (now) => {
+      const timeConsuming = now - startTime
       draw(timeConsuming / duration)
-      if (timeConsuming < duration) this.requestId = window.requestAnimationFrame(tick)
+      if (timeConsuming < duration)
+        this.requestId = window.requestAnimationFrame(tick)
       else {
         draw(1)
       }
@@ -115,27 +119,25 @@ class FlipNumber extends React.Component {
     const digitAxis = _.map(this.toNumArr, (item, index) => (
       <div
         style={{ transform: `translateY(${heightList[index]}px)` }}
-        ref={(rel) => { this[`flip-number-digit${index}`] = rel }}
-        className='inline-block position-relative'
+        ref={(rel) => {
+          this[`flip-number-digit${index}`] = rel
+        }}
+        className='m-inline-block m-position-relative'
         key={`digitAxis${index}`}
       >
-        {
-          _.map(this.numberArray, (i, d) => (
-            <div key={`digitChild${d}`}>{i}</div>
-          ))
-        }
+        {_.map(this.numberArray, (i, d) => (
+          <div key={`digitChild${d}`}>{i}</div>
+        ))}
         <div>{this.numberArray[0]}</div>
       </div>
     ))
 
     _.forEach(this.toRawArr.symbolList, (item, index) => {
       const symbolAxis = (
-        <div className='inline-block' key={`symbolAxis${index}`}>
-          {
-            _.map(this.numberArray, (i, d) => (
-              <div key={`symbolChile${d}`}>{item.symbol}</div>
-            ))
-          }
+        <div className='m-inline-block' key={`symbolAxis${index}`}>
+          {_.map(this.numberArray, (i, d) => (
+            <div key={`symbolChile${d}`}>{item.symbol}</div>
+          ))}
           <div>{item.symbol}</div>
         </div>
       )
@@ -145,16 +147,23 @@ class FlipNumber extends React.Component {
     return digitAxis
   }
 
-  render () {
+  render() {
     const { className, to } = this.props
-    return <div
-      key={`${to}`}
-      ref={(rel) => { this.wrap = rel }}
-      style={{ height: `${this.height}px` }}
-      className={classnames('position-relative overflow-hidden', className)}
-    >
-      {this.renderDigitAxis()}
-    </div>
+    return (
+      <div
+        key={`${to}`}
+        ref={(rel) => {
+          this.wrap = rel
+        }}
+        style={{ height: `${this.height}px` }}
+        className={classnames(
+          'm-position-relative m-overflow-hidden',
+          className
+        )}
+      >
+        {this.renderDigitAxis()}
+      </div>
+    )
   }
 }
 
@@ -168,20 +177,30 @@ FlipNumber.defaultProps = {
    * 缓动函数
    * @see https://github.com/danro/easing-js/blob/4f5e7edbde7f7200a1baf08e357377896c0d207e/easing.js#L39-L42
    */
-  easeFn: pos => (pos /= 0.5) < 1
-    ? 0.5 * Math.pow(pos, 3)
-    : 0.5 * (Math.pow((pos - 2), 3) + 2)
+  easeFn: (pos) =>
+    (pos /= 0.5) < 1
+      ? 0.5 * Math.pow(pos, 3)
+      : 0.5 * (Math.pow(pos - 2, 3) + 2),
 }
 
 FlipNumber.propTypes = {
-  to: PropTypes.number.isRequired, // 最后要显示的数字
-  from: PropTypes.number, // 滚动的起始数，默认为 0
-  delay: PropTypes.number, // 延迟，默认为 0
-  duration: PropTypes.number, // 滚动时长，默认为 1500 毫秒
-  easeFn: PropTypes.func, // 缓动函数，控制滚动的加速度，默认起末慢，中间快
-  individually: PropTypes.bool, // 是否逐个数字滚动, 默认 true
-  decimal: PropTypes.number, // 小数点个数，默认无小数点
-  useGroup: PropTypes.bool // 是否启用大数逗号分组
+  /** 最后要显示的数字 */
+  to: PropTypes.number.isRequired,
+  /** 滚动的起始数 */
+  from: PropTypes.number,
+  /** 延迟，默认为 0 */
+  delay: PropTypes.number,
+  /** 滚动时长 */
+  duration: PropTypes.number,
+  /** 缓动函数，控制滚动的加速度，默认起末慢，中间快 */
+  easeFn: PropTypes.func,
+  /** 是否逐个数字滚动, 默认 true */
+  individually: PropTypes.bool,
+  /** 小数点个数，默认无小数点 */
+  decimal: PropTypes.number,
+  /** 是否启用大数逗号分组 */
+  useGroup: PropTypes.bool,
+  className: PropTypes.string,
 }
 
 export default FlipNumber
