@@ -7,7 +7,7 @@ const store = observable({
   checked: true,
   setChecked(value) {
     this.checked = value
-  },
+  }
 })
 
 export const normal = () => (
@@ -16,8 +16,8 @@ export const normal = () => (
     onChange={(value) => store.setChecked(value)}
   />
 )
-export const disabled = () => <Radio disabled />
+export const disabled = () => <Radio checked={false} disabled />
 
 export default {
-  title: 'Radio',
+  title: 'Radio'
 }

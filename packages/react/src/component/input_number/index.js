@@ -4,11 +4,11 @@ import _ from 'lodash'
 import Big from 'big.js'
 
 class InputNumber extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
-      value: this.processValue(props.value)
+      value: this.processValue(props.value),
     }
   }
 
@@ -26,25 +26,23 @@ class InputNumber extends React.Component {
     return parseFloat(value)
   }
 
-  componentWillReceiveProps (nextProps, nextState) {
+  static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.value === null) {
-      this.setState({
-        value: ''
-      })
-      return
+      return { value: '' }
     }
 
-    if (parseFloat(nextProps.value) !== parseFloat(this.state.value)) {
-      this.setState({
-        value: nextProps.value + ''
-      })
+    if (parseFloat(nextProps.value) !== parseFloat(prevState.value)) {
+      return {
+        value: nextProps.value + '',
+      }
     }
+
+    // 不需要更新状态，返回null
+    return null
   }
 
   checkValue = (value) => {
-    const {
-      max, min, precision
-    } = this.props
+    const { max, min, precision } = this.props
 
     const v = Number(value)
     if (max !== undefined && v > max) {
@@ -54,7 +52,10 @@ class InputNumber extends React.Component {
       return false
     }
 
-    if (parseInt(Big(value).times(Math.pow(10, precision))) !== +Big(value).times(Math.pow(10, precision))) {
+    if (
+      parseInt(Big(value).times(Math.pow(10, precision))) !==
+      +Big(value).times(Math.pow(10, precision))
+    ) {
       return false
     }
 
@@ -79,18 +80,14 @@ class InputNumber extends React.Component {
     }
 
     this.setState({
-      value: nV
+      value: nV,
     })
 
     onChange(this.processOutValue(nV))
   }
 
-  render () {
-    const {
-      value, onChange,
-      max, min, precision,
-      ...rest
-    } = this.props
+  render() {
+    const { value, onChange, max, min, precision, ...rest } = this.props
 
     return (
       <input
@@ -104,16 +101,18 @@ class InputNumber extends React.Component {
 }
 
 InputNumber.propTypes = {
+  /** value为null时，展示为'' */
   value: PropTypes.number,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
   max: PropTypes.number,
   min: PropTypes.number,
-  precision: PropTypes.number // 精确度，保留几位小数
+  /** 精确度，保留几位小数, 默认为2 */
+  precision: PropTypes.number,
 }
 
 InputNumber.defaultProps = {
-  precision: 2
+  precision: 2,
 }
 
 export default InputNumber

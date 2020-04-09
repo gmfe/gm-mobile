@@ -1,7 +1,6 @@
 import React from 'react'
 import moment from 'moment'
 import { observable } from 'mobx'
-import { storiesOf } from '@storybook/react'
 
 import Calendar from './'
 
@@ -18,24 +17,28 @@ const store = {
 const normalStore = observable(store)
 const otherStore = observable(store)
 
-storiesOf('Calendar', module)
-  .add('default', () => (
-    <Calendar
-      ref={refCalendar}
-      begin={normalStore.begin}
-      end={normalStore.end}
-      onChange={({ begin, end }) => normalStore.setDate(begin, end)}
-      label
-    />
-  ))
-  .add('min && max', () => (
-    <Calendar
-      ref={refCalendar}
-      min={moment().add(-1, 'month').toDate()}
-      max={moment().toDate()}
-      begin={otherStore.begin}
-      end={otherStore.end}
-      onChange={({ begin, end }) => otherStore.setDate(begin, end)}
-      label
-    />
-  ))
+export const Default = () => (
+  <Calendar
+    ref={refCalendar}
+    begin={normalStore.begin}
+    end={normalStore.end}
+    onChange={({ begin, end }) => normalStore.setDate(begin, end)}
+    label
+  />
+)
+
+export const MinAndMax = () => (
+  <Calendar
+    ref={refCalendar}
+    min={moment().add(-1, 'month').toDate()}
+    max={moment().toDate()}
+    begin={otherStore.begin}
+    end={otherStore.end}
+    onChange={({ begin, end }) => otherStore.setDate(begin, end)}
+    label
+  />
+)
+
+export default {
+  title: 'Calendar',
+}

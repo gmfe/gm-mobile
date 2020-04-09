@@ -44,12 +44,12 @@ import LayerRoot from './component/layer_root'
 // import Tabs from './component/tabs'
 // import { Picker, ConfirmPicker, CouplingPicker, ConfirmCouplingPicker } from './component/picker'
 // import { setLocale } from './locales'
-// import { Calendar } from './component/calendar'
+import Calendar from './component/calendar'
 // import FlipNumber from './component/flip_number'
 // import InnerLayer from './component/inner_layer'
-// import InputNumber from './component/input_number'
+import InputNumber from './component/input_number'
 // import Keyboard from './component/keyboard'
-// import Radio from './component/radio'
+import Radio from './component/radio'
 //
 // import List from './component/list'
 // import { LetterIndex, LetterIndexMultiple } from './component/letter_index'
@@ -115,12 +115,12 @@ export {
   // CouplingPicker,
   // ConfirmCouplingPicker,
   //
-  // Calendar,
+  Calendar,
   //
   // FlipNumber,
-  // InputNumber,
+  InputNumber,
   // Keyboard,
-  // Radio,
+  Radio,
   // List,
   // LetterIndex,
   // LetterIndexMultiple,
