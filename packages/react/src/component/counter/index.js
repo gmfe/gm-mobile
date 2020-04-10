@@ -5,7 +5,7 @@ import Big from 'big.js'
 
 import Flex from '../flex'
 import ScrollIntoView from '../scroll_into_view'
-import InputNumber from '../input/input.number'
+import Index from '../input/input.number'
 
 import SVGMinusCycle from '../../../svg/minus-circle.svg'
 import SVGAddCycle from '../../../svg/add-circle.svg'
@@ -75,7 +75,7 @@ class Counter extends React.Component {
           onClick={this.handleCountMinus}
         />
         <ScrollIntoView>
-          <InputNumber
+          <Index
             className={inputClass}
             onChange={onCountNumEdit}
             onBlur={this.handleCountInputBlur}

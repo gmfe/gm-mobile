@@ -13,7 +13,7 @@ import Storage from './component/storage'
 // import Slider from './component/slider'
 // import SliderLess from './component/slider_less'
 import Popup from './component/popup'
-// import { Search, SearchPage, FakeSearch } from './component/search'
+import { Search, SearchPage, FakeSearch } from './component/search'
 import Square from './component/square'
 // import LazyImg from './component/lazy_img'
 import Dialog from './component/dialog'
@@ -25,7 +25,7 @@ import Select from './component/select'
 // import PreviewImage from './component/preview_image'
 import LayerRoot from './component/layer_root'
 // import Price from './component/price'
-import Counter from './component/counter'
+// import Counter from './component/counter'
 
 // import Divider from './component/divider'
 import Uploader from './component/uploader'
@@ -60,6 +60,7 @@ import Radio from './component/radio'
 // import { LetterIndex, LetterIndexMultiple } from './component/letter_index'
 // import ProgressBar from './component/progress'
 // import TimeSelect from './component/time_select'
+import Input from './component/input'
 
 const Alert = Dialog.alert
 const Confirm = Dialog.confirm
@@ -81,9 +82,9 @@ export {
   // Slider,
   // SliderLess,
   Popup,
-  // Search,
-  // FakeSearch,
-  // SearchPage,
+  Search,
+  FakeSearch,
+  SearchPage,
   Square,
   // LazyImg,
 
@@ -98,7 +99,7 @@ export {
   // PreviewImage,
 
   // Price,
-  Counter,
+  // Counter,
   // Divider,
   // InnerLayer,
   Uploader,
@@ -124,6 +125,7 @@ export {
   InputNumber,
   // Keyboard,
   Radio,
+  Input,
   // List,
   // LetterIndex,
   // LetterIndexMultiple,

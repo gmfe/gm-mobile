@@ -19,3 +19,5 @@ bg-default => m-bg-back
 LayoutRoot => LayerRoot
 
 Storage 的 key 从 react-gmm => gm-mobile，记得做迁移
+
+废除 SearchBar

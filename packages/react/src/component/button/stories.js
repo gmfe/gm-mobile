@@ -17,7 +17,7 @@ export const normal = () => (
       <Button type='link'>Link</Button>
       <Button
         type='link'
-        href='#/supply_chain/purchase/analysis?tab=3'
+        href='google.com'
         target='_blank'
       >
         链接
