@@ -19,7 +19,7 @@ import Square from './component/square'
 import Dialog from './component/dialog'
 // import ScrollIntoView from './component/scroll_into_view'
 // import CursorFix from './component/cursor_fix'
-// import Select from './component/select'
+import Select from './component/select'
 // import Trigger from './component/trigger'
 // import Tooltip from './component/tooltip'
 // import PreviewImage from './component/preview_image'
@@ -92,7 +92,7 @@ export {
   Confirm,
   // ScrollIntoView,
   // CursorFix,
-  // Select,
+  Select,
   // Trigger,
   // Tooltip,
   // PreviewImage,

@@ -58,11 +58,11 @@ class Counter extends React.Component {
       isPlusDisabled,
     } = this.props
 
-    const minusIconClass = classNames('m-counter-del', {
-      disable: amount === 0,
+    const minusIconClass = classNames('m-counter-minus', {
+      disabled: amount === 0,
     })
-    const plusIconClass = classNames('m-counter-add', {
-      disable: isPlusDisabled,
+    const plusIconClass = classNames('m-counter-plus', {
+      disabled: isPlusDisabled,
     })
     const inputClass = classNames('m-counter-num', {
       'm-counter-num-border': amount > 0,
@@ -97,9 +97,6 @@ Counter.propTypes = {
   amount: PropTypes.any.isRequired,
   onCountInputFocus: PropTypes.func,
   isPlusDisabled: PropTypes.bool,
-  /** 最小值，为大于等于0的数字，默认为0 */
-  // min: PropTypes.number,
-  // max: PropTypes.number,
 }
 
 export default Counter

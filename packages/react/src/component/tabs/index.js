@@ -9,7 +9,9 @@ const Tabs = ({ tabIndex, list, onChange }) => {
       {_.map(list, (v, i) => (
         <div
           key={v}
-          className={classNames('m-tabs-item', { active: tabIndex === i })}
+          className={classNames('m-tabs-item', {
+            active: tabIndex === i,
+          })}
           onClick={() => onChange(i)}
         >
           <div className='m-tabs-item-text'>{v}</div>

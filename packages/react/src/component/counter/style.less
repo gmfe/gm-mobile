@@ -1,16 +1,15 @@
 .m-counter {
-  .m-counter-add,
-  .m-counter-del {
+  .m-counter-plus,
+  .m-counter-minus {
     font-size: 24px;
   }
 
-  .m-counter-add {
+  .m-counter-plus {
     color: var(--color-primary);
   }
 
-  .m-counter-del {
-    // color: @counterMinus;
-    color: #b7b6b6;
+  .m-counter-minus {
+    color: var(--color-second);
   }
 
   .m-counter-num {
@@ -30,8 +29,9 @@
     }
   }
 
-  .disable {
+  .disabled {
+    cursor: not-allowed;
     background: none;
-    color: rgba(0, 0, 0, 0.1);
+    color: var(--color-bg-disabled);
   }
 }
