@@ -47,6 +47,7 @@ import {
   ConfirmPicker,
   CouplingPicker,
   ConfirmCouplingPicker,
+  SelectPicker,
 } from './component/picker'
 // import { setLocale } from './locales'
 import Calendar from './component/calendar'
@@ -57,7 +58,7 @@ import InputNumber from './component/input_number'
 import Radio from './component/radio'
 //
 // import List from './component/list'
-// import { LetterIndex, LetterIndexMultiple } from './component/letter_index'
+import { LetterIndex, LetterIndexMultiple } from './component/letter_index'
 // import ProgressBar from './component/progress'
 // import TimeSelect from './component/time_select'
 import Input from './component/input'
@@ -123,6 +124,7 @@ export {
   ConfirmPicker,
   CouplingPicker,
   ConfirmCouplingPicker,
+  SelectPicker,
   Calendar,
   //
   // FlipNumber,
@@ -131,8 +133,8 @@ export {
   Radio,
   Input,
   // List,
-  // LetterIndex,
-  // LetterIndexMultiple,
+  LetterIndex,
+  LetterIndexMultiple,
   //
   // setLocale,
   // ProgressBar,

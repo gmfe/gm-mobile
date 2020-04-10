@@ -21,3 +21,5 @@ LayoutRoot => LayerRoot
 Storage 的 key 从 react-gmm => gm-mobile，记得做迁移
 
 废除 SearchBar
+
+废除 Select， 提供 SelectPicker，代替原本 Select.render()

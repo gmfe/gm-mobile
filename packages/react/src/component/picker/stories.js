@@ -3,6 +3,7 @@ import Picker from './picker'
 import { observable } from 'mobx'
 import ConfirmPicker from './confirm_picker'
 import ConfirmCouplingPicker from './confirm_coupling_picker'
+import SelectPicker from './select_picker'
 
 const datas = [
   [
@@ -143,6 +144,15 @@ const couplingData = [
   },
 ]
 
+const selectData = [
+  { value: 1, text: '深圳' },
+  { value: 2, text: '罗湖' },
+  { value: 3, text: '南山' },
+  { value: 4, text: '宝安' },
+  { value: 5, text: '福田' },
+  { value: 6, text: '龙岗' },
+]
+
 const store = observable({
   datas,
   values: ['Mr.', 'Micheal', 'Jordan'],
@@ -154,6 +164,14 @@ const store = observable({
   setCouplingValues(values) {
     this.couplingValues = values
   },
+})
+
+const selectStore = observable({
+  data: selectData,
+  value: null,
+  setValue(v) {
+    this.value = v
+  }
 })
 
 export const picker = () => {
@@ -214,6 +232,25 @@ export const connfirmCouplingPicker = () => {
   }
 
   return <button onClick={handleClick}>confirm coupling picker</button>
+}
+
+export const selectPicker = () => {
+  const handleClick = () => {
+    SelectPicker.render({
+      data: selectStore.data.slice(),
+      value: selectStore.value
+    }).then(
+      (value) => {
+        console.log('resolve', value)
+        selectStore.setValue(value)
+      },
+      () => {
+        console.log('reject')
+      }
+    )
+  }
+
+  return <button onClick={handleClick}>select picker</button>
 }
 
 export default {

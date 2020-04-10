@@ -20,7 +20,7 @@ export const Normal = () => {
         list={tabsList}
         onChange={(index) => store.setTabIndex(index)}
       />
-      <div className='m-margin-12'>{tabsContent[store.tabIndex]}</div>
+      <div className='m-margin-10'>{tabsContent[store.tabIndex]}</div>
     </div>
   )
 }

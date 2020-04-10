@@ -18,7 +18,7 @@ export const Normal = () => {
       <div>
         无限制
         <InputNumber
-          className='m-margin-8'
+          className='m-margin-10'
           value={store1.value}
           onChange={(value) => store1.setValue(value)}
         />
@@ -26,7 +26,7 @@ export const Normal = () => {
       <div>
         最大最小值限制, min=0, max=100
         <InputNumber
-          className='m-margin-8'
+          className='m-margin-10'
           value={store2.value}
           onChange={(value) => store2.setValue(value)}
           min={0}

@@ -5,7 +5,7 @@ import Big from 'big.js'
 
 import Flex from '../flex'
 import ScrollIntoView from '../scroll_into_view'
-import Index from '../input/input.number'
+import Index from '../input'
 
 import SVGMinusCycle from '../../../svg/minus-circle.svg'
 import SVGAddCycle from '../../../svg/add-circle.svg'

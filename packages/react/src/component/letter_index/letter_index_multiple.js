@@ -1,4 +1,4 @@
-import { getLocale } from '../../locales'
+import { getLocale } from '@gm-mobile/locales'
 import React from 'react'
 import PropTypes from 'prop-types'
 import List from '../list'
@@ -8,11 +8,11 @@ import { data2Group } from './util'
 import classNames from 'classnames'
 
 class LetterIndexMultiple extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
-      selected: props.selected || []
+      selected: props.selected || [],
     }
   }
 
@@ -20,11 +20,12 @@ class LetterIndexMultiple extends React.Component {
 
   handleSelect = (selected) => {
     this.setState({
-      selected
+      selected,
     })
   }
 
   handleLetter = (letter) => {
+    console.log(111, letter)
     this.refList.current.apiDoScrollToLabel(letter)
   }
 
@@ -36,11 +37,15 @@ class LetterIndexMultiple extends React.Component {
     this.props.onSelect(this.state.selected)
   }
 
-  render () {
+  render() {
     const {
-      data, renderItem,
-      selected, onSelect, onCancel, // eslint-disable-line
-      className, style,
+      data,
+      renderItem,
+      selected,
+      onSelect,
+      onCancel,
+      className,
+      style,
       getFirstLetter,
       ...rest
     } = this.props
@@ -51,18 +56,13 @@ class LetterIndexMultiple extends React.Component {
       <Flex
         {...rest}
         column
-        className={classNames('bg-default', className)}
-        style={{
-          width: '100%',
-          height: '100%',
-          ...style
-        }}
+        className={classNames('m-bg-back m-letter-index-multiple', className)}
+        style={style}
       >
-        <Flex column flex className='relative' style={{ height: '100%' }}>
+        <Flex column flex className='m-relative' style={{ height: '100%' }}>
           <List
             ref={this.refList}
-            className='overflow-y relative'
-            style={{ height: '100%' }}
+            className='m-overflow-y m-relative m-letter-index-multiple-list'
             data={gData}
             selected={this.state.selected}
             onSelect={this.handleSelect}
@@ -70,17 +70,15 @@ class LetterIndexMultiple extends React.Component {
             multiple
             isGroupList
           />
-          <Letter onChange={this.handleLetter}/>
+          <Letter onChange={this.handleLetter} />
         </Flex>
-        <Flex className='bg-white' style={{
-          height: '45px'
-        }}>
+        <Flex className='m-bg-white m-letter-index-multiple-gap'>
           <Flex
             flex
             justifyCenter
             alignCenter
             onClick={this.handleCancel}
-            className='border-1px-top-before border-1px-right-after'
+            className='m-border-1px-top-before m-border-1px-right-after'
           >
             {getLocale('取消')}
           </Flex>
@@ -89,7 +87,7 @@ class LetterIndexMultiple extends React.Component {
             justifyCenter
             alignCenter
             onClick={this.handleConfirm}
-            className='border-1px-top-before b-bg-primary text-white'
+            className='m-border-1px-top-before m-bg-primary m-text-white'
           >
             {getLocale('确定')}
           </Flex>
@@ -100,16 +98,20 @@ class LetterIndexMultiple extends React.Component {
 }
 
 LetterIndexMultiple.propTypes = {
-  data: PropTypes.array.isRequired, // [{value, text}]
+  /** 数据格式：[{value, text}] */
+  data: PropTypes.array.isRequired,
   selected: PropTypes.array,
   onSelect: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
-  getFirstLetter: PropTypes.func.isRequired, // 传入获取首拼的函数,
-  renderItem: PropTypes.func
+  /** 传入获取首拼的函数 */
+  getFirstLetter: PropTypes.func.isRequired,
+  renderItem: PropTypes.func,
+  className: PropTypes.string,
+  style: PropTypes.object,
 }
 
 LetterIndexMultiple.defaultProps = {
-  renderItem: item => item.text
+  renderItem: (item) => item.text,
 }
 
 export default LetterIndexMultiple

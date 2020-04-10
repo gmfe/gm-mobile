@@ -16,46 +16,53 @@ class LetterIndex extends React.Component {
     this.refList.current.apiDoScrollToLabel(letter)
   }
 
-  render () {
-    const { selected, data, renderItem, className, style, getFirstLetter, ...rest } = this.props
+  render() {
+    const {
+      selected,
+      data,
+      renderItem,
+      className,
+      style,
+      getFirstLetter,
+      ...rest
+    } = this.props
     const gData = data2Group(data, getFirstLetter)
 
     return (
       <div
         {...rest}
-        className={classNames('bg-default', className)}
-        style={{
-          width: '100%',
-          height: '100%',
-          ...style
-        }}
+        className={classNames('m-bg-back m-letter-index', className)}
+        style={style}
       >
         <List
           ref={this.refList}
-          className='overflow-y relative'
-          style={{ height: '100%' }}
+          className='m-overflow-y m-relative m-letter-index-list'
           data={gData}
           selected={selected}
           onSelect={this.handleSelect}
           renderItem={renderItem}
           isGroupList
         />
-        <Letter onChange={this.handleLetter}/>
+        <Letter onChange={this.handleLetter} />
       </div>
     )
   }
 }
 
 LetterIndex.propTypes = {
-  data: PropTypes.array.isRequired, // [{value, text}]
+  /** 数据格式：[{value, text}] */
+  data: PropTypes.array.isRequired,
   selected: PropTypes.any,
   onSelect: PropTypes.func.isRequired,
-  getFirstLetter: PropTypes.func.isRequired, // 传入获取首拼的函数
-  renderItem: PropTypes.func
+  /** 传入获取首拼的函数 */
+  getFirstLetter: PropTypes.func.isRequired,
+  renderItem: PropTypes.func,
+  className: PropTypes.string,
+  style: PropTypes.object,
 }
 
 LetterIndex.defaultProps = {
-  renderItem: item => item.text
+  renderItem: (item) => item.text,
 }
 
 export default LetterIndex

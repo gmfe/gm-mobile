@@ -4,11 +4,11 @@ import _ from 'lodash'
 import Flex from '../flex'
 import PropTypes from 'prop-types'
 
-const letterList = _.map(_.range(65, 91), v => String.fromCharCode(v))
+const letterList = _.map(_.range(65, 91), (v) => String.fromCharCode(v))
 letterList.push('#')
 
 class Letter extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.refLetter = React.createRef()
@@ -18,30 +18,33 @@ class Letter extends React.Component {
 
     this.state = {
       letter: null,
-      showLetter: false
+      showLetter: false,
     }
   }
 
-  componentDidMount () {
-    const rect = ReactDOM.findDOMNode(this.refLetter.current).getBoundingClientRect()
+  componentDidMount() {
+    const rect = ReactDOM.findDOMNode(
+      this.refLetter.current
+    ).getBoundingClientRect()
     this.top = rect.top
     this.itemHeight = rect.height / 27 // 总共有 27 个符号
   }
 
-  getY (event) {
+  getY(event) {
     return event.touches !== undefined ? event.touches[0].pageY : event.clientY
   }
 
   handleTouch = (e) => {
     const top = this.getY(e)
     let code = parseInt((top - this.top) / this.itemHeight, 10) + 65
-    if (code < 65) { // 把滑动是能够出现的字母限定在26个大写字母和特殊符号#
+    if (code < 65) {
+      // 把滑动是能够出现的字母限定在26个大写字母和特殊符号#
       code = 65
     }
     const letter = String.fromCharCode(code >= 91 ? 35 : code) // 字母以外用 #:35
 
     this.setState({
-      letter
+      letter,
     })
 
     this.doChange(letter)
@@ -51,19 +54,19 @@ class Letter extends React.Component {
     this.handleTouch(e)
 
     this.setState({
-      showLetter: true
+      showLetter: true,
     })
   }
 
   handleTouchEnd = () => {
     this.setState({
-      showLetter: false
+      showLetter: false,
     })
   }
 
   handleTouchCancel = () => {
     this.setState({
-      showLetter: false
+      showLetter: false,
     })
   }
 
@@ -75,54 +78,32 @@ class Letter extends React.Component {
     this.props.onChange(letter)
   }, 100)
 
-  render () {
+  render() {
     const { letter, showLetter } = this.state
 
     return (
-      <div className='absolute' style={{
-        height: '100%',
-        top: '0px',
-        bottom: '0px',
-        right: '0px',
-        width: '2em'
-      }}>
+      <div className='m-letter'>
         <Flex
           ref={this.refLetter}
           column
           justifyBetween
+          className='m-letter-list'
           onTouchStart={this.handleTouchStart}
           onTouchMove={this.handleTouch}
           onTouchEnd={this.handleTouchEnd}
           onTouchCancel={this.handleTouchCancel}
           onContextMenu={this.handleContextMenu}
-          style={{ height: '100%', lineHeight: 1 }}
         >
-          {_.map(letterList, v => (
-            <Flex
-              key={v}
-              flex
-              justifyCenter
-              alignCenter
-            >{v}</Flex>
+          {_.map(letterList, (v) => (
+            <Flex key={v} flex justifyCenter alignCenter>
+              {v}
+            </Flex>
           ))}
         </Flex>
         {showLetter && (
-          <Flex
-            alignCenter
-            justifyCenter
-            className='absolute'
-            style={{
-              top: '50%',
-              right: '50vw',
-              margin: '-40px -40px 0 0',
-              width: '80px',
-              height: '80px',
-              fontSize: '50px',
-              borderRadius: '4px',
-              backgroundColor: 'rgba(0,0,0, 0.4)',
-              color: 'white'
-            }}
-          >{letter}</Flex>
+          <Flex alignCenter justifyCenter className='m-letter-item'>
+            {letter}
+          </Flex>
         )}
       </div>
     )
@@ -130,7 +111,7 @@ class Letter extends React.Component {
 }
 
 Letter.propTypes = {
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 }
 
 export default Letter
