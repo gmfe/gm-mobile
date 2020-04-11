@@ -49,6 +49,9 @@ export const normal = () => (
       <Button size='lg'>大按钮</Button>
       <Button>默认</Button>
       <Button size='sm'>小按钮</Button>
+      <Button size='sm' type='link'>
+        Link
+      </Button>
     </div>
     block
     <div>
@@ -70,9 +73,6 @@ export const loading = () => (
     <div>
       <Button onClick={handleClick}>点击显示 loading</Button>
       <Button type='primary' onClick={handleClick}>
-        点击显示 loading
-      </Button>
-      <Button type='success' onClick={handleClick}>
         点击显示 loading
       </Button>
       <Button type='danger' onClick={handleClick}>

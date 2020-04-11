@@ -5,16 +5,7 @@ import classNames from 'classnames'
 import _ from 'lodash'
 import SVGAngleLeft from '../../../svg/angle-left.svg'
 
-const Header = (props) => {
-  const {
-    title,
-    hideBack,
-    onBack,
-    right,
-    style,
-    ...rest
-  } = props
-
+const Header = ({ title, hideBack, onBack, right, className, ...rest }) => {
   const handleBack = () => {
     onBack()
   }
@@ -23,19 +14,18 @@ const Header = (props) => {
     <Flex
       alignCenter
       justifyBetween
-      style={{
-        height: '45px',
-        ...style
-      }}
       {...rest}
+      className={classNames('m-header', className)}
     >
       <Flex alignCenter>
         {!hideBack && (
-          <SVGAngleLeft className=' text-24 padding-lr-8' onClick={handleBack}/>
+          <SVGAngleLeft className='m-padding-lr-15' onClick={handleBack} />
         )}
-        <div className={classNames('text-16 padding-right-8', {
-          'padding-left-8': hideBack
-        })}>
+        <div
+          className={classNames('m-text-15 m-padding-right-10', {
+            'padding-left-8': hideBack,
+          })}
+        >
           {title}
         </div>
       </Flex>
@@ -48,11 +38,13 @@ Header.propTypes = {
   onBack: PropTypes.func,
   title: PropTypes.string,
   hideBack: PropTypes.bool,
-  right: PropTypes.element
+  right: PropTypes.element,
+  className: PropTypes.string,
+  style: PropTypes.object,
 }
 
 Header.defaultProps = {
-  onBack: _.noop
+  onBack: _.noop,
 }
 
 export default Header

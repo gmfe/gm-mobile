@@ -4,44 +4,34 @@ import Page from '../page'
 import Search from './search'
 import _ from 'lodash'
 
-class SearchPage extends React.Component {
-  renderHeader () {
-    const { active, header, value, onChange, onSearch, onCancel } = this.props
+const SearchPage = ({
+  active,
+  header,
+  value,
+  onChange,
+  onSearch,
+  onCancel,
+  children,
+  ...rest
+}) => {
+  const newHeader = active ? (
+    <Search
+      value={value}
+      onChange={onChange}
+      autoFocus
+      type='cancel'
+      onSearch={onSearch}
+      onCancel={onCancel}
+    />
+  ) : (
+    header
+  )
 
-    if (active) {
-      return (
-        <Search
-          value={value}
-          onChange={onChange}
-          autoFocus
-          type='cancel'
-          onSearch={onSearch}
-          onCancel={onCancel}
-        />
-      )
-    }
-
-    return header
-  }
-
-  render () {
-    const {
-      active,
-      onCancel,
-      value, onChange, onSearch,// eslint-disable-line
-      children,
-      ...rest
-    } = this.props
-
-    return (
-      <Page
-        {...rest}
-        header={this.renderHeader()}
-      >
-        {children}
-      </Page>
-    )
-  }
+  return (
+    <Page {...rest} header={newHeader}>
+      {children}
+    </Page>
+  )
 }
 
 SearchPage.propTypes = {
@@ -51,11 +41,11 @@ SearchPage.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onSearch: PropTypes.func,
-  ...Page.propTypes
+  ...Page.propTypes,
 }
 
 SearchPage.defaultProps = {
-  onSearch: _.noop
+  onSearch: _.noop,
 }
 
 export default SearchPage

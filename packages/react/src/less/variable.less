@@ -5,12 +5,13 @@
 --btn 具体业务
 */
 
+// 需要保留一份，不支持 css variable 的话
 // 颜色，会通过主题更改
 :root {
   // 尽量不要用这里的变量，而是用下面抽象的颜色
   --color-first: #000; // black 主内容
   --color-second: #798294; // semi 次要主内容
-  --color-third: #353535; // grey 次要内容
+  --color-third: #888; // grey 次要内容
   --color-fourth: #b2b2b2; // light 缺省
 
   // 颜色
@@ -18,21 +19,21 @@
   --color-success: #09bb07;
   --color-danger: #e64340;
   --color-link: #576b95;
-  --color-desc: var(--color-third);
-  --color-red: red; // todo
+  --color-desc: #888;
+  --color-red: red;
   --color-white: white;
   --color-black: black;
-  --color-placeholder: var(--color-fourth);
+  --color-placeholder: #b2b2b2;
 
   // active
-  --color-primary-active: darken(#1eac52, 5%);
-  --color-danger-active: darken(#e64340, 10%);
+  --color-primary-active: #1a9648; // darken(#1eac52, 5%)
+  --color-danger-active: #d71f1c; // darken(#e64340, 10%)
   --color-white-active: #ededed;
 
   // 背景色
   --color-bg-white: white;
   --color-bg-back: #f5f6f7; // 背景色
-  --color-bg-primary: var(--color-primary);
+  --color-bg-primary: #1eac52;
   --color-bg-disabled: #f5f5f5;
 
   // mask 背景色
@@ -44,21 +45,13 @@
 
   // btn
   --btn-bg-default: #f4f5f6;
-  --btn-bg-default-active: darken(#e4e5e6, 10%);
+  --btn-bg-default-active: #cacccd; // darken(#e4e5e6, 10%)
   --btn-color-default: #7a7a7a;
 }
 
 // stylelint-disable
 // 非颜色
 :root {
-  // size
-  --size-4: 4px;
-  --size-8: 8px;
-  --size-12: 12px;
-  --size-16: 16px;
-  --size-20: 20px;
-  --size-24: 24px;
-
   // 字体尺寸
   --size-text-11: 11px;
   --size-text-13: 13px;
@@ -71,8 +64,8 @@
   --size-line-height: 1.6;
 
   // height
-  --size-tabbar-height: 44px;
-  --size-header-height: 49px;
+  --size-tabbar-height: 49px;
+  --size-header-height: 44px;
   --size-form-height: 40px;
   --size-form-height-sm: 30px;
 

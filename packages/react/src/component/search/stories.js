@@ -12,18 +12,24 @@ const store = observable({
   setValue(value) {
     this.value = value
   },
+  setActive(active) {
+    this.active = active
+  },
+  setSearchValue(value) {
+    this.searchValue = value
+  },
 })
 
 export const normal = () => {
   return (
     <div>
       <h3>带搜索按钮 （一般一个路由承载的搜索页）</h3>
-      <div className='m-bg-back m-padding-8'>
+      <div className='m-bg-back'>
         <Search
           placeholder='在站内搜索'
           value={store.value}
           onChange={(value) => store.setValue(value)}
-          onSearch={() => console.log('搜索拉')}
+          onSearch={(value) => console.log('搜索拉', value)}
         />
       </div>
     </div>
@@ -34,104 +40,95 @@ export const cancel = () => {
   return (
     <div>
       <h3>带取消按钮（点Header的搜索按钮）</h3>
-      <Search
-        placeholder='在站内搜索'
-        value={this.state.value}
-        onChange={(value) => this.setState({ value })}
-        onSearch={() => console.log('搜索拉')}
-      />
+      <div className='m-bg-back'>
+        <Search
+          type={'cancel'}
+          placeholder='在站内搜索'
+          value={store.value}
+          onChange={(value) => store.setValue(value)}
+          onCancel={() => console.log('cancel')}
+        />
+      </div>
     </div>
   )
 }
 
 export const fakeSearch = () => {
   return (
-    <div>
-      <h3>FakeSearch 作为搜索入口</h3>
+    <div className='m-bg-back'>
       <FakeSearch
         placeholder='站内搜索'
         className='text-center'
         onClick={() => {}}
       />
       <FakeSearch center />
-      <FakeSearch light placeholder='' />
+      <FakeSearch light placeholder='啦啦' />
     </div>
   )
 }
 
-// export const searchPage = () => {
-//   return (
-//     <SearchPage
-//       header={
-//         <Header
-//           title='demo'
-//           right={<i className='weui-icon-search text-16 padding-lr-4 text' />}
-//           onClick={() => {
-//             // 同时初始化下搜索数据
-//             this.setState({
-//               active: true,
-//               value: '',
-//               searchValue: '',
-//             })
-//
-//             // 也有可能仅仅 active，搜索数据用之前的
-//             // this.setState({
-//             //   active: true,
-//             // })
-//           }}
-//         />
-//       }
-//       active={this.state.active}
-//       value={this.state.value}
-//       onChange={(value) => this.setState({ value })}
-//       onSearch={() => {
-//         console.log('搜索拉')
-//         this.setState({
-//           searchValue: this.state.value,
-//         })
-//       }}
-//       onCancel={() => {
-//         console.log(this.state.searchValue)
-//         this.setState({
-//           active: false,
-//           value: this.state.searchValue,
-//         })
-//       }}
-//     >
-//       <div>
-//         输入框值:{this.state.value}
-//         <br />
-//         搜索值:{this.state.searchValue}
-//         <br />
-//         历史搜索:
-//         <button
-//           onClick={() => {
-//             this.setState({
-//               active: true,
-//               value: '青菜',
-//               searchValue: '青菜',
-//             })
-//           }}
-//         >
-//           青菜
-//         </button>
-//         <button
-//           onClick={() => {
-//             this.setState({
-//               active: true,
-//               value: '黄瓜',
-//               searchValue: '黄瓜',
-//             })
-//           }}
-//         >
-//           黄瓜
-//         </button>
-//       </div>
-//       <hr />
-//       <SearchWrap />
-//     </SearchPage>
-//   )
-// }
+export const searchPage = () => {
+  return (
+    <SearchPage
+      header={
+        <Header
+          title='demo'
+          right={
+            <div
+              className='m-padding-lr-15'
+              onClick={() => {
+                // 同时初始化下搜索数据
+                store.setActive(true)
+                store.setValue('')
+                store.setSearchValue('')
+              }}
+            >
+              搜索
+            </div>
+          }
+        />
+      }
+      active={store.active}
+      value={store.value}
+      onChange={(value) => store.setValue(value)}
+      onSearch={() => {
+        console.log('搜索拉')
+        store.setSearchValue(store.value)
+      }}
+      onCancel={() => {
+        console.log(store.searchValue)
+        store.setActive(false)
+        store.setValue(store.searchValue)
+      }}
+    >
+      <div>
+        输入框值:{store.value}
+        <br />
+        搜索值:{store.searchValue}
+        <br />
+        历史搜索:
+        <button
+          onClick={() => {
+            store.setActive(true)
+            store.setValue('青菜')
+            store.setSearchValue('青菜')
+          }}
+        >
+          青菜
+        </button>
+        <button
+          onClick={() => {
+            store.setActive(true)
+            store.setValue('黄瓜')
+            store.setSearchValue('黄瓜')
+          }}
+        >
+          黄瓜
+        </button>
+      </div>
+    </SearchPage>
+  )
+}
 
 export default {
   title: 'Search',

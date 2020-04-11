@@ -66,6 +66,8 @@ import CSSVariable from './css_variable'
 const Alert = Dialog.alert
 const Confirm = Dialog.confirm
 
+CSSVariable.init()
+
 export {
   CSSVariable,
   Flex,

@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import Flex from '../flex'
+import SVGSearch from '../../../svg/search.svg'
 
 const FakeSearch = (props) => {
   const {
@@ -20,25 +21,17 @@ const FakeSearch = (props) => {
       {...rest}
       column
       justifyCenter
-      className={classNames('fake-search padding-lr-8', className)}
-      style={{
-        height: '45px',
-        ...style,
-      }}
+      className={classNames(
+        'm-fake-search',
+        {
+          'm-fake-search-light': light,
+        },
+        className
+      )}
     >
-      <Flex
-        alignCenter
-        justifyCenter={center}
-        className='text-center text-desc'
-        style={{
-          borderRadius: '14px',
-          height: '28px',
-          lineHeight: '28px',
-          padding: '0 8px',
-          background: light ? 'rgba(214, 214, 214, 0.4)' : 'white',
-        }}
-      >
-        <i className='weui-icon-search margin-right-4' />
+      <Flex alignCenter justifyCenter={center} className='m-fake-search-inner'>
+        <SVGSearch />
+        &nbsp;
         {placeholder}
         {children}
       </Flex>

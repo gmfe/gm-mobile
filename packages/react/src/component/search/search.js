@@ -1,10 +1,10 @@
 import { getLocale } from '@gm-mobile/locales'
 import React from 'react'
+import ReactDOM from 'react-dom'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 import Input from '../input'
-import SVGCloseCircle from '../../../svg/close_circle.svg'
 import SVGSearch from '../../../svg/search.svg'
 import Button from '../button'
 
@@ -22,22 +22,20 @@ const Search = ({
 }) => {
   const refInput = React.createRef()
 
-  const handleSearch = () => {
-    this.props.onSearch()
-    this.input.current.blur()
+  const handleSearch = (e) => {
+    e.preventDefault()
+
+    onSearch(value)
+    ReactDOM.findDOMNode(refInput.current).blur()
   }
 
   const handleChange = (e) => {
-    this.props.onChange(e.target.value)
-  }
-
-  const handleClear = () => {
-    this.props.onChange('')
+    onChange(e.target.value)
   }
 
   const handleCancel = () => {
-    this.props.onChange('')
-    this.props.onCancel()
+    onChange('')
+    onCancel()
   }
 
   return (
@@ -46,7 +44,7 @@ const Search = ({
       onSubmit={handleSearch}
       className={classNames('m-search m-flex m-flex-align-center', className)}
     >
-      <label className='m-relative m-flex m-flex-flex'>
+      <label className='m-search-input m-relative m-flex m-flex-flex'>
         <SVGSearch className='m-search-icon-search' />
         <Input
           ref={refInput}
@@ -56,23 +54,13 @@ const Search = ({
           placeholder={placeholder}
           autoFocus={autoFocus}
         />
-        {value && (
-          <SVGCloseCircle
-            className='m-search-icon-clear'
-            style={{
-              right: '8px',
-              top: '7px',
-            }}
-            onClick={handleClear}
-          />
-        )}
       </label>
       {type === 'search' ? (
-        <Button type='link' onClick={handleSearch}>
+        <Button type='link' size='sm' onClick={handleSearch}>
           {searchText || getLocale('搜索')}
         </Button>
       ) : (
-        <Button type='link' onClick={handleCancel}>
+        <Button type='link' size='sm' onClick={handleCancel}>
           {searchText || getLocale('取消')}
         </Button>
       )}

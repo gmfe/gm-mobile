@@ -6,7 +6,7 @@ import Flex from './component/flex'
 export const normal = () => {
   return (
     <div>
-      {_.map(CSSVariable, (v, k) => (
+      {_.map(CSSVariable.getAll(), (v, k) => (
         <Flex>
           <Flex
             className='m-padding-5 m-border'
