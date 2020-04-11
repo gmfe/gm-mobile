@@ -1,48 +1,42 @@
-import { getLocale } from '../../locales'
+import { getLocale } from '@gm-mobile/locales'
 import React from 'react'
+import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import Flex from '../flex'
 import _ from 'lodash'
 
-class Btn extends React.Component {
-  render () {
-    const { disabled, children, onClick, flex } = this.props
-    return (
-      <Flex
-        flex={flex || 1}
-        justifyCenter
-        alignCenter
-        className='border-1px-bottom-after border-1px-right-before text-24'
-        style={disabled ? {
-          opacity: 0.7
-        } : {}}
-        onClick={disabled ? null : onClick}
-      >
-        {children}
-      </Flex>
-    )
-  }
+import Flex from '../flex'
+
+const Btn = (props) => {
+  const { disabled, children, onClick, flex, styleType } = props
+  return (
+    <Flex
+      flex={flex || 1}
+      justifyCenter
+      alignCenter
+      className={classNames(
+        'm-border-1px-bottom-after m-border-1px-right-before m-text-20',
+        {
+          'm-text-white m-bg-primary': styleType === 'primary',
+        }
+      )}
+      style={{ opacity: disabled ? 0.7 : 1 }}
+      onClick={disabled ? _.noop : onClick}
+    >
+      {children}
+    </Flex>
+  )
 }
 
-class BtnPrimary extends React.Component {
-  render () {
-    const { disabled, children, onClick, flex } = this.props
-    return (
-      <Flex
-        flex={flex || 1}
-        justifyCenter
-        alignCenter
-        className='border-1px-bottom-after border-1px-right-before text-white b-bg-primary text-24'
-        style={disabled ? {
-          opacity: 0.7
-        } : {}}
-        onClick={disabled ? null : onClick}
-      >
-        {children}
-      </Flex>
-    )
-  }
+Btn.propTypes = {
+  styleType: PropTypes.oneOf(['default', 'primary']),
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func,
+  flex: PropTypes.number,
 }
+
+const firstRow = [1, 2, 3]
+const secondRow = [4, 5, 6]
+const thirdRow = [7, 8, 9]
 
 class Keyboard extends React.Component {
   handleClick = (text) => {
@@ -61,35 +55,69 @@ class Keyboard extends React.Component {
     onChange(value + text)
   }
 
-  render () {
+  renderBtn = (btn) => {
+    if (btn) {
+      return (
+        <Btn styleType='primary' onClick={() => btn.onClick()}>
+          {btn.text}
+        </Btn>
+      )
+    }
+    return <Btn styleType='primary' />
+  }
+
+  render() {
     const { value, btnOne, btnTwo, submitText } = this.props
     return (
-      <Flex column className='bg-white border-1px-top-before' style={{
-        width: '100vw',
-        height: '80vw'
-      }}>
+      <Flex
+        column
+        className='m-bg-white m-border-1px-top-before'
+        style={{
+          width: '100vw',
+          height: '80vw',
+        }}
+      >
         <Flex flex>
-          <Btn onClick={this.handleClick.bind(this, 1)}>1</Btn>
-          <Btn onClick={this.handleClick.bind(this, 2)}>2</Btn>
-          <Btn onClick={this.handleClick.bind(this, 3)}>3</Btn>
-          <BtnPrimary onClick={this.handleClick.bind(this, 'back')} disabled={!value}>{getLocale('退格')}</BtnPrimary>
+          {_.map(firstRow, (num) => (
+            <Btn key={num} onClick={this.handleClick.bind(this, num)}>
+              {num}
+            </Btn>
+          ))}
+          <Btn
+            styleType='primary'
+            onClick={this.handleClick.bind(this, 'back')}
+            disabled={!value}
+          >
+            {getLocale('退格')}
+          </Btn>
         </Flex>
         <Flex flex>
-          <Btn onClick={this.handleClick.bind(this, 4)}>4</Btn>
-          <Btn onClick={this.handleClick.bind(this, 5)}>5</Btn>
-          <Btn onClick={this.handleClick.bind(this, 6)}>6</Btn>
-          {btnOne ? <BtnPrimary onClick={btnOne.onClick}>{btnOne.text}</BtnPrimary> : <BtnPrimary/>}
+          {_.map(secondRow, (num) => (
+            <Btn key={num} onClick={this.handleClick.bind(this, num)}>
+              {num}
+            </Btn>
+          ))}
+          {this.renderBtn(btnOne)}
         </Flex>
         <Flex flex>
-          <Btn onClick={this.handleClick.bind(this, 7)}>7</Btn>
-          <Btn onClick={this.handleClick.bind(this, 8)}>8</Btn>
-          <Btn onClick={this.handleClick.bind(this, 9)}>9</Btn>
-          {btnTwo ? <BtnPrimary onClick={btnTwo.onClick}>{btnTwo.text}</BtnPrimary> : <BtnPrimary/>}
+          {_.map(thirdRow, (num) => (
+            <Btn key={num} onClick={this.handleClick.bind(this, num)}>
+              {num}
+            </Btn>
+          ))}
+          {this.renderBtn(btnTwo)}
         </Flex>
         <Flex flex>
-          <Btn onClick={this.handleClick.bind(this, 0)} flex={2}>0</Btn>
+          <Btn onClick={this.handleClick.bind(this, 0)} flex={2}>
+            0
+          </Btn>
           <Btn onClick={this.handleClick.bind(this, '.')}>.</Btn>
-          <BtnPrimary onClick={this.handleClick.bind(this, 'submit')}>{submitText}</BtnPrimary>
+          <Btn
+            styleType='primary'
+            onClick={this.handleClick.bind(this, 'submit')}
+          >
+            {submitText}
+          </Btn>
         </Flex>
       </Flex>
     )
@@ -103,17 +131,17 @@ Keyboard.propTypes = {
   submitText: PropTypes.string,
   btnOne: PropTypes.shape({
     text: PropTypes.string,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
   }),
   btnTwo: PropTypes.shape({
     text: PropTypes.string,
-    onClick: PropTypes.func
-  })
+    onClick: PropTypes.func,
+  }),
 }
 
 Keyboard.defaultProps = {
   onSubmit: _.noop,
-  submitText: getLocale('完成')
+  submitText: getLocale('完成'),
 }
 
 export default Keyboard

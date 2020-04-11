@@ -19,7 +19,8 @@ import Square from './component/square'
 import Dialog from './component/dialog'
 import ScrollIntoView from './component/scroll_into_view'
 import CursorFix from './component/cursor_fix'
-import Select from './component/select'
+// import ScrollIntoView from './component/scroll_into_view'
+// import CursorFix from './component/cursor_fix'
 // import Trigger from './component/trigger'
 // import Tooltip from './component/tooltip'
 // import PreviewImage from './component/preview_image'
@@ -51,10 +52,10 @@ import {
 } from './component/picker'
 // import { setLocale } from './locales'
 import Calendar from './component/calendar'
-// import FlipNumber from './component/flip_number'
+import FlipNumber from './component/flip_number'
 // import InnerLayer from './component/inner_layer'
 import InputNumber from './component/input_number'
-// import Keyboard from './component/keyboard'
+import Keyboard from './component/keyboard'
 import Radio from './component/radio'
 //
 // import List from './component/list'
@@ -98,7 +99,8 @@ export {
   Confirm,
   ScrollIntoView,
   CursorFix,
-  Select,
+  // ScrollIntoView,
+  // CursorFix,
   // Trigger,
   // Tooltip,
   // PreviewImage,
@@ -127,9 +129,9 @@ export {
   SelectPicker,
   Calendar,
   //
-  // FlipNumber,
+  FlipNumber,
   InputNumber,
-  // Keyboard,
+  Keyboard,
   Radio,
   Input,
   // List,
