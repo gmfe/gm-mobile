@@ -58,7 +58,7 @@ module.exports = {
   stories: [
     '../packages/react/src/**/*stories.js',
     '../packages/locales/src/**/*stories.js',
-    '../demo/**/*.stories.js',
+    '../other/**/*.stories.js',
   ],
   webpackFinal,
 }

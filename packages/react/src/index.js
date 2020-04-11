@@ -61,11 +61,13 @@ import Radio from './component/radio'
 // import ProgressBar from './component/progress'
 // import TimeSelect from './component/time_select'
 import Input from './component/input'
+import CSSVariable from './css_variable'
 
 const Alert = Dialog.alert
 const Confirm = Dialog.confirm
 
 export {
+  CSSVariable,
   Flex,
   Button,
   Loading,

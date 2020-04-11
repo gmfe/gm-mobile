@@ -1,5 +1,3 @@
-// 注意，改次文件请谨慎谨慎谨慎，讨论讨论讨论
-
 /*
 规则
 --color 颜色相关
@@ -7,37 +5,35 @@
 --btn 具体业务
 */
 
+// 颜色，会通过主题更改
 :root {
-  // 有层级关系，所以 first second
-  --color-first: #000923;
-  --color-second: #798294;
+  // 尽量不要用这里的变量，而是用下面抽象的颜色
+  --color-first: #000; // black 主内容
+  --color-second: #798294; // semi 次要主内容
+  --color-third: #353535; // grey 次要内容
+  --color-fourth: #b2b2b2; // light 缺省
 
-  // 颜色相关
-  --color-primary: #3caa41;
-  --color-success: #3caa41;
-  --color-info: #5bc0de;
-  --color-warning: #f0ad4e;
-  --color-danger: #fc887f;
-  --color-link: #1e80e5;
-
-  // color active
-  --color-primary-active: lighten(#3caa41, 10%);
-
-  // 更抽象的颜色
-  --color-desc: var(--color-second);
-  --color-disabled: rgba(255, 255, 255, 0.2);
-  --color-red: red;
+  // 颜色
+  --color-primary: #1eac52;
+  --color-success: #09bb07;
+  --color-danger: #e64340;
+  --color-link: #576b95;
+  --color-desc: var(--color-third);
+  --color-red: red; // todo
   --color-white: white;
   --color-black: black;
-  --color-placeholder: var(--color-second);
+  --color-placeholder: var(--color-fourth);
+
+  // active
+  --color-primary-active: darken(#1eac52, 5%);
+  --color-danger-active: darken(#e64340, 10%);
+  --color-white-active: #ededed;
 
   // 背景色
   --color-bg-white: white;
-  --color-bg-back: #f5f6f7;
-  --color-bg-second: var(--color-second);
+  --color-bg-back: #f5f6f7; // 背景色
   --color-bg-primary: var(--color-primary);
   --color-bg-disabled: #f5f5f5;
-  --color-bg-active: #ededed;
 
   // mask 背景色
   --color-bg-mask: rgba(0, 0, 0, 0.6);
@@ -46,6 +42,15 @@
   // border
   --color-border: #d4d8d8;
 
+  // btn
+  --btn-bg-default: #f4f5f6;
+  --btn-bg-default-active: darken(#e4e5e6, 10%);
+  --btn-color-default: #7a7a7a;
+}
+
+// stylelint-disable
+// 非颜色
+:root {
   // size
   --size-4: 4px;
   --size-8: 8px;
@@ -55,22 +60,21 @@
   --size-24: 24px;
 
   // 字体尺寸
-  --size-text-8: 8px;
-  --size-text-10: 10px;
-  --size-text-12: 12px;
+  --size-text-11: 11px;
+  --size-text-13: 13px;
   --size-text-14: 14px;
-  --size-text-16: 16px;
+  --size-text-15: 15px;
   --size-text-18: 18px;
   --size-text-20: 20px;
-  --size-text-24: 24px;
-  --size-text-30: 30px;
 
   // line-height
   --size-line-height: 1.6;
 
   // height
-  --size-tabbar-height: 45px;
-  --size-header-height: 45px;
+  --size-tabbar-height: 44px;
+  --size-header-height: 49px;
+  --size-form-height: 40px;
+  --size-form-height-sm: 30px;
 
   // zIndex
   --z-index-header: 20;
@@ -83,56 +87,3 @@
   --z-index-toast: 7000;
   --z-index-nprogress: 9999;
 }
-
-// text color
-//@defaultColor: rgba(0, 0, 0, 0.9);
-//@descColor: rgba(0, 0, 0, 0.6);
-//@disabledColor: rgba(0, 0, 0, 0.3);
-//
-//// color
-//@primaryColor: #6cca28;
-//@primaryColorActive: darken(@primaryColor, 10%);
-//@primaryColorDisabledBg: lighten(@primaryColor, 10%);
-//
-//@warnColor: @weuiColorWarn; // 保留warnColor的定义，直接用weui的色值
-//
-//@redColor: #f33;
-//@linkColor: @weuiLinkColorDefault; // 保留linkColor的定义，直接用weui的色值
-//
-//@coralColor: #dd4f63;
-//@apricotColor: #ea9958;
-//@mintColor: #a4d3d1;
-//@tealColor: #4eaebb;
-//@arcticColor: #626cae;
-//@violetColor: #564180;
-//// :active
-//@activeColor: #ededed;
-//
-//// placeholder
-//@placeholderColor: #989898;
-//
-//// border
-//@borderColor: #ededed;
-//
-//// bg
-//@defaultBg: #f4f4f4;
-//@whiteBg: white;
-//@titleBg: #fafafa;
-//
-//// page head
-//@headerBg: #4ebb6e;
-//
-//// nprogress 保持和微信浏览器原生的一致
-//@nprogressBg: #3cc51f;
-//
-//// tabbar
-//@tabbarBg: white;
-//
-//// slider
-//@sliderBg: @borderColor;
-//@activeSliderBg: grey;
-//
-////counter
-//@counterMinus: #b7b6b6;
-//disabled: rgba(0, 0, 0, 0.1);
-//

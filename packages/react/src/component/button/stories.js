@@ -12,14 +12,9 @@ export const normal = () => (
     <div>
       <Button>默认</Button>
       <Button type='primary'>主色</Button>
-      <Button type='success'>成功</Button>
       <Button type='danger'>危险</Button>
       <Button type='link'>Link</Button>
-      <Button
-        type='link'
-        href='google.com'
-        target='_blank'
-      >
+      <Button type='link' href='google.com' target='_blank'>
         链接
       </Button>
     </div>
@@ -28,9 +23,6 @@ export const normal = () => (
       <Button plain>默认</Button>
       <Button plain type='primary'>
         主色
-      </Button>
-      <Button plain type='success'>
-        成功
       </Button>
       <Button plain type='danger'>
         危险
@@ -45,9 +37,6 @@ export const normal = () => (
       <Button disabled type='primary'>
         主色
       </Button>
-      <Button disabled type='success'>
-        成功
-      </Button>
       <Button disabled type='danger'>
         危险
       </Button>
@@ -57,17 +46,14 @@ export const normal = () => (
     </div>
     size
     <div>
+      <Button size='lg'>大按钮</Button>
       <Button>默认</Button>
-      <Button size='mini'>mini的</Button>
+      <Button size='sm'>小按钮</Button>
     </div>
     block
     <div>
       <Button block>默认</Button>
-    </div>
-    round
-    <div>
-      <Button round>默认</Button>
-      <Button size='mini' round>
+      <Button block plain>
         默认
       </Button>
     </div>
@@ -78,7 +64,7 @@ export const loading = () => (
   <div>
     loading
     <div>
-      <Button loading>loading</Button>
+      <Button loading>加载中</Button>
     </div>
     onClick promise
     <div>

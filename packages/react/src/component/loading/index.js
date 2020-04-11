@@ -15,17 +15,16 @@ const Line = () => {
   )
 }
 
+const Circle = () => {
+  return <i className='m-loading-circle' />
+}
+
 const Loading = ({ line, children, className, ...rest }) => {
   return (
-    <Flex
-      alignCenter
-      justifyCenter
-      {...rest}
-      className={classNames('m-loading', className)}
-    >
-      {line ? <Line /> : <i className='m-loading-circle' />}
-      <span className='m-margin-left-4'>{children}</span>
-    </Flex>
+    <span {...rest} className={classNames('m-loading', className)}>
+      {line ? <Line /> : <Circle />}
+      {children && <span className='m-margin-left-4'>{children}</span>}
+    </span>
   )
 }
 

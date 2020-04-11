@@ -12,7 +12,7 @@ Mask 移除 show
 
 ## breaking change
 
-less 变量全部取消，改 css 变量
+less 变量全部取消，改 css 变量，且提供 CSSVariable 获取各种值
 
 bg-default => m-bg-back
 

@@ -10,7 +10,6 @@ const Button = ({
   plain,
   size,
   block,
-  round,
   disabled,
   onClick,
   loading,
@@ -24,7 +23,7 @@ const Button = ({
 
   const loadFlag = loading || isLoading
 
-  const handleClick = e => {
+  const handleClick = (e) => {
     if (loadFlag) {
       return
     }
@@ -52,9 +51,8 @@ const Button = ({
         `m-btn m-btn-${type}`,
         {
           'm-btn-block': block,
-          'm-btn-round': round,
           [`m-btn-${size}`]: size,
-          'm-btn-plain': type !== 'link' && plain
+          'm-btn-plain': type !== 'link' && plain,
         },
         className
       )}
@@ -69,10 +67,9 @@ const Button = ({
 
 // 只封装了 loading
 Button.propTypes = {
-  type: PropTypes.oneOf(['default', 'primary', 'success', 'danger', 'link']),
+  type: PropTypes.oneOf(['default', 'primary', 'danger', 'link']),
   plain: PropTypes.bool,
-  size: PropTypes.oneOf(['mini']),
-  round: PropTypes.bool,
+  size: PropTypes.oneOf(['lg', 'default', 'sm']),
   block: PropTypes.bool,
   /** 原生的 type */
   htmlType: PropTypes.string,
@@ -83,13 +80,14 @@ Button.propTypes = {
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
   className: PropTypes.string,
-  style: PropTypes.object
+  style: PropTypes.object,
 }
 
 Button.defaultProps = {
   type: 'default',
+  size: 'default',
   htmlType: 'button',
-  onClick: _.noop
+  onClick: _.noop,
 }
 
 export default Button
