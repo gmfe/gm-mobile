@@ -17,8 +17,8 @@ import { Search, SearchPage, FakeSearch } from './component/search'
 import Square from './component/square'
 // import LazyImg from './component/lazy_img'
 import Dialog from './component/dialog'
-// import ScrollIntoView from './component/scroll_into_view'
-// import CursorFix from './component/cursor_fix'
+import ScrollIntoView from './component/scroll_into_view'
+import CursorFix from './component/cursor_fix'
 import Select from './component/select'
 // import Trigger from './component/trigger'
 // import Tooltip from './component/tooltip'
@@ -95,8 +95,8 @@ export {
   Dialog,
   Alert,
   Confirm,
-  // ScrollIntoView,
-  // CursorFix,
+  ScrollIntoView,
+  CursorFix,
   Select,
   // Trigger,
   // Tooltip,
