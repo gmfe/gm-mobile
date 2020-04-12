@@ -30,17 +30,7 @@ import LayerRoot from './component/layer_root'
 
 // import Divider from './component/divider'
 import Uploader from './component/uploader'
-// import {
-//   Cells,
-//   CellsTitle,
-//   CellsTips,
-//   Cell,
-//   CellHeader,
-//   CellBody,
-//   CellFooter,
-//   CellSwipe,
-//   CellSwitch
-// } from './component/cell'
+import { Cells, Cell, CellForm } from './component/cell'
 
 import Tabs from './component/tabs'
 import {
@@ -110,17 +100,9 @@ export {
   // InnerLayer,
   Uploader,
   Switch,
-  //
-  // Cells,
-  // Cell,
-  // CellsTitle,
-  // CellsTips,
-  // CellHeader,
-  // CellBody,
-  // CellFooter,
-  // CellSwipe,
-  // CellSwitch,
-  //
+  Cells,
+  Cell,
+  CellForm,
   Tabs,
   Picker,
   ConfirmPicker,

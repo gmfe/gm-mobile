@@ -1,6 +1,5 @@
 import Cells from './cells'
 import Cell from './cell'
-import CellSwitch from './cell_switch'
-import CellSwipe from './cell_swipe'
+import CellForm from './cell_form'
 
-export { Cells, Cell, CellSwitch, CellSwipe }
+export { Cells, Cell, CellForm }
