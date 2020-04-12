@@ -1,0 +1,46 @@
+.m-switch {
+  height: 30px;
+  width: 60px;
+  display: inline-block;
+  -webkit-appearance: none;
+  position: relative;
+  outline: none;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    top: 5px;
+    border-radius: 30px;
+    background: var(--color-bg-back);
+    transition: background-color 0.2s;
+  }
+
+  &::after {
+    content: '';
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    border-radius: 30px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    position: absolute;
+    left: 0;
+    background: var(--color-bg-white);
+    transition:
+      transform 0.2s cubic-bezier(0.4, 0.4, 0.25, 1.35),
+      -webkit-transform 0.2s cubic-bezier(0.4, 0.4, 0.25, 1.35);
+  }
+
+  &:checked {
+    &::before {
+      background: var(--color-bg-primary);
+    }
+
+    &::after {
+      transform: translateX(30px);
+    }
+  }
+}

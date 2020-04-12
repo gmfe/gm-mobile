@@ -16,6 +16,7 @@ import { Search, SearchPage, FakeSearch } from './component/search'
 import Square from './component/square'
 // import LazyImg from './component/lazy_img'
 import Dialog from './component/dialog'
+import Switch from './component/switch'
 import ScrollIntoView from './component/scroll_into_view'
 import CursorFix from './component/cursor_fix'
 // import ScrollIntoView from './component/scroll_into_view'
@@ -108,6 +109,7 @@ export {
   // Divider,
   // InnerLayer,
   Uploader,
+  Switch,
   //
   // Cells,
   // Cell,

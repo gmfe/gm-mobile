@@ -3,23 +3,20 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
 const Cells = (props) => {
-  const { children, checkbox, className, ...others } = props
-
-  const cls = classNames('weui-cells', className, {
-    'weui-cells_checkbox': checkbox
-  })
+  const { title, className, children, ...rest } = props
 
   return (
-    <div className={cls} {...others}>{children}</div>
+    <div {...rest} className={classNames('m-cells', className)}>
+      {title && <div className='m-cells-title'>{title}</div>}
+      <div className='m-cells-content'>{children}</div>
+    </div>
   )
 }
 
 Cells.propTypes = {
-  checkbox: PropTypes.bool
-}
-
-Cells.defaultProps = {
-  checkbox: false
+  title: PropTypes.string,
+  className: PropTypes.string,
+  style: PropTypes.object,
 }
 
 export default Cells
