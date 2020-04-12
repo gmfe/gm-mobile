@@ -33,6 +33,7 @@ import Uploader from './component/uploader'
 import { Cells, Cell, CellForm } from './component/cell'
 
 import Tabs from './component/tabs'
+import Textarea from './component/textarea'
 import {
   Picker,
   ConfirmPicker,
@@ -99,6 +100,7 @@ export {
   // Divider,
   // InnerLayer,
   Uploader,
+  Textarea,
   Switch,
   Cells,
   Cell,
