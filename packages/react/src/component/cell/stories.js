@@ -1,6 +1,7 @@
 import React from 'react'
 import Cells from './cells'
 import Cell from './cell'
+import CellsForm from './cells_form'
 import CellForm from './cell_form'
 import Input from '../input'
 import SVGSearch from '../../../svg/search.svg'
@@ -42,8 +43,8 @@ export const normal = () => {
 
 const store = observable({
   value: '',
-  age: null,
-  gender: null,
+  age: '',
+  gender: '',
   setValue(field, value) {
     this[field] = value
   },
@@ -51,8 +52,8 @@ const store = observable({
 
 export const form = () => {
   return (
-    <div className='m-bg-back m-padding-tb-10'>
-      <Cells title='表单'>
+    <div className='m-padding-tb-10'>
+      <CellsForm>
         <CellForm label='名字' labelWidth='100px'>
           <Input
             type='text'
@@ -83,7 +84,39 @@ export const form = () => {
             placeholder='请输入年龄'
           />
         </CellForm>
-      </Cells>
+      </CellsForm>
+      <CellsForm title='带标题的情况'>
+        <CellForm label='名字' labelWidth='100px'>
+          <Input
+            type='text'
+            value={store.value}
+            onChange={(e) => {
+              store.setValue('value', e.target.value)
+            }}
+            placeholder='请输入名字'
+          />
+        </CellForm>
+        <CellForm label='年龄' labelWidth='100px'>
+          <Input
+            type='number'
+            value={store.age}
+            onChange={(e) => {
+              store.setValue('age', e.target.value)
+            }}
+            placeholder='请输入年龄'
+          />
+        </CellForm>
+        <CellForm label='年龄' labelWidth='100px'>
+          <Input
+            type='number'
+            value={store.age}
+            onChange={(e) => {
+              store.setValue('age', e.target.value)
+            }}
+            placeholder='请输入年龄'
+          />
+        </CellForm>
+      </CellsForm>
     </div>
   )
 }

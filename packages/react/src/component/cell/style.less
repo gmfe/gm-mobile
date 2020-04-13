@@ -1,57 +1,43 @@
-// gm 加的，非weui-cell_swiped
-
-//.weui-cell_swiped.weui-cell {
-//  padding: 0;
-//}
-//
-//.weui-swiped-btn {
-//  padding: 14px 1em;
-//}
-//
-//.swiped-body {
-//  transition: all 0.3s linear;
-//}
-
-:root {
-  // cell
-  --cell-height: 56px;
-}
-
-.mCellBorderTopBefore(@left) {
+.mCellBorderBottomAfter(@left; @right) {
   position: relative;
 
-  &::before {
+  &::after {
     content: ' ';
     position: absolute;
     left: @left;
-    top: 0;
-    width: 100%;
+    right: @right;
+    bottom: 0;
     height: 1px;
-    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
     transform: scaleY(0.5);
-    transform-origin: 0 0;
+    transform-origin: 0 100%;
   }
 }
 
 .m-cells {
   .m-cells-title {
     color: var(--color-desc);
-    margin-top: 16px;
-    margin-bottom: 3px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 15px 15px 3px;
     font-size: 14px;
   }
 
-  .m-cells-content {
-    .mBorderTopBeforeWith();
-    .mBorderBottomAfterWith();
+  &:not(.m-cells-form) {
+    .m-cells-content {
+      .mBorderTopBeforeWith();
+      .mBorderBottomAfterWith();
+    }
+  }
+
+  &.m-cells-form {
+    .m-cells-title {
+      .mCellBorderBottomAfter(15px, 15px);
+    }
   }
 }
 
 .m-cell {
   padding: 0 15px;
-  min-height: var(--cell-height);
+  min-height: 56px;
   background: var(--color-bg-white);
   font-size: 17px;
 
@@ -59,9 +45,7 @@
     background: var(--color-bg-white-active);
   }
 
-  &:not(:first-child) {
-    .mCellBorderTopBefore(15px);
-  }
+  .mCellBorderBottomAfter(15px, 0);
 
   &.m-cell-access {
     cursor: pointer;
@@ -73,9 +57,7 @@
   }
 
   &.m-cell-with-icon {
-    &:not(:first-child) {
-      .mCellBorderTopBefore(50px);
-    }
+    .mCellBorderBottomAfter(50px, 0);
   }
 
   .m-cell-icon {
@@ -88,5 +70,9 @@
 
   .m-cell-body {
     flex: 1;
+  }
+
+  &.m-cell-form {
+    .mCellBorderBottomAfter(15px, 15px);
   }
 }
