@@ -28,7 +28,12 @@
   }
 
   &.m-btn-danger {
-    .mBtnVariants(var(--color-white), var(--color-danger), var(--color-bg-danger-active));
+    .mBtnVariants(var(--color-red), var(--btn-bg-default), var(--btn-bg-default-active));
+
+    &.m-btn-plain {
+      border-color: var(--color-danger);
+      color: var(--color-danger);
+    }
   }
 
   &.m-btn-link {
