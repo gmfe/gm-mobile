@@ -69,7 +69,7 @@ const Button = ({
 Button.propTypes = {
   type: PropTypes.oneOf(['default', 'primary', 'danger', 'link']),
   plain: PropTypes.bool,
-  size: PropTypes.oneOf(['lg', 'default', 'sm']),
+  size: PropTypes.oneOf(['default', 'mini']),
   block: PropTypes.bool,
   /** 原生的 type */
   htmlType: PropTypes.string,
