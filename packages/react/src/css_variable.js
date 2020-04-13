@@ -22,7 +22,6 @@ const defaultTheme = {
   '--color-bg-white': 'white',
   '--color-bg-back': '#f5f6f7', // 背景色
   '--color-bg-primary': '#1eac52',
-  '--color-bg-disabled': '#f5f5f5',
 
   // bg active
   '--color-bg-white-active': '#ededed',
