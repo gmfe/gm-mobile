@@ -6,7 +6,7 @@ const TYPE = {
   MODAL: 'modal',
   PICKER: 'picker',
   TOAST: 'toast',
-  NPROGRESS: 'nprogress'
+  NPROGRESS: 'nprogress',
 }
 
 let setComponentFunc = null
@@ -20,14 +20,14 @@ class LayerRoot extends React.Component {
       modal: null,
       picker: null,
       toast: null,
-      nprogress: null
+      nprogress: null,
     }
   }
 
   componentDidMount() {
     setComponentFunc = (type, component) => {
       this.setState({
-        [type]: component
+        [type]: component,
       })
     }
   }
@@ -64,7 +64,7 @@ LayerRoot.setComponent = (type, com) => {
   }
 }
 
-LayerRoot.removeComponent = type => {
+LayerRoot.removeComponent = (type) => {
   if (setComponentFunc) {
     setComponentFunc(type, null)
   } else {
@@ -73,7 +73,7 @@ LayerRoot.removeComponent = type => {
 }
 
 LayerRoot.renderWith = (type, Component) => {
-  const popstate = e => {
+  const popstate = (e) => {
     const typeStack = [TYPE.INNERLAYER, TYPE.POPUP, TYPE.MODAL, TYPE.PICKER]
     // 代表还有其他state，即浮层，所以不采取任务逻辑
     if (e.state && typeStack.indexOf(e.state.type) >= typeStack.indexOf(type)) {
@@ -90,7 +90,7 @@ LayerRoot.renderWith = (type, Component) => {
   LayerRoot.setComponent(type, Component)
 }
 
-LayerRoot.hideWith = type => {
+LayerRoot.hideWith = (type) => {
   LayerRoot.removeComponent(type)
 
   window.history.go(-1)
