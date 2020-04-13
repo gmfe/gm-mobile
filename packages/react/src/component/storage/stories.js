@@ -1,29 +1,11 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
-import { observable } from 'mobx'
 import Storage from './index'
 
-const store = observable({
-  data: 'ad',
-  setData(data) {
-    this.data = data
-  },
-})
+export const normal = () => <div />
 
-storiesOf('Storage', module).add(
-  'default',
-  () => (
-    <div>
-      实时存储
-      <input
-        type='text'
-        value={store.data}
-        onChange={(event) => store.setData(event.target.value)}
-      />
-      <Storage name='test' value={store.data} />
-    </div>
-  ),
-  {
+export default {
+  title: 'Storage',
+  parameters: {
     info: {
       text: `
 ### Static
@@ -34,5 +16,5 @@ storiesOf('Storage', module).add(
 - \`getAll\` 拿到全部存储，以Obj形式返回
 `,
     },
-  }
-)
+  },
+}
