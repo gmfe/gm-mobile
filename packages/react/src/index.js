@@ -47,7 +47,7 @@ import FlipNumber from './component/flip_number'
 // import InnerLayer from './component/inner_layer'
 import InputNumber from './component/input_number'
 import Keyboard from './component/keyboard'
-import Radio from './component/radio'
+import Checkbox from './component/checkbox'
 //
 // import List from './component/list'
 import { LetterIndex, LetterIndexMultiple } from './component/letter_index'
@@ -116,7 +116,7 @@ export {
   FlipNumber,
   InputNumber,
   Keyboard,
-  Radio,
+  Checkbox,
   Input,
   // List,
   LetterIndex,

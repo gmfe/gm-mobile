@@ -28,7 +28,7 @@ const Head = (props) => {
       <Flex
         flex
         justifyCenter
-        className='m-text-center m-text-17 m-text-bold m-padding-tb-5'
+        className='m-text-center m-text-16 m-text-bold m-padding-tb-5'
       >
         <span>
           {currentMoment.year()}
