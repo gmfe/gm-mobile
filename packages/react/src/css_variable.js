@@ -18,16 +18,16 @@ const defaultTheme = {
   '--color-black': 'black',
   '--color-placeholder': '#b2b2b2',
 
-  // active
-  '--color-primary-active': '#1a9648', // darken(#1eac52, 5%)
-  '--color-danger-active': '#d71f1c', // darken(#e64340, 10%)
-  '--color-white-active': '#ededed',
-
   // 背景色
   '--color-bg-white': 'white',
   '--color-bg-back': '#f5f6f7', // 背景色
   '--color-bg-primary': '#1eac52',
   '--color-bg-disabled': '#f5f5f5',
+
+  // bg active
+  '--color-bg-white-active': '#ededed',
+  '--color-bg-primary-active': '#1a9648', // darken(#1eac52, 5%)
+  '--color-bg-danger-active': '#d71f1c', // darken(#e64340, 10%)
 
   // mask 背景色
   '--color-bg-mask': 'rgba(0, 0, 0, 0.6)',

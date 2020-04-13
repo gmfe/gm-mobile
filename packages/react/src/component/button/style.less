@@ -9,7 +9,7 @@
   border: 1px solid transparent;
   white-space: nowrap;
   padding: 0 var(--size-form-height);
-  font-size: var(--size-text-15);
+  font-size: var(--size-text-16);
   user-select: none;
   outline: none;
   min-width: 180px;
@@ -18,17 +18,17 @@
     .mBtnVariants(var(--btn-color-default), var(--btn-bg-default), var(--btn-bg-default-active));
 
     &.m-btn-plain {
-      border-color: var(--color-border);
+      border-color: var(--color-first);
       color: var(--color-first);
     }
   }
 
   &.m-btn-primary {
-    .mBtnVariants(var(--color-white), var(--color-primary), var(--color-primary-active));
+    .mBtnVariants(var(--color-white), var(--color-primary), var(--color-bg-primary-active));
   }
 
   &.m-btn-danger {
-    .mBtnVariants(var(--color-white), var(--color-danger), var(--color-danger-active));
+    .mBtnVariants(var(--color-white), var(--color-danger), var(--color-bg-danger-active));
   }
 
   &.m-btn-link {
@@ -93,6 +93,7 @@
   }
 
   &:active {
+    opacity: 0.8;
     background: @activeBrand;
     border-color: @activeBrand;
   }
