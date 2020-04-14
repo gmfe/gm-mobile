@@ -24,7 +24,7 @@ const store3 = observable({
 })
 
 export const Normal = () => (
-  <div className='m-padding-left-10'>
+  <div>
     checked true
     <div>
       <Radio checked={store1.checked}>
