@@ -1,12 +1,12 @@
 .m-btn {
   height: var(--size-form-height);
   line-height: var(--size-form-height);
+  border-width: 0;
   border-radius: var(--size-form-height);
   display: inline-block;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
-  border: 1px solid transparent;
   white-space: nowrap;
   padding: 0 var(--size-form-height);
   font-size: var(--size-text-16);
@@ -17,9 +17,20 @@
   &.m-btn-default {
     .mBtnVariants(var(--btn-color-default), var(--btn-bg-default), var(--btn-bg-default-active));
 
+    &:active {
+      color: var(--btn-color-default-active);
+    }
+
     &.m-btn-plain {
-      border-color: var(--color-first);
       color: var(--color-first);
+
+      &::after {
+        border-color: var(--color-first);
+      }
+
+      &:active {
+        color: var(--color-first);
+      }
     }
   }
 
@@ -28,21 +39,18 @@
   }
 
   &.m-btn-danger {
-    .mBtnVariants(var(--color-red), var(--btn-bg-default), var(--btn-bg-default-active));
-
-    &.m-btn-plain {
-      border-color: var(--color-danger);
-      color: var(--color-danger);
-    }
+    .mBtnVariants(var(--color-white), var(--color-danger), var(--color-bg-danger-active));
   }
 
   &.m-btn-link {
     background: transparent;
-    border-color: transparent;
+    border-radius: 0;
     color: var(--color-link);
     padding: 0 10px;
     min-width: auto;
     text-decoration: none;
+
+    .mActiveBgWhiteWith();
   }
 
   &.m-btn-mini {
@@ -72,26 +80,41 @@
 
 .mBtnVariants(@color; @brand; @activeBrand) {
   background: @brand;
-  border-color: @brand;
   color: @color;
 
   &.m-btn-plain {
     background: var(--color-white);
-    border-color: @brand;
     color: @brand;
 
+    .mBtnBorderAllAfterWith(@brand, var(--size-form-height));
+
     &:active {
-      background: var(--btn-bg-default-active);
-      color: var(--btn-color-default);
-      border-color: var(--btn-bg-default-active);
+      background: @brand;
+      color: var(--color-white);
     }
   }
 
   &:active {
-    opacity: 0.8;
     background: @activeBrand;
-    border-color: @activeBrand;
   }
 
   .mDisabledWith();
+}
+
+.mBtnBorderAllAfterWith(@borderColor, @height) {
+  position: relative;
+
+  &::after {
+    content: ' ';
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid @borderColor;
+    border-radius: @height;
+    transform: scale(0.5);
+    transform-origin: 0 0;
+    box-sizing: border-box;
+  }
 }

@@ -74,7 +74,8 @@ import CSSVariable from './css_variable'
 const Alert = Dialog.alert
 const Confirm = Dialog.confirm
 
-CSSVariable.init()
+// TODO 后面再放开
+// CSSVariable.init()
 
 export {
   ScrollIntoView,

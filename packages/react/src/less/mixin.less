@@ -9,3 +9,14 @@
     .mDisabled();
   }
 }
+
+.mActiveBgWhite() {
+  background: var(--color-bg-white-active);
+}
+
+.mActiveBgWhiteWith() {
+  &:active,
+  &.active {
+    .mActiveBgWhite();
+  }
+}

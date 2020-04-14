@@ -46,11 +46,11 @@ export const normal = () => (
     </div>
     size
     <div>
-      <Button type='primary' size='mini'>
+      <Button type='primary' mini>
         默认
       </Button>
-      <Button size='mini'>小按钮</Button>
-      <Button size='mini' type='link'>
+      <Button mini>小按钮</Button>
+      <Button mini type='link'>
         Link
       </Button>
     </div>

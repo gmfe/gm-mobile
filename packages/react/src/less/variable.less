@@ -8,31 +8,31 @@
 // 需要保留一份，不支持 css variable 的话
 // 颜色，会通过主题更改
 :root {
-  // 尽量不要用这里的变量，而是用下面抽象的颜色
+  // 尽量不要用这里的变量，而是用下面更形象的颜色
   --color-first: #000; // black 主内容
-  --color-second: #798294; // semi 次要主内容
+  --color-second: #353535; // semi 次要主内容
   --color-third: #888; // grey 次要内容
   --color-fourth: #b2b2b2; // light 缺省
 
   // 颜色
   --color-primary: #1eac52;
-  --color-success: #09bb07;
-  --color-danger: #e64340;
+  --color-success: #1eac52;
+  --color-danger: #fa5151;
   --color-link: #576b95;
   --color-desc: #888;
   --color-red: red;
-  --color-white: white;
+  --color-white: rgba(255, 255, 255, 1);
   --color-black: black;
   --color-placeholder: #b2b2b2;
 
   // active
   --color-bg-white-active: #ececec;
-  --color-bg-primary-active: #1a9648; // darken(#1eac52, 5%)
-  --color-bg-danger-active: #d71f1c; // darken(#e64340, 10%)
+  --color-bg-primary-active: darken(#1eac52, 10%);
+  --color-bg-danger-active: darken(#e64340, 10%);
 
   // 背景色
   --color-bg-white: white;
-  --color-bg-back: #f5f6f7; // 背景色
+  --color-bg-back: #f6f6f6; // 背景色
   --color-bg-primary: #1eac52;
 
   // mask 背景色
@@ -40,12 +40,13 @@
   --color-bg-mask-white: rgba(255, 255, 255, 0.8);
 
   // border
-  --color-border: #d4d8d8;
+  --color-border: rgba(0, 0, 0, 0.25);
 
   // btn
   --btn-bg-default: #f4f5f6;
-  --btn-bg-default-active: #cacccd; // darken(#e4e5e6, 10%)
+  --btn-bg-default-active: darken(#f4f5f6, 10%);
   --btn-color-default: #7a7a7a;
+  --btn-color-default-active: #7a7a7a;
 }
 
 // stylelint-disable

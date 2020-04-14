@@ -8,7 +8,7 @@ import Loading from '../loading'
 const Button = ({
   type,
   plain,
-  size,
+  mini,
   block,
   disabled,
   onClick,
@@ -51,7 +51,7 @@ const Button = ({
         `m-btn m-btn-${type}`,
         {
           'm-btn-block': block,
-          [`m-btn-${size}`]: size,
+          'm-btn-mini': mini,
           'm-btn-plain': type !== 'link' && plain,
         },
         className
@@ -69,7 +69,7 @@ const Button = ({
 Button.propTypes = {
   type: PropTypes.oneOf(['default', 'primary', 'danger', 'link']),
   plain: PropTypes.bool,
-  size: PropTypes.oneOf(['default', 'mini']),
+  mini: PropTypes.bool,
   block: PropTypes.bool,
   /** 原生的 type */
   htmlType: PropTypes.string,
@@ -85,7 +85,6 @@ Button.propTypes = {
 
 Button.defaultProps = {
   type: 'default',
-  size: 'default',
   htmlType: 'button',
   onClick: _.noop,
 }
