@@ -69,16 +69,16 @@ const Search = ({
 }
 
 Search.propTypes = {
-  // 'search': 带搜索按钮 'cancel'：带取消按钮
+  /** 'search': 带搜索按钮 'cancel'：带取消按钮 */
   type: PropTypes.oneOf(['search', 'cancel']),
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   autoFocus: PropTypes.bool,
-  // 即时搜索可不传
+  /** 即时搜索可不传 */
   onSearch: PropTypes.func,
   onCancel: PropTypes.func,
   placeholder: PropTypes.string,
-  // 自定义搜索按钮文案
+  /** 自定义搜索按钮文案 */
   searchText: PropTypes.string,
   className: PropTypes.string,
   style: PropTypes.object,
