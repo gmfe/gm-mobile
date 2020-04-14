@@ -118,11 +118,14 @@ class Calendar extends React.Component {
 
           return (
             <div className='m-calendar' key={cmi}>
+              {cmi === 0 && <Week />}
               <Head currentMoment={currentMoment} />
-              <Week />
               <div className='m-calendar-content'>
                 {_.map(itemList, (v, i) => (
-                  <Flex key={i} className='m-calendar-content-div'>
+                  <Flex
+                    key={i}
+                    className='m-calendar-content-div m-margin-bottom-5'
+                  >
                     {_.map(v, (value, index) => {
                       const mm = moment(m.add(1, 'day'))
 

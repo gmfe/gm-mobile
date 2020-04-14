@@ -24,11 +24,10 @@ const Head = (props) => {
   const month = currentMoment.month()
 
   return (
-    <Flex alignCenter className='m-text-center clearfix'>
+    <Flex className='clearfix m-bg-back m-padding-left-20'>
       <Flex
         flex
-        justifyCenter
-        className='m-text-center m-text-16 m-text-bold m-padding-tb-5'
+        className='m-text-16 m-text-bold m-padding-tb-5 m-padding-left-20'
       >
         <span>
           {currentMoment.year()}

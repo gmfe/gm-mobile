@@ -34,9 +34,9 @@ const Checkbox = (props) => {
       {...rest}
     >
       {checked ? (
-        <SVGSuccess className='m-text-18 m-padding-right-10 m-checkbox-success-icon' />
+        <SVGSuccess className='m-text-18 m-padding-5 m-padding-right-10 m-checkbox-success-icon' />
       ) : (
-        <SVGCircle className='m-text-18 m-padding-right-10 m-checkbox-circle-icon' />
+        <SVGCircle className='m-text-18 m-padding-5 m-padding-right-10 m-checkbox-circle-icon' />
       )}
       {children}
     </Flex>
