@@ -16,6 +16,8 @@ Loading 移除 line
 
 Toast 移除 loading_linear
 
+Dialog.dialog =》 Dialog.render
+
 less 变量全部取消，改 css 变量，且提供 CSSVariable 获取各种值
 
 增加前缀，比如 text-12 => m-bg-back

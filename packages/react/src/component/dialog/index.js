@@ -5,9 +5,10 @@ import LayerRoot from '../layer_root'
 import _ from 'lodash'
 import Mask from '../mask'
 import Flex from '../flex'
+import Input from '../input'
 
 const DialogStatics = {
-  dialog(options, type) {
+  render(options, type) {
     if (typeof options === 'string') {
       options = {
         children: options,
@@ -15,18 +16,46 @@ const DialogStatics = {
     }
     options = { ...options }
 
+    if (type === 'prompt') {
+      options._id = Math.random()
+      options.children = (
+        <div className='m-text-left'>
+          <div>{options.promptText}</div>
+          <div className='m-border-1px-bottom-after'>
+            <Input {...options.promptInputProps} id={options._id} />
+          </div>
+        </div>
+      )
+    }
+
     return new Promise((resolve, reject) => {
       const _onConfirm = options.onConfirm || _.noop
       options.onConfirm = () => {
-        Promise.resolve(_onConfirm()).then((data) => {
+        let result
+        let inputValue
+
+        // 如果是 prompt，需要把 input 传过去
+        if (type === 'prompt') {
+          inputValue = document.getElementById(options._id).value
+          result = _onConfirm(inputValue)
+        } else {
+          result = _onConfirm()
+        }
+        // 如果是 prompt，且 result 是 false，则阻止默认行为
+        if (type === 'prompt' && result === false) {
+          return
+        }
+
+        Promise.resolve(result).then(() => {
           DialogStatics.hide()
 
           setTimeout(() => {
-            resolve(data)
+            resolve(type === 'prompt' ? inputValue : undefined)
           }, 50)
         })
       }
 
+      // confirm 和 onCancel 都会涉及 reject
       if (options.onCancel || type === 'confirm') {
         const _onCancel = options.onCancel || _.noop
         options.onCancel = () => {
@@ -39,14 +68,26 @@ const DialogStatics = {
         }
       }
 
+      console.log(options)
+      if (options.onOther && options.otherText) {
+        const _onOther = options.onOther
+        options.onOther = () => {
+          DialogStatics.hide()
+          _onOther()
+        }
+      }
+
       LayerRoot.renderWith(LayerRoot.TYPE.MODAL, <Dialog {...options} />)
     })
   },
   alert(options) {
-    return DialogStatics.dialog(options)
+    return DialogStatics.render(options)
   },
   confirm(options) {
-    return DialogStatics.dialog(options, 'confirm')
+    return DialogStatics.render(options, 'confirm')
+  },
+  prompt(options) {
+    return DialogStatics.render(options, 'prompt')
   },
   hide() {
     LayerRoot.hideWith(LayerRoot.TYPE.MODAL)
@@ -109,6 +150,10 @@ Dialog.propTypes = {
   cancelText: PropTypes.string,
   otherText: PropTypes.string, // 当有三个按钮时
   onOther: PropTypes.func,
+  /** prompt 的时候有用 */
+  promptText: PropTypes.string,
+  /** prompt 的时候有用 */
+  promptInputProps: PropTypes.object,
 }
 
 Dialog.defaultProps = {
