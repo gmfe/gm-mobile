@@ -68,7 +68,6 @@ const DialogStatics = {
         }
       }
 
-      console.log(options)
       if (options.onOther && options.otherText) {
         const _onOther = options.onOther
         options.onOther = () => {
