@@ -20,55 +20,32 @@ const store3 = observable(store)
 const store4 = observable(store)
 
 export const normal = () => (
-  <div>
+  <div className='m-margin-left-10'>
     checked {`${store1.checked ? 'true' : 'false'}`}
-    <div>
-      <Checkbox
-        checked={store1.checked}
-        onChange={(value) => store1.setChecked(value)}
-      />
+    <div className='m-margin-bottom-10'>
+      <Checkbox checked={store1.checked} />
     </div>
     checked {`${store2.checked ? 'true' : 'false'}`}
-    <div>
-      <Checkbox
-        checked={store2.checked}
-        onChange={(value) => store2.setChecked(value)}
-      />
+    <div className='m-margin-bottom-10'>
+      <Checkbox checked={store2.checked} />
     </div>
     disabled
-    <div>
-      <Checkbox
-        inline
-        disabled
-        checked={store3.checked}
-      />
-      <Checkbox
-        inline
-        disabled
-        checked={!store3.checked}
-      />
+    <div className='m-margin-bottom-10'>
+      <Checkbox disabled checked={store3.checked} />
+      <Checkbox disabled checked={!store3.checked} />
     </div>
     children
-    <div>
+    <div className='m-margin-bottom-10'>
       <Checkbox
-        inline
         checked={store4.checked}
         onChange={(value) => store4.setChecked(value)}
       >
         选择
       </Checkbox>
-      <Checkbox
-        inline
-        checked={store4.checked}
-        disabled
-      >
+      <Checkbox checked={store4.checked} disabled>
         选择
       </Checkbox>
-      <Checkbox
-        inline
-        checked={!store4.checked}
-        disabled
-      >
+      <Checkbox checked={!store4.checked} disabled>
         选择
       </Checkbox>
     </div>

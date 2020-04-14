@@ -30,8 +30,8 @@ class Day extends React.Component {
 
     const cn = classNames('m-calendar-day', {
       'm-calendar-day-label': label,
-      'm-calendar-day-disabled': disabled,
-      'm-calendar-day-active': begin && v >= bv && v <= ev,
+      disabled: disabled,
+      active: begin && v >= bv && v <= ev,
       'm-calendar-day-point': begin && end && (v === bv || v === ev),
     })
 

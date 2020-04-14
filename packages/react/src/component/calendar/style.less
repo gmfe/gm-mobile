@@ -11,18 +11,18 @@
       line-height: 1.4;
     }
 
-    &.m-calendar-day-active {
+    &.m-calendar-day-point {
+      background-color: var(--color-bg-primary);
+      border-radius: 4px;
+    }
+
+    &.active {
       background-color: var(--color-bg-primary-active);
       border-radius: 4px;
       color: var(--color-white);
     }
 
-    &.m-calendar-day-point {
-      background-color: var(--color-primary);
-      border-radius: 4px;
-    }
-
-    &.m-calendar-day-disabled {
+    &.disabled {
       color: var(--color-desc);
       cursor: not-allowed;
     }
