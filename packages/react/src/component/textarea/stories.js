@@ -16,6 +16,8 @@ export const normal = () => {
         value={store.value}
         onChange={(e) => store.setValue(e.target.value)}
       />
+      不可用
+      <Textarea disabled value={'不可用状态'} />
       显示剩余字数
       <Textarea
         maxLength={100}

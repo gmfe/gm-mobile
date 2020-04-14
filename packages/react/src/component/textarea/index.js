@@ -3,10 +3,20 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 import classNames from 'classnames'
 
-const Textarea = ({ value, maxLength, className, ...rest }) => {
+const Textarea = ({ value, disabled, maxLength, className, ...rest }) => {
   return (
     <div className='m-textarea-container'>
-      <textarea {...rest} className={classNames('m-textarea', className)} />
+      <textarea
+        {...rest}
+        value={value}
+        className={classNames(
+          'm-textarea',
+          {
+            disabled,
+          },
+          className
+        )}
+      />
       {maxLength && (
         <div className='m-textarea-max-length'>
           {value.length}/{maxLength}
@@ -19,6 +29,7 @@ const Textarea = ({ value, maxLength, className, ...rest }) => {
 Textarea.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func,
+  disabled: PropTypes.bool,
   maxLength: PropTypes.number,
   rows: PropTypes.string,
   className: PropTypes.string,
