@@ -17,6 +17,10 @@
   &.m-btn-default {
     .mBtnVariants(var(--btn-color-default), var(--btn-bg-default), var(--btn-bg-default-active));
 
+    &::after {
+      border-color: var(--color-border);
+    }
+
     &:active {
       color: var(--btn-color-default-active);
     }
@@ -81,12 +85,11 @@
 .mBtnVariants(@color; @brand; @activeBrand) {
   background: @brand;
   color: @color;
+  .mBtnBorderAllAfterWith(@brand, var(--size-form-height));
 
   &.m-btn-plain {
     background: var(--color-white);
     color: @brand;
-
-    .mBtnBorderAllAfterWith(@brand, var(--size-form-height));
 
     &:active {
       background: @brand;

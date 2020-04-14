@@ -3,8 +3,8 @@ import Button from '../button'
 import Toast from './'
 
 export const normal = () => {
-  const handleToast = type => {
-    Toast[type](type)
+  const handleToast = (type) => {
+    Toast[type]('提示' + type)
   }
 
   return (
@@ -21,19 +21,15 @@ export const normal = () => {
       >
         Toast loading
       </Button>
-      <Button onClick={() => handleToast('loading_linear')}>
-        Toast loading_linear
-      </Button>
       <div>
         <Button
           onClick={() => {
             Toast.success({
-              time: 0,
               children: (
                 <div>
                   <div>保存成功啦保存成功啦保存成功啦保存成功啦</div>
                 </div>
-              )
+              ),
             })
           }}
         >
@@ -45,5 +41,5 @@ export const normal = () => {
 }
 
 export default {
-  title: 'Toast'
+  title: 'Toast',
 }

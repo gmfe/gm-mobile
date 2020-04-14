@@ -1,16 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-
-const Circle = () => {
-  return <i className='m-loading-circle' />
-}
+import SVGLoading from '../../../svg/loading.svg'
 
 const Loading = ({ children, className, ...rest }) => {
   return (
     <span {...rest} className={classNames('m-loading', className)}>
-      <Circle />
-      {children && <span className='m-margin-left-4'>{children}</span>}
+      <SVGLoading className='m-loading-icon' />
+      {children}
     </span>
   )
 }

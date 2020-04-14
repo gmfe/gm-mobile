@@ -29,8 +29,8 @@ const ToastStatics = {
     options = { ...options, type }
 
     if (options.time === undefined) {
-      options.time = 20000
-      if (options.type === 'loading' || options.type === 'loading_linear') {
+      options.time = 2000
+      if (options.type === 'loading') {
         options.time = 20000
       }
     }
@@ -61,9 +61,6 @@ const ToastStatics = {
   loading(options) {
     ToastStatics._tip(options, 'loading')
   },
-  loading_linear(options) {
-    ToastStatics._tip(options, 'loading_linear')
-  },
 }
 
 const Toast = ({ children, type }) => {
@@ -71,8 +68,6 @@ const Toast = ({ children, type }) => {
   if (type === 'loading') {
     icon = <Loading />
     children = children || getLocale('加载中...')
-  } else if (type === 'loading_linear') {
-    icon = <Loading line />
   } else if (type === 'success') {
     icon = <SVGSuccess />
   } else if (type === 'info') {
@@ -83,11 +78,10 @@ const Toast = ({ children, type }) => {
     icon = <SVGClose />
   }
 
+  // loading 起个遮罩，不让点其他地方
   return (
     <div>
-      {(type === 'loading' || type === 'loading_linear') && (
-        <Mask show opacity={0.01} />
-      )}
+      {type === 'loading' && <Mask opacity={0.01} />}
       <Flex
         justifyCenter
         className={classNames('m-toast', {
@@ -107,14 +101,7 @@ Object.assign(Toast, ToastStatics)
 
 Toast.propTypes = {
   time: PropTypes.any, // 在组件上没意义，单纯给静态方法调用参考
-  type: PropTypes.oneOf([
-    'success',
-    'info',
-    'warning',
-    'danger',
-    'loading',
-    'loading_linear',
-  ]),
+  type: PropTypes.oneOf(['success', 'info', 'warning', 'danger', 'loading']),
 }
 
 Toast.defaultProps = {
