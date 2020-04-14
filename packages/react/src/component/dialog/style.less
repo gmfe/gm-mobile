@@ -8,14 +8,14 @@
     position: fixed;
     width: 320px;
     top: 50%;
-    left: 16px;
-    right: 16px;
+    left: 15px;
+    right: 15px;
     margin: 0 auto;
     transform: translate(0, -50%);
     z-index: var(--z-index-dialog);
     background-color: var(--color-bg-white);
     text-align: center;
-    border-radius: 12px;
+    border-radius: 15px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -24,11 +24,11 @@
     font-size: 16px;
 
     .m-dialog-title {
-      padding: 12px 24px 0;
+      padding: 15px 25px 0;
     }
 
     .m-dialog-content {
-      padding: 16px 24px;
+      padding: 15px 25px 25px;
       background: var(--color-bg-white);
       color: var(--color-second);
     }
@@ -38,7 +38,8 @@
 
       & > div {
         color: var(--color-second);
-        padding: 12px 0;
+        height: 56px;
+        line-height: 56px;
         cursor: pointer;
 
         &:not(:last-child) {

@@ -4,7 +4,6 @@ import Header from './'
 export const normal = () => {
   return (
     <div>
-      <Header />
       <Header
         onBack={() => {
           console.log('点击返回拉')

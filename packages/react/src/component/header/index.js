@@ -12,7 +12,6 @@ const Header = ({ title, hideBack, onBack, right, className, ...rest }) => {
 
   return (
     <Flex
-      alignCenter
       justifyBetween
       {...rest}
       className={classNames('m-header', className)}
