@@ -19,6 +19,7 @@ import Keyboard from './component/keyboard'
 import Checkbox from './component/checkbox'
 import { LetterIndex, LetterIndexMultiple } from './component/letter_index'
 import Input from './component/input'
+import Radio from './component/radio'
 
 // 布局
 import Flex from './component/flex'
@@ -97,6 +98,7 @@ export {
   FlipNumber,
   LetterIndex,
   LetterIndexMultiple,
+  Radio,
   // 布局
   Flex,
   Page,

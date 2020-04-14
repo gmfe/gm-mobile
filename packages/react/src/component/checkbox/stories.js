@@ -34,7 +34,7 @@ export const normal = () => (
       <Checkbox disabled checked={store3.checked}>aaa</Checkbox>
       <Checkbox disabled checked={!store3.checked}>bbb</Checkbox>
     </div>
-    children
+    more example
     <div>
       <Checkbox
         checked={store4.checked}
