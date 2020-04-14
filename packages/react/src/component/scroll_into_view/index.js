@@ -1,18 +1,9 @@
 import React from 'react'
 import { findDOMNode } from 'react-dom'
-import _ from 'lodash'
-
-const iPhone = window.navigator.userAgent.indexOf('iPhone') > -1
+import { is } from '@gm-common/tool'
 
 class ScrollIntoView extends React.Component {
-  constructor(props) {
-    super(props)
-    this.__mounted = false
-
-    if (!_.isObject(this.props.children)) {
-      console.error('There must be one and only one component')
-    }
-  }
+  __mounted = false
 
   componentWillUnmount() {
     this.__mounted = true
@@ -23,7 +14,7 @@ class ScrollIntoView extends React.Component {
 
     onFocus && onFocus()
 
-    if (!iPhone) {
+    if (!is.iOS()) {
       setTimeout(() => {
         if (!this.__mounted) {
           const target = findDOMNode(this)
