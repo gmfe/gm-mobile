@@ -24,6 +24,14 @@ export const normal = () => {
           store.setChecked(store.checked)
         }}
       />
+
+      <Switch
+        disabled
+        checked={!store.checked}
+        onChange={() => {
+          store.setChecked(store.checked)
+        }}
+      />
     </div>
   )
 }

@@ -16,6 +16,7 @@ const Switch = ({ className, ...rest }) => {
 Switch.propTypes = {
   checked: PropTypes.bool,
   onChange: PropTypes.bool,
+  disabled: PropTypes.bool,
   className: PropTypes.string,
   style: PropTypes.object,
 }
