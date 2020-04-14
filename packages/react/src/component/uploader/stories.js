@@ -19,6 +19,7 @@ export const normal = () => {
     <div>
       <Uploader onUpload={handleUploader} accept='image/*' />
 
+      <br />
       <Uploader onUpload={handleUploader} accept='image/*'>
         <button className='btn'>自定义</button>
       </Uploader>
