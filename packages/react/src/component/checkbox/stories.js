@@ -2,7 +2,6 @@ import React from 'react'
 import { observable } from 'mobx'
 
 import Checkbox from './'
-import SVGSuccess from '../../../svg/success.svg'
 import Flex from '../flex'
 
 const store = {
@@ -42,20 +41,33 @@ export const normal = () => (
         inline
         disabled
         checked={store3.checked}
-        onChange={(value) => store3.setChecked(value)}
       />
       <Checkbox
         inline
         disabled
         checked={!store3.checked}
-        onChange={(value) => store3.setChecked(value)}
       />
     </div>
     children
     <div>
       <Checkbox
+        inline
         checked={store4.checked}
         onChange={(value) => store4.setChecked(value)}
+      >
+        选择
+      </Checkbox>
+      <Checkbox
+        inline
+        checked={store4.checked}
+        disabled
+      >
+        选择
+      </Checkbox>
+      <Checkbox
+        inline
+        checked={!store4.checked}
+        disabled
       >
         选择
       </Checkbox>
