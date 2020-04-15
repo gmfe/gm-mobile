@@ -15,7 +15,7 @@ class CouplingPicker extends React.Component {
 
   handleChange = (index, option) => {
     const { onChange } = this.props
-    let { selected } = this.state
+    const { selected } = this.state
     selected[index] = option ? option.value : ''
 
     this.setState({ selected })
@@ -96,18 +96,20 @@ class CouplingPicker extends React.Component {
 }
 
 CouplingPicker.propTypes = {
-  datas: PropTypes.array.isRequired, // [{value, text, children: [{value, text, children: [{value, text, children: []}]}]}]
+  /** [{value, text, children: [{value, text, children: [{value, text, children: []}]}]}] */
+  datas: PropTypes.array.isRequired,
   values: PropTypes.array.isRequired,
   itemHeight: PropTypes.number,
   onChange: PropTypes.func.isRequired,
+  /** 此 dataIndex 是 datas 的所以 */
   renderOption: PropTypes.func,
   className: PropTypes.string,
   style: PropTypes.object,
 }
 
 CouplingPicker.defaultProps = {
-  itemHeight: 36,
-  renderOption: (dataIndex, option) => option.text, // 此 dataIndex 是 datas 的所以
+  itemHeight: 40,
+  renderOption: (dataIndex, option) => option.text,
 }
 
 export default CouplingPicker

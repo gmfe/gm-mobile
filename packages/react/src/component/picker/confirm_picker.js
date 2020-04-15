@@ -38,7 +38,7 @@ class ConfirmPicker extends React.Component {
 
     return (
       <div>
-        <Flex justifyBetween alignCenter className='m-border-1px-bottom-after'>
+        <Flex justifyBetween alignCenter>
           <Flex flex column className='m-padding-left-15'>
             {title}
           </Flex>

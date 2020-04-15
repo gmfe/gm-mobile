@@ -216,7 +216,7 @@ export const confirmPicker = () => {
   return <button onClick={handleClick}>confirm picker</button>
 }
 
-export const connfirmCouplingPicker = () => {
+export const confirmCouplingPicker = () => {
   const handleClick = () => {
     ConfirmCouplingPicker.render({
       datas: store.couplingData.slice(),
