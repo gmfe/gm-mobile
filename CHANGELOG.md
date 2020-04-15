@@ -34,4 +34,4 @@ Storage 的 key 从 react-gmm => gm-mobile，记得做迁移
 
 重新设置 Cell
 
-Radio => Checkbox
+原有Radio => Checkbox, 提供新的Radio

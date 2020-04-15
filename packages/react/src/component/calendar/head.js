@@ -24,7 +24,7 @@ const Head = (props) => {
   const month = currentMoment.month()
 
   return (
-    <Flex className='clearfix m-bg-back m-padding-left-20'>
+    <Flex className='clearfix m-bg-back'>
       <Flex
         flex
         className='m-text-16 m-text-bold m-padding-tb-5 m-padding-left-20'

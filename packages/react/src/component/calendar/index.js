@@ -124,7 +124,7 @@ class Calendar extends React.Component {
                 {_.map(itemList, (v, i) => (
                   <Flex
                     key={i}
-                    className='m-calendar-content-div m-margin-bottom-5'
+                    className='m-calendar-content-div m-padding-tb-5'
                   >
                     {_.map(v, (value, index) => {
                       const mm = moment(m.add(1, 'day'))
@@ -154,12 +154,17 @@ class Calendar extends React.Component {
 }
 
 Calendar.propTypes = {
+  /** 开始日期 */
   begin: PropTypes.object,
+  /** 结束日期 */
   end: PropTypes.object,
+  /** 回调函数 */
   onChange: PropTypes.func,
+  /** 可选日期最小值 */
   min: PropTypes.object,
+  /** 可选日期最大值 */
   max: PropTypes.object,
-  /** 显示备注 */
+  /** 显示日期下方备注 */
   label: PropTypes.bool,
 }
 
