@@ -1,34 +1,25 @@
 import React from 'react'
 import _ from 'lodash'
+import Flex from './component/flex'
 
-export const spacing = () => {
-  const arr = [5, 10, 15, 20]
+export const containerFull = () => {
   return (
-    <div>
-      5 超小号间距 10 小号间距 15 中号间距 20 大号间距
-      <hr />
-      <div>{_.map(arr, (v) => '.m-gap-' + v).join(' ')}</div>
-      {_.map(['padding', 'margin'], (t) => (
-        <div key={t}>
-          {_.map(['top', 'bottom', 'left', 'right', 'tb', 'lr'], (d) => (
-            <div key={d}>{_.map(arr, (v) => `${t}-${d}-${v}`).join(' ')}</div>
-          ))}
-        </div>
-      ))}
-    </div>
+    <Flex column className='m-container-full'>
+      <div>header</div>
+      <Flex>m-container-full 方便做布局</Flex>
+    </Flex>
   )
 }
 
-export const font = () => {
-  const arr = [11, 13, 14, 17, 18, 20]
+export const other = () => {
   return (
     <div>
-      大小
-      {_.map(arr, (v) => (
-        <div className={`m-text-${v}`}>
-          m-text-{v} 字体大小 {v === 14 && '默认'}
-        </div>
-      ))}
+      <div>.m-img-responsive</div>
+      <div>.m-cursor-pointer</div>
+      <div>.m-visible</div>
+      <div>.m-invisible</div>
+      <div>.m-relative</div>
+      <div>.m-absolute</div>
     </div>
   )
 }

@@ -33,6 +33,7 @@ import FlipNumber from './component/flip_number'
 // 浮层
 import LayerRoot from './component/layer_root'
 import NProgress from './component/nprogress'
+import InnerLayer from './component/inner_layer'
 import Loading from './component/loading'
 import Toast from './component/toast'
 import Dialog from './component/dialog'
@@ -63,8 +64,6 @@ import CSSVariable from './css_variable'
 // import Divider from './component/divider'
 
 // import { setLocale } from './locales'
-
-import InnerLayer from './component/inner_layer'
 
 //
 // import List from './component/list'
@@ -110,6 +109,7 @@ export {
   Tabs,
   // 浮层
   LayerRoot,
+  InnerLayer,
   NProgress,
   Loading,
   Toast,
@@ -135,7 +135,6 @@ export {
   // Price,
   // Counter,
   // Divider,
-  InnerLayer,
 
   // List,
 

@@ -46,9 +46,9 @@ const Popup = ({
       'm-popup-left': left,
       'm-popup-right': right,
       'm-popup-bottom': bottom,
-      'm-animated-in m-animated-slide-in-left': left,
-      'm-animated-in m-animated-slide-in-right': right,
-      'm-animated-in m-animated-slide-in-bottom': bottom,
+      'm-animated m-animated-slide-in-left': left,
+      'm-animated m-animated-slide-in-right': right,
+      'm-animated m-animated-slide-in-bottom': bottom,
     },
     className
   )
