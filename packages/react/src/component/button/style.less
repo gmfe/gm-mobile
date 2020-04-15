@@ -50,7 +50,7 @@
     background: transparent;
     border-radius: 0;
     color: var(--color-link);
-    padding: 0 10px;
+    padding: 0 15px;
     min-width: auto;
     text-decoration: none;
 
@@ -85,7 +85,10 @@
 .mBtnVariants(@color; @brand; @activeBrand) {
   background: @brand;
   color: @color;
-  .mBtnBorderAllAfterWith(@brand, var(--size-form-height));
+
+  &:not(.m-btn-block) {
+    .mBtnBorderAllAfterWith(@brand, var(--size-form-height));
+  }
 
   &.m-btn-plain {
     background: var(--color-white);

@@ -199,6 +199,7 @@ export const picker = () => {
 export const confirmPicker = () => {
   const handleClick = () => {
     ConfirmPicker.render({
+      title: 'confirm picker',
       datas: store.datas.slice(),
       values: store.values.slice(),
     }).then(

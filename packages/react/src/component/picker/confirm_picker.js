@@ -5,6 +5,8 @@ import Picker from './picker'
 import Flex from '../flex'
 import _ from 'lodash'
 import PickerStatics from './statics'
+import Button from '../button'
+import SVGCloseCircle from '../../../svg/close_circle.svg'
 
 class ConfirmPicker extends React.Component {
   constructor(props) {
@@ -31,33 +33,37 @@ class ConfirmPicker extends React.Component {
   }
 
   render() {
-    const { itemHeight, datas, title, renderOption } = this.props
+    const { datas, title, renderOption } = this.props
     const { values } = this.state
 
     return (
       <div>
-        <Flex justifyBetween className='m-border-1px-bottom-after'>
-          <div
-            className='text-link m-padding-lr-12 m-padding-tb-8'
-            onClick={this.handleCancel}
-          >
-            {getLocale('取消')}
-          </div>
-          <div className='m-padding-tb-8'>{title}</div>
-          <div
-            className='m-text-link m-padding-lr-12 m-padding-tb-8'
-            onClick={this.handleConfirm}
-          >
-            {getLocale('确定')}
-          </div>
+        <Flex justifyBetween alignCenter className='m-border-1px-bottom-after'>
+          <Flex flex column className='m-padding-left-15'>
+            {title}
+          </Flex>
+
+          <Button type='link' onClick={this.handleCancel}>
+            <Flex alignCenter>
+              <SVGCloseCircle className='m-text-20 m-text-placeholder' />
+            </Flex>
+          </Button>
         </Flex>
         <Picker
           datas={datas}
           values={values}
           renderOption={renderOption}
-          itemHeight={itemHeight}
           onChange={this.handleChange}
         />
+        <div className='m-margin-15'>
+          <Button
+            type='primary'
+            onClick={this.handleConfirm}
+            style={{ width: '100%' }}
+          >
+            {getLocale('确定')}
+          </Button>
+        </div>
       </div>
     )
   }
@@ -102,13 +108,11 @@ ConfirmPicker.propTypes = {
   datas: PropTypes.array.isRequired,
   values: PropTypes.array.isRequired,
   renderOption: PropTypes.func,
-  itemHeight: PropTypes.number,
   onConfirm: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
 }
 
 ConfirmPicker.defaultProps = {
-  itemHeight: 32,
   onConfirm: _.noop,
   onCancel: _.noop,
 }

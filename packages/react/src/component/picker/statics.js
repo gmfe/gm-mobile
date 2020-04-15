@@ -11,7 +11,7 @@ const PickerStatics = {
     }
     LayerRoot.renderWith(
       LayerRoot.TYPE.PICKER,
-      <Popup {...options} show isPickPopup />
+      <Popup {...options} isPickPopup />
     )
   },
 

@@ -62,7 +62,7 @@ Picker.propTypes = {
 }
 
 Picker.defaultProps = {
-  itemHeight: 36,
+  itemHeight: 40,
   renderOption: (dataIndex, option) => option.text, // 此 dataIndex 是 datas 的所以
 }
 

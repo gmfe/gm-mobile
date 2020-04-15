@@ -2,9 +2,10 @@
   .m-popup {
     position: absolute;
     z-index: var(--z-index-popup);
+    overflow: hidden;
 
     .m-popup-content {
-      background: white;
+      background: var(--color-bg-white);
       overflow-x: hidden;
       overflow-y: auto;
     }
@@ -47,6 +48,7 @@
       margin: auto;
       height: auto;
       max-height: 100%;
+      border-radius: 10px 10px 0 0;
 
       .m-popup-content {
         height: auto;
@@ -56,15 +58,14 @@
   }
 }
 
-// TODO
 .m-popup-picker-container {
-  z-index: 6000;
+  z-index: var(--z-index-picker);
 
-  .mask {
-    z-index: 6001;
+  .m-mask {
+    z-index: var(--z-index-picker);
   }
 
   .m-popup {
-    z-index: 6002;
+    z-index: var(--z-index-picker);
   }
 }
