@@ -108,7 +108,7 @@ class Calendar extends React.Component {
   }
 
   render() {
-    const { begin, end, label, className, ...rest } = this.props
+    const { begin, end, showDateLabel, className, ...rest } = this.props
 
     const itemList = _.groupBy(_.range(42), (v) => parseInt(v / 7))
 
@@ -143,7 +143,7 @@ class Calendar extends React.Component {
                           value={mm}
                           onClick={this.handleSelectDay}
                           disabled={this.getDisabled(mm)}
-                          label={label}
+                          showDateLabel={showDateLabel}
                         />
                       )
                     })}
@@ -170,14 +170,14 @@ Calendar.propTypes = {
   /** 可选日期最大值 */
   max: PropTypes.object,
   /** 显示日期下方备注 */
-  label: PropTypes.bool,
+  showDateLabel: PropTypes.bool,
   className: PropTypes.string,
   style: PropTypes.object,
 }
 
 Calendar.defaultProps = {
   onChange: _.noop,
-  label: false,
+  showDateLabel: false,
 }
 
 export default Calendar

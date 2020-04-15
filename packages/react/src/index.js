@@ -64,7 +64,7 @@ import CSSVariable from './css_variable'
 
 // import { setLocale } from './locales'
 
-// import InnerLayer from './component/inner_layer'
+import InnerLayer from './component/inner_layer'
 
 //
 // import List from './component/list'
@@ -135,7 +135,7 @@ export {
   // Price,
   // Counter,
   // Divider,
-  // InnerLayer,
+  InnerLayer,
 
   // List,
 

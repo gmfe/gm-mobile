@@ -11,8 +11,8 @@
   }
 
   .m-checkbox-input + .m-checkbox-span {
-    width: 18px;
-    height: 18px;
+    width: 1.3em;
+    height: 1.3em;
     position: relative;
     top: 0;
     margin-right: 10px;
@@ -22,11 +22,9 @@
     border-radius: 50%;
   }
 
+  .mDisabledWith();
+
   &.disabled {
-    .mDisabledWith();
-
-    background-color: transparent;
-
     .m-checkbox-span {
       background-color: var(--color-bg-back);
     }
@@ -39,10 +37,10 @@
     &::after {
       content: '';
       position: absolute;
-      width: 8px;
-      height: 4px;
-      top: 5px;
-      left: 4px;
+      width: 0.6em;
+      height: 0.3em;
+      top: 0.35em;
+      left: 0.3em;
       border-left: 2px solid var(--color-white);
       border-bottom: 2px solid var(--color-white);
       transform: rotate(-45deg);

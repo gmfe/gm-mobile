@@ -28,10 +28,10 @@ export const Normal = () => (
     </div>
     disabled
     <div>
-      <Radio checked disabled>
+      <Radio className='m-text-16' checked disabled>
         选择
       </Radio>
-      <Radio checked={false} disabled>
+      <Radio className='m-text-16' checked={false} disabled>
         选择
       </Radio>
     </div>

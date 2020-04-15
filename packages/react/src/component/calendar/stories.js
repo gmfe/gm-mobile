@@ -23,7 +23,7 @@ export const Default = () => (
     begin={normalStore.begin}
     end={normalStore.end}
     onChange={({ begin, end }) => normalStore.setDate(begin, end)}
-    label
+    showDateLabel
   />
 )
 
@@ -35,7 +35,7 @@ export const MinAndMax = () => (
     begin={otherStore.begin}
     end={otherStore.end}
     onChange={({ begin, end }) => otherStore.setDate(begin, end)}
-    label
+    showDateLabel
   />
 )
 

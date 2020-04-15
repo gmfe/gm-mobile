@@ -35,3 +35,5 @@ Storage 的 key 从 react-gmm => gm-mobile，记得做迁移
 重新设置 Cell
 
 原有Radio => Checkbox, 提供新的Radio
+
+Calendar props: label => showDateLabel

@@ -21,16 +21,16 @@ export const normal = () => (
   <div>
     checked {`${store1.checked ? 'true' : 'false'}`}
     <div>
-      <Checkbox checked={store1.checked}>aaa</Checkbox>
+      <Checkbox checked={store1.checked}>选择</Checkbox>
     </div>
     checked {`${store2.checked ? 'true' : 'false'}`}
     <div>
-      <Checkbox checked={store2.checked}>bbb</Checkbox>
+      <Checkbox checked={store2.checked}>选择</Checkbox>
     </div>
     disabled
     <div>
-      <Checkbox disabled checked={store3.checked}>aaa</Checkbox>
-      <Checkbox disabled checked={!store3.checked}>bbb</Checkbox>
+      <Checkbox disabled checked={store3.checked} className='m-text-16'>选择</Checkbox>
+      <Checkbox disabled checked={!store3.checked} className='m-text-16'>选择</Checkbox>
     </div>
   </div>
 )

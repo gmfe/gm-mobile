@@ -11,8 +11,8 @@
   }
 
   .m-radio-input + .m-radio-span {
-    width: 18px;
-    height: 18px;
+    width: 1.3em;
+    height: 1.3em;
     position: relative;
     top: 0;
     margin-right: 10px;
@@ -20,20 +20,16 @@
     transition: background-color 0.1s linear;
   }
 
-  &.disabled {
-    .mDisabledWith();
-
-    background-color: transparent;
-  }
+  .mDisabledWith();
 
   .m-radio-input:checked + .m-radio-span {
     &::after {
       content: '';
       position: absolute;
-      width: 10px;
-      height: 5px;
-      top: 4px;
-      left: 4px;
+      width: 0.8em;
+      height: 0.4em;
+      top: 0.25em;
+      left: 0.3em;
       border-left: 2px solid var(--color-accent);
       border-bottom: 2px solid var(--color-accent);
       transform: rotate(-45deg);

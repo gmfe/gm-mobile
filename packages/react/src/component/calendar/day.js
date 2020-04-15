@@ -15,7 +15,14 @@ class Day extends React.Component {
   }
 
   render() {
-    const { currentMoment, value, begin, end, disabled, label } = this.props
+    const {
+      currentMoment,
+      value,
+      begin,
+      end,
+      disabled,
+      showDateLabel,
+    } = this.props
 
     const wm = currentMoment.month()
     const vm = value.month()
@@ -29,7 +36,7 @@ class Day extends React.Component {
     const v = +value.startOf('day')
 
     const cn = classNames('m-calendar-day', {
-      'm-calendar-day-label': label,
+      'm-calendar-day-label': showDateLabel,
       disabled: disabled,
       active: begin && v > bv && v < ev,
       'm-calendar-day-point': begin && end && (v === bv || v === ev),
@@ -47,7 +54,7 @@ class Day extends React.Component {
         {this.nowMountStart === +value.startOf('day')
           ? getLocale('今天')
           : value.date()}
-        {label && (
+        {showDateLabel && (
           <small>
             {v === bv && v === ev && getLocale('单天')}
             {v === bv && v !== ev && getLocale('起始')}
@@ -66,7 +73,7 @@ Day.propTypes = {
   begin: PropTypes.object,
   end: PropTypes.object,
   disabled: PropTypes.bool,
-  label: PropTypes.bool,
+  showDateLabel: PropTypes.bool,
 }
 
 export default Day
