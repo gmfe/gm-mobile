@@ -4,6 +4,8 @@
 
 Page 新增 top
 
+新增 Badge
+
 ## breaking change
 
 Dialog 移除 show
