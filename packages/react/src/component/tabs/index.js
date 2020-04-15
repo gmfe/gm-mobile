@@ -22,8 +22,11 @@ const Tabs = ({ tabIndex, list, onChange }) => {
 }
 
 Tabs.propTypes = {
+  /** 当前激活的 tab 索引 */
   tabIndex: PropTypes.number.isRequired,
+  /**  数据类型: [tab1, tab2, ...] */
   list: PropTypes.array.isRequired,
+  /** 回调函数 */
   onChange: PropTypes.func,
 }
 

@@ -136,7 +136,7 @@ class Calendar extends React.Component {
 
                       return (
                         <Day
-                          key={index}
+                          key={value}
                           begin={begin}
                           end={end}
                           currentMoment={currentMoment}

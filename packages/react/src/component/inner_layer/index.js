@@ -30,6 +30,7 @@ Object.assign(InnerLayer, InnerLayerStatics)
 
 InnerLayer.propTypes = {
   className: PropTypes.string,
+  style: PropTypes.object,
 }
 
 export default InnerLayer
