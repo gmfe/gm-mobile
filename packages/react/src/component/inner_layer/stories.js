@@ -20,7 +20,11 @@ export const Normal = () => {
       ),
     })
   }
-  return <div className='m-padding-20' onClick={handleClick}>click here</div>
+  return (
+    <div className='m-padding-20' onClick={handleClick}>
+      click here 打开内页
+    </div>
+  )
 }
 
 export default {
