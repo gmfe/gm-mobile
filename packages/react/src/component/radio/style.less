@@ -1,13 +1,42 @@
 .m-radio {
-  position: relative;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px 10px;
+
   .mActiveBgWhiteWith();
 
-  .m-radio-icon {
-    position: absolute;
-    right: 20px;
-    color: var(--color-accent);
+  .m-radio-input {
+    display: none;
   }
 
-  .mDisabledWith();
+  .m-radio-input + .m-radio-span {
+    width: 18px;
+    height: 18px;
+    position: relative;
+    top: 0;
+    margin-right: 10px;
+    -webkit-appearance: none;
+    transition: background-color 0.1s linear;
+  }
+
+  &.disabled {
+    .mDisabledWith();
+
+    background-color: transparent;
+  }
+
+  .m-radio-input:checked + .m-radio-span {
+    &::after {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 5px;
+      top: 4px;
+      left: 4px;
+      border-left: 2px solid var(--color-accent);
+      border-bottom: 2px solid var(--color-accent);
+      transform: rotate(-45deg);
+    }
+  }
 }

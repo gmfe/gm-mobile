@@ -3,9 +3,6 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import _ from 'lodash'
 
-import Flex from '../flex'
-import SVGCheck from '../../../svg/check.svg'
-
 const Radio = (props) => {
   const {
     className,
@@ -18,21 +15,26 @@ const Radio = (props) => {
   } = props
 
   return (
-    <Flex
-      alignCenter
+    <label
+      {...rest}
       className={classNames(
-        'm-padding-tb-5 m-padding-lr-10 m-radio',
+        'm-radio',
         {
           disabled,
         },
         className
       )}
-      {...rest}
-      onClick={disabled ? _.noop : () => onChange(!checked)}
     >
+      <input
+        className='m-radio-input'
+        type='radio'
+        checked={checked || false}
+        onChange={onChange}
+        disabled={disabled}
+      />
+      <span className='m-radio-span' />
       {children}
-      {checked && <SVGCheck className='m-radio-icon m-text-18' />}
-    </Flex>
+    </label>
   )
 }
 
@@ -40,6 +42,7 @@ Radio.propTypes = {
   /** 选中态 */
   checked: PropTypes.bool.isRequired,
   disabled: PropTypes.bool,
+  /** 回调函数 */
   onChange: PropTypes.func,
   className: PropTypes.string,
   style: PropTypes.object,

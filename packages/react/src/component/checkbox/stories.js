@@ -17,10 +17,9 @@ const store2 = observable({
   checked: false,
 })
 const store3 = observable(store)
-const store4 = observable(store)
 
 export const normal = () => (
-  <div className='m-margin-left-10'>
+  <div>
     checked {`${store1.checked ? 'true' : 'false'}`}
     <div>
       <Checkbox checked={store1.checked}>aaa</Checkbox>
@@ -33,21 +32,6 @@ export const normal = () => (
     <div>
       <Checkbox disabled checked={store3.checked}>aaa</Checkbox>
       <Checkbox disabled checked={!store3.checked}>bbb</Checkbox>
-    </div>
-    more example
-    <div>
-      <Checkbox
-        checked={store4.checked}
-        onChange={(value) => store4.setChecked(value)}
-      >
-        选择
-      </Checkbox>
-      <Checkbox checked={store4.checked} disabled>
-        选择
-      </Checkbox>
-      <Checkbox checked={!store4.checked} disabled>
-        选择
-      </Checkbox>
     </div>
   </div>
 )

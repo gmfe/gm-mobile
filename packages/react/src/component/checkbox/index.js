@@ -3,10 +3,6 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import _ from 'lodash'
 
-import Flex from '../flex'
-import SVGSuccess from '../../../svg/success.svg'
-import SVGCircle from '../../../svg/circle.svg'
-
 const Checkbox = (props) => {
   const {
     className,
@@ -14,32 +10,31 @@ const Checkbox = (props) => {
     disabled,
     checked,
     onChange,
-    inline,
     children,
     ...rest
   } = props
 
   return (
-    <Flex
-      alignCenter
-      onClick={disabled ? _.noop : () => onChange(!checked)}
+    <label
+      {...rest}
       className={classNames(
         'm-checkbox',
         {
           disabled,
-          'm-checkbox-inline': inline,
         },
         className
       )}
-      {...rest}
     >
-      {checked ? (
-        <SVGSuccess className='m-text-18 m-padding-5 m-padding-right-10 m-checkbox-success-icon' />
-      ) : (
-        <SVGCircle className='m-text-18 m-padding-5 m-padding-right-10 m-checkbox-circle-icon' />
-      )}
+      <input
+        className='m-checkbox-input'
+        type='checkbox'
+        checked={checked || false}
+        onChange={onChange}
+        disabled={disabled}
+      />
+      <span className='m-checkbox-span' />
       {children}
-    </Flex>
+    </label>
   )
 }
 
@@ -47,10 +42,10 @@ Checkbox.propTypes = {
   /** 选中态 */
   checked: PropTypes.bool.isRequired,
   disabled: PropTypes.bool,
+  /** 回调函数 */
   onChange: PropTypes.func,
   className: PropTypes.string,
   style: PropTypes.object,
-  inline: PropTypes.bool,
 }
 
 Checkbox.defaultProps = {

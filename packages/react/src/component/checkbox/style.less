@@ -1,22 +1,51 @@
 .m-checkbox {
-  .m-checkbox-success-icon {
-    color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px 10px;
+
+  .mActiveBgWhiteWith();
+
+  .m-checkbox-input {
+    display: none;
   }
 
-  .m-checkbox-circle-icon {
-    color: var(--color-border);
+  .m-checkbox-input + .m-checkbox-span {
+    width: 18px;
+    height: 18px;
+    position: relative;
+    top: 0;
+    margin-right: 10px;
+    -webkit-appearance: none;
+    border: 1px solid var(--color-border);
+    transition: background-color 0.1s linear;
+    border-radius: 50%;
   }
 
-  &.m-checkbox-inline {
-    display: inline-block;
-    padding-right: 10px;
+  &.disabled {
+    .mDisabledWith();
 
-    .m-checkbox-success-icon,
-    .m-checkbox-circle-icon {
-      vertical-align: middle;
-      margin-top: -2px;
+    background-color: transparent;
+
+    .m-checkbox-span {
+      background-color: var(--color-bg-back);
     }
   }
 
-  .mDisabledWith();
+  .m-checkbox-input:checked + .m-checkbox-span {
+    border: 1px solid transparent;
+    background-color: var(--color-accent);
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 4px;
+      top: 5px;
+      left: 4px;
+      border-left: 2px solid var(--color-white);
+      border-bottom: 2px solid var(--color-white);
+      transform: rotate(-45deg);
+    }
+  }
 }
