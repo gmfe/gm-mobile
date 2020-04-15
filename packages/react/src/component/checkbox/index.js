@@ -28,7 +28,7 @@ const Checkbox = (props) => {
       <input
         className='m-checkbox-input'
         type='checkbox'
-        checked={checked || false}
+        checked={checked}
         onChange={onChange}
         disabled={disabled}
       />
@@ -50,6 +50,7 @@ Checkbox.propTypes = {
 
 Checkbox.defaultProps = {
   onChange: _.noop,
+  disabled: false,
 }
 
 export default Checkbox

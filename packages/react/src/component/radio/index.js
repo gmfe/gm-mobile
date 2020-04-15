@@ -28,7 +28,7 @@ const Radio = (props) => {
       <input
         className='m-radio-input'
         type='radio'
-        checked={checked || false}
+        checked={checked}
         onChange={onChange}
         disabled={disabled}
       />
@@ -50,6 +50,7 @@ Radio.propTypes = {
 
 Radio.defaultProps = {
   onChange: _.noop,
+  disabled: false,
 }
 
 export default Radio

@@ -100,11 +100,13 @@ class LetterIndexMultiple extends React.Component {
 LetterIndexMultiple.propTypes = {
   /** 数据格式：[{value, text}] */
   data: PropTypes.array.isRequired,
+  /** 当前选择项 */
   selected: PropTypes.array,
   onSelect: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
   /** 传入获取首拼的函数 */
   getFirstLetter: PropTypes.func.isRequired,
+  /** 自定义列表项 */
   renderItem: PropTypes.func,
   className: PropTypes.string,
   style: PropTypes.object,
