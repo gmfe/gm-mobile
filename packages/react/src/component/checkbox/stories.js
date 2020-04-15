@@ -2,7 +2,6 @@ import React from 'react'
 import { observable } from 'mobx'
 
 import Checkbox from './'
-import Flex from '../flex'
 
 const store = {
   checked: true,
