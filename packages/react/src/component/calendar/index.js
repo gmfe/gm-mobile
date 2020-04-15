@@ -2,6 +2,7 @@ import React from 'react'
 import { findDOMNode } from 'react-dom'
 import PropTypes from 'prop-types'
 import moment from 'moment'
+import classNames from 'classnames'
 import _ from 'lodash'
 
 import Head from './head'
@@ -107,17 +108,21 @@ class Calendar extends React.Component {
   }
 
   render() {
-    const { begin, end, label } = this.props
+    const { begin, end, label, className, ...rest } = this.props
 
     const itemList = _.groupBy(_.range(42), (v) => parseInt(v / 7))
 
     return (
-      <div ref={(ref) => (this.refCalendar = ref)}>
+      <div
+        ref={(ref) => (this.refCalendar = ref)}
+        className={classNames('m-calendar', className)}
+        {...rest}
+      >
         {_.map(this.computedMonthList(), (currentMoment, cmi) => {
           const m = moment(currentMoment).day(0).add(-1, 'day')
 
           return (
-            <div className='m-calendar' key={cmi}>
+            <div key={cmi}>
               {cmi === 0 && <Week />}
               <Head currentMoment={currentMoment} />
               <div className='m-calendar-content'>
@@ -166,6 +171,8 @@ Calendar.propTypes = {
   max: PropTypes.object,
   /** 显示日期下方备注 */
   label: PropTypes.bool,
+  className: PropTypes.string,
+  style: PropTypes.object,
 }
 
 Calendar.defaultProps = {

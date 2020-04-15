@@ -1,6 +1,5 @@
 import React from 'react'
 import { observable } from 'mobx'
-import _ from 'lodash'
 
 import Radio from './'
 
