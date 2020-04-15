@@ -37,7 +37,7 @@ const SearchPage = ({
 SearchPage.propTypes = {
   active: PropTypes.bool.isRequired,
   onCancel: PropTypes.func.isRequired,
-  // 存在建议搜索词，所以需要把 value 交给调用方控制
+  /** 存在建议搜索词，所以需要把 value 交给调用方控制 */
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onSearch: PropTypes.func,

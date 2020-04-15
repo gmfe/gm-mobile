@@ -3,6 +3,7 @@ import Search from './search'
 import SearchPage from './page'
 import FakeSearch from './fake_search'
 import Header from '../header'
+import Flex from '../flex'
 import { observable } from 'mobx'
 
 const store = observable({
@@ -74,7 +75,8 @@ export const searchPage = () => {
         <Header
           title='demo'
           right={
-            <div
+            <Flex
+              alignCenter
               className='m-padding-lr-15'
               onClick={() => {
                 // 同时初始化下搜索数据
@@ -84,7 +86,7 @@ export const searchPage = () => {
               }}
             >
               搜索
-            </div>
+            </Flex>
           }
         />
       }
