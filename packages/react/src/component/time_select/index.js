@@ -6,7 +6,7 @@ import Popup from '../popup'
 import Flex from '../flex'
 import TimeSelect from './time_select'
 
-import SVGDownSmall from '../../../svg/down_small.svg'
+import SVGDownSmall from '../../../svg/down-small.svg'
 
 class Component extends React.Component {
   handleChange = ({ time, selected }) => {

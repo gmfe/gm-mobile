@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import SVGSuccessCircle from '../../../svg/success_circle.svg'
-import SVGCloseCircle from '../../../svg/close_circle.svg'
+import SVGSuccessCircle from '../../../svg/success-circle.svg'
+import SVGCloseCircle from '../../../svg/close-circle.svg'
 
 class ProgressBar extends React.Component {
   constructor (props) {

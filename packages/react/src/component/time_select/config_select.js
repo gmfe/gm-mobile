@@ -5,7 +5,7 @@ import Flex from '../flex'
 import Select from '../select'
 import PropTypes from 'prop-types'
 
-import SVGDownSmall from '../../../svg/down_small.svg'
+import SVGDownSmall from '../../../svg/down-small.svg'
 
 class Component extends React.Component {
   renderSelect = () => {

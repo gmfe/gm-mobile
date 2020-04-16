@@ -6,7 +6,7 @@ import Flex from '../flex'
 import _ from 'lodash'
 import PickerStatics from './statics'
 import Button from '../button'
-import SVGCloseCircle from '../../../svg/close_circle.svg'
+import SVGCloseCircle from '../../../svg/close-circle.svg'
 
 class ConfirmCouplingPicker extends React.Component {
   constructor(props) {
