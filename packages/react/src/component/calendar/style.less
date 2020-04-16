@@ -1,26 +1,95 @@
 .m-calendar {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+
+  .m-calendar-head {
+    padding-left: calc((100% / 14) - 5px);
+    height: 25px;
+    line-height: 25px;
+  }
+
   .m-calendar-week {
+    width: 100%;
     height: 40px;
+    color: var(--color-third);
+    border-bottom: 1px solid var(--color-bg-back);
+  }
+
+  .m-calendar-content {
+    flex: 1;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   .m-calendar-day {
-    height: 40px;
+    width: 100%;
 
-    &.m-calendar-day-label {
-      height: 46px;
-      line-height: 1.4;
+    .m-calendar-day-text {
+      height: 30px;
+      width: 30px;
+      border-radius: 4px;
     }
 
-    &.m-calendar-day-point {
-      background-color: var(--color-bg-primary);
-      color: var(--color-white);
+    &.m-calendar-day-now {
+      .m-calendar-day-text {
+        border: 1px solid var(--color-bg-primary);
+        color: var(--color-bg-primary);
+      }
+    }
+
+    &.m-calendar-day-begin {
+      .mCalendarSelectedVariants(var(--color-bg-primary), var(--color-white), transparent, var(--calendar-bg-active));
+    }
+
+    &.m-calendar-day-end {
+      .mCalendarSelectedVariants(var(--color-bg-primary), var(--color-white), var(--calendar-bg-active), transparent);
+    }
+
+    &.m-calendar-day-selected {
+      .mCalendarSelectedVariants(var(--color-bg-primary), var(--color-white), transparent, transparent);
+    }
+
+    .m-calendar-day-left,
+    .m-calendar-day-right {
+      display: flex;
+      flex: 1;
+      height: 30px;
+
+      &.disabled {
+        background-color: var(--color-white);
+      }
     }
 
     &.active {
-      background-color: var(--calendar-bg-active);
-      color: var(--color-black);
+      .mCalendarVariants(var(--calendar-bg-active), var(--color-black));
     }
 
     .mDisabledWith();
+  }
+}
+
+.mCalendarVariants(@back, @color) {
+  background-color: @back;
+  color: @color;
+}
+
+.mCalendarSelectedVariants(@back, @color, @leftBack, @rightBack) {
+  small {
+    margin-top: -5px;
+  }
+
+  .m-calendar-day-text {
+    .mCalendarVariants(@back, @color);
+  }
+
+  .m-calendar-day-left {
+    background-color: @leftBack;
+  }
+
+  .m-calendar-day-right {
+    background-color: @rightBack;
   }
 }

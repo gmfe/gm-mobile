@@ -1,42 +1,86 @@
 .m-tabs {
-  display: flex;
-  width: 100%;
-  background: var(--color-bg-white);
+  cursor: pointer;
 
-  .mBorderBottomAfterWith();
+  .m-tabs-content {
+    width: 100%;
+  }
+
+  &.m-tabs-default {
+    .mBorderBottomAfterWith();
+    .mTabsVariants();
+
+    .m-tabs-item-text {
+      padding: 5px;
+    }
+  }
+
+  &.m-tabs-label {
+    border-radius: 10px;
+    .mTabsVariants();
+
+    .m-tabs-item-text {
+      padding: 0 5px;
+      margin: 10px 0 12px 0;
+    }
+  }
+
+  &.m-tabs-capsule {
+    height: var(--size-form-height);
+    line-height: var(--size-form-height);
+
+    .m-tabs-content {
+      background-color: var(--tabs-bg-capsule);
+      border-radius: var(--size-form-height);
+
+      .m-tabs-item {
+        flex: 1;
+        position: relative;
+        color: var(--color-white);
+        transition: background-color 0.5s ease-in-out;
+
+        .m-tabs-item-text {
+          z-index: var(--z-index-header);
+        }
+
+        &.active {
+          color: var(--color-primary);
+          z-index: var(--z-index-header);
+
+          &::after {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            border-radius: var(--size-form-height);
+            background-color: var(--color-bg-white);
+          }
+        }
+      }
+    }
+  }
+}
+
+.mTabsVariants() {
+  background: var(--color-bg-white);
+  color: var(--color-third);
 
   .m-tabs-item {
-    display: block;
     flex: 1;
-    text-align: center;
     -webkit-tap-highlight-color: transparent;
 
     &:active {
-      background: var(--color-bg-white-active);
-    }
-
-    .mBorderRightBeforeWith();
-
-    &::before {
-      transform: scale(0.5);
-      transform-origin: 100% 50%;
-    }
-
-    &:last-child::before {
-      display: none;
-    }
-
-    .m-tabs-item-text {
-      padding: 10px 4px;
+      .mActiveBgWhite();
     }
 
     &.active .m-tabs-item-text {
-      display: inline-block;
-      color: var(--color-primary);
+      color: var(--color-first);
       position: relative;
+      transition: 0.2s all linear;
 
       &::after {
-        content: " ";
+        content: '';
         position: absolute;
         left: 0;
         bottom: 0;

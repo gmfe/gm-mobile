@@ -28,7 +28,7 @@ class Day extends React.Component {
     const vm = value.month()
 
     if (wm !== vm) {
-      return <Flex flex className='m-calendar-day' />
+      return <Flex className='m-calendar-day' />
     }
 
     const bv = begin && +moment(begin).startOf('day')
@@ -36,31 +36,56 @@ class Day extends React.Component {
     const v = +value.startOf('day')
 
     const cn = classNames('m-calendar-day', {
-      'm-calendar-day-label': showDateLabel,
       disabled: disabled,
+      'm-calendar-day-begin': begin && v === bv,
+      'm-calendar-day-end': end && v === ev,
+      'm-calendar-day-selected': begin && end && v === bv && v === ev,
+      'm-calendar-day-now': this.nowMountStart === +value.startOf('day'),
       active: begin && v > bv && v < ev,
-      'm-calendar-day-point': begin && end && (v === bv || v === ev),
     })
+
+    // 判断当前渲染日期是否为所在月份的 第一天/最后一天
+    const isDisabledGap = (type) => {
+      const first = moment(value).startOf('month').date()
+      const last = moment(value).endOf('month').date()
+      const { locIndex } = this.props
+
+      const day = type === 'left' ? first : last
+      const mod = type === 'left' ? 0 : 6
+
+      if (value.date() === day || locIndex % 7 === mod) {
+        return true
+      }
+      return false
+    }
 
     return (
       <Flex
-        flex
-        column
         justifyCenter
         alignCenter
-        className={cn}
         onClick={disabled ? _.noop : this.handleClick}
+        className={cn}
       >
-        {this.nowMountStart === +value.startOf('day')
-          ? getLocale('今天')
-          : value.date()}
-        {showDateLabel && (
-          <small>
-            {v === bv && v === ev && getLocale('单天')}
-            {v === bv && v !== ev && getLocale('起始')}
-            {v !== bv && v === ev && getLocale('结束')}
-          </small>
-        )}
+        <span
+          className={classNames('m-calendar-day-left', {
+            disabled: isDisabledGap('left'),
+          })}
+        />
+        <Flex column alignCenter justifyCenter className='m-calendar-day-text'>
+          {value.date()}
+          {showDateLabel && (
+            <small>
+              {v === bv && v === ev && getLocale('单天')}
+              {v === bv && v !== ev && getLocale('开始')}
+              {v !== bv && v === ev && getLocale('结束')}
+            </small>
+          )}
+        </Flex>
+        <span
+          className={classNames('m-calendar-day-right', {
+            disabled: isDisabledGap('right'),
+          })}
+        />
       </Flex>
     )
   }
@@ -74,6 +99,8 @@ Day.propTypes = {
   end: PropTypes.object,
   disabled: PropTypes.bool,
   showDateLabel: PropTypes.bool,
+  /** 当前渲染日期所在日历位置 */
+  locIndex: PropTypes.number,
 }
 
 export default Day

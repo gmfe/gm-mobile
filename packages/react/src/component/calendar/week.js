@@ -15,15 +15,9 @@ const weekDays = [
 ]
 const Week = () => {
   return (
-    <Flex>
+    <Flex className='m-calendar-week'>
       {_.map(weekDays, (v, i) => (
-        <Flex
-          flex
-          justifyCenter
-          alignCenter
-          key={i}
-          className='m-calendar-week'
-        >
+        <Flex flex justifyCenter alignCenter key={i}>
           {v}
         </Flex>
       ))}
