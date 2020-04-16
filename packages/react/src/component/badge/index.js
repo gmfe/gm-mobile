@@ -11,7 +11,6 @@ const Badge = (props) => {
     dot,
     overflowCount,
     showOverflow,
-    style,
     ...rest
   } = props
 
@@ -31,7 +30,7 @@ const Badge = (props) => {
   }
 
   return (
-    <span {...rest} className={badgeCls} style={{ ...style }}>
+    <span {...rest} className={badgeCls}>
       {children}
       <span className={textCls}>{displayText}</span>
     </span>
@@ -49,9 +48,7 @@ Badge.propTypes = {
   overflowCount: PropTypes.number,
   /** 是否显示 '+' 表示数值溢出 */
   showOverflow: PropTypes.bool,
-  /** className 样式 */
   className: PropTypes.string,
-  /** style 样式 */
   style: PropTypes.object,
 }
 
