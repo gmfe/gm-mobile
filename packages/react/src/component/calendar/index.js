@@ -18,6 +18,7 @@ class Calendar extends React.Component {
     }
   }
 
+  /** 暴露给外部使用 */
   apiScrollToBegin = () => {
     const $dom = findDOMNode(this.refCalendar).querySelector(
       '.m-calendar-day-point'
@@ -25,6 +26,8 @@ class Calendar extends React.Component {
     if ($dom) {
       $dom.scrollIntoView({
         behavior: 'smooth',
+        block: 'center',
+        inline: 'start',
       })
     }
   }
@@ -69,8 +72,12 @@ class Calendar extends React.Component {
   }
 
   getDisabled(m) {
-    // TODO 可以优化
-    let { min, max } = this.props
+    let { min, max, disabledDate } = this.props
+    // disabledDate优先
+    if (disabledDate) {
+      return disabledDate(m)
+    }
+
     min = min ? moment(min).startOf('day') : null
     max = max ? moment(max).startOf('day') : null
 
@@ -107,30 +114,41 @@ class Calendar extends React.Component {
     return arr
   }
 
+  getDayRowOfMonth(currentMoment) {
+    if (
+      moment(currentMoment).day(0).add(35, 'day').month() !==
+      currentMoment.month()
+    ) {
+      return _.groupBy(_.range(35), (v) => parseInt(v / 7))
+    }
+    return _.groupBy(_.range(42), (v) => parseInt(v / 7))
+  }
+
   render() {
     const { begin, end, showDateLabel, className, ...rest } = this.props
 
-    const itemList = _.groupBy(_.range(42), (v) => parseInt(v / 7))
-
     return (
-      <div
+      <Flex
         ref={(ref) => (this.refCalendar = ref)}
-        className={classNames('m-calendar', className)}
+        column
         {...rest}
+        className={classNames('m-calendar', className)}
       >
-        {_.map(this.computedMonthList(), (currentMoment, cmi) => {
-          const m = moment(currentMoment).day(0).add(-1, 'day')
+        <Week />
+        <Flex column className='m-calendar-content m-padding-bottom-10'>
+          {_.map(this.computedMonthList(), (currentMoment, cmi) => {
+            const m = moment(currentMoment).day(0).add(-1, 'day')
+            const dayGroup = this.getDayRowOfMonth(currentMoment)
 
-          return (
-            <div key={cmi}>
-              {cmi === 0 && <Week />}
-              <Head currentMoment={currentMoment} />
-              <div className='m-calendar-content'>
-                {_.map(itemList, (v, i) => (
-                  <Flex
-                    key={i}
-                    className='m-calendar-content-div m-padding-tb-5'
-                  >
+            return (
+              <Flex
+                column
+                key={cmi}
+                className={classNames({ 'm-margin-top-10': cmi !== 0 })}
+              >
+                <Head currentMoment={currentMoment} />
+                {_.map(dayGroup, (v, i) => (
+                  <Flex key={i} className='m-padding-top-10'>
                     {_.map(v, (value, index) => {
                       const mm = moment(m.add(1, 'day'))
 
@@ -141,6 +159,7 @@ class Calendar extends React.Component {
                           end={end}
                           currentMoment={currentMoment}
                           value={mm}
+                          locIndex={index}
                           onClick={this.handleSelectDay}
                           disabled={this.getDisabled(mm)}
                           showDateLabel={showDateLabel}
@@ -149,11 +168,11 @@ class Calendar extends React.Component {
                     })}
                   </Flex>
                 ))}
-              </div>
-            </div>
-          )
-        })}
-      </div>
+              </Flex>
+            )
+          })}
+        </Flex>
+      </Flex>
     )
   }
 }
@@ -169,15 +188,16 @@ Calendar.propTypes = {
   min: PropTypes.object,
   /** 可选日期最大值 */
   max: PropTypes.object,
-  /** 显示日期下方备注 */
+  /** 显示日期下方标签备注, 备注包括：单天，开始，结束 */
   showDateLabel: PropTypes.bool,
+  /** 自定义不可选日期 */
+  disabledDate: PropTypes.func,
   className: PropTypes.string,
   style: PropTypes.object,
 }
 
 Calendar.defaultProps = {
   onChange: _.noop,
-  showDateLabel: false,
 }
 
 export default Calendar

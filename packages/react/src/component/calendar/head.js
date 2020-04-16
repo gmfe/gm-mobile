@@ -24,17 +24,12 @@ const Head = (props) => {
   const month = currentMoment.month()
 
   return (
-    <Flex className='clearfix m-bg-back'>
-      <Flex
-        flex
-        className='m-text-16 m-text-bold m-padding-tb-5 m-padding-left-20'
-      >
-        <span>
-          {currentMoment.year()}
-          {getLocale('年')}
-        </span>
-        <span>{months[month]}</span>
-      </Flex>
+    <Flex flex className='m-calendar-head m-bg-back m-text-bold'>
+      <span>
+        {currentMoment.year()}
+        {getLocale('年')}
+      </span>
+      <span>{months[month]}</span>
     </Flex>
   )
 }

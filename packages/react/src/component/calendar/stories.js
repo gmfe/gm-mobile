@@ -23,20 +23,21 @@ export const Default = () => (
     begin={normalStore.begin}
     end={normalStore.end}
     onChange={({ begin, end }) => normalStore.setDate(begin, end)}
-    showDateLabel
   />
 )
 
 export const MinAndMax = () => (
-  <Calendar
-    ref={refCalendar}
-    min={moment().add(-1, 'month').toDate()}
-    max={moment().toDate()}
-    begin={otherStore.begin}
-    end={otherStore.end}
-    onChange={({ begin, end }) => otherStore.setDate(begin, end)}
-    showDateLabel
-  />
+  <div style={{ height: '400px' }}>
+    <Calendar
+      ref={refCalendar}
+      min={moment().add(-1, 'month').toDate()}
+      max={moment().toDate()}
+      begin={otherStore.begin}
+      end={otherStore.end}
+      onChange={({ begin, end }) => otherStore.setDate(begin, end)}
+      showDateLabel
+    />
+  </div>
 )
 
 export default {

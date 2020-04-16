@@ -3,28 +3,49 @@ import { observable } from 'mobx'
 
 import Tabs from './'
 
-const tabsList = ['模块一', '模块二', '模块三']
-const tabsContent = ['aaa', 'bbb', 'ccc']
-const store = observable({
-  tabIndex: 1,
-  setTabIndex(index) {
-    this.tabIndex = index
+const store = {
+  active: 1,
+  setActiveTab(index) {
+    this.active = index
   },
-})
+}
 
-export const Normal = () => {
+const tabsList = [
+  { value: 1, text: '模块一' },
+  { value: 2, text: '模块二' },
+  { value: 3, text: '模块三' },
+]
+const defaultStore = observable(store)
+
+export const normal = () => {
   return (
-    <div>
+    <div className='m-padding-10' style={{ height: '300px' }}>
+      default
       <Tabs
-        tabIndex={store.tabIndex}
-        list={tabsList}
-        onChange={(index) => store.setTabIndex(index)}
+        active={defaultStore.active}
+        tabs={tabsList}
+        onChange={(index) => defaultStore.setActiveTab(index)}
       />
-      <div className='m-margin-10'>{tabsContent[store.tabIndex]}</div>
+      label
+      <div className='m-bg-back m-padding-10'>
+        <Tabs
+          active={defaultStore.active}
+          tabs={tabsList}
+          onChange={(index) => defaultStore.setActiveTab(index)}
+          type='label'
+        />
+      </div>
+      capsule
+      <Tabs
+        active={defaultStore.active}
+        tabs={tabsList}
+        onChange={(index) => defaultStore.setActiveTab(index)}
+        type='capsule'
+      />
     </div>
   )
 }
 
 export default {
-  title: '布局/Tab',
+  title: '布局/Tabs',
 }

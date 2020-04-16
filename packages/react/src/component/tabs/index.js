@@ -3,34 +3,50 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import _ from 'lodash'
 
-const Tabs = ({ tabIndex, list, onChange }) => {
+import Flex from '../flex'
+
+const Tabs = (props) => {
+  const { tabs, active, onChange, className, type, ...rest } = props
+
+  const handleChange = (value) => {
+    onChange(value)
+  }
+
   return (
-    <div className='m-tabs'>
-      {_.map(list, (v, i) => (
-        <div
-          key={v}
-          className={classNames('m-tabs-item', {
-            active: tabIndex === i,
-          })}
-          onClick={() => onChange(i)}
-        >
-          <div className='m-tabs-item-text'>{v}</div>
-        </div>
-      ))}
-    </div>
+    <Flex {...rest} className={classNames(`m-tabs m-tabs-${type}`, className)}>
+      <Flex className='m-tabs-content'>
+        {_.map(tabs, (tab) => (
+          <Flex
+            justifyCenter
+            alignCenter
+            className={classNames('m-tabs-item', {
+              active: active === tab.value,
+            })}
+            key={tab.value}
+            onClick={() => handleChange(tab.value)}
+          >
+            <div className='m-tabs-item-text'>{tab.text}</div>
+          </Flex>
+        ))}
+      </Flex>
+    </Flex>
   )
 }
 
 Tabs.propTypes = {
-  /** 当前激活的 tab 索引 */
-  tabIndex: PropTypes.number.isRequired,
-  /**  数据类型: [tab1, tab2, ...] */
-  list: PropTypes.array.isRequired,
-  /** 回调函数 */
+  /** tabs数据，格式为 [{ value, text }] */
+  tabs: PropTypes.array.isRequired,
+  /** 当前选中tab对应value值 */
+  active: PropTypes.any.isRequired,
+  /** 触发回调函数 */
   onChange: PropTypes.func,
+  /** 暂定义为默认式，标签式，胶囊式 */
+  type: PropTypes.oneOf(['default', 'label', 'capsule']),
+  className: PropTypes.string,
 }
 
 Tabs.defaultProps = {
+  type: 'default',
   onChange: _.noop,
 }
 

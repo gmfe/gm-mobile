@@ -1,42 +1,75 @@
 .m-tabs {
-  display: flex;
-  width: 100%;
-  background: var(--color-bg-white);
+  cursor: pointer;
 
-  .mBorderBottomAfterWith();
-
-  .m-tabs-item {
-    display: block;
-    flex: 1;
-    text-align: center;
-    -webkit-tap-highlight-color: transparent;
-
-    &:active {
-      background: var(--color-bg-white-active);
-    }
-
-    .mBorderRightBeforeWith();
-
-    &::before {
-      transform: scale(0.5);
-      transform-origin: 100% 50%;
-    }
-
-    &:last-child::before {
-      display: none;
-    }
+  &.m-tabs-default {
+    .mBorderBottomAfterWith();
+    .mTabsVariants();
 
     .m-tabs-item-text {
-      padding: 10px 4px;
+      padding: 5px 0;
+    }
+  }
+
+  &.m-tabs-label {
+    border-radius: 10px;
+
+    .mTabsVariants();
+
+    .m-tabs-item-text {
+      padding: 0 0 2px;
+      margin: 10px 0;
+    }
+  }
+
+  &.m-tabs-capsule {
+    height: var(--size-form-height);
+    line-height: var(--size-form-height);
+
+    .m-tabs-content {
+      background-color: var(--color-bg-primary-dark);
+      border-radius: var(--size-form-height);
+
+      .m-tabs-item {
+        padding: 0 calc(var(--size-form-height) / 2);
+        position: relative;
+        color: var(--color-white);
+        border-radius: var(--size-form-height);
+        //transition: background-color 0.5s ease-in-out;
+
+        .m-tabs-item-text {
+          z-index: 1;
+        }
+
+        &.active {
+          color: var(--color-primary);
+          background-color: var(--color-bg-white);
+        }
+      }
+    }
+  }
+}
+
+.mTabsVariants() {
+  background: var(--color-bg-white);
+  color: var(--color-third);
+
+  .m-tabs-content {
+    width: 100%;
+  }
+
+  .m-tabs-item {
+    flex: 1;
+
+    &:active {
+      .mActiveBgWhite();
     }
 
     &.active .m-tabs-item-text {
-      display: inline-block;
-      color: var(--color-primary);
+      color: var(--color-first);
       position: relative;
 
       &::after {
-        content: " ";
+        content: '';
         position: absolute;
         left: 0;
         bottom: 0;
