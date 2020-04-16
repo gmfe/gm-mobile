@@ -4,7 +4,7 @@ import Storage from './index'
 export const normal = () => <div />
 
 export default {
-  title: 'Storage',
+  title: '其他/Storage',
   parameters: {
     info: {
       text: `

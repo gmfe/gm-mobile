@@ -32,5 +32,5 @@ export const normal = () => {
 }
 
 export default {
-  title: 'Uploader',
+  title: '表单/Uploader',
 }

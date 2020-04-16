@@ -18,5 +18,5 @@ export const Normal = () => (
 )
 
 export default {
-  title: 'Keyboard',
+  title: '表单/Keyboard',
 }

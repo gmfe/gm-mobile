@@ -38,5 +38,5 @@ export const Normal = () => {
 }
 
 export default {
-  title: 'InputNumber',
+  title: '表单/InputNumber',
 }

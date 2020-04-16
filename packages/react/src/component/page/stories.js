@@ -42,5 +42,5 @@ export const normal = () => {
 }
 
 export default {
-  title: 'Page',
+  title: '布局/Page',
 }

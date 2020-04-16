@@ -122,5 +122,5 @@ export const form = () => {
 }
 
 export default {
-  title: 'Cell',
+  title: '表单/Cell',
 }

@@ -23,7 +23,7 @@ const Panel = ({ title, link, top, bottom, className, children }) => {
 }
 
 Panel.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   /** 提供 link，则 title 可点击到达 link */
   link: PropTypes.string,
   /** 贴上边，左上 右上 没有圆角 */

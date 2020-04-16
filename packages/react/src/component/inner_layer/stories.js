@@ -28,5 +28,5 @@ export const Normal = () => {
 }
 
 export default {
-  title: 'InnerLayer',
+  title: '浮层/InnerLayer',
 }

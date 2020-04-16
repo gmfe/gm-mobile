@@ -36,5 +36,5 @@ export const normal = () => (
 )
 
 export default {
-  title: 'Checkbox',
+  title: '表单/Checkbox',
 }

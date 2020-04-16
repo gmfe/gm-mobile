@@ -6,5 +6,5 @@ export const normal = () => {
 }
 
 export default {
-  title: 'FlipNumber',
+  title: '布局/FlipNumber',
 }

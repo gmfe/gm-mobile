@@ -41,5 +41,5 @@ export const normal = () => {
 }
 
 export default {
-  title: 'Toast',
+  title: '浮层/Toast',
 }

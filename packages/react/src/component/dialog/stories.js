@@ -78,5 +78,5 @@ export const normal = () => {
 }
 
 export default {
-  title: 'Dialog',
+  title: '浮层/Dialog',
 }

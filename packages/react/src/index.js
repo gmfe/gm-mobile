@@ -30,12 +30,12 @@ import Square from './component/square'
 import Tabs from './component/tabs'
 import FlipNumber from './component/flip_number'
 import Panel from './component/panel'
+import Loading from './component/loading'
 
 // 浮层
 import LayerRoot from './component/layer_root'
 import NProgress from './component/nprogress'
 import InnerLayer from './component/inner_layer'
-import Loading from './component/loading'
 import Toast from './component/toast'
 import Dialog from './component/dialog'
 import Mask from './component/mask'
@@ -76,6 +76,7 @@ const Alert = Dialog.alert
 const Confirm = Dialog.confirm
 
 export {
+  // 表单
   ScrollIntoView,
   CursorFix,
   Button,
@@ -109,11 +110,11 @@ export {
   Square,
   Tabs,
   Panel,
+  Loading,
   // 浮层
   LayerRoot,
   InnerLayer,
   NProgress,
-  Loading,
   Toast,
   Mask,
   Popup,

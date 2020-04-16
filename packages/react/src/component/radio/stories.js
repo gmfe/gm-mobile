@@ -39,5 +39,5 @@ export const Normal = () => (
 )
 
 export default {
-  title: 'Radio',
+  title: '表单/Radio',
 }

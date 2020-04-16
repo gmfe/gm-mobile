@@ -26,5 +26,5 @@ export const Normal = () => {
 }
 
 export default {
-  title: 'Tab',
+  title: '布局/Tab',
 }

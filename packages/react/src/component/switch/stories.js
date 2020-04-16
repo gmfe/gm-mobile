@@ -37,5 +37,5 @@ export const normal = () => {
 }
 
 export default {
-  title: 'Switch',
+  title: '表单/Switch',
 }

@@ -23,5 +23,5 @@ export const font = () => {
 }
 
 export default {
-  title: 'Other/Design',
+  title: '开发/Design',
 }

@@ -21,5 +21,5 @@ export const normal = () => (
 )
 
 export default {
-  title: 'NProgress',
+  title: '浮层/NProgress',
 }

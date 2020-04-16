@@ -39,5 +39,5 @@ export const normal = () => {
 }
 
 export default {
-  title: 'Popup',
+  title: '浮层/Popup',
 }

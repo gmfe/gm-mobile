@@ -15,5 +15,5 @@ export const normal = () => {
 }
 
 export default {
-  title: 'Header',
+  title: '布局/Header',
 }
