@@ -29,6 +29,7 @@ import { Search, SearchPage, FakeSearch } from './component/search'
 import Square from './component/square'
 import Tabs from './component/tabs'
 import FlipNumber from './component/flip_number'
+import Panel from './component/panel'
 
 // 浮层
 import LayerRoot from './component/layer_root'
@@ -107,6 +108,7 @@ export {
   SearchPage,
   Square,
   Tabs,
+  Panel,
   // 浮层
   LayerRoot,
   InnerLayer,
