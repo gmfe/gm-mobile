@@ -1,3 +1,4 @@
+import React from 'react'
 // 表单
 import ScrollIntoView from './component/scroll_into_view'
 import CursorFix from './component/cursor_fix'
@@ -72,6 +73,17 @@ import CSSVariable from './css_variable'
 // import ProgressBar from './component/progress'
 // import TimeSelect from './component/time_select'
 
+// 假的
+const Price = () => {
+  return (
+    <span>todo</span>
+  )
+}
+
+Price.setUnit = () => {}
+Price.setCurrency = () => {}
+Price.setCurrencyList = () => {}
+
 const Alert = Dialog.alert
 const Confirm = Dialog.confirm
 
@@ -124,6 +136,7 @@ export {
   // 其他
   CSSVariable,
   Storage,
+  Price,
   // Slider,
   // SliderLess,
   // LazyImg,
@@ -135,7 +148,6 @@ export {
   // Tooltip,
   // PreviewImage,
 
-  // Price,
   // Counter,
   // Divider,
 
