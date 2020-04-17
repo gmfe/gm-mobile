@@ -6,6 +6,8 @@ Page 新增 top
 
 新增 Badge
 
+新增 InputKeyboard 数字键盘
+
 ## breaking change
 
 Dialog 移除 show

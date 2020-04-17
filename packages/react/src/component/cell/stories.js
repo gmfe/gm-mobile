@@ -3,7 +3,7 @@ import Cells from './cells'
 import Cell from './cell'
 import CellsForm from './cells_form'
 import CellForm from './cell_form'
-import { Input, InputNumber, InputPassword } from '../input'
+import { Input, InputPassword } from '../input'
 import Textarea from '../textarea'
 import { ButtonTime } from '../button'
 import SVGSearch from '../../../svg/search.svg'
@@ -81,7 +81,8 @@ export const form = () => {
           />
         </CellForm>
         <CellForm label='年龄' labelWidth='100px'>
-          <InputNumber
+          <Input
+            type='number'
             value={store.age}
             onChange={(e) => {
               store.setValue('age', e.target.value)
