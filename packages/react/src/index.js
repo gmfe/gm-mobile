@@ -75,14 +75,14 @@ import CSSVariable from './css_variable'
 
 // 假的
 const Price = () => {
-  return (
-    <span>todo</span>
-  )
+  return <span>todo</span>
 }
 
 Price.setUnit = () => {}
 Price.setCurrency = () => {}
 Price.setCurrencyList = () => {}
+Price.format = () => 'todo'
+Price.getUnit = () => 'todo'
 
 const Alert = Dialog.alert
 const Confirm = Dialog.confirm
