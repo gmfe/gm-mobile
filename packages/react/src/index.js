@@ -15,11 +15,10 @@ import {
   SelectPicker,
 } from './component/picker'
 import Calendar from './component/calendar'
-import InputNumber from './component/input_number'
 import Keyboard from './component/keyboard'
 import Checkbox from './component/checkbox'
 import { LetterIndex, LetterIndexMultiple } from './component/letter_index'
-import Input from './component/input'
+import { Input, InputPassword, InputNumber } from './component/input'
 import Radio from './component/radio'
 
 // 布局
@@ -95,6 +94,8 @@ export {
   Switch,
   Checkbox,
   Input,
+  InputPassword,
+  InputNumber,
   Uploader,
   Cells,
   Cell,
@@ -106,7 +107,6 @@ export {
   ConfirmCouplingPicker,
   SelectPicker,
   Calendar,
-  InputNumber,
   Keyboard,
   FlipNumber,
   LetterIndex,

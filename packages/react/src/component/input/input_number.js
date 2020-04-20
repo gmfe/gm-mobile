@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 import Big from 'big.js'
+import classNames from 'classnames'
 
 class InputNumber extends React.Component {
   constructor(props) {
@@ -87,11 +88,20 @@ class InputNumber extends React.Component {
   }
 
   render() {
-    const { value, onChange, max, min, precision, ...rest } = this.props
+    const {
+      value,
+      onChange,
+      max,
+      min,
+      precision,
+      className,
+      ...rest
+    } = this.props
 
     return (
       <input
         {...rest}
+        className={classNames('m-input', className)}
         type='number'
         value={this.state.value}
         onChange={this.handleChange}
@@ -109,6 +119,8 @@ InputNumber.propTypes = {
   min: PropTypes.number,
   /** 精确度，保留几位小数, 默认为2 */
   precision: PropTypes.number,
+  className: PropTypes.string,
+  style: PropTypes.object,
 }
 
 InputNumber.defaultProps = {

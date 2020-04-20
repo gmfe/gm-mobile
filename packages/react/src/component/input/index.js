@@ -1,22 +1,5 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
+import Input from './input'
+import InputPassword from './input_password'
+import InputNumber from './input_number'
 
-class Input extends React.Component {
-  render() {
-    const { className, ...rest } = this.props
-
-    return <input {...rest} className={classNames('m-input', className)} />
-  }
-}
-
-Input.propTypes = {
-  value: PropTypes.string,
-  onChange: PropTypes.func,
-  placeholder: PropTypes.string,
-  autoFocus: PropTypes.bool,
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
-
-export default Input
+export { Input, InputPassword, InputNumber }
