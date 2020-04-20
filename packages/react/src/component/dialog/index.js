@@ -5,7 +5,7 @@ import LayerRoot from '../layer_root'
 import _ from 'lodash'
 import Mask from '../mask'
 import Flex from '../flex'
-import Input from '../input'
+import Input from '../input/input'
 
 const DialogStatics = {
   render(options, type) {

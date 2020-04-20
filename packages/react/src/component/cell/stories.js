@@ -3,7 +3,7 @@ import Cells from './cells'
 import Cell from './cell'
 import CellsForm from './cells_form'
 import CellForm from './cell_form'
-import Input from '../input'
+import { Input, InputNumber, InputPassword } from '../input'
 import SVGSearch from '../../../svg/search.svg'
 import { observable } from 'mobx'
 
@@ -44,7 +44,7 @@ export const normal = () => {
 const store = observable({
   value: '',
   age: '',
-  gender: '',
+  password: '',
   setValue(field, value) {
     this[field] = value
   },
@@ -65,8 +65,7 @@ export const form = () => {
           />
         </CellForm>
         <CellForm label='年龄' labelWidth='100px'>
-          <Input
-            type='number'
+          <InputNumber
             value={store.age}
             onChange={(e) => {
               store.setValue('age', e.target.value)
@@ -74,14 +73,13 @@ export const form = () => {
             placeholder='请输入年龄'
           />
         </CellForm>
-        <CellForm label='年龄' labelWidth='100px'>
-          <Input
-            type='number'
-            value={store.age}
+        <CellForm label='密码' labelWidth='100px'>
+          <InputPassword
+            value={store.password}
             onChange={(e) => {
-              store.setValue('age', e.target.value)
+              store.setValue('password', e.target.value)
             }}
-            placeholder='请输入年龄'
+            placeholder='请输入密码'
           />
         </CellForm>
       </CellsForm>

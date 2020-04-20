@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
-import Input from '../input'
+import Input from '../input/input'
 import SVGSearch from '../../../svg/search.svg'
 import Button from '../button'
 
