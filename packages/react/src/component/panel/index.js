@@ -6,10 +6,14 @@ import SVGRight from '../../../svg/right-small.svg'
 const Panel = ({ title, link, top, bottom, className, children }) => {
   return (
     <div
-      className={classNames('m-panel', {
-        'm-panel-top': top,
-        'm-panel-bottom': bottom,
-      })}
+      className={classNames(
+        'm-panel',
+        {
+          'm-panel-top': top,
+          'm-panel-bottom': bottom,
+        },
+        className
+      )}
     >
       {title && (
         <a href={link} className='m-panel-title m-flex m-flex-align-center'>
