@@ -23,6 +23,7 @@ import Radio from './component/radio'
 
 // 布局
 import Flex from './component/flex'
+import Divider from './component/divider'
 import Page from './component/page'
 import Header from './component/header'
 import { Search, SearchPage, FakeSearch } from './component/search'
@@ -61,8 +62,6 @@ import CSSVariable from './css_variable'
 
 // import Price from './component/price'
 // import Counter from './component/counter'
-
-// import Divider from './component/divider'
 
 // import { setLocale } from './locales'
 
@@ -114,6 +113,7 @@ export {
   Radio,
   // 布局
   Flex,
+  Divider,
   Page,
   Header,
   Search,
@@ -149,7 +149,6 @@ export {
   // PreviewImage,
 
   // Counter,
-  // Divider,
 
   // List,
 
