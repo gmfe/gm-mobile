@@ -19,6 +19,18 @@ export const normal = () => {
       <Panel title='标题' link={'https://www.baidu.com'}>
         panel
       </Panel>
+      <div className='m-gap-5' />
+      <Panel title='业务自己做上border，不拉通'>
+        <div className='m-border-1px-top-before m-margin-lr-15 m-padding-tb-10'>
+          lalalaal
+        </div>
+      </Panel>
+      <div className='m-gap-5' />
+      <Panel title='业务自己做上border，拉通'>
+        <div className='m-border-1px-top-before m-padding-lr-15 m-padding-tb-10'>
+          lalalaal
+        </div>
+      </Panel>
     </div>
   )
 }
