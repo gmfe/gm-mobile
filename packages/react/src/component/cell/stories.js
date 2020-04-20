@@ -82,6 +82,15 @@ export const form = () => {
             placeholder='请输入密码'
           />
         </CellForm>
+        <CellForm label='密码' labelWidth='100px' error='填错啦'>
+          <InputPassword
+            value={store.password}
+            onChange={(e) => {
+              store.setValue('password', e.target.value)
+            }}
+            placeholder='请输入密码'
+          />
+        </CellForm>
       </CellsForm>
       <CellsForm title='带标题的情况'>
         <CellForm label='名字' labelWidth='100px'>
@@ -92,16 +101,6 @@ export const form = () => {
               store.setValue('value', e.target.value)
             }}
             placeholder='请输入名字'
-          />
-        </CellForm>
-        <CellForm label='年龄' labelWidth='100px'>
-          <Input
-            type='number'
-            value={store.age}
-            onChange={(e) => {
-              store.setValue('age', e.target.value)
-            }}
-            placeholder='请输入年龄'
           />
         </CellForm>
         <CellForm label='年龄' labelWidth='100px'>
