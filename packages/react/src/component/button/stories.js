@@ -56,7 +56,9 @@ export const normal = () => (
     </div>
     block
     <div>
-      <Button block>默认</Button>
+      <Button block type='primary'>
+        主色
+      </Button>
     </div>
   </div>
 )
