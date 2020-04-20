@@ -147,7 +147,6 @@ export const form = () => {
             placeholder='请输入年龄'
           />
         </CellForm>
-        <CellForm label='收货地址'></CellForm>
       </CellsForm>
     </div>
   )
