@@ -4,6 +4,7 @@ import Cell from './cell'
 import CellsForm from './cells_form'
 import CellForm from './cell_form'
 import { Input, InputNumber, InputPassword } from '../input'
+import Textarea from '../textarea'
 import SVGSearch from '../../../svg/search.svg'
 import { observable } from 'mobx'
 
@@ -45,6 +46,9 @@ const store = observable({
   value: '',
   age: '',
   password: '',
+  area: '',
+  position: '',
+  address: '',
   setValue(field, value) {
     this[field] = value
   },
@@ -54,7 +58,7 @@ export const form = () => {
   return (
     <div className='m-padding-tb-10'>
       <CellsForm>
-        <CellForm label='名字' labelWidth='100px'>
+        <CellForm required label='名字' labelWidth='100px'>
           <Input
             type='text'
             value={store.value}
@@ -73,7 +77,7 @@ export const form = () => {
             placeholder='请输入年龄'
           />
         </CellForm>
-        <CellForm label='密码' labelWidth='100px'>
+        <CellForm label='密码' labelWidth='100px' error='填错啦'>
           <InputPassword
             value={store.password}
             onChange={(e) => {
@@ -82,13 +86,43 @@ export const form = () => {
             placeholder='请输入密码'
           />
         </CellForm>
-        <CellForm label='密码' labelWidth='100px' error='填错啦'>
-          <InputPassword
-            value={store.password}
+        <CellForm
+          label='地理标签'
+          labelWidth='100px'
+          access
+          right={<div>请选择</div>}
+          onClick={() => {
+            alert('push 地理标签页面')
+          }}
+        >
+          {store.area ? (
+            <div>{store.area}</div>
+          ) : (
+            <div className='m-text-placeholder'>省市区县、乡镇</div>
+          )}
+        </CellForm>
+        <CellForm
+          label='商户位置'
+          labelWidth='100px'
+          access
+          right={<div>定位</div>}
+          onClick={() => {
+            alert('push 商户位置页面')
+          }}
+        >
+          {store.position ? (
+            <div>{store.position}</div>
+          ) : (
+            <div className='m-text-placeholder'>省市区县、乡镇</div>
+          )}
+        </CellForm>
+        <CellForm label='收货地址' labelWidth='100px'>
+          <Textarea
+            value={store.address}
             onChange={(e) => {
-              store.setValue('password', e.target.value)
+              store.setValue('address', e.target.value)
             }}
-            placeholder='请输入密码'
+            placeholder='请填写详细地址便于联系，如：深圳南山科技园腾讯大厦'
           />
         </CellForm>
       </CellsForm>
@@ -113,6 +147,7 @@ export const form = () => {
             placeholder='请输入年龄'
           />
         </CellForm>
+        <CellForm label='收货地址'></CellForm>
       </CellsForm>
     </div>
   )

@@ -7,6 +7,7 @@ const CellForm = ({
   label,
   labelWidth,
   error,
+  required,
   className,
   children,
   ...rest
@@ -17,6 +18,7 @@ const CellForm = ({
         {...rest}
         left={
           <div className='m-cell-form-label' style={{ width: labelWidth }}>
+            {required && <span className='m-text-red'>*</span>}
             {label}
           </div>
         }
@@ -33,6 +35,7 @@ CellForm.propTypes = {
   label: PropTypes.string.isRequired,
   labelWidth: PropTypes.string.isRequired,
   error: PropTypes.string,
+  required: PropTypes.bool,
   className: PropTypes.string,
   style: PropTypes.object,
 }

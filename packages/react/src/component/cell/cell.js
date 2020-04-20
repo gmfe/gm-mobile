@@ -26,7 +26,6 @@ const Cell = ({
 
   return (
     <Flex
-      alignCenter
       {...rest}
       className={classNames(
         'm-cell',
