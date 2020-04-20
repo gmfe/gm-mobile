@@ -2,7 +2,7 @@ import React from 'react'
 // 表单
 import ScrollIntoView from './component/scroll_into_view'
 import CursorFix from './component/cursor_fix'
-import Button from './component/button'
+import { Button, ButtonTime } from './component/button'
 import Switch from './component/switch'
 import Uploader from './component/uploader'
 import { Cells, Cell, CellForm } from './component/cell'
@@ -90,6 +90,7 @@ export {
   ScrollIntoView,
   CursorFix,
   Button,
+  ButtonTime,
   Switch,
   Checkbox,
   Input,

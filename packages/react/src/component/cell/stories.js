@@ -5,6 +5,7 @@ import CellsForm from './cells_form'
 import CellForm from './cell_form'
 import { Input, InputNumber, InputPassword } from '../input'
 import Textarea from '../textarea'
+import { ButtonTime } from '../button'
 import SVGSearch from '../../../svg/search.svg'
 import { observable } from 'mobx'
 
@@ -49,6 +50,7 @@ const store = observable({
   area: '',
   position: '',
   address: '',
+  code: '',
   setValue(field, value) {
     this[field] = value
   },
@@ -123,6 +125,28 @@ export const form = () => {
               store.setValue('address', e.target.value)
             }}
             placeholder='请填写详细地址便于联系，如：深圳南山科技园腾讯大厦'
+          />
+        </CellForm>
+        <CellForm
+          label='短信验证'
+          labelWidth='100px'
+          right={
+            <ButtonTime
+              mini
+              type='primary'
+              onClick={() => {
+                alert('do 发送验证码')
+              }}
+            >
+              重新发送
+            </ButtonTime>
+          }
+        >
+          <Input
+            value={store.code}
+            onChange={(e) => {
+              store.setValue('code', e.target.value)
+            }}
           />
         </CellForm>
       </CellsForm>

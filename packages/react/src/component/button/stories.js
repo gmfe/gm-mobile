@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from './'
+import { Button, ButtonTime } from './'
 
 function handleClick() {
   console.log('click')
@@ -81,6 +81,21 @@ export const loading = () => (
     </div>
   </div>
 )
+
+export const buttonTime = () => {
+  return (
+    <ButtonTime
+      mini
+      time={10}
+      type='primary'
+      onClick={() => {
+        console.log('get')
+      }}
+    >
+      获取验证码
+    </ButtonTime>
+  )
+}
 
 export default {
   title: '表单/Button',
