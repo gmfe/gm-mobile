@@ -60,12 +60,22 @@ export const form = () => {
   return (
     <div className='m-padding-tb-10'>
       <CellsForm>
+        <CellForm required>
+          <Input
+            type='text'
+            value={store.username}
+            onChange={(e) => {
+              store.setValue('username', e.target.value)
+            }}
+            placeholder='请输入用户名'
+          />
+        </CellForm>
         <CellForm required label='名字' labelWidth='100px'>
           <Input
             type='text'
-            value={store.value}
+            value={store.name}
             onChange={(e) => {
-              store.setValue('value', e.target.value)
+              store.setValue('name', e.target.value)
             }}
             placeholder='请输入名字'
           />
