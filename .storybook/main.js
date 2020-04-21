@@ -54,7 +54,6 @@ const webpackFinal = (config) => {
 }
 
 module.exports = {
-  addons: ['@storybook/addon-storysource/register'],
   stories: [
     '../packages/react/src/**/*stories.js',
     '../packages/locales/src/**/*stories.js',
