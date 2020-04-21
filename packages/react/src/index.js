@@ -29,9 +29,7 @@ import Header from './component/header'
 import { Search, SearchPage, FakeSearch } from './component/search'
 import Square from './component/square'
 import Tabs from './component/tabs'
-import FlipNumber from './component/flip_number'
 import Panel from './component/panel'
-import Loading from './component/loading'
 
 // 浮层
 import LayerRoot from './component/layer_root'
@@ -43,8 +41,10 @@ import Mask from './component/mask'
 import Popup from './component/popup'
 
 // 基础组件
+import FlipNumber from './component/flip_number'
 import Image from './component/image'
 import Label from './component/label'
+import Loading from './component/loading'
 
 // 其他
 import Storage from './component/storage'
@@ -112,7 +112,6 @@ export {
   SelectPicker,
   Calendar,
   Keyboard,
-  FlipNumber,
   LetterIndex,
   LetterIndexMultiple,
   Radio,
@@ -127,7 +126,6 @@ export {
   Square,
   Tabs,
   Panel,
-  Loading,
   // 浮层
   LayerRoot,
   InnerLayer,
@@ -139,8 +137,10 @@ export {
   Alert,
   Confirm,
   // 基础组件
+  FlipNumber,
   Image,
   Label,
+  Loading,
   // 其他
   CSSVariable,
   Storage,
