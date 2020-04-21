@@ -17,10 +17,12 @@ const CellForm = ({
       <Cell
         {...rest}
         left={
-          <div className='m-cell-form-label' style={{ width: labelWidth }}>
-            {required && <span className='m-text-red'>*</span>}
-            {label}
-          </div>
+          label ? (
+            <div className='m-cell-form-label' style={{ width: labelWidth }}>
+              {required && <span className='m-text-red'>*</span>}
+              {label}
+            </div>
+          ) : null
         }
         className={classNames('m-cell-form', className)}
       >
@@ -32,9 +34,13 @@ const CellForm = ({
 }
 
 CellForm.propTypes = {
-  label: PropTypes.string.isRequired,
-  labelWidth: PropTypes.string.isRequired,
+  /** 标签 */
+  label: PropTypes.string,
+  /** 标签宽度 */
+  labelWidth: PropTypes.string,
+  /** 错误信息显示 */
   error: PropTypes.string,
+  /** 必填项 */
   required: PropTypes.bool,
   className: PropTypes.string,
   style: PropTypes.object,
