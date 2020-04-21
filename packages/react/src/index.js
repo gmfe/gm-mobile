@@ -44,6 +44,7 @@ import Popup from './component/popup'
 
 // 基础组件
 import Image from './component/image'
+import Label from './component/label'
 
 // 其他
 import Storage from './component/storage'
@@ -139,6 +140,7 @@ export {
   Confirm,
   // 基础组件
   Image,
+  Label,
   // 其他
   CSSVariable,
   Storage,
