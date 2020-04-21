@@ -5,7 +5,7 @@ import CursorFix from './component/cursor_fix'
 import { Button, ButtonTime } from './component/button'
 import Switch from './component/switch'
 import Uploader from './component/uploader'
-import { Cells, Cell, CellForm } from './component/cell'
+import { Cells, Cell, CellForm, CellsForm } from './component/cell'
 import Textarea from './component/textarea'
 import {
   Picker,
@@ -100,6 +100,7 @@ export {
   Cells,
   Cell,
   CellForm,
+  CellsForm,
   Textarea,
   Picker,
   ConfirmPicker,
