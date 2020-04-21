@@ -1,105 +1,80 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import _ from 'lodash'
 import Slide from '../slider/index'
 import Flex from '../flex/index'
-import LayoutRoot from '../layout_root'
+import LayerRoot from '../layer_root'
+import Image from '../image'
 
-let PreviewImageStatics = {
-  render (options) {
+const PreviewImageStatics = {
+  render(options) {
     options.onHide = () => {
       PreviewImageStatics.hide()
     }
 
-    LayoutRoot.renderWith(LayoutRoot.TYPE.POPUP, <PreviewImage {...options} show/>)
+    LayerRoot.renderWith(LayerRoot.TYPE.POPUP, <PreviewImage {...options} />)
   },
 
-  hide () {
-    LayoutRoot.hideWith(LayoutRoot.TYPE.POPUP)
-  }
+  hide() {
+    LayerRoot.hideWith(LayerRoot.TYPE.POPUP)
+  },
 }
 
-class PreviewImage extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      index: 0
-    }
-    this.handleChange = ::this.handleChange
-    this.handleClose = ::this.handleClose
+const PreviewImage = ({ images, defaultIndex, className, onHide, ...rest }) => {
+  const [index, setIndex] = useState(0)
+
+  const handleChange = (index) => {
+    setIndex(index)
   }
 
-  handleChange (index) {
-    this.setState({
-      index: index
-    })
+  const handleClose = () => {
+    onHide()
   }
 
-  handleClose (e) {
-    e.preventDefault()
-    this.props.onHide()
-  }
-
-  render () {
-    const {
-      className,
-      images,
-      show,
-      onHide, // eslint-disable-line
-      defaultIndex,
-      ...rest
-    } = this.props
-
-    if (!show) {
-      return null
-    }
-
-    return (
-      <Flex
-        column
-        justifyCenter
-        {...rest}
-        className={classNames('preview-image', className)}
-        onClick={this.handleClose}
-      >
-        <div className='preview-image-close'>X</div>
-        <div className='preview-image-inner'>
-          {images.length === 1 ? (
-            <Flex className='flex-align-center flex-justify-center'>
-              <img src={images[0].url}/>
-            </Flex>
-          ) : (
-            <Slide defaultIndex={defaultIndex} onChange={this.handleChange}>
-              {_.map(images, (v, i) => (
-                <div key={i + v.url} className='flex-align-center flex-justify-center'>
-                  <img src={v.url}/>
-                </div>
-              ))}
-            </Slide>
-          )}
-          <div className='text-center preview-image-name' style={{ color: '#555' }}>
-            {images[this.state.index] && images[this.state.index].name}
-          </div>
+  return (
+    <Flex
+      {...rest}
+      column
+      justifyCenter
+      onClick={handleClose}
+      className={classNames('m-preview-image', className)}
+    >
+      <div className='m-preview-image-close'>X</div>
+      <Flex column justifyCenter className='m-preview-image-inner'>
+        {images.length === 1 ? (
+          <Image src={images[0].url} objectFix='contain' />
+        ) : (
+          <Slide defaultIndex={defaultIndex} onChange={handleChange}>
+            {_.map(images, (v, i) => (
+              <Image key={i} src={v.url} objectFix='contain' />
+            ))}
+          </Slide>
+        )}
+        <div className='m-text-center m-text-white m-text-16'>
+          {images[index] && images[index].name}
         </div>
       </Flex>
-    )
-  }
+    </Flex>
+  )
 }
 
 Object.assign(PreviewImage, PreviewImageStatics)
 
 PreviewImage.defaultProps = {
-  show: false,
   onHide: _.noop,
-  defaultIndex: 0
+  defaultIndex: 0,
 }
 
 PreviewImage.propTypes = {
-  images: PropTypes.array,
-  show: PropTypes.bool,
+  /** 图片数组 [{url, name}] */
+  images: PropTypes.array.isRequired,
+  /** 关闭预览回调 */
   onHide: PropTypes.func,
-  defaultIndex: PropTypes.number
+  /** 多图片预览时，默认预览的图片下标 */
+  defaultIndex: PropTypes.number,
+  className: PropTypes.string,
+  style: PropTypes.object,
 }
 
 export default PreviewImage

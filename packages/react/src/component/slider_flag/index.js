@@ -5,13 +5,16 @@ import _ from 'lodash'
 import Flex from '../flex/index'
 
 class SliderFlag extends React.Component {
-  render () {
+  render() {
     const { count, index, type, flag, activeStyle } = this.props
     return (
-      <Flex justifyCenter className={classNames('slider-flag', {
-        'slider-flag-line': type === 'line',
-        'slider-flag-inner': flag === 'inner'
-      })}>
+      <Flex
+        justifyCenter
+        className={classNames('slider-flag', {
+          'slider-flag-line': type === 'line',
+          'slider-flag-inner': flag === 'inner',
+        })}
+      >
         {_.map(_.range(count), (value, i) => (
           <span
             className={classNames({ active: index === i })}
@@ -29,12 +32,12 @@ SliderFlag.propTypes = {
   flag: PropTypes.oneOf(['default', 'inner']),
   count: PropTypes.number.isRequired,
   index: PropTypes.number.isRequired,
-  activeStyle: PropTypes.object
+  activeStyle: PropTypes.object,
 }
 
 SliderFlag.defaultProps = {
   type: 'dot',
-  flag: 'default'
+  flag: 'default',
 }
 
 export default SliderFlag

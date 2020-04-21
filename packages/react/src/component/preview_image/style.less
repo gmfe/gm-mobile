@@ -1,5 +1,5 @@
-.preview-image {
-  z-index: @previewImageZIndex;
+.m-preview-image {
+  z-index: var(--z-index-previewImage);
   position: absolute;
   top: 0;
   left: 0;
@@ -7,16 +7,16 @@
   height: 100%;
   background: black;
 
-  .preview-image-inner {
+  .m-preview-image-inner {
     width: 100%;
 
     img {
       max-width: 100%;
-      max-height: ~"calc(100vh - 150px)";
+      max-height: calc(100vh - 150px);
     }
   }
 
-  .preview-image-close {
+  .m-preview-image-close {
     color: white;
     position: absolute;
     opacity: 0.5;
@@ -32,10 +32,10 @@
 
   .slider-flag {
     span {
-      background: grey;
+      background: var(--color-desc);
 
       &.active {
-        background: @borderColor;
+        background: var(--color-border);
       }
     }
   }

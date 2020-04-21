@@ -5,10 +5,10 @@ import classNames from 'classnames'
 import _ from 'lodash'
 import Flex from '../flex/index'
 import SliderFlag from '../slider_flag'
-import { timeSync } from 'gm-util'
+import timeSync from './timeSync'
 
 class Slider extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       count: 1,
@@ -16,7 +16,7 @@ class Slider extends React.Component {
       touchObject: null,
       dragging: false,
       transition: false,
-      x: 0
+      x: 0,
     }
 
     this.swipeStart = ::this.swipeStart
@@ -30,18 +30,18 @@ class Slider extends React.Component {
     this.refSlider = null
   }
 
-  static getDerivedStateFromProps (props, state) {
+  static getDerivedStateFromProps(props, state) {
     const count = React.Children.count(props.children)
     if (state.count !== count) {
       return {
         count,
-        x: 0
+        x: 0,
       }
     }
     return null
   }
 
-  doAutoSlider () {
+  doAutoSlider() {
     let { dragging, x, sliderWidth, count } = this.state
     if (dragging) {
       return
@@ -59,13 +59,13 @@ class Slider extends React.Component {
       transition: true,
       dragging: false,
       touchObject: null,
-      x
+      x,
     })
 
     this.doChange(x)
   }
 
-  componentDidMount () {
+  componentDidMount() {
     const sliderWidth = this.setSliderWidth()
     this.setCount()
     this.setDefaultX(sliderWidth)
@@ -81,45 +81,45 @@ class Slider extends React.Component {
     window.addEventListener('resize', this.setSliderWidth)
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     timeSync.remove(this.slideTimeKey, this.doAutoSlider)
     window.removeEventListener('resize', this.setSliderWidth)
   }
 
-  setDefaultX (sliderWidth) {
+  setDefaultX(sliderWidth) {
     const { defaultIndex } = this.props
     this.setState({
-      x: -defaultIndex * sliderWidth
+      x: -defaultIndex * sliderWidth,
     })
   }
 
-  setCount () {
+  setCount() {
     this.setState({
-      count: _.isArray(this.props.children) ? this.props.children.length : 1
+      count: _.isArray(this.props.children) ? this.props.children.length : 1,
     })
   }
 
-  setSliderWidth () {
+  setSliderWidth() {
     const slider = ReactDOM.findDOMNode(this.refSlider)
     this.setState({
-      sliderWidth: slider.offsetWidth
+      sliderWidth: slider.offsetWidth,
     })
     return slider.offsetWidth
   }
 
-  getX (event) {
+  getX(event) {
     return event.touches !== undefined ? event.touches[0].pageX : event.clientX
   }
 
-  swipeStart (event) {
+  swipeStart(event) {
     // event.preventDefault();
     this.setState({
       dragging: true,
       transition: false,
       touchObject: {
         startX: this.getX(event),
-        x: this.getX(event)
-      }
+        x: this.getX(event),
+      },
     })
 
     // 复杂了
@@ -129,18 +129,18 @@ class Slider extends React.Component {
     }
   }
 
-  swipeMove (event) {
+  swipeMove(event) {
     // event.preventDefault();
     this.setState({
       dragging: true,
       transition: false,
       touchObject: Object.assign({}, this.state.touchObject, {
-        x: this.getX(event)
-      })
+        x: this.getX(event),
+      }),
     })
   }
 
-  swipeEnd () {
+  swipeEnd() {
     const { enableAutoSlide } = this.props
     let { touchObject, x, sliderWidth, count } = this.state
 
@@ -170,7 +170,7 @@ class Slider extends React.Component {
         transition: true,
         dragging: false,
         touchObject: null,
-        x
+        x,
       })
 
       this.doChange(x)
@@ -178,19 +178,19 @@ class Slider extends React.Component {
       this.setState({
         transition: true,
         dragging: false,
-        touchObject: null
+        touchObject: null,
       })
     }
   }
 
-  doChange (x) {
+  doChange(x) {
     const { onChange } = this.props
     const { sliderWidth } = this.state
 
     onChange(Math.abs(x / sliderWidth))
   }
 
-  renderChild () {
+  renderChild() {
     let { children } = this.props
     const { x, sliderWidth, dragging } = this.state
     const index = Math.abs(x / sliderWidth)
@@ -202,38 +202,47 @@ class Slider extends React.Component {
     return _.map(children, (value, i) => {
       return React.cloneElement(value, {
         style: Object.assign({}, value.props.style, { width: '100%' }),
-        className: classNames('slider-cell flex flex-none', value.props.className, { 'slider-cell-show': (index === i || (index === i - 1 && dragging) || (index === i + 1 && dragging)) }),
-        key: i
+        className: classNames(
+          'slider-cell m-flex m-flex-none',
+          value.props.className,
+          {
+            'slider-cell-show':
+              index === i ||
+              (index === i - 1 && dragging) ||
+              (index === i + 1 && dragging),
+          }
+        ),
+        key: i,
       })
     })
   }
 
-  render () {
+  render() {
     const { count, x, sliderWidth, touchObject } = this.state
 
-    let offset = touchObject ? (touchObject.x - touchObject.startX + x) : x
+    const offset = touchObject ? touchObject.x - touchObject.startX + x : x
 
-    const {
-      className,
-      flag,
-      flagType,
-      activeFlagStyle
-    } = this.props
-    const cn = classNames({
-      'slider-transition': this.state.transition
-    }, className)
+    const { className, flag, flagType, activeFlagStyle } = this.props
+    const cn = classNames(
+      {
+        'slider-transition': this.state.transition,
+      },
+      className
+    )
 
     const style = {
       WebkitTransform: 'translate3d(' + offset + 'px, 0, 0)',
-      transform: 'translate3d(' + offset + 'px, 0, 0)'
+      transform: 'translate3d(' + offset + 'px, 0, 0)',
     }
 
     return (
-      <div className={classNames('slider', {
-        'slider-flag-inner': flagType === 'inner'
-      })}>
+      <div
+        className={classNames('slider', {
+          'slider-flag-inner': flagType === 'inner',
+        })}
+      >
         <Flex
-          ref={ref => (this.refSlider = ref)}
+          ref={(ref) => (this.refSlider = ref)}
           className={cn}
           onMouseDown={this.swipeStart}
           onMouseMove={this.swipeMove}
@@ -269,7 +278,8 @@ Slider.propTypes = {
   activeFlagStyle: PropTypes.object,
   enableAutoSlide: PropTypes.bool,
   autoSlideTime: PropTypes.number,
-  slideTimeKey: PropTypes.string
+  slideTimeKey: PropTypes.string,
+  className: PropTypes.string,
 }
 
 Slider.defaultProps = {
@@ -278,7 +288,7 @@ Slider.defaultProps = {
   flag: 'default',
   flagType: 'dot',
   enableAutoSlide: false,
-  autoSlideTime: 5000
+  autoSlideTime: 5000,
 }
 
 export default Slider
