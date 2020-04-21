@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, ButtonTime } from './'
 
 function handleClick() {
@@ -83,17 +83,49 @@ export const loading = () => (
 )
 
 export const buttonTime = () => {
+  const [inputValue, serInputValue] = useState()
+  const [canCounter, setCanCounter] = useState(false)
+
   return (
-    <ButtonTime
-      mini
-      time={10}
-      type='primary'
-      onClick={() => {
-        console.log('get')
-      }}
-    >
-      获取验证码
-    </ButtonTime>
+    <div>
+      <div>
+        <p>直接计时</p>
+        <ButtonTime
+          mini
+          time={10}
+          type='primary'
+          onClick={() => {
+            console.log('get')
+          }}
+        >
+          获取验证码
+        </ButtonTime>
+      </div>
+        <div>
+        <p>输入项不为空，才允许计时(通过onClick事件控制)</p>
+        <input
+          placeholder='输入后，可开始计时'
+          value={inputValue}
+          onChange={e => {
+          const value = e.target.value
+          serInputValue(value)
+          setCanCounter(!!value)
+        }} />
+        <ButtonTime
+          mini
+          time={10}
+          type='primary'
+          onClick={() => {
+            if (canCounter) {
+              console.log('get')
+            }
+            return canCounter
+          }}
+        >
+          获取验证码
+        </ButtonTime>
+        </div>
+    </div>
   )
 }
 

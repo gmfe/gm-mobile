@@ -16,6 +16,10 @@ const ButtonTime = ({ time, onClick, className, children, ...rest }) => {
   }, [])
 
   const handleClick = (e) => {
+    if (onClick(e) === false) {
+      return
+    }
+
     setSecond(time)
     timer.current = setInterval(() => {
       setSecond((value) => {
@@ -25,8 +29,6 @@ const ButtonTime = ({ time, onClick, className, children, ...rest }) => {
         return value - 1
       })
     }, 1000)
-
-    onClick(e)
   }
 
   return (
@@ -44,7 +46,10 @@ const ButtonTime = ({ time, onClick, className, children, ...rest }) => {
 
 ButtonTime.propTypes = {
   ...Button.propTypes,
+  /** 计时的时间 */
   time: PropTypes.number,
+  /** 函数需要返回 bool 值, true 开始计时，false 不计时 */
+  onClick: PropTypes.func,
 }
 
 ButtonTime.defaultProps = {
