@@ -54,7 +54,6 @@ Checkbox.propTypes = {
 
 Checkbox.defaultProps = {
   onChange: _.noop,
-  disabled: false,
 }
 
 export default Checkbox
