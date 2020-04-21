@@ -10,6 +10,7 @@ const Checkbox = (props) => {
     disabled,
     checked,
     onChange,
+    circle,
     children,
     ...rest
   } = props
@@ -21,6 +22,7 @@ const Checkbox = (props) => {
         'm-checkbox',
         {
           disabled,
+          'm-checkbox-circle': circle,
         },
         className
       )}
@@ -41,6 +43,8 @@ const Checkbox = (props) => {
 Checkbox.propTypes = {
   /** 选中态 */
   checked: PropTypes.bool.isRequired,
+  /** 圆形 */
+  circle: PropTypes.bool,
   disabled: PropTypes.bool,
   /** 回调函数 */
   onChange: PropTypes.func,
