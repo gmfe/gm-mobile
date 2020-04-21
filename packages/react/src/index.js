@@ -42,6 +42,9 @@ import Dialog from './component/dialog'
 import Mask from './component/mask'
 import Popup from './component/popup'
 
+// 基础组件
+import Image from './component/image'
+
 // 其他
 import Storage from './component/storage'
 import CSSVariable from './css_variable'
@@ -134,6 +137,8 @@ export {
   Dialog,
   Alert,
   Confirm,
+  // 基础组件
+  Image,
   // 其他
   CSSVariable,
   Storage,
