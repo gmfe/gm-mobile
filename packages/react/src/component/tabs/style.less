@@ -1,26 +1,23 @@
 .m-tabs {
   cursor: pointer;
 
-  .m-tabs-content {
-    width: 100%;
-  }
-
   &.m-tabs-default {
     .mBorderBottomAfterWith();
     .mTabsVariants();
 
     .m-tabs-item-text {
-      padding: 5px;
+      padding: 5px 0;
     }
   }
 
   &.m-tabs-label {
     border-radius: 10px;
+
     .mTabsVariants();
 
     .m-tabs-item-text {
-      padding: 0 5px;
-      margin: 10px 0 12px 0;
+      padding: 0 0 2px;
+      margin: 10px 0;
     }
   }
 
@@ -29,33 +26,23 @@
     line-height: var(--size-form-height);
 
     .m-tabs-content {
-      background-color: var(--tabs-bg-capsule);
+      background-color: var(--color-bg-primary-dark);
       border-radius: var(--size-form-height);
 
       .m-tabs-item {
-        flex: 1;
+        padding: 0 calc(var(--size-form-height) / 2);
         position: relative;
         color: var(--color-white);
-        transition: background-color 0.5s ease-in-out;
+        border-radius: var(--size-form-height);
+        //transition: background-color 0.5s ease-in-out;
 
         .m-tabs-item-text {
-          z-index: var(--z-index-header);
+          z-index: 1;
         }
 
         &.active {
           color: var(--color-primary);
-          z-index: var(--z-index-header);
-
-          &::after {
-            content: '';
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            top: 0;
-            left: 0;
-            border-radius: var(--size-form-height);
-            background-color: var(--color-bg-white);
-          }
+          background-color: var(--color-bg-white);
         }
       }
     }
@@ -66,9 +53,12 @@
   background: var(--color-bg-white);
   color: var(--color-third);
 
+  .m-tabs-content {
+    width: 100%;
+  }
+
   .m-tabs-item {
     flex: 1;
-    -webkit-tap-highlight-color: transparent;
 
     &:active {
       .mActiveBgWhite();
@@ -77,7 +67,6 @@
     &.active .m-tabs-item-text {
       color: var(--color-first);
       position: relative;
-      transition: 0.2s all linear;
 
       &::after {
         content: '';

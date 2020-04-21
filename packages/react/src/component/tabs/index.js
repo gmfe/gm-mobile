@@ -13,12 +13,8 @@ const Tabs = (props) => {
   }
 
   return (
-    <Flex
-      alignCenter
-      {...rest}
-      className={classNames(`m-tabs m-tabs-${type}`, className)}
-    >
-      <Flex row className='m-tabs-content'>
+    <Flex {...rest} className={classNames(`m-tabs m-tabs-${type}`, className)}>
+      <Flex className='m-tabs-content'>
         {_.map(tabs, (tab) => (
           <Flex
             justifyCenter
