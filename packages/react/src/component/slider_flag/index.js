@@ -10,9 +10,9 @@ class SliderFlag extends React.Component {
     return (
       <Flex
         justifyCenter
-        className={classNames('slider-flag', {
-          'slider-flag-line': type === 'line',
-          'slider-flag-inner': flag === 'inner',
+        className={classNames('m-slider-flag', {
+          'm-slider-flag-line': type === 'line',
+          'm-slider-flag-inner': flag === 'inner',
         })}
       >
         {_.map(_.range(count), (value, i) => (

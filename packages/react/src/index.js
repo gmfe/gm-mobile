@@ -54,7 +54,7 @@ import CSSVariable from './css_variable'
 // import Infinite from './component/infinite'
 // import InfiniteBox from './component/infinite/infinite_box'
 
-// import Slider from './component/slider'
+import Slider from './component/slider'
 // import SliderLess from './component/slider_less'
 
 // import LazyImg from './component/lazy_img'
@@ -147,7 +147,7 @@ export {
   CSSVariable,
   Storage,
   Price,
-  // Slider,
+  Slider,
   // SliderLess,
   // LazyImg,
   // Infinite,

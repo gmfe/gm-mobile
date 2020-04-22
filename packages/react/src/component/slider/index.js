@@ -203,10 +203,10 @@ class Slider extends React.Component {
       return React.cloneElement(value, {
         style: Object.assign({}, value.props.style, { width: '100%' }),
         className: classNames(
-          'slider-cell m-flex m-flex-none',
+          'm-slider-cell m-flex m-flex-none',
           value.props.className,
           {
-            'slider-cell-show':
+            'm-slider-cell-show':
               index === i ||
               (index === i - 1 && dragging) ||
               (index === i + 1 && dragging),
@@ -225,7 +225,7 @@ class Slider extends React.Component {
     const { className, flag, flagType, activeFlagStyle } = this.props
     const cn = classNames(
       {
-        'slider-transition': this.state.transition,
+        'm-slider-transition': this.state.transition,
       },
       className
     )
@@ -237,8 +237,8 @@ class Slider extends React.Component {
 
     return (
       <div
-        className={classNames('slider', {
-          'slider-flag-inner': flagType === 'inner',
+        className={classNames('m-slider', {
+          'm-slider-flag-inner': flagType === 'inner',
         })}
       >
         <Flex
