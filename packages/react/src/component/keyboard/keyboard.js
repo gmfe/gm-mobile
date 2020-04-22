@@ -14,7 +14,7 @@ const Keyboard = (props) => {
 
   const _value = processValue(defaultValue)
   // 输入值 及 输入校验提示信息
-  const [currentValue, setCurrentvalue] = useState(_value)
+  const [currentValue, setCurrentValue] = useState(_value)
   const [errorMsg, setErrorMsg] = useState(null)
 
   const handleSubmit = () => {
@@ -131,7 +131,7 @@ const Keyboard = (props) => {
     // 最大值，最小值限制以及精度判断
     const cv = checkValue(v)
 
-    setCurrentvalue(cv)
+    setCurrentValue(cv)
   }
 
   return (
@@ -174,6 +174,11 @@ Keyboard.propTypes = {
   max: PropTypes.number,
   /** 精度, 可输入几位小数 */
   precision: PropTypes.number,
+}
+
+Keyboard.defaultProps = {
+  defaultValue: null,
+  precision: 2,
 }
 
 export default Keyboard
