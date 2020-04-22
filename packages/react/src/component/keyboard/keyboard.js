@@ -1,17 +1,16 @@
 import { getLocale } from '@gm-mobile/locales'
 import React, { useState } from 'react'
-import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
-import Keyboard from './keyboard'
+import KeyboardA from './_keyboard'
 import Flex from '../flex'
 import Button from '../button'
 import { TYPE, text2Number, processValue, MSGTYPE } from './util'
-import NumberKeyboardStatics from './statics'
+import KeyboardStatics from './statics'
 
-const NumberKeyboard = (props) => {
-  const { title, defaultValue, onSubmit, className, children, ...rest } = props
+const Keyboard = (props) => {
+  const { title, defaultValue, onSubmit, children, ...rest } = props
 
   const _value = processValue(defaultValue)
   // 输入值 及 输入校验提示信息
@@ -26,7 +25,7 @@ const NumberKeyboard = (props) => {
 
     // 转成number给业务方
     const num = text2Number(currentValue)
-    NumberKeyboardStatics.hide()
+    KeyboardStatics.hide()
     onSubmit(num)
   }
 
@@ -136,11 +135,7 @@ const NumberKeyboard = (props) => {
   }
 
   return (
-    <Flex
-      column
-      {...rest}
-      className={classNames('m-number-keyboard', className)}
-    >
+    <Flex column {...rest} className='m-number-keyboard'>
       {title && <Flex className='m-number-keyboard-title'>{title}</Flex>}
       <Flex className='m-number-keyboard-header'>
         <Flex alignCenter className='m-number-keyboard-header-input m-text-18'>
@@ -159,14 +154,14 @@ const NumberKeyboard = (props) => {
         {errorMsg && errorMsg.text}
       </Flex>
       {children}
-      <Keyboard onChange={handleValueChange} />
+      <KeyboardA onChange={handleValueChange} />
     </Flex>
   )
 }
 
-Object.assign(NumberKeyboard, NumberKeyboardStatics)
+Object.assign(Keyboard, KeyboardStatics)
 
-NumberKeyboard.propTypes = {
+Keyboard.propTypes = {
   /** 初始默认值, null表示为空值 */
   defaultValue: PropTypes.number,
   /** 标题, 辅助展示 */
@@ -179,8 +174,6 @@ NumberKeyboard.propTypes = {
   max: PropTypes.number,
   /** 精度, 可输入几位小数 */
   precision: PropTypes.number,
-  className: PropTypes.string,
-  style: PropTypes.object,
 }
 
-export default NumberKeyboard
+export default Keyboard

@@ -1,13 +1,13 @@
 import React from 'react'
 
-import NumberKeyboard from './number_keyboard'
+import Keyboard from './keyboard'
 import Popup from '../popup'
 
 const NumberKeyboardStatics = {
   render(options) {
     return Popup.render({
       bottom: true,
-      children: <NumberKeyboard {...options} />,
+      children: <Keyboard {...options} />,
     })
   },
 

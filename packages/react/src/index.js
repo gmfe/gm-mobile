@@ -15,7 +15,7 @@ import {
   SelectPicker,
 } from './component/picker'
 import Calendar from './component/calendar'
-import { NumberKeyboard, InputKeyboard } from './component/number_keyboard'
+import { Keyboard, KeyboardWrap } from './component/keyboard'
 import Checkbox from './component/checkbox'
 import { LetterIndex, LetterIndexMultiple } from './component/letter_index'
 import { Input, InputPassword } from './component/input'
@@ -111,8 +111,8 @@ export {
   ConfirmCouplingPicker,
   SelectPicker,
   Calendar,
-  NumberKeyboard,
-  InputKeyboard,
+  Keyboard,
+  KeyboardWrap,
   LetterIndex,
   LetterIndexMultiple,
   Radio,
