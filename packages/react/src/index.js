@@ -39,6 +39,7 @@ import Toast from './component/toast'
 import Dialog from './component/dialog'
 import Mask from './component/mask'
 import Popup from './component/popup'
+import PreviewImage from './component/preview_image'
 
 // 基础组件
 import FlipNumber from './component/flip_number'
@@ -62,7 +63,6 @@ import CSSVariable from './css_variable'
 // import CursorFix from './component/cursor_fix'
 // import Trigger from './component/trigger'
 // import Tooltip from './component/tooltip'
-// import PreviewImage from './component/preview_image'
 
 // import Price from './component/price'
 // import Counter from './component/counter'
@@ -137,6 +137,7 @@ export {
   Dialog,
   Alert,
   Confirm,
+  PreviewImage,
   // 基础组件
   FlipNumber,
   Image,
@@ -155,7 +156,6 @@ export {
   // CursorFix,
   // Trigger,
   // Tooltip,
-  // PreviewImage,
 
   // Counter,
 
