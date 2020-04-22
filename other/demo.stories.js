@@ -1,7 +1,8 @@
 import React from 'react'
+import { is } from '@gm-common/tool'
 
 export const demo = () => {
-  return <div>demo</div>
+  return <div>demo{is.phone() ? 'true' : 'false'}</div>
 }
 
 export default {

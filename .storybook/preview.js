@@ -6,11 +6,10 @@ import { Observer } from 'mobx-react'
 
 import '../packages/react/src/index.less'
 
-
 addParameters({
   options: {
-    showRoots: true
-  }
+    showRoots: true,
+  },
 })
 
 addDecorator(

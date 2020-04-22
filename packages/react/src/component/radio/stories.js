@@ -16,15 +16,11 @@ export const Normal = () => (
   <div>
     checked true
     <div>
-      <Radio checked={store1.checked}>
-        选择
-      </Radio>
+      <Radio checked={store1.checked}>选择</Radio>
     </div>
     checked false
     <div>
-      <Radio checked={store2.checked}>
-        选择
-      </Radio>
+      <Radio checked={store2.checked}>选择</Radio>
     </div>
     disabled
     <div>

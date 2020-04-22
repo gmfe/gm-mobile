@@ -101,16 +101,17 @@ export const buttonTime = () => {
           获取验证码
         </ButtonTime>
       </div>
-        <div>
+      <div>
         <p>输入项不为空，才允许计时(通过onClick事件控制)</p>
         <input
           placeholder='输入后，可开始计时'
           value={inputValue}
-          onChange={e => {
-          const value = e.target.value
-          serInputValue(value)
-          setCanCounter(!!value)
-        }} />
+          onChange={(e) => {
+            const value = e.target.value
+            serInputValue(value)
+            setCanCounter(!!value)
+          }}
+        />
         <ButtonTime
           mini
           time={10}
@@ -124,7 +125,7 @@ export const buttonTime = () => {
         >
           获取验证码
         </ButtonTime>
-        </div>
+      </div>
     </div>
   )
 }

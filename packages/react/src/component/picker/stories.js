@@ -171,7 +171,7 @@ const selectStore = observable({
   value: null,
   setValue(v) {
     this.value = v
-  }
+  },
 })
 
 export const picker = () => {
@@ -239,7 +239,7 @@ export const selectPicker = () => {
   const handleClick = () => {
     SelectPicker.render({
       data: selectStore.data.slice(),
-      value: selectStore.value
+      value: selectStore.value,
     }).then(
       (value) => {
         console.log('resolve', value)

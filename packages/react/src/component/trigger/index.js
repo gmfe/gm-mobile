@@ -6,10 +6,10 @@ import { createChainedFunction, contains } from 'gm-util'
 import Mask from '../mask/index'
 
 class Trigger extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
-      active: false
+      active: false,
     }
     this.handleClick = ::this.handleClick
     this.handleMouseEnter = ::this.handleMouseEnter
@@ -23,27 +23,27 @@ class Trigger extends React.Component {
     this.refMask = null
   }
 
-  componentDidMount () {
+  componentDidMount() {
     window.document.body.addEventListener('click', this.handleBodyClick)
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     window.document.body.removeEventListener('click', this.handleBodyClick)
   }
 
-  handleBodyClick (event) {
+  handleBodyClick(event) {
     const target = event.target
     const root = findDOMNode(this)
     if (!contains(root, target)) {
       clearTimeout(this.timeouter)
 
       this.setState({
-        active: false
+        active: false,
       })
     }
   }
 
-  handleClick (event) {
+  handleClick(event) {
     const { disabled, children, type, mask, timeout } = this.props
     // 优先获取props的disabled
     if (disabled === true) {
@@ -71,31 +71,34 @@ class Trigger extends React.Component {
       timeout && clearTimeout(this.timeouter)
 
       this.setState({
-        active
+        active,
       })
     }
     // 如果没有props disabled，判定children是否不可用状态
     if (!children.props.disabled) {
-      this.setState({
-        active
-      }, this.handleTimeoutHide)
+      this.setState(
+        {
+          active,
+        },
+        this.handleTimeoutHide
+      )
     }
   }
 
-  handleTimeoutHide () {
+  handleTimeoutHide() {
     const { timeout } = this.props
     timeout && clearTimeout(this.timeouter)
 
     if (timeout && this.state.active) {
       this.timeouter = setTimeout(() => {
         this.setState({
-          active: false
+          active: false,
         })
       }, timeout)
     }
   }
 
-  handleMouseEnter () {
+  handleMouseEnter() {
     const { disabled, children } = this.props
     // 优先获取props的disabled
     if (disabled === true) {
@@ -106,19 +109,19 @@ class Trigger extends React.Component {
 
     if (disabled === false) {
       this.setState({
-        active: true
+        active: true,
       })
     }
 
     // 如果没有props disabled，判定children是否不可用状态
     if (!children.props.disabled) {
       this.setState({
-        active: true
+        active: true,
       })
     }
   }
 
-  handleMouseLeave () {
+  handleMouseLeave() {
     const { disabled, children } = this.props
     // 优先获取props的disabled
     if (disabled === true) {
@@ -130,7 +133,7 @@ class Trigger extends React.Component {
     if (disabled === false) {
       this.timer = setTimeout(() => {
         this.setState({
-          active: false
+          active: false,
         })
       }, 500)
     }
@@ -139,24 +142,43 @@ class Trigger extends React.Component {
     if (!children.props.disabled) {
       this.timer = setTimeout(() => {
         this.setState({
-          active: false
+          active: false,
         })
       }, 500)
     }
   }
 
-  render () {
-    const { component, children, popup, type, right, top, adjustX, mask, opacity } = this.props
+  render() {
+    const {
+      component,
+      children,
+      popup,
+      type,
+      right,
+      top,
+      adjustX,
+      mask,
+      opacity,
+    } = this.props
     const child = React.Children.only(children)
     const { active } = this.state
 
     const p = {}
     const popupStyle = {}
     if (type === 'focus' || type === 'click') {
-      p.onClick = createChainedFunction(component.props.onClick, this.handleClick)
+      p.onClick = createChainedFunction(
+        component.props.onClick,
+        this.handleClick
+      )
     } else if (type === 'hover') {
-      p.onMouseEnter = createChainedFunction(component.props.onMouseEnter, this.handleMouseEnter)
-      p.onMouseLeave = createChainedFunction(component.props.onMouseLeave, this.handleMouseLeave)
+      p.onMouseEnter = createChainedFunction(
+        component.props.onMouseEnter,
+        this.handleMouseEnter
+      )
+      p.onMouseLeave = createChainedFunction(
+        component.props.onMouseLeave,
+        this.handleMouseLeave
+      )
     }
 
     const componentProps = Object.assign({}, component.props, p)
@@ -169,26 +191,33 @@ class Trigger extends React.Component {
       }
     }
 
-    return React.cloneElement(component, Object.assign({}, componentProps, {
-      className: classNames(component.props.className, 'trigger'),
-      children: [
-        child,
-        active ? React.createElement('div', {
-          key: 'popup',
-          ref: ref => (this.refPopup = ref),
-          className: classNames('trigger-popup ', {
-            'trigger-popup-right': right,
-            'trigger-popup-top': top
-          }),
-          style: popupStyle
-        }, popup) : null,
-        active && mask && type !== 'hover' ? <Mask
-          show
-          opacity={opacity}
-          ref={ref => (this.refMask = ref)}
-        /> : null
-      ]
-    }))
+    return React.cloneElement(
+      component,
+      Object.assign({}, componentProps, {
+        className: classNames(component.props.className, 'trigger'),
+        children: [
+          child,
+          active
+            ? React.createElement(
+                'div',
+                {
+                  key: 'popup',
+                  ref: (ref) => (this.refPopup = ref),
+                  className: classNames('trigger-popup ', {
+                    'trigger-popup-right': right,
+                    'trigger-popup-top': top,
+                  }),
+                  style: popupStyle,
+                },
+                popup
+              )
+            : null,
+          active && mask && type !== 'hover' ? (
+            <Mask show opacity={opacity} ref={(ref) => (this.refMask = ref)} />
+          ) : null,
+        ],
+      })
+    )
   }
 }
 
@@ -203,13 +232,13 @@ Trigger.propTypes = {
   mask: PropTypes.bool,
   opacity: PropTypes.number,
   timeout: PropTypes.number, // tigger自动隐藏时间间隔
-  adjustX: PropTypes.number // 调整X方向的偏移
+  adjustX: PropTypes.number, // 调整X方向的偏移
 }
 
 Trigger.defaultProps = {
   type: 'click',
   mask: false,
-  opacity: 0.5
+  opacity: 0.5,
 }
 
 export default Trigger

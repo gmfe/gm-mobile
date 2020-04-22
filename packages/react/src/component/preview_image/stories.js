@@ -16,7 +16,9 @@ const imgs = [
 
 export const normal = () => (
   <div>
-    <div style={{ display: 'none' }}><PreviewImage images={imgs}/></div>
+    <div style={{ display: 'none' }}>
+      <PreviewImage images={imgs} />
+    </div>
     <button
       onClick={() => {
         PreviewImage.render({
@@ -31,7 +33,9 @@ export const normal = () => (
 
 export const multiImgs = () => (
   <div>
-    <div style={{ display: 'none' }}><PreviewImage images={imgs}/></div>
+    <div style={{ display: 'none' }}>
+      <PreviewImage images={imgs} />
+    </div>
     <button
       onClick={() => {
         PreviewImage.render({

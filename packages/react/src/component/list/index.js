@@ -25,23 +25,19 @@ class List extends React.Component {
     }
   }
 
-  render () {
-    const {
-      data,
-      selected,
-      multiple,
-      isGroupList,
-      ...rest
-    } = this.props
+  render() {
+    const { data, selected, multiple, isGroupList, ...rest } = this.props
 
     let oData
     if (isGroupList) {
       oData = data
     } else {
-      oData = [{
-        label: '',
-        children: data
-      }]
+      oData = [
+        {
+          label: '',
+          children: data,
+        },
+      ]
     }
 
     let oSelected
@@ -75,13 +71,13 @@ List.propTypes = {
   // 展示
   renderItem: PropTypes.func,
 
-  isGroupList: PropTypes.bool
+  isGroupList: PropTypes.bool,
 }
 
 List.defaultProps = {
   multiple: false,
   onSelect: _.noop,
-  renderItem: item => item.text
+  renderItem: (item) => item.text,
 }
 
 export default List

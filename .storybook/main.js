@@ -9,28 +9,28 @@ const webpackFinal = (config) => {
     test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani|pdf)(\?.*)?$/,
     loader:
       './node_modules/@storybook/core/node_modules/file-loader/dist/cjs.js',
-    query: { name: 'static/media/[name].[hash:8].[ext]' }
+    query: { name: 'static/media/[name].[hash:8].[ext]' },
   }
 
   config.module.rules.push({
     test: /\.less$/,
     use: [
       {
-        loader: 'style-loader'
+        loader: 'style-loader',
       },
       {
-        loader: 'css-loader'
+        loader: 'css-loader',
       },
       {
-        loader: 'less-loader'
-      }
-    ]
+        loader: 'less-loader',
+      },
+    ],
   })
 
   config.module.rules.push({
     test: /\.stories\.jsx?$/,
     loaders: [require.resolve('@storybook/source-loader')],
-    enforce: 'pre'
+    enforce: 'pre',
   })
 
   config.module.rules.unshift({
@@ -49,6 +49,13 @@ const webpackFinal = (config) => {
       },
     ],
   })
+
+  config.module.rules.push({
+    test: /\.tsx?$/,
+    use: [require.resolve('babel-loader')],
+  })
+
+  config.resolve.extensions.push('.ts', '.tsx')
 
   return config
 }

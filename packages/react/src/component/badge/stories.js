@@ -4,9 +4,9 @@ import Badge from './index'
 export const normal = () => (
   <div style={{ padding: '20px' }}>
     <Badge count={8} />
-    <div/>
-    <Badge count={100}/>
-    <div/>
+    <div />
+    <Badge count={100} />
+    <div />
     <Badge showOverflow count={100} />
   </div>
 )
@@ -18,7 +18,6 @@ export const dot = () => (
     </Badge>
   </div>
 )
-
 
 export const corner = () => (
   <div style={{ padding: '20px' }}>

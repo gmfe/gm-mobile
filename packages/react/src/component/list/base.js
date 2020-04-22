@@ -29,7 +29,7 @@ class Base extends React.Component {
     }
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this._isMounted = true
   }
 
@@ -42,30 +42,36 @@ class Base extends React.Component {
     }
   }
 
-  render () {
+  render() {
     const {
-      data, isGroupList,
-      selected, multiple, onSelect, isScrollTo, // eslint-disable-line
+      data,
+      isGroupList,
+      selected,
+      multiple,
+      onSelect,
+      isScrollTo, // eslint-disable-line
       renderItem,
       ...rest
     } = this.props
 
     return (
-      <div
-        {...rest}
-        ref={this.refList}
-      >
-        {_.map(data, group => (
+      <div {...rest} ref={this.refList}>
+        {_.map(data, (group) => (
           <div key={group.label} data-label={group.label}>
-            <div className='bg-default padding-lr-8 padding-tb-4 text-12'>{group.label}</div>
-            {_.map(group.children, item => (
+            <div className='bg-default padding-lr-8 padding-tb-4 text-12'>
+              {group.label}
+            </div>
+            {_.map(group.children, (item) => (
               <div
                 key={item.value}
                 data-value={item.value}
-                className={classNames('bg-white padding-8 border-1px-bottom-after', {
-                  'text-primary': selected.includes(item.value),
-                  'disabled text-disabled': item.disabled
-                })}
+                className={classNames(
+                  'bg-white padding-8 border-1px-bottom-after',
+                  {
+                    'text-primary': selected.includes(item.value),
+                    'disabled text-disabled': item.disabled,
+                  }
+                )}
                 onClick={this.handleSelect.bind(this, item)}
               >
                 {renderItem(item)}
@@ -88,13 +94,13 @@ Base.propTypes = {
   // 展示
   renderItem: PropTypes.func,
 
-  isGroupList: PropTypes.bool // 在这里仅仅表示数据的类型，对UI有影响而已
+  isGroupList: PropTypes.bool, // 在这里仅仅表示数据的类型，对UI有影响而已
 }
 
 Base.defaultProps = {
   multiple: false,
   onSelect: _.noop,
-  renderItem: item => item.text
+  renderItem: (item) => item.text,
 }
 
 export default Base

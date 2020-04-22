@@ -25,8 +25,8 @@ export const round = () => (
 
 export const error = () => (
   <div>
-  <Image width={100} height={100} src='error' />
-</div>
+    <Image width={100} height={100} src='error' />
+  </div>
 )
 
 export const objectFix = () => (

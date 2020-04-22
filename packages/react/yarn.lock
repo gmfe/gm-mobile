@@ -2,12 +2,24 @@
 # yarn lockfile v1
 
 
-"@gm-common/tool@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/@gm-common/tool/-/tool-1.1.0.tgz#9c0f6c313fe324fea7d280d6b63447842fc63f0d"
-  integrity sha512-u8LJRiq/UHVebD6oWfw8XZK9QIpIY71/c4dHAkT19WR/c7pTEtBuVtpzndbPOV2/Eb9VHt329xYAYRjDr03B2Q==
+"@gm-common/tool@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.npmjs.org/@gm-common/tool/-/tool-2.0.3.tgz#446eb2d0d75c65a08c294c5823103d1cebdf594a"
+  integrity sha512-s75vK18eBH2lTa88zc7dTCBtQhDtzoEPoswDnbeF0byJTYON0v98S5/L5LUnVX1/VR62BhJhIjU+LnjBQ4rYQA==
   dependencies:
+    "@types/lodash" "^4.14.149"
     lodash "^4.17.15"
+    ts-config-gm-react-app "3.0.2"
+
+"@gm-mobile/locales@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.npmjs.org/@gm-mobile/locales/-/locales-0.0.2.tgz#0def7262ee5d4cc5d53d736595bfa29a507c1190"
+  integrity sha512-ahhM3cj33JBXXFynjRVQROtOdTL/6Xzaa8FIPM8w75aZYE3w8UytXDXu1x0XRt5kJBEobFy5OQQdgFtToP4WQw==
+
+"@types/lodash@^4.14.149":
+  version "4.14.150"
+  resolved "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.150.tgz#649fe44684c3f1fcb6164d943c5a61977e8cf0bd"
+  integrity sha512-kMNLM5JBcasgYscD9x/Gvr6lTAv2NVgsKtet/hm93qMyf/D1pt+7jeEZklKJKxMVmXjxbRVQQGfqDSfipYCO6w==
 
 classnames@^2.2.6:
   version "2.2.6"
@@ -18,3 +30,8 @@ lodash@^4.17.15:
   version "4.17.15"
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+
+ts-config-gm-react-app@3.0.2:
+  version "3.0.2"
+  resolved "https://registry.npmjs.org/ts-config-gm-react-app/-/ts-config-gm-react-app-3.0.2.tgz#0427fb61c3cc6f551d1d7668586e8b857e5ab13d"
+  integrity sha512-yxjGxXEHtG5hAiQvJM3qA7OpWj5sSiCo1FTaoXyO44MKznExIb1X3j0ie0kltzZiya/g2vdBiib99EC08KZSHg==

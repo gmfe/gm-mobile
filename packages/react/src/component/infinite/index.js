@@ -7,18 +7,18 @@ import _ from 'lodash'
 import { is } from 'gm-util'
 
 class Infinite extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
-      loading: false
+      loading: false,
     }
     this.timer = null
     this.scrollTop = 0
   }
 
   // TODO getDerivedStateFromProps
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.done) {
       this.noLoading()
     }
@@ -26,11 +26,11 @@ class Infinite extends React.Component {
 
   noLoading = () => {
     this.setState({
-      loading: false
+      loading: false,
     })
   }
 
-  handleBottom () {
+  handleBottom() {
     if (this.props.done) {
       return
     }
@@ -38,7 +38,7 @@ class Infinite extends React.Component {
     clearTimeout(this.timer)
 
     this.setState({
-      loading: true
+      loading: true,
     })
 
     const result = this.props.onBottom()
@@ -57,7 +57,12 @@ class Infinite extends React.Component {
     if (event.target.scrollTop > this.scrollTop) {
       if (!this.state.loading) {
         // 一定阈值才触发
-        if (event.target.clientHeight + event.target.scrollTop + this.props.bottomOffset >= event.target.scrollHeight) {
+        if (
+          event.target.clientHeight +
+            event.target.scrollTop +
+            this.props.bottomOffset >=
+          event.target.scrollHeight
+        ) {
           this.handleBottom()
         }
       }
@@ -67,10 +72,13 @@ class Infinite extends React.Component {
     this.props.onScroll()
   }
 
-  render () {
+  render() {
     const {
-      className, children, done,
-      bottomOffset, onBottom, // eslint-disable-line
+      className,
+      children,
+      done,
+      bottomOffset,
+      onBottom, // eslint-disable-line
       ...rest
     } = this.props
 
@@ -86,7 +94,7 @@ class Infinite extends React.Component {
         <Flex justifyCenter alignCenter className='text-center'>
           {loading && (
             <Flex column justifyCenter style={{ height: '30px' }}>
-              <i className='weui-loading'/>
+              <i className='weui-loading' />
             </Flex>
           )}
           {done && (
@@ -95,7 +103,9 @@ class Infinite extends React.Component {
               justifyCenter
               className='text-desc text-small infinite-no-more'
               style={{ height: '30px' }}
-            >{getLocale('没有更多数据')}</Flex>
+            >
+              {getLocale('没有更多数据')}
+            </Flex>
           )}
         </Flex>
       </div>
@@ -106,14 +116,14 @@ class Infinite extends React.Component {
 Infinite.defaultProps = {
   onBottom: _.noop,
   bottomOffset: 30 + 50, // loading 高度 + 50
-  onScroll: _.noop
+  onScroll: _.noop,
 }
 
 Infinite.propTypes = {
   onBottom: PropTypes.func.isRequired,
   bottomOffset: PropTypes.number,
   done: PropTypes.bool,
-  onScroll: PropTypes.func
+  onScroll: PropTypes.func,
 }
 
 export default Infinite

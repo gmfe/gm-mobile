@@ -6,19 +6,19 @@ import lng4 from './th.json'
 import lng5 from './ug.json'
 
 const moduleMap = {
-  'zh': lng1,
+  zh: lng1,
   'zh-HK': lng2,
-  'en': lng3,
-  'th': lng4,
-  'ug': lng5
+  en: lng3,
+  th: lng4,
+  ug: lng5,
 }
 let _language = 'zh'
 
-const setLocale = lng => {
+const setLocale = (lng) => {
   _language = lng
 }
 
-const getLocale = text => {
+const getLocale = (text) => {
   const languageMap = moduleMap[_language] || moduleMap['zh']
   return languageMap[text] || text
 }

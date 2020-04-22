@@ -9,22 +9,22 @@ import ConfigSelect from './config_select'
 import SVGRemove from '../../../svg/remove.svg'
 
 class Component extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       selected: this.props.selected,
       begin: this.props.begin,
-      end: this.props.end
+      end: this.props.end,
     }
     this.calendarRef = React.createRef()
     this._unmount = false
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.handleScrollToBegin()
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this._unmount = true
   }
 
@@ -42,7 +42,7 @@ class Component extends React.Component {
     this.setState({
       selected,
       begin: moment(),
-      end: moment()
+      end: moment(),
     })
   }
 
@@ -51,60 +51,69 @@ class Component extends React.Component {
     this.props.onChange({
       time: {
         begin: moment(begin).toDate(),
-        end: moment(end).toDate()
+        end: moment(end).toDate(),
       },
-      selected
+      selected,
     })
     this.handleHide()
   }
 
   handleCalendar = ({ begin, end }) => {
-    this.setState({
-      begin: moment(begin),
-      end: moment(end)
-    }, () => {
-      !this.props.type && this.handleSubmit()
-    })
+    this.setState(
+      {
+        begin: moment(begin),
+        end: moment(end),
+      },
+      () => {
+        !this.props.type && this.handleSubmit()
+      }
+    )
   }
 
-  render () {
+  render() {
     const { data, title, type, showText } = this.props
     const { begin, end, selected } = this.state
     const { min, max } = this.props.getRange(selected)
     return (
       <Flex column className='page time-select'>
         <Flex column none className='overflow-hidden'>
-          <Flex alignCenter style={{ fontSize: '1.1em' }} className='padding-tb-8 padding-lr-16 border-bottom'>
+          <Flex
+            alignCenter
+            style={{ fontSize: '1.1em' }}
+            className='padding-tb-8 padding-lr-16 border-bottom'
+          >
             <Flex
               onClick={this.handleHide}
               className='absolute-left padding-left-16'
             >
-              <SVGRemove style={{ fontSize: '1em' }} className='padding-lr-4'/>
+              <SVGRemove style={{ fontSize: '1em' }} className='padding-lr-4' />
             </Flex>
-            <Flex flex={1} justifyCenter className='text-bold'>{title}</Flex>
-            {
-              type ? <Flex
+            <Flex flex={1} justifyCenter className='text-bold'>
+              {title}
+            </Flex>
+            {type ? (
+              <Flex
                 className='absolute-right padding-right-16'
                 onClick={this.handleSubmit}
               >
-                <button className='weui-btn weui-btn_mini weui-btn_primary time-select-btn'>{getLocale('确定')}</button>
-              </Flex> : null
-            }
+                <button className='weui-btn weui-btn_mini weui-btn_primary time-select-btn'>
+                  {getLocale('确定')}
+                </button>
+              </Flex>
+            ) : null}
           </Flex>
         </Flex>
-        {showText && <Flex column none className='overflow-hidden'>
-          <ConfigSelect
-            data={data}
-            selected={selected}
-            onChange={this.handleChange}
-            onSelect={this.handleScrollToBegin}
-          />
-        </Flex>}
-        <Flex
-          column
-          flex
-          className='page-content block padding-lr-8'
-        >
+        {showText && (
+          <Flex column none className='overflow-hidden'>
+            <ConfigSelect
+              data={data}
+              selected={selected}
+              onChange={this.handleChange}
+              onSelect={this.handleScrollToBegin}
+            />
+          </Flex>
+        )}
+        <Flex column flex className='page-content block padding-lr-8'>
           <div>
             <Calendar
               ref={this.calendarRef}
@@ -130,13 +139,13 @@ Component.propTypes = {
   data: PropTypes.array.isRequired,
   selected: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
-  getRange: PropTypes.func.isRequired
+  getRange: PropTypes.func.isRequired,
 }
 
 Component.defaultProps = {
   showText: true,
   title: getLocale('选择运营时间'),
-  type: 1
+  type: 1,
 }
 
 export default Component

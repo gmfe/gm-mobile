@@ -6,14 +6,17 @@ import { observable } from 'mobx'
 const l = localStorage.getItem('_gm-mobile_' + 'lng')
 
 const store = observable({
-  lng: (l ? JSON.parse(l) : '') || 'zh'
+  lng: (l ? JSON.parse(l) : '') || 'zh',
 })
 
 storiesOf('locales/locales', module).add('default', () => (
   <select
     value={store.lng}
-    onChange={e => {
-      localStorage.setItem('_gm-mobile_' + 'lng', JSON.stringify(e.target.value))
+    onChange={(e) => {
+      localStorage.setItem(
+        '_gm-mobile_' + 'lng',
+        JSON.stringify(e.target.value)
+      )
       setLocale(e.target.value)
       store.lng = e.target.value
     }}

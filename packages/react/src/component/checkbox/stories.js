@@ -23,28 +23,54 @@ export const normal = () => (
     checked {`${store1.checked ? 'true' : 'false'}`}
     <Flex>
       <Checkbox checked={store1.checked}>选择</Checkbox>
-      <Checkbox circle checked={store1.checked}>选择</Checkbox>
+      <Checkbox circle checked={store1.checked}>
+        选择
+      </Checkbox>
     </Flex>
     checked {`${store2.checked ? 'true' : 'false'}`}
     <Flex>
       <Checkbox checked={store2.checked}>选择</Checkbox>
-      <Checkbox circle checked={store2.checked}>选择</Checkbox>
+      <Checkbox circle checked={store2.checked}>
+        选择
+      </Checkbox>
     </Flex>
     disabled
     <Flex>
       <div>
-        <Checkbox disabled checked={store3.checked} className='m-text-16'>选择</Checkbox>
-        <Checkbox disabled checked={!store3.checked} className='m-text-16'>选择</Checkbox>
+        <Checkbox disabled checked={store3.checked} className='m-text-16'>
+          选择
+        </Checkbox>
+        <Checkbox disabled checked={!store3.checked} className='m-text-16'>
+          选择
+        </Checkbox>
       </div>
       <div>
-        <Checkbox disabled circle checked={store3.checked} className='m-text-16'>选择</Checkbox>
-        <Checkbox disabled circle checked={!store3.checked} className='m-text-16'>选择</Checkbox>
+        <Checkbox
+          disabled
+          circle
+          checked={store3.checked}
+          className='m-text-16'
+        >
+          选择
+        </Checkbox>
+        <Checkbox
+          disabled
+          circle
+          checked={!store3.checked}
+          className='m-text-16'
+        >
+          选择
+        </Checkbox>
       </div>
     </Flex>
     checked shape
     <Flex>
-      <Checkbox checked={false} className='m-text-16'>normal</Checkbox>
-      <Checkbox circle checked={false} className='m-text-16'>circle</Checkbox>
+      <Checkbox checked={false} className='m-text-16'>
+        normal
+      </Checkbox>
+      <Checkbox circle checked={false} className='m-text-16'>
+        circle
+      </Checkbox>
     </Flex>
   </div>
 )
