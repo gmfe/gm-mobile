@@ -6,6 +6,7 @@ import CellForm from './cell_form'
 import { Input, InputPassword } from '../input'
 import Textarea from '../textarea'
 import { ButtonTime } from '../button'
+import Flex from '../flex'
 import SVGSearch from '../../../svg/search.svg'
 import { observable } from 'mobx'
 
@@ -37,6 +38,58 @@ export const normal = () => {
           right={'right 说明文字'}
         >
           children 文字
+        </Cell>
+      </Cells>
+    </div>
+  )
+}
+
+export const mini = () => {
+  return (
+    <div className='m-bg-back m-padding-tb-10'>
+      <Cells title='title 说明' mini>
+        <Cell
+          access
+          right={<div className='m-text-accent m-text-12'>兑换商品</div>}
+        >
+          <div className='m-text-desc'>积分已1000，可兑换商品</div>
+        </Cell>
+        <Cell
+          access
+          right={<div className='m-text-desc m-text-12'>共 20 件</div>}
+        >
+          <Flex>
+            <div
+              style={{ width: '50px', height: '50px' }}
+              className='m-bg-back m-margin-right-10'
+            />
+            <div
+              style={{ width: '50px', height: '50px' }}
+              className='m-bg-back m-margin-right-10'
+            />
+            <div
+              style={{ width: '50px', height: '50px' }}
+              className='m-bg-back m-margin-right-10'
+            />
+          </Flex>
+        </Cell>
+        <Cell
+          access
+          right={<div className='m-text-12'>2020年04月22日20:13:32</div>}
+        >
+          <div className='m-text-desc'>收货时间</div>
+        </Cell>
+        <Cell right={<div className='m-text-12'>-￥1312313</div>}>
+          <div className='m-text-desc'>限时优惠</div>
+        </Cell>
+        <Cell
+          right={
+            <div className='m-text-12 m-text-desc'>
+              拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉
+            </div>
+          }
+        >
+          <div className='m-text-desc'>订单备注</div>
         </Cell>
       </Cells>
     </div>

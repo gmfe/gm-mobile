@@ -40,13 +40,15 @@ const Cell = ({
       {icon && <div className='m-cell-icon'>{icon}</div>}
       {left && <div className='m-cell-left'>{left}</div>}
       <div className='m-cell-body'>{children}</div>
-      {right &&
-        (_.isString(right) ? (
-          <div className='m-cell-right'>{right}</div>
-        ) : (
-          right
-        ))}
-      {access && <SVGRight className='m-cell-access-icon' />}
+      <Flex alignCenter>
+        {right &&
+          (_.isString(right) ? (
+            <div className='m-cell-right'>{right}</div>
+          ) : (
+            right
+          ))}
+        {access && <SVGRight className='m-cell-access-icon' />}
+      </Flex>
     </Flex>
   )
 }
