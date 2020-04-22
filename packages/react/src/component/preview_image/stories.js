@@ -49,5 +49,5 @@ export const multiImgs = () => (
 )
 
 export default {
-  title: '基础组件/PreviewImage',
+  title: '基础/PreviewImage',
 }

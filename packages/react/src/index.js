@@ -30,6 +30,7 @@ import { Search, SearchPage, FakeSearch } from './component/search'
 import Square from './component/square'
 import Tabs from './component/tabs'
 import Panel from './component/panel'
+import Lazy from './component/lazy'
 
 // 浮层
 import LayerRoot from './component/layer_root'
@@ -41,7 +42,7 @@ import Mask from './component/mask'
 import Popup from './component/popup'
 import PreviewImage from './component/preview_image'
 
-// 基础组件
+// 基础
 import FlipNumber from './component/flip_number'
 import Image from './component/image'
 import Label from './component/label'
@@ -55,8 +56,6 @@ import CSSVariable from './css_variable'
 
 // import Infinite from './component/infinite'
 // import InfiniteBox from './component/infinite/infinite_box'
-
-// import LazyImg from './component/lazy_img'
 
 // import ScrollIntoView from './component/scroll_into_view'
 // import CursorFix from './component/cursor_fix'
@@ -137,18 +136,19 @@ export {
   Alert,
   Confirm,
   PreviewImage,
-  // 基础组件
+  // 基础
   FlipNumber,
   Image,
   Label,
   Loading,
   Slider,
   SliderLess,
+  Lazy,
   // 其他
   CSSVariable,
   Storage,
   Price,
-  // LazyImg,
+
   // Infinite,
   // InfiniteBox,
   // ScrollIntoView,

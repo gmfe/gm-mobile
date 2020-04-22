@@ -8,5 +8,5 @@ export const normal = () => (
 )
 
 export default {
-  title: '布局/Loading',
+  title: '基础/Loading',
 }

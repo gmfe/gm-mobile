@@ -64,5 +64,5 @@ export const objectFix = () => (
 )
 
 export default {
-  title: '基础组件/Image',
+  title: '基础/Image',
 }

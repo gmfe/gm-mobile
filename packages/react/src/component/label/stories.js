@@ -20,5 +20,5 @@ export const accent = () => (
 )
 
 export default {
-  title: '基础组件/Label',
+  title: '基础/Label',
 }

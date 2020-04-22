@@ -8,6 +8,8 @@ Page 新增 top
 
 新增 InputKeyboard 数字键盘
 
+新增 Tabs 多种形式，props 有变化
+
 ## breaking change
 
 Dialog 移除 show
@@ -38,8 +40,8 @@ Storage 的 key 从 react-gmm => gm-mobile，记得做迁移
 
 重新设置 Cell
 
-原有Radio => Checkbox, 提供新的Radio
+原有 Radio => Checkbox, 提供新的 Radio
 
 Calendar props: label => showDateLabel
 
-新增 Tabs 多种形式，props有变化
+LazyImg => Lazy，脱离 img
