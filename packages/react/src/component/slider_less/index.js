@@ -6,28 +6,28 @@ import Slider from '../slider'
 import SliderFlag from '../slider_flag'
 
 class SliderLess extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       count: 0,
-      index: 0
+      index: 0,
     }
     this.sliderKey = 0
 
     this.handleChange = ::this.handleChange
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.setCount()
   }
 
-  setCount () {
+  setCount() {
     this.setState({
-      count: _.isArray(this.props.children) ? this.props.children.length : 1
+      count: _.isArray(this.props.children) ? this.props.children.length : 1,
     })
   }
 
-  handleChange (sliderIndex) {
+  handleChange(sliderIndex) {
     // 只有 0 和 2 了
     const { onChange } = this.props
     let { count, index } = this.state
@@ -49,7 +49,7 @@ class SliderLess extends React.Component {
     }, 200)
   }
 
-  renderSliderChild () {
+  renderSliderChild() {
     const { index } = this.state
     let { children } = this.props
 
@@ -60,34 +60,37 @@ class SliderLess extends React.Component {
     let treeList = children
     if (children.length >= 2) {
       treeList = [
-        children[index === 0 ? (children.length - 1) : (index - 1)],
+        children[index === 0 ? children.length - 1 : index - 1],
         children[index],
-        children[index === children.length - 1 ? 0 : index + 1]
+        children[index === children.length - 1 ? 0 : index + 1],
       ]
     }
 
     return _.map(treeList, (value, i) => {
       return React.cloneElement(value, {
         style: Object.assign({}, value.props.style, { width: '100%' }),
-        className: classNames('slider-cell flex flex-none', value.props.className),
-        key: i
+        className: classNames(
+          'm-slider-cell m-flex m-flex-none',
+          value.props.className
+        ),
+        key: i,
       })
     })
   }
 
-  render () {
+  render() {
     const {
       flag,
       flagType,
       activeFlagStyle,
       enableAutoSlide,
       autoSlideTime,
-      slideTimeKey
+      slideTimeKey,
     } = this.props
     const { count, index } = this.state
 
     return (
-      <div className='slider-less'>
+      <div className='m-slider-less'>
         <Slider
           defaultIndex={1}
           flag='none'
@@ -121,7 +124,7 @@ SliderLess.propTypes = {
   activeFlagStyle: PropTypes.object,
   enableAutoSlide: PropTypes.bool,
   autoSlideTime: PropTypes.number,
-  slideTimeKey: PropTypes.string
+  slideTimeKey: PropTypes.string,
 }
 
 SliderLess.defaultProps = {
@@ -129,7 +132,7 @@ SliderLess.defaultProps = {
   flag: 'default',
   flagType: 'dot',
   enableAutoSlide: false,
-  autoSlideTime: 5000
+  autoSlideTime: 5000,
 }
 
 export default SliderLess

@@ -46,6 +46,8 @@ import FlipNumber from './component/flip_number'
 import Image from './component/image'
 import Label from './component/label'
 import Loading from './component/loading'
+import Slider from './component/slider'
+import SliderLess from './component/slider_less'
 
 // 其他
 import Storage from './component/storage'
@@ -53,9 +55,6 @@ import CSSVariable from './css_variable'
 
 // import Infinite from './component/infinite'
 // import InfiniteBox from './component/infinite/infinite_box'
-
-import Slider from './component/slider'
-// import SliderLess from './component/slider_less'
 
 // import LazyImg from './component/lazy_img'
 
@@ -143,12 +142,12 @@ export {
   Image,
   Label,
   Loading,
+  Slider,
+  SliderLess,
   // 其他
   CSSVariable,
   Storage,
   Price,
-  Slider,
-  // SliderLess,
   // LazyImg,
   // Infinite,
   // InfiniteBox,
