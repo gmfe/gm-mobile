@@ -30,6 +30,20 @@ export const normal = () => {
       </button>
       <button
         onClick={() => {
+          Dialog.delete('是否要删除').then(
+            () => {
+              console.log('resolve')
+            },
+            () => {
+              console.log('reject')
+            }
+          )
+        }}
+      >
+        delete
+      </button>
+      <button
+        onClick={() => {
           Dialog.render({
             children: '是否要啥啥啥',
             onConfirm: () => {

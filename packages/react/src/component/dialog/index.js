@@ -55,8 +55,14 @@ const DialogStatics = {
         })
       }
 
+      if (type === 'delete') {
+        options.confirmText = (
+          <div className='m-text-danger'>{getLocale('删除')}</div>
+        )
+      }
+
       // confirm 和 onCancel 都会涉及 reject
-      if (options.onCancel || type === 'confirm') {
+      if (options.onCancel || type === 'confirm' || type === 'delete') {
         const _onCancel = options.onCancel || _.noop
         options.onCancel = () => {
           DialogStatics.hide()
@@ -85,6 +91,9 @@ const DialogStatics = {
   confirm(options) {
     return DialogStatics.render(options, 'confirm')
   },
+  delete(options) {
+    return DialogStatics.render(options, 'delete')
+  },
   prompt(options) {
     return DialogStatics.render(options, 'prompt')
   },
@@ -110,11 +119,6 @@ const Dialog = ({
         <div className='m-dialog-title'>{title}</div>
         <div className='m-dialog-content'>{children}</div>
         <Flex className='m-dialog-btn'>
-          {otherText && (
-            <Flex flex column className='m-dialog-btn-other' onClick={onOther}>
-              {otherText}
-            </Flex>
-          )}
           {onCancel && (
             <Flex
               flex
@@ -123,6 +127,11 @@ const Dialog = ({
               onClick={onCancel}
             >
               {cancelText}
+            </Flex>
+          )}
+          {otherText && (
+            <Flex flex column className='m-dialog-btn-other' onClick={onOther}>
+              {otherText}
             </Flex>
           )}
           <Flex
