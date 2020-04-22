@@ -3,7 +3,7 @@ import Panel from './index'
 
 export const normal = () => {
   return (
-    <div className='m-bg-back m-padding-10'>
+    <div className='m-bg-back m-padding-15'>
       <Panel>panel</Panel>
       <div className='m-gap-5' />
       <Panel title='标题'>panel</Panel>
