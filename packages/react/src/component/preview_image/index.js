@@ -22,7 +22,7 @@ const PreviewImageStatics = {
 }
 
 const PreviewImage = ({ images, defaultIndex, className, onHide, ...rest }) => {
-  const [index, setIndex] = useState(0)
+  const [index, setIndex] = useState(defaultIndex)
 
   const handleChange = (index) => {
     setIndex(index)
@@ -40,20 +40,23 @@ const PreviewImage = ({ images, defaultIndex, className, onHide, ...rest }) => {
       onClick={handleClose}
       className={classNames('m-preview-image', className)}
     >
-      <div className='m-preview-image-close'>X</div>
+      <div className='m-preview-image-counter'>{`${index + 1}/${
+        images.length
+      }`}</div>
       <Flex column justifyCenter className='m-preview-image-inner'>
         {images.length === 1 ? (
           <Image src={images[0].url} objectFix='contain' />
         ) : (
-          <Slide defaultIndex={defaultIndex} onChange={handleChange}>
+          <Slide
+            defaultIndex={defaultIndex}
+            onChange={handleChange}
+            flag='none'
+          >
             {_.map(images, (v, i) => (
               <Image key={i} src={v.url} objectFix='contain' />
             ))}
           </Slide>
         )}
-        <div className='m-text-center m-text-white m-text-16'>
-          {images[index] && images[index].name}
-        </div>
       </Flex>
     </Flex>
   )

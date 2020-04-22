@@ -7,36 +7,20 @@
   height: 100%;
   background: black;
 
+  .m-preview-image-counter {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--color-placeholder);
+  }
+
   .m-preview-image-inner {
     width: 100%;
 
     img {
       max-width: 100%;
       max-height: calc(100vh - 150px);
-    }
-  }
-
-  .m-preview-image-close {
-    color: white;
-    position: absolute;
-    opacity: 0.5;
-    top: 10px;
-    right: 10px;
-    width: 25px;
-    height: 25px;
-    text-align: center;
-    line-height: 25px;
-    border: 2px solid white;
-    border-radius: 50%;
-  }
-
-  .slider-flag {
-    span {
-      background: var(--color-desc);
-
-      &.active {
-        background: var(--color-border);
-      }
     }
   }
 }
