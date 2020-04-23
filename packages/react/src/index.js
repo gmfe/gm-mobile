@@ -53,12 +53,7 @@ import Price from './component/price'
 import Counter from './component/counter'
 
 // 其他
-import {
-  Storage,
-  StorageFactory,
-  LocalStorage,
-  SessionStorage,
-} from './component/storage'
+import { LocalStorage, SessionStorage } from './component/storage'
 import CSSVariable from './css_variable'
 
 // import Infinite from './component/infinite'
@@ -68,10 +63,6 @@ import CSSVariable from './css_variable'
 // import CursorFix from './component/cursor_fix'
 // import Trigger from './component/trigger'
 // import Tooltip from './component/tooltip'
-
-// import { setLocale } from './locales'
-
-//
 // import List from './component/list'
 
 // import ProgressBar from './component/progress'
@@ -143,7 +134,6 @@ export {
   Price,
   // 其他
   CSSVariable,
-  Storage,
   LocalStorage,
   SessionStorage,
 

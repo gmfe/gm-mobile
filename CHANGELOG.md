@@ -49,3 +49,5 @@ Storage 的 key 从 react-gmm => gm-mobile，记得做迁移
 Calendar props: label => showDateLabel
 
 LazyImg => Lazy，脱离 img
+
+Storage => SessionStorage
