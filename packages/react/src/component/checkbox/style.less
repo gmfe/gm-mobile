@@ -2,9 +2,6 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-  padding: 5px 10px;
-
-  .mActiveBgWhiteWith();
 
   .m-checkbox-input {
     display: none;
@@ -25,7 +22,12 @@
   &.m-checkbox-circle {
     .m-checkbox-input + .m-checkbox-span {
       border-radius: 50%;
-      border-radius: 50%;
+    }
+  }
+
+  &.m-checkbox-primary {
+    .m-checkbox-input:checked + .m-checkbox-span {
+      background-color: var(--color-primary);
     }
   }
 
