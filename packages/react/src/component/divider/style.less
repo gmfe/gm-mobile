@@ -1,15 +1,11 @@
 .m-divider {
   .m-divider-line {
     position: relative;
-  }
 
-  .m-divider-line::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 100%;
-    height: 1px;
-    background: var(--color-border);
+    .mBorderTopBeforeWith();
+
+    &::before {
+      top: 50%;
+    }
   }
 }
