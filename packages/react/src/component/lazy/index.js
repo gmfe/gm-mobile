@@ -1,53 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react'
-import PropTypes from 'prop-types'
-import { isElementOverViewport } from '@gm-common/tool'
-import _ from 'lodash'
+import Lazy from './index'
+import LazyList from './lazy_list'
 
-const Lazy = ({ targetId, delay, children, ...rest }) => {
-  const ref = useRef(null)
-  const [show, setShow] = useState(false)
-
-  useEffect(() => {
-    const target = targetId
-      ? document.getElementById(targetId)
-      : document.querySelector('.m-page-content')
-
-    if (!target) {
-      setShow(true)
-      return
-    }
-
-    const doLazy = _.debounce(() => {
-      if (ref.current && isElementOverViewport(ref.current)) {
-        setShow(true)
-      } else {
-        setShow(false)
-      }
-    }, delay)
-
-    target.addEventListener('scroll', doLazy)
-
-    doLazy()
-
-    return () => {
-      target.removeEventListener('scroll', doLazy)
-    }
-  }, [])
-
-  return (
-    <div ref={ref} {...rest}>
-      {show && children}
-    </div>
-  )
-}
-
-Lazy.propTypes = {
-  targetId: PropTypes.string, // 指定监听滚动的dom id
-  delay: PropTypes.number,
-}
-
-Lazy.defaultProps = {
-  delay: 200,
-}
-
+export { Lazy, LazyList }
 export default Lazy

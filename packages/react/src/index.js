@@ -30,7 +30,7 @@ import { Search, SearchPage, FakeSearch } from './component/search'
 import Square from './component/square'
 import Tabs from './component/tabs'
 import Panel from './component/panel'
-import Lazy from './component/lazy'
+import { Lazy, LazyList } from './component/lazy'
 
 // 浮层
 import LayerRoot from './component/layer_root'
@@ -144,6 +144,7 @@ export {
   Slider,
   SliderLess,
   Lazy,
+  LazyList,
   // 其他
   CSSVariable,
   Storage,
