@@ -67,7 +67,7 @@ const Button = ({
 
 // 只封装了 loading
 Button.propTypes = {
-  type: PropTypes.oneOf(['default', 'primary', 'danger', 'link', 'white']),
+  type: PropTypes.oneOf(['default', 'primary', 'danger', 'link']),
   plain: PropTypes.bool,
   mini: PropTypes.bool,
   block: PropTypes.bool,

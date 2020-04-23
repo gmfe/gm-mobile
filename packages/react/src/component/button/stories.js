@@ -64,19 +64,6 @@ export const normal = () => (
         主色
       </Button>
     </div>
-    white
-    <div className='m-bg-back m-padding-10'>
-      <Button type='white'>默认</Button>
-      <Button type='white' disabled>
-        默认
-      </Button>
-      <Button type='white' mini>
-        默认
-      </Button>
-      <Button type='white' block>
-        默认
-      </Button>
-    </div>
   </div>
 )
 
