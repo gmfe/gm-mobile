@@ -1,0 +1,28 @@
+.m-tabbar {
+  background-color: var(--color-bg-white);
+  height: 100%;
+  z-index: var(--z-index-tabbar);
+
+  .m-tabbar-nav {
+    padding: 5px 0;
+    color: var(--color-desc);
+    line-height: 1;
+    outline: none;
+
+    &.active {
+      color: var(--color-primary);
+    }
+
+    .m-tabbar-nav-icon {
+      font-size: var(--size-text-20);
+      position: relative;
+      text-align: center;
+    }
+
+    .m-tabbar-nav-name {
+      font-size: var(--size-text-10);
+      margin-top: 2px;
+      line-height: 1;
+    }
+  }
+}
