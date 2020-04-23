@@ -30,6 +30,7 @@ import Square from './component/square'
 import Tabs from './component/tabs'
 import Panel from './component/panel'
 import { Lazy, LazyList } from './component/lazy'
+import Tabbar from './component/tab_bar'
 
 // 浮层
 import LayerRoot from './component/layer_root'
@@ -112,6 +113,7 @@ export {
   Square,
   Tabs,
   Panel,
+  Tabbar,
   // 浮层
   LayerRoot,
   InnerLayer,
