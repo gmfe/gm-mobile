@@ -1,37 +1,52 @@
 .m-counter {
+  display: inline-block;
+  border: 2px solid var(--color-primary);
+  cursor: pointer;
+  user-select: none;
+  font-weight: bold;
+  color: var(--color-primary);
+
+  .mDisabledWith();
+
+  &.m-counter-default {
+    min-width: 66px;
+    height: 26px;
+    line-height: 26px;
+    border-radius: 30px;
+    font-size: 16px;
+    padding: 0 5px;
+
+    .mCounterVariants(5px, 14px, 26px);
+  }
+
+  &.m-counter-large {
+    min-width: 226px;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 40px;
+    font-size: 18px;
+    padding: 0 15px;
+
+    .mCounterVariants(10px, 170px, 36px);
+  }
+}
+
+.mCounterVariants(@bottom, @width, @height) {
+  .m-counter-content {
+    display: inline-block;
+    min-width: @width;
+    height: @height;
+    line-height: @height;
+    text-align: center;
+    vertical-align: top;
+    padding: 0 10px;
+  }
+
   .m-counter-plus,
   .m-counter-minus {
-    font-size: 24px;
-  }
+    height: @height;
+    line-height: @height;
 
-  .m-counter-plus {
-    color: var(--color-primary);
-  }
-
-  .m-counter-minus {
-    color: var(--color-second);
-  }
-
-  .m-counter-num {
-    font-size: var(--size-text-14);
-    color: var(--color-first);
-    text-align: center;
-    width: 40px;
-    border: 0;
-
-    &.m-counter-num-border {
-      width: 40px;
-      border: none;
-      border-bottom: 1px solid var(--color-border);
-      appearance: none;
-      outline: none;
-      border-radius: 0;
-    }
-  }
-
-  .disabled {
-    cursor: not-allowed;
-    background: none;
-    color: var(--color-bg-disabled);
+    .mDisabledWith();
   }
 }

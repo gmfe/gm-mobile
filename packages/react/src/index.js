@@ -1,4 +1,3 @@
-import React from 'react'
 // 表单
 import ScrollIntoView from './component/scroll_into_view'
 import CursorFix from './component/cursor_fix'
@@ -49,6 +48,8 @@ import Label from './component/label'
 import Loading from './component/loading'
 import Slider from './component/slider'
 import SliderLess from './component/slider_less'
+import Price from './component/price'
+import Counter from './component/counter'
 
 // 其他
 import Storage from './component/storage'
@@ -62,9 +63,6 @@ import CSSVariable from './css_variable'
 // import Trigger from './component/trigger'
 // import Tooltip from './component/tooltip'
 
-// import Price from './component/price'
-// import Counter from './component/counter'
-
 // import { setLocale } from './locales'
 
 //
@@ -72,17 +70,6 @@ import CSSVariable from './css_variable'
 
 // import ProgressBar from './component/progress'
 // import TimeSelect from './component/time_select'
-
-// 假的
-const Price = () => {
-  return <span>todo</span>
-}
-
-Price.setUnit = () => {}
-Price.setCurrency = () => {}
-Price.setCurrencyList = () => {}
-Price.format = () => 'todo'
-Price.getUnit = () => 'todo'
 
 const Alert = Dialog.alert
 const Confirm = Dialog.confirm
@@ -145,10 +132,11 @@ export {
   SliderLess,
   Lazy,
   LazyList,
+  Counter,
+  Price,
   // 其他
   CSSVariable,
   Storage,
-  Price,
 
   // Infinite,
   // InfiniteBox,
@@ -156,8 +144,6 @@ export {
   // CursorFix,
   // Trigger,
   // Tooltip,
-
-  // Counter,
 
   // List,
 
