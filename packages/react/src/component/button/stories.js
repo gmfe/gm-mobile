@@ -11,6 +11,7 @@ export const normal = () => (
     默认
     <div>
       <Button>默认</Button>
+
       <Button type='primary'>主色</Button>
       <Button type='danger'>危险</Button>
       <Button type='link'>Link</Button>
@@ -21,6 +22,9 @@ export const normal = () => (
     plain
     <div>
       <Button plain>默认</Button>
+      <Button plain type='white'>
+        默认
+      </Button>
       <Button plain type='primary'>
         主色
       </Button>
@@ -58,6 +62,19 @@ export const normal = () => (
     <div>
       <Button block type='primary'>
         主色
+      </Button>
+    </div>
+    white
+    <div className='m-bg-back m-padding-10'>
+      <Button type='white'>默认</Button>
+      <Button type='white' disabled>
+        默认
+      </Button>
+      <Button type='white' mini>
+        默认
+      </Button>
+      <Button type='white' block>
+        默认
       </Button>
     </div>
   </div>
