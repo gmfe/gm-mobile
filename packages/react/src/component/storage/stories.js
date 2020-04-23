@@ -1,7 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Storage from './index'
 
-export const normal = () => <div />
+const key = 'input'
+
+export const Normal = () => {
+  const [value, setValue] = useState(Storage.get(key) || '')
+
+  return (
+    <div>
+      <input
+        type='text'
+        value={value}
+        onChange={(e) => {
+          setValue(e.target.value)
+          Storage.set(key, e.target.value)
+        }}
+      />
+    </div>
+  )
+}
 
 export default {
   title: '其他/Storage',

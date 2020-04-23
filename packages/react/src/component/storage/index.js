@@ -1,54 +1,8 @@
-import { useEffect } from 'react'
-import PropTypes from 'prop-types'
-import _ from 'lodash'
+import { StorageFactory } from '@gm-common/tool'
 
-const prefix = '_gm-mobile_'
-const { localStorage } = window
+const LocalStorage = new StorageFactory('_gm-mobile_', window.localStorage)
+const SessionStorage = new StorageFactory('_gm-mobile_', window.sessionStorage)
+const Storage = LocalStorage
 
-const StorageStatics = {
-  set(key, value) {
-    localStorage.setItem(prefix + key, JSON.stringify(value))
-  },
-  get(key) {
-    const v = localStorage.getItem(prefix + key)
-    return v ? JSON.parse(v) : v
-  },
-  remove(key) {
-    localStorage.removeItem(prefix + key)
-  },
-  clear() {
-    localStorage.clear()
-  },
-  getAll() {
-    const result = {}
-    _.each(_.range(localStorage.length), (i) => {
-      let key = localStorage.key(i)
-      if (key.startsWith(prefix)) {
-        key = key.slice(prefix.length)
-        result[key] = StorageStatics.get(key)
-      }
-    })
-    return _.keys(result) ? result : null
-  },
-}
-
-const Storage = ({ name, value }) => {
-  useEffect(() => {
-    StorageStatics.set(name, value)
-  }, [value])
-
-  return null
-}
-
-Object.assign(Storage, StorageStatics)
-
-Storage.propTypes = {
-  name: PropTypes.string.isRequired,
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-    PropTypes.array,
-  ]),
-}
-
+export { StorageFactory, Storage, LocalStorage, SessionStorage }
 export default Storage

@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@gm-common/number@^2.0.3":
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/@gm-common/number/-/number-2.0.4.tgz#111dd0c45d8efcc3884a4d9169e4215bd0ff1de3"
-  integrity sha512-ZJTIZNgYpdoWxP3Gof8lafxutEFoOJDWk2H+sPqYuOl2+oHKaPjeVDtTmcaAYQpjjkX5Pzu8q8qBL5F3Yh9eKw==
+"@gm-common/number@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.npmjs.org/@gm-common/number/-/number-2.1.0.tgz#aabf8b2d9c5c40e290f457b2c5491fc68d404c2a"
+  integrity sha512-T4vr5gtM52OokCrRrVkaE3l5CgwZwGirTFlFOo+fqt1UDvF5s02vumagLvazav5cbShu9vOwuW3DH+aOZyD2jQ==
   dependencies:
     "@types/big.js" "^4.0.5"
     "@types/lodash" "^4.14.149"
@@ -13,14 +13,19 @@
     lodash "^4.17.15"
     ts-config-gm-react-app "^3.0.6"
 
-"@gm-common/tool@^2.0.3":
-  version "2.0.3"
-  resolved "https://registry.npmjs.org/@gm-common/tool/-/tool-2.0.3.tgz#446eb2d0d75c65a08c294c5823103d1cebdf594a"
-  integrity sha512-s75vK18eBH2lTa88zc7dTCBtQhDtzoEPoswDnbeF0byJTYON0v98S5/L5LUnVX1/VR62BhJhIjU+LnjBQ4rYQA==
+"@gm-common/tool@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.npmjs.org/@gm-common/tool/-/tool-2.1.0.tgz#1f15f36356e53e7b3983de84b7f6d0de37b8ab35"
+  integrity sha512-96MK9WbI41ZZF3YF9Nxy5nEGWmvohpa7Z9z0/ip0590X/QpgGtLoDIgZci+isOSGepXq6LrUNKrh7eULkVA1wA==
   dependencies:
     "@types/lodash" "^4.14.149"
     lodash "^4.17.15"
-    ts-config-gm-react-app "3.0.2"
+    ts-config-gm-react-app "^3.0.6"
+
+"@gm-mobile/locales@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.npmjs.org/@gm-mobile/locales/-/locales-0.0.3.tgz#0b63cfcbda6b48198c1e44ed83ef7b87f42362c3"
+  integrity sha512-neZAubjCunz9ma751oFL4pk6X7bBJinXrqu1nSrSSSapCAsMJaKOnvVj/vR2RhJCYXQGQ+N/n8plDatGAWK5ig==
 
 "@types/big.js@^4.0.5":
   version "4.0.5"
@@ -46,11 +51,6 @@ lodash@^4.17.15:
   version "4.17.15"
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
-
-ts-config-gm-react-app@3.0.2:
-  version "3.0.2"
-  resolved "https://registry.npmjs.org/ts-config-gm-react-app/-/ts-config-gm-react-app-3.0.2.tgz#0427fb61c3cc6f551d1d7668586e8b857e5ab13d"
-  integrity sha512-yxjGxXEHtG5hAiQvJM3qA7OpWj5sSiCo1FTaoXyO44MKznExIb1X3j0ie0kltzZiya/g2vdBiib99EC08KZSHg==
 
 ts-config-gm-react-app@^3.0.6:
   version "3.0.6"

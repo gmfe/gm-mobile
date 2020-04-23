@@ -53,7 +53,12 @@ import Price from './component/price'
 import Counter from './component/counter'
 
 // 其他
-import Storage from './component/storage'
+import {
+  Storage,
+  StorageFactory,
+  LocalStorage,
+  SessionStorage,
+} from './component/storage'
 import CSSVariable from './css_variable'
 
 // import Infinite from './component/infinite'
@@ -139,6 +144,8 @@ export {
   // 其他
   CSSVariable,
   Storage,
+  LocalStorage,
+  SessionStorage,
 
   // Infinite,
   // InfiniteBox,

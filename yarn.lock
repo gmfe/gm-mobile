@@ -1088,14 +1088,14 @@
   resolved "https://registry.npmjs.org/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
-"@gm-common/tool@^2.0.3":
-  version "2.0.3"
-  resolved "https://registry.npmjs.org/@gm-common/tool/-/tool-2.0.3.tgz#446eb2d0d75c65a08c294c5823103d1cebdf594a"
-  integrity sha512-s75vK18eBH2lTa88zc7dTCBtQhDtzoEPoswDnbeF0byJTYON0v98S5/L5LUnVX1/VR62BhJhIjU+LnjBQ4rYQA==
+"@gm-common/tool@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.npmjs.org/@gm-common/tool/-/tool-2.1.0.tgz#1f15f36356e53e7b3983de84b7f6d0de37b8ab35"
+  integrity sha512-96MK9WbI41ZZF3YF9Nxy5nEGWmvohpa7Z9z0/ip0590X/QpgGtLoDIgZci+isOSGepXq6LrUNKrh7eULkVA1wA==
   dependencies:
     "@types/lodash" "^4.14.149"
     lodash "^4.17.15"
-    ts-config-gm-react-app "3.0.2"
+    ts-config-gm-react-app "^3.0.6"
 
 "@gm-react-app/scripts-lib@^3.1.0":
   version "3.1.0"
@@ -2833,10 +2833,10 @@ babel-preset-gm-react-app@^2.1.1-alpha.5:
     react-hot-loader "^4.12.19"
     styled-jsx "^3.2.4"
 
-babel-preset-gm-react-app@^3.0.5:
-  version "3.0.6"
-  resolved "https://registry.npmjs.org/babel-preset-gm-react-app/-/babel-preset-gm-react-app-3.0.6.tgz#a86d60eb0b0e160348151cd2bc0605b2d5f9b62b"
-  integrity sha512-sw90KLTpmwPQgz700c5TNEkbDtgAFsbaPQxVPVcgT75QeFP+3d8lsypWu2nUKbt80GcynN+EJJMomX6+kyrq/Q==
+babel-preset-gm-react-app@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.npmjs.org/babel-preset-gm-react-app/-/babel-preset-gm-react-app-3.1.0.tgz#ed8fcae8b9593b3bf63df4dc4fa1c2ba4079f6a8"
+  integrity sha512-xwDa36crro1kv7xxJwwNnYl2mthpFzHBTXUUQ0I0NvZ9qj60rfGFSSAl2xqJxx3hR6abs9Y2gGj/jw4mtV6Jmw==
   dependencies:
     "@babel/cli" "^7.8.4"
     "@babel/core" "^7.8.4"
@@ -4531,10 +4531,10 @@ eslint-plugin-gm-react-app@^2.1.1-alpha.5:
     lodash "^4.17.14"
     prettier "^2.0.4"
 
-eslint-plugin-gm-react-app@^3.0.5:
-  version "3.0.6"
-  resolved "https://registry.npmjs.org/eslint-plugin-gm-react-app/-/eslint-plugin-gm-react-app-3.0.6.tgz#2c4ab1bb7c7e3950b1b0d524df1657a7a39ccce4"
-  integrity sha512-vRgvSAAcr6ZeuPj0IzS3fYVTm4w+WxsEnS2I9x0ujWYFu19QgpMv7ZXj0IpY7HhLi4Yo542K1xcKvE2K5PgHmw==
+eslint-plugin-gm-react-app@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.npmjs.org/eslint-plugin-gm-react-app/-/eslint-plugin-gm-react-app-3.1.0.tgz#214445c5a97d42adf58633e1ad38254dd0eea239"
+  integrity sha512-JHOUrax/ApNxVNW3Z7NU3ivbOqZZIMbnlJRPeVkIBqswEDoDlV+9Sp/jtYl9zQYvwH8Alw17mbSChrBhEw/75g==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^2.27.0"
     "@typescript-eslint/parser" "^2.27.0"
@@ -4557,7 +4557,7 @@ eslint-plugin-gm-react-app@^3.0.5:
     jsx-ast-utils "^2.2.3"
     lodash "^4.17.14"
     prettier "^2.0.4"
-    ts-config-gm-react-app "^3.0.6"
+    ts-config-gm-react-app "^3.1.0"
     typescript "^3.8.3"
 
 eslint-plugin-import@^2.20.2:
@@ -10223,11 +10223,6 @@ trough@^1.0.0:
   resolved "https://registry.npmjs.org/trough/-/trough-1.0.5.tgz#b8b639cefad7d0bb2abd37d433ff8293efa5f406"
   integrity sha512-rvuRbTarPXmMb79SmzEp8aqXNKcK+y0XaB298IXueQ8I2PsrATcPBCSPyK/dDNa2iWOhKlfNnOjdAOTBU/nkFA==
 
-ts-config-gm-react-app@3.0.2:
-  version "3.0.2"
-  resolved "https://registry.npmjs.org/ts-config-gm-react-app/-/ts-config-gm-react-app-3.0.2.tgz#0427fb61c3cc6f551d1d7668586e8b857e5ab13d"
-  integrity sha512-yxjGxXEHtG5hAiQvJM3qA7OpWj5sSiCo1FTaoXyO44MKznExIb1X3j0ie0kltzZiya/g2vdBiib99EC08KZSHg==
-
 ts-config-gm-react-app@^2.2.0-alpha.1:
   version "2.2.0-alpha.5"
   resolved "https://registry.npmjs.org/ts-config-gm-react-app/-/ts-config-gm-react-app-2.2.0-alpha.5.tgz#95d6955cf08365a44571714f952f321be77f6b46"
@@ -10239,6 +10234,11 @@ ts-config-gm-react-app@^3.0.6:
   version "3.0.6"
   resolved "https://registry.npmjs.org/ts-config-gm-react-app/-/ts-config-gm-react-app-3.0.6.tgz#312ae034a2e40ced8940a1d7bbb3fb89de606605"
   integrity sha512-hiO+EfoFqqQIog06dbV008a6NCwvtfp3pSLLqlA4wHmtoPs1jOohB3/dL2kxymz3KCfJynGtkQDgzG0/N8I7yA==
+
+ts-config-gm-react-app@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.npmjs.org/ts-config-gm-react-app/-/ts-config-gm-react-app-3.1.0.tgz#c403ea3d767149db4a3821615c79b2326662a4bb"
+  integrity sha512-T1a9nhy8qn1Yvh/FAUOsYG/QCjyw1wtTzSnfouTXG5JAS3vyJoMWnktvqfQTkyloljwWmvcV3Q07eDc9QuRBmA==
 
 ts-dedent@^1.1.0:
   version "1.1.1"
