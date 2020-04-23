@@ -2,6 +2,17 @@
 # yarn lockfile v1
 
 
+"@gm-common/number@^2.0.3":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@gm-common/number/-/number-2.0.4.tgz#111dd0c45d8efcc3884a4d9169e4215bd0ff1de3"
+  integrity sha512-ZJTIZNgYpdoWxP3Gof8lafxutEFoOJDWk2H+sPqYuOl2+oHKaPjeVDtTmcaAYQpjjkX5Pzu8q8qBL5F3Yh9eKw==
+  dependencies:
+    "@types/big.js" "^4.0.5"
+    "@types/lodash" "^4.14.149"
+    big.js "^5.2.2"
+    lodash "^4.17.15"
+    ts-config-gm-react-app "^3.0.6"
+
 "@gm-common/tool@^2.0.3":
   version "2.0.3"
   resolved "https://registry.npmjs.org/@gm-common/tool/-/tool-2.0.3.tgz#446eb2d0d75c65a08c294c5823103d1cebdf594a"
@@ -11,15 +22,20 @@
     lodash "^4.17.15"
     ts-config-gm-react-app "3.0.2"
 
-"@gm-mobile/locales@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.npmjs.org/@gm-mobile/locales/-/locales-0.0.2.tgz#0def7262ee5d4cc5d53d736595bfa29a507c1190"
-  integrity sha512-ahhM3cj33JBXXFynjRVQROtOdTL/6Xzaa8FIPM8w75aZYE3w8UytXDXu1x0XRt5kJBEobFy5OQQdgFtToP4WQw==
+"@types/big.js@^4.0.5":
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/@types/big.js/-/big.js-4.0.5.tgz#62c61697646269e39191f24e55e8272f05f21fc0"
+  integrity sha512-D9KFrAt05FDSqLo7PU9TDHfDgkarlwdkuwFsg7Zm4xl62tTNaz+zN+Tkcdx2wGLBbSMf8BnoMhOVeUGUaJfLKg==
 
 "@types/lodash@^4.14.149":
   version "4.14.150"
   resolved "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.150.tgz#649fe44684c3f1fcb6164d943c5a61977e8cf0bd"
   integrity sha512-kMNLM5JBcasgYscD9x/Gvr6lTAv2NVgsKtet/hm93qMyf/D1pt+7jeEZklKJKxMVmXjxbRVQQGfqDSfipYCO6w==
+
+big.js@^5.2.2:
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/big.js/-/big.js-5.2.2.tgz#65f0af382f578bcdc742bd9c281e9cb2d7768328"
+  integrity sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==
 
 classnames@^2.2.6:
   version "2.2.6"
@@ -35,3 +51,8 @@ ts-config-gm-react-app@3.0.2:
   version "3.0.2"
   resolved "https://registry.npmjs.org/ts-config-gm-react-app/-/ts-config-gm-react-app-3.0.2.tgz#0427fb61c3cc6f551d1d7668586e8b857e5ab13d"
   integrity sha512-yxjGxXEHtG5hAiQvJM3qA7OpWj5sSiCo1FTaoXyO44MKznExIb1X3j0ie0kltzZiya/g2vdBiib99EC08KZSHg==
+
+ts-config-gm-react-app@^3.0.6:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/ts-config-gm-react-app/-/ts-config-gm-react-app-3.0.6.tgz#312ae034a2e40ced8940a1d7bbb3fb89de606605"
+  integrity sha512-hiO+EfoFqqQIog06dbV008a6NCwvtfp3pSLLqlA4wHmtoPs1jOohB3/dL2kxymz3KCfJynGtkQDgzG0/N8I7yA==

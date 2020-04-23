@@ -6,9 +6,11 @@ Page 新增 top
 
 新增 Badge
 
-新增 InputKeyboard 数字键盘
+新增 Keyboard 数字键盘
 
 新增 Tabs 多种形式，props 有变化
+
+counter 改变形式, props有变化
 
 ## breaking change
 
@@ -37,6 +39,8 @@ Storage 的 key 从 react-gmm => gm-mobile，记得做迁移
 废除 Select， 提供 SelectPicker，代替原本 Select.render()
 
 废除 Textarea
+
+废除 InputNumber
 
 重新设置 Cell
 

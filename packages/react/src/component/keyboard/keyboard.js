@@ -3,14 +3,14 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
-import KeyboardA from './_keyboard'
+import BaseKeybaord from './_keyboard'
 import Flex from '../flex'
 import Button from '../button'
 import { TYPE, text2Number, processValue, MSGTYPE } from './util'
 import KeyboardStatics from './statics'
 
 const Keyboard = (props) => {
-  const { title, defaultValue, onSubmit, children, ...rest } = props
+  const { title, defaultValue, onSubmit, children, precision, ...rest } = props
 
   const _value = processValue(defaultValue)
   // 输入值 及 输入校验提示信息
@@ -32,6 +32,15 @@ const Keyboard = (props) => {
   // 处理 小数点 情况
   const handelDot = (value) => {
     let v = value
+
+    if (precision === 0) {
+      setErrorMsg({
+        type: MSGTYPE.PRECISION,
+        text: getLocale(`当前只能输入整数`),
+      })
+      return value
+    }
+
     if (v === '') {
       // 为第一个, 在前面自动补充0
       v += '0.'
@@ -154,7 +163,7 @@ const Keyboard = (props) => {
         {errorMsg && errorMsg.text}
       </Flex>
       {children}
-      <KeyboardA onChange={handleValueChange} />
+      <BaseKeybaord onChange={handleValueChange} />
     </Flex>
   )
 }

@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
-import { formatNumber } from 'gm-util'
+
+import { formatNumber } from '@gm-common/number'
 import storage from '../storage'
+
 const eventBus = {
   add(eventName, handler) {
     window.addEventListener(eventName, handler)
@@ -23,6 +25,7 @@ let _symbol = storage.get(symbolKey) || '¥'
 let _unit = storage.get(unitKey) || '元'
 // [{ symbol: '￥', type: 'CNY', unit: '元' },...]
 let _currencyList = [] // 多币种列表
+
 const getCurrentFromType = (type) =>
   _.find(_currencyList, (item) => item.type === type)
 
@@ -38,11 +41,11 @@ class Price extends React.Component {
   }
 
   componentDidMount() {
-    eventBus.add('REACT_MGM_UPDATE_PRICE', this.rerender)
+    eventBus.add('GM_MOBILE_UPDATE_PRICE', this.rerender)
   }
 
   componentWillUnmount() {
-    eventBus.remove('REACT_MGM_UPDATE_PRICE', this.rerender)
+    eventBus.remove('GM_MOBILE_UPDATE_PRICE', this.rerender)
   }
 
   render() {
@@ -56,10 +59,12 @@ class Price extends React.Component {
       feeType,
       ...rest
     } = this.props
+
     const current = getCurrentFromType(feeType)
     if (_.isNil(value) || _.isNaN(value)) {
       return null
     }
+
     return (
       <span {...rest}>
         {value < 0 ? '-' : ''}
@@ -81,13 +86,18 @@ class Price extends React.Component {
 }
 
 Price.propTypes = {
+  /** 展示数值 */
   value: PropTypes.number.isRequired,
+  /** 精度， 展示几位小数 */
   precision: PropTypes.number,
+  /** 是否使用千分符 */
   useGrouping: PropTypes.bool,
+  /** 货币符号的缩放大小 */
   currencyScale: PropTypes.number,
-  // 是否保留小数点后无效的零
+  /** 是否保留小数点后无效的零 */
   keepZero: PropTypes.bool,
   isFenUnit: PropTypes.bool,
+  /** 多币种 */
   feeType: PropTypes.string,
 }
 
