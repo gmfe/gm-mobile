@@ -2,13 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-class Input extends React.Component {
-  render() {
-    const { className, ...rest } = this.props
-
-    return <input {...rest} className={classNames('m-input', className)} />
-  }
-}
+const Input = React.forwardRef(({ className, ...rest }, ref) => {
+  return (
+    <input ref={ref} {...rest} className={classNames('m-input', className)} />
+  )
+})
 
 Input.propTypes = {
   type: PropTypes.string,
