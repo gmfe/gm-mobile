@@ -1,6 +1,5 @@
 // 表单
 import ScrollIntoView from './component/scroll_into_view'
-import CursorFix from './component/cursor_fix'
 import { Button, ButtonTime } from './component/button'
 import Switch from './component/switch'
 import Uploader from './component/uploader'
@@ -59,13 +58,10 @@ import CSSVariable from './css_variable'
 // import Infinite from './component/infinite'
 // import InfiniteBox from './component/infinite/infinite_box'
 
-// import ScrollIntoView from './component/scroll_into_view'
-// import CursorFix from './component/cursor_fix'
 // import Trigger from './component/trigger'
 // import Tooltip from './component/tooltip'
 // import List from './component/list'
 
-// import ProgressBar from './component/progress'
 // import TimeSelect from './component/time_select'
 
 const Alert = Dialog.alert
@@ -74,7 +70,6 @@ const Confirm = Dialog.confirm
 export {
   // 表单
   ScrollIntoView,
-  CursorFix,
   Button,
   ButtonTime,
   Switch,
@@ -139,16 +134,12 @@ export {
 
   // Infinite,
   // InfiniteBox,
-  // ScrollIntoView,
-  // CursorFix,
   // Trigger,
   // Tooltip,
 
   // List,
 
   //
-  // setLocale,
-  // ProgressBar,
   // // 业务组件
   // TimeSelect
 }
