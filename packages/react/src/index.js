@@ -12,7 +12,7 @@ import {
   ConfirmCouplingPicker,
   SelectPicker,
 } from './component/picker'
-import Calendar from './component/calendar'
+import { Calendar, RangeCalendar } from './component/calendar'
 import { Keyboard, KeyboardWrap } from './component/keyboard'
 import Checkbox from './component/checkbox'
 import { LetterIndex, LetterIndexMultiple } from './component/letter_index'
@@ -91,6 +91,7 @@ export {
   ConfirmCouplingPicker,
   SelectPicker,
   Calendar,
+  RangeCalendar,
   Keyboard,
   KeyboardWrap,
   LetterIndex,
