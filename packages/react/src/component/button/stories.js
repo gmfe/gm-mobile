@@ -60,6 +60,9 @@ export const normal = () => (
       <Button block type='primary'>
         主色
       </Button>
+      <Button block mini plain>
+        主色
+      </Button>
     </div>
   </div>
 )
