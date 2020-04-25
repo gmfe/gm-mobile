@@ -67,6 +67,8 @@ import CSSVariable from './css_variable'
 
 const Alert = Dialog.alert
 const Confirm = Dialog.confirm
+const Prompt = Dialog.prompt
+const Delete = Dialog.delete
 
 export {
   // 表单
@@ -113,6 +115,8 @@ export {
   Dialog,
   Alert,
   Confirm,
+  Prompt,
+  Delete,
   PreviewImage,
   Tooltip,
   // 基础
