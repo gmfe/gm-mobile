@@ -50,4 +50,6 @@ Calendar props: label => showDateLabel
 
 LazyImg => Lazy，脱离 img
 
-Storage => SessionStorage
+Storage => LocalStorage SessionStorage
+
+Popup 关闭需要提供 onHide
