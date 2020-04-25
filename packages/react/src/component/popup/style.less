@@ -3,9 +3,9 @@
     position: absolute;
     z-index: var(--z-index-popup);
     overflow: hidden;
+    background: var(--color-bg-white);
 
     .m-popup-content {
-      background: var(--color-bg-white);
       overflow-x: hidden;
       overflow-y: auto;
     }
@@ -15,14 +15,6 @@
       left: 0;
       width: 70%;
       height: 100%;
-
-      .m-popup-content {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-      }
     }
 
     &.m-popup-right {
@@ -30,14 +22,6 @@
       right: 0;
       width: 70%;
       height: 100%;
-
-      .m-popup-content {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-      }
     }
 
     &.m-popup-bottom {
@@ -52,7 +36,6 @@
 
       .m-popup-content {
         height: auto;
-        position: initial;
       }
     }
   }

@@ -2,11 +2,9 @@ import { getLocale } from '@gm-mobile/locales'
 import React from 'react'
 import PropTypes from 'prop-types'
 import CouplingPicker from './coupling_picker'
-import Flex from '../flex'
 import _ from 'lodash'
 import PickerStatics from './statics'
 import Button from '../button'
-import SVGCloseCircle from '../../../svg/close-circle.svg'
 
 class ConfirmCouplingPicker extends React.Component {
   constructor(props) {
@@ -22,33 +20,17 @@ class ConfirmCouplingPicker extends React.Component {
     })
   }
 
-  handleCancel = (e) => {
-    e.preventDefault()
-    this.props.onCancel()
-  }
-
   handleConfirm = (e) => {
     e.preventDefault()
     this.props.onConfirm(this.state.values)
   }
 
   render() {
-    const { datas, title, renderOption } = this.props
+    const { datas, renderOption } = this.props
     const { values } = this.state
 
     return (
       <div>
-        <Flex justifyBetween alignCenter>
-          <Flex flex column className='m-padding-left-15'>
-            {title}
-          </Flex>
-
-          <Button type='link' onClick={this.handleCancel}>
-            <Flex alignCenter>
-              <SVGCloseCircle className='m-text-20 m-text-placeholder' />
-            </Flex>
-          </Button>
-        </Flex>
         <CouplingPicker
           datas={datas}
           values={values}
@@ -72,8 +54,10 @@ class ConfirmCouplingPicker extends React.Component {
 ConfirmCouplingPicker.render = (props) => {
   return new Promise((resolve, reject) => {
     PickerStatics.render({
+      title: props.title,
       bottom: true,
       onHide: () => {
+        PickerStatics.hide()
         setTimeout(() => {
           reject(new Error())
         }, 50)

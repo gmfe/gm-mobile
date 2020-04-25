@@ -133,5 +133,5 @@ export const searchPage = () => {
 }
 
 export default {
-  title: '布局/Search',
+  title: '基础/Search',
 }

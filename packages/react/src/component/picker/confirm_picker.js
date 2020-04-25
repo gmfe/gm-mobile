@@ -2,11 +2,9 @@ import { getLocale } from '@gm-mobile/locales'
 import React from 'react'
 import PropTypes from 'prop-types'
 import Picker from './picker'
-import Flex from '../flex'
 import _ from 'lodash'
 import PickerStatics from './statics'
 import Button from '../button'
-import SVGCloseCircle from '../../../svg/close-circle.svg'
 
 class ConfirmPicker extends React.Component {
   constructor(props) {
@@ -33,22 +31,11 @@ class ConfirmPicker extends React.Component {
   }
 
   render() {
-    const { datas, title, renderOption } = this.props
+    const { datas, renderOption } = this.props
     const { values } = this.state
 
     return (
       <div>
-        <Flex justifyBetween alignCenter>
-          <Flex flex column className='m-padding-left-15'>
-            {title}
-          </Flex>
-
-          <Button type='link' onClick={this.handleCancel}>
-            <Flex alignCenter>
-              <SVGCloseCircle className='m-text-20 m-text-placeholder' />
-            </Flex>
-          </Button>
-        </Flex>
         <Picker
           datas={datas}
           values={values}
@@ -72,8 +59,10 @@ class ConfirmPicker extends React.Component {
 ConfirmPicker.render = (props) => {
   return new Promise((resolve, reject) => {
     PickerStatics.render({
+      title: props.title,
       bottom: true,
       onHide: () => {
+        PickerStatics.hide()
         setTimeout(() => {
           reject(new Error())
         }, 50)

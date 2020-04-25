@@ -24,7 +24,7 @@ import Flex from './component/flex'
 import Divider from './component/divider'
 import Page from './component/page'
 import Header from './component/header'
-import { Search, SearchPage, FakeSearch } from './component/search'
+
 import Square from './component/square'
 import Tabs from './component/tabs'
 import Panel from './component/panel'
@@ -40,6 +40,7 @@ import Dialog from './component/dialog'
 import Mask from './component/mask'
 import Popup from './component/popup'
 import PreviewImage from './component/preview_image'
+import Tooltip from './component/tooltip'
 
 // 基础
 import FlipNumber from './component/flip_number'
@@ -50,6 +51,8 @@ import Slider from './component/slider'
 import SliderLess from './component/slider_less'
 import Price from './component/price'
 import Counter from './component/counter'
+import Badge from './component/badge'
+import { Search, SearchPage, FakeSearch } from './component/search'
 
 // 其他
 import { LocalStorage, SessionStorage } from './component/storage'
@@ -58,8 +61,6 @@ import CSSVariable from './css_variable'
 // import Infinite from './component/infinite'
 // import InfiniteBox from './component/infinite/infinite_box'
 
-// import Trigger from './component/trigger'
-// import Tooltip from './component/tooltip'
 // import List from './component/list'
 
 // import TimeSelect from './component/time_select'
@@ -98,9 +99,6 @@ export {
   Divider,
   Page,
   Header,
-  Search,
-  FakeSearch,
-  SearchPage,
   Square,
   Tabs,
   Panel,
@@ -116,6 +114,7 @@ export {
   Alert,
   Confirm,
   PreviewImage,
+  Tooltip,
   // 基础
   FlipNumber,
   Image,
@@ -127,6 +126,10 @@ export {
   LazyList,
   Counter,
   Price,
+  Badge,
+  Search,
+  FakeSearch,
+  SearchPage,
   // 其他
   CSSVariable,
   LocalStorage,
@@ -134,8 +137,6 @@ export {
 
   // Infinite,
   // InfiniteBox,
-  // Trigger,
-  // Tooltip,
 
   // List,
 

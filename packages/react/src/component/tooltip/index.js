@@ -1,32 +1,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Popup from '../popup'
 
-class Tooltip extends React.Component {
-  render() {
-    const { placement, children, style } = this.props
+const Tooltip = ({ title, content, onClick, children }) => {
+  const handleClick = (e) => {
+    Popup.render({
+      title,
+      bottom: true,
+      children: content,
+      onHide: Popup.hide,
+    })
 
-    return (
-      <div className={`tooltip tooltip-${placement}`} style={style}>
-        <div className='tooltip-arrow' />
-        <div className='tooltip-inner'>{children}</div>
-      </div>
-    )
+    onClick && onClick(e)
   }
+
+  return React.cloneElement(children, {
+    onClick: handleClick,
+  })
 }
 
 Tooltip.propTypes = {
-  placement: PropTypes.oneOf([
-    'top',
-    'bottom',
-    'topLeft',
-    'topRight',
-    'bottomLeft',
-    'bottomRight',
-  ]),
-}
-
-Tooltip.defaultProps = {
-  placement: 'bottomRight',
+  title: PropTypes.string,
+  content: PropTypes.element.isRequired,
 }
 
 export default Tooltip

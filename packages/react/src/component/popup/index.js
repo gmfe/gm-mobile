@@ -5,14 +5,12 @@ import Mask from '../mask'
 import LayerRoot from '../layer_root'
 import _ from 'lodash'
 import { devWarnForHook } from '@gm-common/tool'
+import Flex from '../flex'
+import Button from '../button'
+import SVGCloseCircle from '../../../svg/close-circle.svg'
 
 const PopupStatics = {
   render(options) {
-    const _onHide = options.onHide
-    options.onHide = () => {
-      PopupStatics.hide()
-      _onHide && _onHide()
-    }
     LayerRoot.renderWith(LayerRoot.TYPE.POPUP, <Popup {...options} />)
   },
   hide() {
@@ -21,6 +19,7 @@ const PopupStatics = {
 }
 
 const Popup = ({
+  title,
   left,
   right,
   bottom,
@@ -67,9 +66,20 @@ const Popup = ({
       })}
     >
       <Mask opacity={opacity} onClick={onHide} />
-      <div {...rest} className={cn} style={s}>
-        <div className='m-popup-content'>{children}</div>
-      </div>
+      <Flex column {...rest} className={cn} style={s}>
+        <Flex justifyBetween alignCenter className='m-popup-top'>
+          <Flex flex column className='m-padding-left-15'>
+            {title}
+          </Flex>
+
+          <Button type='link' onClick={onHide}>
+            <Flex alignCenter>
+              <SVGCloseCircle className='m-text-20 m-text-placeholder' />
+            </Flex>
+          </Button>
+        </Flex>
+        <div className='m-popup-content m-flex-flex'>{children}</div>
+      </Flex>
     </div>
   )
 }
@@ -77,6 +87,7 @@ const Popup = ({
 Object.assign(Popup, PopupStatics)
 
 Popup.propTypes = {
+  title: PropTypes.string,
   onHide: PropTypes.func,
   left: PropTypes.bool,
   right: PropTypes.bool,

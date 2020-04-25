@@ -28,5 +28,5 @@ export const corner = () => (
 )
 
 export default {
-  title: 'Badge',
+  title: '基础/Badge',
 }

@@ -8,7 +8,12 @@ export const normal = () => {
         onClick={() => {
           Popup.render({
             left: true,
-            children: <div>lala</div>,
+            children: (
+              <div>
+                <div>adsfas</div>
+              </div>
+            ),
+            onHide: Popup.hide,
           })
         }}
       >
@@ -19,6 +24,7 @@ export const normal = () => {
           Popup.render({
             right: true,
             children: <div>lala</div>,
+            onHide: Popup.hide,
           })
         }}
       >
@@ -29,12 +35,30 @@ export const normal = () => {
           Popup.render({
             bottom: true,
             children: <div>lala</div>,
+            onHide: Popup.hide,
           })
         }}
       >
         bottom
       </button>
     </div>
+  )
+}
+
+export const title = () => {
+  return (
+    <button
+      onClick={() => {
+        Popup.render({
+          title: '啦啦啦',
+          bottom: true,
+          children: <div>lala</div>,
+          onHide: Popup.hide,
+        })
+      }}
+    >
+      bottom
+    </button>
   )
 }
 
