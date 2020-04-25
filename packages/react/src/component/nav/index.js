@@ -4,15 +4,7 @@ import _ from 'lodash'
 import classNames from 'classnames'
 import Flex from '../flex'
 
-const Nav = ({
-  data,
-  selected,
-  onSelect,
-  horizontal,
-  horizontalMore,
-  className,
-  ...rest
-}) => {
+const Nav = ({ data, selected, onSelect, horizontal, className, ...rest }) => {
   return (
     <div
       {...rest}
@@ -55,7 +47,6 @@ Nav.propTypes = {
   selected: PropTypes.any.isRequired,
   onSelect: PropTypes.func.isRequired,
   horizontal: PropTypes.bool,
-  horizontalMore: PropTypes.bool,
   className: PropTypes.string,
   style: PropTypes.object,
 }
