@@ -74,6 +74,17 @@
       }
     }
 
+    &::before {
+      content: '';
+      position: absolute;
+      background-image: linear-gradient(-90deg, hsla(0, 0%, 100%, 0.3), #fff);
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 10px;
+      z-index: 1;
+    }
+
     &::after {
       content: '';
       position: absolute;
@@ -81,7 +92,7 @@
       right: 0;
       top: 0;
       bottom: 0;
-      width: 14px;
+      width: 10px;
     }
   }
 }
