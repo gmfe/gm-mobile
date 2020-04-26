@@ -30,6 +30,7 @@ const Popup = ({
   style,
   onHide,
   isPickPopup,
+  disabledHeader,
   children,
   ...rest
 }) => {
@@ -67,17 +68,19 @@ const Popup = ({
     >
       <Mask opacity={opacity} onClick={onHide} />
       <Flex column {...rest} className={cn} style={s}>
-        <Flex justifyBetween alignCenter className='m-popup-top'>
-          <Flex flex column className='m-padding-left-15'>
-            {title}
-          </Flex>
-
-          <Button type='link' onClick={onHide}>
-            <Flex alignCenter>
-              <SVGCloseCircle className='m-text-20 m-text-placeholder' />
+        {!disabledHeader && (
+          <Flex justifyBetween alignCenter className='m-popup-top'>
+            <Flex flex column className='m-padding-left-15'>
+              {title}
             </Flex>
-          </Button>
-        </Flex>
+
+            <Button type='link' onClick={onHide}>
+              <Flex alignCenter>
+                <SVGCloseCircle className='m-text-20 m-text-placeholder' />
+              </Flex>
+            </Button>
+          </Flex>
+        )}
         <div className='m-popup-content m-flex-flex'>{children}</div>
       </Flex>
     </div>
@@ -95,6 +98,7 @@ Popup.propTypes = {
   width: PropTypes.string,
   height: PropTypes.string,
   opacity: PropTypes.number,
+  disabledHeader: PropTypes.bool,
 
   // 内部用
   isPickPopup: PropTypes.bool,
