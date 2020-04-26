@@ -7,7 +7,7 @@ const Tooltip = ({ title, content, onClick, children }) => {
     Popup.render({
       title,
       bottom: true,
-      children: content,
+      children: <div style={{ minHeight: '100px' }}>{content}</div>,
       onHide: Popup.hide,
     })
 
