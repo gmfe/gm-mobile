@@ -26,12 +26,17 @@ export const normal = () => {
       name: '购物车',
       icon: <SvgClose />,
       to: '/cart',
-      badge: { show: true, count: 7, corner: true },
+      showBadge: true,
+      badge: { count: 7, corner: true },
     },
   ]
   return (
     <div className='m-padding-top-10'>
-      <Tabbar configs={configs} onTabChange={handleTabChange} selected={active} />
+      <Tabbar
+        configs={configs}
+        onTabChange={handleTabChange}
+        selected={active}
+      />
     </div>
   )
 }
