@@ -6,8 +6,7 @@ import Flex from '../flex'
 import Badge from '../badge'
 
 const Item = ({ config, index, selected, onClick }) => {
-  const { icon, activeIcon, name, badge } = config
-  const { show, ...badgeRest } = badge || {}
+  const { icon, activeIcon, name, badge, showBadge } = config
 
   const isActive = selected.startsWith(config.to)
 
@@ -40,7 +39,7 @@ const Item = ({ config, index, selected, onClick }) => {
       flex
       onClick={handleClick}
     >
-      {show ? <Badge {...badgeRest}>{tab()}</Badge> : tab()}
+      {showBadge && badge ? <Badge {...badge}>{tab()}</Badge> : tab()}
     </Flex>
   )
 }
@@ -73,7 +72,7 @@ const Tabbar = ({ configs, selected, onTabChange, className, ...rest }) => {
 }
 
 Tabbar.propTypes = {
-  /** tabbar 配置 [{ name, to, icon, activeIcon, badge}] */
+  /** tabbar 配置 [{ name, to, icon, activeIcon, badge, showBadge}] */
   configs: PropTypes.array.isRequired,
   /** pathname，根据 config.to 匹配 */
   selected: PropTypes.string.isRequired,
