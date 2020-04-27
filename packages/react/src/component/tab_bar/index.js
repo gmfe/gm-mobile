@@ -7,6 +7,7 @@ import Badge from '../badge'
 
 const Item = ({ config, index, selected, onClick }) => {
   const { icon, activeIcon, name, badge } = config
+  const { show, ...badgeRest } = badge || {}
 
   const isActive = selected.startsWith(config.to)
 
@@ -39,7 +40,7 @@ const Item = ({ config, index, selected, onClick }) => {
       flex
       onClick={handleClick}
     >
-      {badge ? <Badge {...badge}>{tab()}</Badge> : tab()}
+      {show ? <Badge {...badgeRest}>{tab()}</Badge> : tab()}
     </Flex>
   )
 }

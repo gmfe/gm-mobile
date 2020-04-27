@@ -26,7 +26,7 @@ export const normal = () => {
       name: '购物车',
       icon: <SvgClose />,
       to: '/cart',
-      badge: { count: 7, corner: true },
+      badge: { show: true, count: 7, corner: true },
     },
   ]
   return (
