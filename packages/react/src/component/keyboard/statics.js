@@ -7,6 +7,9 @@ const NumberKeyboardStatics = {
   render(options) {
     return Popup.render({
       bottom: true,
+      title: options.title,
+      onHide: Popup.hide,
+      disabledHeader: true,
       children: <Keyboard {...options} />,
     })
   },

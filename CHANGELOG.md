@@ -12,6 +12,8 @@ Page 新增 top
 
 counter 改变形式, props有变化
 
+Calendar提供多种选择类型，props有变化
+
 ## breaking change
 
 Dialog 移除 show
@@ -45,8 +47,6 @@ Storage 的 key 从 react-gmm => gm-mobile，记得做迁移
 重新设置 Cell
 
 原有 Radio => Checkbox, 提供新的 Radio
-
-Calendar props: label => showDateLabel
 
 LazyImg => Lazy，脱离 img
 

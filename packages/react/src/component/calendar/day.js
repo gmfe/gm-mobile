@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 
 import Flex from '../flex'
+import { TYPE } from './util'
 
 class Day extends React.Component {
   nowMountStart = +moment().startOf('day')
@@ -14,14 +15,55 @@ class Day extends React.Component {
     onClick(value)
   }
 
+  // 判断当前渲染日期是否为所在月份的 第一天/最后一天
+  isDisabledGap = (type) => {
+    const { value } = this.props
+    const first = moment(value).startOf('month').date()
+    const last = moment(value).endOf('month').date()
+    const { locIndex } = this.props
+
+    const day = type === 'left' ? first : last
+    const mod = type === 'left' ? 0 : 6
+
+    if (value.date() === day || locIndex % 7 === mod) {
+      return true
+    }
+    return false
+  }
+
+  isSelectedDate = () => {
+    const { value, selected, type } = this.props
+    const v = +value.startOf('day')
+
+    if (type === TYPE.RANGE) {
+      return (
+        v === +moment(selected[0]).startOf('day') &&
+        v === +moment(selected[1]).startOf('day')
+      )
+    }
+
+    let s = null
+    if (type === TYPE.MULTIPLE) {
+      s = _.find(selected, (date) => +moment(date).startOf('day') === v)
+    } else {
+      // 单选直接判断
+      s = +moment(selected).startOf('day') === v
+    }
+
+    if (s) {
+      return true
+    }
+    return false
+  }
+
   render() {
     const {
       currentMoment,
       value,
-      begin,
-      end,
       disabled,
       showDateLabel,
+      type,
+      selected,
     } = this.props
 
     const wm = currentMoment.month()
@@ -31,33 +73,26 @@ class Day extends React.Component {
       return <Flex className='m-calendar-day' />
     }
 
-    const bv = begin && +moment(begin).startOf('day')
-    const ev = end && +moment(end).startOf('day')
+    let bv = null
+    let ev = null
+    if (type === TYPE.RANGE) {
+      bv = selected[0] && +moment(selected[0]).startOf('day')
+      ev = selected[1] && +moment(selected[1]).startOf('day')
+    }
     const v = +value.startOf('day')
 
     const cn = classNames('m-calendar-day', {
-      disabled: disabled,
-      'm-calendar-day-begin': begin && v === bv,
-      'm-calendar-day-end': end && v === ev,
-      'm-calendar-day-selected': begin && end && v === bv && v === ev,
+      // 无状态
       'm-calendar-day-now': this.nowMountStart === +value.startOf('day'),
-      active: begin && v > bv && v < ev,
+      // 不可用
+      disabled: disabled,
+      // 单个选中态
+      'm-calendar-day-selected': this.isSelectedDate(),
+      // 日期段选中态
+      'm-calendar-day-begin': type === TYPE.RANGE && selected[0] && v === bv,
+      'm-calendar-day-end': type === TYPE.RANGE && selected[1] && v === ev,
+      active: type === TYPE.RANGE && selected[0] && v > bv && v < ev,
     })
-
-    // 判断当前渲染日期是否为所在月份的 第一天/最后一天
-    const isDisabledGap = (type) => {
-      const first = moment(value).startOf('month').date()
-      const last = moment(value).endOf('month').date()
-      const { locIndex } = this.props
-
-      const day = type === 'left' ? first : last
-      const mod = type === 'left' ? 0 : 6
-
-      if (value.date() === day || locIndex % 7 === mod) {
-        return true
-      }
-      return false
-    }
 
     return (
       <Flex
@@ -68,12 +103,12 @@ class Day extends React.Component {
       >
         <span
           className={classNames('m-calendar-day-left', {
-            disabled: isDisabledGap('left'),
+            disabled: this.isDisabledGap('left'),
           })}
         />
         <Flex column alignCenter justifyCenter className='m-calendar-day-text'>
           {value.date()}
-          {showDateLabel && (
+          {showDateLabel && type === TYPE.RANGE && (
             <small>
               {v === bv && v === ev && getLocale('单天')}
               {v === bv && v !== ev && getLocale('开始')}
@@ -83,7 +118,7 @@ class Day extends React.Component {
         </Flex>
         <span
           className={classNames('m-calendar-day-right', {
-            disabled: isDisabledGap('right'),
+            disabled: this.isDisabledGap('right'),
           })}
         />
       </Flex>
@@ -92,11 +127,13 @@ class Day extends React.Component {
 }
 
 Day.propTypes = {
+  selected: PropTypes.any,
+  /** 选择日期类型：one，range，multiple */
+  type: PropTypes.oneOf(['one', 'range', 'multiple']),
+
   onClick: PropTypes.func,
   value: PropTypes.object,
   currentMoment: PropTypes.object,
-  begin: PropTypes.object,
-  end: PropTypes.object,
   disabled: PropTypes.bool,
   showDateLabel: PropTypes.bool,
   /** 当前渲染日期所在日历位置 */
