@@ -16,7 +16,7 @@ import Calendar from './component/calendar'
 import { Keyboard, KeyboardWrap } from './component/keyboard'
 import Checkbox from './component/checkbox'
 import { LetterIndex, LetterIndexMultiple } from './component/letter_index'
-import { Input, InputPassword } from './component/input'
+import { Input, InputPassword, BorderInput } from './component/input'
 import Radio from './component/radio'
 
 // 布局
@@ -79,6 +79,7 @@ export {
   Checkbox,
   Input,
   InputPassword,
+  BorderInput,
   Uploader,
   Cells,
   Cell,
