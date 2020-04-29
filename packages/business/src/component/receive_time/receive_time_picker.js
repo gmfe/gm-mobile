@@ -3,6 +3,7 @@ import { getLocale } from '@gm-mobile/locales'
 import { CouplingPicker, Flex, Button } from '@gm-mobile/react'
 import _ from 'lodash'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 import PickerStatics from './statics'
 import { serviceTimeUtils } from '@gm-mobile/service_time'
 
@@ -14,6 +15,16 @@ const {
   getStartCycleList,
   getEndCycleList,
 } = serviceTimeUtils
+
+const weekMap = {
+  0: getLocale('周日'),
+  1: getLocale('周一'),
+  2: getLocale('周二'),
+  3: getLocale('周三'),
+  4: getLocale('周四'),
+  5: getLocale('周五'),
+  6: getLocale('周六'),
+}
 
 const cycleToPickerList = (cycleList) => {
   const dayList = cycleListToDayList(cycleList)
@@ -105,12 +116,27 @@ const ReceiveTimePicker = ({ onConfirm, order }) => {
         <CouplingPicker
           datas={startDatas}
           values={_startValue}
+          renderOption={(dataIndex, option) => {
+            if (dataIndex === 0) {
+              return `${option.text} ${
+                option.date ? weekMap[moment(option.date).day()] : ''
+              }`
+            }
+            return option.text
+          }}
           onChange={handleStartChange}
         />
-        <div className='m-gap-20' />
         <CouplingPicker
           datas={endDatas}
           values={_endValue}
+          renderOption={(dataIndex, option) => {
+            if (dataIndex === 0) {
+              return `${option.text}  ${
+                option.date ? weekMap[moment(option.date).day()] : ''
+              }`
+            }
+            return option.text
+          }}
           onChange={handleEndChange}
         />
       </Flex>

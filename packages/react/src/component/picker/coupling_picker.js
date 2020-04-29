@@ -49,6 +49,7 @@ class CouplingPicker extends React.Component {
             subList1 = v.children
           }
           return {
+            ...v,
             value: v.value,
             text: v.text,
           }
@@ -59,13 +60,14 @@ class CouplingPicker extends React.Component {
             subList2 = v.children
           }
           return {
+            ...v,
             value: v.value,
             text: v.text,
           }
         })
       } else {
         arr[i] = _.map(subList2, (v) => {
-          return { value: v.value, text: v.text }
+          return { ...v, value: v.value, text: v.text }
         })
       }
     }
