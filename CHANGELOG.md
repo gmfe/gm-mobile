@@ -53,3 +53,5 @@ LazyImg => Lazy，脱离 img
 Storage => LocalStorage SessionStorage
 
 Popup 关闭需要提供 onHide
+
+移除 Slide SlideLess

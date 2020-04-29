@@ -47,8 +47,6 @@ import FlipNumber from './component/flip_number'
 import Image from './component/image'
 import Label from './component/label'
 import Loading from './component/loading'
-import Slider from './component/slider'
-import SliderLess from './component/slider_less'
 import Price from './component/price'
 import Counter from './component/counter'
 import Badge from './component/badge'
@@ -126,8 +124,6 @@ export {
   Image,
   Label,
   Loading,
-  Slider,
-  SliderLess,
   Lazy,
   LazyList,
   Counter,

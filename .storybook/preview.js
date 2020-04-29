@@ -5,6 +5,7 @@ import { LayerRoot } from '../packages/react/src'
 import { Observer } from 'mobx-react'
 
 import '../packages/react/src/index.less'
+import '../packages/swiper/src/index.less'
 
 addParameters({
   options: {
