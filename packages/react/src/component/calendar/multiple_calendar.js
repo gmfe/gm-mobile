@@ -4,36 +4,27 @@ import PropTypes from 'prop-types'
 import BaseCalendar from './base'
 import { TYPE } from './util'
 
-class Calendar extends React.Component {
-  refCalendar = React.createRef()
+class MultipleCalendar extends React.Component {
+  refMultipleCalendar = React.createRef()
 
   apiScrollToSelected = () => {
-    this.refCalendar.apiScrollToSelected()
-  }
-
-  handleSelect = (selected) => {
-    const { onSelect } = this.props
-    onSelect(selected[0])
+    this.refMultipleCalendar.apiScrollToSelected()
   }
 
   render() {
-    const { selected, onSelect, ...rest } = this.props
-
     return (
       <BaseCalendar
-        ref={this.refCalendar}
-        {...rest}
-        selected={[selected]}
-        onSelect={this.handleSelect}
-        type={TYPE.ONE}
+        ref={this.refMultipleCalendar}
+        {...this.props}
+        type={TYPE.MULTIPLE}
       />
     )
   }
 }
 
-Calendar.propTypes = {
-  /** 当前选中日期 */
-  selected: PropTypes.object,
+MultipleCalendar.propTypes = {
+  /** 当前选中日期数组 */
+  selected: PropTypes.array.isRequired,
   /** 回调函数 */
   onSelect: PropTypes.func,
   /** 可选日期最小值 */
@@ -46,4 +37,4 @@ Calendar.propTypes = {
   style: PropTypes.object,
 }
 
-export default Calendar
+export default MultipleCalendar
