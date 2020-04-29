@@ -11,7 +11,7 @@ const min = moment().add(-4, 'd').toDate()
 const max = moment().toDate()
 
 const store = observable({
-  mulSelected: [min, max],
+  mulSelected: [min, max, moment().add(-3, 'd').toDate()],
   oneSelected: min,
   begin: min,
   end: max,
@@ -24,13 +24,13 @@ const store = observable({
   },
   setOneSelected(selected) {
     this.oneSelected = selected
-  }
+  },
 })
 
 export const info = () => (
   <div className='m-text-16 m-padding-10'>
     Calendar 提供 type 属性指定日期选择类型: 'one', 'range', 'multiple'
-    <br/>
+    <br />
     range类型 提供了 RangeCalendar 方便调用
   </div>
 )
