@@ -47,7 +47,7 @@ class Day extends React.Component {
       s = _.find(selected, (date) => +moment(date).startOf('day') === v)
     } else {
       // 单选直接判断
-      s = +moment(selected).startOf('day') === v
+      s = +moment(selected[0]).startOf('day') === v
     }
 
     if (s) {
@@ -127,7 +127,7 @@ class Day extends React.Component {
 }
 
 Day.propTypes = {
-  selected: PropTypes.any,
+  selected: PropTypes.array,
   /** 选择日期类型：one，range，multiple */
   type: PropTypes.oneOf(['one', 'range', 'multiple']),
 
