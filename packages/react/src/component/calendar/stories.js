@@ -4,6 +4,7 @@ import { observable, toJS } from 'mobx'
 
 import Calendar from './calendar'
 import RangeCalendar from './range_calendar'
+import MultipleCalendar from './multiple_calendar'
 
 const refCalendar = React.createRef(null)
 
@@ -29,9 +30,13 @@ const store = observable({
 
 export const info = () => (
   <div className='m-text-16 m-padding-10'>
-    Calendar 提供 type 属性指定日期选择类型: 'one', 'range', 'multiple'
+    封装多种类型选择 Calendar
     <br />
-    range类型 提供了 RangeCalendar 方便调用
+    单选类型 提供了 Calendar
+    <br />
+    range类型 提供了 RangeCalendar
+    <br />
+    multiple类型 提供了 MultipleCalendar
   </div>
 )
 
@@ -43,7 +48,6 @@ export const one = () => {
         min={moment().add(-1, 'month').toDate()}
         max={moment().toDate()}
         selected={store.oneSelected}
-        type='one'
         onSelect={(selected) => store.setOneSelected(selected)}
       />
     </div>
@@ -69,12 +73,11 @@ export const range = () => {
 export const multiple = () => {
   return (
     <div style={{ height: '400px' }}>
-      <Calendar
+      <MultipleCalendar
         ref={refCalendar}
         min={moment().add(-1, 'month').toDate()}
         max={moment().toDate()}
         selected={store.mulSelected}
-        type='multiple'
         onSelect={(selected) => store.setMulSelected(selected)}
       />
     </div>
