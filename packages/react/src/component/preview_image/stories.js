@@ -4,13 +4,10 @@ import Flex from '../flex'
 
 const imgs = [
   {
-    url:
-      'https://js.guanmai.cn/static_storage/json/common/logo/default/logo.pure.png',
-    name: 'picDesc',
+    img: 'https://js.guanmai.cn/static_storage/json/common/logo/default/logo.pure.png',
   },
   {
-    url: 'http://img.ts.cn/003/509/817/00350981702_dd0fed0a.jpg',
-    name: 'picDesc',
+    img: 'http://img.ts.cn/003/509/817/00350981702_dd0fed0a.jpg',
   },
 ]
 
@@ -40,6 +37,7 @@ export const multiImgs = () => (
       onClick={() => {
         PreviewImage.render({
           images: imgs,
+          defaultIndex: 1
         })
       }}
     >

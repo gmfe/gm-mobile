@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import _ from 'lodash'
-import Slide from '../slider/index'
 import Flex from '../flex/index'
 import LayerRoot from '../layer_root'
 import Image from '../image'
+import { SwiperImg } from '@gm-mobile/swiper'
 
 const PreviewImageStatics = {
   render(options) {
@@ -47,15 +47,21 @@ const PreviewImage = ({ images, defaultIndex, className, onHide, ...rest }) => {
         {images.length === 1 ? (
           <Image src={images[0].url} objectFix='contain' />
         ) : (
-          <Slide
-            defaultIndex={defaultIndex}
-            onChange={handleChange}
-            flag='none'
-          >
-            {_.map(images, (v, i) => (
-              <Image key={i} src={v.url} objectFix='contain' />
-            ))}
-          </Slide>
+          <div>
+            <SwiperImg
+              data={images}
+              options={{
+                initialSlide: defaultIndex,
+                autoplay: false,
+                pagination: { el: null },
+                on: {
+                  slideChange: function () {
+                    handleChange(this.realIndex)
+                  },
+                },
+              }}
+            />
+          </div>
         )}
       </Flex>
     </Flex>
@@ -70,7 +76,7 @@ PreviewImage.defaultProps = {
 }
 
 PreviewImage.propTypes = {
-  /** 图片数组 [{url, name}] */
+  /** 图片数组 [{url, img}] */
   images: PropTypes.array.isRequired,
   /** 关闭预览回调 */
   onHide: PropTypes.func,
