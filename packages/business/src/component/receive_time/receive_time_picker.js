@@ -82,8 +82,8 @@ const ReceiveTimePicker = ({ onConfirm, order }) => {
   }
 
   const startValueDate = useMemo(() => {
-    return getStartDateFromValues(startValue, cycleList)
-  }, [startValue, cycleList])
+    return getStartDateFromValues(_startValue, cycleList)
+  }, [_startValue, cycleList])
   const endDatas = useMemo(() => {
     return cycleToPickerList(getEndCycleList(startValueDate, cycleList))
   }, [startValueDate, cycleList])
