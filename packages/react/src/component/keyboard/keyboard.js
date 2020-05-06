@@ -6,15 +6,14 @@ import _ from 'lodash'
 import BaseKeybaord from './_keyboard'
 import Flex from '../flex'
 import Button from '../button'
-import { TYPE, text2Number, processValue, MSGTYPE } from './util'
+import { TYPE, text2Number, MSGTYPE } from './util'
 import KeyboardStatics from './statics'
 
 const Keyboard = (props) => {
   const { title, defaultValue, onSubmit, children, precision, ...rest } = props
 
-  const _value = processValue(defaultValue)
   // 输入值 及 输入校验提示信息
-  const [currentValue, setCurrentValue] = useState(_value)
+  const [currentValue, setCurrentValue] = useState(defaultValue)
   const [errorMsg, setErrorMsg] = useState(null)
 
   const handleSubmit = () => {
@@ -23,10 +22,8 @@ const Keyboard = (props) => {
       return
     }
 
-    // 转成number给业务方
-    const num = text2Number(currentValue)
     KeyboardStatics.hide()
-    onSubmit(num)
+    onSubmit(currentValue)
   }
 
   // 处理 小数点 情况
@@ -172,7 +169,7 @@ Object.assign(Keyboard, KeyboardStatics)
 
 Keyboard.propTypes = {
   /** 初始默认值, null表示为空值 */
-  defaultValue: PropTypes.number,
+  defaultValue: PropTypes.string,
   /** 标题, 辅助展示 */
   title: PropTypes.string,
   /** 确定回调函数 */
@@ -186,7 +183,7 @@ Keyboard.propTypes = {
 }
 
 Keyboard.defaultProps = {
-  defaultValue: null,
+  defaultValue: '',
   precision: 2,
 }
 

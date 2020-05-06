@@ -4,7 +4,7 @@ import { observable } from 'mobx'
 import Counter from './'
 
 const store = observable({
-  value: null,
+  value: '',
   setValue(v) {
     this.value = v
   },
@@ -17,6 +17,7 @@ export const normal = () => {
       <div className='m-margin-10'>
         <Counter
           value={store.value}
+          min={3}
           onChange={(v) => store.setValue(v)}
         />
       </div>
