@@ -2,6 +2,32 @@
 # yarn lockfile v1
 
 
+"@better-scroll/core@^2.0.0-alpha.20":
+  version "2.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@better-scroll/core/-/core-2.0.0-beta.6.tgz#aaa4d0f51e110dafa2f7e1249049d3658d494359"
+  integrity sha512-nZ4kWDAPdrYKGGxKYdKP65hnwXsyWl0bymI9H97t8fRgDj//LS5g8EEhva8JlEIxBz8SjWo7tNgcLXq+9i5Ivg==
+  dependencies:
+    "@better-scroll/shared-utils" "^2.0.0-beta.6"
+
+"@better-scroll/pull-down@2.0.0-alpha.20":
+  version "2.0.0-alpha.20"
+  resolved "https://registry.yarnpkg.com/@better-scroll/pull-down/-/pull-down-2.0.0-alpha.20.tgz#952c40c0364775ec7c0d86238436f285286d82f9"
+  integrity sha512-vf8jYpKzt8pGYdBXyrX9L9A/qA9XKNUtIuc5AtaAOiBm/sBjEVqRII5cs+vT/N1bq7yudOwq5keGQXrbcqZ0PA==
+  dependencies:
+    "@better-scroll/core" "^2.0.0-alpha.20"
+
+"@better-scroll/pull-up@2.0.0-alpha.20":
+  version "2.0.0-alpha.20"
+  resolved "https://registry.yarnpkg.com/@better-scroll/pull-up/-/pull-up-2.0.0-alpha.20.tgz#b02cc167ca6b287d328780bef5f7aa89c9324377"
+  integrity sha512-ykZlkHDo1Vjbd+o6eSRayDDZSk4hFrhzSYSGGwGl57J/kAWXN8iS+BanqOqTXKLrr4rbUd0qW6blV7xdg5O4sw==
+  dependencies:
+    "@better-scroll/core" "^2.0.0-alpha.20"
+
+"@better-scroll/shared-utils@^2.0.0-beta.6":
+  version "2.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@better-scroll/shared-utils/-/shared-utils-2.0.0-beta.6.tgz#5534d80bfd230908a1d637ce742f2067545d56cc"
+  integrity sha512-dT6i3TLPJ6xPyjq2QC+XZ5DaXUQUxPTFvywHo8pmDbfwRKP/YXkR4uGuYL4ehVhWuPidgkwGYJG0dpjFyHoVfQ==
+
 "@gm-common/number@^2.1.0":
   version "2.1.0"
   resolved "https://registry.npmjs.org/@gm-common/number/-/number-2.1.0.tgz#aabf8b2d9c5c40e290f457b2c5491fc68d404c2a"
@@ -22,10 +48,17 @@
     lodash "^4.17.15"
     ts-config-gm-react-app "^3.0.6"
 
-"@gm-mobile/locales@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.npmjs.org/@gm-mobile/locales/-/locales-0.0.3.tgz#0b63cfcbda6b48198c1e44ed83ef7b87f42362c3"
-  integrity sha512-neZAubjCunz9ma751oFL4pk6X7bBJinXrqu1nSrSSSapCAsMJaKOnvVj/vR2RhJCYXQGQ+N/n8plDatGAWK5ig==
+"@gm-mobile/locales@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@gm-mobile/locales/-/locales-0.0.7.tgz#d6b2703a02d6c8f88a7057065b3b6a7582ec829f"
+  integrity sha512-zUjLtjuyUWHEXOfgtXMndJ04nfRrc8Gxl4g0nAqlakM0z9+NJtniL1+zbo9sY6T4YM2dB6i6udKhK9sCI33CfA==
+
+"@gm-mobile/swiper@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@gm-mobile/swiper/-/swiper-0.0.7.tgz#0c3c22ac6f2ed9b533856841726eb7012c8e18bc"
+  integrity sha512-kUQE5sNcG9yzEwga/KeUdK8l4QSLzskvZIw7r8RNLfsH5TCj67WNw3gMoiib4QkukCH91EeeZmOwIvJwJkkeJA==
+  dependencies:
+    swiper "^5.3.8"
 
 "@types/big.js@^4.0.5":
   version "4.0.5"
@@ -47,10 +80,30 @@ classnames@^2.2.6:
   resolved "https://registry.npmjs.org/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
 
+dom7@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/dom7/-/dom7-2.1.3.tgz#a736f9c3bfbc4ca039a81cd095f97d1d7f3de19c"
+  integrity sha512-QTxHHDox+M6ZFz1zHPAHZKI3JOHY5iY4i9BK2uctlggxKQwRhO3q3HHFq1BKsT25Bm/ySSj70K6Wk/G4bs9rMQ==
+  dependencies:
+    ssr-window "^1.0.1"
+
 lodash@^4.17.15:
   version "4.17.15"
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+
+ssr-window@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/ssr-window/-/ssr-window-1.0.1.tgz#30752a6a4666e7767f0b7e6aa6fc2fdbd0d9b369"
+  integrity sha512-dgFqB+f00LJTEgb6UXhx0h+SrG50LJvti2yMKMqAgzfUmUXZrLSv2fjULF7AWGwK25EXu8+smLR3jYsJQChPsg==
+
+swiper@^5.3.8:
+  version "5.3.8"
+  resolved "https://registry.yarnpkg.com/swiper/-/swiper-5.3.8.tgz#25c555d73787d35aa56418b904cb3ed4423bade8"
+  integrity sha512-bCxrayTgzC2bZBRuFwAx7T4exWeHqMADBpcuTQ7PNCOIIzJRPqNh4ySIvW06LEEU3Q0KncaNre4hrn+jXcWivQ==
+  dependencies:
+    dom7 "^2.1.3"
+    ssr-window "^1.0.1"
 
 ts-config-gm-react-app@^3.0.6:
   version "3.0.6"

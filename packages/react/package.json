@@ -25,6 +25,9 @@
     "react-dom": "^16.13.1"
   },
   "dependencies": {
+    "@better-scroll/core": "^2.0.0-alpha.20",
+    "@better-scroll/pull-down": "^2.0.0-alpha.20",
+    "@better-scroll/pull-up": "^2.0.0-alpha.20",
     "@gm-common/number": "^2.1.0",
     "@gm-common/tool": "^2.1.0",
     "@gm-mobile/locales": "^0.0.8",
