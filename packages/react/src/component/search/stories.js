@@ -37,6 +37,20 @@ export const normal = () => {
   )
 }
 
+export const light = () => {
+  return (
+    <div>
+      <h3>深色</h3>
+      <Search
+        light
+        placeholder='在站内搜索'
+        value={store.value}
+        onChange={(value) => store.setValue(value)}
+      />
+    </div>
+  )
+}
+
 export const cancel = () => {
   return (
     <div>

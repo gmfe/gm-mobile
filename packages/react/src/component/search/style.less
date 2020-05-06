@@ -1,10 +1,8 @@
 .m-search {
-  height: var(--size-header-height);
-  padding: 0 15px;
-
   .m-search-input {
     border-radius: var(--size-form-height-sm);
     overflow: hidden;
+    position: relative;
 
     .m-input {
       height: var(--size-form-height-sm);
@@ -20,14 +18,19 @@
     }
   }
 
+  &.m-search-light {
+    .m-input {
+      background: var(--fake-search-bg);
+    }
+  }
+
   .m-btn {
     margin-right: -15px;
+    font-size: var(--size-text-14);
   }
 }
 
 .m-fake-search {
-  height: var(--size-header-height);
-  padding: 0 15px;
   cursor: pointer;
 
   .m-fake-search-inner {
