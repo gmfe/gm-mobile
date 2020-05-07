@@ -54,6 +54,9 @@ export const normal = () => (
       <Button mini type='link'>
         Link
       </Button>
+      <Button mini type='link' className='m-text'>
+        纯文字
+      </Button>
     </div>
     block
     <div>
