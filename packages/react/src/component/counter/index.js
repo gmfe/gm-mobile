@@ -1,9 +1,11 @@
 import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
+import _ from 'lodash'
 import Big from 'big.js'
 
 import { KeyboardWrap } from '../keyboard'
+import Input from '../input'
 import SVGPlus from '../../../svg/plus.svg'
 import SVGMinus from '../../../svg/minus.svg'
 
@@ -19,29 +21,40 @@ const Counter = ({
   className,
   ...rest
 }) => {
-  const minusDisabled = value === null || value === 0 || (min && value <= min)
-  const plusDisabled = max && value >= max
+  const text2Number = (value) => {
+    if (value === '') {
+      return 0
+    }
+    return _.isNaN(parseFloat(value)) ? '' : parseFloat(value)
+  }
+
+  const plusDisabled = max && text2Number(value) >= max
+  const minusDisabled = value === '' || text2Number(value) === 0
 
   // 检验是否超出大小值限制
-  const checkValue = (value) => {
+  const checkValue = (value, type) => {
     if (max && value > max) {
       return value - 1
     }
 
     if (min && value < min) {
-      return value + 1
+      if (type === 'plus') {
+        return min
+      }
+      return 0
     }
 
     return value
   }
 
   const handleChange = (type) => {
-    let v = value
+    let v = text2Number(value)
+    const _precision = _.includes(value, '.') ? precision : 0
     if (type === 'minus') {
       if (minusDisabled) return
       // 小于0时展示为0不变
-      v = value - 1 < 0 ? 0 : value - 1
-      const cv = checkValue(v)
+      v = v - 1 < 0 ? 0 : v - 1
+      const cv = Big(checkValue(v, type)).toFixed(_precision)
       onChange(cv)
       return
     }
@@ -49,21 +62,12 @@ const Counter = ({
     if (plusDisabled) return
 
     // 如果存在最小值，以最小值开始相加
-    v = value + 1
-    if (min && value === null) {
+    v = v + 1
+    if (min && value === '') {
       v = min
     }
-    const cv = checkValue(v)
+    const cv = Big(checkValue(v, type)).toFixed(_precision)
     onChange(cv)
-  }
-
-  const renderValue = () => {
-    // 根据设定精度展示数值
-    if (value === null) {
-      return ''
-    }
-
-    return Big(value).toFixed(precision)
   }
 
   return (
@@ -79,12 +83,13 @@ const Counter = ({
         className
       )}
     >
-      <SVGMinus
-        className={classNames('m-counter-minus', {
-          disabled: minusDisabled,
-        })}
-        onClick={() => handleChange('minus')}
-      />
+      <div className='m-counter-icon' onClick={() => handleChange('minus')}>
+        <SVGMinus
+          className={classNames('m-counter-minus', {
+            disabled: minusDisabled,
+          })}
+        />
+      </div>
       <KeyboardWrap
         className='m-counter-content'
         defaultValue={value}
@@ -94,21 +99,27 @@ const Counter = ({
         precision={precision}
         onSubmit={onChange}
       >
-        {renderValue()}
+        <Input
+          type='text'
+          className='m-counter-content-text'
+          value={value}
+          onChange={() => _.noop}
+        />
       </KeyboardWrap>
-      <SVGPlus
-        className={classNames('m-counter-plus', {
-          disabled: plusDisabled,
-        })}
-        onClick={() => handleChange('plus')}
-      />
+      <div className='m-counter-icon' onClick={() => handleChange('plus')}>
+        <SVGPlus
+          className={classNames('m-counter-plus', {
+            disabled: plusDisabled,
+          })}
+        />
+      </div>
     </div>
   )
 }
 
 Counter.propTypes = {
-  /** 当前展示值，null展示为空 */
-  value: PropTypes.number,
+  /** 当前展示值 */
+  value: PropTypes.string,
   /** 键盘标题, 辅助展示 */
   title: PropTypes.string,
   /** 最小值, 默认为0 */
@@ -128,7 +139,7 @@ Counter.propTypes = {
 }
 
 Counter.defaultProps = {
-  value: null,
+  value: '',
   min: 0,
   precision: 2,
 }

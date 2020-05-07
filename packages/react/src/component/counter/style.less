@@ -9,37 +9,59 @@
   .mDisabledWith();
 
   &.m-counter-default {
-    min-width: 66px;
+    width: 96px;
     height: 26px;
     line-height: 26px;
     border-radius: 30px;
     font-size: 16px;
-    padding: 0 5px;
 
-    .mCounterVariants(5px, 14px, 26px);
+    .m-counter-content {
+      width: 44px;
+    }
+
+    .mCounterVariants(26px, 26px);
   }
 
   &.m-counter-large {
-    min-width: 226px;
+    min-width: 256px;
     height: 36px;
     line-height: 36px;
     border-radius: 40px;
     font-size: 18px;
-    padding: 0 15px;
 
-    .mCounterVariants(10px, 170px, 36px);
+    .m-counter-content {
+      width: calc(100% - 72px);
+    }
+
+    .mCounterVariants(36px, 36px);
   }
 }
 
-.mCounterVariants(@bottom, @width, @height) {
+.mCounterVariants(@iconWidth, @height) {
   .m-counter-content {
     display: inline-block;
-    min-width: @width;
     height: @height;
     line-height: @height;
     text-align: center;
     vertical-align: top;
-    padding: 0 10px;
+
+    .m-counter-content-text {
+      height: @height;
+      line-height: @height;
+      color: var(--color-primary);
+      text-align: center;
+      vertical-align: top;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 0;
+    }
+  }
+
+  .m-counter-icon {
+    display: inline-block;
+    height: @height;
+    width: @iconWidth;
+    text-align: center;
   }
 
   .m-counter-plus,

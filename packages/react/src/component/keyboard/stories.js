@@ -5,7 +5,7 @@ import Button from '../button'
 import KeyboardWrap from './wrap'
 
 const numStore = observable({
-  value: null,
+  value: '',
   setValue(v) {
     this.value = v
   },

@@ -29,16 +29,9 @@ const KEYS = [
 
 const text2Number = (value) => {
   if (value === '') {
-    return null
-  }
-  return _.isNaN(parseFloat(value)) ? null : parseFloat(value)
-}
-
-const processValue = (value) => {
-  if (value === null) {
     return ''
   }
-  return value + ''
+  return _.isNaN(parseFloat(value)) ? '' : parseFloat(value)
 }
 
-export { TYPE, KEYS, MSGTYPE, text2Number, processValue }
+export { TYPE, KEYS, MSGTYPE, text2Number }
