@@ -122,7 +122,7 @@ class FlipNumber extends React.Component {
         ref={(rel) => {
           this[`flip-number-digit${index}`] = rel
         }}
-        className='m-inline-block m-position-relative'
+        className='m-inline-block m-relative'
         key={`digitAxis${index}`}
       >
         {_.map(this.numberArray, (i, d) => (
@@ -156,10 +156,7 @@ class FlipNumber extends React.Component {
           this.wrap = rel
         }}
         style={{ height: `${this.height}px` }}
-        className={classnames(
-          'm-position-relative m-overflow-hidden',
-          className
-        )}
+        className={classnames('m-relative m-overflow-hidden', className)}
       >
         {this.renderDigitAxis()}
       </div>
