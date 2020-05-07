@@ -7,12 +7,6 @@ const TYPE = {
   NUMBER: 'number',
 }
 
-const MSGTYPE = {
-  MIN: 'min',
-  MAX: 'max',
-  PRECISION: 'precision',
-}
-
 const KEYS = [
   { type: TYPE.NUMBER, value: '1' },
   { type: TYPE.NUMBER, value: '2' },
@@ -34,4 +28,4 @@ const text2Number = (value) => {
   return _.isNaN(parseFloat(value)) ? '' : parseFloat(value)
 }
 
-export { TYPE, KEYS, MSGTYPE, text2Number }
+export { TYPE, KEYS, text2Number }

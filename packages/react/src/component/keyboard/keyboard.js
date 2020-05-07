@@ -6,11 +6,46 @@ import _ from 'lodash'
 import BaseKeybaord from './_keyboard'
 import Flex from '../flex'
 import Button from '../button'
-import { TYPE, text2Number, MSGTYPE } from './util'
+import { TYPE, text2Number } from './util'
 import KeyboardStatics from './statics'
 
+const handleErrorMsg = ({ value, min, max, precision }) => {
+  let msg = null
+  const cv = text2Number(value)
+  if (max && cv > max) {
+    msg = `${getLocale('请输入小于')} ${max} ${getLocale('的数')}`
+  } else if (min && cv < min) {
+    msg = `${getLocale('请输入大于')} ${min} ${getLocale('的数')}`
+  }
+
+  if (min && max && msg) {
+    msg = `${getLocale('请输入大于')} ${min} ${getLocale(
+      '小于'
+    )} ${max} ${getLocale('的数')}`
+  }
+
+  // 精度校验
+  const num = value.split('.')
+  if (num.length > 1 && num[1].length > precision) {
+    msg =
+      msg ||
+      `${getLocale('最多只能输入小数点后')} ${precision} ${getLocale('位')}`
+  }
+  return msg
+}
+
 const Keyboard = (props) => {
-  const { title, defaultValue, onSubmit, children, precision, ...rest } = props
+  const {
+    title,
+    defaultValue,
+    onSubmit,
+    children,
+    min,
+    max,
+    precision,
+    getErrorMsg,
+    ...rest
+  } = props
 
   // 输入值 及 输入校验提示信息
   const [currentValue, setCurrentValue] = useState(defaultValue)
@@ -18,7 +53,7 @@ const Keyboard = (props) => {
 
   const handleSubmit = () => {
     // 没有更正输入
-    if (errorMsg && errorMsg.type !== MSGTYPE.PRECISION) {
+    if (errorMsg) {
       return
     }
 
@@ -31,10 +66,7 @@ const Keyboard = (props) => {
     let v = value
 
     if (precision === 0) {
-      setErrorMsg({
-        type: MSGTYPE.PRECISION,
-        text: getLocale(`当前只能输入整数`),
-      })
+      setErrorMsg(getLocale('当前只能输入整数'))
       return value
     }
 
@@ -87,49 +119,19 @@ const Keyboard = (props) => {
       return cv
     }
 
-    const { min, max, precision } = props
-    // 注意当前输入为 . 的情况，此时只需判断 . 之前的数字，否则直接判断
+    // 注意当前输入为 . 的情况，此时判断小数点前数字
     if (cv[cv.length - 1] === '.') {
       cv = cv.slice(0, -1)
     }
 
-    let msg = null
-    if (min && max) {
-      msg = getLocale(`请输入大于 ${min} 小于 ${max} 的数！`)
-    }
-
-    cv = text2Number(cv)
-    if (max && cv > max) {
-      setErrorMsg({
-        type: MSGTYPE.MAX,
-        text: msg || getLocale(`请输入小于 ${max} 的数！`),
-      })
-      return cv + ''
-    } else if (min && cv < min) {
-      setErrorMsg({
-        type: MSGTYPE.MIN,
-        text: msg || getLocale(`请输入大于 ${min} 的数！`),
-      })
-      return cv + ''
-    }
-
-    // 精度校验
-    const num = value.split('.')
-    if (num.length > 1 && num[1].length > precision) {
-      // 超出精度，直接处理截断
-      setErrorMsg({
-        type: MSGTYPE.PRECISION,
-        text: getLocale(`最多只能输入小数点后${precision}位！`),
-      })
-      return value.slice(0, value.length - (num[1].length - precision))
-    }
-
-    return value
+    const msg = getErrorMsg({ value: cv, min, max, precision })
+    setErrorMsg(msg)
+    return value + ''
   }
 
   const handleValueChange = (value) => {
     // 每次输入前清空上一次的提示信息
-    setErrorMsg('')
+    setErrorMsg(null)
 
     // 处理键盘数字类型
     const v = handleClickNum(value)
@@ -156,9 +158,7 @@ const Keyboard = (props) => {
           {getLocale('确定')}
         </Button>
       </Flex>
-      <Flex className='m-number-keyboard-error'>
-        {errorMsg && errorMsg.text}
-      </Flex>
+      <Flex className='m-number-keyboard-error'>{errorMsg}</Flex>
       {children}
       <BaseKeybaord onChange={handleValueChange} />
     </Flex>
@@ -180,11 +180,17 @@ Keyboard.propTypes = {
   max: PropTypes.number,
   /** 精度, 可输入几位小数 */
   precision: PropTypes.number,
+  /** 回调函数, 自定义不同情况下的错误提示信息, 参数为value, min, max, precision
+   * 满足条件返回错误信息，string类型
+   * 否则返回null
+   */
+  getErrorMsg: PropTypes.func,
 }
 
 Keyboard.defaultProps = {
   defaultValue: '',
   precision: 2,
+  getErrorMsg: handleErrorMsg,
 }
 
 export default Keyboard
