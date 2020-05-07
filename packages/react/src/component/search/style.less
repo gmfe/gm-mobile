@@ -5,6 +5,7 @@
   .m-search-input {
     border-radius: var(--size-form-height-sm);
     overflow: hidden;
+    position: relative;
 
     .m-input {
       height: var(--size-form-height-sm);
@@ -17,6 +18,12 @@
       position: absolute;
       left: 8px;
       top: 7px;
+    }
+  }
+
+  &.m-search-light {
+    .m-input {
+      background: var(--fake-search-bg);
     }
   }
 
