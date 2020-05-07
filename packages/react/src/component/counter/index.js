@@ -5,7 +5,6 @@ import _ from 'lodash'
 import Big from 'big.js'
 
 import { KeyboardWrap } from '../keyboard'
-import Input from '../input'
 import SVGPlus from '../../../svg/plus.svg'
 import SVGMinus from '../../../svg/minus.svg'
 
@@ -99,12 +98,7 @@ const Counter = ({
         precision={precision}
         onSubmit={onChange}
       >
-        <Input
-          type='text'
-          className='m-counter-content-text'
-          value={value}
-          onChange={() => _.noop}
-        />
+        <span className='m-counter-content-text'>{value}</span>
       </KeyboardWrap>
       <div className='m-counter-icon' onClick={() => handleChange('plus')}>
         <SVGPlus

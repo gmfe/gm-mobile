@@ -15,11 +15,12 @@
     border-radius: 30px;
     font-size: 16px;
 
-    .m-counter-content {
-      width: 44px;
+    .m-counter-content,
+    .m-counter-content-text {
+      width: 50px;
     }
 
-    .mCounterVariants(26px, 26px);
+    .mCounterVariants(23px, 26px);
   }
 
   &.m-counter-large {
@@ -46,6 +47,9 @@
     vertical-align: top;
 
     .m-counter-content-text {
+      display: inline-block;
+      overflow-y: hidden;
+      overflow-x: auto;
       height: @height;
       line-height: @height;
       color: var(--color-primary);
@@ -54,6 +58,8 @@
       font-weight: bold;
       font-size: 18px;
       padding: 0;
+
+      .mScrollBarNone();
     }
   }
 
