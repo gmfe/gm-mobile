@@ -63,11 +63,11 @@ const Search = ({
         />
       </label>
       {type === 'search' ? (
-        <Button type='link' mini className='m-btn' onClick={handleSearch}>
+        <Button type='link' mini onClick={handleSearch}>
           {searchText || getLocale('搜索')}
         </Button>
       ) : (
-        <Button type='link' mini className='m-btn' onClick={handleCancel}>
+        <Button type='link' mini onClick={handleCancel}>
           {searchText || getLocale('取消')}
         </Button>
       )}
