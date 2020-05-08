@@ -11,6 +11,7 @@ const KeyboardWrap = ({
   precision,
   children,
   onClick,
+  getErrorMsg,
   ...rest
 }) => {
   const handleClick = (e) => {
@@ -22,6 +23,7 @@ const KeyboardWrap = ({
       min,
       max,
       precision,
+      getErrorMsg,
     })
   }
 

@@ -17,6 +17,7 @@ const Counter = ({
   onChange,
   large,
   disabled,
+  getErrorMsg,
   className,
   ...rest
 }) => {
@@ -97,6 +98,7 @@ const Counter = ({
         max={max}
         precision={precision}
         onSubmit={onChange}
+        getErrorMsg={getErrorMsg}
       >
         <span className='m-counter-content-text'>{value}</span>
       </KeyboardWrap>
@@ -128,6 +130,11 @@ Counter.propTypes = {
   large: PropTypes.bool,
   /** 禁用状态 */
   disabled: PropTypes.bool,
+  /** 回调函数, 自定义不同情况下的错误提示信息, 参数为value, min, max, precision
+   * 满足条件返回错误信息，string类型
+   * 否则返回null
+   */
+  getErrorMsg: PropTypes.func,
   className: PropTypes.string,
   style: PropTypes.object,
 }
