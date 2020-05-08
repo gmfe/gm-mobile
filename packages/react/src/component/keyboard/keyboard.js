@@ -168,7 +168,7 @@ const Keyboard = (props) => {
 Object.assign(Keyboard, KeyboardStatics)
 
 Keyboard.propTypes = {
-  /** 初始默认值, null表示为空值 */
+  /** 初始默认值 */
   defaultValue: PropTypes.string,
   /** 标题, 辅助展示 */
   title: PropTypes.string,
