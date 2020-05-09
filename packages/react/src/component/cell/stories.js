@@ -112,7 +112,7 @@ const store = observable({
 export const form = () => {
   return (
     <div className='m-padding-tb-10'>
-      <CellsForm>
+      <CellsForm title='啦啦啦啦'>
         <CellForm required>
           <Input
             type='text'
@@ -133,6 +133,8 @@ export const form = () => {
             placeholder='请输入名字'
           />
         </CellForm>
+      </CellsForm>
+      <CellsForm title='啦啦啦啦'>
         <CellForm label='年龄' labelWidth='100px'>
           <Input
             type='number'
