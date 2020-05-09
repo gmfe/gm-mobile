@@ -11,6 +11,7 @@
     border-bottom: 1px solid var(--color-border);
     transform: scaleY(0.5);
     transform-origin: 0 100%;
+    z-index: 1;
   }
 }
 
@@ -101,5 +102,9 @@
         border: none;
       }
     }
+  }
+
+  .m-cell:last-child::after {
+    display: none;
   }
 }
