@@ -1,31 +1,21 @@
 import React from 'react'
 import classNames from 'classnames'
-import PropTypes from 'prop-types'
+import Cells from './cells'
+import { devWarnForHook } from '@gm-common/tool'
 
-const CellsForm = ({ onSubmit, title, className, children, ...rest }) => {
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    onSubmit(e)
-  }
+const CellsForm = (props) => {
+  const { className, ...rest } = props
+  devWarnForHook(() => {
+    if (props.onSubmit) {
+      console.warn('非 form，不要提供 onSubmit，请自行外层包裹 form。')
+    }
+  })
 
-  return (
-    <form
-      {...rest}
-      onSubmit={handleSubmit}
-      className={classNames('m-cells m-cells-form', className)}
-    >
-      {title && <div className='m-cells-title'>{title}</div>}
-      <div className='m-cells-content'>{children}</div>
-    </form>
-  )
+  return <Cells {...rest} className={classNames('m-cells-form', className)} />
 }
 
 CellsForm.propTypes = {
-  /** 自动 e.preventDefault */
-  onSubmit: PropTypes.func.isRequired,
-  title: PropTypes.string,
-  className: PropTypes.string,
-  style: PropTypes.object,
+  ...Cells.propTypes,
 }
 
 export default CellsForm
