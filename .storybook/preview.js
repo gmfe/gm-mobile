@@ -1,7 +1,7 @@
 import React from 'react'
 import { addDecorator, addParameters } from '@storybook/react'
 import { withInfo } from '@storybook/addon-info'
-import { LayerRoot } from '../packages/react/src'
+import { LayoutRoot } from '../packages/react/src'
 import { Observer } from 'mobx-react'
 
 import '../packages/react/src/index.less'
@@ -36,6 +36,6 @@ addDecorator(
 addDecorator((storeFn) => (
   <React.Fragment>
     <Observer>{() => storeFn()}</Observer>
-    <LayerRoot />
+    <LayoutRoot />
   </React.Fragment>
 ))

@@ -11,7 +11,7 @@ const TYPE = {
 
 let setComponentFunc = null
 
-class LayerRoot extends React.Component {
+class LayoutRoot extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -51,35 +51,35 @@ class LayerRoot extends React.Component {
   }
 }
 
-LayerRoot.TYPE = TYPE
+LayoutRoot.TYPE = TYPE
 
 /* 基础功能 */
 
-LayerRoot.setComponent = (type, com) => {
+LayoutRoot.setComponent = (type, com) => {
   if (setComponentFunc) {
-    LayerRoot.removeComponent(type)
+    LayoutRoot.removeComponent(type)
     setComponentFunc(type, com)
   } else {
-    console.warn('LayerRoot is uninitialized')
+    console.warn('LayoutRoot is uninitialized')
   }
 }
 
-LayerRoot.removeComponent = (type) => {
+LayoutRoot.removeComponent = (type) => {
   if (setComponentFunc) {
     setComponentFunc(type, null)
   } else {
-    console.warn('LayerRoot is uninitialized')
+    console.warn('LayoutRoot is uninitialized')
   }
 }
 
-LayerRoot.renderWith = (type, Component) => {
+LayoutRoot.renderWith = (type, Component) => {
   const popstate = (e) => {
     const typeStack = [TYPE.INNERLAYER, TYPE.POPUP, TYPE.MODAL, TYPE.PICKER]
     // 代表还有其他state，即浮层，所以不采取任务逻辑
     if (e.state && typeStack.indexOf(e.state.type) >= typeStack.indexOf(type)) {
       return
     }
-    LayerRoot.removeComponent(type)
+    LayoutRoot.removeComponent(type)
     window.removeEventListener('popstate', popstate)
   }
 
@@ -87,13 +87,13 @@ LayerRoot.renderWith = (type, Component) => {
 
   window.history.pushState({ type }, null)
 
-  LayerRoot.setComponent(type, Component)
+  LayoutRoot.setComponent(type, Component)
 }
 
-LayerRoot.hideWith = (type) => {
-  LayerRoot.removeComponent(type)
+LayoutRoot.hideWith = (type) => {
+  LayoutRoot.removeComponent(type)
 
   window.history.go(-1)
 }
 
-export default LayerRoot
+export default LayoutRoot

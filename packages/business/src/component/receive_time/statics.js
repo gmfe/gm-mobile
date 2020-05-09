@@ -1,5 +1,5 @@
 import React from 'react'
-import { Popup, LayerRoot } from '@gm-mobile/react'
+import { Popup, LayoutRoot } from '@gm-mobile/react'
 
 const PickerStatics = {
   render(options) {
@@ -8,14 +8,14 @@ const PickerStatics = {
       PickerStatics.hide()
       _onHide && _onHide()
     }
-    LayerRoot.renderWith(
-      LayerRoot.TYPE.PICKER,
+    LayoutRoot.renderWith(
+      LayoutRoot.TYPE.PICKER,
       <Popup {...options} isPickPopup />
     )
   },
 
   hide() {
-    LayerRoot.hideWith(LayerRoot.TYPE.PICKER)
+    LayoutRoot.hideWith(LayoutRoot.TYPE.PICKER)
   },
 }
 

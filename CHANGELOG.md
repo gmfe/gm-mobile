@@ -32,8 +32,6 @@ less 变量全部取消，改 css 变量，且提供 CSSVariable 获取各种值
 
 增加前缀，比如 text-12 => m-bg-back
 
-LayoutRoot => LayerRoot
-
 Storage 的 key 从 react-gmm => gm-mobile，记得做迁移
 
 废除 SearchBar
