@@ -2,9 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
-const Cells = (props) => {
-  const { title, mini, className, children, ...rest } = props
-
+const Cells = ({ title, mini, className, children, ...rest }) => {
   return (
     <div
       {...rest}
