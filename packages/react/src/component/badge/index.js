@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
+import classNames from 'classnames'
 
 const Badge = (props) => {
   const {
@@ -14,9 +14,9 @@ const Badge = (props) => {
     ...rest
   } = props
 
-  const badgeCls = classnames('m-badge', className)
+  const badgeCls = classNames('m-badge', className)
 
-  const textCls = classnames({
+  const textCls = classNames({
     'm-badge-dot': dot,
     'm-badge-text': !dot,
     'm-badge-round': !showOverflow && overflowCount < 100,

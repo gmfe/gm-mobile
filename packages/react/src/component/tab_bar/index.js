@@ -1,7 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
+import classNames from 'classnames'
 import Flex from '../flex'
 import Badge from '../badge'
 
@@ -33,7 +33,7 @@ const Item = ({ config, index, selected, onClick }) => {
       column
       alignCenter
       justifyCenter
-      className={classnames('m-tabbar-nav', {
+      className={classNames('m-tabbar-nav', {
         active: isActive,
       })}
       flex
@@ -57,7 +57,7 @@ Item.defaultProps = {
 
 const Tabbar = ({ configs, selected, onTabChange, className, ...rest }) => {
   return (
-    <Flex {...rest} className={classnames('m-tabbar', className)}>
+    <Flex {...rest} className={classNames('m-tabbar', className)}>
       {_.map(configs, (config, index) => (
         <Item
           key={index}

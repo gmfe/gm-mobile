@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
+import classNames from 'classnames'
 import error from './error.png'
 import placeholder from './placeholder.png'
 
@@ -33,7 +33,7 @@ const Image = (props) => {
     reloadCount.current = 0
   }
 
-  const classNames = classnames(`m-image-${objectFix}`, className, {
+  const _className = classNames(`m-image-${objectFix}`, className, {
     'm-image-round': round,
   })
 
@@ -45,7 +45,7 @@ const Image = (props) => {
       height={height}
       onError={handleError}
       onLoad={handleLoad}
-      className={classNames}
+      className={_className}
     />
   )
 }

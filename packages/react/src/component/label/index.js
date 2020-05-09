@@ -1,12 +1,12 @@
 import React from 'react'
-import classnames from 'classnames'
+import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
 const Label = ({ text, type, className, ...rest }) => {
   return (
     <span
       {...rest}
-      className={classnames('m-label', className, `m-label-${type}`)}
+      className={classNames('m-label', className, `m-label-${type}`)}
     >
       {text}
     </span>

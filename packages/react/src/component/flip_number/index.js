@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
-import classnames from 'classnames'
+import classNames from 'classnames'
 import { getNumLength, formatNum, getRawArray, filterForNum } from './utils'
 
 class FlipNumber extends React.Component {
@@ -156,7 +156,7 @@ class FlipNumber extends React.Component {
           this.wrap = rel
         }}
         style={{ height: `${this.height}px` }}
-        className={classnames('m-relative m-overflow-hidden', className)}
+        className={classNames('m-relative m-overflow-hidden', className)}
       >
         {this.renderDigitAxis()}
       </div>
