@@ -9,18 +9,17 @@
   .mDisabledWith();
 
   &.m-counter-default {
-    width: 96px;
-    height: 26px;
-    line-height: 26px;
-    border-radius: 30px;
-    font-size: 16px;
+    width: 86px;
+    height: 21px;
+    line-height: 21px;
+    border-radius: 25px;
 
     .m-counter-content,
     .m-counter-content-text {
-      width: 50px;
+      width: 40px;
     }
 
-    .mCounterVariants(23px, 26px);
+    .mCounterVariants(23px, 21px, 14px, 3px);
   }
 
   &.m-counter-large {
@@ -34,11 +33,11 @@
       width: calc(100% - 72px);
     }
 
-    .mCounterVariants(36px, 36px);
+    .mCounterVariants(36px, 36px, 18px, 9px);
   }
 }
 
-.mCounterVariants(@iconWidth, @height) {
+.mCounterVariants(@iconWidth, @height, @size, @margin) {
   .m-counter-content {
     display: inline-block;
     height: @height;
@@ -54,9 +53,8 @@
       line-height: @height;
       color: var(--color-primary);
       text-align: center;
-      vertical-align: top;
       font-weight: bold;
-      font-size: 18px;
+      font-size: @size;
       padding: 0;
 
       .mScrollBarNone();
@@ -66,14 +64,16 @@
   .m-counter-icon {
     display: inline-block;
     height: @height;
+    line-height: @height;
     width: @iconWidth;
     text-align: center;
   }
 
   .m-counter-plus,
   .m-counter-minus {
-    height: @height;
-    line-height: @height;
+    width: 1em;
+    height: 1em;
+    margin: @margin 0;
 
     .mDisabledWith();
   }
