@@ -11,12 +11,12 @@ const InputPassword = (props) => {
   }
 
   return (
-    <label className='m-input-password'>
+    <div className='m-input-password'>
       <Input {...props} type={show ? 'text' : 'password'} />
       <span className='m-input-password-icon' onClick={handleShow}>
         {show ? <SVGPasswordOpen /> : <SVGPasswordClose />}
       </span>
-    </label>
+    </div>
   )
 }
 
