@@ -5,5 +5,5 @@ export const normal = () => {
 }
 
 export default {
-  title: '浮层/LayerRoot',
+  title: '浮层/LayoutRoot',
 }

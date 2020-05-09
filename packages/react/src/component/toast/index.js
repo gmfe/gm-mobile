@@ -2,7 +2,7 @@ import { getLocale } from '@gm-mobile/locales'
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import LayerRoot from '../layer_root'
+import LayoutRoot from '../layout_root'
 import Loading from '../loading'
 import Mask from '../mask'
 import Flex from '../flex'
@@ -15,7 +15,7 @@ let timer = null
 const ToastStatics = {
   clear() {
     clearTimeout(timer)
-    LayerRoot.removeComponent(LayerRoot.TYPE.TOAST)
+    LayoutRoot.removeComponent(LayoutRoot.TYPE.TOAST)
   },
   _tip(options = {}, type) {
     clearTimeout(timer)
@@ -41,7 +41,7 @@ const ToastStatics = {
       }, options.time)
     }
 
-    LayerRoot.setComponent(LayerRoot.TYPE.TOAST, <Toast {...options} />)
+    LayoutRoot.setComponent(LayoutRoot.TYPE.TOAST, <Toast {...options} />)
   },
   tip(options) {
     ToastStatics._tip(options)

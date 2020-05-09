@@ -1,7 +1,7 @@
 import { getLocale } from '@gm-mobile/locales'
 import React from 'react'
 import PropTypes from 'prop-types'
-import LayerRoot from '../layer_root'
+import LayoutRoot from '../layout_root'
 import _ from 'lodash'
 import Mask from '../mask'
 import Flex from '../flex'
@@ -82,7 +82,7 @@ const DialogStatics = {
         }
       }
 
-      LayerRoot.renderWith(LayerRoot.TYPE.MODAL, <Dialog {...options} />)
+      LayoutRoot.renderWith(LayoutRoot.TYPE.MODAL, <Dialog {...options} />)
     })
   },
   alert(options) {
@@ -98,7 +98,7 @@ const DialogStatics = {
     return DialogStatics.render(options, 'prompt')
   },
   hide() {
-    LayerRoot.hideWith(LayerRoot.TYPE.MODAL)
+    LayoutRoot.hideWith(LayoutRoot.TYPE.MODAL)
   },
 }
 

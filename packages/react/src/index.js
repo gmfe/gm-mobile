@@ -32,7 +32,7 @@ import { Lazy, LazyList } from './component/lazy'
 import Tabbar from './component/tab_bar'
 
 // 浮层
-import LayerRoot from './component/layer_root'
+import LayoutRoot from './component/layout_root'
 import NProgress from './component/nprogress'
 import InnerLayer from './component/inner_layer'
 import Toast from './component/toast'
@@ -107,7 +107,7 @@ export {
   Panel,
   Tabbar,
   // 浮层
-  LayerRoot,
+  LayoutRoot,
   InnerLayer,
   NProgress,
   Toast,

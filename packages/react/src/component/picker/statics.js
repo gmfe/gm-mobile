@@ -1,17 +1,17 @@
 import React from 'react'
 import Popup from '../popup'
-import LayerRoot from '../layer_root'
+import LayoutRoot from '../layout_root'
 
 const PickerStatics = {
   render(options) {
-    LayerRoot.renderWith(
-      LayerRoot.TYPE.PICKER,
+    LayoutRoot.renderWith(
+      LayoutRoot.TYPE.PICKER,
       <Popup {...options} isPickPopup />
     )
   },
 
   hide() {
-    LayerRoot.hideWith(LayerRoot.TYPE.PICKER)
+    LayoutRoot.hideWith(LayoutRoot.TYPE.PICKER)
   },
 }
 

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import Mask from '../mask'
-import LayerRoot from '../layer_root'
+import LayoutRoot from '../layout_root'
 import _ from 'lodash'
 import { devWarnForHook } from '@gm-common/tool'
 import Flex from '../flex'
@@ -11,10 +11,10 @@ import SVGCloseCircle from '../../../svg/close-circle.svg'
 
 const PopupStatics = {
   render(options) {
-    LayerRoot.renderWith(LayerRoot.TYPE.POPUP, <Popup {...options} />)
+    LayoutRoot.renderWith(LayoutRoot.TYPE.POPUP, <Popup {...options} />)
   },
   hide() {
-    LayerRoot.hideWith(LayerRoot.TYPE.POPUP)
+    LayoutRoot.hideWith(LayoutRoot.TYPE.POPUP)
   },
 }
 

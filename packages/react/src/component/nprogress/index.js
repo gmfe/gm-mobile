@@ -1,5 +1,5 @@
 import React from 'react'
-import LayerRoot from '../layer_root'
+import LayoutRoot from '../layout_root'
 
 let timer = null
 let key = null
@@ -7,16 +7,16 @@ const NProgressStatics = {
   start: function () {
     clearTimeout(timer)
     key = Math.random()
-    LayerRoot.setComponent(LayerRoot.TYPE.NPROGRESS, <NProgress key={key} />)
+    LayoutRoot.setComponent(LayoutRoot.TYPE.NPROGRESS, <NProgress key={key} />)
   },
   done: function () {
     clearTimeout(timer)
-    LayerRoot.setComponent(
-      LayerRoot.TYPE.NPROGRESS,
+    LayoutRoot.setComponent(
+      LayoutRoot.TYPE.NPROGRESS,
       <NProgress key={key} percent={100} />
     )
     timer = setTimeout(function () {
-      LayerRoot.removeComponent(LayerRoot.TYPE.NPROGRESS)
+      LayoutRoot.removeComponent(LayoutRoot.TYPE.NPROGRESS)
     }, 250)
   },
 }

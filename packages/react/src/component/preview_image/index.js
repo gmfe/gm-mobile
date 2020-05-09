@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import _ from 'lodash'
 import Flex from '../flex/index'
-import LayerRoot from '../layer_root'
+import LayoutRoot from '../layout_root'
 import Image from '../image'
 import { SwiperImg } from '@gm-mobile/swiper'
 
@@ -13,11 +13,11 @@ const PreviewImageStatics = {
       PreviewImageStatics.hide()
     }
 
-    LayerRoot.renderWith(LayerRoot.TYPE.POPUP, <PreviewImage {...options} />)
+    LayoutRoot.renderWith(LayoutRoot.TYPE.POPUP, <PreviewImage {...options} />)
   },
 
   hide() {
-    LayerRoot.hideWith(LayerRoot.TYPE.POPUP)
+    LayoutRoot.hideWith(LayoutRoot.TYPE.POPUP)
   },
 }
 

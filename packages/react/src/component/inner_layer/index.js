@@ -2,15 +2,15 @@ import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
-import LayerRoot from '../layer_root'
+import LayoutRoot from '../layout_root'
 
 const InnerLayerStatics = {
   render(props) {
-    LayerRoot.renderWith(LayerRoot.TYPE.INNERLAYER, <InnerLayer {...props} />)
+    LayoutRoot.renderWith(LayoutRoot.TYPE.INNERLAYER, <InnerLayer {...props} />)
   },
 
   hide() {
-    LayerRoot.hideWith(LayerRoot.TYPE.INNERLAYER)
+    LayoutRoot.hideWith(LayoutRoot.TYPE.INNERLAYER)
   },
 }
 
