@@ -22,7 +22,7 @@ const DialogStatics = {
         <div className='m-text-left'>
           <div>{options.promptText}</div>
           <div className='m-border-1px-bottom-after'>
-            <Input {...options.promptInputProps} id={options._id} />
+            <Input {...options.promptInputProps} autoFocus id={options._id} />
           </div>
         </div>
       )
