@@ -7,6 +7,9 @@ import { Observer } from 'mobx-react'
 import '../packages/react/src/index.less'
 import '../packages/swiper/src/index.less'
 
+// business
+import '../packages/business/src/index.less'
+
 addParameters({
   options: {
     showRoots: true,
