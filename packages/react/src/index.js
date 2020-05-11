@@ -27,6 +27,7 @@ import Header from './component/header'
 
 import Square from './component/square'
 import Tabs from './component/tabs'
+import Nav from './component/nav'
 import Panel from './component/panel'
 import { Lazy, LazyList } from './component/lazy'
 import Tabbar from './component/tab_bar'
@@ -104,6 +105,7 @@ export {
   Header,
   Square,
   Tabs,
+  Nav,
   Panel,
   Tabbar,
   // 浮层
