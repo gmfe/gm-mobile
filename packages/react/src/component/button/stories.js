@@ -1,9 +1,25 @@
 import React, { useState } from 'react'
+import { observable } from 'mobx'
 import { Button, ButtonTime } from './'
+
+const store = observable({
+  code: '',
+  canCounter: false,
+  setCode(value) {
+    this.code = value
+  },
+  setCanCounter(value) {
+    this.canCounter = value
+  },
+})
 
 function handleClick() {
   console.log('click')
-  return new Promise((resolve) => setTimeout(() => resolve(), 2000))
+  return new Promise((resolve) =>
+    setTimeout(() => {
+      resolve(true)
+    }, 2000)
+  )
 }
 
 export const normal = () => (
@@ -89,53 +105,43 @@ export const loading = () => (
   </div>
 )
 
-export const buttonTime = () => {
-  const [inputValue, serInputValue] = useState()
-  const [canCounter, setCanCounter] = useState(false)
-
-  return (
+export const buttonTime = () => (
+  <div>
     <div>
-      <div>
-        <p>直接计时</p>
-        <ButtonTime
-          mini
-          time={10}
-          type='primary'
-          onClick={() => {
+      <p>输入项不为空，才允许计时(通过onClick事件控制)</p>
+      <input
+        placeholder='输入后，可开始计时'
+        value={store.code}
+        onChange={(e) => {
+          const value = e.target.value
+          store.setCode(value)
+          store.setCanCounter(!!value)
+        }}
+      />
+      <ButtonTime
+        mini
+        time={10}
+        type='primary'
+        onClick={() => {
+          if (store.canCounter) {
             console.log('get')
-          }}
-        >
-          获取验证码
-        </ButtonTime>
-      </div>
-      <div>
-        <p>输入项不为空，才允许计时(通过onClick事件控制)</p>
-        <input
-          placeholder='输入后，可开始计时'
-          value={inputValue}
-          onChange={(e) => {
-            const value = e.target.value
-            serInputValue(value)
-            setCanCounter(!!value)
-          }}
-        />
-        <ButtonTime
-          mini
-          time={10}
-          type='primary'
-          onClick={() => {
-            if (canCounter) {
-              console.log('get')
-            }
-            return canCounter
-          }}
-        >
-          获取验证码
-        </ButtonTime>
-      </div>
+          } else {
+            alert('请输入')
+          }
+          return store.canCounter
+        }}
+      >
+        获取验证码
+      </ButtonTime>
     </div>
-  )
-}
+    <div>
+      <p>异步计时(通过onClick事件控制)</p>
+      <ButtonTime time={10} type='primary' onClick={handleClick}>
+        获取验证码
+      </ButtonTime>
+    </div>
+  </div>
+)
 
 export default {
   title: '表单/Button',
