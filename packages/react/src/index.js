@@ -31,6 +31,7 @@ import Nav from './component/nav'
 import Panel from './component/panel'
 import { Lazy, LazyList } from './component/lazy'
 import Tabbar from './component/tab_bar'
+import PullUpDown from './component/pull_up_down'
 
 // 浮层
 import LayoutRoot from './component/layout_root'
@@ -108,6 +109,7 @@ export {
   Nav,
   Panel,
   Tabbar,
+  PullUpDown,
   // 浮层
   LayoutRoot,
   InnerLayer,
