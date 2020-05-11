@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Button from './button'
 import PropTypes from 'prop-types'
+import { is } from '@gm-common/tool'
 import classNames from 'classnames'
 
 const ButtonTime = ({ time, onClick, className, children, ...rest }) => {
@@ -16,10 +17,20 @@ const ButtonTime = ({ time, onClick, className, children, ...rest }) => {
   }, [])
 
   const handleClick = (e) => {
-    if (onClick(e) === false) {
+    const fn = onClick(e)
+    if (fn === false) {
       return
     }
+    if (is.promise(fn)) {
+      return fn.then(() => {
+        startCount()
+      })
+    }
 
+    startCount()
+  }
+
+  const startCount = () => {
     setSecond(time)
     timer.current = setInterval(() => {
       setSecond((value) => {
@@ -49,7 +60,7 @@ ButtonTime.propTypes = {
   /** 计时的时间 */
   time: PropTypes.number,
   /** 函数需要返回 bool 值, true 开始计时，false 不计时 */
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
 }
 
 ButtonTime.defaultProps = {
