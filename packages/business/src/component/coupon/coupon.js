@@ -1,8 +1,9 @@
 import { getLocale } from '@gm-mobile/locales'
 import React, { useState } from 'react'
-import { Flex, Label, Checkbox } from '@gm-mobile/react'
+import { Flex, Checkbox } from '@gm-mobile/react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
+import _ from 'lodash'
 
 import SVGDownUp from '../../../svg/down-up-circle.svg'
 import SVGExpired from '../../../svg/expired.svg'
@@ -30,7 +31,7 @@ const Coupon = (props) => {
 
   const renderUseInfo = () => {
     // 暂定往下撑开
-    return useInfo || getLocale('暂无使用说明')
+    return useInfo || getLocale('没有使用说明描述')
   }
 
   const handleShowInfo = () => {
@@ -38,56 +39,64 @@ const Coupon = (props) => {
     setShowUseInfo(show)
   }
 
+  const isDisabled = disabled || isExpired
+
   return (
     <div
       {...rest}
       className={classNames(
-        'm-coupon',
-        { disabled: disabled || isExpired },
+        'm-coupon-container',
+        { disabled: isDisabled },
         className
       )}
     >
-      <div className='m-coupon-container'>
-        <Flex justifyCenter alignCenter className='m-coupon-left'>
-          <Flex column className='m-coupon-left-content'>
-            <Flex justifyCenter alignCenter>
-              <Flex alignEnd className='m-coupon-left-content-currency'>
-                {currency}
-              </Flex>
-              <span className='m-coupon-left-content-discount'>{discount}</span>
+      <div className='m-coupon'>
+        <Flex justifyCenter alignCenter column className='m-coupon-left'>
+          <Flex justifyCenter alignCenter>
+            <Flex alignEnd className='m-coupon-left-currency'>
+              {currency}
             </Flex>
-            {totalInfo && (
-              <span className='m-coupon-left-content-total'>{totalInfo}</span>
-            )}
+            <span className='m-coupon-left-discount'>{discount}</span>
           </Flex>
+          {totalInfo && (
+            <span className='m-coupon-left-total'>{totalInfo}</span>
+          )}
         </Flex>
-        <Flex column className='m-coupon-right'>
-          <Flex column justifyCenter className='m-coupon-right-header'>
-            <Flex alignStart>
-              {label && (
-                <Flex none className='m-margin-right-5'>
-                  <Label text={label} />
-                </Flex>
-              )}
-              <span className='m-coupon-right-header-title'>{title}</span>
-            </Flex>
-            <Flex alignCenter className='m-coupon-right-date-info'>
+        <Flex column flex className='m-coupon-right'>
+          <Flex
+            flex
+            column
+            alignStart
+            justifyCenter
+            className={classNames('m-coupon-right-header', {
+              'm-coupon-right-header-padding': onCheck,
+            })}
+          >
+            <span className='m-coupon-right-header-title'>{title}</span>
+            {label && (
+              <span className='m-coupon-right-header-label'>{label}</span>
+            )}
+            <Flex alignCenter none className='m-coupon-right-header-date'>
               {dateInfo}
-              {onCheck && (
-                <Checkbox
-                  className='m-coupon-right-checked'
-                  circle
-                  primary
-                  checked={checked}
-                  onChange={onCheck}
-                />
-              )}
               {onUse && (
-                <span className='m-coupon-right-header-btn' onClick={onUse}>
+                <span
+                  className='m-coupon-right-header-btn'
+                  onClick={isDisabled ? _.noop : onUse}
+                >
                   {getLocale('立即使用')}
                 </span>
               )}
             </Flex>
+            {onCheck && (
+              <Checkbox
+                className='m-coupon-right-checked'
+                circle
+                primary
+                disabled={disabled}
+                checked={checked}
+                onChange={onCheck}
+              />
+            )}
             {isExpired && (
               <div>
                 <SVGExpired className='m-coupon-right-expired' />
@@ -107,7 +116,7 @@ const Coupon = (props) => {
               className='m-coupon-right-footer'
               onClick={handleShowInfo}
             >
-              <Flex flex justifyStart className='m-coupon-info'>
+              <Flex flex justifyStart>
                 {getLocale('使用说明')}
               </Flex>
               <Flex
@@ -117,7 +126,7 @@ const Coupon = (props) => {
                   active: showUseInfo,
                 })}
               >
-                <SVGDownUp />
+                <SVGDownUp className='m-coupon-right-footer-down-up' />
               </Flex>
             </Flex>
           )}
@@ -159,10 +168,6 @@ Coupon.propTypes = {
   isExpired: PropTypes.bool,
   className: PropTypes.string,
   style: PropTypes.object,
-}
-
-Coupon.defaultProps = {
-  type: 'default',
 }
 
 export default Coupon

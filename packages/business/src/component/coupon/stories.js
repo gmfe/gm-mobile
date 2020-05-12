@@ -20,8 +20,8 @@ export const normal = () => (
         discount={100}
         totalInfo='满1000元可用'
         dateInfo='2020-04-29~2020-05-05'
-        title='仅可购买菜类部分商品'
-        label='限品类'
+        title='分类优惠券AA'
+        label='仅限xxx商品使用'
         checked={store.checked}
         onCheck={() => store.setChecked(!store.checked)}
       />
@@ -32,7 +32,8 @@ export const normal = () => (
         discount={30}
         totalInfo='满1000元可用'
         dateInfo='2020-05-05到期'
-        title='仅可购买菜类部分商品'
+        label='仅限xxxxxx商品使用'
+        title='分类优惠券B'
         hasUseInfo
         useInfo={
           <div>
@@ -51,7 +52,9 @@ export const normal = () => (
         totalInfo='满300元可用'
         hasUseInfo
         dateInfo='2020-05-05到期'
-        title='仅可购买菜类部分商品'
+        label='仅限xxxxxx商品使用'
+        title='分类优惠券AA'
+        onUse={() => console.log('use')}
         disabled
       />
     </div>
@@ -62,7 +65,7 @@ export const normal = () => (
         totalInfo='满300元可用'
         hasUseInfo
         dateInfo='2020-05-05到期'
-        title='仅可购买菜类部分商品'
+        title='通用优惠券AA'
         isExpired
       />
     </div>

@@ -1,65 +1,35 @@
-.m-coupon {
+.m-coupon-container {
   display: inline-block;
+  width: 100%;
+  min-height: 110px;
   cursor: pointer;
   overflow: hidden;
 
-  &.disabled {
-    cursor: not-allowed;
-
-    .m-coupon-left {
-      background-color: var(--color-placeholder) !important;
-    }
-
-    .m-coupon-right,
-    .m-coupon-right-date-info {
-      color: var(--color-placeholder) !important;
-    }
-  }
-
-  .m-coupon-container {
-    height: 100px;
+  .m-coupon {
     display: flex;
     position: relative;
+    background-color: transparent;
+
+    .mCouponSawtooth(var(--color-accent));
 
     .m-coupon-left {
-      min-width: 110px;
-      height: 100px;
+      min-width: 105px;
       color: var(--color-white);
       background-color: var(--color-accent);
+      margin-left: 5px;
 
-      &::before {
-        content: ' ';
-        position: absolute;
-        height: 100px;
-        width: 6px;
-        left: 0;
-        top: 0;
-        background-image:
-          radial-gradient(
-            var(--color-bg-back) 0,
-            var(--color-bg-back) 4px,
-            transparent 5px
-          );
-        background-size: 12px 12px;
-        background-position: 6px 2px;
-      }
-
-      .m-coupon-left-content {
-        width: 100%;
-      }
-
-      .m-coupon-left-content-currency {
+      .m-coupon-left-currency {
         width: 10px;
         height: 35px;
         font-size: 14px;
       }
 
-      .m-coupon-left-content-discount {
+      .m-coupon-left-discount {
         font-size: 35px;
         font-weight: bold;
       }
 
-      .m-coupon-left-content-total {
+      .m-coupon-left-total {
         display: inline-block;
         width: 100%;
         height: 20px;
@@ -71,34 +41,39 @@
     }
 
     .m-coupon-right {
-      min-width: 235px;
-      height: 100%;
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      min-width: 180px;
+      min-height: 110px;
       border-radius: 0 6px 6px 0;
       background-color: var(--color-bg-back);
 
       .m-coupon-right-header {
         width: 100%;
-        height: 70%;
-        padding: 10px 25px 5px 15px;
+        padding: 10px 15px 5px 15px;
         position: relative;
+
+        &.m-coupon-right-header-padding {
+          padding-right: 25px;
+        }
 
         .m-coupon-right-header-title {
           font-weight: bold;
-          margin-top: -2px;
         }
 
-        .m-coupon-right-date-info {
-          height: 25px;
+        .m-coupon-right-header-label {
+          display: inline-block;
+          background-color: var(--color-bg-accent-light);
+          color: var(--color-accent);
+          font-size: 12px;
+        }
+
+        .m-coupon-right-header-date {
+          height: 30px;
           font-size: 12px;
           color: var(--color-second);
         }
 
         .m-coupon-right-header-btn {
-          width: 75px;
+          width: 70px;
           height: 25px;
           line-height: 25px;
           position: absolute;
@@ -127,6 +102,7 @@
           height: 50px;
           position: absolute;
           transform: rotate(-25deg);
+          color: var(--color-placeholder);
           font-weight: bold;
           top: 0;
           right: -5px;
@@ -144,9 +120,11 @@
 
       .m-coupon-right-footer {
         width: 100%;
-        height: 30%;
+        height: 30px;
         position: relative;
         padding: 0 10px 0 15px;
+        color: var(--color-second);
+        font-size: 13px;
 
         &::after {
           content: ' ';
@@ -158,6 +136,11 @@
           border-top: 1px dashed var(--color-border);
           transform: scaleY(0.5);
           transform-origin: 0 0;
+        }
+
+        .m-coupon-right-footer-down-up {
+          width: 1.2em;
+          height: 1.2em;
         }
 
         .m-coupon-right-footer-icon {
@@ -173,13 +156,64 @@
   .m-coupon-use-info {
     display: block;
     padding: 10px;
-    background-color: var(--color-bg-white);
+    background-color: var(--color-bg-back);
     border-radius: 6px;
     color: var(--color-desc);
     margin-top: 2px;
+    font-size: 13px;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+
+    .m-coupon {
+      .mCouponSawtooth(var(--color-placeholder));
+
+      .m-coupon-left {
+        background-color: var(--color-placeholder);
+      }
+
+      .m-coupon-right {
+        .m-coupon-right-header {
+          .m-coupon-right-header-btn {
+            color: var(--color-placeholder);
+
+            &::after {
+              border-color: var(--color-placeholder);
+            }
+          }
+
+          .m-coupon-right-header-label {
+            background-color: var(--color-placeholder);
+            opacity: 0.6;
+            color: var(--color-second);
+          }
+        }
+      }
+    }
   }
 }
 
+.mCouponSawtooth(@color) {
+  &::before {
+    content: ' ';
+    position: absolute;
+    height: 100%;
+    width: 6px;
+    left: 0;
+    top: 0;
+    background-image:
+      radial-gradient(
+        transparent 0,
+        transparent 4px,
+        @color 5px
+      );
+    background-size: 12px 12px;
+    background-position: 6px 2px;
+  }
+}
+
+// 领取型优惠券样式
 .m-received-coupon {
   display: inline-block;
   width: auto;
