@@ -3,7 +3,6 @@ import moment from 'moment'
 import { observable } from 'mobx'
 
 import Coupon from './coupon'
-import { Page } from '@gm-mobile/react'
 import ReceivedCoupon from './received_coupon'
 
 const store = observable({
@@ -14,7 +13,7 @@ const store = observable({
 })
 
 export const normal = () => (
-  <Page style={{ height: '50%' }}>
+  <div style={{ height: '50%' }}>
     <div className='m-margin-15'>
       <Coupon
         currency='¥'
@@ -67,7 +66,7 @@ export const normal = () => (
         isExpired
       />
     </div>
-  </Page>
+  </div>
 )
 
 export const receivedCoupon = () => (
