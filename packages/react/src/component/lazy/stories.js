@@ -46,7 +46,6 @@ export const lazyList = () => {
       <LazyList
         ref={ref}
         style={{ height: '100vh' }}
-        className='m-overflow-y'
         data={_.map(_.range(30), (v) => {
           return {
             key: v,

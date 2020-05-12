@@ -1,5 +1,6 @@
 import React, { useImperativeHandle, useRef, forwardRef } from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 import Lazy from './lazy'
 import _ from 'lodash'
 
@@ -16,7 +17,7 @@ Item.propTypes = {
   minHeight: PropTypes.number.isRequired,
 }
 
-const LazyList = ({ data, ...rest }, ref) => {
+const LazyList = ({ data, className, ...rest }, ref) => {
   const refList = useRef(null)
   const refId = useRef('' + Math.random())
 
@@ -30,7 +31,12 @@ const LazyList = ({ data, ...rest }, ref) => {
   }))
 
   return (
-    <div ref={refList} {...rest} id={refId.current}>
+    <div
+      ref={refList}
+      {...rest}
+      className={classNames('m-overflow-y', className)}
+      id={refId.current}
+    >
       {_.map(data, (v, i) => {
         return (
           <Item
@@ -58,6 +64,8 @@ LazyList.propTypes = {
       minHeight: PropTypes.number.isRequired,
     })
   ).isRequired,
+  className: PropTypes.string,
+  style: PropTypes.objectOf,
 }
 
 export default React.memo(forwardRef(LazyList))
