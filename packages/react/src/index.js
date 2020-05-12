@@ -53,17 +53,11 @@ import Price from './component/price'
 import Counter from './component/counter'
 import Badge from './component/badge'
 import { Search, SearchPage, FakeSearch } from './component/search'
+import Scroll from './component/scroll'
 
 // 其他
 import { LocalStorage, SessionStorage } from './component/storage'
 import CSSVariable from './css_variable'
-
-// import Infinite from './component/infinite'
-// import InfiniteBox from './component/infinite/infinite_box'
-
-// import List from './component/list'
-
-// import TimeSelect from './component/time_select'
 
 const Alert = Dialog.alert
 const Confirm = Dialog.confirm
@@ -137,17 +131,9 @@ export {
   Search,
   FakeSearch,
   SearchPage,
+  Scroll,
   // 其他
   CSSVariable,
   LocalStorage,
   SessionStorage,
-
-  // Infinite,
-  // InfiniteBox,
-
-  // List,
-
-  //
-  // // 业务组件
-  // TimeSelect
 }

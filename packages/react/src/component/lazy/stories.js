@@ -3,7 +3,6 @@ import Lazy from './lazy'
 import _ from 'lodash'
 import Page from '../page'
 import LazyList from './lazy_list'
-import { observable } from 'mobx'
 
 export const normal = () => {
   return (
@@ -46,14 +45,11 @@ export const lazyList = () => {
       <LazyList
         ref={ref}
         style={{ height: '100vh' }}
-        className='m-overflow-y'
-        data={_.map(_.range(30), (v) => {
-          return {
-            key: v,
-            children: <Item data={v} />,
-            minHeight: 100,
-          }
-        })}
+        data={_.range(30)}
+        renderItem={({ item, index }) => {
+          return <Item data={item} />
+        }}
+        itemMinHeight={() => 100}
       />
     </Page>
   )

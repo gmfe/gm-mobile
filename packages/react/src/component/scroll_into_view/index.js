@@ -18,9 +18,7 @@ class ScrollIntoView extends React.Component {
       setTimeout(() => {
         if (!this.__mounted) {
           const target = findDOMNode(this)
-          target.scrollIntoViewIfNeeded
-            ? target.scrollIntoViewIfNeeded()
-            : target.scrollIntoView()
+          target.scrollIntoViewIfNeeded()
         }
       }, 500)
     }
