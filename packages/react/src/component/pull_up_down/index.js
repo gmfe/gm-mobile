@@ -1,6 +1,5 @@
 import React from 'react'
 import Base from './base'
-import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
@@ -10,6 +9,7 @@ const PullUpDown = ({
   onPullDown,
   onPullUp,
   children,
+  scrollEl,
   ...rest
 }) => {
   const handleTopTranslate = (percentage) => {
@@ -27,15 +27,13 @@ const PullUpDown = ({
   return (
     <Base
       {...rest}
-      scrollEl='.m-pull-up-down-content'
+      scrollEl={scrollEl}
       topRenderer={topRender}
       bottomRenderer={bottomRender}
       onTopTranslate={handleTopTranslate}
       onBottomTranslate={handleBottomTranslate}
     >
-      {React.cloneElement(children, {
-        className: classnames('m-pull-up-down-content', children.className),
-      })}
+      {children}
     </Base>
   )
 }
@@ -51,6 +49,8 @@ PullUpDown.propTypes = {
   onPullUp: PropTypes.func,
   /** 手指滑动距离与页面滑动距离的比率 */
   ratio: PropTypes.number,
+  /** 滚动元素的选择器 */
+  scrollEl: PropTypes.string,
 }
 
 PullUpDown.defaultProps = {
