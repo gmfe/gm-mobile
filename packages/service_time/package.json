@@ -19,5 +19,9 @@
   },
   "bugs": {
     "url": "https://github.com/gmfe/service_time/issues"
+  },
+  "dependencies": {
+    "@gm-mobile/locales": "^0.0.8",
+    "@gm-mobile/react": "^0.0.8"
   }
 }

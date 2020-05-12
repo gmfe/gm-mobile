@@ -65,6 +65,7 @@ module.exports = {
     '../packages/react/src/**/*stories.js',
     '../packages/locales/src/**/*stories.js',
     '../packages/business/src/**/*stories.js',
+    '../packages/service_time/src/**/*stories.js',
     '../packages/swiper/src/**/*stories.js',
     '../other/**/*.stories.js',
   ],

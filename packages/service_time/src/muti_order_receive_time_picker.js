@@ -5,9 +5,7 @@ import _ from 'lodash'
 import moment from 'moment'
 import PropTypes from 'prop-types'
 import PickerStatics from './statics'
-import { serviceTimeUtils } from '@gm-mobile/service_time'
-
-const { getReceiveTimeParams } = serviceTimeUtils
+import { getReceiveTimeParams } from './utils'
 
 // 获取运营时间范围
 // 只关注时间，不关注日期

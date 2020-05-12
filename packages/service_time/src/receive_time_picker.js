@@ -5,16 +5,14 @@ import _ from 'lodash'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import PickerStatics from './statics'
-import { serviceTimeUtils } from '@gm-mobile/service_time'
-
-const {
+import {
   getReceiveTimeParams,
   processStartEndValuesWithCycleList,
   cycleListToDayList,
   getFlag,
   getStartCycleList,
   getEndCycleList,
-} = serviceTimeUtils
+} from './utils'
 
 const weekMap = {
   0: getLocale('周日'),
