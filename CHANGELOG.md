@@ -10,9 +10,9 @@ Page 新增 top
 
 新增 Tabs 多种形式，props 有变化
 
-counter 改变形式, props有变化
+counter 改变形式, props 有变化
 
-Calendar提供多种选择类型，props有变化
+Calendar 提供多种选择类型，props 有变化
 
 ## breaking change
 
@@ -53,3 +53,5 @@ Storage => LocalStorage SessionStorage
 Popup 关闭需要提供 onHide
 
 移除 Slide SlideLess
+
+移除 Infinite，转用 Scroll，
