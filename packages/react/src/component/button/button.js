@@ -10,6 +10,7 @@ const Button = ({
   plain,
   mini,
   block,
+  noRound,
   disabled,
   onClick,
   loading,
@@ -52,6 +53,7 @@ const Button = ({
         {
           'm-btn-block': block,
           'm-btn-mini': mini,
+          'm-btn-no-round': noRound,
           'm-btn-plain': type !== 'link' && plain,
         },
         className
@@ -71,6 +73,7 @@ Button.propTypes = {
   plain: PropTypes.bool,
   mini: PropTypes.bool,
   block: PropTypes.bool,
+  noRound: PropTypes.bool,
   /** 原生的 type */
   htmlType: PropTypes.string,
   loading: PropTypes.bool,

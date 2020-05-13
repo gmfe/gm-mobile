@@ -83,6 +83,12 @@ export const normal = () => (
         主色
       </Button>
     </div>
+    noRound
+    <div>
+      <Button noRound type='primary'>
+        主色
+      </Button>
+    </div>
   </div>
 )
 
