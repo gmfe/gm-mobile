@@ -70,7 +70,7 @@ const Popup = ({
       <Flex column {...rest} className={cn} style={s}>
         {!disabledHeader && (
           <Flex justifyBetween alignCenter className='m-popup-top'>
-            <Flex flex column className='m-padding-left-15'>
+            <Flex flex column className='m-padding-left-15 m-text-16'>
               {title}
             </Flex>
 

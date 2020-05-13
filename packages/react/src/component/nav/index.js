@@ -26,7 +26,9 @@ const Nav = ({ data, selected, onSelect, horizontal, className, ...rest }) => {
               active: selected === v.value,
             })}
             onClick={() => {
-              onSelect(v.value)
+              if (selected !== v.value) {
+                onSelect(v.value)
+              }
             }}
           >
             {v.text}

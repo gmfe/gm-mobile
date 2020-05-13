@@ -20,13 +20,7 @@ class ConfirmPicker extends React.Component {
     })
   }
 
-  handleCancel = (e) => {
-    e.preventDefault()
-    this.props.onCancel()
-  }
-
   handleConfirm = (e) => {
-    e.preventDefault()
     this.props.onConfirm(this.state.values)
   }
 
