@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import PropTypes from 'prop-types'
+import Toast from '../toast'
 
 const RepeatTimes = ({ repeat, onRepeat, children }) => {
   const [times, setTimes] = useState(0)
@@ -13,6 +14,10 @@ const RepeatTimes = ({ repeat, onRepeat, children }) => {
     }, 2000)
 
     setTimes(times + 1)
+
+    if (times >= 2) {
+      Toast.tip(`debug ${times + 1}/${repeat}`)
+    }
 
     if (times >= repeat - 1) {
       setTimes(0)
