@@ -5,8 +5,9 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 import Input from '../input/input'
-import SVGSearch from '../../../svg/search.svg'
 import Button from '../button'
+import SVGSearch from '../../../svg/search.svg'
+import SVGClose from '../../../svg/close.svg'
 
 const Search = ({
   value,
@@ -55,12 +56,13 @@ const Search = ({
         <SVGSearch className='m-search-icon-search' />
         <Input
           ref={refInput}
-          type='search'
+          type='text'
           value={value}
           onChange={handleChange}
           placeholder={placeholder}
           autoFocus={autoFocus}
         />
+        <SVGClose className='m-search-icon-close' />
       </label>
       {type === 'search' ? (
         <Button type='link' mini onClick={handleSearch}>
