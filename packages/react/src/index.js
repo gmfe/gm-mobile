@@ -54,6 +54,7 @@ import Counter from './component/counter'
 import Badge from './component/badge'
 import { Search, SearchPage, FakeSearch } from './component/search'
 import Scroll from './component/scroll'
+import RepeatTimes from './component/repeat_times'
 
 // 其他
 import { LocalStorage, SessionStorage } from './component/storage'
@@ -132,6 +133,7 @@ export {
   FakeSearch,
   SearchPage,
   Scroll,
+  RepeatTimes,
   // 其他
   CSSVariable,
   LocalStorage,
