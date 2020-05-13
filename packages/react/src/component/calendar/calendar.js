@@ -8,7 +8,7 @@ class Calendar extends React.Component {
   refCalendar = React.createRef()
 
   apiScrollToSelected = () => {
-    this.refCalendar.apiScrollToSelected()
+    this.refCalendar.current.apiScrollToSelected()
   }
 
   handleSelect = (selected) => {

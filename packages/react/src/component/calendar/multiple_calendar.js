@@ -8,7 +8,7 @@ class MultipleCalendar extends React.Component {
   refMultipleCalendar = React.createRef()
 
   apiScrollToSelected = () => {
-    this.refMultipleCalendar.apiScrollToSelected()
+    this.refMultipleCalendar.current.apiScrollToSelected()
   }
 
   render() {
