@@ -40,6 +40,10 @@ const Search = ({
     onCancel()
   }
 
+  const handleClean = () => {
+    onChange('')
+  }
+
   return (
     <form
       {...rest}
@@ -62,7 +66,9 @@ const Search = ({
           placeholder={placeholder}
           autoFocus={autoFocus}
         />
-        <SVGClose className='m-search-icon-close' />
+        {value && (
+          <SVGClose className='m-search-icon-close' onClick={handleClean} />
+        )}
       </label>
       {type === 'search' ? (
         <Button type='link' mini onClick={handleSearch}>
