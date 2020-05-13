@@ -157,13 +157,20 @@ class BaseCalendar extends React.Component {
   }
 
   render() {
-    const { showDateLabel, className, selected, type, ...rest } = this.props
+    const {
+      showDateLabel,
+      className,
+      selected,
+      type,
+      disabledDate,
+      ...rest
+    } = this.props
 
     return (
       <Flex
+        {...rest}
         ref={(ref) => (this.refBaseCalendar = ref)}
         column
-        {...rest}
         className={classNames('m-calendar', className)}
       >
         <Week />
