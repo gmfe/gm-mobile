@@ -60,7 +60,7 @@ const Search = ({
         <SVGSearch className='m-search-icon-search' />
         <Input
           ref={refInput}
-          type='text'
+          type='search'
           value={value}
           onChange={handleChange}
           placeholder={placeholder}
