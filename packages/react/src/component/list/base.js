@@ -3,8 +3,10 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 import classNames from 'classnames'
 
-// 不要轻易改这个文件
+import Checkbox from '../checkbox'
+import Radio from '../radio'
 
+// 不要轻易改这个文件
 class Base extends React.Component {
   refList = React.createRef()
   _isMounted = false
@@ -34,6 +36,10 @@ class Base extends React.Component {
   }
 
   handleSelect = (item) => {
+    if (item.disabled) {
+      return
+    }
+
     const { multiple, selected, onSelect } = this.props
     if (multiple) {
       onSelect(_.xor(selected, [item.value]))
@@ -49,32 +55,63 @@ class Base extends React.Component {
       selected,
       multiple,
       onSelect,
-      isScrollTo, // eslint-disable-line
       renderItem,
+      className,
       ...rest
     } = this.props
 
     return (
-      <div {...rest} ref={this.refList}>
+      <div
+        {...rest}
+        ref={this.refList}
+        className={classNames(
+          'm-list',
+          { 'm-list-group': isGroupList },
+          className
+        )}
+      >
         {_.map(data, (group) => (
-          <div key={group.label} data-label={group.label}>
-            <div className='bg-default padding-lr-8 padding-tb-4 text-12'>
-              {group.label}
-            </div>
+          <div
+            key={group.label}
+            data-label={group.label}
+            className='m-list-group-item'
+          >
+            <div className='m-list-label'>{group.label}</div>
             {_.map(group.children, (item) => (
               <div
                 key={item.value}
                 data-value={item.value}
-                className={classNames(
-                  'bg-white padding-8 border-1px-bottom-after',
-                  {
-                    'text-primary': selected.includes(item.value),
-                    'disabled text-disabled': item.disabled,
-                  }
-                )}
-                onClick={this.handleSelect.bind(this, item)}
+                className={classNames('m-list-item', {
+                  active: selected.includes(item.value),
+                  disabled: item.disabled,
+                })}
               >
-                {renderItem(item)}
+                {multiple && (
+                  <Checkbox
+                    circle
+                    primary
+                    checked={selected.includes(item.value)}
+                    disabled={item.disabled}
+                    onChange={this.handleSelect.bind(this, item)}
+                    className='m-padding-tb-10 m-padding-left-15'
+                  />
+                )}
+                <div
+                  className={classNames('m-list-item-text', {
+                    'm-padding-left-15': !multiple,
+                  })}
+                  onClick={this.handleSelect.bind(this, item)}
+                >
+                  {renderItem(item)}
+                  {!multiple && (
+                    <Radio
+                      checked={selected.includes(item.value)}
+                      disabled={item.disabled}
+                      onChange={this.handleSelect.bind(this, item)}
+                      className='m-list-item-radio'
+                    />
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -85,16 +122,20 @@ class Base extends React.Component {
 }
 
 Base.propTypes = {
-  // 基本属性
-  data: PropTypes.array.isRequired, // label, children: [{ value text}]
+  /** 基本属性，数据格式为[{label, id, children: [{ value text}, ...]}, ...] */
+  data: PropTypes.array.isRequired,
+  /** 选择项 */
   selected: PropTypes.array.isRequired,
-  onSelect: PropTypes.func, // 返回数组
+  /** 选择回调, 返回数组类型 */
+  onSelect: PropTypes.func,
+  /** 是否多选 */
   multiple: PropTypes.bool,
-
-  // 展示
+  /** 自定义列表项展示 */
   renderItem: PropTypes.func,
-
   isGroupList: PropTypes.bool, // 在这里仅仅表示数据的类型，对UI有影响而已
+
+  className: PropTypes.string,
+  style: PropTypes.object,
 }
 
 Base.defaultProps = {

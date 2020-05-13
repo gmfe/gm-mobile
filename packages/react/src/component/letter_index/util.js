@@ -1,13 +1,14 @@
 import _ from 'lodash'
+import { pinyin } from '@gm-common/tool'
 
 const letterList = _.map(_.range(65, 91), (v) => String.fromCharCode(v))
 letterList.push('#') // 无法识别字母的使用 # 代替
 
-function data2Group(data, getFirstLetter) {
+function data2Group(data) {
   const flMap = {}
 
   _.each(data, (v) => {
-    const fl = getFirstLetter(v.text)[0].toUpperCase()
+    const fl = pinyin(v.text)[0].toUpperCase()
 
     if (!letterList.includes(fl)) {
       if (!flMap['#']) {

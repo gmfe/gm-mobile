@@ -2,9 +2,8 @@ import React from 'react'
 import { observable } from 'mobx'
 import _ from 'lodash'
 
-import Page from '../page'
-import LetterIndex from './letter_index'
-import LetterIndexMultiple from './letter_index_multiple'
+import { Page } from '@gm-mobile/react'
+import ProductSelection from '.'
 
 const data = [
   { value: 'apple', text: '苹果' },
@@ -23,13 +22,6 @@ const data = [
   },
 ]
 
-const store = observable({
-  selected: null,
-  setSelected(selected) {
-    this.selected = selected
-  },
-})
-
 const mulStore = observable({
   selected: [],
   setSelected(selected) {
@@ -40,17 +32,7 @@ const mulStore = observable({
 // 简单以英文为例
 export const Normal = () => (
   <Page>
-    <LetterIndex
-      data={data}
-      selected={store.selected}
-      onSelect={(selected) => store.setSelected(selected)}
-    />
-  </Page>
-)
-
-export const Multiple = () => (
-  <Page>
-    <LetterIndexMultiple
+    <ProductSelection
       data={data}
       selected={mulStore.selected}
       onSelect={(selected) => mulStore.setSelected(selected)}
@@ -59,5 +41,5 @@ export const Multiple = () => (
 )
 
 export default {
-  title: '基础/LetterIndex',
+  title: '业务/ProductSelection',
 }

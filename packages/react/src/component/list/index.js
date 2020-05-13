@@ -1,46 +1,42 @@
-import React from 'react'
+import React, { useImperativeHandle, useRef, forwardRef } from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
 import Base from './base'
 
-// 恶心的转换逻辑在这里做
-class List extends React.Component {
-  refList = React.createRef()
+const List = forwardRef(
+  ({ data, selected, multiple, isGroupList, onSelect, ...rest }, ref) => {
+    const refList = useRef(null)
 
-  apiDoScrollToLabel = (label) => {
-    this.refList.current.apiDoScrollToLabel(label)
-  }
+    useImperativeHandle(ref, () => ({
+      apiDoScrollToLabel: (label) => {
+        refList.current.apiDoScrollToLabel(label)
+      },
+      apiDoScrollToValue: (value) => {
+        refList.current.apiDoScrollToValue(value)
+      },
+    }))
 
-  apiDoScrollToValue = (label) => {
-    this.refList.current.apiDoScrollToValue(label)
-  }
-
-  handleSelected = (selected) => {
-    const { multiple, onSelect } = this.props
-
-    if (multiple) {
-      onSelect(selected)
-    } else {
-      onSelect(selected[0])
+    const handleSelected = (selected) => {
+      if (multiple) {
+        onSelect(selected)
+      } else {
+        onSelect(selected[0])
+      }
     }
-  }
 
-  render() {
-    const { data, selected, multiple, isGroupList, ...rest } = this.props
-
-    let oData
+    let oData = null
     if (isGroupList) {
       oData = data
     } else {
       oData = [
         {
           label: '',
+          id: '',
           children: data,
         },
       ]
     }
 
-    let oSelected
+    let oSelected = null
     if (multiple) {
       oSelected = selected || []
     } else {
@@ -50,34 +46,29 @@ class List extends React.Component {
     return (
       <Base
         {...rest}
-        ref={this.refList}
+        ref={refList}
         data={oData}
         selected={oSelected}
-        onSelect={this.handleSelected}
+        onSelect={handleSelected}
         multiple={multiple}
         isGroupList={isGroupList}
       />
     )
   }
-}
+)
 
 List.propTypes = {
-  // 基本属性
-  data: PropTypes.array.isRequired, // value text
+  ...Base.propTypes,
+
+  /**
+   * [{value, text, disabled}]
+   * group [{label, id, children: [{value, text, disabled}]}]
+   * */
+  data: PropTypes.array.isRequired,
+  /** 单选 value，多选 [value, value]。多选提供数组 */
   selected: PropTypes.any,
+  /** 单选 value，多选 [value, value] */
   onSelect: PropTypes.func,
-  multiple: PropTypes.bool, // true，则 selected 是数组
-
-  // 展示
-  renderItem: PropTypes.func,
-
-  isGroupList: PropTypes.bool,
-}
-
-List.defaultProps = {
-  multiple: false,
-  onSelect: _.noop,
-  renderItem: (item) => item.text,
 }
 
 export default List

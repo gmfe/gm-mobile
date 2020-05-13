@@ -1,52 +1,52 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
-import List from '../list'
-import Letter from './letter'
-import { data2Group } from './util'
 import classNames from 'classnames'
 
-class LetterIndex extends React.Component {
-  refList = React.createRef()
+import List from '../list'
+import Letter from './letter'
+import Flex from '../flex'
+import { data2Group } from './util'
 
-  handleSelect = (selected) => {
-    this.props.onSelect(selected)
+const LetterIndex = ({
+  selected,
+  data,
+  renderItem,
+  onSelect,
+  className,
+  style,
+  ...rest
+}) => {
+  const refList = useRef(null)
+
+  const handleSelect = (selected) => {
+    onSelect(selected)
   }
 
-  handleLetter = (letter) => {
-    this.refList.current.apiDoScrollToLabel(letter)
+  const handleToLetter = (letter) => {
+    refList.current.apiDoScrollToLabel(letter)
   }
 
-  render() {
-    const {
-      selected,
-      data,
-      renderItem,
-      className,
-      style,
-      getFirstLetter,
-      ...rest
-    } = this.props
-    const gData = data2Group(data, getFirstLetter)
-
-    return (
-      <div
-        {...rest}
-        className={classNames('m-bg-back m-letter-index', className)}
-        style={style}
-      >
+  const gData = data2Group(data)
+  return (
+    <div
+      {...rest}
+      className={classNames('m-letter-index', className)}
+      style={style}
+    >
+      <Flex column flex className='m-letter-index-content'>
         <List
-          ref={this.refList}
-          className='m-overflow-y m-relative m-letter-index-list'
+          ref={refList}
+          className='m-letter-index-list'
           data={gData}
           selected={selected}
-          onSelect={this.handleSelect}
+          onSelect={handleSelect}
           renderItem={renderItem}
           isGroupList
         />
-        <Letter onChange={this.handleLetter} />
-      </div>
-    )
-  }
+        <Letter onChange={handleToLetter} />
+      </Flex>
+    </div>
+  )
 }
 
 LetterIndex.propTypes = {
@@ -55,8 +55,6 @@ LetterIndex.propTypes = {
   /** 当前选择项 */
   selected: PropTypes.any,
   onSelect: PropTypes.func.isRequired,
-  /** 传入获取首拼的函数 */
-  getFirstLetter: PropTypes.func.isRequired,
   /** 自定义列表项 */
   renderItem: PropTypes.func,
   className: PropTypes.string,

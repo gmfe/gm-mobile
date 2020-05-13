@@ -55,3 +55,7 @@ Popup 关闭需要提供 onHide
 移除 Slide SlideLess
 
 移除 Infinite，转用 Scroll，
+
+LetterIndex, LetterIndexMultiple 移除 getFirstLetter
+
+原 LetterIndexMultiple 底部按钮调整，在 business 模块新增 ProductSelection

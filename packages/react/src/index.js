@@ -15,7 +15,6 @@ import {
 import { Calendar, RangeCalendar, MultipleCalendar } from './component/calendar'
 import { Keyboard, KeyboardWrap } from './component/keyboard'
 import Checkbox from './component/checkbox'
-import { LetterIndex, LetterIndexMultiple } from './component/letter_index'
 import { Input, InputPassword, BorderInput } from './component/input'
 import Radio from './component/radio'
 
@@ -57,6 +56,8 @@ import { Search, SearchPage, FakeSearch } from './component/search'
 import Scroll from './component/scroll'
 import RepeatTimes from './component/repeat_times'
 import TagWrap from './component/tag'
+import List from './component/list'
+import { LetterIndex, LetterIndexMultiple } from './component/letter_index'
 
 // 其他
 import { LocalStorage, SessionStorage } from './component/storage'
@@ -93,8 +94,6 @@ export {
   MultipleCalendar,
   Keyboard,
   KeyboardWrap,
-  LetterIndex,
-  LetterIndexMultiple,
   Radio,
   // 布局
   Flex,
@@ -138,6 +137,9 @@ export {
   Scroll,
   RepeatTimes,
   TagWrap,
+  List,
+  LetterIndex,
+  LetterIndexMultiple,
   // 其他
   CSSVariable,
   LocalStorage,
