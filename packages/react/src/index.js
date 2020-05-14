@@ -43,6 +43,7 @@ import Mask from './component/mask'
 import Popup from './component/popup'
 import PreviewImage from './component/preview_image'
 import Tooltip from './component/tooltip'
+import ActionSheet from './component/action_sheet'
 
 // 基础
 import FlipNumber from './component/flip_number'
@@ -119,6 +120,7 @@ export {
   Delete,
   PreviewImage,
   Tooltip,
+  ActionSheet,
   // 基础
   FlipNumber,
   Image,
