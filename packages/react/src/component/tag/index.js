@@ -22,7 +22,7 @@ const TagWrap = ({ tag, bottom, block, className, children, ...rest }) => {
 }
 
 TagWrap.propTypes = {
-  tag: PropTypes.string.isRequired,
+  tag: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
   bottom: PropTypes.bool,
   block: PropTypes.bool,
   className: PropTypes.string,
