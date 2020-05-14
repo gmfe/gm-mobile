@@ -10,6 +10,11 @@
 
   .mDisabledWith();
 
+  /* ios 有 bg 黑底 */
+  &[disabled][checked] {
+    background: transparent;
+  }
+
   &::before {
     content: '';
     display: inline-block;
