@@ -32,7 +32,7 @@ const ReceivedCoupon = (props) => {
             {discount}
             {couponAmount && couponAmount !== 0 && (
               <span
-                className={classNames('m-received-coupon-info', {
+                className={classNames('m-received-coupon-left-info', {
                   'm-received-coupon-received': isReceived,
                 })}
               >
