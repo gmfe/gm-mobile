@@ -17,7 +17,7 @@ Label.propTypes = {
   /** 标签显示的文字 */
   text: PropTypes.string,
   /** 标签样式种类 */
-  type: PropTypes.oneOf(['default', 'plain', 'accent']),
+  type: PropTypes.oneOf(['default', 'plain', 'accent', 'primary']),
   className: PropTypes.string,
   style: PropTypes.object,
 }
