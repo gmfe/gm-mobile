@@ -6,7 +6,7 @@ const TagWrap = ({ tag, className, children, ...rest }) => {
   return (
     <div {...rest} className={classNames('m-tag-wrap', className)}>
       {children}
-      <div className='m-tag'>{tag}</div>
+      {tag && <div className='m-tag'>{tag}</div>}
     </div>
   )
 }
