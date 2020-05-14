@@ -17,4 +17,20 @@
 
 .m-tag-wrap {
   position: relative;
+
+  &.m-tag-wrap-bottom {
+    .m-tag {
+      top: auto;
+      bottom: 0;
+    }
+  }
+
+  &.m-tag-wrap-block {
+    .m-tag {
+      width: 100%;
+      max-width: 100%;
+      padding: 0;
+      text-align: center;
+    }
+  }
 }
