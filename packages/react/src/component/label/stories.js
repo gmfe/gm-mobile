@@ -7,6 +7,12 @@ export const normal = () => (
   </div>
 )
 
+export const primary = () => (
+  <div>
+    <Label text='自提' type='primary'/>
+  </div>
+)
+
 export const plain = () => (
   <div>
     <Label text='限购' type='plain' />

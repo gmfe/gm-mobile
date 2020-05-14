@@ -62,7 +62,12 @@ const Coupon = (props) => {
             <span className='m-coupon-left-total'>{totalInfo}</span>
           )}
         </Flex>
-        <Flex column flex className='m-coupon-right'>
+        <Flex
+          column
+          flex
+          className='m-coupon-right'
+          onClick={onCheck || _.noop}
+        >
           <Flex
             flex
             column
