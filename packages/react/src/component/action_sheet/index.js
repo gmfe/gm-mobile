@@ -13,7 +13,7 @@ const ActionSheetStatics = {
         children: (
           <ActionSheet
             data={data}
-            onSelected={(value) => {
+            onSelect={(value) => {
               ActionSheetStatics.hide()
               setTimeout(() => {
                 resolve(value)
@@ -41,9 +41,9 @@ const ActionSheetStatics = {
   },
 }
 
-const ActionSheet = ({ data, onSelected, onCancel }) => {
+const ActionSheet = ({ data, onSelect, onCancel }) => {
   const handleSelected = (option) => {
-    onSelected(option.value)
+    onSelect(option.value)
   }
 
   return (
@@ -74,7 +74,7 @@ ActionSheet.propTypes = {
   /** 选项数组 [{ text, value }] */
   data: PropTypes.array.isRequired,
   /** 选择回调 */
-  onSelected: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired,
   /** 取消 */
   onCancel: PropTypes.func.isRequired,
 }
