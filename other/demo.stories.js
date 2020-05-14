@@ -5,7 +5,10 @@ export const demo = () => {
   return (
     <div>
       demo{is.phone() ? 'true' : 'false'}
-      <a href='a'>afasfasf</a>
+      <div className='lala'>
+        <img src='' alt='' />
+      </div>
+      <div className='lala'></div>
     </div>
   )
 }
