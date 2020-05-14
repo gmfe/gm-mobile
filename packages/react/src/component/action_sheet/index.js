@@ -52,7 +52,7 @@ const ActionSheet = ({ data, onSelect, onCancel }) => {
         {_.map(data, (option) => (
           <div
             key={option.value}
-            className='m-padding-tb-10 m-border-1px-top-after m-active-bg-white'
+            className='m-padding-tb-15 m-border-1px-top-after m-active-bg-white'
             onClick={() => handleSelected(option)}
           >
             {option.text}
@@ -60,7 +60,7 @@ const ActionSheet = ({ data, onSelect, onCancel }) => {
         ))}
       </div>
       <div className='m-bg-white m-margin-top-10'>
-        <div className='m-active-bg-white m-padding-tb-10' onClick={onCancel}>
+        <div className='m-active-bg-white m-padding-tb-15' onClick={onCancel}>
           {getLocale('取消')}
         </div>
       </div>
