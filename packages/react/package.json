@@ -25,8 +25,8 @@
     "react-dom": "^16.13.1"
   },
   "dependencies": {
-    "@gm-common/number": "^2.1.0",
-    "@gm-common/tool": "^2.1.0",
+    "@gm-common/number": "^2.2.9",
+    "@gm-common/tool": "^2.2.9",
     "@gm-mobile/locales": "^0.0.10",
     "@gm-mobile/swiper": "^0.0.10",
     "classnames": "^2.2.6"
