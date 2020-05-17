@@ -26,7 +26,7 @@
     line-height: var(--size-form-height);
 
     .m-tabs-content {
-      background-color: var(--color-bg-primary-dark);
+      background-color: var(--color-bg-primary-active);
       border-radius: var(--size-form-height);
 
       .m-tabs-item {
@@ -60,9 +60,7 @@
   .m-tabs-item {
     flex: 1;
 
-    &:active {
-      .mActiveBgWhite();
-    }
+    .mBgWhiteActiveWith();
 
     &.active .m-tabs-item-text {
       color: var(--color-first);

@@ -9,6 +9,7 @@ import '../packages/swiper/src/index.less'
 
 // business
 import '../packages/business/src/index.less'
+import { themes } from '@storybook/theming'
 
 addParameters({
   options: {
@@ -42,3 +43,10 @@ addDecorator((storeFn) => (
     <LayoutRoot />
   </React.Fragment>
 ))
+
+if (
+  window.matchMedia &&
+  window.matchMedia('(prefers-color-scheme: dark)').matches
+) {
+  document.body.classList.add('m-theme-dark')
+}

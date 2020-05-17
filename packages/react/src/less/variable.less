@@ -4,68 +4,69 @@
 --size 尺寸相关
 --btn 具体业务
 */
+// stylelint-disable
 
-// 需要保留一份，不支持 css variable 的话
 // 颜色，会通过主题更改
-:root {
-  // 尽量不要用这里的变量，而是用下面更形象的颜色
-  --color-first: #000; // black 主内容
+body {
+  // color
+  --color-first: black; // black 主内容
   --color-second: #353535; // semi 次要主内容
   --color-third: #888; // grey 次要内容
   --color-fourth: #b2b2b2; // light 缺省
-
-  // 颜色
   --color-primary: #1eac52;
-  --color-accent: #ff6500; // 次要强调
+  --color-white: white;
+  --color-black: black;
+
+  // bg
+  --color-bg-white: white;
+  --color-bg-back: #f6f6f6; // 背景色
+  --color-bg-light: #fbfbfb; // 亮点的背景色
+  --color-bg-primary: #1eac52;
+
+  // active
+  --color-bg-white-active: #ececec;
+  --color-bg-back-active: #ececec;
+  --color-bg-primary-active: shade(#1eac52, 10%);
+
+  // btn
+  --btn-color-default: #888;
+  --btn-color-default-active: shade(#888, 10%);
+
+  // search
+  --fake-search-bg-light: rgba(214, 214, 214, 0.3);
+
+  // calendar
+  --calendar-bg-active: tint(#1eac52, 90%);
+}
+
+// 不变的颜色
+body {
+  // color
+  --color-placeholder: #b2b2b2;
+  --color-accent: #ff6500;
   --color-success: #1eac52;
   --color-danger: #fa5151;
   --color-link: #576b95;
   --color-desc: #888;
   --color-red: red;
-  --color-white: rgba(255, 255, 255, 1);
-  --color-black: black;
-  --color-placeholder: #b2b2b2;
+
+  // bg
+  --color-bg-accent: #ff6500;
+  --color-bg-accent-light: tint(#ff6500, 80%);
+  --color-bg-danger: #fa5151;
 
   // active
-  --color-bg-white-active: #ececec;
-  --color-bg-primary-active: darken(#1eac52, 10%);
-  --color-bg-danger-active: darken(#e64340, 10%);
-
-  // 背景色
-  --color-bg-white: white;
-  --color-bg-back: #f6f6f6; // 背景色
-  --color-bg-light: #fbfbfb; // 亮点的背景色
-  --color-bg-primary: #1eac52;
-  --color-bg-primary-dark: darken(#1eac52, 5%);
-  --color-bg-accent: #ff6500;
-  --color-bg-accent-light: fade(#ff6500, 20%);
-
-  // mask 背景色
-  --color-bg-mask: rgba(0, 0, 0, 0.6);
-  --color-bg-mask-white: rgba(255, 255, 255, 0.8);
+  --color-bg-danger-active: shade(#e64340, 10%);
 
   // border
   --color-border: rgba(0, 0, 0, 0.1);
-}
 
-// stylelint-disable
-// 业务颜色
-:root {
-  // btn
-  --btn-bg-default: #f4f5f6;
-  --btn-bg-default-active: darken(#f4f5f6, 10%);
-  --btn-color-default: #7a7a7a;
-  --btn-color-default-active: #7a7a7a;
-
-  // search
-  --fake-search-bg: rgba(214, 214, 214, 0.3);
-
-  // calendar
-  --calendar-bg-active: #ECF8F1;
+  // mask 背景色
+  --color-bg-mask: rgba(0, 0, 0, 0.6);
 }
 
 // 非颜色
-:root {
+body {
   // 字体尺寸
   --size-text-10: 10px;
   --size-text-12: 12px;

@@ -15,7 +15,9 @@
   min-width: 180px;
 
   &.m-btn-default {
-    .mBtnVariants(var(--btn-color-default), var(--btn-bg-default), var(--btn-bg-default-active));
+    .mBtnVariants(var(--color-bg-back), var(--color-bg-back-active));
+
+    color: var(--btn-color-default);
 
     &::after {
       border-color: var(--color-border);
@@ -39,11 +41,12 @@
   }
 
   &.m-btn-primary {
-    .mBtnVariants(var(--color-white), var(--color-primary), var(--color-bg-primary-active));
+    // 固定白色 不随主题
+    .mBtnVariants(var(--color-primary), var(--color-bg-primary-active));
   }
 
   &.m-btn-danger {
-    .mBtnVariants(var(--color-white), var(--color-danger), var(--color-bg-danger-active));
+    .mBtnVariants(var(--color-danger), var(--color-bg-danger-active));
   }
 
   &.m-btn-link {
@@ -54,7 +57,7 @@
     min-width: auto;
     text-decoration: none;
 
-    .mActiveBgWhiteWith();
+    .mBgWhiteActiveWith();
   }
 
   &.m-btn-mini {
@@ -89,19 +92,21 @@
   }
 }
 
-.mBtnVariants(@color; @brand; @activeBrand) {
+.mBtnVariants(@brand; @activeBrand) {
   background: @brand;
-  color: @color;
+  // 不随主题，固定白色
+  color: white;
 
   .mBtnBorderAllAfterWith(@brand, var(--size-form-height));
 
   &.m-btn-plain {
-    background: var(--color-white);
+    background: transparent;
     color: @brand;
 
     &:active {
       background: @brand;
-      color: var(--color-white);
+      // 不随主题，固定白色
+      color: white;
     }
   }
 
