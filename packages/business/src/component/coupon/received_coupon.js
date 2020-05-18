@@ -63,7 +63,7 @@ const ReceivedCoupon = (props) => {
             })}
             onClick={isReceived ? _.noop : onReceived}
           >
-            {isReceived ? getLocale('已领取') : getLocale('去领取')}
+            {getLocale('领取')}
           </span>
         </Flex>
       </Flex>
