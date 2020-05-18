@@ -1,6 +1,6 @@
 {
   "name": "@gm-mobile/service_time",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "> TODO: description",
   "author": "liyatang <liyatang@qq.com>",
   "homepage": "https://github.com/gmfe/service_time#readme",
@@ -21,7 +21,7 @@
     "url": "https://github.com/gmfe/service_time/issues"
   },
   "dependencies": {
-    "@gm-mobile/locales": "^0.0.10",
-    "@gm-mobile/react": "^0.0.10"
+    "@gm-mobile/locales": "^0.0.11",
+    "@gm-mobile/react": "^0.0.11"
   }
 }
