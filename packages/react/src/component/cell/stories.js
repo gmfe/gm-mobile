@@ -116,16 +116,21 @@ export const form = () => {
         <CellForm required>
           <Input
             type='text'
+            form
             value={store.username}
             onChange={(e) => {
               store.setValue('username', e.target.value)
             }}
             placeholder='请输入用户名'
+            onClick={() => {
+              console.log('click')
+            }}
           />
         </CellForm>
         <CellForm required label='名字' labelWidth='100px'>
           <Input
             type='text'
+            form
             value={store.name}
             onChange={(e) => {
               store.setValue('name', e.target.value)
@@ -138,6 +143,7 @@ export const form = () => {
         <CellForm label='年龄' labelWidth='100px'>
           <Input
             type='number'
+            form
             value={store.age}
             onChange={(e) => {
               store.setValue('age', e.target.value)
@@ -147,6 +153,7 @@ export const form = () => {
         </CellForm>
         <CellForm label='密码' labelWidth='100px' error='填错啦'>
           <InputPassword
+            form
             value={store.password}
             onChange={(e) => {
               store.setValue('password', e.target.value)
@@ -186,6 +193,7 @@ export const form = () => {
         </CellForm>
         <CellForm label='收货地址' labelWidth='100px'>
           <Textarea
+            form
             value={store.address}
             onChange={(e) => {
               store.setValue('address', e.target.value)
@@ -219,6 +227,7 @@ export const form = () => {
       <CellsForm title='带标题的情况'>
         <CellForm label='名字' labelWidth='100px'>
           <Input
+            form
             type='text'
             value={store.value}
             onChange={(e) => {
@@ -229,6 +238,7 @@ export const form = () => {
         </CellForm>
         <CellForm label='年龄' labelWidth='100px'>
           <Input
+            form
             type='number'
             value={store.age}
             onChange={(e) => {

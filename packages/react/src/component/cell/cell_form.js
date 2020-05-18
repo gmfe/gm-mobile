@@ -26,7 +26,7 @@ const CellForm = ({
         }
         className={classNames('m-cell-form', className)}
       >
-        <label className='m-cell-form-body-label'>{children}</label>
+        {children}
       </Cell>
       {error && <div className='m-cell-form-error'>{error}</div>}
     </>

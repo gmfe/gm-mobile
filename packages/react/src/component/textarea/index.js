@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 import classNames from 'classnames'
 
-const Textarea = ({ value, disabled, maxLength, className, ...rest }) => {
+const Textarea = ({ value, disabled, maxLength, form, className, ...rest }) => {
   return (
     <div className='m-textarea-container'>
       <textarea
@@ -12,6 +12,7 @@ const Textarea = ({ value, disabled, maxLength, className, ...rest }) => {
         className={classNames(
           'm-textarea',
           {
+            'm-textarea-form': form,
             disabled,
           },
           className
@@ -32,6 +33,7 @@ Textarea.propTypes = {
   disabled: PropTypes.bool,
   maxLength: PropTypes.number,
   rows: PropTypes.string,
+  form: PropTypes.bool,
   className: PropTypes.string,
   style: PropTypes.object,
 }

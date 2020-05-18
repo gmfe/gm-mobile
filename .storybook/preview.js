@@ -48,5 +48,5 @@ if (
   window.matchMedia &&
   window.matchMedia('(prefers-color-scheme: dark)').matches
 ) {
-  document.body.classList.add('m-theme-dark')
+  // document.body.classList.add('m-theme-dark')
 }
