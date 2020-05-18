@@ -1,113 +1,88 @@
-import React from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import _ from 'lodash'
-import Flex from '../flex'
 import PropTypes from 'prop-types'
+
+import Flex from '../flex'
 
 const letterList = _.map(_.range(65, 91), (v) => String.fromCharCode(v))
 letterList.push('#')
 
-class Letter extends React.Component {
-  constructor(props) {
-    super(props)
+const Letter = ({ onChange }) => {
+  const refLetter = useRef(null)
+  const [letter, setLetter] = useState(null)
+  const [showLetter, setShowLetter] = useState(false)
+  const [letterInfo, setLetterInfo] = useState(null)
 
-    this.refLetter = React.createRef()
+  useEffect(() => {
+    const rect = ReactDOM.findDOMNode(refLetter.current).getBoundingClientRect()
+    setLetterInfo({ top: rect.top, itemHeight: rect.height / 27 }) // 总共有 27 个符号
+  }, [])
 
-    this.top = 0
-    this.itemHeight = 0
-
-    this.state = {
-      letter: null,
-      showLetter: false,
-    }
-  }
-
-  componentDidMount() {
-    const rect = ReactDOM.findDOMNode(
-      this.refLetter.current
-    ).getBoundingClientRect()
-    this.top = rect.top
-    this.itemHeight = rect.height / 27 // 总共有 27 个符号
-  }
-
-  getY(event) {
+  const getY = (event) => {
     return event.touches !== undefined ? event.touches[0].pageY : event.clientY
   }
 
-  handleTouch = (e) => {
-    const top = this.getY(e)
-    let code = parseInt((top - this.top) / this.itemHeight, 10) + 65
+  const doChange = _.throttle((letter) => {
+    onChange(letter)
+  }, 100)
+
+  const handleTouch = (e) => {
+    const top = getY(e)
+    let code = parseInt((top - letterInfo.top) / letterInfo.itemHeight, 10) + 65
     if (code < 65) {
       // 把滑动是能够出现的字母限定在26个大写字母和特殊符号#
       code = 65
     }
     const letter = String.fromCharCode(code >= 91 ? 35 : code) // 字母以外用 #:35
 
-    this.setState({
-      letter,
-    })
-
-    this.doChange(letter)
+    setLetter(letter)
+    doChange(letter)
   }
 
-  handleTouchStart = (e) => {
-    this.handleTouch(e)
-
-    this.setState({
-      showLetter: true,
-    })
+  const handleTouchStart = (e) => {
+    handleTouch(e)
+    setShowLetter(true)
   }
 
-  handleTouchEnd = () => {
-    this.setState({
-      showLetter: false,
-    })
+  const handleTouchEnd = () => {
+    setShowLetter(false)
   }
 
-  handleTouchCancel = () => {
-    this.setState({
-      showLetter: false,
-    })
+  const handleTouchCancel = () => {
+    setShowLetter(false)
   }
 
-  handleContextMenu = (e) => {
+  const handleContextMenu = (e) => {
     e.preventDefault()
   }
 
-  doChange = _.throttle((letter) => {
-    this.props.onChange(letter)
-  }, 100)
-
-  render() {
-    const { letter, showLetter } = this.state
-
-    return (
-      <div className='m-letter'>
-        <Flex
-          ref={this.refLetter}
-          column
-          justifyBetween
-          className='m-letter-list'
-          onTouchStart={this.handleTouchStart}
-          onTouchMove={this.handleTouch}
-          onTouchEnd={this.handleTouchEnd}
-          onTouchCancel={this.handleTouchCancel}
-          onContextMenu={this.handleContextMenu}
-        >
-          {_.map(letterList, (v) => (
-            <Flex key={v} flex justifyCenter alignCenter>
-              {v}
-            </Flex>
-          ))}
-        </Flex>
-        {showLetter && (
-          <Flex alignCenter justifyCenter className='m-letter-item'>
-            {letter}
+  return (
+    <div className='m-letter'>
+      <Flex
+        ref={refLetter}
+        column
+        justifyCenter
+        className='m-letter-list'
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouch}
+        onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchCancel}
+        onContextMenu={handleContextMenu}
+      >
+        {_.map(letterList, (v) => (
+          <Flex key={v} flex justifyCenter alignCenter>
+            {v}
           </Flex>
-        )}
-      </div>
-    )
-  }
+        ))}
+      </Flex>
+      {showLetter && (
+        <Flex alignCenter justifyCenter className='m-letter-item'>
+          {letter}
+        </Flex>
+      )}
+    </div>
+  )
 }
 
 Letter.propTypes = {
