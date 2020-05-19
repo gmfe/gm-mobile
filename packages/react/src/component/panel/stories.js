@@ -8,6 +8,10 @@ export const normal = () => {
       <div className='m-gap-5' />
       <Panel title='标题'>panel</Panel>
       <div className='m-gap-5' />
+      <Panel title='标题' action='待分拣'>
+        panel
+      </Panel>
+      <div className='m-gap-5' />
       <Panel title='标题' top>
         panel
       </Panel>
@@ -16,7 +20,12 @@ export const normal = () => {
         panel
       </Panel>
       <div className='m-gap-5' />
-      <Panel title='标题' link={'https://www.baidu.com'}>
+      <Panel
+        title='标题 onTitle'
+        onTitle={() => {
+          window.location.href = 'https://www.baidu.com'
+        }}
+      >
         panel
       </Panel>
       <div className='m-gap-5' />

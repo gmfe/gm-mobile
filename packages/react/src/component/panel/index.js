@@ -2,8 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import SVGRight from '../../../svg/right-small.svg'
+import Flex from '../flex'
 
-const Panel = ({ title, link, top, bottom, className, children }) => {
+const Panel = ({
+  title,
+  onTitle,
+  action,
+  onAction,
+  top,
+  bottom,
+  className,
+  children,
+}) => {
   return (
     <div
       className={classNames(
@@ -15,12 +25,20 @@ const Panel = ({ title, link, top, bottom, className, children }) => {
         className
       )}
     >
-      {title && (
-        <a href={link} className='m-panel-title m-flex m-flex-align-center'>
-          {title}
-          {link && <SVGRight className='m-cell-access-icon m-margin-left-5' />}
-        </a>
-      )}
+      <Flex>
+        {title && (
+          <Flex alignCenter className='m-panel-title' onClick={onTitle}>
+            {title}
+            {onTitle && <SVGRight className='m-margin-left-5' />}
+          </Flex>
+        )}
+        <Flex flex />
+        {action && (
+          <Flex column className='m-panel-action' onClick={onAction}>
+            {action}
+          </Flex>
+        )}
+      </Flex>
       <div className='m-panel-content'>{children}</div>
     </div>
   )
@@ -28,8 +46,10 @@ const Panel = ({ title, link, top, bottom, className, children }) => {
 
 Panel.propTypes = {
   title: PropTypes.string,
-  /** 提供 link，则 title 可点击到达 link */
-  link: PropTypes.string,
+  /** 提供 onTitle，则 title 有右箭头 */
+  onTitle: PropTypes.func,
+  action: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  onAction: PropTypes.func,
   /** 贴上边，左上 右上 没有圆角 */
   top: PropTypes.bool,
   /** 贴下边，左下 右下 没有圆角 */
