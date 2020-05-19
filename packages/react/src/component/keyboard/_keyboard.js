@@ -6,7 +6,7 @@ import Flex from '../flex'
 import SVGDel from '../../../svg/keyboard_del.svg'
 import { TYPE, KEYS } from './util'
 
-const BaseKeybaord = (props) => {
+const BaseKeyboard = (props) => {
   const { onChange } = props
 
   const handleKeyClick = (key) => {
@@ -44,9 +44,9 @@ const BaseKeybaord = (props) => {
   )
 }
 
-BaseKeybaord.propTypes = {
+BaseKeyboard.propTypes = {
   /** 键盘点击回调, 参数为object, { type, value } */
   onChange: PropTypes.func.isRequired,
 }
 
-export default BaseKeybaord
+export default BaseKeyboard

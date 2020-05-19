@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
-import BaseKeybaord from './_keyboard'
+import BaseKeyboard from './_keyboard'
 import Flex from '../flex'
 import Button from '../button'
 import { TYPE, text2Number } from './util'
@@ -144,7 +144,6 @@ const Keyboard = (props) => {
 
   return (
     <Flex column {...rest} className='m-number-keyboard'>
-      {title && <Flex className='m-number-keyboard-title'>{title}</Flex>}
       <Flex className='m-number-keyboard-header'>
         <Flex alignCenter className='m-number-keyboard-header-input m-text-18'>
           {currentValue}
@@ -160,7 +159,7 @@ const Keyboard = (props) => {
       </Flex>
       <Flex className='m-number-keyboard-error'>{errorMsg}</Flex>
       {children}
-      <BaseKeybaord onChange={handleValueChange} />
+      <BaseKeyboard onChange={handleValueChange} />
     </Flex>
   )
 }

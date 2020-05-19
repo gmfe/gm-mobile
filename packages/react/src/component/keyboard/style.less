@@ -39,7 +39,7 @@
   cursor: pointer;
 
   .m-number-keyboard-header {
-    padding: 10px 15px 0 15px;
+    padding: 0 15px;
 
     .m-number-keyboard-header-input {
       width: calc(100% / 3 * 2);
@@ -73,12 +73,6 @@
     }
   }
 
-  .m-number-keyboard-title {
-    padding: 10px 15px 0 15px;
-    font-size: var(--size-text-16);
-    color: var(--color-second);
-  }
-
   .m-number-keyboard-error {
     padding-left: 15px;
     color: var(--color-danger);
@@ -88,7 +82,7 @@
 
 @keyframes blink {
   0% {
-    background-color: var(--color-white);
+    background-color: transparent;
   }
 
   50% {
@@ -96,6 +90,6 @@
   }
 
   100% {
-    background-color: var(--color-white);
+    background-color: transparent;
   }
 }
