@@ -196,12 +196,14 @@ export const picker = () => {
   )
 }
 
+const headers = ['one', 'two', 'three']
 export const confirmPicker = () => {
   const handleClick = () => {
     ConfirmPicker.render({
       title: 'confirm picker',
       datas: store.datas.slice(),
       values: store.values.slice(),
+      headers,
     }).then(
       (values) => {
         console.log('resolve', values)
