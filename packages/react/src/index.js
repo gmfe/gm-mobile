@@ -1,10 +1,12 @@
 // 表单
-import ScrollIntoView from './component/scroll_into_view'
 import { Button, ButtonTime } from './component/button'
+import Checkbox from './component/checkbox'
+import Radio from './component/radio'
+import { Input, InputPassword, BorderInput } from './component/input'
 import Switch from './component/switch'
 import Uploader from './component/uploader'
-import { Cells, Cell, CellForm, CellsForm } from './component/cell'
 import Textarea from './component/textarea'
+import { Cells, Cell, CellForm, CellsForm } from './component/cell'
 import {
   Picker,
   ConfirmPicker,
@@ -12,25 +14,35 @@ import {
   ConfirmCouplingPicker,
   SelectPicker,
 } from './component/picker'
-import { Calendar, RangeCalendar, MultipleCalendar } from './component/calendar'
 import { Keyboard, KeyboardWrap } from './component/keyboard'
-import Checkbox from './component/checkbox'
-import { Input, InputPassword, BorderInput } from './component/input'
-import Radio from './component/radio'
+import { Calendar, RangeCalendar, MultipleCalendar } from './component/calendar'
+import ScrollIntoView from './component/scroll_into_view'
+
+// 基础
+import FlipNumber from './component/flip_number'
+import Image from './component/image'
+import Label from './component/label'
+import Loading from './component/loading'
+import Price from './component/price'
+import Counter from './component/counter'
+import Badge from './component/badge'
+import RepeatTimes from './component/repeat_times'
+import TagWrap from './component/tag'
 
 // 布局
 import Flex from './component/flex'
 import Divider from './component/divider'
 import Page from './component/page'
 import Header from './component/header'
-
+import Tabbar from './component/tab_bar'
 import Square from './component/square'
-import Tabs from './component/tabs'
-import Nav from './component/nav'
 import Panel from './component/panel'
 import { Lazy, LazyList } from './component/lazy'
-import Tabbar from './component/tab_bar'
 import PullUpDown from './component/pull_up_down'
+import List from './component/list'
+import Scroll from './component/scroll'
+import Nav from './component/nav'
+import Tabs from './component/tabs'
 
 // 浮层
 import LayoutRoot from './component/layout_root'
@@ -44,24 +56,11 @@ import PreviewImage from './component/preview_image'
 import Tooltip from './component/tooltip'
 import ActionSheet from './component/action_sheet'
 
-// 基础
-import FlipNumber from './component/flip_number'
-import Image from './component/image'
-import Label from './component/label'
-import Loading from './component/loading'
-import Price from './component/price'
-import Counter from './component/counter'
-import Badge from './component/badge'
-import { Search, SearchPage, FakeSearch } from './component/search'
-import Scroll from './component/scroll'
-import RepeatTimes from './component/repeat_times'
-import TagWrap from './component/tag'
-import List from './component/list'
-import { LetterIndex, LetterIndexMultiple } from './component/letter_index'
-
 // 其他
+import { LetterIndex, LetterIndexMultiple } from './component/letter_index'
 import { LocalStorage, SessionStorage } from './component/storage'
 import CSSVariable from './css_variable'
+import { Search, SearchPage, FakeSearch } from './component/search'
 
 const Alert = Dialog.alert
 const Confirm = Dialog.confirm
@@ -70,42 +69,56 @@ const Delete = Dialog.delete
 
 export {
   // 表单
-  ScrollIntoView,
   Button,
   ButtonTime,
-  Switch,
   Checkbox,
+  Radio,
   Input,
   InputPassword,
   BorderInput,
+  Switch,
   Uploader,
+  Textarea,
   Cells,
   Cell,
   CellForm,
   CellsForm,
-  Textarea,
   Picker,
   ConfirmPicker,
   CouplingPicker,
   ConfirmCouplingPicker,
   SelectPicker,
-  Calendar,
-  RangeCalendar,
-  MultipleCalendar,
   Keyboard,
   KeyboardWrap,
-  Radio,
+  RangeCalendar,
+  MultipleCalendar,
+  Calendar,
+  ScrollIntoView,
+  // 基础
+  FlipNumber,
+  Image,
+  Label,
+  Loading,
+  Price,
+  Counter,
+  Badge,
+  RepeatTimes,
+  TagWrap,
   // 布局
   Flex,
   Divider,
   Page,
   Header,
-  Square,
-  Tabs,
-  Nav,
-  Panel,
   Tabbar,
+  Square,
+  Panel,
+  Lazy,
+  LazyList,
   PullUpDown,
+  List,
+  Scroll,
+  Nav,
+  Tabs,
   // 浮层
   LayoutRoot,
   InnerLayer,
@@ -121,26 +134,12 @@ export {
   PreviewImage,
   Tooltip,
   ActionSheet,
-  // 基础
-  FlipNumber,
-  Image,
-  Label,
-  Loading,
-  Lazy,
-  LazyList,
-  Counter,
-  Price,
-  Badge,
+  // 其他
+  LetterIndex,
+  LetterIndexMultiple,
   Search,
   FakeSearch,
   SearchPage,
-  Scroll,
-  RepeatTimes,
-  TagWrap,
-  List,
-  LetterIndex,
-  LetterIndexMultiple,
-  // 其他
   CSSVariable,
   LocalStorage,
   SessionStorage,

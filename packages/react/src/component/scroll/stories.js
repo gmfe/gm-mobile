@@ -79,5 +79,5 @@ export const Lazy = () => {
 }
 
 export default {
-  title: '基础/Scroll',
+  title: '布局/Scroll',
 }

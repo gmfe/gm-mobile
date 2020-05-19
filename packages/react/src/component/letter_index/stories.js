@@ -59,5 +59,5 @@ export const Multiple = () => (
 )
 
 export default {
-  title: '基础/LetterIndex',
+  title: '其他/LetterIndex',
 }

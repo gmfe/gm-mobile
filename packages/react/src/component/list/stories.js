@@ -43,7 +43,7 @@ const store = observable({
   },
   setGroupSelected(selected) {
     this.groupSelected = selected
-  }
+  },
 })
 
 export const normal = () => (
@@ -80,5 +80,5 @@ export const group = () => (
 )
 
 export default {
-  title: '基础/List',
+  title: '布局/List',
 }

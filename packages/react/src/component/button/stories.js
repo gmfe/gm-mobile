@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { observable } from 'mobx'
 import { Button, ButtonTime } from './'
+import Input from '../input'
 
 const store = observable({
   code: '',
@@ -115,7 +116,7 @@ export const buttonTime = () => (
   <div>
     <div>
       <p>输入项不为空，才允许计时(通过onClick事件控制)</p>
-      <input
+      <Input
         placeholder='输入后，可开始计时'
         value={store.code}
         onChange={(e) => {

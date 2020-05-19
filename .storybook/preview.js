@@ -44,9 +44,6 @@ addDecorator((storeFn) => (
   </React.Fragment>
 ))
 
-if (
-  window.matchMedia &&
-  window.matchMedia('(prefers-color-scheme: dark)').matches
-) {
-  // document.body.classList.add('m-theme-dark')
+if (localStorage.getItem('dark') === 'true') {
+  document.body.classList.add('m-theme-dark')
 }

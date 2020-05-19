@@ -11,7 +11,7 @@ export const normal = () => {
   const handleClick = () => {
     ActionSheet.render({
       data,
-      title: 'title'
+      title: 'title',
     }).then((value) => {
       console.log(value)
     })

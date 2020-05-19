@@ -147,5 +147,5 @@ export const searchPage = () => {
 }
 
 export default {
-  title: '基础/Search',
+  title: '其他/Search',
 }
