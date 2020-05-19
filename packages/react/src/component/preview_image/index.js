@@ -76,7 +76,7 @@ PreviewImage.defaultProps = {
 }
 
 PreviewImage.propTypes = {
-  /** 图片数组 [{url, img}] */
+  /** 图片数组 [{onClick, img}] */
   images: PropTypes.array.isRequired,
   /** 关闭预览回调 */
   onHide: PropTypes.func,
