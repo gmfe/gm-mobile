@@ -9,7 +9,6 @@ const NumberKeyboardStatics = {
       bottom: true,
       title: options.title,
       onHide: Popup.hide,
-      disabledHeader: true,
       children: <Keyboard {...options} />,
     })
   },
