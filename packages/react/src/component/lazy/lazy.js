@@ -18,7 +18,7 @@ const Lazy = ({ targetId, delay, children, ...rest }) => {
       return
     }
 
-    const doLazy = _.debounce(() => {
+    const doLazy = _.throttle(() => {
       if (ref.current && isElementOverViewport(ref.current)) {
         setShow(true)
       } else {
@@ -45,12 +45,12 @@ const Lazy = ({ targetId, delay, children, ...rest }) => {
 Lazy.propTypes = {
   /** 指定监听滚动的dom id */
   targetId: PropTypes.string,
-  /** debounce delay */
+  /** throttle delay */
   delay: PropTypes.number,
 }
 
 Lazy.defaultProps = {
-  delay: 100,
+  delay: 500,
 }
 
 export default Lazy
