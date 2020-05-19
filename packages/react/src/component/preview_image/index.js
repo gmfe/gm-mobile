@@ -45,7 +45,7 @@ const PreviewImage = ({ images, defaultIndex, className, onHide, ...rest }) => {
       }`}</div>
       <Flex column justifyCenter className='m-preview-image-inner'>
         {images.length === 1 ? (
-          <Image src={images[0].url} objectFix='contain' />
+          <Image src={images[0].img} objectFix='contain' />
         ) : (
           <div>
             <SwiperImg
