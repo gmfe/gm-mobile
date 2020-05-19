@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import SVGRight from '../../../svg/right-small.svg'
+import SVGAngleRight from '../../../svg/angle-right.svg'
 import Flex from '../flex'
 
 const Panel = ({
@@ -29,7 +29,7 @@ const Panel = ({
         {title && (
           <Flex alignCenter className='m-panel-title' onClick={onTitle}>
             {title}
-            {onTitle && <SVGRight className='m-margin-left-5' />}
+            {onTitle && <SVGAngleRight className='m-margin-left-5' />}
           </Flex>
         )}
         <Flex flex />

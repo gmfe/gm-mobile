@@ -7,7 +7,7 @@ import _ from 'lodash'
 import Input from '../input/input'
 import Button from '../button'
 import SVGSearch from '../../../svg/search.svg'
-import SVGClose from '../../../svg/close.svg'
+import SVGClose from '../../../svg/close-circle.svg'
 
 const Search = ({
   value,

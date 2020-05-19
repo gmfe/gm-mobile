@@ -6,10 +6,10 @@ import LayoutRoot from '../layout_root'
 import Loading from '../loading'
 import Mask from '../mask'
 import Flex from '../flex'
-import SVGSuccess from '../../../svg/success.svg'
+import SVGSuccess from '../../../svg/success-circle.svg'
 import SVGInfoCircle from '../../../svg/info-circle.svg'
 import SVGWarning from '../../../svg/warning.svg'
-import SVGClose from '../../../svg/close.svg'
+import SVGClose from '../../../svg/close-circle.svg'
 
 let timer = null
 const ToastStatics = {

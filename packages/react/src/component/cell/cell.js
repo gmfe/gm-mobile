@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import _ from 'lodash'
 import Flex from '../flex'
-import SVGRight from '../../../svg/right-small.svg'
+import SVGAngleRight from '../../../svg/angle-right.svg'
 
 const Cell = ({
   access,
@@ -47,7 +47,7 @@ const Cell = ({
           ) : (
             right
           ))}
-        {access && <SVGRight className='m-cell-access-icon' />}
+        {access && <SVGAngleRight className='m-cell-access-icon' />}
       </Flex>
     </Flex>
   )

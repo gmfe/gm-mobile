@@ -1,7 +1,7 @@
 import Tabbar from './index'
 import React, { useState } from 'react'
 import SvgPlus from '../../../svg/plus.svg'
-import SvgClose from '../../../svg/close.svg'
+import SvgClose from '../../../svg/close-circle.svg'
 
 export const normal = () => {
   const [active, setActive] = useState('/my')
