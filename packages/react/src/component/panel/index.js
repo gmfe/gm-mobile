@@ -32,7 +32,7 @@ const Panel = ({
           </Flex>
         )}
         <Flex flex />
-        {action && <div>{action}</div>}
+        {action && <div className='m-panel-action'>{action}</div>}
       </Flex>
       <div className='m-panel-content'>{children}</div>
     </div>
