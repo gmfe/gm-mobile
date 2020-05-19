@@ -31,7 +31,9 @@ const SwiperCategory = ({ options, className, children, ...rest }) => {
           </div>
         ))}
       </div>
-      <div className='swiper-pagination' />
+      {React.Children.count(children) > 1 && (
+        <div className='swiper-pagination' />
+      )}
     </div>
   )
 }

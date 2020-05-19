@@ -3,7 +3,9 @@ import { SwiperImg, SwiperCategory } from './'
 import _ from 'lodash'
 const arr = [
   {
-    url: 'https://bshop.guanmai.cn/v587/?cms_key=xkhh#/product/detail/C3068608',
+    onClick: () => {
+      console.log('click')
+    },
     img:
       'https://img.guanmai.cn/station_pic/sha1_eb0e548b7a574fcb3069a91a1dd816a1d8dddef8.jpg',
   },

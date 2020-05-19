@@ -31,14 +31,12 @@ const SwiperImg = ({ data, options, className, ...rest }) => {
       className={classNames('swiper-container m-swiper-img', className)}
     >
       <div className='swiper-wrapper'>
-        {_.map(data, ({ url, img }) => (
+        {_.map(data, ({ onClick, img }) => (
           <div
             key={img}
             className='swiper-slide'
             onClick={() => {
-              if (url) {
-                window.location.href = url
-              }
+              onClick && onClick()
             }}
           >
             <img data-src={img} className='swiper-lazy m-swiper-img-img' />
@@ -53,7 +51,7 @@ const SwiperImg = ({ data, options, className, ...rest }) => {
 SwiperImg.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
-      url: PropTypes.string,
+      onClick: PropTypes.func,
       img: PropTypes.string.isRequired,
     })
   ),
