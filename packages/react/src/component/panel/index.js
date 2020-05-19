@@ -8,7 +8,6 @@ const Panel = ({
   title,
   onTitle,
   action,
-  onAction,
   top,
   bottom,
   className,
@@ -25,7 +24,7 @@ const Panel = ({
         className
       )}
     >
-      <Flex>
+      <Flex alignCenter>
         {title && (
           <Flex alignCenter className='m-panel-title' onClick={onTitle}>
             {title}
@@ -33,11 +32,7 @@ const Panel = ({
           </Flex>
         )}
         <Flex flex />
-        {action && (
-          <Flex column className='m-panel-action' onClick={onAction}>
-            {action}
-          </Flex>
-        )}
+        {action && <div>{action}</div>}
       </Flex>
       <div className='m-panel-content'>{children}</div>
     </div>
@@ -48,8 +43,7 @@ Panel.propTypes = {
   title: PropTypes.string,
   /** 提供 onTitle，则 title 有右箭头 */
   onTitle: PropTypes.func,
-  action: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  onAction: PropTypes.func,
+  action: PropTypes.element,
   /** 贴上边，左上 右上 没有圆角 */
   top: PropTypes.bool,
   /** 贴下边，左下 右下 没有圆角 */

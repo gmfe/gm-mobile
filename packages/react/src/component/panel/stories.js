@@ -8,7 +8,10 @@ export const normal = () => {
       <div className='m-gap-5' />
       <Panel title='标题'>panel</Panel>
       <div className='m-gap-5' />
-      <Panel title='标题' action='待分拣'>
+      <Panel
+        title='标题'
+        action={<div className='m-padding-lr-15'>待分拣</div>}
+      >
         panel
       </Panel>
       <div className='m-gap-5' />
