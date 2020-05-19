@@ -35,8 +35,8 @@
 
     &.m-calendar-day-now {
       .m-calendar-day-text {
-        border: 1px solid var(--color-bg-primary);
-        color: var(--color-bg-primary);
+        border: 1px solid var(--color-primary);
+        color: var(--color-primary);
       }
     }
 
@@ -58,8 +58,9 @@
       flex: 1;
       height: 30px;
 
-      &.disabled {
-        background-color: var(--color-white);
+      .m-calendar-day-left-first,
+      .m-calendar-day-right-last {
+        background-color: transparent;
       }
     }
 

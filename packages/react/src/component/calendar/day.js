@@ -103,7 +103,7 @@ class Day extends React.Component {
       >
         <span
           className={classNames('m-calendar-day-left', {
-            disabled: this.isDisabledGap('left'),
+            'm-calendar-day-left-first': this.isDisabledGap('left'),
           })}
         />
         <Flex column alignCenter justifyCenter className='m-calendar-day-text'>
@@ -118,7 +118,7 @@ class Day extends React.Component {
         </Flex>
         <span
           className={classNames('m-calendar-day-right', {
-            disabled: this.isDisabledGap('right'),
+            'm-calendar-day-right-first': this.isDisabledGap('right'),
           })}
         />
       </Flex>
