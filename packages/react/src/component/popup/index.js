@@ -46,6 +46,7 @@ const Popup = ({
       'm-popup-left': left,
       'm-popup-right': right,
       'm-popup-bottom': bottom,
+      'm-popup-box-shadow': opacity === 0,
       'm-animated m-animated-slide-in-left': left,
       'm-animated m-animated-slide-in-right': right,
       'm-animated m-animated-slide-in-bottom': bottom,

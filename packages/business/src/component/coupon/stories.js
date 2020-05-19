@@ -13,8 +13,8 @@ const store = observable({
 })
 
 export const normal = () => (
-  <div style={{ height: '50%' }}>
-    <div className='m-margin-15'>
+  <div style={{ height: '50%' }} className='m-bg-white'>
+    <div className='m-padding-15'>
       <Coupon
         currency='¥'
         discount={100}
@@ -26,7 +26,7 @@ export const normal = () => (
         onCheck={() => store.setChecked(!store.checked)}
       />
     </div>
-    <div className='m-margin-15'>
+    <div className='m-padding-15'>
       <Coupon
         currency='¥'
         discount={30}
@@ -45,7 +45,7 @@ export const normal = () => (
         onUse={() => console.log('use')}
       />
     </div>
-    <div className='m-margin-15'>
+    <div className='m-padding-15'>
       <Coupon
         currency='¥'
         discount={200}
@@ -58,7 +58,7 @@ export const normal = () => (
         disabled
       />
     </div>
-    <div className='m-margin-15'>
+    <div className='m-padding-15'>
       <Coupon
         currency='¥'
         discount={200}

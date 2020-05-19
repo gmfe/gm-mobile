@@ -8,6 +8,7 @@ import Flex from '../flex'
 import Button from '../button'
 import { TYPE, text2Number } from './util'
 import KeyboardStatics from './statics'
+import Toast from '../toast'
 
 const handleErrorMsg = ({ value, min, max, precision }) => {
   let msg = null
@@ -66,6 +67,13 @@ const Keyboard = (props) => {
     let v = value
 
     if (precision === 0) {
+      Toast.tip({
+        children: (
+          <div className='m-number-keyboard-msg'>
+            {getLocale('当前只能输入整数')}
+          </div>
+        ),
+      })
       setErrorMsg(getLocale('当前只能输入整数'))
       return value
     }
@@ -126,6 +134,10 @@ const Keyboard = (props) => {
 
     const msg = getErrorMsg({ value: cv, min, max, precision })
     setErrorMsg(msg)
+    msg &&
+      Toast.tip({
+        children: <div className='m-number-keyboard-msg'>{msg}</div>,
+      })
     return value + ''
   }
 
@@ -157,7 +169,6 @@ const Keyboard = (props) => {
           {getLocale('确定')}
         </Button>
       </Flex>
-      <Flex className='m-number-keyboard-error'>{errorMsg}</Flex>
       {children}
       <BaseKeyboard onChange={handleValueChange} />
     </Flex>

@@ -17,7 +17,7 @@ const BaseKeyboard = (props) => {
     <Flex wrap className='m-keyboard'>
       {_.map(KEYS, (k, index) => (
         <Flex key={k.value} className='m-keyboard-num'>
-          {index % 3 === 0 && <div className='m-gap-15' />}
+          {index % 3 === 0 && <div className='m-keyboard-gap' />}
           <Flex
             justifyCenter
             alignCenter
@@ -26,7 +26,7 @@ const BaseKeyboard = (props) => {
           >
             {k.value}
           </Flex>
-          <div className='m-gap-15' />
+          <div className='m-keyboard-gap' />
         </Flex>
       ))}
       <Flex className='m-keyboard-num'>
@@ -38,7 +38,7 @@ const BaseKeyboard = (props) => {
         >
           <SVGDel className='m-keyboard-del-icon' />
         </Flex>
-        <div className='m-gap-15' />
+        <div className='m-keyboard-gap' />
       </Flex>
     </Flex>
   )
