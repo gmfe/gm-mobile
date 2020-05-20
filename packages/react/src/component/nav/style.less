@@ -60,13 +60,15 @@
         .mBgWhiteActiveWith();
 
         &.active {
+          color: var(--color-primary);
+
           &::before {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 50%;
+            left: 14px;
+            right: 7.5px;
             margin-left: -0.5em;
-            width: 1em;
             height: 2px;
             background: var(--color-bg-primary);
           }
