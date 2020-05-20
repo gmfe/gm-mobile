@@ -11,6 +11,7 @@ const Picker = ({
   onChange,
   className,
   renderOption,
+  headers,
   ...rest
 }) => {
   const handleChange = (index, option) => {
@@ -28,6 +29,15 @@ const Picker = ({
 
   return (
     <div {...rest} className={classNames('m-picker', className)}>
+      {headers && headers.length !== 0 && (
+        <div className='m-picker-header'>
+          {_.map(headers, (header) => (
+            <div key={header} className='m-picker-header-item'>
+              {header}
+            </div>
+          ))}
+        </div>
+      )}
       <div className='m-picker-inner' style={{ height: itemHeight * 6 }}>
         {_.map(datas, (v, i) => (
           <PickerColumn
@@ -54,6 +64,8 @@ Picker.propTypes = {
   /** [ [{value, text}] ] */
   datas: PropTypes.array.isRequired,
   values: PropTypes.array.isRequired,
+  /** 每列数据title, 格式为 [header, ...] */
+  headers: PropTypes.array,
   itemHeight: PropTypes.number,
   onChange: PropTypes.func.isRequired,
   renderOption: PropTypes.func,

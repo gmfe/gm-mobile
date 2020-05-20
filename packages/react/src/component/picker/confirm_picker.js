@@ -25,7 +25,7 @@ class ConfirmPicker extends React.Component {
   }
 
   render() {
-    const { datas, renderOption } = this.props
+    const { datas, renderOption, headers } = this.props
     const { values } = this.state
 
     return (
@@ -33,6 +33,7 @@ class ConfirmPicker extends React.Component {
         <Picker
           datas={datas}
           values={values}
+          headers={headers}
           renderOption={renderOption}
           onChange={this.handleChange}
         />
@@ -89,6 +90,8 @@ ConfirmPicker.hide = () => {
 ConfirmPicker.propTypes = {
   title: PropTypes.string,
   datas: PropTypes.array.isRequired,
+  /** 每列数据title, 格式为 [header, ...] */
+  headers: PropTypes.array,
   values: PropTypes.array.isRequired,
   renderOption: PropTypes.func,
   onConfirm: PropTypes.func.isRequired,
