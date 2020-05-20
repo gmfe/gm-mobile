@@ -5,29 +5,20 @@ import classNames from 'classnames'
 import Flex from '../flex'
 import SVGSearch from '../../../svg/search.svg'
 
-const FakeSearch = (props) => {
-  const {
-    placeholder,
-    center,
-    light,
-    className,
-    style,
-    children,
-    ...rest
-  } = props
-
+const FakeSearch = ({
+  placeholder,
+  center,
+  className,
+  style,
+  children,
+  ...rest
+}) => {
   return (
     <Flex
       {...rest}
       column
       justifyCenter
-      className={classNames(
-        'm-fake-search',
-        {
-          'm-fake-search-light': light,
-        },
-        className
-      )}
+      className={classNames('m-fake-search', className)}
     >
       <Flex alignCenter justifyCenter={center} className='m-fake-search-inner'>
         <SVGSearch />
@@ -43,7 +34,6 @@ FakeSearch.propTypes = {
   onClick: PropTypes.func,
   placeholder: PropTypes.string,
   center: PropTypes.bool,
-  light: PropTypes.bool,
   className: PropTypes.string,
   style: PropTypes.object,
 }

@@ -25,7 +25,7 @@ export const normal = () => {
   return (
     <div>
       <h3>带搜索按钮 （一般一个路由承载的搜索页）</h3>
-      <div className='m-bg-back'>
+      <div>
         <Search
           placeholder='在站内搜索'
           value={store.value}
@@ -37,25 +37,11 @@ export const normal = () => {
   )
 }
 
-export const light = () => {
-  return (
-    <div>
-      <h3>深色</h3>
-      <Search
-        light
-        placeholder='在站内搜索'
-        value={store.value}
-        onChange={(value) => store.setValue(value)}
-      />
-    </div>
-  )
-}
-
 export const cancel = () => {
   return (
     <div>
       <h3>带取消按钮（点Header的搜索按钮）</h3>
-      <div className='m-bg-back'>
+      <div>
         <Search
           type={'cancel'}
           placeholder='在站内搜索'
@@ -70,14 +56,13 @@ export const cancel = () => {
 
 export const fakeSearch = () => {
   return (
-    <div className='m-bg-back'>
+    <div>
       <FakeSearch
         placeholder='站内搜索'
         className='text-center'
         onClick={() => {}}
       />
       <FakeSearch center />
-      <FakeSearch light placeholder='啦啦' />
     </div>
   )
 }

@@ -19,7 +19,6 @@ const Search = ({
   onSearch,
   onChange,
   className,
-  light,
   ...rest
 }) => {
   const refInput = React.createRef()
@@ -48,13 +47,7 @@ const Search = ({
     <form
       {...rest}
       onSubmit={handleSearch}
-      className={classNames(
-        'm-search m-flex m-flex-align-center',
-        {
-          'm-search-light': light,
-        },
-        className
-      )}
+      className={classNames('m-search m-flex m-flex-align-center', className)}
     >
       <label className='m-search-input m-flex m-flex-flex'>
         <SVGSearch className='m-search-icon-search' />
@@ -89,7 +82,6 @@ Search.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   autoFocus: PropTypes.bool,
-  light: PropTypes.bool,
   /** 即时搜索可不传 */
   onSearch: PropTypes.func,
   onCancel: PropTypes.func,
