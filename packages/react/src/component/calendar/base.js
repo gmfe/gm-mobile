@@ -171,10 +171,11 @@ class BaseCalendar extends React.Component {
         {...rest}
         ref={(ref) => (this.refBaseCalendar = ref)}
         column
+        none
         className={classNames('m-calendar', className)}
       >
         <Week />
-        <Flex column className='m-calendar-content m-padding-bottom-10'>
+        <Flex column none className='m-calendar-content m-padding-bottom-10'>
           {_.map(this.computedMonthList(), (currentMoment, cmi) => {
             const m = moment(currentMoment).day(0).add(-1, 'day')
             const dayGroup = this.getDayRowOfMonth(currentMoment)
@@ -182,12 +183,13 @@ class BaseCalendar extends React.Component {
             return (
               <Flex
                 column
+                none
                 key={cmi}
                 className={classNames({ 'm-margin-top-10': cmi !== 0 })}
               >
                 <Head currentMoment={currentMoment} />
                 {_.map(dayGroup, (v, i) => (
-                  <Flex key={i} className='m-padding-top-10'>
+                  <Flex none key={i} className='m-padding-top-10'>
                     {_.map(v, (value, index) => {
                       const mm = moment(m.add(1, 'day'))
 
