@@ -26,8 +26,6 @@ addDecorator(
     header: false,
     source: false,
     styles: (stylesheet) => {
-      console.log(stylesheet.infoBody)
-
       return {
         ...stylesheet,
         // 啥也不用

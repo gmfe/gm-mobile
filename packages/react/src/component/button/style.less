@@ -15,7 +15,7 @@
   min-width: 180px;
 
   &.m-btn-default {
-    .mBtnVariants(var(--color-bg-back), var(--color-bg-back-active));
+    .mBtnVariants(var(--btn-color-bg-default), var(--btn-color-bg-default-active));
 
     color: var(--btn-color-default);
 
@@ -94,7 +94,7 @@
 
 .mBtnVariants(@brand; @activeBrand) {
   background: @brand;
-  // 不随主题，固定白色
+  // Theme 固定
   color: white;
 
   .mBtnBorderAllAfterWith(@brand, var(--size-form-height));
@@ -105,7 +105,7 @@
 
     &:active {
       background: @brand;
-      // 不随主题，固定白色
+      // Theme 固定
       color: white;
     }
   }
