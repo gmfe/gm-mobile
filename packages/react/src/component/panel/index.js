@@ -26,12 +26,18 @@ const Panel = ({
     >
       <Flex alignCenter>
         {title && (
-          <Flex alignCenter className='m-panel-title' onClick={onTitle}>
+          <Flex
+            alignCenter
+            flex={!action}
+            justifyBetween={!action}
+            className='m-panel-title'
+            onClick={onTitle}
+          >
             {title}
             {onTitle && <SVGAngleRight className='m-margin-left-5' />}
           </Flex>
         )}
-        <Flex flex />
+        {action && <Flex flex />}
         {action && <div className='m-panel-action'>{action}</div>}
       </Flex>
       <div className='m-panel-content'>{children}</div>
