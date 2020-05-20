@@ -3,13 +3,16 @@ import { addDecorator, addParameters } from '@storybook/react'
 import { withInfo } from '@storybook/addon-info'
 import { LayoutRoot } from '../packages/react/src'
 import { Observer } from 'mobx-react'
+import './less.less'
 
 import '../packages/react/src/index.less'
 import '../packages/swiper/src/index.less'
 
 // business
 import '../packages/business/src/index.less'
-import { themes } from '@storybook/theming'
+
+const isDark =
+  window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
 
 addParameters({
   options: {
@@ -23,14 +26,13 @@ addDecorator(
     header: false,
     source: false,
     styles: (stylesheet) => {
+      console.log(stylesheet.infoBody)
+
       return {
         ...stylesheet,
+        // 啥也不用
         infoBody: {
-          ...stylesheet.infoBody,
-          borderTop: '1px solid #ccc',
-          color: '#444',
           padding: '10px',
-          fontWeight: 'normal',
         },
       }
     },
@@ -44,6 +46,6 @@ addDecorator((storeFn) => (
   </React.Fragment>
 ))
 
-if (localStorage.getItem('dark') === 'true') {
+if (isDark) {
   document.body.classList.add('m-theme-dark')
 }
