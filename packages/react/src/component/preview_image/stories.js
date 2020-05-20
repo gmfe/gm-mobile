@@ -4,7 +4,8 @@ import Flex from '../flex'
 
 const imgs = [
   {
-    img: 'https://js.guanmai.cn/static_storage/json/common/logo/default/logo.pure.png',
+    img:
+      'https://js.guanmai.cn/static_storage/json/common/logo/default/logo.pure.png',
   },
   {
     img: 'http://img.ts.cn/003/509/817/00350981702_dd0fed0a.jpg',
@@ -37,7 +38,7 @@ export const multiImgs = () => (
       onClick={() => {
         PreviewImage.render({
           images: imgs,
-          defaultIndex: 1
+          defaultIndex: 1,
         })
       }}
     >
@@ -47,5 +48,5 @@ export const multiImgs = () => (
 )
 
 export default {
-  title: '基础/PreviewImage',
+  title: '浮层/PreviewImage',
 }

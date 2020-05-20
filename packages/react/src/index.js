@@ -26,7 +26,6 @@ import Loading from './component/loading'
 import Price from './component/price'
 import Counter from './component/counter'
 import Badge from './component/badge'
-import RepeatTimes from './component/repeat_times'
 import TagWrap from './component/tag'
 
 // 布局
@@ -61,6 +60,7 @@ import { LetterIndex, LetterIndexMultiple } from './component/letter_index'
 import { LocalStorage, SessionStorage } from './component/storage'
 import CSSVariable from './css_variable'
 import { Search, SearchPage, FakeSearch } from './component/search'
+import RepeatTimes from './component/repeat_times'
 
 const Alert = Dialog.alert
 const Confirm = Dialog.confirm
@@ -102,7 +102,6 @@ export {
   Price,
   Counter,
   Badge,
-  RepeatTimes,
   TagWrap,
   // 布局
   Flex,
@@ -140,6 +139,7 @@ export {
   Search,
   FakeSearch,
   SearchPage,
+  RepeatTimes,
   CSSVariable,
   LocalStorage,
   SessionStorage,

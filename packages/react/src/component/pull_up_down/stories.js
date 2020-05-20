@@ -32,5 +32,5 @@ export const bottom = () => {
 }
 
 export default {
-  title: '基础/PullUpDown',
+  title: '布局/PullUpDown',
 }

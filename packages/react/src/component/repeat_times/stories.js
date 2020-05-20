@@ -14,5 +14,5 @@ export const Normal = () => {
 }
 
 export default {
-  title: '基础/RepeatTimes',
+  title: '其他/RepeatTimes',
 }

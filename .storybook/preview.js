@@ -32,6 +32,7 @@ addDecorator(
         ...stylesheet,
         // 啥也不用
         infoBody: {
+          borderTop: '1px solid rgba(0, 0, 0, 0.05)',
           padding: '10px',
         },
       }

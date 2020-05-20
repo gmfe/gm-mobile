@@ -22,7 +22,12 @@ const DialogStatics = {
         <div className='m-text-left'>
           <div>{options.promptText}</div>
           <div className='m-border-1px-bottom-after'>
-            <Input {...options.promptInputProps} autoFocus id={options._id} />
+            <Input
+              className='m-padding-tb-10'
+              {...options.promptInputProps}
+              autoFocus
+              id={options._id}
+            />
           </div>
         </div>
       )
@@ -61,8 +66,13 @@ const DialogStatics = {
         )
       }
 
-      // confirm 和 onCancel 都会涉及 reject
-      if (options.onCancel || type === 'confirm' || type === 'delete') {
+      // confirm prompt delete 和 onCancel 都会涉及 reject
+      if (
+        options.onCancel ||
+        type === 'confirm' ||
+        type === 'prompt' ||
+        type === 'delete'
+      ) {
         const _onCancel = options.onCancel || _.noop
         options.onCancel = () => {
           DialogStatics.hide()
