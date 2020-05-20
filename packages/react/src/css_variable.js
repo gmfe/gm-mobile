@@ -1,3 +1,6 @@
+import _ from 'lodash'
+import { LocalStorage } from './component/storage'
+
 const TYPE = {
   DEFAULT: 'default',
   DARK: 'dark',
@@ -5,11 +8,27 @@ const TYPE = {
   JD: 'jd',
 }
 
+const KEY = 'theme'
+
 const CSSVariable = {
   TYPE,
-  theme: 'default',
-  setTheme() {
-    // TODO
+  theme: LocalStorage.get(KEY) || 'default',
+  initTheme() {
+    document.body.classList.add(`m-theme-${this.theme}`)
+  },
+  setTheme(theme) {
+    if (!_.values(TYPE).includes(theme)) {
+      return
+    }
+
+    const cl = document.body.classList
+    const old = this.theme
+
+    cl.remove(`m-theme-${old}`)
+    cl.add(`m-theme-${theme}`)
+
+    this.theme = theme
+    LocalStorage.set(KEY, theme)
   },
 }
 

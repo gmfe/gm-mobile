@@ -6,16 +6,13 @@ import Flex from './component/flex'
 export const normal = () => {
   return (
     <div>
-      {_.map(CSSVariable.getAll(), (v, k) => (
-        <Flex>
-          <Flex
-            className='m-padding-5 m-border'
-            style={{
-              width: '100px',
-              backgroundColor: v,
-            }}
-          />
-          {k} {v}
+      {_.map(CSSVariable.TYPE, (v, k) => (
+        <Flex
+          onClick={() => {
+            CSSVariable.setTheme(v)
+          }}
+        >
+          {k}
         </Flex>
       ))}
     </div>
