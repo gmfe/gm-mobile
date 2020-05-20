@@ -64,12 +64,14 @@
           background-color: var(--color-bg-accent-light);
           color: var(--color-accent);
           font-size: 12px;
+          padding: 0 5px;
+          border-radius: 2px;
         }
 
         .m-coupon-right-header-date {
           height: 30px;
           font-size: 12px;
-          color: var(--color-second);
+          color: var(--color-first);
         }
 
         .m-coupon-right-header-btn {
@@ -79,14 +81,9 @@
           position: absolute;
           right: 10px;
           text-align: center;
-          color: var(--color-accent);
-
-          &::after {
-            .mBorderAll();
-
-            border-radius: 30px;
-            border-color: var(--color-accent);
-          }
+          background-color: var(--color-bg-accent);
+          color: var(--color-white);
+          border-radius: 30px;
         }
 
         .m-coupon-right-expired {
@@ -123,7 +120,7 @@
         height: 30px;
         position: relative;
         padding: 0 10px 0 15px;
-        color: var(--color-second);
+        color: var(--color-first);
         font-size: 13px;
 
         &::after {
@@ -176,17 +173,13 @@
       .m-coupon-right {
         .m-coupon-right-header {
           .m-coupon-right-header-btn {
-            color: var(--color-placeholder);
-
-            &::after {
-              border-color: var(--color-placeholder);
-            }
+            background-color: var(--color-placeholder);
           }
 
           .m-coupon-right-header-label {
             background-color: var(--color-placeholder);
             opacity: 0.6;
-            color: var(--color-second);
+            color: var(--color-first);
           }
         }
       }
@@ -266,7 +259,7 @@
     .m-received-coupon-left-total {
       line-height: 20px;
       font-size: 12px;
-      color: var(--color-second);
+      color: var(--color-first);
     }
   }
 
