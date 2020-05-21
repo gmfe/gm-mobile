@@ -94,8 +94,7 @@
 
 .mBtnVariants(@brand; @activeBrand) {
   background: @brand;
-  // Theme 固定
-  color: white;
+  color: var(--color-true-white);
 
   .mBtnBorderAllAfterWith(@brand, var(--size-form-height));
 
@@ -105,8 +104,7 @@
 
     &:active {
       background: @brand;
-      // Theme 固定
-      color: white;
+      color: var(--color-true-white);
     }
   }
 
