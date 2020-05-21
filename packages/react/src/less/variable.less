@@ -9,98 +9,98 @@
 // 颜色，会通过主题更改
 body {
   // color
-  --color-default: #353535; // 主内容
-  --color-desc: #888; // 次要内容
-  --color-primary: rgba(30, 172, 82, 1);
-  --color-white: white;
-  --color-black: black;
+  --m-color-default: #353535; // 主内容
+  --m-color-desc: #888; // 次要内容
+  --m-color-primary: rgba(30, 172, 82, 1);
+  --m-color-white: white;
+  --m-color-black: black;
 
   // bg
-  --color-bg-white: white;
-  --color-bg-back: #f6f6f6; // 背景色
-  --color-bg-light: #fbfbfb; // 亮点的背景色
-  --color-bg-primary: rgba(30, 172, 82, 1);
+  --m-color-bg-white: white;
+  --m-color-bg-back: #f6f6f6; // 背景色
+  --m-color-bg-light: #fbfbfb; // 亮点的背景色
+  --m-color-bg-primary: rgba(30, 172, 82, 1);
 
   // active
-  --color-bg-white-active: #ececec;
-  --color-bg-back-active: #ececec;
-  --color-bg-primary-active: shade(rgba(30, 172, 82, 1), 10%);
+  --m-color-bg-white-active: #ececec;
+  --m-color-bg-back-active: #ececec;
+  --m-color-bg-primary-active: shade(rgba(30, 172, 82, 1), 10%);
 
   // btn
-  --btn-color-default: #888;
-  --btn-color-default-active: shade(#888, 10%);
-  --btn-color-bg-default: #f6f6f6;
-  --btn-color-bg-default-active: #ececec;
+  --m-btn-color-default: #888;
+  --m-btn-color-default-active: shade(#888, 10%);
+  --m-btn-color-bg-default: #f6f6f6;
+  --m-btn-color-bg-default-active: #ececec;
 
   // calendar
-  --calendar-bg-active: fadeout(rgba(30, 172, 82, 1), 80%);
+  --m-calendar-bg-active: fadeout(rgba(30, 172, 82, 1), 80%);
 }
 
 // 不变的颜色
 body {
   // color
-  --color-placeholder: #b2b2b2;
-  --color-accent: #ff6500;
-  --color-success: #1eac52;
-  --color-danger: #fa5151;
-  --color-link: #576b95;
-  --color-red: red;
-  --color-true-white: white; // 一定是白色
-  --color-true-black: black; // 一定是黑色
+  --m-color-placeholder: #b2b2b2;
+  --m-color-accent: #ff6500;
+  --m-color-success: #1eac52;
+  --m-color-danger: #fa5151;
+  --m-color-link: #576b95;
+  --m-color-red: red;
+  --m-color-true-white: white; // 一定是白色
+  --m-color-true-black: black; // 一定是黑色
 
   // bg
-  --color-bg-accent: #ff6500;
-  --color-bg-accent-light: tint(#ff6500, 80%);
-  --color-bg-danger: #fa5151;
-  --color-bg-red: red;
-  --color-bg-black: black;
+  --m-color-bg-accent: #ff6500;
+  --m-color-bg-accent-light: tint(#ff6500, 80%);
+  --m-color-bg-danger: #fa5151;
+  --m-color-bg-red: red;
+  --m-color-bg-black: black;
 
   // active
-  --color-bg-danger-active: shade(#e64340, 10%);
+  --m-color-bg-danger-active: shade(#e64340, 10%);
 
   // border
-  --color-border: rgba(0, 0, 0, 0.05);
+  --m-color-border: rgba(0, 0, 0, 0.05);
 
   // mask 背景色
-  --color-bg-mask: rgba(0, 0, 0, 0.6);
+  --m-color-bg-mask: rgba(0, 0, 0, 0.6);
 
   // toast
-  --color-bg-toast: #606060;
+  --m-color-bg-toast: #606060;
 
   // coupon
-  --color-coupon-disabled: #b2b2b2;
-  --color-bg-coupon-disabled: #b2b2b2;
+  --m-color-coupon-disabled: #b2b2b2;
+  --m-color-bg-coupon-disabled: #b2b2b2;
 }
 
 // 非颜色
 body {
   // 字体尺寸
-  --size-text-10: 10px;
-  --size-text-12: 12px;
-  --size-text-14: 14px;
-  --size-text-16: 16px;
-  --size-text-18: 18px;
-  --size-text-20: 20px;
+  --m-size-text-10: 10px;
+  --m-size-text-12: 12px;
+  --m-size-text-14: 14px;
+  --m-size-text-16: 16px;
+  --m-size-text-18: 18px;
+  --m-size-text-20: 20px;
 
   // line-height
-  --size-line-height: 1.6;
+  --m-size-line-height: 1.6;
 
   // height
-  --size-tabbar-height: 49px;
-  --size-header-height: 50px;
-  --size-form-height: 40px;
-  --size-form-height-sm: 30px;
+  --m-size-tabbar-height: 49px;
+  --m-size-header-height: 50px;
+  --m-size-form-height: 40px;
+  --m-size-form-height-sm: 30px;
 
   // zIndex
-  --z-index-header: 20;
-  --z-index-tabbar: 20;
-  --z-index-innerLayer: 900;
-  --z-index-mask: 1000;
-  --z-index-popup: 2000;
-  --z-index-trigger: 2000;
-  --z-index-previewImage: 4000;
-  --z-index-dialog: 5000;
-  --z-index-picker: 6000;
-  --z-index-toast: 7000;
-  --z-index-nprogress: 9999;
+  --m-z-index-header: 20;
+  --m-z-index-tabbar: 20;
+  --m-z-index-innerLayer: 900;
+  --m-z-index-mask: 1000;
+  --m-z-index-popup: 2000;
+  --m-z-index-trigger: 2000;
+  --m-z-index-previewImage: 4000;
+  --m-z-index-dialog: 5000;
+  --m-z-index-picker: 6000;
+  --m-z-index-toast: 7000;
+  --m-z-index-nprogress: 9999;
 }

@@ -22,18 +22,18 @@
   }
 
   &.m-tabs-capsule {
-    height: var(--size-form-height);
-    line-height: var(--size-form-height);
+    height: var(--m-size-form-height);
+    line-height: var(--m-size-form-height);
 
     .m-tabs-content {
-      background-color: var(--color-bg-primary-active);
-      border-radius: var(--size-form-height);
+      background-color: var(--m-color-bg-primary-active);
+      border-radius: var(--m-size-form-height);
 
       .m-tabs-item {
-        padding: 0 calc(var(--size-form-height) / 2);
+        padding: 0 calc(var(--m-size-form-height) / 2);
         position: relative;
-        color: var(--color-white);
-        border-radius: var(--size-form-height);
+        color: var(--m-color-white);
+        border-radius: var(--m-size-form-height);
         //transition: background-color 0.5s ease-in-out;
 
         .m-tabs-item-text {
@@ -41,8 +41,8 @@
         }
 
         &.active {
-          color: var(--color-primary);
-          background-color: var(--color-bg-white);
+          color: var(--m-color-primary);
+          background-color: var(--m-color-bg-white);
         }
       }
     }
@@ -50,8 +50,8 @@
 }
 
 .mTabsVariants() {
-  background: var(--color-bg-white);
-  color: var(--color-desc);
+  background: var(--m-color-bg-white);
+  color: var(--m-color-desc);
 
   .m-tabs-content {
     width: 100%;
@@ -63,7 +63,7 @@
     .mBgWhiteActiveWith();
 
     &.active .m-tabs-item-text {
-      color: var(--color-default);
+      color: var(--m-color-default);
       position: relative;
 
       &::after {
@@ -73,7 +73,7 @@
         bottom: 0;
         width: 100%;
         height: 1px;
-        border-bottom: 2px solid var(--color-primary);
+        border-bottom: 2px solid var(--m-color-primary);
       }
     }
   }

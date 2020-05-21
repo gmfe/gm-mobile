@@ -1,58 +1,58 @@
 .m-btn {
-  height: var(--size-form-height);
-  line-height: var(--size-form-height);
+  height: var(--m-size-form-height);
+  line-height: var(--m-size-form-height);
   border-width: 0;
-  border-radius: var(--size-form-height);
+  border-radius: var(--m-size-form-height);
   display: inline-block;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
   white-space: nowrap;
-  padding: 0 var(--size-form-height);
-  font-size: var(--size-text-16);
+  padding: 0 var(--m-size-form-height);
+  font-size: var(--m-size-text-16);
   user-select: none;
   outline: none;
   min-width: 180px;
 
   &.m-btn-default {
-    .mBtnVariants(var(--btn-color-bg-default), var(--btn-color-bg-default-active));
+    .mBtnVariants(var(--m-btn-color-bg-default), var(--m-btn-color-bg-default-active));
 
-    color: var(--btn-color-default);
+    color: var(--m-btn-color-default);
 
     &::after {
-      border-color: var(--color-border);
+      border-color: var(--m-color-border);
     }
 
     &:active {
-      color: var(--btn-color-default-active);
+      color: var(--m-btn-color-default-active);
     }
 
     &.m-btn-plain {
-      color: var(--color-default);
+      color: var(--m-color-default);
 
       &::after {
-        border-color: var(--color-default);
+        border-color: var(--m-color-default);
       }
 
       &:active {
-        color: var(--color-default);
+        color: var(--m-color-default);
       }
     }
   }
 
   &.m-btn-primary {
     // 固定白色 不随主题
-    .mBtnVariants(var(--color-primary), var(--color-bg-primary-active));
+    .mBtnVariants(var(--m-color-primary), var(--m-color-bg-primary-active));
   }
 
   &.m-btn-danger {
-    .mBtnVariants(var(--color-danger), var(--color-bg-danger-active));
+    .mBtnVariants(var(--m-color-danger), var(--m-color-bg-danger-active));
   }
 
   &.m-btn-link {
     background: transparent;
     border-radius: 0;
-    color: var(--color-link);
+    color: var(--m-color-link);
     padding: 0 15px;
     min-width: auto;
     text-decoration: none;
@@ -62,10 +62,10 @@
 
   &.m-btn-mini {
     min-width: 60px;
-    height: var(--size-form-height-sm);
-    line-height: var(--size-form-height-sm);
-    padding: 0 calc(var(--size-form-height-sm) / 2);
-    font-size: var(--size-text-14);
+    height: var(--m-size-form-height-sm);
+    line-height: var(--m-size-form-height-sm);
+    padding: 0 calc(var(--m-size-form-height-sm) / 2);
+    font-size: var(--m-size-text-14);
   }
 
   &.m-btn-block {
@@ -94,9 +94,9 @@
 
 .mBtnVariants(@brand; @activeBrand) {
   background: @brand;
-  color: var(--color-true-white);
+  color: var(--m-color-true-white);
 
-  .mBtnBorderAllAfterWith(@brand, var(--size-form-height));
+  .mBtnBorderAllAfterWith(@brand, var(--m-size-form-height));
 
   &.m-btn-plain {
     background: transparent;
@@ -104,7 +104,7 @@
 
     &:active {
       background: @brand;
-      color: var(--color-true-white);
+      color: var(--m-color-true-white);
     }
   }
 

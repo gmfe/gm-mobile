@@ -1,7 +1,7 @@
 .m-dialog-container {
   // 耦合mask
   .m-mask {
-    z-index: var(--z-index-dialog);
+    z-index: var(--m-z-index-dialog);
   }
 
   .m-dialog {
@@ -12,8 +12,8 @@
     right: 15px;
     margin: 0 auto;
     transform: translate(0, -50%);
-    z-index: var(--z-index-dialog);
-    background-color: var(--color-bg-white);
+    z-index: var(--m-z-index-dialog);
+    background-color: var(--m-color-bg-white);
     text-align: center;
     border-radius: 15px;
     overflow: hidden;
@@ -29,14 +29,14 @@
 
     .m-dialog-content {
       padding: 15px 25px 15px;
-      background: var(--color-bg-white);
+      background: var(--m-color-bg-white);
     }
 
     .m-dialog-btn {
       .mBorderTopBeforeWith();
 
       & > div {
-        color: var(--color-default);
+        color: var(--m-color-default);
         height: 56px;
         line-height: 56px;
         cursor: pointer;
@@ -49,7 +49,7 @@
       }
 
       .m-dialog-btn-confirm {
-        color: var(--color-primary);
+        color: var(--m-color-primary);
       }
     }
   }
