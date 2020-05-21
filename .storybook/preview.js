@@ -41,4 +41,9 @@ addDecorator((storeFn) => (
   </React.Fragment>
 ))
 
-CSSVariable.initTheme()
+if (
+  window.matchMedia &&
+  window.matchMedia('(prefers-color-scheme: dark)').matches
+) {
+  CSSVariable.setTheme(CSSVariable.TYPE.DARK)
+}
