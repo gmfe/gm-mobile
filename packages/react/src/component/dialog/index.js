@@ -1,11 +1,45 @@
 import { getLocale } from '@gm-mobile/locales'
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import LayoutRoot from '../layout_root'
 import _ from 'lodash'
 import Mask from '../mask'
 import Flex from '../flex'
-import Input from '../input/input'
+import BorderInput from '../input/border_input'
+
+const ErrorInput = ({
+  getError,
+  defaultValue,
+  onChange,
+  className,
+  ...rest
+}) => {
+  const [value, setValue] = useState(defaultValue || '')
+
+  const handleChange = (e) => {
+    onChange(e)
+    setValue(e.target.value)
+  }
+
+  return (
+    <>
+      <BorderInput {...rest} value={value} onChange={handleChange} />
+      <div className='m-text-red m-text-12'>{getError(value)}</div>
+    </>
+  )
+}
+
+ErrorInput.propTypes = {
+  defaultValue: PropTypes.string,
+  onChange: PropTypes.func,
+  className: PropTypes.string,
+  getError: PropTypes.func,
+}
+
+ErrorInput.defaultProps = {
+  onChange: _.noop,
+  getError: _.noop,
+}
 
 const DialogStatics = {
   render(options, type) {
@@ -21,14 +55,13 @@ const DialogStatics = {
       options.children = (
         <div className='m-text-left'>
           <div>{options.promptText}</div>
-          <div className='m-border-1px-bottom-after'>
-            <Input
-              className='m-padding-tb-10'
-              {...options.promptInputProps}
-              autoFocus
-              id={options._id}
-            />
-          </div>
+          <ErrorInput
+            className='m-padding-tb-10'
+            {...options.promptInputProps}
+            autoFocus
+            id={options._id}
+            getError={options.promptGetError}
+          />
         </div>
       )
     }
@@ -172,6 +205,8 @@ Dialog.propTypes = {
   promptText: PropTypes.string,
   /** prompt 的时候有用 */
   promptInputProps: PropTypes.object,
+  /**  */
+  promptGetError: PropTypes.func,
 }
 
 Dialog.defaultProps = {

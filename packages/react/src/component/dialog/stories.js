@@ -68,6 +68,11 @@ export const normal = () => {
             promptInputProps: {
               placeholder: '请输入列表名称',
             },
+            promptGetError: (value) => {
+              if (value.length > 5) {
+                return '超过5个字啦'
+              }
+            },
             onConfirm: (value) => {
               console.log('confirm', value)
               if (value === '') {
