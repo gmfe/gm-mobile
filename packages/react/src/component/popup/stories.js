@@ -41,6 +41,25 @@ export const normal = () => {
       >
         bottom
       </button>
+      <button
+        onClick={() => {
+          Popup.render({
+            style: {
+              top: '50%',
+              left: '50%',
+              marginTop: '-200px',
+              marginLeft: '-150px',
+              width: '300px',
+              height: '400px',
+            },
+            children: <div>center</div>,
+            disabledHeader: true,
+            onHide: Popup.hide,
+          })
+        }}
+      >
+        center
+      </button>
     </div>
   )
 }
