@@ -11,7 +11,7 @@ const RepeatTimes = ({ repeat, onRepeat, children }) => {
 
     timer.current = setTimeout(() => {
       setTimes(0)
-    }, 2000)
+    }, 500)
 
     setTimes(times + 1)
 
