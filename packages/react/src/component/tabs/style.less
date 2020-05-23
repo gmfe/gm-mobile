@@ -2,22 +2,18 @@
   cursor: pointer;
 
   &.m-tabs-default {
-    .mBorderBottomAfterWith();
-    .mTabsVariants();
+    .mTabsVariants(var(--m-color-bg-white), var(--m-color-default));
 
     .m-tabs-item-text {
-      padding: 5px 0;
+      padding: 5px 0 2px 0;
     }
   }
 
   &.m-tabs-label {
-    border-radius: 10px;
-
-    .mTabsVariants();
+    .mTabsVariants(var(--m-color-back), var(--m-color-primary));
 
     .m-tabs-item-text {
-      padding: 0 0 2px;
-      margin: 10px 0;
+      padding: 5px 0 2px 0;
     }
   }
 
@@ -34,7 +30,6 @@
         position: relative;
         color: var(--m-color-white);
         border-radius: var(--m-size-form-height);
-        //transition: background-color 0.5s ease-in-out;
 
         .m-tabs-item-text {
           z-index: 1;
@@ -49,8 +44,8 @@
   }
 }
 
-.mTabsVariants() {
-  background: var(--m-color-bg-white);
+.mTabsVariants(@back, @color) {
+  background: @back;
   color: var(--m-color-desc);
 
   .m-tabs-content {
@@ -63,7 +58,7 @@
     .mBgWhiteActiveWith();
 
     &.active .m-tabs-item-text {
-      color: var(--m-color-default);
+      color: @color;
       position: relative;
 
       &::after {

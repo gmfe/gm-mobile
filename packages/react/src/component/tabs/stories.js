@@ -27,7 +27,7 @@ export const normal = () => {
         onChange={(index) => defaultStore.setActiveTab(index)}
       />
       label
-      <div className='m-bg-back m-padding-10'>
+      <div className='m-bg-back m-padding-tb-10'>
         <Tabs
           active={defaultStore.active}
           tabs={tabsList}
