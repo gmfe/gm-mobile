@@ -70,11 +70,8 @@ const ReceiveTimePicker = ({ onConfirm, order }) => {
     cycleList
   )
 
-  const [startValue, setStartValue] = useState(startEndValue.startValues)
-  const [endValue, setEndValue] = useState(startEndValue.endValues)
-
   const startDatas = cycleToPickerList(startCycleList)
-  let _startValue = startValue
+  let _startValue = startEndValue.startValues
   if (_startValue.length === 0) {
     _startValue = [startDatas[0].value, startDatas[0].children[0].value]
   }
@@ -86,11 +83,13 @@ const ReceiveTimePicker = ({ onConfirm, order }) => {
     return cycleToPickerList(getEndCycleList(startValueDate, cycleList))
   }, [startValueDate, cycleList])
 
-  let _endValue = endValue
+  let _endValue = startEndValue.endValues
   if (_endValue.length === 0) {
     _endValue = [endDatas[0].value, endDatas[0].children[0].value]
   }
 
+  const [startValue, setStartValue] = useState(_startValue)
+  const [endValue, setEndValue] = useState(_endValue)
   const handleConfirm = () => {
     onConfirm({
       startValue,
@@ -113,7 +112,7 @@ const ReceiveTimePicker = ({ onConfirm, order }) => {
       <Flex>
         <CouplingPicker
           datas={startDatas}
-          values={_startValue}
+          values={startValue}
           renderOption={(dataIndex, option) => {
             if (dataIndex === 0) {
               return `${option.text} ${
@@ -126,7 +125,7 @@ const ReceiveTimePicker = ({ onConfirm, order }) => {
         />
         <CouplingPicker
           datas={endDatas}
-          values={_endValue}
+          values={endValue}
           renderOption={(dataIndex, option) => {
             if (dataIndex === 0) {
               return `${option.text}  ${
