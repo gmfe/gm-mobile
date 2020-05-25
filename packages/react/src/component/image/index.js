@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import error from './error.png'
-import placeholder from './placeholder.png'
+import placeholder from './placeholder.jpg'
 
 const Image = (props) => {
   const reloadCount = useRef(0)

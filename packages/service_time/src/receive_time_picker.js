@@ -109,33 +109,39 @@ const ReceiveTimePicker = ({ onConfirm, order }) => {
 
   return (
     <div>
-      <Flex>
-        <CouplingPicker
-          datas={startDatas}
-          values={startValue}
-          renderOption={(dataIndex, option) => {
-            if (dataIndex === 0) {
-              return `${option.text} ${
-                option.date ? weekMap[moment(option.date).day()] : ''
-              }`
-            }
-            return option.text
-          }}
-          onChange={handleStartChange}
-        />
-        <CouplingPicker
-          datas={endDatas}
-          values={endValue}
-          renderOption={(dataIndex, option) => {
-            if (dataIndex === 0) {
-              return `${option.text}  ${
-                option.date ? weekMap[moment(option.date).day()] : ''
-              }`
-            }
-            return option.text
-          }}
-          onChange={handleEndChange}
-        />
+      <Flex className='m-border-top m-padding-top-10'>
+        <Flex column flex>
+          <div className='m-text-center'>{getLocale('最早收货时间')}</div>
+          <CouplingPicker
+            datas={startDatas}
+            values={startValue}
+            renderOption={(dataIndex, option) => {
+              if (dataIndex === 0) {
+                return `${option.text} ${
+                  option.date ? weekMap[moment(option.date).day()] : ''
+                }`
+              }
+              return option.text
+            }}
+            onChange={handleStartChange}
+          />
+        </Flex>
+        <Flex column flex>
+          <div className='m-text-center'>{getLocale('最晚收货时间')}</div>
+          <CouplingPicker
+            datas={endDatas}
+            values={endValue}
+            renderOption={(dataIndex, option) => {
+              if (dataIndex === 0) {
+                return `${option.text}${
+                  option.date ? weekMap[moment(option.date).day()] : ''
+                }`
+              }
+              return option.text
+            }}
+            onChange={handleEndChange}
+          />
+        </Flex>
       </Flex>
 
       <div className='m-margin-15'>
@@ -155,6 +161,7 @@ ReceiveTimePicker.render = (props) => {
   return new Promise((resolve, reject) => {
     PickerStatics.render({
       bottom: true,
+      title: getLocale('收货时间'),
       onHide: () => {
         setTimeout(() => {
           reject(new Error())
