@@ -163,6 +163,8 @@ class BaseCalendar extends React.Component {
       selected,
       type,
       disabledDate,
+      min,
+      max,
       ...rest
     } = this.props
 
