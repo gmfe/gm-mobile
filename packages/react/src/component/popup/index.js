@@ -31,6 +31,7 @@ const Popup = ({
   onHide,
   isPickPopup,
   disabledHeader,
+  disabledMask,
   children,
   ...rest
 }) => {
@@ -46,7 +47,7 @@ const Popup = ({
       'm-popup-left': left,
       'm-popup-right': right,
       'm-popup-bottom': bottom,
-      'm-popup-box-shadow': opacity === 0,
+      'm-popup-box-shadow': opacity === 0 || disabledMask,
       'm-animated m-animated-slide-in-left': left,
       'm-animated m-animated-slide-in-right': right,
       'm-animated m-animated-slide-in-bottom': bottom,
@@ -67,7 +68,7 @@ const Popup = ({
         'm-popup-picker-container': isPickPopup,
       })}
     >
-      <Mask opacity={opacity} onClick={onHide} />
+      {!disabledMask && <Mask opacity={opacity} onClick={onHide} />}
       <Flex column {...rest} className={cn} style={s}>
         {!disabledHeader && (
           <Flex justifyBetween alignCenter className='m-popup-top'>
@@ -100,6 +101,7 @@ Popup.propTypes = {
   height: PropTypes.string,
   opacity: PropTypes.number,
   disabledHeader: PropTypes.bool,
+  disabledMask: PropTypes.bool,
 
   // 内部用
   isPickPopup: PropTypes.bool,

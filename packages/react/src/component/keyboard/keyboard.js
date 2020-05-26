@@ -1,12 +1,12 @@
 import { getLocale } from '@gm-mobile/locales'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
 import BaseKeyboard from './_keyboard'
 import Flex from '../flex'
 import Button from '../button'
-import { TYPE, text2Number } from './util'
+import { TYPE, text2Number, isContains } from './util'
 import KeyboardStatics from './statics'
 import Toast from '../toast'
 
@@ -45,12 +45,43 @@ const Keyboard = (props) => {
     max,
     precision,
     getErrorMsg,
+    keyboardId,
     ...rest
   } = props
 
   // 输入值 及 输入校验提示信息
   const [currentValue, setCurrentValue] = useState(defaultValue)
   const [errorMsg, setErrorMsg] = useState(null)
+
+  // 监听页面点击，判断是否收起键盘
+  const handleKeyboardHide = (e) => {
+    const node = e.target
+    if (
+      !isContains(node, (n) => {
+        return (
+          n.dataset &&
+          n.dataset.label &&
+          n.dataset.label === 'gm_mobile_keyboard'
+        )
+      })
+    ) {
+      KeyboardStatics.hide()
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('click', handleKeyboardHide)
+    return () => {
+      window.removeEventListener('click', handleKeyboardHide)
+    }
+  }, [])
+
+  // 监听浏览器的返回，恢复page
+  const handlePopHide = () => {
+    KeyboardStatics.dispatchKeyboardEvent(null, 'hide')
+    window.removeEventListener('popstate', handlePopHide)
+  }
+  window.addEventListener('popstate', handlePopHide)
 
   const handleSubmit = () => {
     // 没有更正输入
@@ -152,6 +183,7 @@ const Keyboard = (props) => {
     const cv = checkValue(v)
 
     setCurrentValue(cv)
+    onSubmit(cv)
   }
 
   return (
@@ -195,6 +227,9 @@ Keyboard.propTypes = {
    * 否则返回null
    */
   getErrorMsg: PropTypes.func,
+
+  /** 身份标识 */
+  keyboardId: PropTypes.string.isRequired,
 }
 
 Keyboard.defaultProps = {

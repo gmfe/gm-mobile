@@ -28,4 +28,15 @@ const text2Number = (value) => {
   return _.isNaN(parseFloat(value)) ? '' : parseFloat(value)
 }
 
-export { TYPE, KEYS, text2Number }
+const isContains = (target, fun) => {
+  let node = target
+  while (node) {
+    if (fun(node)) {
+      return true
+    }
+    node = node.parentNode
+  }
+  return false
+}
+
+export { TYPE, KEYS, text2Number, isContains }

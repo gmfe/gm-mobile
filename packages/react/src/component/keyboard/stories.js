@@ -3,6 +3,7 @@ import { observable } from 'mobx'
 
 import Button from '../button'
 import KeyboardWrap from './wrap'
+import Page from '../page'
 
 const numStore = observable({
   value: '',
@@ -13,7 +14,7 @@ const numStore = observable({
 
 export const normal = () => {
   return (
-    <div>
+    <Page>
       <span className='m-margin-left-20'>现切冬瓜500g: {numStore.value}</span>
       <KeyboardWrap
         title='现切冬瓜500g'
@@ -25,7 +26,7 @@ export const normal = () => {
           点击输入数量
         </Button>
       </KeyboardWrap>
-    </div>
+    </Page>
   )
 }
 
