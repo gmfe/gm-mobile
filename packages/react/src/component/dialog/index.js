@@ -23,7 +23,12 @@ const ErrorInput = ({
 
   return (
     <>
-      <BorderInput {...rest} value={value} onChange={handleChange} />
+      <BorderInput
+        className='m-text-14'
+        value={value}
+        onChange={handleChange}
+        {...rest}
+      />
       <div className='m-text-red m-text-12'>{getError(value)}</div>
     </>
   )
