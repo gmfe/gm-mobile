@@ -14,7 +14,9 @@ const TabDateSelect = ({ tabs, selectedTab, begin, end, onSelect }) => {
   const _selectedTab = _.find(tabs, (tab) => tab.value === tabValue)
 
   useEffect(() => {
-    calendarRef && calendarRef.current.apiScrollToSelected()
+    setTimeout(() => {
+      calendarRef && calendarRef.current.apiScrollToSelected()
+    }, 250)
   }, [])
 
   const handleSaveSelect = () => {
