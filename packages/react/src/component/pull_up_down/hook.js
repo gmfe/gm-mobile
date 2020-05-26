@@ -55,6 +55,9 @@ const getScrollTop = (element) => {
 }
 
 const bottomReached = (scrollEl) => {
+  if (scrollEl === window) {
+    return true
+  }
   return scrollEl.scrollTop + scrollEl.clientHeight >= scrollEl.scrollHeight
 }
 
@@ -152,7 +155,7 @@ const useTouchHandler = (props) => {
       el.removeEventListener('touchend', handleTouchEnd)
       el.removeEventListener('touchcancel', handleTouchCancel)
     }
-  }, [])
+  }, [props.scrollEl])
 
   return {
     instanceData,
