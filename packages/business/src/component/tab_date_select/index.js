@@ -49,11 +49,7 @@ const TabDateSelect = ({ tabs, selectedTab, begin, end, onSelect }) => {
         />
       </div>
 
-      <Flex
-        alignCenter
-        justifyCenter
-        className='m-padding-left-20 m-padding-tb-10 m-margin-left-10'
-      >
+      <Flex alignCenter justifyCenter className='m-padding-tb-10'>
         <div>{_selectedTab.text}</div>
         <div className='m-text-bold m-bg-back m-margin-lr-10 m-padding-tb-5 m-padding-lr-10 m-border-radius'>{`${moment(
           beginDate
