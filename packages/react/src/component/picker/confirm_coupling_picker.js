@@ -57,7 +57,6 @@ ConfirmCouplingPicker.render = (props) => {
       title: props.title,
       bottom: true,
       onHide: () => {
-        PickerStatics.hide()
         setTimeout(() => {
           reject(new Error())
         }, 50)

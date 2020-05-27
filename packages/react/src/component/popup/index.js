@@ -11,7 +11,18 @@ import SVGCloseCircle from '../../../svg/close-circle.svg'
 
 const PopupStatics = {
   render(options) {
-    LayoutRoot.renderWith(LayoutRoot.TYPE.POPUP, <Popup {...options} />)
+    LayoutRoot.renderWith(
+      LayoutRoot.TYPE.POPUP,
+      <Popup
+        {...options}
+        onHide={() => {
+          PopupStatics.hide()
+          if (options.onHide) {
+            options.onHide()
+          }
+        }}
+      />
+    )
   },
   hide() {
     LayoutRoot.hideWith(LayoutRoot.TYPE.POPUP)

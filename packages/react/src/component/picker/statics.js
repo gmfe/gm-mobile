@@ -6,7 +6,16 @@ const PickerStatics = {
   render(options) {
     LayoutRoot.renderWith(
       LayoutRoot.TYPE.PICKER,
-      <Popup {...options} isPickPopup />
+      <Popup
+        {...options}
+        onHide={() => {
+          PickerStatics.hide()
+          if (options.onHide) {
+            options.onHide()
+          }
+        }}
+        isPickPopup
+      />
     )
   },
 
