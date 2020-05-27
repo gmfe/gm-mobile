@@ -9,8 +9,8 @@ import Textarea from './component/textarea'
 import { Cells, Cell, CellForm, CellsForm } from './component/cell'
 import {
   Picker,
-  ConfirmPicker,
   CouplingPicker,
+  ConfirmPicker,
   ConfirmCouplingPicker,
   SelectPicker,
 } from './component/picker'
@@ -84,8 +84,8 @@ export {
   CellForm,
   CellsForm,
   Picker,
-  ConfirmPicker,
   CouplingPicker,
+  ConfirmPicker,
   ConfirmCouplingPicker,
   SelectPicker,
   Keyboard,

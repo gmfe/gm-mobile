@@ -3,8 +3,9 @@ import React from 'react'
 const TYPE = {
   INNERLAYER: 'innerLayer',
   POPUP: 'popup',
-  MODAL: 'modal',
   PICKER: 'picker',
+  KEYBOARD: 'keyboard', // 和 picker 平级
+  MODAL: 'modal',
   TOAST: 'toast',
   NPROGRESS: 'nprogress',
 }
@@ -17,8 +18,9 @@ class LayoutRoot extends React.Component {
     this.state = {
       innerLayer: null,
       popup: null,
-      modal: null,
       picker: null,
+      keyboard: null,
+      modal: null,
       toast: null,
       nprogress: null,
     }
@@ -42,8 +44,9 @@ class LayoutRoot extends React.Component {
       <div>
         {this.state.innerLayer}
         {this.state.popup}
-        {this.state.modal}
         {this.state.picker}
+        {this.state.keyboard}
+        {this.state.modal}
         {this.state.toast}
         {this.state.nprogress}
       </div>
@@ -72,10 +75,18 @@ LayoutRoot.removeComponent = (type) => {
   }
 }
 
+// 这种写法 附带 History 功能
 LayoutRoot.renderWith = (type, Component) => {
   const popstate = (e) => {
-    const typeStack = [TYPE.INNERLAYER, TYPE.POPUP, TYPE.MODAL, TYPE.PICKER]
-    // 代表还有其他state，即浮层，所以不采取任务逻辑
+    const typeStack = [
+      TYPE.INNERLAYER,
+      TYPE.POPUP,
+      TYPE.PICKER,
+      TYPE.KEYBOARD,
+      TYPE.MODAL,
+    ]
+    // 浮层会有很多，popstate 都会响应。 但是如果浮层之上还有其他浮层的话不应该响应。
+    // 所以判断下
     if (e.state && typeStack.indexOf(e.state.type) >= typeStack.indexOf(type)) {
       return
     }

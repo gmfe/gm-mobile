@@ -1,7 +1,7 @@
 import { getLocale } from '@gm-mobile/locales'
 import React from 'react'
 import PropTypes from 'prop-types'
-import CouplingPicker from './coupling_picker'
+import CouplingPicker from './component/coupling_picker'
 import _ from 'lodash'
 import PickerStatics from './statics'
 import Button from '../button'
