@@ -1,7 +1,14 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+
 import Flex from '../flex'
+import CSSVariable from '../../css_variable'
+import {
+  KEYBOARD_EVENT,
+  KEYBOARD_RENDER,
+  KEYBOARD_ONHIDE,
+} from '../keyboard/util'
 
 const Page = ({
   className,
@@ -17,13 +24,14 @@ const Page = ({
   // 接收通知
   const handleKeyboardEvent = (event) => {
     // 根据事件类型做处理
-    if (event.detail.eventName === 'render') {
+    if (event.detail.eventName === KEYBOARD_RENDER) {
       // 是否存在tabbar, tabbar无需展示
       const tabbarDom = document.querySelector('.m-page-tabbar')
       let tabbarHeight = 0
       if (tabbarDom) {
-        const rect = tabbarDom.getBoundingClientRect()
-        tabbarHeight = rect.height
+        // 拿到tabbar的高度
+        const _height = CSSVariable.getValue('--m-size-tabbar-height')
+        tabbarHeight = Number(_height.split('px')[0] || 0)
       }
 
       // 预留一定空间给键盘, 键盘固定高度为 275px, 存在 tabbar 时减去 tabbar高度
@@ -31,9 +39,8 @@ const Page = ({
       if (pageDom) {
         const bottomOffset = 275 - tabbarHeight
         pageDom.style.height = `calc(100vh - ${bottomOffset}px)`
-        // pageDom.style.transition = 'height 0.2s ease'
       }
-    } else if (event.detail.eventName === 'hide') {
+    } else if (event.detail.eventName === KEYBOARD_ONHIDE) {
       // 取消页面操作
       const pageDom = document.querySelector('.m-page')
       if (pageDom) {
@@ -44,9 +51,9 @@ const Page = ({
 
   // 监听页面键盘事件
   useEffect(() => {
-    window.addEventListener('keyboard', handleKeyboardEvent)
+    window.addEventListener(KEYBOARD_EVENT, handleKeyboardEvent)
     return () => {
-      window.removeEventListener('keyboard', handleKeyboardEvent)
+      window.removeEventListener(KEYBOARD_EVENT, handleKeyboardEvent)
     }
   }, [])
 

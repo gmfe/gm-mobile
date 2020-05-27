@@ -9,11 +9,6 @@ const store = observable({
   one: '',
   two: '',
   three: '',
-  four: '',
-  five: '',
-  six: '',
-  seven: '',
-  isActive: null,
   setValue(type, v) {
     this[type] = v
   },
@@ -34,11 +29,7 @@ export const normal = () => {
     return null
   }
   return (
-    <Page
-      className='m-overflow-y'
-      bottom={<div className='m-border-top m-padding-10'>bottom bottom</div>}
-      tabbar={<div className='m-border-top m-padding-10'>tabbar tabbar</div>}
-    >
+    <Page>
       default形式
       <div className='m-padding-10'>
         <Counter
@@ -46,7 +37,6 @@ export const normal = () => {
           min={3}
           max={100}
           onChange={(v) => store.setValue('one', v)}
-          id='one'
         />
       </div>
       large形式
@@ -54,7 +44,6 @@ export const normal = () => {
         <Counter
           value={store.two}
           onChange={(v) => store.setValue('two', v)}
-          id='two'
           large
         />
       </div>
@@ -65,45 +54,7 @@ export const normal = () => {
           min={3}
           max={10}
           onChange={(v) => store.setValue('three', v)}
-          id='three'
           getErrorMsg={handleCheckValue}
-        />
-      </div>
-      111
-      <div className='m-padding-10'>
-        <Counter
-          value={store.four}
-          min={3}
-          max={100}
-          onChange={(v) => store.setValue('four', v)}
-          id='four'
-        />
-      </div>
-      222
-      <div className='m-padding-10'>
-        <Counter
-          value={store.five}
-          onChange={(v) => store.setValue('five', v)}
-          id='five'
-        />
-      </div>
-      333
-      <div className='m-padding-10'>
-        <Counter
-          value={store.six}
-          min={3}
-          max={10}
-          onChange={(v) => store.setValue('six', v)}
-          id='six'
-          getErrorMsg={handleCheckValue}
-        />
-      </div>
-      444
-      <div className='m-padding-10'>
-        <Counter
-          value={store.seven}
-          onChange={(v) => store.setValue('seven', v)}
-          id='seven'
         />
       </div>
     </Page>

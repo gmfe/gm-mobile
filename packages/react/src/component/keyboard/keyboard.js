@@ -6,7 +6,7 @@ import _ from 'lodash'
 import BaseKeyboard from './_keyboard'
 import Flex from '../flex'
 import Button from '../button'
-import { TYPE, text2Number, isContains } from './util'
+import { TYPE, text2Number } from './util'
 import KeyboardStatics from './statics'
 import Toast from '../toast'
 
@@ -37,7 +37,6 @@ const handleErrorMsg = ({ value, min, max, precision }) => {
 
 const Keyboard = (props) => {
   const {
-    title,
     defaultValue,
     onSubmit,
     children,
@@ -45,7 +44,6 @@ const Keyboard = (props) => {
     max,
     precision,
     getErrorMsg,
-    keyboardId,
     ...rest
   } = props
 
@@ -53,35 +51,12 @@ const Keyboard = (props) => {
   const [currentValue, setCurrentValue] = useState(defaultValue)
   const [errorMsg, setErrorMsg] = useState(null)
 
-  // 监听页面点击，判断是否收起键盘
-  const handleKeyboardHide = (e) => {
-    const node = e.target
-    if (
-      !isContains(node, (n) => {
-        return (
-          n.dataset &&
-          n.dataset.label &&
-          n.dataset.label === 'gm_mobile_keyboard'
-        )
-      })
-    ) {
-      KeyboardStatics.hide()
-    }
-  }
-
   useEffect(() => {
-    window.addEventListener('click', handleKeyboardHide)
+    window.addEventListener('click', KeyboardStatics.isKeyboardNeedHide)
     return () => {
-      window.removeEventListener('click', handleKeyboardHide)
+      window.removeEventListener('click', KeyboardStatics.isKeyboardNeedHide)
     }
   }, [])
-
-  // 监听浏览器的返回，恢复page
-  const handlePopHide = () => {
-    KeyboardStatics.dispatchKeyboardEvent(null, 'hide')
-    window.removeEventListener('popstate', handlePopHide)
-  }
-  window.addEventListener('popstate', handlePopHide)
 
   const handleSubmit = () => {
     // 没有更正输入
@@ -212,8 +187,6 @@ Object.assign(Keyboard, KeyboardStatics)
 Keyboard.propTypes = {
   /** 初始默认值 */
   defaultValue: PropTypes.string,
-  /** 标题, 辅助展示 */
-  title: PropTypes.string,
   /** 确定回调函数 */
   onSubmit: PropTypes.func.isRequired,
   /** 最小值 */
@@ -227,9 +200,6 @@ Keyboard.propTypes = {
    * 否则返回null
    */
   getErrorMsg: PropTypes.func,
-
-  /** 身份标识 */
-  keyboardId: PropTypes.string.isRequired,
 }
 
 Keyboard.defaultProps = {

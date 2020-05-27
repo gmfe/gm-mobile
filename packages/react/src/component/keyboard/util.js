@@ -21,6 +21,12 @@ const KEYS = [
   { type: TYPE.NUMBER, value: '0' },
 ]
 
+const KEYBOARDLABEL = 'GM_MOBILE_KEYBOARD'
+// keyboard 事件
+const KEYBOARD_EVENT = 'KEYBOARD_EVENT'
+const KEYBOARD_RENDER = 'KEYBOARD_RENDER'
+const KEYBOARD_ONHIDE = 'KEYBOARD_ONHIDE'
+
 const text2Number = (value) => {
   if (value === '') {
     return ''
@@ -39,4 +45,13 @@ const isContains = (target, fun) => {
   return false
 }
 
-export { TYPE, KEYS, text2Number, isContains }
+export {
+  TYPE,
+  KEYS,
+  KEYBOARDLABEL,
+  KEYBOARD_EVENT,
+  KEYBOARD_RENDER,
+  KEYBOARD_ONHIDE,
+  text2Number,
+  isContains,
+}

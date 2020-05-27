@@ -1,6 +1,8 @@
 import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
+
 import Keyboard from './keyboard'
+import { KEYBOARDLABEL } from './util'
 
 const KeyboardWrap = ({
   defaultValue,
@@ -12,7 +14,6 @@ const KeyboardWrap = ({
   children,
   onClick,
   getErrorMsg,
-  keyboardId,
   ...rest
 }) => {
   const wrapRef = useRef(null)
@@ -27,6 +28,7 @@ const KeyboardWrap = ({
     // 触发事件
     onClick && onClick(e)
     Keyboard.render({
+      key: Math.random(),
       defaultValue,
       title,
       onSubmit,
@@ -34,16 +36,15 @@ const KeyboardWrap = ({
       max,
       precision,
       getErrorMsg,
-      keyboardId,
     })
   }
 
   return (
     <div
-      ref={wrapRef}
       {...rest}
+      ref={wrapRef}
       onClick={handleClick}
-      data-label='gm_mobile_keyboard'
+      data-label={KEYBOARDLABEL}
     >
       {children}
     </div>
@@ -52,6 +53,8 @@ const KeyboardWrap = ({
 
 KeyboardWrap.propTypes = {
   ...Keyboard.propTypes,
+  /** 标题, 辅助展示 */
+  title: PropTypes.string,
   className: PropTypes.string,
   style: PropTypes.object,
 }
