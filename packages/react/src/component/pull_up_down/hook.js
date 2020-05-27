@@ -155,7 +155,7 @@ const useTouchHandler = (props) => {
       el.removeEventListener('touchend', handleTouchEnd)
       el.removeEventListener('touchcancel', handleTouchCancel)
     }
-  }, [props.scrollEl])
+  }, [props.scrollEl, props.children])
 
   return {
     instanceData,
