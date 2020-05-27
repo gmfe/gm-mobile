@@ -159,6 +159,7 @@ MutiOrderReceiveTimePicker.render = (props) => {
   return new Promise((resolve, reject) => {
     PickerStatics.render({
       bottom: true,
+      title: props.title,
       onHide: () => {
         setTimeout(() => {
           reject(new Error())
