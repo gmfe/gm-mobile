@@ -35,13 +35,8 @@ export const normal = () => {
   }
   return (
     <Page
-      className='m-bg-white m-overflow-y'
-      bottom={
-        <div className='m-border-top m-padding-10'>
-          bottom
-          bottom
-        </div>
-      }
+      className='m-overflow-y'
+      bottom={<div className='m-border-top m-padding-10'>bottom bottom</div>}
       tabbar={<div className='m-border-top m-padding-10'>tabbar tabbar</div>}
     >
       default形式

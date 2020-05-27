@@ -10,6 +10,8 @@ const TYPE = {
 
 const KEY = 'theme'
 
+let computedStyle = null
+
 const CSSVariable = {
   TYPE,
   theme: LocalStorage.get(KEY) || 'default',
@@ -29,6 +31,14 @@ const CSSVariable = {
 
     this.theme = theme
     LocalStorage.set(KEY, theme)
+  },
+  // 只获取 body 上面的 css variable
+  getValue(name) {
+    if (!computedStyle) {
+      computedStyle = window.getComputedStyle(document.body)
+    }
+    // 有空格，要 trim
+    return computedStyle.getPropertyValue(name).trim()
   },
 }
 
