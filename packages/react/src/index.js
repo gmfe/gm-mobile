@@ -61,6 +61,7 @@ import { LocalStorage, SessionStorage } from './component/storage'
 import CSSVariable from './css_variable'
 import { Search, SearchPage, FakeSearch } from './component/search'
 import RepeatTimes from './component/repeat_times'
+import Canvas from './component/canvas'
 
 const Alert = Dialog.alert
 const Confirm = Dialog.confirm
@@ -143,4 +144,5 @@ export {
   CSSVariable,
   LocalStorage,
   SessionStorage,
+  Canvas,
 }
