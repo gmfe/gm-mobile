@@ -78,7 +78,7 @@ const Page = ({
       <div className={classNames('m-page-content', pageClassName)}>
         {children}
       </div>
-      {bottom && <div className='m-page-bottom m-flex-none'>{bottom}</div>}
+      {bottom && <div className='m-flex-none'>{bottom}</div>}
       {tabbar && <div className='m-page-tabbar m-flex-none'>{tabbar}</div>}
     </Flex>
   )
