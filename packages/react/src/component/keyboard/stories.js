@@ -25,6 +25,7 @@ const KeyboardInput = ({ id, value }) => {
       <span className='m-inline-block m-margin-left-10' style={{ width: '100px', height: '30px' }}>商品{id}:</span>
       <KeyboardWrap
         title={`商品${id}`}
+        defaultValue={value}
         onSubmit={(v) => numStore.setValue(id, v)}
         min={2}
         max={100}

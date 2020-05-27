@@ -1,14 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import Flex from '../flex'
 import CSSVariable from '../../css_variable'
-import {
-  KEYBOARD_EVENT,
-  KEYBOARD_RENDER,
-  KEYBOARD_ONHIDE,
-} from '../keyboard/util'
+import { KEYBOARD_RENDER, KEYBOARD_HIDE } from '../keyboard/util'
 
 const Page = ({
   className,
@@ -21,39 +17,38 @@ const Page = ({
   children,
   ...rest
 }) => {
-  // 接收通知
-  const handleKeyboardEvent = (event) => {
-    // 根据事件类型做处理
-    if (event.detail.eventName === KEYBOARD_RENDER) {
-      // 是否存在tabbar, tabbar无需展示
-      const tabbarDom = document.querySelector('.m-page-tabbar')
-      let tabbarHeight = 0
-      if (tabbarDom) {
-        // 拿到tabbar的高度
-        const _height = CSSVariable.getValue('--m-size-tabbar-height')
-        tabbarHeight = Number(_height.split('px')[0] || 0)
-      }
+  const [hasKeyboard, setHasKeyboard] = useState(false)
 
-      // 预留一定空间给键盘, 键盘固定高度为 275px, 存在 tabbar 时减去 tabbar高度
-      const pageDom = document.querySelector('.m-page')
-      if (pageDom) {
-        const bottomOffset = 275 - tabbarHeight
-        pageDom.style.height = `calc(100vh - ${bottomOffset}px)`
-      }
-    } else if (event.detail.eventName === KEYBOARD_ONHIDE) {
-      // 取消页面操作
-      const pageDom = document.querySelector('.m-page')
-      if (pageDom) {
-        pageDom.style.height = '100vh'
-      }
+  const handleKeyboardRender = () => {
+    setHasKeyboard(true)
+  }
+
+  const handleKeyboardHide = () => {
+    setHasKeyboard(false)
+  }
+
+  const getKeyboardHeight = () => {
+    let tabbarHeight = 0
+    if (!hasKeyboard) {
+      return
     }
+
+    if (tabbar) {
+      const _height = CSSVariable.getValue('--m-size-tabbar-height')
+      tabbarHeight = Number(_height.split('px')[0] || 0)
+    }
+    // 暂时先定 275px
+    const keyboardHeight = 275 - tabbarHeight
+    return keyboardHeight
   }
 
   // 监听页面键盘事件
   useEffect(() => {
-    window.addEventListener(KEYBOARD_EVENT, handleKeyboardEvent)
+    window.addEventListener(KEYBOARD_RENDER, handleKeyboardRender)
+    window.addEventListener(KEYBOARD_HIDE, handleKeyboardHide)
     return () => {
-      window.removeEventListener(KEYBOARD_EVENT, handleKeyboardEvent)
+      window.removeEventListener(KEYBOARD_RENDER, handleKeyboardRender)
+      window.removeEventListener(KEYBOARD_HIDE, handleKeyboardHide)
     }
   }, [])
 
@@ -80,6 +75,7 @@ const Page = ({
       </div>
       {bottom && <div className='m-flex-none'>{bottom}</div>}
       {tabbar && <div className='m-page-tabbar m-flex-none'>{tabbar}</div>}
+      {hasKeyboard && <div style={{ height: getKeyboardHeight() }} />}
     </Flex>
   )
 }

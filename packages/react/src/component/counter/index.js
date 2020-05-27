@@ -19,7 +19,6 @@ const Counter = ({
   disabled,
   getErrorMsg,
   className,
-  onClick,
   ...rest
 }) => {
   const text2Number = (value) => {
@@ -100,7 +99,6 @@ const Counter = ({
         precision={precision}
         onSubmit={onChange}
         getErrorMsg={getErrorMsg}
-        onClick={onClick}
       >
         <span className='m-counter-content-text'>{value}</span>
       </KeyboardWrap>
@@ -137,8 +135,6 @@ Counter.propTypes = {
    * 否则返回null
    */
   getErrorMsg: PropTypes.func,
-  /** 点击弹出键盘的回调事件 */
-  onClick: PropTypes.func,
   className: PropTypes.string,
   style: PropTypes.object,
 }

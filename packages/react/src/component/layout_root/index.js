@@ -76,7 +76,7 @@ LayoutRoot.removeComponent = (type) => {
 }
 
 // 这种写法 附带 History 功能
-LayoutRoot.renderWith = (type, Component, popstateCallback) => {
+LayoutRoot.renderWith = (type, Component, options) => {
   const popstate = (e) => {
     const typeStack = [
       TYPE.INNERLAYER,
@@ -92,7 +92,7 @@ LayoutRoot.renderWith = (type, Component, popstateCallback) => {
     }
     LayoutRoot.removeComponent(type)
     // 回调操作
-    popstateCallback && popstateCallback()
+    options && options.popstateCallback && options.popstateCallback()
     window.removeEventListener('popstate', popstate)
   }
 

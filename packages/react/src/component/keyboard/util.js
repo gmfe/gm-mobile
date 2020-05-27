@@ -23,9 +23,8 @@ const KEYS = [
 
 const KEYBOARDLABEL = 'GM_MOBILE_KEYBOARD'
 // keyboard 事件
-const KEYBOARD_EVENT = 'KEYBOARD_EVENT'
 const KEYBOARD_RENDER = 'KEYBOARD_RENDER'
-const KEYBOARD_ONHIDE = 'KEYBOARD_ONHIDE'
+const KEYBOARD_HIDE = 'KEYBOARD_HIDE'
 
 const text2Number = (value) => {
   if (value === '') {
@@ -34,6 +33,7 @@ const text2Number = (value) => {
   return _.isNaN(parseFloat(value)) ? '' : parseFloat(value)
 }
 
+// keyboard事件相关
 const isContains = (target, fun) => {
   let node = target
   while (node) {
@@ -45,13 +45,36 @@ const isContains = (target, fun) => {
   return false
 }
 
+// 事件通知
+const dispatchKeyboardEvent = (key, eventName) => {
+  window.dispatchEvent(
+    new window.CustomEvent(eventName, {
+      detail: { key, eventName },
+    })
+  )
+}
+
+// 监听页面点击，判断是否需要收起键盘
+const isKeyboardNeedHide = (e) => {
+  const node = e.target
+  if (
+    !isContains(node, (n) => {
+      return n.dataset && n.dataset.label && n.dataset.label === KEYBOARDLABEL
+    })
+  ) {
+    return true
+  }
+  return false
+}
+
 export {
   TYPE,
   KEYS,
   KEYBOARDLABEL,
-  KEYBOARD_EVENT,
   KEYBOARD_RENDER,
-  KEYBOARD_ONHIDE,
+  KEYBOARD_HIDE,
   text2Number,
   isContains,
+  dispatchKeyboardEvent,
+  isKeyboardNeedHide,
 }

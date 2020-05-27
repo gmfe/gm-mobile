@@ -1,5 +1,5 @@
 import { getLocale } from '@gm-mobile/locales'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
@@ -50,13 +50,6 @@ const Keyboard = (props) => {
   // 输入值 及 输入校验提示信息
   const [currentValue, setCurrentValue] = useState(defaultValue)
   const [errorMsg, setErrorMsg] = useState(null)
-
-  useEffect(() => {
-    window.addEventListener('click', KeyboardStatics.isKeyboardNeedHide)
-    return () => {
-      window.removeEventListener('click', KeyboardStatics.isKeyboardNeedHide)
-    }
-  }, [])
 
   const handleSubmit = () => {
     // 没有更正输入

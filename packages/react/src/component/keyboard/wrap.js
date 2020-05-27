@@ -2,7 +2,8 @@ import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 
 import Keyboard from './keyboard'
-import { KEYBOARDLABEL } from './util'
+import { KEYBOARDLABEL, KEYBOARD_HIDE, isKeyboardNeedHide } from './util'
+import KeyboardStatics from './statics'
 
 const KeyboardWrap = ({
   defaultValue,
@@ -12,11 +13,21 @@ const KeyboardWrap = ({
   max,
   precision,
   children,
-  onClick,
   getErrorMsg,
   ...rest
 }) => {
   const wrapRef = useRef(null)
+
+  const keyboardHide = (e) => {
+    if (isKeyboardNeedHide(e)) {
+      KeyboardStatics.hide()
+    }
+  }
+
+  const handleKeyboardHide = () => {
+    window.removeEventListener('click', keyboardHide)
+    window.removeEventListener(KEYBOARD_HIDE, handleKeyboardHide)
+  }
 
   const handleClick = (e) => {
     // 点击元素滚动到可视区域
@@ -26,7 +37,6 @@ const KeyboardWrap = ({
     }, 50)
 
     // 触发事件
-    onClick && onClick(e)
     Keyboard.render({
       key: Math.random(),
       defaultValue,
@@ -37,6 +47,11 @@ const KeyboardWrap = ({
       precision,
       getErrorMsg,
     })
+
+    // 此时监听页面的点击事件，判断后续操作是否触发收起键盘
+    window.addEventListener('click', keyboardHide)
+    // 弹窗取消按钮，键盘确定按钮都可以收起键盘
+    window.addEventListener(KEYBOARD_HIDE, handleKeyboardHide)
   }
 
   return (
