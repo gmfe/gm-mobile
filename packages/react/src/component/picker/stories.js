@@ -1,5 +1,5 @@
 import React from 'react'
-import Picker from './picker'
+import Picker from './component/picker'
 import { observable } from 'mobx'
 import ConfirmPicker from './confirm_picker'
 import ConfirmCouplingPicker from './confirm_coupling_picker'

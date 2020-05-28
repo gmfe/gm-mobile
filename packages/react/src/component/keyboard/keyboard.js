@@ -37,7 +37,6 @@ const handleErrorMsg = ({ value, min, max, precision }) => {
 
 const Keyboard = (props) => {
   const {
-    title,
     defaultValue,
     onSubmit,
     children,
@@ -152,6 +151,7 @@ const Keyboard = (props) => {
     const cv = checkValue(v)
 
     setCurrentValue(cv)
+    onSubmit(cv)
   }
 
   return (
@@ -180,8 +180,6 @@ Object.assign(Keyboard, KeyboardStatics)
 Keyboard.propTypes = {
   /** 初始默认值 */
   defaultValue: PropTypes.string,
-  /** 标题, 辅助展示 */
-  title: PropTypes.string,
   /** 确定回调函数 */
   onSubmit: PropTypes.func.isRequired,
   /** 最小值 */

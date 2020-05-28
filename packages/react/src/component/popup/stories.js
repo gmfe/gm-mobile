@@ -13,7 +13,6 @@ export const normal = () => {
                 <div>adsfas</div>
               </div>
             ),
-            onHide: Popup.hide,
           })
         }}
       >
@@ -24,7 +23,6 @@ export const normal = () => {
           Popup.render({
             right: true,
             children: <div>lala</div>,
-            onHide: Popup.hide,
           })
         }}
       >
@@ -35,7 +33,6 @@ export const normal = () => {
           Popup.render({
             bottom: true,
             children: <div>lala</div>,
-            onHide: Popup.hide,
           })
         }}
       >
@@ -54,7 +51,6 @@ export const normal = () => {
             },
             children: <div>center</div>,
             disabledHeader: true,
-            onHide: Popup.hide,
           })
         }}
       >
@@ -72,7 +68,6 @@ export const title = () => {
           title: '啦啦啦',
           bottom: true,
           children: <div>lala</div>,
-          onHide: Popup.hide,
         })
       }}
     >

@@ -3,29 +3,63 @@ import { observable } from 'mobx'
 
 import Button from '../button'
 import KeyboardWrap from './wrap'
+import Page from '../page'
 
 const numStore = observable({
-  value: '',
-  setValue(v) {
-    this.value = v
+  one: '',
+  two: '',
+  three: '',
+  four: '',
+  five: '',
+  six: '',
+  seven: '',
+  setValue(id, v) {
+    this[id] = v
   },
 })
 
-export const normal = () => {
+const KeyboardInput = ({ id, value }) => {
   return (
     <div>
-      <span className='m-margin-left-20'>现切冬瓜500g: {numStore.value}</span>
+      <div className='m-block m-gap-20' />
+      <span
+        className='m-inline-block m-margin-left-10'
+        style={{ width: '100px', height: '30px' }}
+      >
+        商品{id}:
+      </span>
       <KeyboardWrap
-        title='现切冬瓜500g'
-        onSubmit={(v) => numStore.setValue(v)}
+        title={`商品${id}`}
+        defaultValue={value}
+        onSubmit={(v) => numStore.setValue(id, v)}
         min={2}
         max={100}
+        className='m-inline-block'
       >
-        <Button mini className='m-margin-10'>
-          点击输入数量
+        <Button plain>
+          {value}
         </Button>
       </KeyboardWrap>
+
+      <div className='m-block m-gap-20' />
     </div>
+  )
+}
+
+export const normal = () => {
+  return (
+    <Page
+      bottom={<div className='m-border-top m-padding-10'>bottom bottom</div>}
+      tabbar={<div className='m-border-top m-padding-10'>tabbar tabbar</div>}
+    >
+      <KeyboardInput id='one' value={numStore.one} />
+      <KeyboardInput id='two' value={numStore.two} />
+      <KeyboardInput id='three' value={numStore.three} />
+      <KeyboardInput id='four' value={numStore.four} />
+      <KeyboardInput id='five' value={numStore.five} />
+      <KeyboardInput id='six' value={numStore.six} />
+      <KeyboardInput id='seven' value={numStore.seven} />
+    </Page>
   )
 }
 

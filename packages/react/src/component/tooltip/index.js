@@ -8,7 +8,6 @@ const Tooltip = ({ title, content, onClick, children }) => {
       title,
       bottom: true,
       children: <div style={{ minHeight: '100px' }}>{content}</div>,
-      onHide: Popup.hide,
     })
 
     onClick && onClick(e)

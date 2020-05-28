@@ -6,6 +6,7 @@ import Flex from './component/flex'
 export const normal = () => {
   return (
     <div>
+      <div>theme</div>
       {_.map(CSSVariable.TYPE, (v, k) => (
         <Flex
           onClick={() => {

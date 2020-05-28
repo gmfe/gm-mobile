@@ -1,7 +1,7 @@
 import { getLocale } from '@gm-mobile/locales'
 import React from 'react'
 import PropTypes from 'prop-types'
-import Picker from './picker'
+import Picker from './component/picker'
 import _ from 'lodash'
 import PickerStatics from './statics'
 import Button from '../button'
@@ -57,7 +57,6 @@ ConfirmPicker.render = (props) => {
       title: props.title,
       bottom: true,
       onHide: () => {
-        PickerStatics.hide()
         setTimeout(() => {
           reject(new Error())
         }, 50)

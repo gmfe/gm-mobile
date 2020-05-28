@@ -2,11 +2,18 @@ import React from 'react'
 import { observable } from 'mobx'
 
 import Counter from './'
+import Page from '../page'
+import Flex from '../flex'
 
 const store = observable({
-  value: '',
-  setValue(v) {
-    this.value = v
+  one: '',
+  two: '',
+  three: '',
+  setValue(type, v) {
+    this[type] = v
+  },
+  setIsActive(type) {
+    this.isActive = type
   },
 })
 
@@ -22,35 +29,35 @@ export const normal = () => {
     return null
   }
   return (
-    <div className='m-margin-10'>
+    <Page>
       default形式
-      <div className='m-margin-10'>
+      <div className='m-padding-10'>
         <Counter
-          value={store.value}
+          value={store.one}
           min={3}
           max={100}
-          onChange={(v) => store.setValue(v)}
+          onChange={(v) => store.setValue('one', v)}
         />
       </div>
       large形式
-      <div className='m-margin-10'>
+      <div className='m-padding-10'>
         <Counter
-          value={store.value}
-          onChange={(v) => store.setValue(v)}
+          value={store.two}
+          onChange={(v) => store.setValue('two', v)}
           large
         />
       </div>
       自定义提示信息
-      <div className='m-margin-10'>
+      <div className='m-padding-10'>
         <Counter
-          value={store.value}
+          value={store.three}
           min={3}
           max={10}
-          onChange={(v) => store.setValue(v)}
+          onChange={(v) => store.setValue('three', v)}
           getErrorMsg={handleCheckValue}
         />
       </div>
-    </div>
+    </Page>
   )
 }
 
