@@ -22,7 +22,12 @@ const KeyboardInput = ({ id, value }) => {
   return (
     <div>
       <div className='m-block m-gap-20' />
-      <span className='m-inline-block m-margin-left-10' style={{ width: '100px', height: '30px' }}>商品{id}:</span>
+      <span
+        className='m-inline-block m-margin-left-10'
+        style={{ width: '100px', height: '30px' }}
+      >
+        商品{id}:
+      </span>
       <KeyboardWrap
         title={`商品${id}`}
         defaultValue={value}
@@ -35,6 +40,7 @@ const KeyboardInput = ({ id, value }) => {
           {value}
         </Button>
       </KeyboardWrap>
+
       <div className='m-block m-gap-20' />
     </div>
   )
