@@ -14,13 +14,8 @@
     line-height: 21px;
     border-radius: 25px;
 
-    .m-counter-content {
+    .m-counter-content-text {
       width: 44px;
-
-      .m-counter-content-text {
-        min-width: 0;
-        max-width: 43px;
-      }
     }
 
     .mCounterVariants(21px, 21px, 14px, 3px);
@@ -33,7 +28,7 @@
     border-radius: 40px;
     font-size: 18px;
 
-    .m-counter-content {
+    .m-counter-content-text {
       width: calc(100% - 72px);
     }
 
@@ -42,27 +37,19 @@
 }
 
 .mCounterVariants(@iconWidth, @height, @size, @margin) {
-  .m-counter-content {
+  .m-counter-content-text {
     display: inline-block;
+    overflow-y: hidden;
+    overflow-x: auto;
     height: @height;
     line-height: @height;
+    color: var(--m-color-primary);
     text-align: center;
-    vertical-align: top;
+    font-weight: bold;
+    font-size: @size;
+    padding: 0;
 
-    .m-counter-content-text {
-      display: inline-block;
-      overflow-y: hidden;
-      overflow-x: auto;
-      height: @height;
-      line-height: @height;
-      color: var(--m-color-primary);
-      text-align: center;
-      font-weight: bold;
-      font-size: @size;
-      padding: 0;
-
-      .mScrollBarNone();
-    }
+    .mScrollBarNone();
   }
 
   .m-counter-icon {

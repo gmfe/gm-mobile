@@ -91,7 +91,6 @@ const Counter = ({
         />
       </div>
       <KeyboardWrap
-        className='m-counter-content'
         defaultValue={value}
         title={title}
         min={min}
@@ -100,7 +99,7 @@ const Counter = ({
         onSubmit={onChange}
         getErrorMsg={getErrorMsg}
       >
-        <span className='m-counter-content-text'>{value}</span>
+        <div className='m-counter-content-text'>{value}</div>
       </KeyboardWrap>
       <div className='m-counter-icon' onClick={() => handleChange('plus')}>
         <SVGPlus
