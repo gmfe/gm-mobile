@@ -118,7 +118,7 @@ const Scroll = forwardRef(
           {loadingMore && <Loading />}
           {noMore && (
             <Flex column justifyCenter className='m-text-desc m-text-12'>
-              {getLocale('没有更多数据')}
+              {getLocale('没有更多了')}
             </Flex>
           )}
         </Flex>

@@ -87,7 +87,8 @@ export const receivedCoupon = () => (
   <div className='m-bg-back'>
     <ReceivedCoupon currency='¥' discount='10' couponAmount={1} totalInfo='满100元可用' />
     <div className='m-margin-top-10'>
-      <ReceivedCoupon isReceived currency='¥' discount='100' couponAmount={10} totalInfo='满200元可用' />
+      <ReceivedCoupon isReceived currency='¥' discount='100' couponAmount={0} totalInfo='满200元可用' />
+      <ReceivedCoupon isReceived currency='¥' discount='100' className='m-margin-left-10' totalInfo='满200元可用' />
     </div>
   </div>
 )
