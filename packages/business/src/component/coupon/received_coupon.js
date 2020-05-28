@@ -30,7 +30,7 @@ const ReceivedCoupon = (props) => {
           >
             <span className='m-received-coupon-left-currency'>{currency}</span>
             {discount}
-            {couponAmount && couponAmount !== 0 && (
+            {couponAmount !== undefined && (
               <span
                 className={classNames('m-received-coupon-left-info', {
                   'm-received-coupon-received': isReceived,
