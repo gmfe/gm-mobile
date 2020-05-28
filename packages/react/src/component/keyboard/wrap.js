@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
@@ -8,7 +8,8 @@ import KeyboardStatics from './statics'
 
 const useKeyboard = (props) => {
   // 生成 data-label, onClick事件传出去
-  const tag = Math.random()
+  const _tag = useRef('' + Math.random())
+  const tag = `${KEYBOARDLABEL}_${_tag.current}`
 
   const keyboardHide = (e) => {
     if (isKeyboardNeedHide(e)) {
@@ -24,9 +25,8 @@ const useKeyboard = (props) => {
   const handleClick = () => {
     setTimeout(() => {
       // 通过埋下的data-label找到当前点击dom
-      const _tag = `${KEYBOARDLABEL}_${tag}`
       const doms = document.querySelectorAll('[data-label]')
-      const dom = _.find(doms, (dom) => dom.getAttribute('data-label') === _tag)
+      const dom = _.find(doms, (dom) => dom.getAttribute('data-label') === tag)
       dom && dom.scrollIntoView()
     }, 50)
 
@@ -44,7 +44,7 @@ const useKeyboard = (props) => {
 
   return {
     wrapProps: {
-      'data-label': `${KEYBOARDLABEL}_${tag}`,
+      'data-label': tag,
       onClick: handleClick,
     },
   }
