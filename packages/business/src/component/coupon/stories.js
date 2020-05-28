@@ -69,6 +69,17 @@ export const normal = () => (
         isExpired
       />
     </div>
+    <div className='m-padding-15'>
+      <Coupon
+        currency='¥'
+        discount={200}
+        totalInfo='满300元可用'
+        hasUseInfo
+        dateInfo='2020-05-05到期'
+        title='通用优惠券AA'
+        isUsed
+      />
+    </div>
   </div>
 )
 

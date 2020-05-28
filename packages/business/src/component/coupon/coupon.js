@@ -24,6 +24,7 @@ const Coupon = (props) => {
     onCheck,
     hasUseInfo,
     isExpired,
+    isUsed,
     ...rest
   } = props
 
@@ -39,7 +40,7 @@ const Coupon = (props) => {
     setShowUseInfo(show)
   }
 
-  const isDisabled = disabled || isExpired
+  const isDisabled = disabled || isExpired || isUsed
 
   return (
     <div
@@ -102,7 +103,7 @@ const Coupon = (props) => {
                 onChange={onCheck}
               />
             )}
-            {isExpired && (
+            {isExpired || isUsed ? (
               <div>
                 <SVGExpired className='m-coupon-right-expired' />
                 <Flex
@@ -110,10 +111,10 @@ const Coupon = (props) => {
                   justifyCenter
                   className='m-coupon-right-expired-text'
                 >
-                  {getLocale('已过期')}
+                  {isExpired ? getLocale('已过期') : getLocale('已使用')}
                 </Flex>
               </div>
-            )}
+            ) : null}
           </Flex>
           {hasUseInfo && (
             <Flex
@@ -171,6 +172,8 @@ Coupon.propTypes = {
   onCheck: PropTypes.func,
   /** 优惠券是否过期 */
   isExpired: PropTypes.bool,
+  /** 优惠券是否已使用 */
+  isUsed: PropTypes.bool,
   className: PropTypes.string,
   style: PropTypes.object,
 }
