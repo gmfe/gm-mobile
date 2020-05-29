@@ -92,7 +92,7 @@ LayoutRoot.renderWith = (type, Component, options) => {
     }
     LayoutRoot.removeComponent(type)
     // 回调操作
-    options && options.popstateCallback && options.popstateCallback()
+    options && options.hideCallback && options.hideCallback()
     window.removeEventListener('popstate', popstate)
   }
 
