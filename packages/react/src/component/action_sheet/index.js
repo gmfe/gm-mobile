@@ -28,7 +28,6 @@ const ActionSheetStatics = {
           />
         ),
         onHide: () => {
-          ActionSheetStatics.hide()
           setTimeout(() => {
             reject(new Error())
           }, 50)

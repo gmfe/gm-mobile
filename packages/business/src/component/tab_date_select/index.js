@@ -84,7 +84,6 @@ TabDateSelect.render = ({ title, ...rest }) => {
         />
       ),
       onHide: () => {
-        TabDateSelect.hide()
         setTimeout(() => {
           reject(new Error())
         }, 50)
