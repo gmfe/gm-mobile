@@ -151,7 +151,7 @@ const Keyboard = (props) => {
     const cv = checkValue(v)
 
     setCurrentValue(cv)
-    onSubmit(cv)
+    // onSubmit(cv)
   }
 
   return (
