@@ -1,70 +1,77 @@
-import React from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
 import Keyboard from './keyboard'
+import KeyboardStatics from './statics'
+import { KEYBOARD_LABEL, isKeyboardNeedHide } from './util'
 
-// import _ from 'lodash'
-// import { KEYBOARDLABEL, KEYBOARD_HIDE, isKeyboardNeedHide } from './util'
-// import KeyboardStatics from './statics'
+const useKeyboard = (props) => {
+  const [active, setActive] = useState(false)
 
-// const useKeyboard = (props) => {
-//   // 生成 data-label, onClick事件传出去
-//   const _tag = useRef('' + Math.random())
-//   const tag = `${KEYBOARDLABEL}_${_tag.current}`
+  const tag = useMemo(() => {
+    return `${KEYBOARD_LABEL}_${Math.random()}`
+  }, [])
 
-//   const keyboardHide = (e) => {
-//     if (isKeyboardNeedHide(e)) {
-//       KeyboardStatics.hide()
-//     }
-//   }
+  useEffect(() => {
+    // 只有开启的时候才需要监听事件
+    if (!active) {
+      return
+    }
 
-//   const handleKeyboardHide = () => {
-//     window.removeEventListener('click', keyboardHide)
-//     window.removeEventListener(KEYBOARD_HIDE, handleKeyboardHide)
-//   }
+    // 由他来处理隐藏 keyboard
+    const handleWindowClick = (e) => {
+      if (isKeyboardNeedHide(e.target)) {
+        KeyboardStatics.hide()
+      }
+    }
 
-//   const handleClick = () => {
-//     setTimeout(() => {
-//       // 通过埋下的data-label找到当前点击dom
-//       const doms = document.querySelectorAll('[data-label]')
-//       const dom = _.find(doms, (dom) => dom.getAttribute('data-label') === tag)
-//       dom && dom.scrollIntoView()
-//     }, 50)
+    document.body.addEventListener('click', handleWindowClick)
 
-//     // 触发事件
-//     Keyboard.render({
-//       key: tag,
-//       ...props,
-//     })
+    // 记得清理
+    return () => {
+      document.body.removeEventListener('click', handleWindowClick)
+    }
+  }, [active])
 
-//     // 此时监听页面的点击事件，判断后续操作是否触发收起键盘
-//     window.addEventListener('click', keyboardHide)
-//     // 弹窗取消按钮，键盘确定按钮都可以收起键盘
-//     window.addEventListener(KEYBOARD_HIDE, handleKeyboardHide)
-//   }
+  const handleFocus = (e) => {
+    setActive(true)
 
-//   return {
-//     wrapProps: {
-//       'data-label': tag,
-//       onClick: handleClick,
-//     },
-//   }
-// }
+    // 触发事件
+    KeyboardStatics.render({
+      // 每个都对于不同的key
+      key: tag,
+      ...props,
+    })
 
-// const KeyboardWrap = ({ children, ...rest }) => {
-//   const { wrapProps } = useKeyboard(rest)
-//   return React.cloneElement(children, {
-//     ...rest,
-//   })
-// }
+    // 延迟点，等 Page render 后再 scrollIntoView
+    setTimeout(() => {
+      const dom = document.querySelector(`[data-keyboard-label="${tag}"]`)
 
-// 遮罩状态
-const KeyboardWrap = ({ children, ...rest }) => {
-  const handleClick = () => {
-    Keyboard.render({ ...rest })
+      dom && dom.scrollIntoViewIfNeeded(false)
+    }, 50)
   }
 
+  const handleBlur = () => {
+    // 维护好状态即可
+    setActive(false)
+  }
+
+  return {
+    keyboardProps: {
+      tabIndex: 0,
+      'data-keyboard-label': tag,
+      // 更合理，原生键盘也是 onFocus ，而不是 onClick
+      onFocus: handleFocus,
+      onBlur: handleBlur,
+    },
+  }
+}
+
+const KeyboardWrap = ({ children, ...rest }) => {
+  const { keyboardProps } = useKeyboard(rest)
+
   return React.cloneElement(children, {
-    onClick: handleClick,
+    ...rest,
+    ...keyboardProps,
   })
 }
 
