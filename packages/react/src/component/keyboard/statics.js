@@ -3,11 +3,17 @@ import LayoutRoot from '../layout_root'
 import Keyboard from './keyboard'
 import Popup from '../popup'
 import EVENT_TYPE from '../../event_type'
-import { KEYBOARD_LABEL } from './util'
+import { KEYBOARD_LABEL, isKeyboardNeedHide } from './util'
 
 // 事件通知
 const dispatchKeyboardEvent = (eventName) => {
   window.dispatchEvent(new window.CustomEvent(eventName))
+}
+
+const handleWindowClick = (e) => {
+  if (isKeyboardNeedHide(e.target)) {
+    KeyboardStatics.hide()
+  }
 }
 
 // 此 render 和 hide 和其他 static 很不一样
@@ -36,6 +42,8 @@ const KeyboardStatics = {
     // false => true 才通知
     if (this.active === false) {
       dispatchKeyboardEvent(EVENT_TYPE.KEYBOARD_SHOW)
+      // 键盘弹出需要监听 window click
+      document.body.addEventListener('click', handleWindowClick)
     }
 
     this.active = true
@@ -47,6 +55,8 @@ const KeyboardStatics = {
     // true => false 才通知
     if (this.active) {
       dispatchKeyboardEvent(EVENT_TYPE.KEYBOARD_HIDE)
+      // 关闭键盘记得remove
+      document.body.removeEventListener('click', handleWindowClick)
     }
 
     this.active = false

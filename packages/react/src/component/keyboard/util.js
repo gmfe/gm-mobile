@@ -47,8 +47,7 @@ const isKeyboardNeedHide = (target) => {
   const node = target
   if (
     !isContains(node, (n) => {
-      const tag =
-        (n.dataset && n.dataset.keyboardLabel && n.dataset.keyboardLabel) || ''
+      const tag = (n.dataset && n.dataset.keyboardLabel) || ''
       return !!tag
     })
   ) {
