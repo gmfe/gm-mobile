@@ -14,7 +14,6 @@ const Button = ({
   disabled,
   onClick,
   loading,
-  href,
   children,
   htmlType,
   className,
@@ -41,13 +40,11 @@ const Button = ({
       setIsLoading(false)
     })
   }
-  const Tag = type === 'link' && href ? 'a' : 'button'
 
   return (
-    <Tag
+    <button
       {...rest}
-      type={href ? undefined : htmlType}
-      href={href}
+      type={htmlType}
       className={classNames(
         `m-btn m-btn-${type}`,
         {
@@ -63,7 +60,7 @@ const Button = ({
     >
       {loadFlag && <Loading className='m-btn-loading' />}
       {children}
-    </Tag>
+    </button>
   )
 }
 
@@ -77,8 +74,6 @@ Button.propTypes = {
   /** 原生的 type */
   htmlType: PropTypes.string,
   loading: PropTypes.bool,
-  /** type 为 link 才有用 */
-  href: PropTypes.string,
   /** 返回 Promise 才有 loading */
   onClick: PropTypes.func,
   disabled: PropTypes.bool,

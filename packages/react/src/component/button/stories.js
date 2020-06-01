@@ -31,9 +31,13 @@ export const normal = () => (
 
       <Button type='primary'>主色</Button>
       <Button type='danger'>危险</Button>
-      <Button type='link'>Link</Button>
-      <Button type='link' href='google.com' target='_blank'>
-        链接
+      <Button
+        type='link'
+        onClick={() => {
+          window.open('https://www.google.com')
+        }}
+      >
+        Link
       </Button>
     </div>
     plain
