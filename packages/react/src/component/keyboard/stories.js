@@ -9,10 +9,6 @@ const numStore = observable({
   one: '',
   two: '',
   three: '',
-  four: '',
-  five: '',
-  six: '',
-  seven: '',
   setValue(id, v) {
     this[id] = v
   },
@@ -36,9 +32,7 @@ const KeyboardInput = ({ id, value }) => {
         max={100}
         className='m-inline-block'
       >
-        <Button plain>
-          {value}
-        </Button>
+        <Button plain>{value}</Button>
       </KeyboardWrap>
 
       <div className='m-block m-gap-20' />
@@ -52,13 +46,10 @@ export const normal = () => {
       bottom={<div className='m-border-top m-padding-10'>bottom bottom</div>}
       tabbar={<div className='m-border-top m-padding-10'>tabbar tabbar</div>}
     >
+      <div>切成移动端，否则好像有问题，暂时不知道为什么</div>
       <KeyboardInput id='one' value={numStore.one} />
       <KeyboardInput id='two' value={numStore.two} />
       <KeyboardInput id='three' value={numStore.three} />
-      <KeyboardInput id='four' value={numStore.four} />
-      <KeyboardInput id='five' value={numStore.five} />
-      <KeyboardInput id='six' value={numStore.six} />
-      <KeyboardInput id='seven' value={numStore.seven} />
     </Page>
   )
 }

@@ -32,6 +32,7 @@ const Popup = ({
   isPickPopup,
   disabledHeader,
   disabledMask,
+  disabledAnimate,
   children,
   ...rest
 }) => {
@@ -48,9 +49,10 @@ const Popup = ({
       'm-popup-right': right,
       'm-popup-bottom': bottom,
       'm-popup-box-shadow': opacity === 0 || disabledMask,
-      'm-animated m-animated-slide-in-left': left,
-      'm-animated m-animated-slide-in-right': right,
-      'm-animated m-animated-slide-in-bottom': bottom,
+      'm-animated': !disabledAnimate,
+      'm-animated-slide-in-left': left,
+      'm-animated-slide-in-right': right,
+      'm-animated-slide-in-bottom': bottom,
     },
     className
   )
@@ -102,6 +104,7 @@ Popup.propTypes = {
   opacity: PropTypes.number,
   disabledHeader: PropTypes.bool,
   disabledMask: PropTypes.bool,
+  disabledAnimate: PropTypes.bool,
 
   // 内部用
   isPickPopup: PropTypes.bool,

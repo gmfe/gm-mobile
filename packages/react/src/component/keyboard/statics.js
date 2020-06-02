@@ -2,67 +2,72 @@ import React from 'react'
 import LayoutRoot from '../layout_root'
 import Keyboard from './keyboard'
 import Popup from '../popup'
+import EVENT_TYPE from '../../event_type'
+import { KEYBOARD_LABEL, isKeyboardNeedHide } from './util'
 
-// import {
-//   KEYBOARDLABEL,
-//   KEYBOARD_RENDER,
-//   KEYBOARD_HIDE,
-//   dispatchKeyboardEvent,
-// } from './util'
+// 事件通知
+const dispatchKeyboardEvent = (eventName) => {
+  window.dispatchEvent(new window.CustomEvent(eventName))
+}
 
-// const KeyboardStatics = {
-//   render({ title, onHide, ...rest }) {
-//     LayoutRoot.renderWith(
-//       LayoutRoot.TYPE.KEYBOARD,
-//       <Popup
-//         title={title}
-//         onHide={() => {
-//           KeyboardStatics.hide()
-//           onHide && onHide()
-//         }}
-//         bottom
-//         disabledMask
-//         style={{ animationDuration: '0s' }}
-//         // 内部用，为了区分点击区域
-//         data-label={KEYBOARDLABEL}
-//       >
-//         <Keyboard key={rest.key} {...rest} />
-//       </Popup>,
-//       {
-//         popstateCallback: () => dispatchKeyboardEvent(null, KEYBOARD_HIDE),
-//       } // 回调, 通知键盘收起, layoutRoot监听popstate用
-//     )
-//     // 键盘弹起通知
-//     dispatchKeyboardEvent(rest.key, KEYBOARD_RENDER)
-//   },
+const handleWindowClick = (e) => {
+  if (isKeyboardNeedHide(e.target)) {
+    KeyboardStatics.hide()
+  }
+}
 
-//   hide() {
-//     LayoutRoot.hideWith(LayoutRoot.TYPE.KEYBOARD)
-//     // 键盘收起通知
-//     dispatchKeyboardEvent(null, KEYBOARD_HIDE)
-//   },
-// }
-
-// 遮罩状态
+// 此 render 和 hide 和其他 static 很不一样
+// 只 setComponent，不做 renderWith。不耦合 history
+// and keyboard 的事件只有切换的时候才会抛事件。 即多次 render，也只会抛一次事件
 const KeyboardStatics = {
+  active: false,
   render({ title, onHide, ...rest }) {
-    LayoutRoot.renderWith(
+    let fun
+
+    if (this.active) {
+      fun = LayoutRoot.setComponent
+    } else {
+      fun = LayoutRoot.renderWith
+    }
+
+    fun(
       LayoutRoot.TYPE.KEYBOARD,
       <Popup
         title={title}
         onHide={() => {
           KeyboardStatics.hide()
+          onHide && onHide()
         }}
         bottom
-        opacity={0}
+        disabledMask
+        disabledAnimate
+        data-keyboard-label={KEYBOARD_LABEL}
       >
         <Keyboard {...rest} />
       </Popup>
     )
+
+    // false => true 才通知
+    if (this.active === false) {
+      dispatchKeyboardEvent(EVENT_TYPE.KEYBOARD_SHOW)
+      // 键盘弹出需要监听 window click
+      document.body.addEventListener('click', handleWindowClick)
+    }
+
+    this.active = true
   },
 
   hide() {
-    LayoutRoot.hideWith(LayoutRoot.TYPE.KEYBOARD)
+    // true => false 才通知
+    if (this.active) {
+      LayoutRoot.removeComponent(LayoutRoot.TYPE.KEYBOARD)
+
+      dispatchKeyboardEvent(EVENT_TYPE.KEYBOARD_HIDE)
+      // 关闭键盘记得remove
+      document.body.removeEventListener('click', handleWindowClick)
+    }
+
+    this.active = false
   },
 }
 

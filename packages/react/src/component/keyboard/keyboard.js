@@ -175,8 +175,6 @@ const Keyboard = (props) => {
   )
 }
 
-Object.assign(Keyboard, KeyboardStatics)
-
 Keyboard.propTypes = {
   /** 初始默认值 */
   defaultValue: PropTypes.string,
