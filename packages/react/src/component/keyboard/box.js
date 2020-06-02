@@ -28,8 +28,8 @@ const KeyboardBox = ({ tabbar, style, ...rest }) => {
       ? CSSVariable.getValue('--m-size-tabbar-height')
       : '0px'
 
-    // 暂时先定 275px
-    return `calc(275px - ${tabbarHeight})`
+    // 暂时先定 225px
+    return `calc(225px - ${tabbarHeight})`
   }
 
   if (!active) {

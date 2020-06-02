@@ -20,7 +20,6 @@ const useKeyboard = (props) => {
     // 延迟点，等 Page render 后再 scrollIntoView
     setTimeout(() => {
       const dom = document.querySelector(`[data-keyboard-label="${tag}"]`)
-
       dom && dom.scrollIntoViewIfNeeded(false)
     }, 50)
   }
@@ -31,7 +30,6 @@ const useKeyboard = (props) => {
       'data-keyboard-label': tag,
       // 更合理，原生键盘也是 onFocus ，而不是 onClick
       onFocus: handleFocus,
-      // onBlur: handleBlur,
     },
   }
 }

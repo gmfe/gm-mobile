@@ -5,9 +5,7 @@ import _ from 'lodash'
 
 import BaseKeyboard from './_keyboard'
 import Flex from '../flex'
-import Button from '../button'
 import { TYPE, text2Number } from './util'
-import KeyboardStatics from './statics'
 import Toast from '../toast'
 
 const handleErrorMsg = ({ value, min, max, precision }) => {
@@ -38,28 +36,17 @@ const handleErrorMsg = ({ value, min, max, precision }) => {
 const Keyboard = (props) => {
   const {
     defaultValue,
-    onSubmit,
-    children,
     min,
     max,
     precision,
     getErrorMsg,
+    onChange,
+    children,
     ...rest
   } = props
 
   // 输入值 及 输入校验提示信息
   const [currentValue, setCurrentValue] = useState(defaultValue)
-  const [errorMsg, setErrorMsg] = useState(null)
-
-  const handleSubmit = () => {
-    // 没有更正输入
-    if (errorMsg) {
-      return
-    }
-
-    KeyboardStatics.hide()
-    onSubmit(currentValue)
-  }
 
   // 处理 小数点 情况
   const handelDot = (value) => {
@@ -73,7 +60,6 @@ const Keyboard = (props) => {
           </div>
         ),
       })
-      setErrorMsg(getLocale('当前只能输入整数'))
       return value
     }
 
@@ -132,7 +118,6 @@ const Keyboard = (props) => {
     }
 
     const msg = getErrorMsg({ value: cv, min, max, precision })
-    setErrorMsg(msg)
     msg &&
       Toast.tip({
         children: <div className='m-number-keyboard-msg'>{msg}</div>,
@@ -141,9 +126,6 @@ const Keyboard = (props) => {
   }
 
   const handleValueChange = (value) => {
-    // 每次输入前清空上一次的提示信息
-    setErrorMsg(null)
-
     // 处理键盘数字类型
     const v = handleClickNum(value)
 
@@ -151,24 +133,11 @@ const Keyboard = (props) => {
     const cv = checkValue(v)
 
     setCurrentValue(cv)
-    // onSubmit(cv)
+    onChange(cv)
   }
 
   return (
     <Flex column {...rest} className='m-number-keyboard'>
-      <Flex className='m-number-keyboard-header'>
-        <Flex alignCenter className='m-number-keyboard-header-input m-text-18'>
-          {currentValue}
-        </Flex>
-        <Button
-          type='primary'
-          mini
-          className='m-number-keyboard-header-btn'
-          onClick={handleSubmit}
-        >
-          {getLocale('确定')}
-        </Button>
-      </Flex>
       {children}
       <BaseKeyboard onChange={handleValueChange} />
     </Flex>
@@ -178,8 +147,8 @@ const Keyboard = (props) => {
 Keyboard.propTypes = {
   /** 初始默认值 */
   defaultValue: PropTypes.string,
-  /** 确定回调函数 */
-  onSubmit: PropTypes.func.isRequired,
+  /** 键盘输入回调 */
+  onChange: PropTypes.func.isRequired,
   /** 最小值 */
   min: PropTypes.number,
   /** 最大值 */

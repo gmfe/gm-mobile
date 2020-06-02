@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
@@ -30,6 +30,7 @@ const Counter = ({
 
   const plusDisabled = max && text2Number(value) >= max
   const minusDisabled = value === '' || text2Number(value) === 0
+  const [currentValue, setCurrentValue] = useState(value)
 
   // 检验是否超出大小值限制
   const checkValue = (value, type) => {
@@ -70,6 +71,11 @@ const Counter = ({
     onChange(cv)
   }
 
+  const handleKeyboardValueChange = (value) => {
+    setCurrentValue(value)
+    onChange(value)
+  }
+
   return (
     <div
       {...rest}
@@ -91,15 +97,15 @@ const Counter = ({
         />
       </div>
       <KeyboardWrap
-        defaultValue={value}
+        defaultValue={currentValue}
         title={title}
         min={min}
         max={max}
         precision={precision}
-        onSubmit={onChange}
         getErrorMsg={getErrorMsg}
+        onChange={handleKeyboardValueChange}
       >
-        <div className='m-counter-content-text'>{value}</div>
+        <div className='m-counter-content-text'>{currentValue}</div>
       </KeyboardWrap>
       <div className='m-counter-icon' onClick={() => handleChange('plus')}>
         <SVGPlus
@@ -123,7 +129,7 @@ Counter.propTypes = {
   max: PropTypes.number,
   /** 键盘输入数字精度, 可输入几位小数 及 展示 */
   precision: PropTypes.number,
-  /** + / - 按钮回调, 数字键盘确定按钮回调函数 */
+  /** 数值更新回调 */
   onChange: PropTypes.func.isRequired,
   /** 默认为mini尺寸 */
   large: PropTypes.bool,

@@ -27,7 +27,7 @@ const KeyboardInput = ({ id, value }) => {
       <KeyboardWrap
         title={`商品${id}`}
         defaultValue={value}
-        onSubmit={(v) => numStore.setValue(id, v)}
+        onChange={(v) => numStore.setValue(id, v)}
         min={2}
         max={100}
         className='m-inline-block'
