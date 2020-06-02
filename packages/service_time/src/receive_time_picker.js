@@ -70,8 +70,11 @@ const ReceiveTimePicker = ({ onConfirm, order }) => {
     cycleList
   )
 
+  const [startValue, setStartValue] = useState(startEndValue.startValues)
+  const [endValue, setEndValue] = useState(startEndValue.endValues)
+
   const startDatas = cycleToPickerList(startCycleList)
-  let _startValue = startEndValue.startValues
+  let _startValue = startValue
   if (_startValue.length === 0) {
     _startValue = [startDatas[0].value, startDatas[0].children[0].value]
   }
@@ -82,18 +85,15 @@ const ReceiveTimePicker = ({ onConfirm, order }) => {
   const endDatas = useMemo(() => {
     return cycleToPickerList(getEndCycleList(startValueDate, cycleList))
   }, [startValueDate, cycleList])
-
-  let _endValue = startEndValue.endValues
+  let _endValue = endValue
   if (_endValue.length === 0) {
     _endValue = [endDatas[0].value, endDatas[0].children[0].value]
   }
 
-  const [startValue, setStartValue] = useState(_startValue)
-  const [endValue, setEndValue] = useState(_endValue)
   const handleConfirm = () => {
     onConfirm({
-      startValue,
-      endValue,
+      startValue: startValue.length > 0 ? startValue : _startValue,
+      endValue: endValue.length > 0 ? endValue : _endValue,
       isLastCycle,
       receiveTimeLimit: receive_time_limit,
     })
@@ -114,7 +114,7 @@ const ReceiveTimePicker = ({ onConfirm, order }) => {
           <div className='m-text-center'>{getLocale('最早收货时间')}</div>
           <CouplingPicker
             datas={startDatas}
-            values={startValue}
+            values={_startValue}
             renderOption={(dataIndex, option) => {
               if (dataIndex === 0) {
                 return `${option.text} ${
@@ -130,7 +130,7 @@ const ReceiveTimePicker = ({ onConfirm, order }) => {
           <div className='m-text-center'>{getLocale('最晚收货时间')}</div>
           <CouplingPicker
             datas={endDatas}
-            values={endValue}
+            values={_endValue}
             renderOption={(dataIndex, option) => {
               if (dataIndex === 0) {
                 return `${option.text}${
