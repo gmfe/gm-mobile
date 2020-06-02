@@ -1,4 +1,5 @@
 import React from 'react'
+import _ from 'lodash'
 
 const TYPE = {
   INNERLAYER: 'innerLayer',
@@ -76,7 +77,9 @@ LayoutRoot.removeComponent = (type) => {
 }
 
 // 这种写法 附带 History 功能
-LayoutRoot.renderWith = (type, Component) => {
+LayoutRoot.renderWith = (type, Component, options) => {
+  options = Object.assign({ onPopStateCallback: _.noop }, options)
+
   const popstate = (e) => {
     const typeStack = [
       TYPE.INNERLAYER,
@@ -90,7 +93,12 @@ LayoutRoot.renderWith = (type, Component) => {
     if (e.state && typeStack.indexOf(e.state.type) >= typeStack.indexOf(type)) {
       return
     }
+
     LayoutRoot.removeComponent(type)
+
+    // 需要给个回调，响应 popstate 的情况。否则没其他办法通知回去。
+    options.onPopStateCallback()
+
     window.removeEventListener('popstate', popstate)
   }
 

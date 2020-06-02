@@ -21,22 +21,12 @@ const handleWindowClick = (e) => {
 // and keyboard 的事件只有切换的时候才会抛事件。 即多次 render，也只会抛一次事件
 const KeyboardStatics = {
   active: false,
-  render({ title, onHide, ...rest }) {
-    let fun
-
-    if (this.active) {
-      fun = LayoutRoot.setComponent
-    } else {
-      fun = LayoutRoot.renderWith
-    }
-
-    fun(
-      LayoutRoot.TYPE.KEYBOARD,
+  render({ title, ...rest }) {
+    const com = (
       <Popup
         title={title}
         onHide={() => {
           KeyboardStatics.hide()
-          onHide && onHide()
         }}
         bottom
         disabledMask
@@ -46,6 +36,18 @@ const KeyboardStatics = {
         <Keyboard {...rest} />
       </Popup>
     )
+
+    if (this.active) {
+      LayoutRoot.setComponent(LayoutRoot.TYPE.KEYBOARD, com)
+    } else {
+      LayoutRoot.renderWith(LayoutRoot.TYPE.KEYBOARD, com, {
+        onPopStateCallback() {
+          dispatchKeyboardEvent(EVENT_TYPE.KEYBOARD_HIDE)
+          document.body.removeEventListener('click', handleWindowClick)
+          this.active = false
+        },
+      })
+    }
 
     // false => true 才通知
     if (this.active === false) {
@@ -60,7 +62,7 @@ const KeyboardStatics = {
   hide() {
     // true => false 才通知
     if (this.active) {
-      LayoutRoot.removeComponent(LayoutRoot.TYPE.KEYBOARD)
+      LayoutRoot.hideWith(LayoutRoot.TYPE.KEYBOARD)
 
       dispatchKeyboardEvent(EVENT_TYPE.KEYBOARD_HIDE)
       // 关闭键盘记得remove
