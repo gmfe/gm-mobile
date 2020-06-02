@@ -56,6 +56,7 @@ const Counter = ({
       // 小于0时展示为0不变
       v = v - 1 < 0 ? 0 : v - 1
       const cv = Big(checkValue(v, type)).toFixed(_precision)
+      setCurrentValue(cv)
       onChange(cv)
       return
     }
@@ -68,6 +69,7 @@ const Counter = ({
       v = min
     }
     const cv = Big(checkValue(v, type)).toFixed(_precision)
+    setCurrentValue(cv)
     onChange(cv)
   }
 
