@@ -22,7 +22,15 @@ const handleWindowClick = (e) => {
 const KeyboardStatics = {
   active: false,
   render({ title, onHide, ...rest }) {
-    LayoutRoot.setComponent(
+    let fun
+
+    if (this.active) {
+      fun = LayoutRoot.setComponent
+    } else {
+      fun = LayoutRoot.renderWith
+    }
+
+    fun(
       LayoutRoot.TYPE.KEYBOARD,
       <Popup
         title={title}
@@ -50,10 +58,10 @@ const KeyboardStatics = {
   },
 
   hide() {
-    LayoutRoot.removeComponent(LayoutRoot.TYPE.KEYBOARD)
-
     // true => false 才通知
     if (this.active) {
+      LayoutRoot.removeComponent(LayoutRoot.TYPE.KEYBOARD)
+
       dispatchKeyboardEvent(EVENT_TYPE.KEYBOARD_HIDE)
       // 关闭键盘记得remove
       document.body.removeEventListener('click', handleWindowClick)
