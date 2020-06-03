@@ -113,6 +113,7 @@ const ReceiveTimePicker = ({ onConfirm, order }) => {
         <Flex column flex>
           <div className='m-text-center'>{getLocale('最早收货时间')}</div>
           <CouplingPicker
+            className='m-text-12'
             datas={startDatas}
             values={_startValue}
             renderOption={(dataIndex, option) => {
@@ -129,6 +130,7 @@ const ReceiveTimePicker = ({ onConfirm, order }) => {
         <Flex column flex>
           <div className='m-text-center'>{getLocale('最晚收货时间')}</div>
           <CouplingPicker
+            className='m-text-12'
             datas={endDatas}
             values={_endValue}
             renderOption={(dataIndex, option) => {
