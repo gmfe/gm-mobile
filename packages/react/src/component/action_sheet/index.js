@@ -8,6 +8,7 @@ const ActionSheetStatics = {
   render({ title, data }) {
     return new Promise((resolve, reject) => {
       Popup.render({
+        disabledHeader: true,
         title: title,
         bottom: true,
         children: (
