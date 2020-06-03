@@ -14,14 +14,14 @@ const Header = ({ title, hideBack, onBack, right, className, ...rest }) => {
     <Flex
       justifyBetween
       {...rest}
-      className={classNames('m-header', className)}
+      className={classNames('m-header m-text-white m-padding-lr-15', className)}
     >
       <Flex alignCenter>
         {!hideBack && (
-          <SVGAngleLeft className='m-padding-lr-15' onClick={handleBack} />
+          <SVGAngleLeft className='m-padding-right-15' onClick={handleBack} />
         )}
         <div
-          className={classNames('m-text-15 m-padding-right-10', {
+          className={classNames('m-text-18 m-padding-right-10', {
             'padding-left-8': hideBack,
           })}
         >
