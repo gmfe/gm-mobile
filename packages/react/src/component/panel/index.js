@@ -46,7 +46,7 @@ const Panel = ({
 }
 
 Panel.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   /** 提供 onTitle，则 title 有右箭头 */
   onTitle: PropTypes.func,
   action: PropTypes.element,

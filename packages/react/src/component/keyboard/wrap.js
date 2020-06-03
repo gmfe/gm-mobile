@@ -1,46 +1,55 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import Keyboard from './keyboard'
 import KeyboardStatics from './statics'
-import { KEYBOARD_LABEL } from './util'
+// import { KEYBOARD_LABEL } from './util'
 
-const useKeyboard = (props) => {
-  const tag = useMemo(() => {
-    return `${KEYBOARD_LABEL}_${Math.random()}`
-  }, [])
+// const useKeyboard = (props) => {
+//   const tag = useMemo(() => {
+//     return `${KEYBOARD_LABEL}_${Math.random()}`
+//   }, [])
 
-  const handleFocus = (e) => {
-    // 触发事件
-    KeyboardStatics.render({
-      // 每个都对于不同的key
-      key: tag,
-      ...props,
-    })
+//   const handleFocus = (e) => {
+//     // 触发事件
+//     KeyboardStatics.render({
+//       // 每个都对于不同的key
+//       key: tag,
+//       ...props,
+//     })
 
-    // 延迟点，等 Page render 后再 scrollIntoView
-    setTimeout(() => {
-      const dom = document.querySelector(`[data-keyboard-label="${tag}"]`)
+//     // 延迟点，等 Page render 后再 scrollIntoView
+//     setTimeout(() => {
+//       const dom = document.querySelector(`[data-keyboard-label="${tag}"]`)
+//       dom && dom.scrollIntoViewIfNeeded(false)
+//     }, 50)
+//   }
 
-      dom && dom.scrollIntoViewIfNeeded(false)
-    }, 50)
-  }
+//   return {
+//     keyboardProps: {
+//       tabIndex: 0,
+//       'data-keyboard-label': tag,
+//       // 更合理，原生键盘也是 onFocus ，而不是 onClick
+//       onFocus: handleFocus,
+//     },
+//   }
+// }
 
-  return {
-    keyboardProps: {
-      tabIndex: 0,
-      'data-keyboard-label': tag,
-      // 更合理，原生键盘也是 onFocus ，而不是 onClick
-      onFocus: handleFocus,
-      // onBlur: handleBlur,
-    },
-  }
-}
+// const KeyboardWrap = ({ children, ...rest }) => {
+//   const { keyboardProps } = useKeyboard(rest)
 
+//   return React.cloneElement(children, {
+//     ...keyboardProps,
+//   })
+// }
+
+// 遮罩状态
 const KeyboardWrap = ({ children, ...rest }) => {
-  const { keyboardProps } = useKeyboard(rest)
+  const handleClick = () => {
+    KeyboardStatics.render({ ...rest })
+  }
 
   return React.cloneElement(children, {
-    ...keyboardProps,
+    onClick: handleClick,
   })
 }
 
