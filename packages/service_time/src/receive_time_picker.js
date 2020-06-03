@@ -51,8 +51,10 @@ const getStartDateFromValues = (startValues, cycleList) => {
   const startDatas = cycleToPickerList(getStartCycleList(cycleList))
 
   const one = _.find(startDatas, (v) => v.value === startValues[0])
-  const two = _.find(one.children, (v) => v.value === startValues[1])
-
+  let two = _.find(one.children, (v) => v.value === startValues[1])
+  if (!two) {
+    two = one.children[0]
+  }
   return two.date
 }
 
@@ -70,30 +72,31 @@ const ReceiveTimePicker = ({ onConfirm, order }) => {
     cycleList
   )
 
-  const [startValue, setStartValue] = useState(startEndValue.startValues)
-  const [endValue, setEndValue] = useState(startEndValue.endValues)
-
   const startDatas = cycleToPickerList(startCycleList)
-  let _startValue = startValue
+  let _startValue = startEndValue.startValues
   if (_startValue.length === 0) {
     _startValue = [startDatas[0].value, startDatas[0].children[0].value]
   }
 
+  const [startValue, setStartValue] = useState(_startValue)
+
   const startValueDate = useMemo(() => {
-    return getStartDateFromValues(_startValue, cycleList)
-  }, [_startValue, cycleList])
+    return getStartDateFromValues(startValue, cycleList)
+  }, [startValue, cycleList])
   const endDatas = useMemo(() => {
     return cycleToPickerList(getEndCycleList(startValueDate, cycleList))
   }, [startValueDate, cycleList])
-  let _endValue = endValue
+
+  let _endValue = startEndValue.endValues
   if (_endValue.length === 0) {
     _endValue = [endDatas[0].value, endDatas[0].children[0].value]
   }
+  const [endValue, setEndValue] = useState(_endValue)
 
   const handleConfirm = () => {
     onConfirm({
-      startValue: startValue.length > 0 ? startValue : _startValue,
-      endValue: endValue.length > 0 ? endValue : _endValue,
+      startValue,
+      endValue,
       isLastCycle,
       receiveTimeLimit: receive_time_limit,
     })
@@ -115,7 +118,7 @@ const ReceiveTimePicker = ({ onConfirm, order }) => {
           <CouplingPicker
             className='m-text-12'
             datas={startDatas}
-            values={_startValue}
+            values={startValue}
             renderOption={(dataIndex, option) => {
               if (dataIndex === 0) {
                 return `${option.text} ${
@@ -132,7 +135,7 @@ const ReceiveTimePicker = ({ onConfirm, order }) => {
           <CouplingPicker
             className='m-text-12'
             datas={endDatas}
-            values={_endValue}
+            values={endValue}
             renderOption={(dataIndex, option) => {
               if (dataIndex === 0) {
                 return `${option.text}${
