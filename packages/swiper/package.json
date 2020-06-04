@@ -21,6 +21,7 @@
     "url": "https://github.com/gmfe/gm-mobile/issues"
   },
   "dependencies": {
+    "@gm-mobile/react": "^1.0.0",
     "swiper": "^5.3.8"
   },
   "peerDependencies": {

@@ -2,12 +2,78 @@
 # yarn lockfile v1
 
 
+"@gm-common/number@^2.2.9":
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/@gm-common/number/-/number-2.3.2.tgz#25d953d39bd9b0c214666736baeae0aa0ad1c174"
+  integrity sha512-Dgc5/eE3Q99RywxIdLl5f8+BKD7w8xqPJjo0OIWDo8EIuSe210LFnsgdevV8es6Geb6UQs4R7k3UPrYIyLlIBA==
+  dependencies:
+    "@types/big.js" "^4.0.5"
+    "@types/lodash" "^4.14.150"
+    big.js "^5.2.2"
+    lodash "^4.17.15"
+
+"@gm-common/tool@^2.2.9":
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/@gm-common/tool/-/tool-2.3.2.tgz#93db936958b2519fbc742114bc60e78c46021b94"
+  integrity sha512-Df7H8bxuloFC4ErigZbQsRTeqUC51O5Dnj6SymF/FK6Qj2RI54xgTYcAStCAodDhSQGIpbbgjuVg/vZJq/RTvg==
+  dependencies:
+    "@types/lodash" "^4.14.150"
+    lodash "^4.17.15"
+
+"@gm-mobile/locales@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@gm-mobile/locales/-/locales-1.0.0.tgz#bd076d5402b47b93ea680d9321c3c8163f7e6c44"
+  integrity sha512-GL00FytCcq4IajRAI7tS3bVRdFQuNI2byozj3QWBUQqwAUJ4GcmCWs76crB4S754k9r6XQ/oMtvochlGcxZKwQ==
+
+"@gm-mobile/react@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@gm-mobile/react/-/react-1.0.0.tgz#309b5c698c2f8e36c5c872fff54b621cd67db0d1"
+  integrity sha512-SYUX6nbUwtEkjZ15K+IS7G/U0zw0HvaC6eT+Myj7iMZwhwZ6jpnFIgkfq7ertLvkDaw0y+UdthxgbddLBMd6KQ==
+  dependencies:
+    "@gm-common/number" "^2.2.9"
+    "@gm-common/tool" "^2.2.9"
+    "@gm-mobile/locales" "^1.0.0"
+    "@gm-mobile/swiper" "^1.0.0"
+    classnames "^2.2.6"
+
+"@gm-mobile/swiper@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@gm-mobile/swiper/-/swiper-1.0.0.tgz#cee40fed12d620f1ea2279fbeabf2478d9f037d1"
+  integrity sha512-704Sl+XtmjRP8/MnpiQ1kAm3P35h/6CWc1xqM0jsxkkeGFSWvXSumyrVil4jZ3Zr3pa/A+3GLrgb50+M8y99VQ==
+  dependencies:
+    swiper "^5.3.8"
+
+"@types/big.js@^4.0.5":
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/@types/big.js/-/big.js-4.0.5.tgz#62c61697646269e39191f24e55e8272f05f21fc0"
+  integrity sha512-D9KFrAt05FDSqLo7PU9TDHfDgkarlwdkuwFsg7Zm4xl62tTNaz+zN+Tkcdx2wGLBbSMf8BnoMhOVeUGUaJfLKg==
+
+"@types/lodash@^4.14.150":
+  version "4.14.155"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.155.tgz#e2b4514f46a261fd11542e47519c20ebce7bc23a"
+  integrity sha512-vEcX7S7aPhsBCivxMwAANQburHBtfN9RdyXFk84IJmu2Z4Hkg1tOFgaslRiEqqvoLtbCBi6ika1EMspE+NZ9Lg==
+
+big.js@^5.2.2:
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/big.js/-/big.js-5.2.2.tgz#65f0af382f578bcdc742bd9c281e9cb2d7768328"
+  integrity sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==
+
+classnames@^2.2.6:
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
+  integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
+
 dom7@^2.1.3:
   version "2.1.3"
   resolved "https://registry.npmjs.org/dom7/-/dom7-2.1.3.tgz#a736f9c3bfbc4ca039a81cd095f97d1d7f3de19c"
   integrity sha512-QTxHHDox+M6ZFz1zHPAHZKI3JOHY5iY4i9BK2uctlggxKQwRhO3q3HHFq1BKsT25Bm/ySSj70K6Wk/G4bs9rMQ==
   dependencies:
     ssr-window "^1.0.1"
+
+lodash@^4.17.15:
+  version "4.17.15"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
+  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
 
 ssr-window@^1.0.1:
   version "1.0.1"
