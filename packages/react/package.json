@@ -28,7 +28,6 @@
     "@gm-common/number": "^2.2.9",
     "@gm-common/tool": "^2.2.9",
     "@gm-mobile/locales": "^1.0.0",
-    "@gm-mobile/swiper": "^1.0.0",
     "classnames": "^2.2.6"
   }
 }

@@ -51,7 +51,6 @@ import Toast from './component/toast'
 import Dialog from './component/dialog'
 import Mask from './component/mask'
 import Popup from './component/popup'
-import PreviewImage from './component/preview_image'
 import Tooltip from './component/tooltip'
 import ActionSheet from './component/action_sheet'
 
@@ -131,7 +130,6 @@ export {
   Confirm,
   Prompt,
   Delete,
-  PreviewImage,
   Tooltip,
   ActionSheet,
   // 其他
