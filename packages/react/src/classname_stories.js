@@ -1,13 +1,11 @@
 import React from 'react'
-import _ from 'lodash'
-import Flex from './component/flex'
 
 export const containerFull = () => {
   return (
-    <Flex column className='m-container-full'>
+    <div column className='m-container-full'>
       <div>header</div>
-      <Flex>m-container-full 方便做布局</Flex>
-    </Flex>
+      <div>m-container-full 方便做布局</div>
+    </div>
   )
 }
 

@@ -6,7 +6,7 @@ const webpackFinal = (config) => {
   })
 
   config.module.rules[3] = {
-    test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani|pdf)(\?.*)?$/,
+    test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani|pdf|svg)(\?.*)?$/,
     loader:
       './node_modules/@storybook/core/node_modules/file-loader/dist/cjs.js',
     query: { name: 'static/media/[name].[hash:8].[ext]' },
@@ -61,12 +61,15 @@ const webpackFinal = (config) => {
 }
 
 module.exports = {
+  // 枚举，避免识别到 node_modules 的 stories
   stories: [
+    '../packages/components/src/**/*stories.js',
     '../packages/react/src/**/*stories.js',
     '../packages/locales/src/**/*stories.js',
     '../packages/business/src/**/*stories.js',
     '../packages/service_time/src/**/*stories.js',
     '../packages/swiper/src/**/*stories.js',
+    '../packages/qrcode/src/**/*stories.js',
     '../other/**/*.stories.js',
   ],
   webpackFinal,

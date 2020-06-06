@@ -1,0 +1,52 @@
+.m-counter {
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  font-weight: bold;
+  width: 86px;
+  height: 21px;
+  line-height: 21px;
+
+  .mDisabledWith();
+
+  .m-counter-content-text {
+    border-bottom: 0.5px solid var(--m-color-border-dark);
+    width: 44px;
+  }
+
+  .mCounterVariants(21px, 21px, 14px, 3px);
+}
+
+.mCounterVariants(@iconWidth, @height, @size, @margin) {
+  .m-counter-content-text {
+    display: inline-block;
+    overflow-y: hidden;
+    overflow-x: auto;
+    height: @height;
+    line-height: @height;
+    text-align: center;
+    vertical-align: top;
+    font-weight: bold;
+    font-size: @size;
+    padding: 0;
+    outline: 0;
+
+    .mScrollBarNone();
+  }
+
+  .m-counter-plus,
+  .m-counter-minus {
+    display: inline-block;
+    height: @height;
+    line-height: @height;
+    width: @iconWidth;
+    text-align: center;
+    margin: @margin 0;
+
+    .mDisabledWith();
+  }
+
+  .m-counter-plus {
+    color: var(--m-color-primary);
+  }
+}

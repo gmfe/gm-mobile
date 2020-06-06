@@ -1,7 +1,6 @@
 import React from 'react'
-import LayoutRoot from '../layout_root'
+import { LayoutRoot, Popup } from '@gm-mobile/components'
 import Keyboard from './keyboard'
-import Popup from '../popup'
 // import EVENT_TYPE from '../../event_type'
 // import { KEYBOARD_LABEL, isKeyboardNeedHide } from './util'
 

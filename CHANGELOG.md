@@ -1,4 +1,18 @@
-# 较 react-mgm 的变动
+# 2.x
+
+增加 小程序
+
+## breaking change
+
+Toast 废弃 info danger 方法
+
+Cell 废弃 href，跳转自主处理
+
+# 1.x
+
+## change
+
+较 react-mgm 的变动
 
 新增 Button
 

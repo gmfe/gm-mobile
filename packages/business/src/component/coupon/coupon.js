@@ -5,9 +5,6 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
-import SVGDownUp from '../../../svg/down-up-circle.svg'
-import SVGExpired from '../../../svg/expired.svg'
-
 const Coupon = (props) => {
   const {
     currency,
@@ -105,7 +102,7 @@ const Coupon = (props) => {
             )}
             {isExpired || isUsed ? (
               <div>
-                <SVGExpired className='m-coupon-right-expired' />
+                <i className='m-font m-font-expired m-coupon-right-expired' />
                 <Flex
                   alignCenter
                   justifyCenter
@@ -132,7 +129,7 @@ const Coupon = (props) => {
                   active: showUseInfo,
                 })}
               >
-                <SVGDownUp className='m-coupon-right-footer-down-up' />
+                <i className='m-font m-font-down-up-circle m-coupon-right-footer-down-up' />
               </Flex>
             </Flex>
           )}

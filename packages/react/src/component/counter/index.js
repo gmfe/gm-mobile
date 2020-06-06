@@ -5,8 +5,6 @@ import _ from 'lodash'
 import Big from 'big.js'
 
 import { KeyboardWrap } from '../keyboard'
-import SVGPlus from '../../../svg/plus.svg'
-import SVGMinus from '../../../svg/minus.svg'
 
 const Counter = ({
   value,
@@ -84,8 +82,8 @@ const Counter = ({
       )}
     >
       <div className='m-counter-icon' onClick={() => handleChange('minus')}>
-        <SVGMinus
-          className={classNames('m-counter-minus', {
+        <i
+          className={classNames('m-font m-font-minus m-counter-minus', {
             disabled: minusDisabled,
           })}
         />
@@ -102,8 +100,8 @@ const Counter = ({
         <div className='m-counter-content-text'>{value}</div>
       </KeyboardWrap>
       <div className='m-counter-icon' onClick={() => handleChange('plus')}>
-        <SVGPlus
-          className={classNames('m-counter-plus', {
+        <i
+          className={classNames('m-font m-font-plus m-counter-plus', {
             disabled: plusDisabled,
           })}
         />

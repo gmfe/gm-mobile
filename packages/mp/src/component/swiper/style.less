@@ -1,0 +1,40 @@
+.m-swiper-pagination {
+  width: auto;
+  height: 20px;
+  right: 0;
+  text-align: center;
+  margin-top: -25px;
+
+  &.m-swiper-pagination-rect {
+    .m-swiper-pagination-bulletin {
+      display: inline-block;
+      width: 6px;
+      height: 4px;
+      border-radius: 4px;
+      background: var(--m-color-bg-white);
+      opacity: 0.5;
+      margin: 0 4px;
+
+      &.swiper-pagination-bullet-active {
+        width: 16px;
+      }
+    }
+  }
+
+  &.m-swiper-pagination-dot {
+    .m-swiper-pagination-bulletin {
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: black;
+      opacity: 0.5;
+      margin: 0 4px;
+
+      &.swiper-pagination-bullet-active {
+        opacity: 1;
+        background: var(--m-color-bg-primary);
+      }
+    }
+  }
+}

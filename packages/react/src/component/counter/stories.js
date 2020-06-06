@@ -2,8 +2,7 @@ import React from 'react'
 import { observable } from 'mobx'
 
 import Counter from './'
-import Page from '../page'
-import Flex from '../flex'
+import { Page } from '@gm-mobile/components'
 
 const store = observable({
   one: '',

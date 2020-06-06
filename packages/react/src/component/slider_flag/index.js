@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import _ from 'lodash'
-import Flex from '../flex/index'
+import { Flex } from '@gm-mobile/components'
 
 class SliderFlag extends React.Component {
   render() {
