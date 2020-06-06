@@ -2,67 +2,43 @@
 # yarn lockfile v1
 
 
-"@gm-common/number@^2.0.3":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@gm-common/number/-/number-2.1.0.tgz#aabf8b2d9c5c40e290f457b2c5491fc68d404c2a"
-  integrity sha512-T4vr5gtM52OokCrRrVkaE3l5CgwZwGirTFlFOo+fqt1UDvF5s02vumagLvazav5cbShu9vOwuW3DH+aOZyD2jQ==
+"@gm-mobile/components@^2.0.0-alpha.17":
+  version "2.0.0-alpha.17"
+  resolved "https://registry.npmjs.org/@gm-mobile/components/-/components-2.0.0-alpha.17.tgz#5e6d5ae6de73c18463941e12bc801b618159feb2"
+  integrity sha512-RTQnw9fPkEqaW2v5gP3m/Q8mwgX2DgkQQVW3MfdBlGRdRRm7dDYoc0dBu3i+2lqozl9bfMdrla//Z5lcWFB8Ew==
   dependencies:
-    "@types/big.js" "^4.0.5"
-    "@types/lodash" "^4.14.149"
-    big.js "^5.2.2"
-    lodash "^4.17.15"
-    ts-config-gm-react-app "^3.0.6"
+    "@gm-mobile/font" "^2.0.0-alpha.17"
+    "@gm-mobile/locales" "^2.0.0-alpha.17"
+    "@gm-mobile/tool" "^2.0.0-alpha.17"
 
-"@gm-common/tool@^2.0.3":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@gm-common/tool/-/tool-2.1.0.tgz#1f15f36356e53e7b3983de84b7f6d0de37b8ab35"
-  integrity sha512-96MK9WbI41ZZF3YF9Nxy5nEGWmvohpa7Z9z0/ip0590X/QpgGtLoDIgZci+isOSGepXq6LrUNKrh7eULkVA1wA==
+"@gm-mobile/font@^2.0.0-alpha.17":
+  version "2.0.0-alpha.17"
+  resolved "https://registry.npmjs.org/@gm-mobile/font/-/font-2.0.0-alpha.17.tgz#ce4d80d1674949e5c56679ab077ee2a14ee5728f"
+  integrity sha512-kT8xDXsZGHpJx5j+50VWHJkoHFR3xVwpJf4klLzEFwpJ5nT7Xq4g3h1PtOxjjqZudy25FpApCOuv3v7lkp9n5A==
+
+"@gm-mobile/locales@^2.0.0-alpha.17":
+  version "2.0.0-alpha.17"
+  resolved "https://registry.npmjs.org/@gm-mobile/locales/-/locales-2.0.0-alpha.17.tgz#bbbb3a5e97fdc1749d85165960faa614e1de05ae"
+  integrity sha512-72zMjG/Sk/tvjwOvpiVVN5YmcLZ3sLP21LYXMx1Wc/NiK9XjJCS7PHE0JCNNrdHAI2JZOED5PQHBQm+2jnyEqw==
+
+"@gm-mobile/react@^2.0.0-alpha.17":
+  version "2.0.0-alpha.17"
+  resolved "https://registry.npmjs.org/@gm-mobile/react/-/react-2.0.0-alpha.17.tgz#9d6733fc3101ed835cd2e085a324e826c6828287"
+  integrity sha512-fODahlXcAN7j6TVr9oztOe9pzOOWB7CBfvskSS3J1tfrtyUH3G1/MZLNZp8MhTC7jJELUrGBicF44Z/2UhH+cQ==
   dependencies:
-    "@types/lodash" "^4.14.149"
-    lodash "^4.17.15"
-    ts-config-gm-react-app "^3.0.6"
+    "@gm-mobile/components" "^2.0.0-alpha.17"
+    "@gm-mobile/locales" "^2.0.0-alpha.17"
+    "@gm-mobile/tool" "^2.0.0-alpha.17"
 
-"@gm-mobile/locales@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@gm-mobile/locales/-/locales-0.0.3.tgz#0b63cfcbda6b48198c1e44ed83ef7b87f42362c3"
-  integrity sha512-neZAubjCunz9ma751oFL4pk6X7bBJinXrqu1nSrSSSapCAsMJaKOnvVj/vR2RhJCYXQGQ+N/n8plDatGAWK5ig==
-
-"@gm-mobile/react@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@gm-mobile/react/-/react-0.0.3.tgz#6c516f390208f91ee5468f04923090d8f9f58508"
-  integrity sha512-7PQctpBi+kYj/ZEl41irkeV9XRw0cPCkb6JjezI6JIVA9JO43lTBGKg7oC1VCoW8IQghCqNkfrqsx41+2fbdvQ==
+"@gm-mobile/service_time@^2.0.0-alpha.17":
+  version "2.0.0-alpha.17"
+  resolved "https://registry.npmjs.org/@gm-mobile/service_time/-/service_time-2.0.0-alpha.17.tgz#48642648080959e83e87217711f3ccf5b431bca0"
+  integrity sha512-LVOiyCIkRp0nRx9lZ5mAR6z6wFcgS9JU/OTRL19XGDkkD4TUeEMW8qPy9MgKHHZZdc1rX33PSjhBi6eLe9FSDw==
   dependencies:
-    "@gm-common/number" "^2.0.3"
-    "@gm-common/tool" "^2.0.3"
-    "@gm-mobile/locales" "^0.0.3"
-    classnames "^2.2.6"
+    "@gm-mobile/locales" "^2.0.0-alpha.17"
+    "@gm-mobile/react" "^2.0.0-alpha.17"
 
-"@types/big.js@^4.0.5":
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/@types/big.js/-/big.js-4.0.5.tgz#62c61697646269e39191f24e55e8272f05f21fc0"
-  integrity sha512-D9KFrAt05FDSqLo7PU9TDHfDgkarlwdkuwFsg7Zm4xl62tTNaz+zN+Tkcdx2wGLBbSMf8BnoMhOVeUGUaJfLKg==
-
-"@types/lodash@^4.14.149":
-  version "4.14.150"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.150.tgz#649fe44684c3f1fcb6164d943c5a61977e8cf0bd"
-  integrity sha512-kMNLM5JBcasgYscD9x/Gvr6lTAv2NVgsKtet/hm93qMyf/D1pt+7jeEZklKJKxMVmXjxbRVQQGfqDSfipYCO6w==
-
-big.js@^5.2.2:
-  version "5.2.2"
-  resolved "https://registry.yarnpkg.com/big.js/-/big.js-5.2.2.tgz#65f0af382f578bcdc742bd9c281e9cb2d7768328"
-  integrity sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==
-
-classnames@^2.2.6:
-  version "2.2.6"
-  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
-  integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
-
-lodash@^4.17.15:
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
-  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
-
-ts-config-gm-react-app@^3.0.6:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/ts-config-gm-react-app/-/ts-config-gm-react-app-3.1.0.tgz#c403ea3d767149db4a3821615c79b2326662a4bb"
-  integrity sha512-T1a9nhy8qn1Yvh/FAUOsYG/QCjyw1wtTzSnfouTXG5JAS3vyJoMWnktvqfQTkyloljwWmvcV3Q07eDc9QuRBmA==
+"@gm-mobile/tool@^2.0.0-alpha.17":
+  version "2.0.0-alpha.17"
+  resolved "https://registry.npmjs.org/@gm-mobile/tool/-/tool-2.0.0-alpha.17.tgz#98ef0249ecfa650a06007e8bfce5c3829fe31225"
+  integrity sha512-85/0/ApCBgJrWmmgjvOyFveyKIt8D6LJeG59FwYSUxi+AMsC4rZMy3ozq02RpQSRV12cpU/Z5FXsTb0FDRlp1g==

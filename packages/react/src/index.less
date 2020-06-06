@@ -1,58 +1,42 @@
+// web 特有的
 @import './normalize.css';
-@import './less/variable';
-// theme
-@import './theme/dark';
-@import './theme/taobao';
-@import './theme/jd';
-// 公共
-@import './less/mixin';
-@import './less/base';
-@import './less/distance';
-@import './less/bg';
-@import './less/display';
-@import './less/position';
-@import './less/overflow';
-@import './less/text';
-@import './less/border';
-@import './less/animation';
+
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+a {
+  text-decoration: none;
+}
+
+pre {
+  margin: 0;
+  padding: 0;
+}
+// web 特有的 end
+
+// @gm-mobile/components
+@import '~@gm-mobile/components/src/index';
+
+.m-input {
+  -webkit-appearance: none;
+}
+
 // 具体业务
-@import './component/flex/style.less';
-@import './component/loading/style.less';
-@import './component/badge/style.less';
 @import './component/image/style.less';
-@import './component/button/style.less';
-@import './component/dialog/style.less';
-@import './component/calendar/style.less';
-@import './component/search/style.less';
-@import './component/input/style.less';
 @import './component/header/style.less';
-@import './component/switch/style.less';
-@import './component/radio/style.less';
-@import './component/panel/style.less';
-@import './component/mask/style.less';
+@import '../../components/src/component/panel/style.less';
 @import './component/nprogress/style.less';
-@import './component/page/style.less';
-@import './component/toast/style.less';
-@import './component/textarea/style.less';
-@import './component/tabs/style.less';
-@import './component/popup/style.less';
-@import './component/square/style.less';
 @import './component/counter/style.less';
-@import './component/cell/style.less';
-@import './component/picker/style.less';
+@import '../../components/src/component/cell/style.less';
 @import './component/uploader/style.less';
-@import './component/checkbox/style.less';
-@import './component/inner_layer/style.less';
-@import './component/divider/style.less';
-@import './component/label/style.less';
 @import './component/slider/style.less';
 @import './component/slider_flag/style.less';
 @import './component/slider_less/style.less';
 @import './component/keyboard/style.less';
-@import './component/tab_bar/style.less';
 @import './component/nav/style.less';
 @import './component/scroll/style.less';
-@import './component/tag/style.less';
 @import './component/list/style.less';
 @import './component/letter_index/style.less';
-@import './component//progress_bar/style.less';
+@import './component/progress_bar/style.less';
+@import './component/tab_bar/style.less';

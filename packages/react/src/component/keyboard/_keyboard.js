@@ -2,8 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
-import Flex from '../flex'
-import SVGDel from '../../../svg/keyboard_del.svg'
+import { Flex } from '@gm-mobile/components'
 import { TYPE, KEYS } from './util'
 
 const BaseKeyboard = (props) => {
@@ -36,7 +35,7 @@ const BaseKeyboard = (props) => {
           className='m-keyboard-text'
           onClick={() => handleKeyClick({ type: TYPE.BACK, value: null })}
         >
-          <SVGDel className='m-keyboard-del-icon' />
+          <i className='m-font m-font-keyboard_del m-keyboard-del-icon' />
         </Flex>
         <div className='m-keyboard-gap' />
       </Flex>

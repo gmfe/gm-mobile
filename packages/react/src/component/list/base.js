@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 import classNames from 'classnames'
 
-import Checkbox from '../checkbox'
-import Radio from '../radio'
+import { Checkbox, Radio } from '@gm-mobile/components'
 
 // 不要轻易改这个文件
 class Base extends React.Component {

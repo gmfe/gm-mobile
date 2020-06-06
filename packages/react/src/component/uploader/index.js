@@ -1,9 +1,7 @@
 import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
-import { is } from '@gm-common/tool'
+import { is } from '@gm-mobile/tool'
 import classNames from 'classnames'
-
-import SVGPlus from '../../../svg/plus.svg'
 
 const Uploader = ({
   accept,
@@ -45,7 +43,7 @@ const Uploader = ({
       >
         {children || (
           <div className='m-uploader-icon-wrap'>
-            <SVGPlus className='m-uploader-icon' />
+            <i className='m-font m-font-plus m-uploader-icon' />
           </div>
         )}
       </div>

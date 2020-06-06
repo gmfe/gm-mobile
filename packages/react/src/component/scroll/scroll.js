@@ -8,9 +8,8 @@ import React, {
 } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import Flex from '../flex/index'
+import { Flex, Loading } from '@gm-mobile/components'
 import _ from 'lodash'
-import Loading from '../loading'
 import Lazy from '../lazy'
 
 const Scroll = forwardRef(

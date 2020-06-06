@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 import List from '../list'
 import Letter from './letter'
-import Flex from '../flex'
+import { Flex } from '@gm-mobile/components'
 import { data2Group } from './util'
 
 const LetterIndex = ({

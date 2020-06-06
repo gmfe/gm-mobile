@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Flex from '../flex'
+import { Flex } from '@gm-mobile/components'
 import classNames from 'classnames'
 import _ from 'lodash'
-import SVGAngleLeft from '../../../svg/angle-left.svg'
 
 const Header = ({ title, hideBack, onBack, right, className, ...rest }) => {
   const handleBack = () => {
@@ -18,7 +17,10 @@ const Header = ({ title, hideBack, onBack, right, className, ...rest }) => {
     >
       <Flex alignCenter>
         {!hideBack && (
-          <SVGAngleLeft className='m-padding-right-15' onClick={handleBack} />
+          <i
+            className='m-font m-font-angle-left m-padding-right-15'
+            onClick={handleBack}
+          />
         )}
         <div
           className={classNames('m-text-18 m-padding-right-10', {

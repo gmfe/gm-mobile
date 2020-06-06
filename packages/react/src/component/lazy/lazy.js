@@ -1,7 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { isElementOverViewport } from '@gm-common/tool'
 import _ from 'lodash'
+
+function isElementOverViewport(dom) {
+  const rect = dom.getBoundingClientRect()
+  return (
+    rect.bottom >= 0 &&
+    rect.right >= 0 &&
+    rect.left <= (window.innerWidth || document.documentElement.clientWidth) &&
+    rect.top <= (window.innerHeight || document.documentElement.clientHeight)
+  )
+}
 
 const Lazy = ({ targetId, delay, children, ...rest }) => {
   const ref = useRef(null)

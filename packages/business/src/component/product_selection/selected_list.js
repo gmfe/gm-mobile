@@ -4,9 +4,6 @@ import _ from 'lodash'
 import PropTypes from 'prop-types'
 import { Flex, Mask } from '@gm-mobile/react'
 
-import SVGDelete from '../../../svg/delete.svg'
-import SVGCloseCircle from '../../../svg/close-circle.svg'
-
 const SelectedList = ({ list, onSelect, onClose, ...rest }) => {
   const [selectedList, setSelectedList] = useState(list)
 
@@ -29,14 +26,14 @@ const SelectedList = ({ list, onSelect, onClose, ...rest }) => {
       <Mask onClick={onClose} />
       <div className='m-selected-list-content m-animated m-animated-slide-in-bottom'>
         <Flex alignCenter className='m-selected-list-content-title'>
-          {getLocale('已选商品')}（{selectedList.length}）
+          {getLocale('已选商品')}
           <Flex
             justifyCenter
             alignCenter
             className='m-selected-list-content-icon m-text-placeholder'
             onClick={onClose}
           >
-            <SVGCloseCircle />
+            <i className='m-font m-font-close-circle' />
           </Flex>
         </Flex>
         {_.map(selectedList, (item) => (
@@ -52,7 +49,7 @@ const SelectedList = ({ list, onSelect, onClose, ...rest }) => {
               className='m-selected-list-content-icon'
               onClick={() => handleDelete(item)}
             >
-              <SVGDelete />
+              <i className='m-font m-font-delete' />
             </Flex>
           </Flex>
         ))}

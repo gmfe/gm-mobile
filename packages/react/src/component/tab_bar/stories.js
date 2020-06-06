@@ -1,7 +1,7 @@
-import { Tabbar, FlowBtnTabbar } from './index'
 import React, { useState } from 'react'
-import SvgPlus from '../../../svg/plus.svg'
-import SvgClose from '../../../svg/close-circle.svg'
+import { View, Text } from '@gm-mobile/components'
+import FlowBtnTabbar from './flow_btn_tab_bar'
+import Tabbar from './tab_bar'
 
 export const normal = () => {
   const [active, setActive] = useState('/my')
@@ -14,30 +14,30 @@ export const normal = () => {
     {
       name: '订单',
       to: '/order',
-      icon: <SvgPlus />,
-      activeIcon: <SvgClose />,
+      icon: <Text className='m-font m-font-plus' />,
+      activeIcon: <Text className='m-font m-font-close-circle' />,
     },
     {
       name: '我的',
       to: '/my',
-      icon: <SvgPlus />,
+      icon: <Text className='m-font m-font-plus' />,
     },
     {
       name: '购物车',
-      icon: <SvgClose />,
+      icon: <Text className='m-font m-font-close-circle' />,
       to: '/cart',
       showBadge: true,
       badge: { count: 7, corner: true },
     },
   ]
   return (
-    <div className='m-padding-top-10'>
+    <View className='m-padding-top-10'>
       <Tabbar
         configs={configs}
         onTabChange={handleTabChange}
         selected={active}
       />
-    </div>
+    </View>
   )
 }
 
@@ -52,13 +52,13 @@ export const flowBtn = () => {
     {
       name: '订单',
       to: '/order',
-      icon: <SvgPlus />,
-      activeIcon: <SvgClose />,
+      icon: <Text className='m-font m-font-plus' />,
+      activeIcon: <Text className='m-font m-font-close' />,
     },
     {
       name: '我的',
       to: '/my',
-      icon: <SvgPlus />,
+      icon: <Text className='m-font m-font-plus' />,
     },
   ]
 
@@ -66,11 +66,11 @@ export const flowBtn = () => {
     {
       name: '其他',
       to: '/other',
-      icon: <SvgPlus />,
+      icon: <Text className='m-font m-font-plus' />,
     },
     {
       name: '购物车',
-      icon: <SvgClose />,
+      icon: <Text className='m-font m-font-close' />,
       to: '/cart',
       showBadge: true,
       badge: { count: 7, corner: true },
