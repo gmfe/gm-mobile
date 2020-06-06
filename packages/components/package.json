@@ -1,0 +1,33 @@
+{
+  "name": "@gm-mobile/components",
+  "version": "1.0.2",
+  "description": "> TODO: description",
+  "author": "liyatang <liyatang@qq.com>",
+  "homepage": "https://github.com/gmfe/gm-mobile#readme",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "src/index.js",
+  "types": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gmfe/gm-mobile.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/gmfe/gm-mobile/issues"
+  },
+  "peerDependencies": {
+    "@tarojs/components": "^2.2.7",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "dependencies": {
+    "@gm-mobile/locales": "^1.0.2",
+    "classnames": "^2.2.6",
+    "prop-types": "^15.7.2"
+  }
+}
