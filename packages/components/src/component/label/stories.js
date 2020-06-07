@@ -1,6 +1,6 @@
 import React from 'react'
 import Label from './index'
-import { View } from '@tarojs/components'
+import View from '../view'
 
 export const normal = () => (
   <View>

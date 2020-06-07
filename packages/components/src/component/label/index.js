@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import { View } from '@tarojs/components'
+import View from '../view'
 
 const Label = ({ text, type, className, ...rest }) => {
   return (

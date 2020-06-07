@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import _ from 'lodash'
-import { Text } from '@tarojs/components'
+import Text from '../text'
 
 import Flex from '../flex'
 
