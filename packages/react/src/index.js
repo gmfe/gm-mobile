@@ -20,10 +20,8 @@ import ScrollIntoView from './component/scroll_into_view'
 // 基础
 import FlipNumber from './component/flip_number'
 import Image from './component/image'
-import Label from './component/label'
 import Price from './component/price'
 import Counter from './component/counter'
-import Badge from './component/badge'
 import TagWrap from './component/tag'
 
 // 布局
@@ -37,7 +35,6 @@ import PullUpDown from './component/pull_up_down'
 import List from './component/list'
 import Scroll from './component/scroll'
 import Nav from './component/nav'
-import Tabs from './component/tabs'
 
 // 浮层
 import NProgress from './component/nprogress'
@@ -64,6 +61,9 @@ import {
   Toast,
   Loading,
   LayoutRoot,
+  Label,
+  Badge,
+  Tabs,
 } from '@gm-mobile/components'
 
 const Alert = Dialog.alert
