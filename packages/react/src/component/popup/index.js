@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { devWarnForHook } from '@gm-common/tool'
-import { Flex, Mask, LayoutRoot } from '@gm-mobile/components'
-import Button from '../button'
+import { Flex, Mask, LayoutRoot, Button } from '@gm-mobile/components'
 import SVGCloseCircle from '../../../svg/close-circle.svg'
 
 const PopupStatics = {

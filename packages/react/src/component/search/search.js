@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 import Input from '../input/input'
-import Button from '../button'
+import { Button } from '@gm-mobile/components'
 import SVGSearch from '../../../svg/search.svg'
 import SVGClose from '../../../svg/close-circle.svg'
 

@@ -1,9 +1,7 @@
 import React from 'react'
 import { observable } from 'mobx'
-
-import Button from '../button'
+import { Page, Button } from '@gm-mobile/components'
 import KeyboardWrap from './wrap'
-import { Page } from '@gm-mobile/components'
 
 const numStore = observable({
   one: '',

@@ -1,7 +1,6 @@
 import React from 'react'
-
+import { Button } from '@gm-mobile/components'
 import InnerLayer from './'
-import Button from '../button'
 
 export const Normal = () => {
   const handleCancel = () => {

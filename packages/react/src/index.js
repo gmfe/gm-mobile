@@ -1,5 +1,4 @@
 // 表单
-import { Button, ButtonTime } from './component/button'
 import Checkbox from './component/checkbox'
 import Radio from './component/radio'
 import { Input, InputPassword, BorderInput } from './component/input'
@@ -57,6 +56,8 @@ import RepeatTimes from './component/repeat_times'
 import Canvas from './component/canvas'
 
 import {
+  Button,
+  ButtonTime,
   Flex,
   Mask,
   Page,

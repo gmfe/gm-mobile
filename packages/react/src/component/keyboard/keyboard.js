@@ -2,13 +2,11 @@ import { getLocale } from '@gm-mobile/locales'
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
+import { Flex, Toast, Button } from '@gm-mobile/components'
 
 import BaseKeyboard from './_keyboard'
-import { Flex } from '@gm-mobile/components'
-import Button from '../button'
 import { TYPE, text2Number } from './util'
 import KeyboardStatics from './statics'
-import { Toast } from '@gm-mobile/components'
 
 const handleErrorMsg = ({ value, min, max, precision }) => {
   let msg = null

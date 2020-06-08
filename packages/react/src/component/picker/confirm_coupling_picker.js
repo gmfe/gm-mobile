@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import CouplingPicker from './component/coupling_picker'
 import _ from 'lodash'
 import PickerStatics from './statics'
-import Button from '../button'
+import { Button } from '@gm-mobile/components'
 
 class ConfirmCouplingPicker extends React.Component {
   constructor(props) {
