@@ -7,6 +7,9 @@ import Page from './component/page'
 import Text from './component/text'
 import Toast from './component/toast'
 import View from './component/view'
+import Label from './component/label'
+import Tabs from './component/tabs'
+import Badge from './component/badge'
 
 export {
   Button,
@@ -19,4 +22,7 @@ export {
   Text,
   Toast,
   View,
+  Label,
+  Tabs,
+  Badge,
 }
