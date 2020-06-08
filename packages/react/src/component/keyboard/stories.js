@@ -3,7 +3,7 @@ import { observable } from 'mobx'
 
 import Button from '../button'
 import KeyboardWrap from './wrap'
-import Page from '../page'
+import { Page } from '@gm-mobile/components'
 
 const numStore = observable({
   one: '',

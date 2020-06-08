@@ -30,7 +30,6 @@ import TagWrap from './component/tag'
 
 // 布局
 import Divider from './component/divider'
-import Page from './component/page'
 import Header from './component/header'
 import Tabbar from './component/tab_bar'
 import Square from './component/square'
@@ -48,7 +47,6 @@ import NProgress from './component/nprogress'
 import InnerLayer from './component/inner_layer'
 import Toast from './component/toast'
 import Dialog from './component/dialog'
-import Mask from './component/mask'
 import Popup from './component/popup'
 import Tooltip from './component/tooltip'
 import ActionSheet from './component/action_sheet'
@@ -61,7 +59,7 @@ import { Search, SearchPage, FakeSearch } from './component/search'
 import RepeatTimes from './component/repeat_times'
 import Canvas from './component/canvas'
 
-import { Flex } from '@gm-mobile/components'
+import { Flex, Mask, Page } from '@gm-mobile/components'
 
 const Alert = Dialog.alert
 const Confirm = Dialog.confirm
