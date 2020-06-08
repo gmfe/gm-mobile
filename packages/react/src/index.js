@@ -42,10 +42,8 @@ import Nav from './component/nav'
 import Tabs from './component/tabs'
 
 // 浮层
-import LayoutRoot from './component/layout_root'
 import NProgress from './component/nprogress'
 import InnerLayer from './component/inner_layer'
-import Toast from './component/toast'
 import Dialog from './component/dialog'
 import Popup from './component/popup'
 import Tooltip from './component/tooltip'
@@ -59,7 +57,7 @@ import { Search, SearchPage, FakeSearch } from './component/search'
 import RepeatTimes from './component/repeat_times'
 import Canvas from './component/canvas'
 
-import { Flex, Mask, Page } from '@gm-mobile/components'
+import { Flex, Mask, Page, Toast, LayoutRoot } from '@gm-mobile/components'
 
 const Alert = Dialog.alert
 const Confirm = Dialog.confirm

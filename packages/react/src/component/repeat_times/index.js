@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import PropTypes from 'prop-types'
-import Toast from '../toast'
+import { Toast } from '@gm-mobile/components'
 
 const RepeatTimes = ({ repeat, onRepeat, children }) => {
   const [times, setTimes] = useState(0)

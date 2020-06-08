@@ -1,8 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-
-import LayoutRoot from '../layout_root'
+import { LayoutRoot } from '@gm-mobile/components'
 
 const InnerLayerStatics = {
   render(props) {

@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import LayoutRoot from '../layout_root'
 import _ from 'lodash'
 import { devWarnForHook } from '@gm-common/tool'
-import { Flex, Mask } from '@gm-mobile/components'
+import { Flex, Mask, LayoutRoot } from '@gm-mobile/components'
 import Button from '../button'
 import SVGCloseCircle from '../../../svg/close-circle.svg'
 

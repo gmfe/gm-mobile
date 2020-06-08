@@ -1,6 +1,6 @@
 import React from 'react'
 import Dialog from './'
-import Toast from '../toast'
+import { Toast } from '@gm-mobile/components'
 
 export const normal = () => {
   return (

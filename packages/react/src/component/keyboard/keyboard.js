@@ -8,7 +8,7 @@ import { Flex } from '@gm-mobile/components'
 import Button from '../button'
 import { TYPE, text2Number } from './util'
 import KeyboardStatics from './statics'
-import Toast from '../toast'
+import { Toast } from '@gm-mobile/components'
 
 const handleErrorMsg = ({ value, min, max, precision }) => {
   let msg = null

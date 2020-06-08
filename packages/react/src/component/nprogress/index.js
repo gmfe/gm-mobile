@@ -1,5 +1,5 @@
 import React from 'react'
-import LayoutRoot from '../layout_root'
+import { LayoutRoot } from '@gm-mobile/components'
 
 let timer = null
 let key = null

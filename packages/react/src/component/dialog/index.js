@@ -1,9 +1,8 @@
 import { getLocale } from '@gm-mobile/locales'
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import LayoutRoot from '../layout_root'
 import _ from 'lodash'
-import { Flex, Mask } from '@gm-mobile/components'
+import { Flex, Mask, LayoutRoot } from '@gm-mobile/components'
 import BorderInput from '../input/border_input'
 
 const ErrorInput = ({
