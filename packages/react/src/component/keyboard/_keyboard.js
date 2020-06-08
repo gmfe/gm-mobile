@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
-import Flex from '../flex'
+import { Flex } from '@gm-mobile/components'
 import SVGDel from '../../../svg/keyboard_del.svg'
 import { TYPE, KEYS } from './util'
 

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import SVGAngleRight from '../../../svg/angle-right.svg'
-import Flex from '../flex'
+import { Flex } from '@gm-mobile/components'
 
 const Panel = ({
   title,

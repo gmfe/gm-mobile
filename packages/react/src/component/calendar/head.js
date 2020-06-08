@@ -2,7 +2,7 @@ import { getLocale } from '../../../../locales'
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Flex from '../flex'
+import { Flex } from '@gm-mobile/components'
 
 const months = [
   getLocale('1月'),

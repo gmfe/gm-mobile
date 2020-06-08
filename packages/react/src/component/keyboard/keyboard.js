@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 
 import BaseKeyboard from './_keyboard'
-import Flex from '../flex'
+import { Flex } from '@gm-mobile/components'
 import Button from '../button'
 import { TYPE, text2Number } from './util'
 import KeyboardStatics from './statics'

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Flex from '../flex'
+import { Flex } from '@gm-mobile/components'
 import classNames from 'classnames'
 import _ from 'lodash'
 import SVGAngleLeft from '../../../svg/angle-left.svg'

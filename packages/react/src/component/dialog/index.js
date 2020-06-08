@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import LayoutRoot from '../layout_root'
 import _ from 'lodash'
 import Mask from '../mask'
-import Flex from '../flex'
+import { Flex } from '@gm-mobile/components'
 import BorderInput from '../input/border_input'
 
 const ErrorInput = ({

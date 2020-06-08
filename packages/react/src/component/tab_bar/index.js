@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import Flex from '../flex'
+import { Flex } from '@gm-mobile/components'
 import Badge from '../badge'
 
 const Item = ({ config, index, selected, onClick }) => {

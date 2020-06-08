@@ -29,7 +29,6 @@ import Badge from './component/badge'
 import TagWrap from './component/tag'
 
 // 布局
-import Flex from './component/flex'
 import Divider from './component/divider'
 import Page from './component/page'
 import Header from './component/header'
@@ -61,6 +60,8 @@ import CSSVariable from './css_variable'
 import { Search, SearchPage, FakeSearch } from './component/search'
 import RepeatTimes from './component/repeat_times'
 import Canvas from './component/canvas'
+
+import { Flex } from '@gm-mobile/components'
 
 const Alert = Dialog.alert
 const Confirm = Dialog.confirm

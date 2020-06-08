@@ -3,7 +3,7 @@ import { observable } from 'mobx'
 
 import Counter from './'
 import Page from '../page'
-import Flex from '../flex'
+import { Flex } from '@gm-mobile/components'
 
 const store = observable({
   one: '',

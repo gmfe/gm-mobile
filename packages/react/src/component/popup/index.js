@@ -5,7 +5,7 @@ import Mask from '../mask'
 import LayoutRoot from '../layout_root'
 import _ from 'lodash'
 import { devWarnForHook } from '@gm-common/tool'
-import Flex from '../flex'
+import { Flex } from '@gm-mobile/components'
 import Button from '../button'
 import SVGCloseCircle from '../../../svg/close-circle.svg'
 

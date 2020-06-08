@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import _ from 'lodash'
 
-import Flex from '../flex'
+import { Flex } from '@gm-mobile/components'
 
 const Tabs = (props) => {
   const { tabs, active, onChange, className, type, ...rest } = props

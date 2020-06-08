@@ -8,7 +8,7 @@ import _ from 'lodash'
 import Head from './head'
 import Day from './day'
 import Week from './week'
-import Flex from '../flex'
+import { Flex } from '@gm-mobile/components'
 import { TYPE } from './util'
 
 class BaseCalendar extends React.Component {

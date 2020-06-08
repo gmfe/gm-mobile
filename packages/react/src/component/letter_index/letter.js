@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import _ from 'lodash'
 import PropTypes from 'prop-types'
 
-import Flex from '../flex'
+import { Flex } from '@gm-mobile/components'
 
 const letterList = _.map(_.range(65, 91), (v) => String.fromCharCode(v))
 letterList.push('#')

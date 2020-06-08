@@ -1,5 +1,5 @@
 import React from 'react'
-import Flex from '../flex'
+import { Flex } from '@gm-mobile/components'
 
 class Divider extends React.Component {
   render() {

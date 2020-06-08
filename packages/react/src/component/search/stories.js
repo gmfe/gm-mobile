@@ -3,7 +3,7 @@ import Search from './search'
 import SearchPage from './page'
 import FakeSearch from './fake_search'
 import Header from '../header'
-import Flex from '../flex'
+import { Flex } from '@gm-mobile/components'
 import { observable } from 'mobx'
 
 const store = observable({

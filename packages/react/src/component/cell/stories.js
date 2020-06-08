@@ -6,7 +6,7 @@ import CellForm from './cell_form'
 import { Input, InputPassword } from '../input'
 import Textarea from '../textarea'
 import { ButtonTime } from '../button'
-import Flex from '../flex'
+import { Flex } from '@gm-mobile/components'
 import SVGSearch from '../../../svg/search.svg'
 import { observable } from 'mobx'
 

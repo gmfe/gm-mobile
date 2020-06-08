@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
-import Flex from '../flex'
+import { Flex } from '@gm-mobile/components'
 import { TYPE } from './util'
 
 class Day extends React.Component {
