@@ -1,26 +1,22 @@
-import React from 'react'
+import React, { forwardRef, useRef, useImperativeHandle } from 'react'
 import PropTypes from 'prop-types'
 
 import BaseCalendar from './base'
 import { TYPE } from './util'
 
-class MultipleCalendar extends React.Component {
-  refMultipleCalendar = React.createRef()
+const MultipleCalendar = forwardRef((props, ref) => {
+  const refMultipleCalendar = useRef(null)
 
-  apiScrollToSelected = () => {
-    this.refMultipleCalendar.current.apiScrollToSelected()
-  }
+  useImperativeHandle(ref, () => ({
+    apiScrollToSelected: () => {
+      refMultipleCalendar.current.apiScrollToSelected()
+    },
+  }))
 
-  render() {
-    return (
-      <BaseCalendar
-        ref={this.refMultipleCalendar}
-        {...this.props}
-        type={TYPE.MULTIPLE}
-      />
-    )
-  }
-}
+  return (
+    <BaseCalendar ref={refMultipleCalendar} {...props} type={TYPE.MULTIPLE} />
+  )
+})
 
 MultipleCalendar.propTypes = {
   /** 当前选中日期数组 */

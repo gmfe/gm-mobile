@@ -13,7 +13,6 @@ import {
   SelectPicker,
 } from './component/picker'
 import { Keyboard, KeyboardWrap } from './component/keyboard'
-import { Calendar, RangeCalendar, MultipleCalendar } from './component/calendar'
 import ScrollIntoView from './component/scroll_into_view'
 
 // 基础
@@ -64,6 +63,9 @@ import {
   Badge,
   Tabs,
   Switch,
+  Calendar,
+  RangeCalendar,
+  MultipleCalendar,
 } from '@gm-mobile/components'
 
 const Alert = Dialog.alert

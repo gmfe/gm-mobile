@@ -1,13 +1,12 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import moment from 'moment'
 import { observable } from 'mobx'
-import { View, Text } from '@tarojs/components'
 
+import View from '../view'
 import Calendar from './calendar'
 import RangeCalendar from './range_calendar'
 import MultipleCalendar from './multiple_calendar'
 
-const refCalendar = React.createRef(null)
 const min = moment().add(-4, 'd').toDate()
 const max = moment().toDate()
 
@@ -30,14 +29,15 @@ const store = observable({
 
 export const info = () => (
   <View className='m-text-16 m-padding-10'>
-    <Text>封装多种类型选择 Calendar</Text>
-    <Text>单选类型 提供了 Calendar</Text>
-    <Text>range类型 提供了 RangeCalendar</Text>
-    <Text>multiple类型 提供了 MultipleCalendar</Text>
+    <View>封装多种类型选择 Calendar</View>
+    <View>单选类型 提供了 Calendar</View>
+    <View>range类型 提供了 RangeCalendar</View>
+    <View>multiple类型 提供了 MultipleCalendar</View>
   </View>
 )
 
 export const one = () => {
+  const refCalendar = useRef(null)
   return (
     <View style={{ height: '400px' }}>
       <Calendar
@@ -52,6 +52,7 @@ export const one = () => {
 }
 
 export const range = () => {
+  const refCalendar = useRef(null)
   return (
     <View style={{ height: '400px' }}>
       <RangeCalendar
@@ -68,6 +69,7 @@ export const range = () => {
 }
 
 export const multiple = () => {
+  const refCalendar = useRef(null)
   return (
     <View style={{ height: '400px' }}>
       <MultipleCalendar
