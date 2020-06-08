@@ -22,7 +22,6 @@ import ScrollIntoView from './component/scroll_into_view'
 import FlipNumber from './component/flip_number'
 import Image from './component/image'
 import Label from './component/label'
-import Loading from './component/loading'
 import Price from './component/price'
 import Counter from './component/counter'
 import Badge from './component/badge'
@@ -57,7 +56,14 @@ import { Search, SearchPage, FakeSearch } from './component/search'
 import RepeatTimes from './component/repeat_times'
 import Canvas from './component/canvas'
 
-import { Flex, Mask, Page, Toast, LayoutRoot } from '@gm-mobile/components'
+import {
+  Flex,
+  Mask,
+  Page,
+  Toast,
+  Loading,
+  LayoutRoot,
+} from '@gm-mobile/components'
 
 const Alert = Dialog.alert
 const Confirm = Dialog.confirm

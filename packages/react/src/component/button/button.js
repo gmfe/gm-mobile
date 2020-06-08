@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 import classNames from 'classnames'
 import { is } from '@gm-common/tool'
-import Loading from '../loading'
+import { Loading } from '@gm-mobile/components'
 
 const Button = ({
   type,
