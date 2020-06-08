@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { View } from '@tarojs/components'
+import View from '../view'
 
 const Badge = (props) => {
   const {
