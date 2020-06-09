@@ -6,7 +6,6 @@ import CellForm from './cell_form'
 import { Input, InputPassword } from '../input'
 import Textarea from '../textarea'
 import { Flex, ButtonTime } from '@gm-mobile/components'
-import SVGSearch from '../../../svg/search.svg'
 import { observable } from 'mobx'
 
 export const normal = () => {
@@ -26,14 +25,18 @@ export const normal = () => {
       <Cells title='带 icon'>
         <Cell
           access
-          icon={<SVGSearch style={{ fontSize: '20px' }} />}
+          icon={
+            <i className='m-font m-font-search' style={{ fontSize: '20px' }} />
+          }
           right={'right 说明文字'}
         >
           children 文字
         </Cell>
         <Cell
           access
-          icon={<SVGSearch style={{ fontSize: '20px' }} />}
+          icon={
+            <i className='m-font m-font-search' style={{ fontSize: '20px' }} />
+          }
           right={'right 说明文字'}
         >
           children 文字

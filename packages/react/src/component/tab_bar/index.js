@@ -13,10 +13,17 @@ const Item = ({ config, index, selected, onClick }) => {
     <Flex column justifyCenter alignCenter>
       <div>
         {((isActive && !activeIcon) || (!isActive && icon)) &&
-          React.cloneElement(icon, { className: 'm-tabbar-nav-icon' })}
+          React.cloneElement(icon, {
+            className: classNames('m-tabbar-nav-icon', icon.props.className),
+          })}
         {isActive &&
           activeIcon &&
-          React.cloneElement(activeIcon, { className: 'm-tabbar-nav-icon' })}
+          React.cloneElement(activeIcon, {
+            className: classNames(
+              'm-tabbar-nav-icon',
+              activeIcon.props.className
+            ),
+          })}
       </div>
       <div className='m-tabbar-nav-name'>{name}</div>
     </Flex>

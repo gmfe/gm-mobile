@@ -4,7 +4,6 @@ import classNames from 'classnames'
 import _ from 'lodash'
 import { devWarnForHook } from '@gm-common/tool'
 import { Flex, Mask, LayoutRoot, Button } from '@gm-mobile/components'
-import SVGCloseCircle from '../../../svg/close-circle.svg'
 
 const PopupStatics = {
   render(options) {
@@ -77,7 +76,7 @@ const Popup = ({
 
             <Button type='link' onClick={onHide}>
               <Flex alignCenter>
-                <SVGCloseCircle className='m-text-20 m-text-placeholder' />
+                <i className='m-font m-font-close-circle m-text-20 m-text-placeholder' />
               </Flex>
             </Button>
           </Flex>

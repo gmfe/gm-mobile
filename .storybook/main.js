@@ -33,7 +33,7 @@ const webpackFinal = (config) => {
     enforce: 'pre',
   })
 
-  config.module.rules.unshift({
+  config.module.rules.push({
     test: /svg\/(\w|\W)+\.svg$/,
     use: [
       {

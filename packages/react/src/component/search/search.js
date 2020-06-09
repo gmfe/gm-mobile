@@ -6,8 +6,6 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 import Input from '../input/input'
 import { Button } from '@gm-mobile/components'
-import SVGSearch from '../../../svg/search.svg'
-import SVGClose from '../../../svg/close-circle.svg'
 
 const Search = ({
   value,
@@ -50,7 +48,7 @@ const Search = ({
       className={classNames('m-search m-flex m-flex-align-center', className)}
     >
       <label className='m-search-input m-flex m-flex-flex'>
-        <SVGSearch className='m-search-icon-search' />
+        <i className='m-font m-font-search m-search-icon-search' />
         <Input
           ref={refInput}
           type='search'
@@ -60,7 +58,10 @@ const Search = ({
           autoFocus={autoFocus}
         />
         {value && (
-          <SVGClose className='m-search-icon-close' onClick={handleClean} />
+          <i
+            className='m-font m-font-close-circle m-search-icon-close'
+            onClick={handleClean}
+          />
         )}
       </label>
       {type === 'search' ? (

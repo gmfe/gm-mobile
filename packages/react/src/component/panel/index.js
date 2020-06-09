@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import SVGAngleRight from '../../../svg/angle-right.svg'
 import { Flex } from '@gm-mobile/components'
 
 const Panel = ({
@@ -34,7 +33,9 @@ const Panel = ({
             onClick={onTitle}
           >
             {title}
-            {onTitle && <SVGAngleRight className='m-margin-left-5' />}
+            {onTitle && (
+              <i className='m-font m-font-angle-right m-margin-left-5' />
+            )}
           </Flex>
         )}
         {action && <Flex flex />}

@@ -3,7 +3,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Flex } from '@gm-mobile/components'
-import SVGSearch from '../../../svg/search.svg'
 
 const FakeSearch = ({
   placeholder,
@@ -21,7 +20,7 @@ const FakeSearch = ({
       className={classNames('m-fake-search', className)}
     >
       <Flex alignCenter justifyCenter={center} className='m-fake-search-inner'>
-        <SVGSearch />
+        <i className='m-font m-font-search' />
         &nbsp;
         {placeholder}
         {children}

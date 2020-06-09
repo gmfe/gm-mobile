@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { Flex } from '@gm-mobile/components'
-import SVGAngleRight from '../../../svg/angle-right.svg'
 
 const Cell = ({
   access,
@@ -47,7 +46,9 @@ const Cell = ({
           ) : (
             right
           ))}
-        {access && <SVGAngleRight className='m-cell-access-icon' />}
+        {access && (
+          <i className='m-font m-font-angle-right m-cell-access-icon' />
+        )}
       </Flex>
     </Flex>
   )

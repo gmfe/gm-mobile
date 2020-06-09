@@ -1,7 +1,5 @@
 import Tabbar from './index'
 import React, { useState } from 'react'
-import SvgPlus from '../../../svg/plus.svg'
-import SvgClose from '../../../svg/close-circle.svg'
 
 export const normal = () => {
   const [active, setActive] = useState('/my')
@@ -14,17 +12,17 @@ export const normal = () => {
     {
       name: '订单',
       to: '/order',
-      icon: <SvgPlus />,
-      activeIcon: <SvgClose />,
+      icon: <i className='m-font m-font-plus' />,
+      activeIcon: <i className='m-font m-font-close-circle' />,
     },
     {
       name: '我的',
       to: '/my',
-      icon: <SvgPlus />,
+      icon: <i className='m-font m-font-plus' />,
     },
     {
       name: '购物车',
-      icon: <SvgClose />,
+      icon: <i className='m-font m-font-close-circle' />,
       to: '/cart',
       showBadge: true,
       badge: { count: 7, corner: true },
