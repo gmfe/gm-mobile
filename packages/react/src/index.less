@@ -1,23 +1,22 @@
+// web 特有的
 @import './normalize.css';
-@import './less/variable';
-// theme
-@import './theme/dark';
-@import './theme/taobao';
-@import './theme/jd';
-// 公共
-@import './less/mixin';
-@import './less/base';
-@import './less/distance';
-@import './less/bg';
-@import './less/display';
-@import './less/position';
-@import './less/overflow';
-@import './less/text';
-@import './less/border';
-@import './less/animation';
+
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+a {
+  text-decoration: none;
+}
+
+pre {
+  margin: 0;
+  padding: 0;
+}
+// web 特有的 end
 
 // @gm-mobile/components
-@import "~@gm-mobile/components/src/index";
+@import '~@gm-mobile/components/src/index';
 
 // 具体业务
 @import './component/image/style.less';

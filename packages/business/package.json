@@ -21,6 +21,7 @@
     "url": "https://github.com/gmfe/business/issues"
   },
   "dependencies": {
+    "@gm-mobile/components": "^1.0.2",
     "@gm-mobile/locales": "^1.0.2",
     "@gm-mobile/react": "^1.0.2",
     "@gm-mobile/service_time": "^1.0.2"
