@@ -1,6 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 import View from '../view'
+import { isWeApp } from '../../util'
 
 const TYPE = {
   INNERLAYER: 'innerLayer',
@@ -81,39 +82,48 @@ LayoutRoot.removeComponent = (type) => {
 LayoutRoot.renderWith = (type, Component, options) => {
   options = Object.assign({ onPopStateCallback: _.noop }, options)
 
-  const popstate = (e) => {
-    const typeStack = [
-      TYPE.INNERLAYER,
-      TYPE.POPUP,
-      TYPE.PICKER,
-      TYPE.KEYBOARD,
-      TYPE.MODAL,
-    ]
-    // 浮层会有很多，popstate 都会响应。 但是如果浮层之上还有其他浮层的话不应该响应。
-    // 所以判断下
-    if (e.state && typeStack.indexOf(e.state.type) >= typeStack.indexOf(type)) {
-      return
+  LayoutRoot.setComponent(type, Component)
+
+  // 小程序没有 history，也不需要
+  if (!isWeApp()) {
+    const popstate = (e) => {
+      const typeStack = [
+        TYPE.INNERLAYER,
+        TYPE.POPUP,
+        TYPE.PICKER,
+        TYPE.KEYBOARD,
+        TYPE.MODAL,
+      ]
+      // 浮层会有很多，popstate 都会响应。 但是如果浮层之上还有其他浮层的话不应该响应。
+      // 所以判断下
+      if (
+        e.state &&
+        typeStack.indexOf(e.state.type) >= typeStack.indexOf(type)
+      ) {
+        return
+      }
+
+      LayoutRoot.removeComponent(type)
+
+      // 需要给个回调，响应 popstate 的情况。否则没其他办法通知回去。
+      options.onPopStateCallback()
+
+      window.removeEventListener('popstate', popstate)
     }
 
-    LayoutRoot.removeComponent(type)
+    window.addEventListener('popstate', popstate)
 
-    // 需要给个回调，响应 popstate 的情况。否则没其他办法通知回去。
-    options.onPopStateCallback()
-
-    window.removeEventListener('popstate', popstate)
+    window.history.pushState({ type }, null)
   }
-
-  window.addEventListener('popstate', popstate)
-
-  window.history.pushState({ type }, null)
-
-  LayoutRoot.setComponent(type, Component)
 }
 
 LayoutRoot.hideWith = (type) => {
   LayoutRoot.removeComponent(type)
 
-  window.history.go(-1)
+  // 小程序没有 history，也不需要
+  if (!isWeApp()) {
+    window.history.go(-1)
+  }
 }
 
 export default LayoutRoot
