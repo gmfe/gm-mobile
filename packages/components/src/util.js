@@ -7,4 +7,6 @@ function isWeb() {
   return process.env.TARO_ENV === 'undefined'
 }
 
-export { isWeApp, isWeb }
+const isPromise = (arg) => toString.call(arg) === '[object Promise]'
+
+export { isWeApp, isWeb, isPromise }

@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 import classNames from 'classnames'
-import { is } from '@gm-common/tool'
 import Loading from '../loading'
 import BaseButton from './base'
+import { isPromise } from '../../util'
 
 const Button = ({
   type,
@@ -31,7 +31,7 @@ const Button = ({
 
     const result = onClick(e)
 
-    if (!is.promise(result)) {
+    if (!isPromise(result)) {
       return
     }
 

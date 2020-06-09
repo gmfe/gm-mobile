@@ -1,4 +1,12 @@
-# 较 react-mgm 的变动
+# 2.x
+
+增加 小程序
+
+# 1.x
+
+## change
+
+较 react-mgm 的变动
 
 新增 Button
 
