@@ -19,8 +19,7 @@ const months = [
   getLocale('12月'),
 ]
 
-const Head = (props) => {
-  const { currentMoment } = props
+const Head = ({ currentMoment }) => {
   const month = currentMoment.month()
 
   return (

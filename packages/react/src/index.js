@@ -2,7 +2,6 @@
 import Checkbox from './component/checkbox'
 import Radio from './component/radio'
 import { Input, InputPassword, BorderInput } from './component/input'
-import Switch from './component/switch'
 import Uploader from './component/uploader'
 import Textarea from './component/textarea'
 import { Cells, Cell, CellForm, CellsForm } from './component/cell'
@@ -14,7 +13,6 @@ import {
   SelectPicker,
 } from './component/picker'
 import { Keyboard, KeyboardWrap } from './component/keyboard'
-import { Calendar, RangeCalendar, MultipleCalendar } from './component/calendar'
 import ScrollIntoView from './component/scroll_into_view'
 
 // 基础
@@ -64,6 +62,10 @@ import {
   Label,
   Badge,
   Tabs,
+  Switch,
+  Calendar,
+  RangeCalendar,
+  MultipleCalendar,
 } from '@gm-mobile/components'
 
 const Alert = Dialog.alert

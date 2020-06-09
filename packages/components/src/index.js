@@ -10,6 +10,8 @@ import View from './component/view'
 import Label from './component/label'
 import Tabs from './component/tabs'
 import Badge from './component/badge'
+import Switch from './component/switch'
+import { RangeCalendar, MultipleCalendar, Calendar } from './component/calendar'
 
 export {
   Button,
@@ -25,4 +27,8 @@ export {
   Label,
   Tabs,
   Badge,
+  Switch,
+  RangeCalendar,
+  MultipleCalendar,
+  Calendar,
 }

@@ -1,6 +1,7 @@
 import React from 'react'
-import Switch from './'
+import Switch from './index'
 import { observable } from 'mobx'
+import View from '../view'
 
 const store = observable({
   checked: false,
@@ -11,7 +12,7 @@ const store = observable({
 
 export const normal = () => {
   return (
-    <div>
+    <View>
       <Switch
         checked={store.checked}
         onChange={() => {
@@ -32,7 +33,7 @@ export const normal = () => {
           store.setChecked(store.checked)
         }}
       />
-    </div>
+    </View>
   )
 }
 
