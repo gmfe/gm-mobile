@@ -6,7 +6,7 @@ const webpackFinal = (config) => {
   })
 
   config.module.rules[3] = {
-    test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani|pdf)(\?.*)?$/,
+    test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani|pdf|svg)(\?.*)?$/,
     loader:
       './node_modules/@storybook/core/node_modules/file-loader/dist/cjs.js',
     query: { name: 'static/media/[name].[hash:8].[ext]' },
@@ -33,7 +33,7 @@ const webpackFinal = (config) => {
     enforce: 'pre',
   })
 
-  config.module.rules.push({
+  config.module.rules.unshift({
     test: /svg\/(\w|\W)+\.svg$/,
     use: [
       {
