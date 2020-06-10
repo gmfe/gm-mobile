@@ -1,21 +1,34 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import noop from 'lodash/noop'
 import classNames from 'classnames'
+import noop from 'lodash/noop'
 
-const Switch = ({ className, ...rest }) => {
+import View from '../view'
+
+const Switch = ({ checked, disabled, onChange, className, ...rest }) => {
+  const handleClick = () => {
+    if (disabled) return
+    onChange()
+  }
   return (
-    <input
+    <View
       {...rest}
-      type='checkbox'
-      className={classNames('m-switch', className)}
+      className={classNames(
+        'm-switch',
+        {
+          'm-switch-on': checked,
+          disabled: disabled,
+        },
+        className
+      )}
+      onClick={handleClick}
     />
   )
 }
 
 Switch.propTypes = {
-  checked: PropTypes.bool,
-  onChange: PropTypes.func,
+  checked: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
   className: PropTypes.string,
   style: PropTypes.object,

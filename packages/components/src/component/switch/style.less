@@ -4,14 +4,11 @@
   display: inline-block;
   -webkit-appearance: none;
   position: relative;
-  outline: none;
-  border: none;
   cursor: pointer;
 
   .mDisabledWith();
 
   /* ios 有 bg 黑底 */
-  &[disabled][checked],
   &-on.disabled {
     background: transparent;
   }
@@ -44,7 +41,6 @@
       -webkit-transform 0.2s cubic-bezier(0.4, 0.4, 0.25, 1.35);
   }
 
-  &:checked,
   &-on {
     &::before {
       background: var(--m-color-bg-primary);
