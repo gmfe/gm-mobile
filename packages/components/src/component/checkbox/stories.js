@@ -1,8 +1,9 @@
 import React from 'react'
-import { Flex } from '@gm-mobile/components'
+import Flex from '../flex'
 import { observable } from 'mobx'
 
 import Checkbox from './'
+import View from '../view'
 
 const store = observable({
   checked: true,
@@ -12,7 +13,7 @@ const store = observable({
 })
 
 export const normal = () => (
-  <div>
+  <View>
     <Checkbox
       checked={store.checked}
       onChange={() => {
@@ -58,7 +59,7 @@ export const normal = () => (
     >
       选择
     </Checkbox>
-  </div>
+  </View>
 )
 
 export default {

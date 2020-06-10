@@ -1,6 +1,4 @@
 // 表单
-import Checkbox from './component/checkbox'
-import Radio from './component/radio'
 import { Input, InputPassword, BorderInput } from './component/input'
 import Uploader from './component/uploader'
 import Textarea from './component/textarea'
@@ -66,6 +64,8 @@ import {
   RangeCalendar,
   MultipleCalendar,
   Dialog,
+  Checkbox,
+  Radio,
 } from '@gm-mobile/components'
 
 const Alert = Dialog.alert

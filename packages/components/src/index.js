@@ -13,6 +13,8 @@ import Badge from './component/badge'
 import Switch from './component/switch'
 import Dialog from './component/dialog'
 import TagWrap from './component/tag'
+import Checkbox from './component/checkbox'
+import Radio from './component/radio'
 import { RangeCalendar, MultipleCalendar, Calendar } from './component/calendar'
 
 export {
@@ -35,4 +37,6 @@ export {
   MultipleCalendar,
   Calendar,
   Dialog,
+  Checkbox,
+  Radio,
 }

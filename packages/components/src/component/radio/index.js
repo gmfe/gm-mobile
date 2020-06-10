@@ -1,40 +1,39 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import _ from 'lodash'
+import noop from 'lodash/noop'
 
-const Radio = (props) => {
-  const {
-    className,
-    disabled,
-    checked,
-    style,
-    onChange,
-    children,
-    ...rest
-  } = props
+import View from '../view'
+
+const Radio = ({
+  className,
+  disabled,
+  checked,
+  onChange,
+  children,
+  ...rest
+}) => {
+  const handleChange = () => {
+    if (disabled) return
+    onChange()
+  }
 
   return (
-    <label
+    <View
       {...rest}
       className={classNames(
         'm-radio',
         {
           disabled,
+          'm-radio-checked': checked,
         },
         className
       )}
+      onClick={handleChange}
     >
-      <input
-        className='m-radio-input'
-        type='radio'
-        checked={checked}
-        onChange={onChange}
-        disabled={disabled}
-      />
-      <span className='m-radio-span' />
+      <View className='m-radio-tick' />
       {children}
-    </label>
+    </View>
   )
 }
 
@@ -49,8 +48,7 @@ Radio.propTypes = {
 }
 
 Radio.defaultProps = {
-  onChange: _.noop,
-  disabled: false,
+  onChange: noop,
 }
 
 export default Radio

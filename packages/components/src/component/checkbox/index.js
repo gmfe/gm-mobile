@@ -1,44 +1,42 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import _ from 'lodash'
+import noop from 'lodash/noop'
+import View from '../view'
 
-const Checkbox = (props) => {
-  const {
-    className,
-    style,
-    disabled,
-    checked,
-    onChange,
-    circle,
-    primary,
-    children,
-    ...rest
-  } = props
+const Checkbox = ({
+  className,
+  disabled,
+  checked,
+  onChange,
+  circle,
+  primary,
+  children,
+  ...rest
+}) => {
+  const handleChange = () => {
+    if (disabled) return
+    onChange()
+  }
 
   return (
-    <label
+    <View
       {...rest}
       className={classNames(
         'm-checkbox',
         {
           disabled,
+          'm-checkbox-checked': checked,
           'm-checkbox-circle': circle,
           'm-checkbox-primary': primary,
         },
         className
       )}
+      onClick={handleChange}
     >
-      <input
-        className='m-checkbox-input'
-        type='checkbox'
-        checked={checked}
-        onChange={onChange}
-        disabled={disabled}
-      />
-      <span className='m-checkbox-span' />
+      <View className='m-checkbox-tick' />
       {children}
-    </label>
+    </View>
   )
 }
 
@@ -57,7 +55,7 @@ Checkbox.propTypes = {
 }
 
 Checkbox.defaultProps = {
-  onChange: _.noop,
+  onChange: noop,
 }
 
 export default Checkbox

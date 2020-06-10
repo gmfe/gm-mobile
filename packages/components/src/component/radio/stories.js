@@ -2,6 +2,7 @@ import React from 'react'
 import { observable } from 'mobx'
 
 import Radio from './'
+import View from '../view'
 
 const store = observable({
   checked: true,
@@ -11,19 +12,12 @@ const store = observable({
 })
 
 export const Normal = () => (
-  <div>
-    <Radio
-      checked={store.checked}
-      onChange={() => {
-        store.setChecked(!store.checked)
-      }}
-    >
-      选择
-    </Radio>
+  <View>
+    <Radio checked={store.checked}>选择</Radio>
     <Radio checked={store.checked} disabled>
       选择
     </Radio>
-  </div>
+  </View>
 )
 
 export default {
