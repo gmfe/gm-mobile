@@ -1,28 +1,29 @@
 import React from 'react'
 import Panel from './index'
+import View from '../view'
 
 export const normal = () => {
   return (
-    <div className='m-bg-back m-padding-15'>
+    <View className='m-bg-back m-padding-15'>
       <Panel>panel</Panel>
-      <div className='m-gap-5' />
+      <View className='m-gap-5' />
       <Panel title='标题'>panel</Panel>
-      <div className='m-gap-5' />
+      <View className='m-gap-5' />
       <Panel
         title='标题'
-        action={<div className='m-padding-lr-15'>待分拣</div>}
+        action={<View className='m-padding-lr-15'>待分拣</View>}
       >
         panel
       </Panel>
-      <div className='m-gap-5' />
+      <View className='m-gap-5' />
       <Panel title='标题' top>
         panel
       </Panel>
-      <div className='m-gap-5' />
+      <View className='m-gap-5' />
       <Panel title='标题' bottom>
         panel
       </Panel>
-      <div className='m-gap-5' />
+      <View className='m-gap-5' />
       <Panel
         title='标题 onTitle'
         onTitle={() => {
@@ -31,19 +32,19 @@ export const normal = () => {
       >
         panel
       </Panel>
-      <div className='m-gap-5' />
+      <View className='m-gap-5' />
       <Panel title='业务自己做上border，不拉通'>
-        <div className='m-border-1px-top-before m-margin-lr-15 m-padding-tb-10'>
+        <View className='m-border-1px-top-before m-margin-lr-15 m-padding-tb-10'>
           lalalaal
-        </div>
+        </View>
       </Panel>
-      <div className='m-gap-5' />
+      <View className='m-gap-5' />
       <Panel title='业务自己做上border，拉通'>
-        <div className='m-border-1px-top-before m-padding-lr-15 m-padding-tb-10'>
+        <View className='m-border-1px-top-before m-padding-lr-15 m-padding-tb-10'>
           lalalaal
-        </div>
+        </View>
       </Panel>
-    </div>
+    </View>
   )
 }
 

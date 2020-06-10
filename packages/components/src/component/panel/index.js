@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Flex } from '@gm-mobile/components'
+import Flex from '../flex'
+import View from '../view'
+import Text from '../text'
 
 const Panel = ({
   title,
@@ -13,7 +15,7 @@ const Panel = ({
   children,
 }) => {
   return (
-    <div
+    <View
       className={classNames(
         'm-panel',
         {
@@ -34,15 +36,15 @@ const Panel = ({
           >
             {title}
             {onTitle && (
-              <i className='m-font m-font-angle-right m-margin-left-5' />
+              <Text className='m-font m-font-angle-right m-margin-left-5' />
             )}
           </Flex>
         )}
         {action && <Flex flex />}
-        {action && <div className='m-panel-action'>{action}</div>}
+        {action && <View className='m-panel-action'>{action}</View>}
       </Flex>
-      <div className='m-panel-content'>{children}</div>
-    </div>
+      <View className='m-panel-content'>{children}</View>
+    </View>
   )
 }
 
