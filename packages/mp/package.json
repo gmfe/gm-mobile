@@ -21,6 +21,7 @@
     "url": "https://github.com/gmfe/gm-mobile/issues"
   },
   "peerDependencies": {
+    "@tarojs/components": "3.0.0-rc.3",
     "react": "^16.13.1"
   },
   "dependencies": {
