@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from './index'
-import { View, Text, Flex } from '@gm-mobile/components'
+import { Flex, Text, View } from '@gm-mobile/components'
 
 const src =
   'https://js.guanmai.cn/static_storage/json/common/logo/default/logo.pure.png?'
@@ -32,7 +32,8 @@ export const round = () => (
 export const longPress = () => (
   <Flex column>
     <Image showMenuByLongpress width='100px' height='100px' src={src} />
-    <Text>tip：image组件中二维码/小程序码图片不支持长按识别。仅在wx.previewImage中支持长按识别</Text>
+    <Image showMenuByLongpress width='100px' height='100px' src='https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=810988444,1648289218&fm=11&gp=0.jpg' />
+    <Text>tip：image组件中二维码/小程序码图片不支持长按识别。仅在wx.previewImage中支持长按识别,主要是因为苹果手机限制</Text>
   </Flex>
 )
 
