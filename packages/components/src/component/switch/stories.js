@@ -30,7 +30,7 @@ export const normal = () => {
         disabled
         checked={!store.checked}
         onChange={() => {
-          store.setChecked(store.checked)
+          store.setChecked(!store.checked)
         }}
       />
     </View>
