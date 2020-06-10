@@ -12,6 +12,7 @@ import Tabs from './component/tabs'
 import Badge from './component/badge'
 import Switch from './component/switch'
 import Dialog from './component/dialog'
+import TagWrap from './component/tag'
 import { RangeCalendar, MultipleCalendar, Calendar } from './component/calendar'
 
 export {
@@ -29,6 +30,7 @@ export {
   Tabs,
   Badge,
   Switch,
+  TagWrap,
   RangeCalendar,
   MultipleCalendar,
   Calendar,

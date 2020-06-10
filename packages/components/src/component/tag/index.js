@@ -2,9 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+import View from '../view'
+
 const TagWrap = ({ tag, bottom, block, className, children, ...rest }) => {
   return (
-    <div
+    <View
       {...rest}
       className={classNames(
         'm-tag-wrap',
@@ -16,8 +18,8 @@ const TagWrap = ({ tag, bottom, block, className, children, ...rest }) => {
       )}
     >
       {children}
-      {tag && <div className='m-tag'>{tag}</div>}
-    </div>
+      {tag && <View className='m-tag'>{tag}</View>}
+    </View>
   )
 }
 

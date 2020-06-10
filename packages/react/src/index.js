@@ -20,7 +20,6 @@ import FlipNumber from './component/flip_number'
 import Image from './component/image'
 import Price from './component/price'
 import Counter from './component/counter'
-import TagWrap from './component/tag'
 
 // 布局
 import Divider from './component/divider'
@@ -62,6 +61,7 @@ import {
   Badge,
   Tabs,
   Switch,
+  TagWrap,
   Calendar,
   RangeCalendar,
   MultipleCalendar,
