@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, Navigator } from '@tarojs/components'
-import _ from 'lodash'
+import map from 'lodash/map'
+import each from 'lodash/each'
 import './index.less'
 import queryString from 'query-string'
 
@@ -18,35 +19,35 @@ const comReq = require.context(
 
 const storiesList = []
 
-_.each(mpReq.keys(), (key) => {
+each(mpReq.keys(), (key) => {
   storiesList.push({
     module: mpReq(key),
     packageName: 'mp',
   })
 })
 
-_.each(comReq.keys(), (key) => {
+each(comReq.keys(), (key) => {
   storiesList.push({
     module: comReq(key),
     packageName: 'components',
   })
 })
 
-const map = {}
+const dataMap = {}
 
-_.each(storiesList, ({ module, packageName }) => {
+each(storiesList, ({ module, packageName }) => {
   // 算是个常规的 stories
   if (module.default && module.default.title) {
     const title = module.default.title
     const root = title.includes('/') ? title.split('/')[0] : 'Other'
     const component = title.split('/').slice(-1)[0]
 
-    map[root] = map[root] || {}
-    map[root][component] = {}
+    dataMap[root] = dataMap[root] || {}
+    dataMap[root][component] = {}
 
-    _.each(module, (value, key) => {
+    each(module, (value, key) => {
       if (key !== 'default') {
-        map[root][component][key] = {
+        dataMap[root][component][key] = {
           packageName,
           root,
           component,
@@ -61,17 +62,17 @@ export default class Index extends Component {
   render() {
     return (
       <View>
-        {_.map(map, (oneValue, oneKey) => {
+        {map(dataMap, (oneValue, oneKey) => {
           return (
             <View key={oneKey}>
               <Text>{oneKey}</Text>
 
-              {_.map(oneValue, (twoValue, twoKey) => {
+              {map(oneValue, (twoValue, twoKey) => {
                 return (
                   <View key={twoKey} className='m-padding-lr-10'>
                     <Text>{twoKey}</Text>
 
-                    {_.map(twoValue, (thereValue, thereKey) => {
+                    {map(twoValue, (thereValue, thereKey) => {
                       return (
                         <View key={thereKey} className='m-padding-lr-10'>
                           <Navigator

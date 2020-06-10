@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Button from './button'
 import PropTypes from 'prop-types'
-import { is } from '@gm-common/tool'
 import classNames from 'classnames'
+import { isPromise } from '../../util'
 
 const ButtonTime = ({ time, onClick, className, children, ...rest }) => {
   const [second, setSecond] = useState(0)
@@ -21,7 +21,7 @@ const ButtonTime = ({ time, onClick, className, children, ...rest }) => {
     if (fn === false) {
       return
     }
-    if (is.promise(fn)) {
+    if (isPromise(fn)) {
       return fn.then(() => {
         startCount()
       })
