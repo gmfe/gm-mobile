@@ -35,7 +35,7 @@ const ErrorInput = ({
         onChange={handleChange}
         {...rest}
       />
-      <div className='m-text-red m-text-12'>{getError(value)}</div>
+      <View className='m-text-red m-text-12'>{getError(value)}</View>
     </>
   )
 }
@@ -172,26 +172,31 @@ const Dialog = ({
       <View className='m-dialog m-animated-in m-animated-fade-in'>
         <View className='m-dialog-title'>{title}</View>
         <View className='m-dialog-content'>{children}</View>
-        <Flex className='m-dialog-btn'>
+        <Flex className='m-dialog-bottom'>
           {onCancel && (
             <Flex
               flex
               column
-              className='m-dialog-btn-cancel'
+              className='m-dialog-btn m-dialog-btn-cancel'
               onClick={onCancel}
             >
               {cancelText}
             </Flex>
           )}
           {otherText && (
-            <Flex flex column className='m-dialog-btn-other' onClick={onOther}>
+            <Flex
+              flex
+              column
+              className='m-dialog-btn m-dialog-btn-other'
+              onClick={onOther}
+            >
               {otherText}
             </Flex>
           )}
           <Flex
             flex
             column
-            className='m-dialog-btn-confirm'
+            className='m-dialog-btn m-dialog-btn-confirm'
             onClick={onConfirm}
           >
             {confirmText}

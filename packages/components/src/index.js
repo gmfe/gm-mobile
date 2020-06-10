@@ -11,6 +11,7 @@ import Label from './component/label'
 import Tabs from './component/tabs'
 import Badge from './component/badge'
 import Switch from './component/switch'
+import Dialog from './component/dialog'
 import { RangeCalendar, MultipleCalendar, Calendar } from './component/calendar'
 
 export {
@@ -31,4 +32,5 @@ export {
   RangeCalendar,
   MultipleCalendar,
   Calendar,
+  Dialog,
 }

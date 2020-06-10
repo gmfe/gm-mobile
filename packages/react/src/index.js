@@ -37,7 +37,6 @@ import Nav from './component/nav'
 // 浮层
 import NProgress from './component/nprogress'
 import InnerLayer from './component/inner_layer'
-import Dialog from './component/dialog'
 import Popup from './component/popup'
 import Tooltip from './component/tooltip'
 import ActionSheet from './component/action_sheet'
@@ -66,6 +65,7 @@ import {
   Calendar,
   RangeCalendar,
   MultipleCalendar,
+  Dialog,
 } from '@gm-mobile/components'
 
 const Alert = Dialog.alert
