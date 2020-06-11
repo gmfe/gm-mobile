@@ -1,9 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import _ from 'lodash'
+import noop from 'lodash/noop'
 import { devWarnForHook } from '@gm-common/tool'
-import { Flex, Mask, LayoutRoot, Button } from '@gm-mobile/components'
+
+import Flex from '../flex'
+import Mask from '../mask'
+import LayoutRoot from '../layout_root'
+import Button from '../button'
+import View from '../view'
+import Text from '../text'
 
 const PopupStatics = {
   render(options) {
@@ -61,7 +67,7 @@ const Popup = ({
   }
 
   return (
-    <div
+    <View
       className={classNames('m-popup-container', {
         'm-popup-picker-container': isPickPopup,
       })}
@@ -76,14 +82,14 @@ const Popup = ({
 
             <Button type='link' onClick={onHide}>
               <Flex alignCenter>
-                <i className='m-font m-font-close-circle m-text-20 m-text-placeholder' />
+                <Text className='m-font m-font-close-circle m-text-20 m-text-placeholder' />
               </Flex>
             </Button>
           </Flex>
         )}
-        <div className='m-popup-content m-flex-flex'>{children}</div>
+        <View className='m-popup-content m-flex-flex'>{children}</View>
       </Flex>
-    </div>
+    </View>
   )
 }
 
@@ -110,7 +116,7 @@ Popup.propTypes = {
 }
 
 Popup.defaultProps = {
-  onHide: _.noop,
+  onHide: noop,
 }
 
 export default Popup

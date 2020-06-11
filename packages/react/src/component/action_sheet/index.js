@@ -1,5 +1,5 @@
 import React from 'react'
-import Popup from '../popup'
+import { Popup } from '@gm-mobile/components'
 import _ from 'lodash'
 import PropTypes from 'prop-types'
 import { getLocale } from '@gm-mobile/locales'

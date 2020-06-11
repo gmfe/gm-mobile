@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Popup from '../popup'
+import { Popup } from '@gm-mobile/components'
 
 const Tooltip = ({ title, content, onClick, children }) => {
   const handleClick = (e) => {

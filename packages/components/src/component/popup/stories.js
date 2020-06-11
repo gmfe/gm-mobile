@@ -1,47 +1,50 @@
 import React from 'react'
+
 import Popup from './index'
+import View from '../view'
+import Button from '../button'
 
 export const normal = () => {
   return (
-    <div>
-      <button
+    <View>
+      <Button
         onClick={() => {
           Popup.render({
             left: true,
             children: (
-              <div>
-                <div>adsfas</div>
-              </div>
+              <View>
+                <View>adsfas</View>
+              </View>
             ),
             onHide: Popup.hide
           })
         }}
       >
         left
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={() => {
           Popup.render({
             right: true,
-            children: <div>lala</div>,
+            children: <View>lala</View>,
             onHide: Popup.hide
           })
         }}
       >
         right
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={() => {
           Popup.render({
             bottom: true,
-            children: <div>lala</div>,
+            children: <View>lala</View>,
             onHide: Popup.hide
           })
         }}
       >
         bottom
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={() => {
           Popup.render({
             style: {
@@ -52,32 +55,32 @@ export const normal = () => {
               width: '300px',
               height: '400px',
             },
-            children: <div>center</div>,
+            children: <View>center</View>,
             disabledHeader: true,
             onHide: Popup.hide
           })
         }}
       >
         center
-      </button>
-    </div>
+      </Button>
+    </View>
   )
 }
 
 export const title = () => {
   return (
-    <button
+    <Button
       onClick={() => {
         Popup.render({
           title: '啦啦啦',
           bottom: true,
-          children: <div>lala</div>,
+          children: <View>lala</View>,
           onHide: Popup.hide
         })
       }}
     >
       bottom
-    </button>
+    </Button>
   )
 }
 
