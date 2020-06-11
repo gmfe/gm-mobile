@@ -2,7 +2,9 @@
 
 增加 小程序
 
+## breaking change
 
+Toast 废弃 info danger 方法
 
 # 1.x
 

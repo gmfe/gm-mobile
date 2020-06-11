@@ -47,14 +47,8 @@ const ToastStatics = {
   success(options) {
     ToastStatics._tip(options, 'success')
   },
-  info(options) {
-    ToastStatics._tip(options, 'info')
-  },
   warning(options) {
     ToastStatics._tip(options, 'warning')
-  },
-  danger(options) {
-    ToastStatics._tip(options, 'danger')
   },
   loading(options) {
     ToastStatics._tip(options, 'loading')
@@ -68,12 +62,8 @@ const Toast = ({ children, type }) => {
     children = children || getLocale('加载中...')
   } else if (type === 'success') {
     icon = <Text className='m-font m-font-success-circle' />
-  } else if (type === 'info') {
-    icon = <Text className='m-font m-font-info-circle' />
   } else if (type === 'warning') {
     icon = <Text className='m-font m-font-warning' />
-  } else if (type === 'danger') {
-    icon = <Text className='m-font m-font-close-circle' />
   }
 
   // loading 起个遮罩，不让点其他地方
@@ -99,7 +89,7 @@ Object.assign(Toast, ToastStatics)
 
 Toast.propTypes = {
   time: PropTypes.any, // 在组件上没意义，单纯给静态方法调用参考
-  type: PropTypes.oneOf(['success', 'info', 'warning', 'danger', 'loading']),
+  type: PropTypes.oneOf(['success', 'warning', 'loading']),
 }
 
 Toast.defaultProps = {
