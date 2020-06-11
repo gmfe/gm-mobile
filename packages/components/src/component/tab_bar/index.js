@@ -1,8 +1,12 @@
 import React from 'react'
-import _ from 'lodash'
+import noop from 'lodash/noop'
+import map from 'lodash/map'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Flex, Badge } from '@gm-mobile/components'
+
+import Flex from '../flex'
+import Badge from '../badge'
+import View from '../view'
 
 const Item = ({ config, index, selected, onClick }) => {
   const { icon, activeIcon, name, badge, showBadge } = config
@@ -11,7 +15,7 @@ const Item = ({ config, index, selected, onClick }) => {
 
   const tab = () => (
     <Flex column justifyCenter alignCenter>
-      <div>
+      <View>
         {((isActive && !activeIcon) || (!isActive && icon)) &&
           React.cloneElement(icon, {
             className: classNames('m-tabbar-nav-icon', icon.props.className),
@@ -24,8 +28,8 @@ const Item = ({ config, index, selected, onClick }) => {
               activeIcon.props.className
             ),
           })}
-      </div>
-      <div className='m-tabbar-nav-name'>{name}</div>
+      </View>
+      <View className='m-tabbar-nav-name'>{name}</View>
     </Flex>
   )
 
@@ -58,13 +62,13 @@ Item.propTypes = {
 }
 
 Item.defaultProps = {
-  onClick: _.noop,
+  onClick: noop,
 }
 
 const Tabbar = ({ configs, selected, onTabChange, className, ...rest }) => {
   return (
     <Flex {...rest} className={classNames('m-tabbar', className)}>
-      {_.map(configs, (config, index) => (
+      {map(configs, (config, index) => (
         <Item
           key={index}
           config={config}
@@ -89,7 +93,7 @@ Tabbar.propTypes = {
 }
 
 Tabbar.defaultProps = {
-  onTabChange: _.noop,
+  onTabChange: noop,
 }
 
 export default Tabbar

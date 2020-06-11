@@ -21,7 +21,6 @@ import Counter from './component/counter'
 
 // 布局
 import Header from './component/header'
-import Tabbar from './component/tab_bar'
 import Panel from '../../components/src/component/panel'
 import { Lazy, LazyList } from './component/lazy'
 import PullUpDown from './component/pull_up_down'
@@ -66,6 +65,7 @@ import {
   Checkbox,
   Radio,
   Divider,
+  Tabbar,
 } from '@gm-mobile/components'
 
 const Alert = Dialog.alert

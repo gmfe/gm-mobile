@@ -8,6 +8,21 @@ import {
   Label,
   Tabs,
   Badge,
+  Checkbox,
+  Radio,
+  Tabbar,
 } from '@gm-mobile/components'
 
-export { View, Button, Page, LayoutRoot, Label, Tabs, Badge, ImageMP }
+export {
+  View,
+  Button,
+  Page,
+  LayoutRoot,
+  Label,
+  Tabs,
+  Badge,
+  Checkbox,
+  Radio,
+  Tabbar,
+  ImageMP,
+}

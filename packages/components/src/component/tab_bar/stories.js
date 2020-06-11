@@ -1,5 +1,8 @@
-import Tabbar from './index'
 import React, { useState } from 'react'
+
+import Tabbar from './index'
+import View from '../view'
+import Text from '../text'
 
 export const normal = () => {
   const [active, setActive] = useState('/my')
@@ -12,30 +15,30 @@ export const normal = () => {
     {
       name: '订单',
       to: '/order',
-      icon: <i className='m-font m-font-plus' />,
-      activeIcon: <i className='m-font m-font-close-circle' />,
+      icon: <Text className='m-font m-font-plus' />,
+      activeIcon: <Text className='m-font m-font-close-circle' />,
     },
     {
       name: '我的',
       to: '/my',
-      icon: <i className='m-font m-font-plus' />,
+      icon: <Text className='m-font m-font-plus' />,
     },
     {
       name: '购物车',
-      icon: <i className='m-font m-font-close-circle' />,
+      icon: <Text className='m-font m-font-close-circle' />,
       to: '/cart',
       showBadge: true,
       badge: { count: 7, corner: true },
     },
   ]
   return (
-    <div className='m-padding-top-10'>
+    <View className='m-padding-top-10'>
       <Tabbar
         configs={configs}
         onTabChange={handleTabChange}
         selected={active}
       />
-    </div>
+    </View>
   )
 }
 
