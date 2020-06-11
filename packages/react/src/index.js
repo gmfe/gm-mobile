@@ -23,7 +23,6 @@ import Counter from './component/counter'
 import Divider from './component/divider'
 import Header from './component/header'
 import Tabbar from './component/tab_bar'
-import Square from './component/square'
 import Panel from '../../components/src/component/panel'
 import { Lazy, LazyList } from './component/lazy'
 import PullUpDown from './component/pull_up_down'
@@ -60,6 +59,7 @@ import {
   Tabs,
   Switch,
   TagWrap,
+  Square,
   Calendar,
   RangeCalendar,
   MultipleCalendar,
