@@ -6,12 +6,7 @@ import Flex from '../flex'
 import Mask from '../mask'
 import LayoutRoot from '../layout_root'
 import View from '../view'
-// import BorderInput from '../input/border_input'
-
-// TODO
-const BorderInput = () => {
-  return <View />
-}
+import Input from './input'
 
 const ErrorInput = ({
   getError,
@@ -29,8 +24,8 @@ const ErrorInput = ({
 
   return (
     <>
-      <BorderInput
-        className='m-text-14'
+      <Input
+        className='m-dialog-input'
         value={value}
         onChange={handleChange}
         {...rest}
@@ -61,8 +56,9 @@ const DialogStatics = {
     }
     options = { ...options }
 
+    let inputValue = ''
+
     if (type === 'prompt') {
-      options._id = Math.random()
       options.children = (
         <View className='m-text-left'>
           <View>{options.promptText}</View>
@@ -70,8 +66,10 @@ const DialogStatics = {
             className='m-padding-tb-10'
             {...options.promptInputProps}
             autoFocus
-            id={options._id}
             getError={options.promptGetError}
+            onChange={(e) => {
+              inputValue = e.target.value
+            }}
           />
         </View>
       )
@@ -81,11 +79,9 @@ const DialogStatics = {
       const _onConfirm = options.onConfirm || noop
       options.onConfirm = () => {
         let result
-        let inputValue
 
         // 如果是 prompt，需要把 input 传过去
         if (type === 'prompt') {
-          inputValue = document.getElementById(options._id).value
           result = _onConfirm(inputValue)
         } else {
           result = _onConfirm()
