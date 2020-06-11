@@ -23,6 +23,7 @@ each(mpReq.keys(), (key) => {
   storiesList.push({
     module: mpReq(key),
     packageName: 'mp',
+    path: key,
   })
 })
 
@@ -30,12 +31,13 @@ each(comReq.keys(), (key) => {
   storiesList.push({
     module: comReq(key),
     packageName: 'components',
+    path: key,
   })
 })
 
 const dataMap = {}
 
-each(storiesList, ({ module, packageName }) => {
+each(storiesList, ({ module, packageName, path }) => {
   // 算是个常规的 stories
   if (module.default && module.default.title) {
     const title = module.default.title
@@ -52,6 +54,7 @@ each(storiesList, ({ module, packageName }) => {
           root,
           component,
           store: key,
+          folder: path.split('.')[1].split('/')[1],
         }
       }
     })

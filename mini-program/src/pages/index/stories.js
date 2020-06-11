@@ -2,10 +2,11 @@ import React, { useEffect, useMemo } from 'react'
 import { useRouter } from '@tarojs/taro'
 import { Observer } from 'mobx-react'
 import { View, Page, LayoutRoot } from '../../../../packages/mp/src/index'
+import queryString from 'query-string'
 
 const Stories = () => {
   const {
-    params: { packageName, root, component, store },
+    params: { packageName, root, component, store, folder },
   } = useRouter()
 
   useEffect(() => {
@@ -16,11 +17,10 @@ const Stories = () => {
   })
 
   const stories = useMemo(() => {
-    const dir = component.toLocaleLowerCase()
     if (packageName === 'components') {
-      return require(`../../../../packages/components/src/component/${dir}/stories`)
+      return require(`../../../../packages/components/src/component/${folder}/stories`)
     }
-    return require(`../../../../packages/mp/src/component/${dir}/stories`)
+    return require(`../../../../packages/mp/src/component/${folder}/stories`)
   }, [])
 
   return (
