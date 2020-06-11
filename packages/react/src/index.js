@@ -20,7 +20,6 @@ import Price from './component/price'
 import Counter from './component/counter'
 
 // 布局
-import Divider from './component/divider'
 import Header from './component/header'
 import Tabbar from './component/tab_bar'
 import Panel from '../../components/src/component/panel'
@@ -66,6 +65,7 @@ import {
   Dialog,
   Checkbox,
   Radio,
+  Divider,
 } from '@gm-mobile/components'
 
 const Alert = Dialog.alert

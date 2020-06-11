@@ -16,6 +16,7 @@ import TagWrap from './component/tag'
 import Checkbox from './component/checkbox'
 import Radio from './component/radio'
 import Square from './component/square'
+import Divider from './component/divider'
 import { RangeCalendar, MultipleCalendar, Calendar } from './component/calendar'
 
 export {
@@ -41,4 +42,5 @@ export {
   Dialog,
   Checkbox,
   Radio,
+  Divider,
 }
