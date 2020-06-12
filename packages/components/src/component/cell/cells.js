@@ -1,10 +1,11 @@
 import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
+import View from '../view'
 
 const Cells = ({ title, mini, className, children, ...rest }) => {
   return (
-    <div
+    <View
       {...rest}
       className={classNames(
         'm-cells',
@@ -14,9 +15,9 @@ const Cells = ({ title, mini, className, children, ...rest }) => {
         className
       )}
     >
-      {title && <div className='m-cells-title'>{title}</div>}
-      <div className='m-cells-content'>{children}</div>
-    </div>
+      {title && <View className='m-cells-title'>{title}</View>}
+      <View className='m-cells-content'>{children}</View>
+    </View>
   )
 }
 

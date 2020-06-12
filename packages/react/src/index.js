@@ -2,7 +2,12 @@
 import { Input, InputPassword, BorderInput } from './component/input'
 import Uploader from './component/uploader'
 import Textarea from './component/textarea'
-import { Cells, Cell, CellForm, CellsForm } from './component/cell'
+import {
+  Cells,
+  Cell,
+  CellForm,
+  CellsForm,
+} from '../../components/src/component/cell'
 import {
   Picker,
   CouplingPicker,

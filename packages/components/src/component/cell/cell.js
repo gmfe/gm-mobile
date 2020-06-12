@@ -1,8 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import _ from 'lodash'
-import { Flex } from '@gm-mobile/components'
+import isString from 'lodash/isString'
+import noop from 'lodash/noop'
+import { isWeApp } from '../../util'
+import Flex from '../flex'
+import View from '../view'
+import Text from '../text'
 
 const Cell = ({
   access,
@@ -17,7 +21,7 @@ const Cell = ({
 }) => {
   const handleClick = (e) => {
     // 如果提供了 href 代表跳转
-    if (href) {
+    if (!isWeApp() && href) {
       window.location.href = href
     }
     onClick(e)
@@ -36,18 +40,18 @@ const Cell = ({
       )}
       onClick={handleClick}
     >
-      {icon && <div className='m-cell-icon'>{icon}</div>}
-      {left && <div className='m-cell-left'>{left}</div>}
-      <div className='m-cell-body'>{children}</div>
+      {icon && <View className='m-cell-icon'>{icon}</View>}
+      {left && <View className='m-cell-left'>{left}</View>}
+      <View className='m-cell-body'>{children}</View>
       <Flex alignCenter>
         {right &&
-          (_.isString(right) ? (
-            <div className='m-cell-right'>{right}</div>
+          (isString(right) ? (
+            <View className='m-cell-right'>{right}</View>
           ) : (
             right
           ))}
         {access && (
-          <i className='m-font m-font-angle-right m-cell-access-icon' />
+          <Text className='m-font m-font-angle-right m-cell-access-icon' />
         )}
       </Flex>
     </Flex>
@@ -69,7 +73,7 @@ Cell.propTypes = {
 }
 
 Cell.defaultProps = {
-  onClick: _.noop,
+  onClick: noop,
 }
 
 export default Cell

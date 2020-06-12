@@ -1,23 +1,34 @@
 import React from 'react'
+import { observable } from 'mobx'
 import Cells from './cells'
 import Cell from './cell'
 import CellsForm from './cells_form'
 import CellForm from './cell_form'
-import { Input, InputPassword } from '../input'
-import Textarea from '../textarea'
-import { Flex, ButtonTime } from '@gm-mobile/components'
-import { observable } from 'mobx'
+import Flex from '../flex'
+import ButtonTime from '../button'
+import View from '../view'
+import Text from '../text'
+import Toast from '../toast'
+
+import { Input, InputPassword } from '../../../../react/src/component/input'
+import Textarea from '../../../../react/src/component/textarea'
+
+import { isWeApp } from '../../util'
 
 export const normal = () => {
   return (
-    <div className='m-bg-back m-padding-tb-10'>
+    <View className='m-bg-back m-padding-tb-10'>
       <Cells title='title 说明'>
         <Cell>children 文字</Cell>
         <Cell right={'right 说明文字'}>children 文字</Cell>
         <Cell access right={'right 说明文字'}>
           children 文字
         </Cell>
-        <Cell access right={'right 说明文字'} href='https://www.guanmai.cn'>
+        <Cell access right={'right 说明文字'} href='https://www.guanmai.cn' onClick={() => {
+          if (isWeApp()) {
+            Toast.tip('小程序自主处理跳转')
+          }
+        }}>
           点击去官网
         </Cell>
       </Cells>
@@ -26,7 +37,7 @@ export const normal = () => {
         <Cell
           access
           icon={
-            <i className='m-font m-font-search' style={{ fontSize: '20px' }} />
+            <Text className='m-font m-font-search' style={{ fontSize: '20px' }} />
           }
           right={'right 说明文字'}
         >
@@ -35,41 +46,41 @@ export const normal = () => {
         <Cell
           access
           icon={
-            <i className='m-font m-font-search' style={{ fontSize: '20px' }} />
+            <Text className='m-font m-font-search' style={{ fontSize: '20px' }} />
           }
           right={'right 说明文字'}
         >
           children 文字
         </Cell>
       </Cells>
-    </div>
+    </View>
   )
 }
 
 export const mini = () => {
   return (
-    <div className='m-bg-back m-padding-tb-10'>
+    <View className='m-bg-back m-padding-tb-10'>
       <Cells title='title 说明' mini>
         <Cell
           access
-          right={<div className='m-text-accent m-text-12'>兑换商品</div>}
+          right={<View className='m-text-accent m-text-12'>兑换商品</View>}
         >
-          <div className='m-text-desc'>积分已1000，可兑换商品</div>
+          <View className='m-text-desc'>积分已1000，可兑换商品</View>
         </Cell>
         <Cell
           access
-          right={<div className='m-text-desc m-text-12'>共 20 件</div>}
+          right={<View className='m-text-desc m-text-12'>共 20 件</View>}
         >
           <Flex>
-            <div
+            <View
               style={{ width: '50px', height: '50px' }}
               className='m-bg-back m-margin-right-10'
             />
-            <div
+            <View
               style={{ width: '50px', height: '50px' }}
               className='m-bg-back m-margin-right-10'
             />
-            <div
+            <View
               style={{ width: '50px', height: '50px' }}
               className='m-bg-back m-margin-right-10'
             />
@@ -77,24 +88,24 @@ export const mini = () => {
         </Cell>
         <Cell
           access
-          right={<div className='m-text-12'>2020年04月22日20:13:32</div>}
+          right={<View className='m-text-12'>2020年04月22日20:13:32</View>}
         >
-          <div className='m-text-desc'>收货时间</div>
+          <View className='m-text-desc'>收货时间</View>
         </Cell>
-        <Cell right={<div className='m-text-12'>-￥1312313</div>}>
-          <div className='m-text-desc'>限时优惠</div>
+        <Cell right={<View className='m-text-12'>-￥1312313</View>}>
+          <View className='m-text-desc'>限时优惠</View>
         </Cell>
         <Cell
           right={
-            <div className='m-text-12 m-text-desc'>
+            <View className='m-text-12 m-text-desc'>
               拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉拉
-            </div>
+            </View>
           }
         >
-          <div className='m-text-desc'>订单备注</div>
+          <View className='m-text-desc'>订单备注</View>
         </Cell>
       </Cells>
-    </div>
+    </View>
   )
 }
 
@@ -113,7 +124,7 @@ const store = observable({
 
 export const form = () => {
   return (
-    <div className='m-padding-tb-10'>
+    <View className='m-padding-tb-10'>
       <CellsForm title='啦啦啦啦'>
         <CellForm required>
           <Input
@@ -167,30 +178,30 @@ export const form = () => {
           label='地理标签'
           labelWidth='100px'
           access
-          right={<div>请选择</div>}
+          right={<View>请选择</View>}
           onClick={() => {
             alert('push 地理标签页面')
           }}
         >
           {store.area ? (
-            <div>{store.area}</div>
+            <View>{store.area}</View>
           ) : (
-            <div className='m-text-placeholder'>省市区县、乡镇</div>
+            <View className='m-text-placeholder'>省市区县、乡镇</View>
           )}
         </CellForm>
         <CellForm
           label='商户位置'
           labelWidth='100px'
           access
-          right={<div>定位</div>}
+          right={<View>定位</View>}
           onClick={() => {
             alert('push 商户位置页面')
           }}
         >
           {store.position ? (
-            <div>{store.position}</div>
+            <View>{store.position}</View>
           ) : (
-            <div className='m-text-placeholder'>省市区县、乡镇</div>
+            <View className='m-text-placeholder'>省市区县、乡镇</View>
           )}
         </CellForm>
         <CellForm label='收货地址' labelWidth='100px'>
@@ -250,7 +261,7 @@ export const form = () => {
           />
         </CellForm>
       </CellsForm>
-    </div>
+    </View>
   )
 }
 

@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Cell from './cell'
+import View from '../view'
+import Text from '../text'
 import classNames from 'classnames'
 
 const CellForm = ({
@@ -18,17 +20,17 @@ const CellForm = ({
         {...rest}
         left={
           label ? (
-            <div className='m-cell-form-label' style={{ width: labelWidth }}>
-              {required && <span className='m-text-red'>*</span>}
+            <View className='m-cell-form-label' style={{ width: labelWidth }}>
+              {required && <Text className='m-text-red'>*</Text>}
               {label}
-            </div>
+            </View>
           ) : null
         }
         className={classNames('m-cell-form', className)}
       >
         {children}
       </Cell>
-      {error && <div className='m-cell-form-error'>{error}</div>}
+      {error && <View className='m-cell-form-error'>{error}</View>}
     </>
   )
 }
