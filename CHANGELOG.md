@@ -6,6 +6,8 @@
 
 Toast 废弃 info danger 方法
 
+Cell 废弃 href，跳转自主处理
+
 # 1.x
 
 ## change

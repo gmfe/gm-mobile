@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import isString from 'lodash/isString'
 import noop from 'lodash/noop'
-import { isWeApp } from '../../util'
 import Flex from '../flex'
 import View from '../view'
 import Text from '../text'
@@ -13,17 +12,12 @@ const Cell = ({
   icon,
   left,
   right,
-  href,
   onClick,
   children,
   className,
   ...rest
 }) => {
   const handleClick = (e) => {
-    // 如果提供了 href 代表跳转
-    if (!isWeApp() && href) {
-      window.location.href = href
-    }
     onClick(e)
   }
 
@@ -65,7 +59,6 @@ Cell.propTypes = {
   icon: PropTypes.element,
   left: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
   right: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
-  href: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
   onClick: PropTypes.func,
   className: PropTypes.string,

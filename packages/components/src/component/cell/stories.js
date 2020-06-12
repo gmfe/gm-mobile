@@ -24,9 +24,11 @@ export const normal = () => {
         <Cell access right={'right 说明文字'}>
           children 文字
         </Cell>
-        <Cell access right={'right 说明文字'} href='https://www.guanmai.cn' onClick={() => {
+        <Cell access right={'right 说明文字'} onClick={() => {
           if (isWeApp()) {
             Toast.tip('小程序自主处理跳转')
+          } else {
+            window.location.href = 'https://www.guanmai.cn'
           }
         }}>
           点击去官网
