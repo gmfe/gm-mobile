@@ -25,6 +25,8 @@ const Coupon = (props) => {
     hasUseInfo,
     isExpired,
     isUsed,
+    onReceived,
+    couponAmount,
     ...rest
   } = props
 
@@ -83,13 +85,16 @@ const Coupon = (props) => {
               <span className='m-coupon-right-header-label'>{label}</span>
             )}
             <Flex alignCenter none className='m-coupon-right-header-date'>
-              {dateInfo}
-              {onUse && (
+              {dateInfo || ''}
+              {couponAmount !== undefined
+                ? `${getLocale('可领')}${couponAmount}${getLocale('张')}`
+                : ''}
+              {(onUse || onReceived) && (
                 <span
                   className='m-coupon-right-header-btn'
-                  onClick={isDisabled ? _.noop : onUse}
+                  onClick={isDisabled ? _.noop : onUse || onReceived}
                 >
-                  {getLocale('立即使用')}
+                  {onReceived ? getLocale('立即领取') : getLocale('立即使用')}
                 </span>
               )}
             </Flex>
@@ -174,6 +179,8 @@ Coupon.propTypes = {
   isExpired: PropTypes.bool,
   /** 优惠券是否已使用 */
   isUsed: PropTypes.bool,
+  onReceived: PropTypes.func,
+  couponAmount: PropTypes.number,
   className: PropTypes.string,
   style: PropTypes.object,
 }
