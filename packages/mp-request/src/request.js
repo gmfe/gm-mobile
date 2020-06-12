@@ -1,6 +1,6 @@
-import { axios } from 'taro-axios'
+import axios from 'taro-axios'
 import { getLocale } from '@gm-mobile/locales'
-import { isArray } from 'lodash/isArray'
+import isArray from 'lodash/isArray'
 import { processPostData, getErrorMessage } from './util'
 
 const instance = axios.create({
@@ -45,7 +45,7 @@ class RequestBase {
       headers: {},
       ...config,
     }
-    this.data = {}
+    this._data = {}
   }
 
   code(code) {

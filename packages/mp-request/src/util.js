@@ -1,5 +1,5 @@
-import { map } from 'lodash/map'
-import { pickBy } from 'lodash/pickBy'
+import map from 'lodash/map'
+import pickBy from 'lodash/pickBy'
 import { getLocale } from '@gm-mobile/locales'
 
 const requestUrl = '//trace.guanmai.cn/api/logs/request/'
@@ -16,7 +16,6 @@ function param(obj) {
 
 function processPostData(data) {
   let body
-
   if (toString.call(data) !== '[object Object]') {
     // json string 和 其他情况
     body = data
