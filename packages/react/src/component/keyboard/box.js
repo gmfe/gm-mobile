@@ -7,7 +7,9 @@ const KeyboardBox = ({ tabbar, style, ...rest }) => {
   const [active, setActive] = useState(false)
 
   useEffect(() => {
-    const handleKeyboardRender = () => {
+    const handleKeyboardRender = (detail) => {
+      const { isScroll } = detail.detail
+      if (!isScroll) return
       setActive(true)
     }
 
@@ -28,8 +30,8 @@ const KeyboardBox = ({ tabbar, style, ...rest }) => {
       ? CSSVariable.getValue('--m-size-tabbar-height')
       : '0px'
 
-    // 暂时先定 225px
-    return `calc(225px - ${tabbarHeight})`
+    // 暂时先定 185px -- 没有确定按钮
+    return `calc(185px - ${tabbarHeight})`
   }
 
   if (!active) {

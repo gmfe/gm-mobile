@@ -2,13 +2,8 @@ import React from 'react'
 import LayoutRoot from '../layout_root'
 import Keyboard from './keyboard'
 import Popup from '../popup'
-// import EVENT_TYPE from '../../event_type'
-// import { KEYBOARD_LABEL, isKeyboardNeedHide } from './util'
-
-// 事件通知
-// const dispatchKeyboardEvent = (eventName) => {
-//   window.dispatchEvent(new window.CustomEvent(eventName))
-// }
+import EVENT_TYPE from '../../event_type'
+import { KEYBOARD_LABEL } from './util'
 
 // const handleWindowClick = (e) => {
 //   if (isKeyboardNeedHide(e.target)) {
@@ -73,26 +68,57 @@ import Popup from '../popup'
 //   },
 // }
 
-// 遮罩状态
+// 事件通知
+const dispatchKeyboardEvent = (eventName, detail) => {
+  window.dispatchEvent(new window.CustomEvent(eventName, detail))
+}
+
+// 兼容采购app -- 保留遮罩，增加定位
 const KeyboardStatics = {
-  render({ title, onHide, ...rest }) {
-    LayoutRoot.renderWith(
-      LayoutRoot.TYPE.KEYBOARD,
+  active: false,
+  render({ title, useFuncBar, ...rest }) {
+    const com = (
       <Popup
         title={title}
         onHide={() => {
           KeyboardStatics.hide()
         }}
         bottom
+        disabledAnimate
+        data-keyboard-label={KEYBOARD_LABEL}
         opacity={0}
+        disabledHeader={useFuncBar}
       >
-        <Keyboard {...rest} />
+        <Keyboard {...rest} useFuncBar={useFuncBar} />
       </Popup>
     )
+
+    if (this.active) {
+      LayoutRoot.setComponent(LayoutRoot.TYPE.KEYBOARD, com)
+    } else {
+      LayoutRoot.renderWith(LayoutRoot.TYPE.KEYBOARD, com)
+    }
+
+    // false => true 才通知
+    if (this.active === false) {
+      dispatchKeyboardEvent(EVENT_TYPE.KEYBOARD_SHOW, {
+        detail: { isScroll: useFuncBar },
+      })
+    }
+
+    this.active = true
   },
 
   hide() {
-    LayoutRoot.hideWith(LayoutRoot.TYPE.KEYBOARD)
+    // true => false 才通知
+    if (this.active) {
+      LayoutRoot.hideWith(LayoutRoot.TYPE.KEYBOARD)
+      dispatchKeyboardEvent(EVENT_TYPE.KEYBOARD_HIDE, {
+        detail: { isScroll: false },
+      })
+    }
+
+    this.active = false
   },
 }
 

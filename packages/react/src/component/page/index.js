@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import Flex from '../flex'
-// import KeyboardBox from '../keyboard/box'
+import KeyboardBox from '../keyboard/box'
 
 const Page = ({
   className,
@@ -39,7 +39,7 @@ const Page = ({
       </div>
       {bottom && <div className='m-flex-none'>{bottom}</div>}
       {tabbar && <div className='m-page-tabbar m-flex-none'>{tabbar}</div>}
-      {/* <KeyboardBox tabbar={!!tabbar} /> */}
+      <KeyboardBox tabbar={!!tabbar} />
     </Flex>
   )
 }

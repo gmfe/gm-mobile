@@ -44,6 +44,8 @@ const Keyboard = (props) => {
     max,
     precision,
     getErrorMsg,
+    useFuncBar,
+    onChange,
     ...rest
   } = props
 
@@ -151,25 +153,29 @@ const Keyboard = (props) => {
     const cv = checkValue(v)
 
     setCurrentValue(cv)
-    // onSubmit(cv)
+    onChange && onChange(cv)
   }
 
   return (
     <Flex column {...rest} className='m-number-keyboard'>
-      <Flex className='m-number-keyboard-header'>
-        <Flex alignCenter className='m-number-keyboard-header-input m-text-18'>
-          {currentValue}
+      {!useFuncBar && (
+        <Flex className='m-number-keyboard-header'>
+          <Flex
+            alignCenter
+            className='m-number-keyboard-header-input m-text-18'
+          >
+            {currentValue}
+          </Flex>
+          <Button
+            type='primary'
+            mini
+            className='m-number-keyboard-header-btn'
+            onClick={handleSubmit}
+          >
+            {getLocale('确定')}
+          </Button>
         </Flex>
-        <Button
-          type='primary'
-          mini
-          className='m-number-keyboard-header-btn'
-          onClick={handleSubmit}
-        >
-          {getLocale('确定')}
-        </Button>
-      </Flex>
-      {children}
+      )}
       <BaseKeyboard onChange={handleValueChange} />
     </Flex>
   )
@@ -191,6 +197,9 @@ Keyboard.propTypes = {
    * 否则返回null
    */
   getErrorMsg: PropTypes.func,
+
+  useFuncBar: PropTypes.bool,
+  onChange: PropTypes.func,
 }
 
 Keyboard.defaultProps = {

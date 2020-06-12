@@ -56,6 +56,20 @@ const isKeyboardNeedHide = (target) => {
   return false
 }
 
+// 判断点击区域是否为键盘
+const isTouchKeyboard = (target) => {
+  const node = target
+  if (
+    !isContains(node, (n) => {
+      const tag = (n.dataset && n.dataset.keyboardAreaLabel) || ''
+      return !!tag
+    })
+  ) {
+    return true
+  }
+  return false
+}
+
 export {
   TYPE,
   KEYS,
@@ -63,4 +77,5 @@ export {
   text2Number,
   isContains,
   isKeyboardNeedHide,
+  isTouchKeyboard,
 }

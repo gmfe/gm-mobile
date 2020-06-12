@@ -5,8 +5,8 @@
 
   .m-keyboard-gap {
     display: inline-block;
-    width: 4px;
-    height: 4px;
+    width: 5px;
+    height: 5px;
   }
 
   .m-keyboard-num {
@@ -100,5 +100,45 @@
 
   100% {
     background-color: transparent;
+  }
+}
+
+.m-keyboard-func-box {
+  width: 100%;
+  padding: 10px;
+  z-index: 2000;
+  border-radius: 10px 10px 0 0;
+
+  .mBorderTopBeforeWith();
+  .mBorderBottomBeforeWith();
+
+  .m-keyboard-func-box-btn {
+    display: inline-block;
+    width: 25%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 4px;
+
+    .mBgWhiteActiveWith();
+  }
+}
+
+.m-keybaord-input {
+  position: relative;
+
+  &:focus {
+    outline: none;
+
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 1px;
+      height: 70%;
+      position: absolute;
+      top: 15%;
+      margin-left: 3px;
+      animation: blink 1s infinite steps(1, start);
+    }
   }
 }
