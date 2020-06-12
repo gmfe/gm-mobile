@@ -1,6 +1,8 @@
 import React from 'react'
 import ActionSheet from './index'
 
+import Button from '../button'
+
 export const normal = () => {
   const data = [
     { text: '菜单一', value: 1 },
@@ -12,11 +14,16 @@ export const normal = () => {
     ActionSheet.render({
       data,
       title: 'title',
-    }).then((value) => {
-      console.log(value)
-    })
+    }).then(
+      (value) => {
+        console.log(value)
+      },
+      () => {
+        console.log('reject')
+      }
+    )
   }
-  return <button onClick={handleClick}>ActionSheet</button>
+  return <Button onClick={handleClick}>ActionSheet</Button>
 }
 
 export default {

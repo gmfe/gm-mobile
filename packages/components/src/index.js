@@ -20,6 +20,7 @@ import Divider from './component/divider'
 import Tabbar from './component/tab_bar'
 import Popup from './component/popup'
 import Tooltip from './component/tooltip'
+import ActionSheet from './component/action_sheet'
 import { RangeCalendar, MultipleCalendar, Calendar } from './component/calendar'
 
 export {
@@ -49,4 +50,5 @@ export {
   Tabbar,
   Popup,
   Tooltip,
+  ActionSheet,
 }

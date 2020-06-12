@@ -1,8 +1,10 @@
-import React from 'react'
-import { Popup } from '@gm-mobile/components'
-import _ from 'lodash'
-import PropTypes from 'prop-types'
 import { getLocale } from '@gm-mobile/locales'
+import React from 'react'
+import map from 'lodash/map'
+import PropTypes from 'prop-types'
+
+import Popup from '../popup'
+import View from '../view'
 
 const ActionSheetStatics = {
   render({ title, data }) {
@@ -48,27 +50,27 @@ const ActionSheet = ({ data, onSelect, onCancel }) => {
   }
 
   return (
-    <div className='m-text-center m-bg-back'>
-      <div className='m-bg-white'>
-        {_.map(data, (option) => (
-          <div
+    <View className='m-text-center m-bg-back'>
+      <View className='m-bg-white'>
+        {map(data, (option) => (
+          <View
             key={option.value}
             className='m-padding-tb-15 m-border-1px-top-after m-bg-white-active-with'
             onClick={() => handleSelected(option)}
           >
             {option.text}
-          </div>
+          </View>
         ))}
-      </div>
-      <div className='m-bg-white m-margin-top-10'>
-        <div
+      </View>
+      <View className='m-bg-white m-margin-top-10'>
+        <View
           className='m-bg-white-active-with m-padding-tb-15'
           onClick={onCancel}
         >
           {getLocale('取消')}
-        </div>
-      </div>
-    </div>
+        </View>
+      </View>
+    </View>
   )
 }
 

@@ -36,7 +36,6 @@ import Nav from './component/nav'
 // 浮层
 import NProgress from './component/nprogress'
 import InnerLayer from './component/inner_layer'
-import ActionSheet from './component/action_sheet'
 
 // 其他
 import { LetterIndex, LetterIndexMultiple } from './component/letter_index'
@@ -71,6 +70,7 @@ import {
   Tabbar,
   Popup,
   Tooltip,
+  ActionSheet,
 } from '@gm-mobile/components'
 
 const Alert = Dialog.alert
