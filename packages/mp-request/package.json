@@ -1,10 +1,13 @@
 {
-  "name": "mp-request",
+  "name": "@gm-mobile/mp-request",
   "version": "2.0.0-alpha.0",
   "description": "> TODO: description",
   "author": "zhongsink <zhongink@gmail.com>",
   "homepage": "https://github.com/gmfe/gm-mobile#readme",
   "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "src/index.js",
   "directories": {
     "lib": "lib",
@@ -24,7 +27,7 @@
     "url": "https://github.com/gmfe/gm-mobile/issues"
   },
   "dependencies": {
-    "@gm-mobile/locales": "^2.0.0-alpha.0",
+    "@gm-mobile/locales": "^2.0.0-alpha.1",
     "lodash": "^4.17.15",
     "taro-axios": "^1.1.1"
   }
