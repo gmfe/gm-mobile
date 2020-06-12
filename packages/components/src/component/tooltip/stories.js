@@ -1,10 +1,12 @@
 import React from 'react'
 import Tooltip from './index'
 
+import View from '../view'
+
 export const normal = () => {
   return (
-    <Tooltip ttile='提示' content={<div>asdfafa</div>}>
-      <div>点我提示</div>
+    <Tooltip title='提示' content={<View>asdfafa</View>}>
+      <View>点我提示</View>
     </Tooltip>
   )
 }

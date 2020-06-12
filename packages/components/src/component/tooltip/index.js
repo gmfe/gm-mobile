@@ -1,13 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Popup } from '@gm-mobile/components'
+
+import Popup from '../popup'
+import View from '../view'
 
 const Tooltip = ({ title, content, onClick, children }) => {
   const handleClick = (e) => {
     Popup.render({
       title,
       bottom: true,
-      children: <div style={{ minHeight: '100px' }}>{content}</div>,
+      children: <View style={{ minHeight: '100px' }}>{content}</View>,
       onHide: Popup.hide,
     })
 
