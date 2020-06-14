@@ -27,6 +27,7 @@ import Price from './component/price'
 import Counter from './component/counter'
 import Badge from './component/badge'
 import TagWrap from './component/tag'
+import ProgressBar from './component/progress_bar'
 
 // 布局
 import Flex from './component/flex'
@@ -103,6 +104,7 @@ export {
   Counter,
   Badge,
   TagWrap,
+  ProgressBar,
   // 布局
   Flex,
   Divider,
