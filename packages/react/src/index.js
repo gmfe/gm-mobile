@@ -23,6 +23,7 @@ import FlipNumber from './component/flip_number'
 import Image from './component/image'
 import Price from './component/price'
 import Counter from './component/counter'
+import ProgressBar from './component/progress_bar'
 
 // 布局
 import Header from './component/header'
@@ -116,6 +117,7 @@ export {
   Counter,
   Badge,
   TagWrap,
+  ProgressBar,
   // 布局
   Flex,
   Divider,
