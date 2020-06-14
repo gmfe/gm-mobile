@@ -34,7 +34,7 @@ import Flex from './component/flex'
 import Divider from './component/divider'
 import Page from './component/page'
 import Header from './component/header'
-import Tabbar from './component/tab_bar'
+import { Tabbar, FlowBtnTabbar } from './component/tab_bar'
 import Square from './component/square'
 import Panel from './component/panel'
 import { Lazy, LazyList } from './component/lazy'
@@ -111,6 +111,7 @@ export {
   Page,
   Header,
   Tabbar,
+  FlowBtnTabbar,
   Square,
   Panel,
   Lazy,
