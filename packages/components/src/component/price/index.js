@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
+import find from 'lodash/find'
+import isNil from 'lodash/isNil'
+import isNaN from 'lodash/isNaN'
 
 import { formatNumber } from '@gm-common/number'
-import storage from '../storage'
+import storage from '../../../../react/src/component/storage'
 
 const eventBus = {
   add(eventName, handler) {
@@ -27,7 +29,7 @@ let _unit = storage.get(unitKey) || '元'
 let _currencyList = [] // 多币种列表
 
 const getCurrentFromType = (type) =>
-  _.find(_currencyList, (item) => item.type === type)
+  find(_currencyList, (item) => item.type === type)
 
 const format = (value, isFenUnit, formatOptions) => {
   if (isFenUnit) {
@@ -61,7 +63,7 @@ class Price extends React.Component {
     } = this.props
 
     const current = getCurrentFromType(feeType)
-    if (_.isNil(value) || _.isNaN(value)) {
+    if (isNil(value) || isNaN(value)) {
       return null
     }
 

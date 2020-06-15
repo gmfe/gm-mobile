@@ -42,6 +42,7 @@
   "dependencies": {
     "@babel/core": "^7.8.6",
     "@gm-common/tool": "^2.2.9",
+    "@gm-common/number": "^2.2.9",
     "@gm-react-app/scripts-lib": "^3.1.2",
     "@storybook/addon-info": "^5.3.14",
     "@storybook/addon-notes": "^5.3.14",

@@ -1,38 +1,39 @@
 import React from 'react'
 import { observable } from 'mobx'
 
-import Price from './'
+import Price from './index'
+import View from '../view'
 
 export const normal = () => {
   return (
-    <div>
-      <div>
+    <View>
+      <View>
         说明：
-        <br />
+        <View />
         货币符号相关方法： setCurrency, setCurrencyList, getCurrency
-        <br />
+        <View />
         单位相关方法： setUnit, getUnit
-        <br />
+        <View />
         定义金额展示： format
-      </div>
-      <br />
+      </View>
+      <View />
       normal形式
-      <div className='m-margin-5'>
+      <View className='m-margin-5'>
         <Price value={100} />
-      </div>
-      <div className='m-margin-5'>
+      </View>
+      <View className='m-margin-5'>
         <Price currencyScale={0.5} value={-12314} />
-      </div>
-      <div className='m-margin-5'>
+      </View>
+      <View className='m-margin-5'>
         <Price isFenUnit value={12345.678} />
-      </div>
-      <div className='m-margin-5'>
+      </View>
+      <View className='m-margin-5'>
         <Price value={125345.6478} precision={3} />
-      </div>
-      <br />
-      format -- 保留几位小数展示<br />
+      </View>
+      <View />
+      format -- 保留几位小数展示<View />
       {Price.format(-8132789.5404)}
-    </div>
+    </View>
   )
 }
 

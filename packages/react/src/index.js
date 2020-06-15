@@ -6,7 +6,7 @@ import ScrollIntoView from './component/scroll_into_view'
 // 基础
 import FlipNumber from './component/flip_number'
 import Image from './component/image'
-import Price from './component/price'
+import Price from '../../components/src/component/price'
 import Counter from './component/counter'
 import ProgressBar from './component/progress_bar'
 

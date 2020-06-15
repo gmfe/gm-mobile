@@ -1790,6 +1790,16 @@
   resolved "https://registry.npmjs.org/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
+"@gm-common/number@^2.2.9":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@gm-common/number/-/number-2.4.0.tgz#2db13ef9f72c8c8dc24e81274df3c6263eadd5b8"
+  integrity sha512-HtQI86Q8PhF2TnVzCv/EpUPwoivCZuAonvXPyLqLfu5mDamRrs8ILMf0/07N/yPOVfrMt+tzgrWh9Wbwv3eyGQ==
+  dependencies:
+    "@types/big.js" "^4.0.5"
+    "@types/lodash" "^4.14.150"
+    big.js "^5.2.2"
+    lodash "^4.17.15"
+
 "@gm-common/tool@^2.2.9":
   version "2.2.9"
   resolved "https://registry.npmjs.org/@gm-common/tool/-/tool-2.2.9.tgz#c09958428a20e3d57bdef085c01009fdd344d1f0"
@@ -2734,6 +2744,11 @@
   version "0.0.31"
   resolved "https://registry.npmjs.org/@types/archy/-/archy-0.0.31.tgz#01650a4641e7e1d11dbd64eda42eec9a2f829c7f"
   integrity sha512-v+dxizsFVyXgD3EpFuqT9YjdEjbJmPxNf1QIX9ohZOhxh1ZF2yhqv3vYaeum9lg3VghhxS5S0a6yldN9J9lPEQ==
+
+"@types/big.js@^4.0.5":
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/@types/big.js/-/big.js-4.0.5.tgz#62c61697646269e39191f24e55e8272f05f21fc0"
+  integrity sha512-D9KFrAt05FDSqLo7PU9TDHfDgkarlwdkuwFsg7Zm4xl62tTNaz+zN+Tkcdx2wGLBbSMf8BnoMhOVeUGUaJfLKg==
 
 "@types/color-name@^1.1.1":
   version "1.1.1"
