@@ -1,11 +1,22 @@
 # `mp-request`
 
-> TODO: description
+## TODO
+ - 中间件
+ - 文件上传
 
 ## Usage
 
 ```
-const mpRequest = require('mp-request');
+// 暂不支持文件上传
+import { Request } = '@gm-mobile/mp-request'
 
-// TODO: DEMONSTRATE API
+Request('https://bshop.guanmai.cn/login')
+    .code([0])
+    .data({
+        username: 'qucaigou001',
+        password: 'liuge1',
+    })
+    .post()
+
+Request('https://bshop.guanmai.cn/user/account').get()
 ```
