@@ -35,7 +35,6 @@ import Nav from './component/nav'
 
 // 浮层
 import NProgress from './component/nprogress'
-import InnerLayer from './component/inner_layer'
 
 // 其他
 import { LetterIndex, LetterIndexMultiple } from './component/letter_index'
@@ -73,6 +72,7 @@ import {
   Search,
   FakeSearch,
   SearchPage,
+  InnerLayer,
 } from '@gm-mobile/components'
 
 const Alert = Dialog.alert

@@ -1,7 +1,9 @@
 import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import { LayoutRoot } from '@gm-mobile/components'
+
+import LayoutRoot from '../layout_root'
+import View from '../view'
 
 const InnerLayerStatics = {
   render(props) {
@@ -14,7 +16,7 @@ const InnerLayerStatics = {
 }
 
 const InnerLayer = ({ className, children, ...rest }) => (
-  <div
+  <View
     {...rest}
     className={classNames(
       'm-inner-layer-container m-container-full',
@@ -22,7 +24,7 @@ const InnerLayer = ({ className, children, ...rest }) => (
     )}
   >
     {children}
-  </div>
+  </View>
 )
 
 Object.assign(InnerLayer, InnerLayerStatics)

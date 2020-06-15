@@ -1,6 +1,8 @@
 import React from 'react'
-import { Button } from '@gm-mobile/components'
+
+import Button from '../button'
 import InnerLayer from './'
+import View from '../view'
 
 export const Normal = () => {
   const handleCancel = () => {
@@ -10,19 +12,19 @@ export const Normal = () => {
   const handleClick = () => {
     InnerLayer.render({
       children: (
-        <div className='m-bg-back m-text-center m-padding-20'>
+        <View className='m-bg-back m-text-center m-padding-20'>
           lalala
           <Button mini className='m-margin-left-20' onClick={handleCancel}>
             取消
           </Button>
-        </div>
+        </View>
       ),
     })
   }
   return (
-    <div className='m-padding-20' onClick={handleClick}>
+    <View className='m-padding-20' onClick={handleClick}>
       click here 打开内页
-    </div>
+    </View>
   )
 }
 

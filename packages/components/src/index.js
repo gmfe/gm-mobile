@@ -23,6 +23,7 @@ import Tooltip from './component/tooltip'
 import ActionSheet from './component/action_sheet'
 import { RangeCalendar, MultipleCalendar, Calendar } from './component/calendar'
 import { Search, FakeSearch, SearchPage } from './component/search'
+import InnerLayer from './component/inner_layer'
 
 export {
   Button,
@@ -55,4 +56,5 @@ export {
   Search,
   FakeSearch,
   SearchPage,
+  InnerLayer,
 }
