@@ -41,7 +41,6 @@ import InnerLayer from './component/inner_layer'
 import { LetterIndex, LetterIndexMultiple } from './component/letter_index'
 import { LocalStorage, SessionStorage } from './component/storage'
 import CSSVariable from './css_variable'
-import { Search, SearchPage, FakeSearch } from './component/search'
 import RepeatTimes from './component/repeat_times'
 import Canvas from './component/canvas'
 
@@ -71,6 +70,9 @@ import {
   Popup,
   Tooltip,
   ActionSheet,
+  Search,
+  FakeSearch,
+  SearchPage,
 } from '@gm-mobile/components'
 
 const Alert = Dialog.alert

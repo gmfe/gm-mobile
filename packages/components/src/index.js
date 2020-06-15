@@ -22,6 +22,7 @@ import Popup from './component/popup'
 import Tooltip from './component/tooltip'
 import ActionSheet from './component/action_sheet'
 import { RangeCalendar, MultipleCalendar, Calendar } from './component/calendar'
+import { Search, FakeSearch, SearchPage } from './component/search'
 
 export {
   Button,
@@ -51,4 +52,7 @@ export {
   Popup,
   Tooltip,
   ActionSheet,
+  Search,
+  FakeSearch,
+  SearchPage,
 }

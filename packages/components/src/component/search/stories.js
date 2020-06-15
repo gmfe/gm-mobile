@@ -2,8 +2,10 @@ import React from 'react'
 import Search from './search'
 import SearchPage from './page'
 import FakeSearch from './fake_search'
-import Header from '../header'
-import { Flex } from '@gm-mobile/components'
+// import Header from '../header'
+import Flex from '../flex'
+import View from '../view'
+import Button from '../button'
 import { observable } from 'mobx'
 
 const store = observable({
@@ -23,25 +25,25 @@ const store = observable({
 
 export const normal = () => {
   return (
-    <div>
-      <h3>带搜索按钮 （一般一个路由承载的搜索页）</h3>
-      <div>
+    <View>
+      <View>带搜索按钮 （一般一个路由承载的搜索页）</View>
+      <View>
         <Search
           placeholder='在站内搜索'
           value={store.value}
           onChange={(value) => store.setValue(value)}
           onSearch={(value) => console.log('搜索拉', value)}
         />
-      </div>
-    </div>
+      </View>
+    </View>
   )
 }
 
 export const cancel = () => {
   return (
-    <div>
-      <h3>带取消按钮（点Header的搜索按钮）</h3>
-      <div>
+    <View>
+      <View>带取消按钮（点Header的搜索按钮）</View>
+      <View>
         <Search
           type={'cancel'}
           placeholder='在站内搜索'
@@ -49,21 +51,21 @@ export const cancel = () => {
           onChange={(value) => store.setValue(value)}
           onCancel={() => console.log('cancel')}
         />
-      </div>
-    </div>
+      </View>
+    </View>
   )
 }
 
 export const fakeSearch = () => {
   return (
-    <div>
+    <View>
       <FakeSearch
         placeholder='站内搜索'
         className='text-center'
         onClick={() => {}}
       />
       <FakeSearch center />
-    </div>
+    </View>
   )
 }
 
@@ -71,23 +73,24 @@ export const searchPage = () => {
   return (
     <SearchPage
       header={
-        <Header
-          title='demo'
-          right={
-            <Flex
-              alignCenter
-              className='m-padding-lr-15'
-              onClick={() => {
-                // 同时初始化下搜索数据
-                store.setActive(true)
-                store.setValue('')
-                store.setSearchValue('')
-              }}
-            >
-              搜索
-            </Flex>
-          }
-        />
+        <View>1232</View>
+        // <Header
+        //   title='demo'
+        //   right={
+        //     <Flex
+        //       alignCenter
+        //       className='m-padding-lr-15'
+        //       onClick={() => {
+        //         // 同时初始化下搜索数据
+        //         store.setActive(true)
+        //         store.setValue('')
+        //         store.setSearchValue('')
+        //       }}
+        //     >
+        //       搜索
+        //     </Flex>
+        //   }
+        // />
       }
       active={store.active}
       value={store.value}
@@ -102,13 +105,13 @@ export const searchPage = () => {
         store.setValue(store.searchValue)
       }}
     >
-      <div>
+      <View>
         输入框值:{store.value}
         <br />
         搜索值:{store.searchValue}
         <br />
         历史搜索:
-        <button
+        <Button
           onClick={() => {
             store.setActive(true)
             store.setValue('青菜')
@@ -116,8 +119,8 @@ export const searchPage = () => {
           }}
         >
           青菜
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => {
             store.setActive(true)
             store.setValue('黄瓜')
@@ -125,8 +128,8 @@ export const searchPage = () => {
           }}
         >
           黄瓜
-        </button>
-      </div>
+        </Button>
+      </View>
     </SearchPage>
   )
 }

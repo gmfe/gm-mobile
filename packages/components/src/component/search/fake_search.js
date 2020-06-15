@@ -2,7 +2,8 @@ import { getLocale } from '@gm-mobile/locales'
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Flex } from '@gm-mobile/components'
+import Flex from '../flex'
+import Text from '../text'
 
 const FakeSearch = ({
   placeholder,
@@ -20,7 +21,7 @@ const FakeSearch = ({
       className={classNames('m-fake-search', className)}
     >
       <Flex alignCenter justifyCenter={center} className='m-fake-search-inner'>
-        <i className='m-font m-font-search' />
+        <Text className='m-font m-font-search' />
         &nbsp;
         {placeholder}
         {children}

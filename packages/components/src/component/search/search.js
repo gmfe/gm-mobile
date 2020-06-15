@@ -4,8 +4,10 @@ import ReactDOM from 'react-dom'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
-import Input from '../input/input'
-import { Button } from '@gm-mobile/components'
+// import Input from '../input/input'
+import View from '../view'
+import Button from '../button'
+import Text from '../text'
 
 const Search = ({
   value,
@@ -42,28 +44,27 @@ const Search = ({
   }
 
   return (
-    <form
+    <View
       {...rest}
-      onSubmit={handleSearch}
       className={classNames('m-search m-flex m-flex-align-center', className)}
     >
-      <label className='m-search-input m-flex m-flex-flex'>
-        <i className='m-font m-font-search m-search-icon-search' />
-        <Input
+      <View className='m-search-input m-flex m-flex-flex'>
+        <Text className='m-font m-font-search m-search-icon-search' />
+        {/* <Input
           ref={refInput}
           type='search'
           value={value}
           onChange={handleChange}
           placeholder={placeholder}
           autoFocus={autoFocus}
-        />
+        /> */}
         {value && (
-          <i
+          <Text
             className='m-font m-font-close-circle m-search-icon-close'
             onClick={handleClean}
           />
         )}
-      </label>
+      </View>
       {type === 'search' ? (
         <Button type='link' mini onClick={handleSearch}>
           {searchText || getLocale('搜索')}
@@ -73,7 +74,7 @@ const Search = ({
           {searchText || getLocale('取消')}
         </Button>
       )}
-    </form>
+    </View>
   )
 }
 
