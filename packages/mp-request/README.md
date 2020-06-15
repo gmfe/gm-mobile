@@ -13,8 +13,8 @@ import { Request } = '@gm-mobile/mp-request'
 Request('https://bshop.guanmai.cn/login')
     .code([0])
     .data({
-        username: 'qucaigou001',
-        password: 'liuge1',
+        username: '44545',
+        password: '454545',
     })
     .post()
 
