@@ -33,7 +33,7 @@ const FlowBtnTabbar = ({
         justifyCenter
         alignCenter
         onClick={onFlowButtonClick}
-        className='m-tabbar-flow-wrapper m-bg-white-active-with'
+        className='m-tabbar-flow-wrapper m-bg-primary-active-with'
       >
         {FlowButton || <Text className='m-font m-font-plus' />}
       </Flex>
