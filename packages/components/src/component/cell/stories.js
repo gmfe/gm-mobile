@@ -192,7 +192,7 @@ export const form = () => {
           access
           right={<View>请选择</View>}
           onClick={() => {
-            alert('push 地理标签页面')
+            Toast.tip('push 地理标签页面')
           }}
         >
           {store.area ? (
@@ -207,7 +207,7 @@ export const form = () => {
           access
           right={<View>定位</View>}
           onClick={() => {
-            alert('push 商户位置页面')
+            Toast.tip('push 商户位置页面')
           }}
         >
           {store.position ? (
@@ -234,7 +234,7 @@ export const form = () => {
               mini
               type='primary'
               onClick={() => {
-                alert('do 发送验证码')
+                Toast.tip('do 发送验证码')
               }}
             >
               重新发送

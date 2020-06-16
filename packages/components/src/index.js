@@ -26,6 +26,7 @@ import { Search, FakeSearch, SearchPage } from './component/search'
 import InnerLayer from './component/inner_layer'
 import Textarea from './component/textarea'
 import { Input, InputMaxLength, InputPassword } from './component/input'
+import { Cells, Cell, CellForm, CellsForm } from './component/cell'
 
 export {
   Button,
@@ -64,4 +65,8 @@ export {
   InputMaxLength,
   InputPassword,
   Textarea,
+  Cells,
+  Cell,
+  CellForm,
+  CellsForm,
 }

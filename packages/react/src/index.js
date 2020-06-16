@@ -1,12 +1,6 @@
 // 表单
 import Uploader from './component/uploader'
 import {
-  Cells,
-  Cell,
-  CellForm,
-  CellsForm,
-} from '../../components/src/component/cell'
-import {
   Picker,
   CouplingPicker,
   ConfirmPicker,
@@ -77,6 +71,10 @@ import {
   InputPassword,
   InputMaxLength,
   Textarea,
+  Cells,
+  Cell,
+  CellForm,
+  CellsForm,
 } from '@gm-mobile/components'
 
 const Alert = Dialog.alert
