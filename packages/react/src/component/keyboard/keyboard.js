@@ -42,6 +42,8 @@ const Keyboard = (props) => {
     max,
     precision,
     getErrorMsg,
+    disabledHeader,
+    onChange,
     ...rest
   } = props
 
@@ -149,25 +151,29 @@ const Keyboard = (props) => {
     const cv = checkValue(v)
 
     setCurrentValue(cv)
-    // onSubmit(cv)
+    onChange(cv)
   }
 
   return (
     <Flex column {...rest} className='m-number-keyboard'>
-      <Flex className='m-number-keyboard-header'>
-        <Flex alignCenter className='m-number-keyboard-header-input m-text-18'>
-          {currentValue}
+      {!disabledHeader && (
+        <Flex className='m-number-keyboard-header'>
+          <Flex
+            alignCenter
+            className='m-number-keyboard-header-input m-text-18'
+          >
+            {currentValue}
+          </Flex>
+          <Button
+            type='primary'
+            mini
+            className='m-number-keyboard-header-btn'
+            onClick={handleSubmit}
+          >
+            {getLocale('确定')}
+          </Button>
         </Flex>
-        <Button
-          type='primary'
-          mini
-          className='m-number-keyboard-header-btn'
-          onClick={handleSubmit}
-        >
-          {getLocale('确定')}
-        </Button>
-      </Flex>
-      {children}
+      )}
       <BaseKeyboard onChange={handleValueChange} />
     </Flex>
   )
@@ -177,7 +183,7 @@ Keyboard.propTypes = {
   /** 初始默认值 */
   defaultValue: PropTypes.string,
   /** 确定回调函数 */
-  onSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func,
   /** 最小值 */
   min: PropTypes.number,
   /** 最大值 */
@@ -189,12 +195,18 @@ Keyboard.propTypes = {
    * 否则返回null
    */
   getErrorMsg: PropTypes.func,
+
+  disabledHeader: PropTypes.bool,
+  /** 点击输入回调 */
+  onChange: PropTypes.func,
 }
 
 Keyboard.defaultProps = {
   defaultValue: '',
   precision: 2,
   getErrorMsg: handleErrorMsg,
+  onChange: _.noop,
+  onSubmit: _.noop,
 }
 
 export default Keyboard
