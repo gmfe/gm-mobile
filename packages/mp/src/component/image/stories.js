@@ -32,8 +32,15 @@ export const round = () => (
 export const longPress = () => (
   <Flex column>
     <Image showMenuByLongpress width='100px' height='100px' src={src} />
-    <Image showMenuByLongpress width='100px' height='100px' src='https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=810988444,1648289218&fm=11&gp=0.jpg' />
-    <Text>tip：image组件中二维码/小程序码图片不支持长按识别。仅在wx.previewImage中支持长按识别,主要是因为苹果手机限制</Text>
+    <Image
+      showMenuByLongpress
+      width='100px'
+      height='100px'
+      src='https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=810988444,1648289218&fm=11&gp=0.jpg'
+    />
+    <Text>
+      tip：image组件中二维码/小程序码图片不支持长按识别。仅在wx.previewImage中支持长按识别,主要是因为苹果手机限制
+    </Text>
   </Flex>
 )
 
@@ -41,6 +48,16 @@ export const error = () => (
   <View>
     <Image width='100px' height='100px' src='error' />
   </View>
+)
+
+export const webp = () => (
+  <Flex column>
+    <Image
+      src='https://s4.aconvert.com/convert/p3r68-cdx67/ag3k2-r8ala.webp'
+      webp
+    />
+    <Text>只支持网络资源，有点慢。</Text>
+  </Flex>
 )
 
 export const mode = () => (
@@ -101,14 +118,34 @@ export const mode = () => (
 
     <Text>top right：不缩放图片，只显示图片的右上边区域</Text>
     <View style={flex}>
-      <Image objectFix='scale-down' mode='top right' src={src2} style={style1} />
-      <Image objectFix='scale-down' mode='top right' src={src2} style={style2} />
+      <Image
+        objectFix='scale-down'
+        mode='top right'
+        src={src2}
+        style={style1}
+      />
+      <Image
+        objectFix='scale-down'
+        mode='top right'
+        src={src2}
+        style={style2}
+      />
     </View>
 
     <Text>bottom left：不缩放图片，只显示图片的左下边区域</Text>
     <View style={flex}>
-      <Image objectFix='scale-down' mode='bottom left' src={src2} style={style1} />
-      <Image objectFix='scale-down' mode='bottom left' src={src2} style={style2} />
+      <Image
+        objectFix='scale-down'
+        mode='bottom left'
+        src={src2}
+        style={style1}
+      />
+      <Image
+        objectFix='scale-down'
+        mode='bottom left'
+        src={src2}
+        style={style2}
+      />
     </View>
 
     <Text>bottom right：不缩放图片，只显示图片的右下边区域</Text>

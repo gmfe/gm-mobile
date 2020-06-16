@@ -15,7 +15,6 @@ const NewImage = (props) => {
     width,
     height,
     round,
-    objectFix,
     className,
     placeholder,
     error,
@@ -104,14 +103,6 @@ const ImagePropTypes = {
   width: PropTypes.string,
   /** 是否为圆形 */
   round: PropTypes.bool,
-  /** 填充模式 */
-  objectFix: PropTypes.oneOf([
-    'contain',
-    'cover',
-    'fill',
-    'none',
-    'scale-down',
-  ]),
   /** 默认占位图地址 */
   placeholder: PropTypes.string,
   /** 加载出错占位图 */
@@ -136,7 +127,6 @@ NewImage.propTypes = ImagePropTypes
 ImageWrapper.propTypes = ImagePropTypes
 
 ImageWrapper.defaultProps = {
-  objectFix: 'fill',
   placeholder: placeholder,
   error: error,
 }
