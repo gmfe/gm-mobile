@@ -4,6 +4,13 @@ import map from 'lodash/map'
 import each from 'lodash/each'
 import './index.less'
 import queryString from 'query-string'
+import {
+  Page,
+  Cells,
+  Cell,
+  ActionSheet,
+  LayoutRoot,
+} from '../../../../packages/components/src'
 
 // 不知道为啥，要写到 component
 const mpReq = require.context(
@@ -64,37 +71,39 @@ each(storiesList, ({ module, packageName, path }) => {
 export default class Index extends Component {
   render() {
     return (
-      <View>
+      <Page>
         {map(dataMap, (oneValue, oneKey) => {
           return (
-            <View key={oneKey}>
-              <Text>{oneKey}</Text>
-
+            <Cells key={oneKey} title={oneKey}>
               {map(oneValue, (twoValue, twoKey) => {
                 return (
-                  <View key={twoKey} className='m-padding-lr-10'>
+                  <Cell
+                    access
+                    key={twoKey}
+                    className='m-padding-lr-10'
+                    onClick={() => {
+                      ActionSheet.render({
+                        title: twoKey,
+                        data: map(twoValue, (thereValue, thereKey) => ({
+                          text: thereKey,
+                          value: queryString.stringify(thereValue),
+                        })),
+                      }).then((value) => {
+                        wx.navigateTo({
+                          url: `/pages/index/stories?${value}`,
+                        })
+                      })
+                    }}
+                  >
                     <Text>{twoKey}</Text>
-
-                    {map(twoValue, (thereValue, thereKey) => {
-                      return (
-                        <View key={thereKey} className='m-padding-lr-10'>
-                          <Navigator
-                            url={`/pages/index/stories?${queryString.stringify(
-                              thereValue
-                            )}`}
-                          >
-                            {thereKey}
-                          </Navigator>
-                        </View>
-                      )
-                    })}
-                  </View>
+                  </Cell>
                 )
               })}
-            </View>
+            </Cells>
           )
         })}
-      </View>
+        <LayoutRoot />
+      </Page>
     )
   }
 }
