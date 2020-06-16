@@ -3,6 +3,7 @@ import Input from './input'
 import InputPassword from './input_password'
 import { observable } from 'mobx'
 import InputMaxLength from './input_max_length'
+import View from '../view'
 
 const store = observable({
   value: '',
@@ -13,7 +14,7 @@ const store = observable({
 
 export const normal = () => {
   return (
-    <div>
+    <View>
       <Input
         value={store.value}
         onChange={(e) => store.setValue(e.target.value)}
@@ -26,7 +27,7 @@ export const normal = () => {
         placeholder='请输入'
         disabled
       />
-    </div>
+    </View>
   )
 }
 

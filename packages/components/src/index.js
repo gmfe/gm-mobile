@@ -24,6 +24,7 @@ import ActionSheet from './component/action_sheet'
 import { RangeCalendar, MultipleCalendar, Calendar } from './component/calendar'
 import { Search, FakeSearch, SearchPage } from './component/search'
 import InnerLayer from './component/inner_layer'
+import { Input, InputMaxLength, InputPassword } from './component/input'
 
 export {
   Button,
@@ -57,4 +58,7 @@ export {
   FakeSearch,
   SearchPage,
   InnerLayer,
+  Input,
+  InputMaxLength,
+  InputPassword,
 }

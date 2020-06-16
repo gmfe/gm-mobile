@@ -2,7 +2,6 @@
   width: 100%;
   border: 0;
   outline: 0;
-  -webkit-appearance: none;
   background-color: transparent;
   line-height: var(--m-size-line-height);
   padding: 0;
@@ -33,12 +32,16 @@
 .m-input-password {
   position: relative;
 
+  .m-input {
+    width: calc(100% - 2em);
+  }
+
   .m-input-password-icon {
     cursor: pointer;
     position: absolute;
     right: 0;
     top: 50%;
-    margin-top: -0.5em;
+    margin-top: -0.8em;
     padding: 0 5px;
     color: var(--m-color-desc);
   }

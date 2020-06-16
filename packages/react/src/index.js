@@ -1,5 +1,4 @@
 // 表单
-import { Input, InputPassword, InputMaxLength } from './component/input'
 import Uploader from './component/uploader'
 import Textarea from './component/textarea'
 import {
@@ -73,6 +72,9 @@ import {
   FakeSearch,
   SearchPage,
   InnerLayer,
+  Input,
+  InputPassword,
+  InputMaxLength,
 } from '@gm-mobile/components'
 
 const Alert = Dialog.alert
