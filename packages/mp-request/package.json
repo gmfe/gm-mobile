@@ -1,6 +1,6 @@
 {
   "name": "@gm-mobile/mp-request",
-  "version": "2.0.0-alpha.3",
+  "version": "2.0.0-alpha.4",
   "description": "> TODO: description",
   "author": "zhongsink <zhongink@gmail.com>",
   "homepage": "https://github.com/gmfe/gm-mobile#readme",
@@ -27,7 +27,7 @@
     "url": "https://github.com/gmfe/gm-mobile/issues"
   },
   "dependencies": {
-    "@gm-mobile/locales": "^2.0.0-alpha.3",
+    "@gm-mobile/locales": "^2.0.0-alpha.4",
     "lodash": "^4.17.15",
     "taro-axios": "^1.1.1"
   }
