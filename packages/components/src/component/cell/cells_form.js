@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import Cells from './cells'
-import { devWarnForHook } from '@gm-common/tool'
+import { devWarnForHook } from '@gm-mobile/tool'
 
 const CellsForm = (props) => {
   const { className, ...rest } = props

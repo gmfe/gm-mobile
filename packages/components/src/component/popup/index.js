@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import noop from 'lodash/noop'
-import { devWarnForHook } from '@gm-common/tool'
+import { devWarnForHook } from '@gm-mobile/tool'
 
 import Flex from '../flex'
 import Mask from '../mask'
