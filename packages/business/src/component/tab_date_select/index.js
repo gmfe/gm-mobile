@@ -11,7 +11,6 @@ import { getLocale } from '@gm-mobile/locales'
 import _ from 'lodash'
 import moment from 'moment'
 import PropTypes from 'prop-types'
-import SvgArrowDown from '../../../svg/arrow-down.svg'
 
 const getServiceTimeRange = (serviceTime) => {
   const maxSpanEnd =
@@ -110,7 +109,7 @@ const TabDateSelect = ({
             <div className='m-margin-right-5'>{`${getLocale('运营时间')}:${
               activeTab.selectedServiceTime.text
             }`}</div>
-            <SvgArrowDown />
+            <i className='m-font m-font-arrow-down' />
           </Flex>
         </Flex>
       )}
