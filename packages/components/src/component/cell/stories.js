@@ -24,13 +24,17 @@ export const normal = () => {
         <Cell access right={'right 说明文字'}>
           children 文字
         </Cell>
-        <Cell access right={'right 说明文字'} onClick={() => {
-          if (isWeApp()) {
-            Toast.tip('小程序自主处理跳转')
-          } else {
-            window.location.href = 'https://www.guanmai.cn'
-          }
-        }}>
+        <Cell
+          access
+          right={'right 说明文字'}
+          onClick={() => {
+            if (isWeApp()) {
+              Toast.tip('小程序自主处理跳转')
+            } else {
+              window.location.href = 'https://www.guanmai.cn'
+            }
+          }}
+        >
           点击去官网
         </Cell>
       </Cells>
@@ -39,7 +43,10 @@ export const normal = () => {
         <Cell
           access
           icon={
-            <Text className='m-font m-font-search' style={{ fontSize: '20px' }} />
+            <Text
+              className='m-font m-font-search'
+              style={{ fontSize: '16px', lineHeight: 1 }}
+            />
           }
           right={'right 说明文字'}
         >
@@ -48,7 +55,10 @@ export const normal = () => {
         <Cell
           access
           icon={
-            <Text className='m-font m-font-search' style={{ fontSize: '20px' }} />
+            <Text
+              className='m-font m-font-search'
+              style={{ fontSize: '20px' }}
+            />
           }
           right={'right 说明文字'}
         >

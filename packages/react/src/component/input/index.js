@@ -1,6 +1,6 @@
 import Input from './input'
 import InputPassword from './input_password'
-import BorderInput from './border_input'
+import InputMaxLength from './input_max_length'
 
-export { Input, InputPassword, BorderInput }
+export { Input, InputPassword, InputMaxLength }
 export default Input

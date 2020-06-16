@@ -1,5 +1,5 @@
 // 表单
-import { Input, InputPassword, BorderInput } from './component/input'
+import { Input, InputPassword, InputMaxLength } from './component/input'
 import Uploader from './component/uploader'
 import Textarea from './component/textarea'
 import {
@@ -88,7 +88,7 @@ export {
   Radio,
   Input,
   InputPassword,
-  BorderInput,
+  InputMaxLength,
   Switch,
   Uploader,
   Textarea,

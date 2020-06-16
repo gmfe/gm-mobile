@@ -25,6 +25,7 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   autoFocus: PropTypes.bool,
   form: PropTypes.bool,
+  disabled: PropTypes.bool,
   className: PropTypes.string,
   style: PropTypes.object,
 }

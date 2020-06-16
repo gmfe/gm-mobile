@@ -6,14 +6,7 @@ const Input = ({ autoFocus, onChange, ...rest }) => {
     onChange(e)
   }
 
-  return (
-    <TInput
-      {...rest}
-      autoFocus={autoFocus}
-      focus={autoFocus}
-      onInput={handleInput}
-    />
-  )
+  return <TInput {...rest} focus={autoFocus} onInput={handleInput} />
 }
 
 export default Input
