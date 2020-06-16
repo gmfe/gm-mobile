@@ -79,7 +79,7 @@ export const flowBtn = () => {
   ]
 
   return (
-    <div style={{ marginTop: '50px' }}>
+    <View style={{ marginTop: '50px' }}>
       <FlowBtnTabbar
         rightConfigs={right}
         leftConfigs={left}
@@ -87,7 +87,7 @@ export const flowBtn = () => {
         onTabChange={handleTabChange}
         selected={active}
       />
-    </div>
+    </View>
   )
 }
 
