@@ -1,6 +1,7 @@
 import React from 'react'
 import Textarea from './index'
 import { observable } from 'mobx'
+import View from '../view'
 
 const store = observable({
   value: '',
@@ -11,7 +12,7 @@ const store = observable({
 
 export const normal = () => {
   return (
-    <div>
+    <View>
       <Textarea
         value={store.value}
         onChange={(e) => store.setValue(e.target.value)}
@@ -24,7 +25,7 @@ export const normal = () => {
         value={store.value}
         onChange={(e) => store.setValue(e.target.value)}
       />
-    </div>
+    </View>
   )
 }
 

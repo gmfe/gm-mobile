@@ -1,6 +1,5 @@
 // 表单
 import Uploader from './component/uploader'
-import Textarea from './component/textarea'
 import {
   Cells,
   Cell,
@@ -77,6 +76,7 @@ import {
   Input,
   InputPassword,
   InputMaxLength,
+  Textarea,
 } from '@gm-mobile/components'
 
 const Alert = Dialog.alert

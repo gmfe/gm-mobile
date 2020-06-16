@@ -2,11 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 import classNames from 'classnames'
+import View from '../view'
+import Base from './base'
 
 const Textarea = ({ value, disabled, maxLength, form, className, ...rest }) => {
   return (
-    <div className='m-textarea-container'>
-      <textarea
+    <View className='m-textarea-container'>
+      <Base
         {...rest}
         value={value}
         className={classNames(
@@ -19,11 +21,11 @@ const Textarea = ({ value, disabled, maxLength, form, className, ...rest }) => {
         )}
       />
       {maxLength && (
-        <div className='m-textarea-max-length'>
+        <View className='m-textarea-max-length'>
           {value.length}/{maxLength}
-        </div>
+        </View>
       )}
-    </div>
+    </View>
   )
 }
 
@@ -32,7 +34,8 @@ Textarea.propTypes = {
   onChange: PropTypes.func,
   disabled: PropTypes.bool,
   maxLength: PropTypes.number,
-  rows: PropTypes.string,
+  /** 小程序 */
+  autoHeight: PropTypes.bool,
   form: PropTypes.bool,
   className: PropTypes.string,
   style: PropTypes.object,
@@ -40,7 +43,6 @@ Textarea.propTypes = {
 
 Textarea.defaultProps = {
   onChange: _.noop,
-  rows: '3',
 }
 
 export default Textarea
