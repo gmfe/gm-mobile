@@ -3,7 +3,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
+import noop from 'lodash/noop'
 // import Input from '../input/input'
 import View from '../view'
 import Button from '../button'
@@ -96,8 +96,8 @@ Search.propTypes = {
 
 Search.defaultProps = {
   autoFocus: false,
-  onSearch: _.noop,
-  onCancel: _.noop,
+  onSearch: noop,
+  onCancel: noop,
   placeholder: getLocale('搜索'),
   type: 'search',
 }

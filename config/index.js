@@ -20,10 +20,7 @@ const config = {
   framework: 'react',
   mini: {
     compile: {
-      include: [
-        path.resolve(__dirname, '../node_modules/@gm-common'),
-        path.resolve(__dirname, '../packages'),
-      ],
+      include: [path.resolve(__dirname, '../packages')],
     },
     webpackChain(chain, webpack) {
       // chain
