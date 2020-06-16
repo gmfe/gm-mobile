@@ -27,6 +27,13 @@ import InnerLayer from './component/inner_layer'
 import Textarea from './component/textarea'
 import { Input, InputMaxLength, InputPassword } from './component/input'
 import { Cells, Cell, CellForm, CellsForm } from './component/cell'
+import {
+  Picker,
+  CouplingPicker,
+  ConfirmPicker,
+  ConfirmCouplingPicker,
+  SelectPicker,
+} from './component/picker'
 
 export {
   Button,
@@ -69,4 +76,9 @@ export {
   Cell,
   CellForm,
   CellsForm,
+  Picker,
+  CouplingPicker,
+  ConfirmPicker,
+  ConfirmCouplingPicker,
+  SelectPicker,
 }

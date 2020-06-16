@@ -1,12 +1,5 @@
 // 表单
 import Uploader from './component/uploader'
-import {
-  Picker,
-  CouplingPicker,
-  ConfirmPicker,
-  ConfirmCouplingPicker,
-  SelectPicker,
-} from './component/picker'
 import { Keyboard, KeyboardWrap } from './component/keyboard'
 import ScrollIntoView from './component/scroll_into_view'
 
@@ -75,6 +68,11 @@ import {
   Cell,
   CellForm,
   CellsForm,
+  Picker,
+  CouplingPicker,
+  ConfirmPicker,
+  ConfirmCouplingPicker,
+  SelectPicker,
 } from '@gm-mobile/components'
 
 const Alert = Dialog.alert

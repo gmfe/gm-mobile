@@ -1,5 +1,6 @@
 import React from 'react'
-import { LayoutRoot, Popup } from '@gm-mobile/components'
+import LayoutRoot from '../layout_root'
+import Popup from '../popup'
 
 const PickerStatics = {
   render(options) {

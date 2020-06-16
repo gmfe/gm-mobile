@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import _ from 'lodash'
+import map from 'lodash/map'
 import PickerColumn from './picker_column'
+import View from '../../view'
 
 class CouplingPicker extends React.Component {
   constructor(props) {
@@ -44,7 +45,7 @@ class CouplingPicker extends React.Component {
     let subList2 = []
     for (let i = 0; i < selected.length; i++) {
       if (i === 0) {
-        arr[0] = _.map(datas, (v) => {
+        arr[0] = map(datas, (v) => {
           if (v.value === selected[i]) {
             subList1 = v.children
           }
@@ -55,7 +56,7 @@ class CouplingPicker extends React.Component {
           }
         })
       } else if (i === 1) {
-        arr[1] = _.map(subList1, (v) => {
+        arr[1] = map(subList1, (v) => {
           if (v.value === selected[i]) {
             subList2 = v.children
           }
@@ -66,16 +67,16 @@ class CouplingPicker extends React.Component {
           }
         })
       } else {
-        arr[i] = _.map(subList2, (v) => {
+        arr[i] = map(subList2, (v) => {
           return { ...v, value: v.value, text: v.text }
         })
       }
     }
 
     return (
-      <div {...rest} className={classNames('m-picker', className)}>
-        <div className='m-picker-inner' style={{ height: itemHeight * 6 }}>
-          {_.map(arr, (v, i) => (
+      <View {...rest} className={classNames('m-picker', className)}>
+        <View className='m-picker-inner' style={{ height: itemHeight * 6 }}>
+          {map(arr, (v, i) => (
             <PickerColumn
               key={i}
               index={i}
@@ -87,12 +88,12 @@ class CouplingPicker extends React.Component {
               onChange={this.handleChange}
             />
           ))}
-          <div
+          <View
             className='m-picker-highlight m-border-1px-top-before m-border-1px-bottom-after'
             style={highlightStyle}
           />
-        </div>
-      </div>
+        </View>
+      </View>
     )
   }
 }

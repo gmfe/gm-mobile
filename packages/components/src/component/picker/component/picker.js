@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import _ from 'lodash'
+import map from 'lodash/map'
 import PickerColumn from './picker_column'
+import View from '../../view'
 
 const Picker = ({
   datas,
@@ -28,18 +29,18 @@ const Picker = ({
   }
 
   return (
-    <div {...rest} className={classNames('m-picker', className)}>
+    <View {...rest} className={classNames('m-picker', className)}>
       {headers && headers.length !== 0 && (
-        <div className='m-picker-header'>
-          {_.map(headers, (header) => (
-            <div key={header} className='m-picker-header-item'>
+        <View className='m-picker-header'>
+          {map(headers, (header) => (
+            <View key={header} className='m-picker-header-item'>
               {header}
-            </div>
+            </View>
           ))}
-        </div>
+        </View>
       )}
-      <div className='m-picker-inner' style={{ height: itemHeight * 6 }}>
-        {_.map(datas, (v, i) => (
+      <View className='m-picker-inner' style={{ height: itemHeight * 6 }}>
+        {map(datas, (v, i) => (
           <PickerColumn
             key={i}
             index={i}
@@ -51,12 +52,12 @@ const Picker = ({
             onChange={handleChange}
           />
         ))}
-        <div
+        <View
           className='m-picker-highlight m-border-1px-top-before m-border-1px-bottom-after'
           style={highlightStyle}
         />
-      </div>
-    </div>
+      </View>
+    </View>
   )
 }
 

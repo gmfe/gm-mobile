@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
+import findIndex from 'lodash/findIndex'
+import View from '../../view'
 
 class PickerColumn extends React.Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class PickerColumn extends React.Component {
     )
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.state.isMoving) {
       return
     }
@@ -37,7 +38,7 @@ class PickerColumn extends React.Component {
 
   computeTranslate = (props) => {
     const { options, value, itemHeight, columnHeight } = props
-    let selectedIndex = _.findIndex(options, (option) => option.value === value)
+    let selectedIndex = findIndex(options, (option) => option.value === value)
     if (selectedIndex < 0) {
       // throw new ReferenceError();
       console.warn(
@@ -160,14 +161,14 @@ class PickerColumn extends React.Component {
         option.value === value ? ' m-picker-item-selected' : ''
       }`
       return (
-        <div
+        <View
           key={index}
           className={className}
           style={style}
           onClick={() => this.handleOptionClick(option)}
         >
           {renderOption(this.props.index, option)}
-        </div>
+        </View>
       )
     })
   }
@@ -185,8 +186,8 @@ class PickerColumn extends React.Component {
       style.transitionDuration = '0ms'
     }
     return (
-      <div className='m-picker-column'>
-        <div
+      <View className='m-picker-column'>
+        <View
           ref={(ref) => (this.refScroll = ref)}
           className='m-picker-scroll'
           style={style}
@@ -196,8 +197,8 @@ class PickerColumn extends React.Component {
           onTouchCancel={this.handleTouchCancel}
         >
           {this.renderOptions()}
-        </div>
-      </div>
+        </View>
+      </View>
     )
   }
 }

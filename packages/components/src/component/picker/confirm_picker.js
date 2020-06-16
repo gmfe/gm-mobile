@@ -1,12 +1,13 @@
 import { getLocale } from '@gm-mobile/locales'
 import React from 'react'
 import PropTypes from 'prop-types'
-import CouplingPicker from './component/coupling_picker'
-import _ from 'lodash'
+import Picker from './component/picker'
+import noop from 'lodash/noop'
 import PickerStatics from './statics'
-import { Button } from '@gm-mobile/components'
+import Button from '../button'
+import View from '../view'
 
-class ConfirmCouplingPicker extends React.Component {
+class ConfirmPicker extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -21,23 +22,23 @@ class ConfirmCouplingPicker extends React.Component {
   }
 
   handleConfirm = (e) => {
-    e.preventDefault()
     this.props.onConfirm(this.state.values)
   }
 
   render() {
-    const { datas, renderOption } = this.props
+    const { datas, renderOption, headers } = this.props
     const { values } = this.state
 
     return (
-      <div>
-        <CouplingPicker
+      <View>
+        <Picker
           datas={datas}
           values={values}
+          headers={headers}
           renderOption={renderOption}
           onChange={this.handleChange}
         />
-        <div className='m-margin-15'>
+        <View className='m-margin-15'>
           <Button
             type='primary'
             onClick={this.handleConfirm}
@@ -45,13 +46,13 @@ class ConfirmCouplingPicker extends React.Component {
           >
             {getLocale('确定')}
           </Button>
-        </div>
-      </div>
+        </View>
+      </View>
     )
   }
 }
 
-ConfirmCouplingPicker.render = (props) => {
+ConfirmPicker.render = (props) => {
   return new Promise((resolve, reject) => {
     PickerStatics.render({
       title: props.title,
@@ -62,7 +63,7 @@ ConfirmCouplingPicker.render = (props) => {
         }, 50)
       },
       children: (
-        <ConfirmCouplingPicker
+        <ConfirmPicker
           {...props}
           onConfirm={(values) => {
             PickerStatics.hide()
@@ -82,22 +83,24 @@ ConfirmCouplingPicker.render = (props) => {
   })
 }
 
-ConfirmCouplingPicker.hide = () => {
+ConfirmPicker.hide = () => {
   PickerStatics.hide()
 }
 
-ConfirmCouplingPicker.propTypes = {
+ConfirmPicker.propTypes = {
   title: PropTypes.string,
   datas: PropTypes.array.isRequired,
+  /** 每列数据title, 格式为 [header, ...] */
+  headers: PropTypes.array,
   values: PropTypes.array.isRequired,
   renderOption: PropTypes.func,
   onConfirm: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
 }
 
-ConfirmCouplingPicker.defaultProps = {
-  onConfirm: _.noop,
-  onCancel: _.noop,
+ConfirmPicker.defaultProps = {
+  onConfirm: noop,
+  onCancel: noop,
 }
 
-export default ConfirmCouplingPicker
+export default ConfirmPicker

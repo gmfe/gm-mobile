@@ -4,6 +4,9 @@ import { observable } from 'mobx'
 import ConfirmPicker from './confirm_picker'
 import ConfirmCouplingPicker from './confirm_coupling_picker'
 import SelectPicker from './select_picker'
+import View from '../view'
+import Button from '../button'
+import Text from '../text'
 
 const datas = [
   [
@@ -185,9 +188,9 @@ export const picker = () => {
       renderOption={(index, option) => {
         if (index === 1) {
           return (
-            <div>
-              {option.value} <span style={{ color: 'red' }}>red</span>
-            </div>
+            <View>
+              {option.value} <Text style={{ color: 'red' }}>red</Text>
+            </View>
           )
         }
         return option.value
@@ -215,7 +218,7 @@ export const confirmPicker = () => {
     )
   }
 
-  return <button onClick={handleClick}>confirm picker</button>
+  return <Button onClick={handleClick}>confirm picker</Button>
 }
 
 export const confirmCouplingPicker = () => {
@@ -234,7 +237,7 @@ export const confirmCouplingPicker = () => {
     )
   }
 
-  return <button onClick={handleClick}>confirm coupling picker</button>
+  return <Button onClick={handleClick}>confirm coupling picker</Button>
 }
 
 export const selectPicker = () => {
@@ -253,7 +256,7 @@ export const selectPicker = () => {
     )
   }
 
-  return <button onClick={handleClick}>select picker</button>
+  return <Button onClick={handleClick}>select picker</Button>
 }
 
 export default {
