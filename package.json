@@ -9,7 +9,8 @@
     "publish-beta": "lerna publish --force-publish --dist-tag beta",
     "build:weapp": "taro build --type weapp",
     "dev:weapp": "npm run build:weapp -- --watch",
-    "svg": "rm -rf packages/components/src/fonts; node svg2font.js;"
+    "svg": "rm -rf packages/components/src/fonts; node svg2font.js;",
+    "link": "cd packages/components; yarn link; cd ../mp; yarn link; cd ../mp-request; yarn link; cd ../tool; yarn link"
   },
   "husky": {
     "hooks": {
