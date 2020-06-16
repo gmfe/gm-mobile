@@ -114,6 +114,8 @@ Popup.propTypes = {
 }
 
 Popup.defaultProps = {
+  // 动画有卡顿现象，先禁用
+  disabledAnimate: true,
   onHide: _.noop,
 }
 
