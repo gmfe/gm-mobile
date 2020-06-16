@@ -80,7 +80,6 @@ export default class Index extends Component {
                   <Cell
                     access
                     key={twoKey}
-                    className='m-padding-lr-10'
                     onClick={() => {
                       ActionSheet.render({
                         title: twoKey,
