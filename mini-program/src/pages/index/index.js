@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Navigator } from '@tarojs/components'
+import { Text } from '@tarojs/components'
 import map from 'lodash/map'
 import each from 'lodash/each'
 import './index.less'
