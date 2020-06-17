@@ -1,4 +1,5 @@
 import ImageMP from './component/image'
+import CounterMP from './component/counter'
 
 import {
   View,
@@ -25,4 +26,5 @@ export {
   Radio,
   Tabbar,
   ImageMP,
+  CounterMP,
 }
