@@ -1,10 +1,10 @@
 @font-face {
     font-family: gm-mobile-icons;
-    src: url("gm-mobile-icons.eot");src: url("gm-mobile-icons.eot?1191f1cc#iefix") format("embedded-opentype"),
-             url("gm-mobile-icons.woff2?1191f1cc") format("woff2"),
-             url("gm-mobile-icons.woff?1191f1cc") format("woff"),
-             url("gm-mobile-icons.ttf?1191f1cc") format("truetype"),
-             url("gm-mobile-icons.svg?1191f1cc#gm-mobile-icons") format("svg");
+    src: url("gm-mobile-icons.eot");src: url("gm-mobile-icons.eot?e18fc631#iefix") format("embedded-opentype"),
+             url("gm-mobile-icons.woff2?e18fc631") format("woff2"),
+             url("gm-mobile-icons.woff?e18fc631") format("woff"),
+             url("gm-mobile-icons.ttf?e18fc631") format("truetype"),
+             url("gm-mobile-icons.svg?e18fc631#gm-mobile-icons") format("svg");
     font-weight: normal;
     font-style: normal;
 }
@@ -65,35 +65,43 @@
     content: "\ea0c";
 }
 
-.m-font-minus::before {
+.m-font-minus-circle::before {
     content: "\ea0d";
 }
 
-.m-font-password-close::before {
+.m-font-minus::before {
     content: "\ea0e";
 }
 
-.m-font-password-open::before {
+.m-font-password-close::before {
     content: "\ea0f";
 }
 
-.m-font-plus::before {
+.m-font-password-open::before {
     content: "\ea10";
 }
 
-.m-font-remove::before {
+.m-font-plus-circle::before {
     content: "\ea11";
 }
 
-.m-font-search::before {
+.m-font-plus::before {
     content: "\ea12";
 }
 
-.m-font-success-circle::before {
+.m-font-remove::before {
     content: "\ea13";
 }
 
-.m-font-warning::before {
+.m-font-search::before {
     content: "\ea14";
+}
+
+.m-font-success-circle::before {
+    content: "\ea15";
+}
+
+.m-font-warning::before {
+    content: "\ea16";
 }
 
