@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Storage from './index'
 import Input from '../input'
+import View from '../view'
 
 const key = 'input'
 
@@ -8,16 +9,18 @@ export const Normal = () => {
   const [value, setValue] = useState(Storage.get(key) || '')
 
   return (
-    <div>
+    <View>
       <Input
         type='text'
+        placeholder='请输入'
         value={value}
         onChange={(e) => {
           setValue(e.target.value)
           Storage.set(key, e.target.value)
         }}
       />
-    </div>
+      <View>data: {Storage.get('')}</View>
+    </View>
   )
 }
 

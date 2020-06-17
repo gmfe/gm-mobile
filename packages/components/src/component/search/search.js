@@ -1,6 +1,5 @@
 import { getLocale } from '@gm-mobile/locales'
 import React from 'react'
-import ReactDOM from 'react-dom'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import noop from 'lodash/noop'
@@ -12,7 +11,6 @@ import Text from '../text'
 const Search = ({
   value,
   placeholder,
-  autoFocus,
   searchText,
   type,
   onCancel,
@@ -21,13 +19,10 @@ const Search = ({
   className,
   ...rest
 }) => {
-  const refInput = React.createRef()
-
   const handleSearch = (e) => {
     e.preventDefault()
 
     onSearch(value)
-    ReactDOM.findDOMNode(refInput.current).blur()
   }
 
   const handleChange = (e) => {
@@ -51,12 +46,10 @@ const Search = ({
       <View className='m-search-input m-flex m-flex-flex'>
         <Text className='m-font m-font-search m-search-icon-search' />
         <Input
-          ref={refInput}
-          type='search'
+          type='text'
           value={value}
           onChange={handleChange}
           placeholder={placeholder}
-          autoFocus={autoFocus}
         />
         {value && (
           <Text
@@ -83,7 +76,6 @@ Search.propTypes = {
   type: PropTypes.oneOf(['search', 'cancel']),
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  autoFocus: PropTypes.bool,
   /** 即时搜索可不传 */
   onSearch: PropTypes.func,
   onCancel: PropTypes.func,
@@ -95,7 +87,6 @@ Search.propTypes = {
 }
 
 Search.defaultProps = {
-  autoFocus: false,
   onSearch: noop,
   onCancel: noop,
   placeholder: getLocale('搜索'),
