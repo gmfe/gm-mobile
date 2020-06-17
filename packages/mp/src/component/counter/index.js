@@ -2,7 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { Input } from '@tarojs/components'
-import { View } from '@gm-mobile/components'
+import { View, Toast } from '@gm-mobile/components'
 import _ from 'lodash'
 import Big from 'big.js'
 
@@ -10,11 +10,12 @@ const Counter = ({
   value,
   min,
   max,
-  precision,
   onChange,
   focus,
   disabled,
   getErrorMsg,
+  precision,
+  adjustPosition,
   className,
   ...rest
 }) => {
@@ -58,6 +59,7 @@ const Counter = ({
     if (plusDisabled) return
     // 如果存在最小值，以最小值开始相加
     v = v + 1
+    checkError(v)
     if (min && value === '') {
       v = min
     }
@@ -66,7 +68,26 @@ const Counter = ({
   }
 
   const handleInput = (e) => {
-    onChange(e.detail.value)
+    const { value } = e.detail
+    const v = text2Number(value)
+
+    // 优化交互体验,0和空均代表不添加商品
+    if (value !== '' && v !== 0) {
+      checkError(v)
+    }
+    // 限制最大数量
+    if (v > max) {
+      onChange(max.toString())
+    } else {
+      onChange(value)
+    }
+  }
+
+  const checkError = (v) => {
+    if (getErrorMsg) {
+      const mes = getErrorMsg({ value: v, min, max })
+      mes && Toast.tip(mes)
+    }
   }
 
   return (
@@ -90,7 +111,10 @@ const Counter = ({
         className='m-counter-content-text'
         type='digit'
         disabled={disabled}
-        value={text2Number(value)}
+        value={value}
+        focus={focus}
+        confirmType='done'
+        adjustPosition={adjustPosition}
         onInput={handleInput}
       />
       <View
@@ -110,18 +134,16 @@ Counter.propTypes = {
   min: PropTypes.number,
   /** 最大值 */
   max: PropTypes.number,
-  /** 获取焦点 */
-  focus: PropTypes.bool,
-  /** 键盘输入数字精度, 可输入几位小数 及 展示 */
   precision: PropTypes.number,
+  /** 获取焦点, 微信版本 6.3.30, focus 属性设置无效 */
+  focus: PropTypes.bool,
   /** + / - 按钮回调, 数字键盘确定按钮回调函数 */
   onChange: PropTypes.func.isRequired,
   /** 禁用状态 */
   disabled: PropTypes.bool,
-  /** 设置键盘右下角按钮的文字 */
-  confirmType: PropTypes.oneOf(['send', 'search', 'next', 'go', 'done']),
   /** 键盘弹起时，是否自动上推页面 */
   adjustPosition: PropTypes.bool,
+  /** 触发最小或最大值时，回调 */
   getErrorMsg: PropTypes.func,
   className: PropTypes.string,
   style: PropTypes.object,
@@ -131,8 +153,6 @@ Counter.defaultProps = {
   value: '',
   min: 0,
   precision: 2,
-  // todo: 多语
-  confirmType: 'done',
 }
 
 export default Counter

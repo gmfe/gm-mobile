@@ -4,7 +4,6 @@ import Counter from './'
 import { Page, View } from '@gm-mobile/components'
 
 const reducer = (state, action) => {
-  console.log(action)
   return {
     ...state,
     [action.type]: action.value
@@ -18,7 +17,8 @@ export const normal = () => {
     three: '',
   })
 
-  const handleCheckValue = ({ value, min, max, precision }) => {
+  const handleCheckValue = ({ value, min, max }) => {
+    console.log(value);
     if (value > 10) {
       return '库存不足'
     }
@@ -46,11 +46,22 @@ export const normal = () => {
       <View className='m-padding-10'>
         <Counter
           value={state.two}
-          large
           disabled
           onChange={(value) => {
             dispatch({ type: 'two', value })
           }}
+        />
+      </View>
+      自定义提示信息
+      <View className='m-padding-10'>
+        <Counter
+          min={3}
+          max={10}
+          value={state.three}
+          onChange={(value) => {
+            dispatch({ type: 'three', value })
+          }}
+          getErrorMsg={handleCheckValue}
         />
       </View>
     </Page>
