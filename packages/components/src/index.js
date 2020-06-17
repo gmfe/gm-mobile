@@ -27,6 +27,7 @@ import InnerLayer from './component/inner_layer'
 import Textarea from './component/textarea'
 import { Input, InputMaxLength, InputPassword } from './component/input'
 import { Cells, Cell, CellForm, CellsForm } from './component/cell'
+import RepeatTimes from './component/repeat_times'
 import {
   Picker,
   CouplingPicker,
@@ -81,4 +82,5 @@ export {
   ConfirmPicker,
   ConfirmCouplingPicker,
   SelectPicker,
+  RepeatTimes,
 }

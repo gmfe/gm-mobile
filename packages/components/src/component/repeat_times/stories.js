@@ -1,5 +1,6 @@
 import React from 'react'
 import RepeatTimes from './index'
+import View from '../view'
 
 export const Normal = () => {
   return (
@@ -8,7 +9,7 @@ export const Normal = () => {
         console.log('hello')
       }}
     >
-      <div>点我5次</div>
+      <View>点我5次</View>
     </RepeatTimes>
   )
 }

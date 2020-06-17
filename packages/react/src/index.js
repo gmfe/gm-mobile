@@ -26,7 +26,6 @@ import NProgress from './component/nprogress'
 import { LetterIndex, LetterIndexMultiple } from './component/letter_index'
 import { LocalStorage, SessionStorage } from './component/storage'
 import CSSVariable from './css_variable'
-import RepeatTimes from './component/repeat_times'
 import Canvas from './component/canvas'
 
 import {
@@ -73,6 +72,7 @@ import {
   ConfirmPicker,
   ConfirmCouplingPicker,
   SelectPicker,
+  RepeatTimes,
 } from '@gm-mobile/components'
 
 const Alert = Dialog.alert
