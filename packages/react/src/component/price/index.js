@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 
 import { formatNumber } from '@gm-common/number'
-import storage from '../storage'
+import { LocalStorage } from '@gm-mobile/components'
 
 const eventBus = {
   add(eventName, handler) {
@@ -21,8 +21,8 @@ const symbolKey = 'Price#symbol'
 const unitKey = 'Price#unit'
 
 // 默认 _symbol 为货币符号
-let _symbol = storage.get(symbolKey) || '¥'
-let _unit = storage.get(unitKey) || '元'
+let _symbol = LocalStorage.get(symbolKey) || '¥'
+let _unit = LocalStorage.get(unitKey) || '元'
 // [{ symbol: '￥', type: 'CNY', unit: '元' },...]
 let _currencyList = [] // 多币种列表
 
@@ -121,7 +121,7 @@ Price.setCurrencyList = (list = []) => {
 Price.setCurrency = (symbol) => {
   if (!symbol || symbol === _symbol) return
   _symbol = symbol
-  storage.set(symbolKey, symbol)
+  LocalStorage.set(symbolKey, symbol)
   eventBus.dispatch('REACT_MGM_UPDATE_PRICE')
 }
 
@@ -134,7 +134,7 @@ Price.getCurrency = (type = '') => {
 Price.setUnit = (unit) => {
   if (!unit || unit === _unit) return
   _unit = unit
-  storage.set(unitKey, unit)
+  LocalStorage.set(unitKey, unit)
 }
 
 Price.getUnit = (type = '') => {

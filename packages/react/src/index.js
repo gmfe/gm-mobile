@@ -24,7 +24,6 @@ import NProgress from './component/nprogress'
 
 // 其他
 import { LetterIndex, LetterIndexMultiple } from './component/letter_index'
-import { LocalStorage, SessionStorage } from './component/storage'
 import CSSVariable from './css_variable'
 import Canvas from './component/canvas'
 
@@ -73,6 +72,8 @@ import {
   ConfirmCouplingPicker,
   SelectPicker,
   RepeatTimes,
+  LocalStorage,
+  SessionStorage,
 } from '@gm-mobile/components'
 
 const Alert = Dialog.alert

@@ -35,6 +35,7 @@ import {
   ConfirmCouplingPicker,
   SelectPicker,
 } from './component/picker'
+import { LocalStorage, SessionStorage } from './component/storage'
 
 export {
   Button,
@@ -83,4 +84,6 @@ export {
   ConfirmCouplingPicker,
   SelectPicker,
   RepeatTimes,
+  LocalStorage,
+  SessionStorage,
 }

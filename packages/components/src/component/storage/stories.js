@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Storage from './index'
+import Input from '../input'
 
 const key = 'input'
 
@@ -8,7 +9,7 @@ export const Normal = () => {
 
   return (
     <div>
-      <input
+      <Input
         type='text'
         value={value}
         onChange={(e) => {
