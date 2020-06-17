@@ -1,7 +1,7 @@
 import React from 'react'
 import noop from 'lodash/noop'
 import View from '../view'
-import { isWeApp } from '../../util'
+import { is } from '@gm-mobile/tool'
 
 const TYPE = {
   INNERLAYER: 'innerLayer',
@@ -85,7 +85,7 @@ LayoutRoot.renderWith = (type, Component, options) => {
   LayoutRoot.setComponent(type, Component)
 
   // 小程序没有 history，也不需要
-  if (!isWeApp()) {
+  if (!is.weApp()) {
     const popstate = (e) => {
       const typeStack = [
         TYPE.INNERLAYER,
@@ -121,7 +121,7 @@ LayoutRoot.hideWith = (type) => {
   LayoutRoot.removeComponent(type)
 
   // 小程序没有 history，也不需要
-  if (!isWeApp()) {
+  if (!is.weApp()) {
     window.history.go(-1)
   }
 }

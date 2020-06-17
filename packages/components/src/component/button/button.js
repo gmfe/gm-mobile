@@ -4,7 +4,7 @@ import noop from 'lodash/noop'
 import classNames from 'classnames'
 import Loading from '../loading'
 import BaseButton from './base'
-import { isPromise } from '../../util'
+import { is } from '@gm-mobile/tool'
 
 const Button = ({
   type,
@@ -31,7 +31,7 @@ const Button = ({
 
     const result = onClick(e)
 
-    if (!isPromise(result)) {
+    if (!is.promise(result)) {
       return
     }
 

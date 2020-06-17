@@ -1,5 +1,6 @@
 import React from 'react'
 import { observable } from 'mobx'
+import { is } from '@gm-mobile/tool'
 import Cells from './cells'
 import Cell from './cell'
 import CellsForm from './cells_form'
@@ -12,8 +13,6 @@ import Toast from '../toast'
 
 import { Input, InputPassword } from '../input'
 import Textarea from '../textarea'
-
-import { isWeApp } from '../../util'
 
 export const normal = () => {
   return (
@@ -28,7 +27,7 @@ export const normal = () => {
           access
           right={'right 说明文字'}
           onClick={() => {
-            if (isWeApp()) {
+            if (is.weApp()) {
               Toast.tip('小程序自主处理跳转')
             } else {
               window.location.href = 'https://www.guanmai.cn'
