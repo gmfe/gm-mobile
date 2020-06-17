@@ -69,6 +69,7 @@ module.exports = {
     '../packages/business/src/**/*stories.js',
     '../packages/service_time/src/**/*stories.js',
     '../packages/swiper/src/**/*stories.js',
+    '../packages/qrcode/src/**/*stories.js',
     '../other/**/*.stories.js',
   ],
   webpackFinal,

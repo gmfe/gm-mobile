@@ -1,14 +1,15 @@
 {
-  "name": "@gm-mobile/mp-request",
+  "name": "@gm-mobile/qrcode",
   "version": "2.0.0-alpha.4",
   "description": "> TODO: description",
-  "author": "zhongsink <zhongink@gmail.com>",
+  "author": "liyatang <liyatang@qq.com>",
   "homepage": "https://github.com/gmfe/gm-mobile#readme",
   "license": "ISC",
   "publishConfig": {
     "access": "public"
   },
   "main": "src/index.js",
+  "types": "src/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gmfe/gm-mobile.git"
@@ -20,8 +21,7 @@
     "url": "https://github.com/gmfe/gm-mobile/issues"
   },
   "dependencies": {
-    "@gm-mobile/locales": "^2.0.0-alpha.4",
-    "lodash": "^4.17.15",
-    "taro-axios": "^1.1.1"
+    "qrcode.react": "^1.0.0",
+    "weapp-qrcode": "^1.0.0"
   }
 }

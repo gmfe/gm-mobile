@@ -19,5 +19,8 @@
   },
   "bugs": {
     "url": "https://github.com/gmfe/gm-mobile/issues"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1"
   }
 }

@@ -24,8 +24,21 @@ const comReq = require.context(
   true,
   /stories\.js$/
 )
+const qrCodeReq = require.context(
+  '../../../../packages/qrcode/',
+  true,
+  /stories\.js$/
+)
 
 const storiesList = []
+
+each(comReq.keys(), (key) => {
+  storiesList.push({
+    module: comReq(key),
+    packageName: 'components',
+    path: key,
+  })
+})
 
 each(mpReq.keys(), (key) => {
   storiesList.push({
@@ -35,10 +48,10 @@ each(mpReq.keys(), (key) => {
   })
 })
 
-each(comReq.keys(), (key) => {
+each(qrCodeReq.keys(), (key) => {
   storiesList.push({
-    module: comReq(key),
-    packageName: 'components',
+    module: qrCodeReq(key),
+    packageName: 'qrcode',
     path: key,
   })
 })
@@ -103,7 +116,6 @@ export default class Index extends Component {
               </Cells>
             )
           })}
-          <View>asfasfasfas</View>
         </Page>
         <LayoutRoot />
       </View>
