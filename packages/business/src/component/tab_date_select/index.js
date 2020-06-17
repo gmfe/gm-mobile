@@ -11,6 +11,7 @@ import { getLocale } from '@gm-mobile/locales'
 import _ from 'lodash'
 import moment from 'moment'
 import PropTypes from 'prop-types'
+import SvgArrowTriangle from '../../../svg/arrow-triangle.svg'
 
 const getServiceTimeRange = (serviceTime) => {
   const maxSpanEnd =
@@ -96,53 +97,58 @@ const TabDateSelect = ({
   }
 
   return (
-    <div className='m-tab-date-select'>
+    <Flex column className='m-tab-date-select'>
       <Tabs tabs={tabs} active={activeTab.value} onChange={handleTabChange} />
       {activeTab.selectedServiceTime && (
-        <Flex alignCenter justifyCenter>
+        <Flex
+          alignCenter
+          justifyCenter
+          className='m-bg-white m-border-1px-top-before m-bg-back m-border-1px-bottom-after'
+        >
           <Flex
             alignCenter
             justifyCenter
-            className='m-text-desc m-padding-tb-5 m-padding-lr-10 m-bg-back m-border-radius'
+            className='m-padding-tb-5 m-padding-lr-10'
             onClick={handleSelectServiceTime}
           >
-            <div className='m-margin-right-5'>{`${getLocale('运营时间')}:${
-              activeTab.selectedServiceTime.text
-            }`}</div>
-            <i className='m-font m-font-arrow-down' />
+            <div className='m-margin-right-5'>{`${activeTab.selectedServiceTime.text}`}</div>
+            <SvgArrowTriangle className='m-text-12' />
           </Flex>
         </Flex>
       )}
-      <div className='m-tab-date-select-calendar'>
-        <RangeCalendar
-          ref={calendarRef}
-          begin={beginDate}
-          end={endDate}
-          min={activeTab.min}
-          max={activeTab.max}
-          showDateLabel
-          onSelect={({ begin, end }) => {
-            setBeginDate(begin)
-            setEndDate(end)
-          }}
-        />
-      </div>
 
-      <Flex alignCenter justifyCenter className='m-padding-tb-10'>
-        <div>{activeTab.text}</div>
-        <div className='m-text-bold m-bg-back m-margin-left-10 m-padding-tb-5 m-padding-lr-10 m-border-radius'>{`${moment(
-          beginDate
-        ).format('YYYY-MM-DD')} ~ ${moment(endDate).format(
-          'YYYY-MM-DD'
-        )}`}</div>
+      <Flex flex column justifyBetween>
+        <div className='m-tab-date-select-calendar m-overflow-y m-flex-flex m-bg-back'>
+          <RangeCalendar
+            ref={calendarRef}
+            begin={beginDate}
+            end={endDate}
+            min={activeTab.min}
+            max={activeTab.max}
+            showDateLabel
+            onSelect={({ begin, end }) => {
+              setBeginDate(begin)
+              setEndDate(end)
+            }}
+          />
+        </div>
+
+        <Flex alignCenter justifyCenter className='m-padding-tb-10'>
+          <div>{activeTab.text}</div>
+          <div className='m-text-bold m-bg-back m-margin-left-10 m-padding-tb-5 m-padding-lr-10 m-border-radius'>{`${moment(
+            beginDate
+          ).format('YYYY-MM-DD')} ~ ${moment(endDate).format(
+            'YYYY-MM-DD'
+          )}`}</div>
+        </Flex>
+
+        <div className='m-padding-lr-15 m-padding-bottom-10'>
+          <Button type='primary' onClick={handleSaveSelect} block>
+            {getLocale('确定')}
+          </Button>
+        </div>
       </Flex>
-
-      <div className='m-padding-lr-15 m-padding-bottom-10'>
-        <Button type='primary' onClick={handleSaveSelect} block>
-          {getLocale('确定')}
-        </Button>
-      </div>
-    </div>
+    </Flex>
   )
 }
 
@@ -151,6 +157,7 @@ TabDateSelect.render = ({ title, ...rest }) => {
     Popup.render({
       title: title,
       bottom: true,
+      height: '90%',
       children: (
         <TabDateSelect
           {...rest}
