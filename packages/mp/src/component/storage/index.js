@@ -59,7 +59,4 @@ class Storage {
   }
 }
 
-const LocalStorage = new Storage(PREFIX)
-
-export default LocalStorage
-export { LocalStorage }
+export default new Storage(PREFIX)

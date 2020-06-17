@@ -4,6 +4,7 @@ import {
   SwiperImg as SwiperImgMP,
   SwiperCategory as SwiperCategoryMP,
 } from './component/swiper'
+import StorageMP from './component/storage'
 
 import {
   View,
@@ -33,4 +34,5 @@ export {
   CounterMP,
   SwiperImgMP,
   SwiperCategoryMP,
+  StorageMP,
 }

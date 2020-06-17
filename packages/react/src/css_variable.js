@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { LocalStorage } from '@gm-mobile/components'
+import { LocalStorage } from './component/storage'
 
 const TYPE = {
   DEFAULT: 'default',
