@@ -1,5 +1,9 @@
 import ImageMP from './component/image'
 import CounterMP from './component/counter'
+import {
+  SwiperImg as SwiperImgMP,
+  SwiperCategory as SwiperCategoryMP,
+} from './component/swiper'
 
 import {
   View,
@@ -27,4 +31,6 @@ export {
   Tabbar,
   ImageMP,
   CounterMP,
+  SwiperImgMP,
+  SwiperCategoryMP,
 }
