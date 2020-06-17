@@ -1,5 +1,5 @@
-import map from 'lodash/map'
-import pickBy from 'lodash/pickBy'
+import _map from 'lodash/map'
+import _pickBy from 'lodash/pickBy'
 import { getLocale } from '@gm-mobile/locales'
 
 const requestUrl = '//trace.guanmai.cn/api/logs/request/'
@@ -7,7 +7,7 @@ const requestEnvUrl = '//trace.guanmai.cn/api/logs/environment/'
 
 function param(obj) {
   // encodeURIComponent
-  return map(obj, function (v, k) {
+  return _map(obj, function (v, k) {
     return [encodeURIComponent(k), '=', encodeURIComponent(v)].join('')
   })
     .join('&')
@@ -24,7 +24,7 @@ function processPostData(data) {
 
     // 过滤null  undefined 只Object 类型。
     // 会修改，所以 ...
-    data = pickBy({ ...data }, (value) => {
+    data = _pickBy({ ...data }, (value) => {
       return value !== null && value !== undefined
     })
 

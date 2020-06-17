@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro'
-import each from 'lodash/each'
-import keys from 'lodash/keys'
+import _each from 'lodash/each'
+import _keys from 'lodash/keys'
 
 const PREFIX = '_gm-mobile_'
 
@@ -25,13 +25,13 @@ class Storage {
     } catch (err) {
       console.warn('Storage getAll error', err)
     }
-    each(StorageKeys, (key) => {
+    _each(StorageKeys, (key) => {
       if (key?.startsWith(this.prefix)) {
         key = key.slice(this.prefix.length)
         result[key] = this.get(key)
       }
     })
-    return keys(result).length ? result : null
+    return _keys(result).length ? result : null
   }
 
   set(key, value) {

@@ -1,6 +1,6 @@
 import axios from 'taro-axios'
 import { getLocale } from '@gm-mobile/locales'
-import isArray from 'lodash/isArray'
+import _isArray from 'lodash/isArray'
 import { processPostData, getErrorMessage } from './util'
 
 const instance = axios.create({
@@ -50,7 +50,7 @@ class RequestBase {
 
   code(code) {
     let codes = code
-    if (!isArray(code)) {
+    if (!_isArray(code)) {
       codes = [code]
     }
     this._sucCode = this._sucCode.concat(codes)

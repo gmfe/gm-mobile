@@ -3,11 +3,11 @@ import { findDOMNode } from 'react-dom'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import classNames from 'classnames'
-import findIndex from 'lodash/findIndex'
-import range from 'lodash/range'
-import groupBy from 'lodash/groupBy'
-import map from 'lodash/map'
-import noop from 'lodash/noop'
+import _findIndex from 'lodash/findIndex'
+import _range from 'lodash/range'
+import _groupBy from 'lodash/groupBy'
+import _map from 'lodash/map'
+import _noop from 'lodash/noop'
 
 import View from '../view'
 import Head from './head'
@@ -51,7 +51,7 @@ const BaseCalendar = forwardRef((props, ref) => {
   const handleSelectMulDay = (m) => {
     let _selected = selected.slice()
     // 点击相同日期，取消该日期选择
-    const dayIndex = findIndex(
+    const dayIndex = _findIndex(
       _selected,
       (date) => +moment(date).startOf('day') === +moment(m).startOf('day')
     )
@@ -154,9 +154,9 @@ const BaseCalendar = forwardRef((props, ref) => {
       moment(currentMoment).day(0).add(35, 'day').month() !==
       currentMoment.month()
     ) {
-      return groupBy(range(35), (v) => parseInt(v / 7))
+      return _groupBy(_range(35), (v) => parseInt(v / 7))
     }
-    return groupBy(range(42), (v) => parseInt(v / 7))
+    return _groupBy(_range(42), (v) => parseInt(v / 7))
   }
 
   return (
@@ -167,7 +167,7 @@ const BaseCalendar = forwardRef((props, ref) => {
     >
       <Week />
       <Flex column none className='m-calendar-content m-padding-bottom-10'>
-        {map(computedMonthList(), (currentMoment, cmi) => {
+        {_map(computedMonthList(), (currentMoment, cmi) => {
           const m = moment(currentMoment).day(0).add(-1, 'day')
           const dayGroup = getDayRowOfMonth(currentMoment)
 
@@ -179,9 +179,9 @@ const BaseCalendar = forwardRef((props, ref) => {
               className={classNames({ 'm-margin-top-10': cmi !== 0 })}
             >
               <Head currentMoment={currentMoment} />
-              {map(dayGroup, (v, i) => (
+              {_map(dayGroup, (v, i) => (
                 <Flex none key={i} className='m-padding-top-10'>
-                  {map(v, (value, index) => {
+                  {_map(v, (value, index) => {
                     const mm = moment(m.add(1, 'day'))
 
                     return (
@@ -228,7 +228,7 @@ BaseCalendar.propTypes = {
 }
 
 BaseCalendar.defaultProps = {
-  onSelect: noop,
+  onSelect: _noop,
 }
 
 export default BaseCalendar

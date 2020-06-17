@@ -1,6 +1,6 @@
 import React from 'react'
-import noop from 'lodash/noop'
-import map from 'lodash/map'
+import _noop from 'lodash/noop'
+import _map from 'lodash/map'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import Item from './item'
@@ -9,7 +9,7 @@ import Flex from '../flex'
 const Tabbar = ({ configs, selected, onTabChange, className, ...rest }) => {
   return (
     <Flex {...rest} className={classNames('m-tabbar', className)}>
-      {map(configs, (config, index) => (
+      {_map(configs, (config, index) => (
         <Item
           key={index}
           config={config}
@@ -34,7 +34,7 @@ Tabbar.propTypes = {
 }
 
 Tabbar.defaultProps = {
-  onTabChange: noop,
+  onTabChange: _noop,
 }
 
 export default Tabbar

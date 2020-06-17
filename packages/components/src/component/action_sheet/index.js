@@ -1,6 +1,6 @@
 import { getLocale } from '@gm-mobile/locales'
 import React from 'react'
-import map from 'lodash/map'
+import _map from 'lodash/map'
 import PropTypes from 'prop-types'
 
 import Popup from '../popup'
@@ -52,7 +52,7 @@ const ActionSheet = ({ data, onSelect, onCancel }) => {
   return (
     <View className='m-text-center m-bg-back'>
       <View className='m-bg-white'>
-        {map(data, (option) => (
+        {_map(data, (option) => (
           <View
             key={option.value}
             className='m-padding-tb-15 m-border-1px-top-after m-bg-white-active-with'

@@ -3,8 +3,8 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { Input } from '@tarojs/components'
 import { View, Toast } from '@gm-mobile/components'
-import isNaN from 'lodash/isNaN'
-import includes from 'lodash/includes'
+import _isNaN from 'lodash/isNaN'
+import _includes from 'lodash/includes'
 import Big from 'big.js'
 
 const Counter = ({
@@ -24,7 +24,7 @@ const Counter = ({
     if (value === '') {
       return 0
     }
-    return isNaN(parseFloat(value)) ? '' : parseFloat(value)
+    return _isNaN(parseFloat(value)) ? '' : parseFloat(value)
   }
 
   const plusDisabled = max && text2Number(value) >= max
@@ -48,7 +48,7 @@ const Counter = ({
 
   const handleChange = (type) => {
     let v = text2Number(value)
-    const _precision = includes(value, '.') ? precision : 0
+    const _precision = _includes(value, '.') ? precision : 0
     if (type === 'minus') {
       if (minusDisabled) return
       // 小于0时展示为0不变

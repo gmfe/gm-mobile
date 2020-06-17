@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import noop from 'lodash/noop'
+import _noop from 'lodash/noop'
 import View from '../view'
 
 const Checkbox = ({
@@ -55,7 +55,7 @@ Checkbox.propTypes = {
 }
 
 Checkbox.defaultProps = {
-  onChange: noop,
+  onChange: _noop,
 }
 
 export default Checkbox

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import noop from 'lodash/noop'
+import _noop from 'lodash/noop'
 
 import View from '../view'
 
@@ -35,7 +35,7 @@ Switch.propTypes = {
 }
 
 Switch.defaultProps = {
-  onChange: noop,
+  onChange: _noop,
 }
 
 export default Switch

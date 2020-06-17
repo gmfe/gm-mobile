@@ -1,5 +1,5 @@
 import React from 'react'
-import noop from 'lodash/noop'
+import _noop from 'lodash/noop'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -61,7 +61,7 @@ Item.propTypes = {
 }
 
 Item.defaultProps = {
-  onClick: noop,
+  onClick: _noop,
 }
 
 export default Item

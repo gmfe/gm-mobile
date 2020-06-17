@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import map from 'lodash/map'
-import each from 'lodash/each'
+import _map from 'lodash/map'
+import _each from 'lodash/each'
 import './index.less'
 import queryString from 'query-string'
 import {
@@ -32,7 +32,7 @@ const qrCodeReq = require.context(
 
 const storiesList = []
 
-each(comReq.keys(), (key) => {
+_each(comReq.keys(), (key) => {
   storiesList.push({
     module: comReq(key),
     packageName: 'components',
@@ -40,7 +40,7 @@ each(comReq.keys(), (key) => {
   })
 })
 
-each(mpReq.keys(), (key) => {
+_each(mpReq.keys(), (key) => {
   storiesList.push({
     module: mpReq(key),
     packageName: 'mp',
@@ -48,7 +48,7 @@ each(mpReq.keys(), (key) => {
   })
 })
 
-each(qrCodeReq.keys(), (key) => {
+_each(qrCodeReq.keys(), (key) => {
   storiesList.push({
     module: qrCodeReq(key),
     packageName: 'qrcode',
@@ -58,7 +58,7 @@ each(qrCodeReq.keys(), (key) => {
 
 const dataMap = {}
 
-each(storiesList, ({ module, packageName, path }) => {
+_each(storiesList, ({ module, packageName, path }) => {
   // 算是个常规的 stories
   if (module.default && module.default.title) {
     const title = module.default.title
@@ -68,7 +68,7 @@ each(storiesList, ({ module, packageName, path }) => {
     dataMap[root] = dataMap[root] || {}
     dataMap[root][component] = {}
 
-    each(module, (value, key) => {
+    _each(module, (value, key) => {
       if (key !== 'default') {
         dataMap[root][component][key] = {
           packageName,
@@ -87,10 +87,10 @@ export default class Index extends Component {
     return (
       <View>
         <Page>
-          {map(dataMap, (oneValue, oneKey) => {
+          {_map(dataMap, (oneValue, oneKey) => {
             return (
               <Cells key={oneKey} title={oneKey}>
-                {map(oneValue, (twoValue, twoKey) => {
+                {_map(oneValue, (twoValue, twoKey) => {
                   return (
                     <Cell
                       access
@@ -98,7 +98,7 @@ export default class Index extends Component {
                       onClick={() => {
                         ActionSheet.render({
                           title: twoKey,
-                          data: map(twoValue, (thereValue, thereKey) => ({
+                          data: _map(twoValue, (thereValue, thereKey) => ({
                             text: thereKey,
                             value: queryString.stringify(thereValue),
                           })),

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import noop from 'lodash/noop'
+import _noop from 'lodash/noop'
 import { devWarnForHook } from '@gm-mobile/tool'
 
 import Flex from '../flex'
@@ -116,7 +116,7 @@ Popup.propTypes = {
 }
 
 Popup.defaultProps = {
-  onHide: noop,
+  onHide: _noop,
 }
 
 export default Popup

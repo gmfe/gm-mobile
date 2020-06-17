@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import isString from 'lodash/isString'
-import noop from 'lodash/noop'
+import _isString from 'lodash/isString'
+import _noop from 'lodash/noop'
 import Flex from '../flex'
 import View from '../view'
 import Text from '../text'
@@ -39,7 +39,7 @@ const Cell = ({
       <View className='m-cell-body'>{children}</View>
       <Flex alignCenter>
         {right &&
-          (isString(right) ? (
+          (_isString(right) ? (
             <View className='m-cell-right'>{right}</View>
           ) : (
             right
@@ -66,7 +66,7 @@ Cell.propTypes = {
 }
 
 Cell.defaultProps = {
-  onClick: noop,
+  onClick: _noop,
 }
 
 export default Cell

@@ -9,10 +9,15 @@ function web() {
 
 const promise = (arg) => toString.call(arg) === '[object Promise]'
 
+const chinese = (value) => {
+  return /[\u4E00-\u9FA5]/.test(value)
+}
+
 const is = {
   web,
   weApp,
   promise,
+  chinese,
 }
 
 export default is

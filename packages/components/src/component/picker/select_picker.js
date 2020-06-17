@@ -1,6 +1,6 @@
 import { getLocale } from '@gm-mobile/locales'
 import PropTypes from 'prop-types'
-import find from 'lodash/find'
+import _find from 'lodash/find'
 
 import ConfirmPicker from './confirm_picker'
 
@@ -11,7 +11,7 @@ const SelectPicker = {
     const values = []
 
     // 找不到得有个默认的
-    const item = find(data, (v) => v.value === value)
+    const item = _find(data, (v) => v.value === value)
     if (item) {
       values[0] = item.value
     } else {
@@ -24,7 +24,7 @@ const SelectPicker = {
       values,
     }).then((values) => {
       // 转回去
-      const item = find(data, (v) => v.value === values[0])
+      const item = _find(data, (v) => v.value === values[0])
       return item.value
     })
   },
