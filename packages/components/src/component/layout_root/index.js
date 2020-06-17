@@ -2,6 +2,7 @@ import React from 'react'
 import _noop from 'lodash/noop'
 import View from '../view'
 import { is } from '@gm-mobile/tool'
+import { Current } from '@tarojs/taro'
 
 const TYPE = {
   INNERLAYER: 'innerLayer',
@@ -13,11 +14,14 @@ const TYPE = {
   NPROGRESS: 'nprogress',
 }
 
-let setComponentFunc = null
+const cbMap = {}
 
 class LayoutRoot extends React.Component {
   constructor(props) {
     super(props)
+
+    this.path = is.weApp() ? Current.router.path : 'layoutRoot'
+
     this.state = {
       innerLayer: null,
       popup: null,
@@ -30,7 +34,7 @@ class LayoutRoot extends React.Component {
   }
 
   componentDidMount() {
-    setComponentFunc = (type, component) => {
+    cbMap[this.path] = (type, component) => {
       this.setState({
         [type]: component,
       })
@@ -38,7 +42,7 @@ class LayoutRoot extends React.Component {
   }
 
   componentWillUnmount() {
-    setComponentFunc = null
+    cbMap[this.path] = null
   }
 
   render() {
@@ -59,23 +63,17 @@ class LayoutRoot extends React.Component {
 
 LayoutRoot.TYPE = TYPE
 
-/* 基础功能 */
-
 LayoutRoot.setComponent = (type, com) => {
-  if (setComponentFunc) {
-    LayoutRoot.removeComponent(type)
-    setComponentFunc(type, com)
+  const path = is.weApp() ? Current.router.path : 'layoutRoot'
+  if (cbMap[path]) {
+    cbMap[path](type, com)
   } else {
     console.warn('LayoutRoot is uninitialized')
   }
 }
 
 LayoutRoot.removeComponent = (type) => {
-  if (setComponentFunc) {
-    setComponentFunc(type, null)
-  } else {
-    console.warn('LayoutRoot is uninitialized')
-  }
+  LayoutRoot.setComponent(type, null)
 }
 
 // 这种写法 附带 History 功能
