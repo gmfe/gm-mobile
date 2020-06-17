@@ -18,20 +18,20 @@ class Storage {
   }
 
   getAll() {
-    let result = {}
-    const filterResult = {}
+    const result = {}
+    let StorageKeys = []
     try {
-      result = Taro.getStorageInfoSync()
+      StorageKeys = Taro.getStorageInfoSync().keys
     } catch (err) {
       console.warn('Storage getAll error', err)
     }
-    each(result, (value, key) => {
+    each(StorageKeys, (key) => {
       if (key?.startsWith(this.prefix)) {
         key = key.slice(this.prefix.length)
-        filterResult[key] = this.get(key)
+        result[key] = this.get(key)
       }
     })
-    return keys(filterResult).length ? result : null
+    return keys(result).length ? result : null
   }
 
   set(key, value) {
