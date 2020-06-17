@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import noop from 'lodash/noop'
-// import Input from '../input/input'
+import Input from '../input/input'
 import View from '../view'
 import Button from '../button'
 import Text from '../text'
@@ -50,14 +50,14 @@ const Search = ({
     >
       <View className='m-search-input m-flex m-flex-flex'>
         <Text className='m-font m-font-search m-search-icon-search' />
-        {/* <Input
+        <Input
           ref={refInput}
           type='search'
           value={value}
           onChange={handleChange}
           placeholder={placeholder}
           autoFocus={autoFocus}
-        /> */}
+        />
         {value && (
           <Text
             className='m-font m-font-close-circle m-search-icon-close'

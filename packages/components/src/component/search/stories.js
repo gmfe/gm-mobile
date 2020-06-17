@@ -2,7 +2,6 @@ import React from 'react'
 import Search from './search'
 import SearchPage from './page'
 import FakeSearch from './fake_search'
-// import Header from '../header'
 import Flex from '../flex'
 import View from '../view'
 import Button from '../button'
@@ -73,24 +72,27 @@ export const searchPage = () => {
   return (
     <SearchPage
       header={
-        <View>1232</View>
-        // <Header
-        //   title='demo'
-        //   right={
-        //     <Flex
-        //       alignCenter
-        //       className='m-padding-lr-15'
-        //       onClick={() => {
-        //         // 同时初始化下搜索数据
-        //         store.setActive(true)
-        //         store.setValue('')
-        //         store.setSearchValue('')
-        //       }}
-        //     >
-        //       搜索
-        //     </Flex>
-        //   }
-        // />
+        <Flex
+          justifyBetween
+          className='m-bg-primary m-padding-lr-15'
+          style={{
+            height: '50px',
+            lineHeight: '50px',
+          }}
+        >
+          <View className='m-text-white'>返回</View>
+          <View
+            className='m-text-white m-cursor-pointer'
+            onClick={() => {
+              // 同时初始化下搜索数据
+              store.setActive(true)
+              store.setValue('')
+              store.setSearchValue('')
+            }}
+          >
+            搜索
+          </View>
+        </Flex>
       }
       active={store.active}
       value={store.value}
