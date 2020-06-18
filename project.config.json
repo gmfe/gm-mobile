@@ -25,7 +25,8 @@
 			"outputPath": ""
 		},
 		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false
+		"userConfirmedUseCompilerModuleSwitch": false,
+		"skeletonGenerateFilesWithoutConfirm": true
 	},
 	"compileType": "miniprogram",
 	"simulatorType": "wechat",

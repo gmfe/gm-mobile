@@ -3,6 +3,7 @@ import _map from 'lodash/map'
 import _each from 'lodash/each'
 import queryString from 'query-string'
 import {
+  View,
   Text,
   Page,
   Cells,
@@ -155,6 +156,7 @@ export default class Index extends Component {
           })}
         </Page>
         <LayoutRoot />
+        <View>onReachBottom</View>
       </>
     )
   }
