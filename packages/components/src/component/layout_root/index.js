@@ -2,7 +2,7 @@ import React from 'react'
 import _noop from 'lodash/noop'
 import View from '../view'
 import { is } from '@gm-mobile/tool'
-import { Current } from '@tarojs/taro'
+import getPath from './get_path'
 
 const TYPE = {
   INNERLAYER: 'innerLayer',
@@ -20,7 +20,7 @@ class LayoutRoot extends React.Component {
   constructor(props) {
     super(props)
 
-    this.path = is.weApp() ? Current.router.path : 'layoutRoot'
+    this.path = getPath()
 
     this.state = {
       innerLayer: null,
@@ -64,7 +64,7 @@ class LayoutRoot extends React.Component {
 LayoutRoot.TYPE = TYPE
 
 LayoutRoot.setComponent = (type, com) => {
-  const path = is.weApp() ? Current.router.path : 'layoutRoot'
+  const path = getPath()
   if (cbMap[path]) {
     cbMap[path](type, com)
   } else {
