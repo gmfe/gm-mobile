@@ -84,7 +84,7 @@ const Counter = ({
       <div className='m-counter-icon' onClick={() => handleChange('minus')}>
         <i
           className={classNames('m-font m-font-minus m-counter-minus', {
-            disabled: minusDisabled,
+            disabled: minusDisabled && !disabled,
           })}
         />
       </div>
@@ -102,7 +102,7 @@ const Counter = ({
       <div className='m-counter-icon' onClick={() => handleChange('plus')}>
         <i
           className={classNames('m-font m-font-plus m-counter-plus', {
-            disabled: plusDisabled,
+            disabled: plusDisabled && !disabled,
           })}
         />
       </div>
