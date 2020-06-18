@@ -42,6 +42,10 @@ export const normal = () => {
   )
 }
 
+export const loading = () => {
+  return <Page loading>loading</Page>
+}
+
 export default {
   title: '布局/Page',
 }

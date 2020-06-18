@@ -8,7 +8,6 @@ import {
   PageMP,
   Cells,
   Cell,
-  ActionSheet,
   Button,
   Toast,
 } from '../../../../packages/mp/src'
@@ -84,7 +83,7 @@ _each(storiesList, ({ module, packageName, path }) => {
 
 export default class Index extends Component {
   onPullDownRefresh() {
-    Toast.tip('onPullDownRefresh')
+    Toast.loading('onPullDownRefresh')
   }
 
   onReachBottom() {
@@ -133,16 +132,16 @@ export default class Index extends Component {
                     access
                     key={twoKey}
                     onClick={() => {
-                      ActionSheet.render({
-                        title: twoKey,
-                        data: _map(twoValue, (thereValue, thereKey) => ({
-                          text: thereKey,
-                          value: queryString.stringify(thereValue),
-                        })),
-                      }).then((value) => {
-                        wx.navigateTo({
-                          url: `/package_a/pages/index/stories?${value}`,
-                        })
+                      const itemList = _map(twoValue, (v, k) => k)
+                      wx.showActionSheet({
+                        itemList,
+                        success(res) {
+                          wx.navigateTo({
+                            url: `/package_a/pages/index/stories?${queryString.stringify(
+                              twoValue[itemList[res.tapIndex]]
+                            )}`,
+                          })
+                        },
                       })
                     }}
                   >
