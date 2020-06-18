@@ -26,8 +26,8 @@ const Counter = ({
     return _isNaN(parseFloat(value)) ? '' : parseFloat(value)
   }
 
-  const plusDisabled = max && text2Number(value) >= max
-  const minusDisabled = value === '' || text2Number(value) === 0
+  const plusDisabled = !disabled && max && text2Number(value) >= max
+  const minusDisabled = !disabled && (value === '' || text2Number(value) === 0)
 
   // // 检验是否超出大小值限制
   const checkValue = (value, type) => {
