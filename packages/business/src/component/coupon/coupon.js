@@ -8,6 +8,32 @@ import _ from 'lodash'
 import SVGDownUp from '../../../svg/down-up-circle.svg'
 import SVGExpired from '../../../svg/expired.svg'
 
+const Label = (props) => {
+  const { labels } = props
+
+  return (
+    <Flex>
+      {_.map(labels, (labelItem, index) => {
+        return (
+          <span
+            className={classNames('m-coupon-right-header-label', {
+              'm-margin-left-5': index !== 0,
+            })}
+            key={index + labelItem}
+          >
+            {labelItem}
+          </span>
+        )
+      })}
+    </Flex>
+  )
+}
+
+Label.propTypes = {
+  /** 优惠券标签展示文字，必传，不考虑为空的情况 */
+  labels: PropTypes.array.isRequired,
+}
+
 const Coupon = (props) => {
   const {
     currency,
@@ -15,7 +41,7 @@ const Coupon = (props) => {
     totalInfo,
     dateInfo,
     title,
-    label,
+    labels,
     useInfo,
     onUse,
     className,
@@ -81,14 +107,19 @@ const Coupon = (props) => {
             })}
           >
             <span className='m-coupon-right-header-title'>{title}</span>
-            {label && (
-              <span className='m-coupon-right-header-label'>{label}</span>
-            )}
-            <Flex alignCenter none className='m-coupon-right-header-date'>
-              {dateInfo || ''}
-              {couponAmount !== undefined
-                ? `${getLocale('可领')}${couponAmount}${getLocale('张')}`
-                : ''}
+            {labels && labels.length > 0 && <Label labels={labels} />}
+            <Flex
+              alignCenter
+              justifyBetween
+              none
+              className='m-coupon-right-header-date'
+            >
+              <Flex column>
+                {dateInfo || ''}
+                {couponAmount !== undefined
+                  ? `${getLocale('可领')}${couponAmount}${getLocale('张')}`
+                  : ''}
+              </Flex>
               {(onUse || onReceived) && (
                 <span
                   className='m-coupon-right-header-btn'
@@ -157,8 +188,8 @@ Coupon.propTypes = {
   discount: PropTypes.number.isRequired,
   /** 满减说明 */
   totalInfo: PropTypes.string,
-  /** 优惠券标签展示文字，不传不展示标签 */
-  label: PropTypes.string,
+  /** 优惠券标签展示文字，不传不展示标签,数组形式：[label1,label2,...] */
+  labels: PropTypes.array,
   /** 优惠券标题 */
   title: PropTypes.string,
   /** 是否有使用说明 */
@@ -166,7 +197,7 @@ Coupon.propTypes = {
   /** 优惠券使用说明 */
   useInfo: PropTypes.element,
   /** 使用日期说明 */
-  dateInfo: PropTypes.string,
+  dateInfo: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   /** 立即使用回调函数 */
   onUse: PropTypes.func,
   /** 不可用状态 */
