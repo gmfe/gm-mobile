@@ -159,11 +159,10 @@ const Dialog = ({
   otherText,
   onOther,
   children,
-  cancelable,
 }) => {
   return (
     <div className='m-dialog-container'>
-      <Mask onClick={() => cancelable && DialogStatics.hide()} />
+      <Mask />
       <div className='m-dialog m-animated-in m-animated-fade-in'>
         <div className='m-dialog-title'>{title}</div>
         <div className='m-dialog-content'>{children}</div>
@@ -213,15 +212,12 @@ Dialog.propTypes = {
   promptInputProps: PropTypes.object,
   /**  */
   promptGetError: PropTypes.func,
-  /** 点击对话框外是否可取消 */
-  cancelable: PropTypes.bool,
 }
 
 Dialog.defaultProps = {
   title: getLocale('提示'),
   confirmText: getLocale('确定'),
   cancelText: getLocale('取消'),
-  cancelable: false,
 }
 
 export default Dialog
