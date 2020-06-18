@@ -86,6 +86,10 @@ export default class Index extends Component {
     console.log('onPullDownRefresh')
   }
 
+  onReachBottom() {
+    console.log('onReachBottom')
+  }
+
   render() {
     return (
       <>
