@@ -17,7 +17,6 @@ import Checkbox from './component/checkbox'
 import Radio from './component/radio'
 import Square from './component/square'
 import Divider from './component/divider'
-import { Tabbar, FlowBtnTabbar } from './component/tab_bar'
 import Popup from './component/popup'
 import Tooltip from './component/tooltip'
 import ActionSheet from './component/action_sheet'
@@ -60,8 +59,6 @@ export {
   Checkbox,
   Radio,
   Divider,
-  Tabbar,
-  FlowBtnTabbar,
   Popup,
   Tooltip,
   ActionSheet,

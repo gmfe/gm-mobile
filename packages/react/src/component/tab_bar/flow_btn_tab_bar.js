@@ -3,8 +3,7 @@ import _map from 'lodash/map'
 import _noop from 'lodash/noop'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import Flex from '../flex'
-import Text from '../text'
+import { Flex, Text } from '@gm-mobile/components'
 import Item from './item'
 
 const FlowBtnTabbar = ({

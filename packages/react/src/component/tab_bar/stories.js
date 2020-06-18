@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
-
+import { View, Text } from '@gm-mobile/components'
 import { Tabbar, FlowBtnTabbar } from './index'
-import View from '../view'
-import Text from '../text'
 
 export const normal = () => {
   const [active, setActive] = useState('/my')
