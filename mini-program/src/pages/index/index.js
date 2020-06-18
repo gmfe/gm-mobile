@@ -5,13 +5,13 @@ import queryString from 'query-string'
 import {
   View,
   Text,
-  Page,
+  PageMP,
   Cells,
   Cell,
   ActionSheet,
-  LayoutRoot,
   Button,
-} from '../../../../packages/components/src'
+  Toast,
+} from '../../../../packages/mp/src'
 
 // 不知道为啥，要写到 component
 const mpReq = require.context(
@@ -84,80 +84,79 @@ _each(storiesList, ({ module, packageName, path }) => {
 
 export default class Index extends Component {
   onPullDownRefresh() {
-    console.log('onPullDownRefresh')
+    Toast.tip('onPullDownRefresh')
   }
 
   onReachBottom() {
-    console.log('onReachBottom')
+    Toast.tip('onReachBottom')
   }
 
   render() {
     return (
-      <>
-        <Page>
-          <Button
-            mini
-            onClick={() => {
-              wx.startPullDownRefresh({
-                success() {
-                  console.log('success')
-                },
-                fail() {
-                  console.log('fail')
-                },
-              })
-            }}
-          >
-            startPullDownRefresh
-          </Button>
-          <Button
-            mini
-            onClick={() => {
-              wx.stopPullDownRefresh({
-                success() {
-                  console.log('success')
-                },
-                fail() {
-                  console.log('fail')
-                },
-              })
-            }}
-          >
-            stopPullDownRefresh
-          </Button>
-          {_map(dataMap, (oneValue, oneKey) => {
-            return (
-              <Cells key={oneKey} title={oneKey}>
-                {_map(oneValue, (twoValue, twoKey) => {
-                  return (
-                    <Cell
-                      access
-                      key={twoKey}
-                      onClick={() => {
-                        ActionSheet.render({
-                          title: twoKey,
-                          data: _map(twoValue, (thereValue, thereKey) => ({
-                            text: thereKey,
-                            value: queryString.stringify(thereValue),
-                          })),
-                        }).then((value) => {
-                          wx.navigateTo({
-                            url: `/package_a/pages/index/stories?${value}`,
-                          })
+      <PageMP>
+        <Button
+          mini
+          onClick={() => {
+            wx.startPullDownRefresh({
+              success() {
+                console.log('success')
+              },
+              fail() {
+                console.log('fail')
+              },
+            })
+          }}
+        >
+          startPullDownRefresh
+        </Button>
+        <Button
+          mini
+          onClick={() => {
+            wx.stopPullDownRefresh({
+              success() {
+                console.log('success')
+              },
+              fail() {
+                console.log('fail')
+              },
+            })
+          }}
+        >
+          stopPullDownRefresh
+        </Button>
+        {_map(dataMap, (oneValue, oneKey) => {
+          return (
+            <Cells key={oneKey} title={oneKey}>
+              {_map(oneValue, (twoValue, twoKey) => {
+                return (
+                  <Cell
+                    access
+                    key={twoKey}
+                    onClick={() => {
+                      ActionSheet.render({
+                        title: twoKey,
+                        data: _map(twoValue, (thereValue, thereKey) => ({
+                          text: thereKey,
+                          value: queryString.stringify(thereValue),
+                        })),
+                      }).then((value) => {
+                        wx.navigateTo({
+                          url: `/package_a/pages/index/stories?${value}`,
                         })
-                      }}
-                    >
-                      <Text>{twoKey}</Text>
-                    </Cell>
-                  )
-                })}
-              </Cells>
-            )
-          })}
-        </Page>
-        <LayoutRoot />
+                      })
+                    }}
+                  >
+                    <Text>{twoKey}</Text>
+                  </Cell>
+                )
+              })}
+            </Cells>
+          )
+        })}
         <View>onReachBottom</View>
-      </>
+        <View>onReachBottom</View>
+        <View>onReachBottom</View>
+      </PageMP>
     )
   }
 }
