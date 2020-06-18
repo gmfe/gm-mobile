@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo } from 'react'
 import { useRouter } from '@tarojs/taro'
 import { Observer } from 'mobx-react'
-import { View, Page, LayoutRoot } from '../../../../../packages/mp/src/index'
+import { View, PageMP } from '../../../../../packages/mp/src'
 
 const Stories = () => {
   const {
@@ -26,16 +26,13 @@ const Stories = () => {
   }, [])
 
   return (
-    <View>
-      <Page>
-        <Observer>
-          {() => {
-            return stories[store] && stories[store]()
-          }}
-        </Observer>
-      </Page>
-      <LayoutRoot />
-    </View>
+    <PageMP>
+      <Observer>
+        {() => {
+          return stories[store] && stories[store]()
+        }}
+      </Observer>
+    </PageMP>
   )
 }
 
