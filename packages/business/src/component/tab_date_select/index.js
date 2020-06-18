@@ -8,10 +8,9 @@ import {
   SelectPicker,
 } from '@gm-mobile/react'
 import { getLocale } from '@gm-mobile/locales'
-import _ from 'lodash'
+import _find from 'lodash/find'
 import moment from 'moment'
 import PropTypes from 'prop-types'
-import SvgArrowTriangle from '../../../svg/arrow-triangle.svg'
 
 const getServiceTimeRange = (serviceTime) => {
   const maxSpanEnd =
@@ -39,7 +38,7 @@ const TabDateSelect = ({
   const [beginDate, setBeginDate] = useState(begin)
   const [endDate, setEndDate] = useState(end)
   const [activeTab, setActiveTab] = useState(
-    _.find(tabs, (tab) => tab.value === selectedTab) || tabs[0]
+    _find(tabs, (tab) => tab.value === selectedTab) || tabs[0]
   )
 
   useEffect(() => {
@@ -64,10 +63,7 @@ const TabDateSelect = ({
       data: serviceTimeList,
       value: activeTab.selectedServiceTime.value,
     }).then((value) => {
-      const serviceTime = _.find(
-        serviceTimeList,
-        (item) => item.value === value
-      )
+      const serviceTime = _find(serviceTimeList, (item) => item.value === value)
       const { min, max } = getServiceTimeRange(serviceTime)
       if (
         moment(beginDate) < moment(min) ||
@@ -89,7 +85,7 @@ const TabDateSelect = ({
 
   const handleTabChange = (value) => {
     if (value !== activeTab.value) {
-      const tab = _.find(tabs, (tab) => tab.value === value)
+      const tab = _find(tabs, (tab) => tab.value === value)
       setActiveTab(tab)
       setBeginDate(tab.max)
       setEndDate(tab.max)
@@ -111,8 +107,8 @@ const TabDateSelect = ({
             className='m-padding-tb-5 m-padding-lr-10'
             onClick={handleSelectServiceTime}
           >
-            <div className='m-margin-right-5'>{`${activeTab.selectedServiceTime.text}`}</div>
-            <SvgArrowTriangle className='m-text-12' />
+            <span className='m-margin-right-5'>{`${activeTab.selectedServiceTime.span}`}</span>
+            <i className='m-font m-font-arrow-triangle m-tab-date-select-icon' />
           </Flex>
         </Flex>
       )}
@@ -134,12 +130,12 @@ const TabDateSelect = ({
         </div>
 
         <Flex alignCenter justifyCenter className='m-padding-tb-10'>
-          <div>{activeTab.text}</div>
-          <div className='m-text-bold m-bg-back m-margin-left-10 m-padding-tb-5 m-padding-lr-10 m-border-radius'>{`${moment(
+          <span>{activeTab.span}</span>
+          <span className='m-span-bold m-bg-back m-margin-left-10 m-padding-tb-5 m-padding-lr-10 m-border-radius'>{`${moment(
             beginDate
           ).format('YYYY-MM-DD')} ~ ${moment(endDate).format(
             'YYYY-MM-DD'
-          )}`}</div>
+          )}`}</span>
         </Flex>
 
         <div className='m-padding-lr-15 m-padding-bottom-10'>
@@ -184,7 +180,7 @@ TabDateSelect.hide = () => {
 }
 
 TabDateSelect.propTypes = {
-  /** 切换 tabs 配置 [{ text, value, min, max }] */
+  /** 切换 tabs 配置 [{ span, value, min, max }] */
   tabs: PropTypes.array.isRequired,
   /** 选中的 tab value */
   selectedTab: PropTypes.any,

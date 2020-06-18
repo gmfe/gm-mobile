@@ -1,6 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 import TabDateSelect from './index'
+import { Button } from '@gm-mobile/react'
 
 export const normal = () => {
   const tabs = [
@@ -31,7 +32,7 @@ export const normal = () => {
   }
   return (
     <div>
-      <button onClick={handleClick}>Show TabDateSelect</button>
+      <Button onClick={handleClick}>Show TabDateSelect</Button>
       <div style={{ display: 'none' }}>
         <TabDateSelect tabs={tabs} onSelect={() => {}} />
       </div>

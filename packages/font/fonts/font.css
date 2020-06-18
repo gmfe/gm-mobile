@@ -1,10 +1,10 @@
 @font-face {
     font-family: gm-mobile-icons;
-    src: url("gm-mobile-icons.eot");src: url("gm-mobile-icons.eot?77352164#iefix") format("embedded-opentype"),
-             url("gm-mobile-icons.woff2?77352164") format("woff2"),
-             url("gm-mobile-icons.woff?77352164") format("woff"),
-             url("gm-mobile-icons.ttf?77352164") format("truetype"),
-             url("gm-mobile-icons.svg?77352164#gm-mobile-icons") format("svg");
+    src: url("gm-mobile-icons.eot");src: url("gm-mobile-icons.eot?dfef690d#iefix") format("embedded-opentype"),
+             url("gm-mobile-icons.woff2?dfef690d") format("woff2"),
+             url("gm-mobile-icons.woff?dfef690d") format("woff"),
+             url("gm-mobile-icons.ttf?dfef690d") format("truetype"),
+             url("gm-mobile-icons.svg?dfef690d#gm-mobile-icons") format("svg");
     font-weight: normal;
     font-style: normal;
 }
@@ -29,79 +29,83 @@
     content: "\ea03";
 }
 
-.m-font-cart::before {
+.m-font-arrow-triangle::before {
     content: "\ea04";
 }
 
-.m-font-close-circle::before {
+.m-font-cart::before {
     content: "\ea05";
 }
 
-.m-font-delete::before {
+.m-font-close-circle::before {
     content: "\ea06";
 }
 
-.m-font-down-small::before {
+.m-font-delete::before {
     content: "\ea07";
 }
 
-.m-font-down-up-circle::before {
+.m-font-down-small::before {
     content: "\ea08";
 }
 
-.m-font-expired::before {
+.m-font-down-up-circle::before {
     content: "\ea09";
 }
 
-.m-font-info-circle::before {
+.m-font-expired::before {
     content: "\ea0a";
 }
 
-.m-font-keyboard_del::before {
+.m-font-info-circle::before {
     content: "\ea0b";
 }
 
-.m-font-loading::before {
+.m-font-keyboard_del::before {
     content: "\ea0c";
 }
 
-.m-font-minus-circle::before {
+.m-font-loading::before {
     content: "\ea0d";
 }
 
-.m-font-minus::before {
+.m-font-minus-circle::before {
     content: "\ea0e";
 }
 
-.m-font-password-close::before {
+.m-font-minus::before {
     content: "\ea0f";
 }
 
-.m-font-password-open::before {
+.m-font-password-close::before {
     content: "\ea10";
 }
 
-.m-font-plus-circle::before {
+.m-font-password-open::before {
     content: "\ea11";
 }
 
-.m-font-plus::before {
+.m-font-plus-circle::before {
     content: "\ea12";
 }
 
-.m-font-remove::before {
+.m-font-plus::before {
     content: "\ea13";
 }
 
-.m-font-search::before {
+.m-font-remove::before {
     content: "\ea14";
 }
 
-.m-font-success-circle::before {
+.m-font-search::before {
     content: "\ea15";
 }
 
-.m-font-warning::before {
+.m-font-success-circle::before {
     content: "\ea16";
+}
+
+.m-font-warning::before {
+    content: "\ea17";
 }
 

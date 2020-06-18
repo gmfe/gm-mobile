@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import _noop from 'lodash/noop'
 
-import { Flex, View, Text } from '@gm-mobile/components'
+import { Flex } from '@gm-mobile/react'
 
 const ReceivedCoupon = (props) => {
   const {
@@ -19,7 +19,7 @@ const ReceivedCoupon = (props) => {
   } = props
 
   return (
-    <View {...rest} className={classNames('m-received-coupon', className)}>
+    <div {...rest} className={classNames('m-received-coupon', className)}>
       <Flex className='m-received-coupon-container'>
         <Flex column justifyCenter className='m-received-coupon-left'>
           <Flex
@@ -28,17 +28,17 @@ const ReceivedCoupon = (props) => {
               'm-received-coupon-received': isReceived,
             })}
           >
-            <Text className='m-received-coupon-left-currency'>{currency}</Text>
+            <span className='m-received-coupon-left-currency'>{currency}</span>
             {discount}
             {couponAmount !== undefined && (
-              <Text
+              <span
                 className={classNames('m-received-coupon-left-info', {
                   'm-received-coupon-received': isReceived,
                 })}
               >
                 ({couponAmount}
                 {getLocale('张可领')})
-              </Text>
+              </span>
             )}
           </Flex>
           {totalInfo && (
@@ -57,17 +57,17 @@ const ReceivedCoupon = (props) => {
           none
           className='m-received-coupon-right'
         >
-          <Text
+          <span
             className={classNames('m-received-coupon-right-btn', {
               'm-received-coupon-right-btn-received': isReceived,
             })}
             onClick={isReceived ? _noop : onReceived}
           >
             {getLocale('领取')}
-          </Text>
+          </span>
         </Flex>
       </Flex>
-    </View>
+    </div>
   )
 }
 
