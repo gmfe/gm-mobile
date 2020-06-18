@@ -12,6 +12,7 @@ import ProgressBar from './component/progress_bar'
 
 // 布局
 import Header from './component/header'
+import { Tabbar, FlowBtnTabbar } from './component/tab_bar'
 import Panel from '../../components/src/component/panel'
 import { Lazy, LazyList } from './component/lazy'
 import PullUpDown from './component/pull_up_down'
@@ -50,8 +51,6 @@ import {
   Checkbox,
   Radio,
   Divider,
-  Tabbar,
-  FlowBtnTabbar,
   Popup,
   Tooltip,
   ActionSheet,
