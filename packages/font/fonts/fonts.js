@@ -28,7 +28,7 @@ export default [
     {
         "name": "delete",
         "unicode": "ea06",
-        "svg": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg version=\"1.1\" id=\"图层_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"\n\t viewBox=\"0 0 45 45\" style=\"enable-background:new 0 0 45 45;\" xml:space=\"preserve\">\n<style type=\"text/css\">\n\t.st0{fill-rule:evenodd;clip-rule:evenodd;}\n</style>\n<g id=\"页面-1\">\n\t<g id=\"内页7-copy-6\" transform=\"translate(-679.000000, -525.000000)\">\n\t\t<g id=\"分组-8\" transform=\"translate(0.000000, 387.000000)\">\n\t\t\t<g id=\"右侧区域-copy-4\" transform=\"translate(679.000000, 138.000000)\">\n\t\t\t\t<g transform=\"translate(0.000000, 0.500000)\">\n\t\t\t\t\t<path id=\"图标颜色\" class=\"st0\" d=\"M22.5,44c12.4,0,22.4-9.8,22.4-22S34.9,0,22.5,0S0.1,9.8,0.1,22S10.1,44,22.5,44zM9.8 20.5 L9.8 23.5 L22.55 23.5 L35.3 23.5 L35.3 20.5 z\"/>\n\t\t\t\t</g>\n\t\t\t</g>\n\t\t</g>\n\t</g>\n</g>\n</svg>\n"
+        "svg": "<svg t=\"1592473377988\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"8181\" width=\"200\" height=\"200\"><path d=\"M865.67707819 158.32124599c-195.33131582-195.32964-512.02451637-195.32964-707.3558322 0s-195.32964 512.02451637 0 707.3558322 512.02451637 195.32964 707.3558322 0 195.33131582-512.02451637 0-707.3558322z m-118.47107913 311.99752675v71.44563211H264.89561264v-71.44563211h482.31038642z\" p-id=\"8182\"></path></svg>"
     },
     {
         "name": "down-small",
