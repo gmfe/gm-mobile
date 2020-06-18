@@ -3,7 +3,7 @@ import _map from 'lodash/map'
 import _noop from 'lodash/noop'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Flex, Text } from '@gm-mobile/components'
+import { Flex } from '@gm-mobile/components'
 import Item from './item'
 
 const FlowBtnTabbar = ({
@@ -35,7 +35,7 @@ const FlowBtnTabbar = ({
         onClick={onFlowButtonClick}
         className='m-tabbar-flow-wrapper m-bg-primary-active-with'
       >
-        {FlowButton || <Text className='m-font m-font-plus' />}
+        {FlowButton}
       </Flex>
       <Flex flex className='m-margin-left-20'>
         {_map(rightConfigs, (config, index) => (
@@ -62,7 +62,7 @@ FlowBtnTabbar.propTypes = {
   /** tab 点击回调 */
   onTabChange: PropTypes.func,
   /** 中间按钮 */
-  FlowButton: PropTypes.element,
+  FlowButton: PropTypes.element.isRequired,
   /** 中间按钮点击事件 */
   onFlowButtonClick: PropTypes.func,
   className: PropTypes.string,
