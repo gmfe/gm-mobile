@@ -1,8 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import { Input } from '@tarojs/components'
-import { View, Toast } from '@gm-mobile/components'
+import { View, Toast, Input } from '@gm-mobile/components'
 import _isNaN from 'lodash/isNaN'
 import _includes from 'lodash/includes'
 import Big from 'big.js'
@@ -60,7 +59,6 @@ const Counter = ({
     if (plusDisabled) return
     // 如果存在最小值，以最小值开始相加
     v = v + 1
-    checkError(v)
     if (min && value === '') {
       v = min
     }
