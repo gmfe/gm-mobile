@@ -1,9 +1,9 @@
 import { getLocale } from '@gm-mobile/locales'
 import React, { useState } from 'react'
-import { Flex, Checkbox } from '@gm-mobile/react'
+import { Flex, Checkbox, View, Text } from '@gm-mobile/components'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
+import _noop from 'lodash/noop'
 
 const Coupon = (props) => {
   const {
@@ -22,6 +22,8 @@ const Coupon = (props) => {
     hasUseInfo,
     isExpired,
     isUsed,
+    onReceived,
+    couponAmount,
     ...rest
   } = props
 
@@ -40,7 +42,7 @@ const Coupon = (props) => {
   const isDisabled = disabled || isExpired || isUsed
 
   return (
-    <div
+    <View
       {...rest}
       className={classNames(
         'm-coupon-container',
@@ -48,24 +50,19 @@ const Coupon = (props) => {
         className
       )}
     >
-      <div className='m-coupon'>
+      <View className='m-coupon'>
         <Flex justifyCenter alignCenter column className='m-coupon-left'>
           <Flex justifyCenter alignCenter>
             <Flex alignEnd className='m-coupon-left-currency'>
               {currency}
             </Flex>
-            <span className='m-coupon-left-discount'>{discount}</span>
+            <Text className='m-coupon-left-discount'>{discount}</Text>
           </Flex>
           {totalInfo && (
-            <span className='m-coupon-left-total'>{totalInfo}</span>
+            <Text className='m-coupon-left-total'>{totalInfo}</Text>
           )}
         </Flex>
-        <Flex
-          column
-          flex
-          className='m-coupon-right'
-          onClick={onCheck || _.noop}
-        >
+        <Flex column flex className='m-coupon-right' onClick={onCheck || _noop}>
           <Flex
             flex
             column
@@ -75,19 +72,22 @@ const Coupon = (props) => {
               'm-coupon-right-header-padding': onCheck,
             })}
           >
-            <span className='m-coupon-right-header-title'>{title}</span>
+            <Text className='m-coupon-right-header-title'>{title}</Text>
             {label && (
-              <span className='m-coupon-right-header-label'>{label}</span>
+              <Text className='m-coupon-right-header-label'>{label}</Text>
             )}
             <Flex alignCenter none className='m-coupon-right-header-date'>
-              {dateInfo}
-              {onUse && (
-                <span
+              {dateInfo || ''}
+              {couponAmount !== undefined
+                ? `${getLocale('可领')}${couponAmount}${getLocale('张')}`
+                : ''}
+              {(onUse || onReceived) && (
+                <Text
                   className='m-coupon-right-header-btn'
-                  onClick={isDisabled ? _.noop : onUse}
+                  onClick={isDisabled ? _noop : onUse || onReceived}
                 >
-                  {getLocale('立即使用')}
-                </span>
+                  {onReceived ? getLocale('立即领取') : getLocale('立即使用')}
+                </Text>
               )}
             </Flex>
             {onCheck && (
@@ -101,7 +101,7 @@ const Coupon = (props) => {
               />
             )}
             {isExpired || isUsed ? (
-              <div>
+              <View>
                 <i className='m-font m-font-expired m-coupon-right-expired' />
                 <Flex
                   alignCenter
@@ -110,7 +110,7 @@ const Coupon = (props) => {
                 >
                   {isExpired ? getLocale('已过期') : getLocale('已使用')}
                 </Flex>
-              </div>
+              </View>
             ) : null}
           </Flex>
           {hasUseInfo && (
@@ -134,11 +134,11 @@ const Coupon = (props) => {
             </Flex>
           )}
         </Flex>
-      </div>
+      </View>
       {showUseInfo && (
-        <div className='m-coupon-use-info'>{renderUseInfo()}</div>
+        <View className='m-coupon-use-info'>{renderUseInfo()}</View>
       )}
-    </div>
+    </View>
   )
 }
 
@@ -171,6 +171,8 @@ Coupon.propTypes = {
   isExpired: PropTypes.bool,
   /** 优惠券是否已使用 */
   isUsed: PropTypes.bool,
+  onReceived: PropTypes.func,
+  couponAmount: PropTypes.number,
   className: PropTypes.string,
   style: PropTypes.object,
 }

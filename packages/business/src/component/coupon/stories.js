@@ -4,17 +4,18 @@ import { observable } from 'mobx'
 
 import Coupon from './coupon'
 import ReceivedCoupon from './received_coupon'
+import { View } from '@gm-mobile/components'
 
 const store = observable({
   checked: false,
   setChecked(checked) {
     this.checked = checked
-  }
+  },
 })
 
 export const normal = () => (
-  <div style={{ height: '50%' }} className='m-bg-white'>
-    <div className='m-padding-15'>
+  <View style={{ height: '50%' }} className='m-bg-white'>
+    <View className='m-padding-15'>
       <Coupon
         currency='¥'
         discount={100}
@@ -25,8 +26,8 @@ export const normal = () => (
         checked={store.checked}
         onCheck={() => store.setChecked(!store.checked)}
       />
-    </div>
-    <div className='m-padding-15'>
+    </View>
+    <View className='m-padding-15'>
       <Coupon
         currency='¥'
         discount={30}
@@ -36,16 +37,15 @@ export const normal = () => (
         title='分类优惠券B'
         hasUseInfo
         useInfo={
-          <div>
-            1. aaa
-            <br />
-            2. bbb
-          </div>
+          <View>
+            <View>1. aaa</View>
+            <View>2. bbb</View>
+          </View>
         }
         onUse={() => console.log('use')}
       />
-    </div>
-    <div className='m-padding-15'>
+    </View>
+    <View className='m-padding-15'>
       <Coupon
         currency='¥'
         discount={200}
@@ -57,8 +57,8 @@ export const normal = () => (
         onUse={() => console.log('use')}
         disabled
       />
-    </div>
-    <div className='m-padding-15'>
+    </View>
+    <View className='m-padding-15'>
       <Coupon
         currency='¥'
         discount={200}
@@ -68,8 +68,8 @@ export const normal = () => (
         title='通用优惠券AA'
         isExpired
       />
-    </div>
-    <div className='m-padding-15'>
+    </View>
+    <View className='m-padding-15'>
       <Coupon
         currency='¥'
         discount={200}
@@ -79,18 +79,48 @@ export const normal = () => (
         title='通用优惠券AA'
         isUsed
       />
-    </div>
-  </div>
+    </View>
+    <View className='m-padding-15'>
+      <Coupon
+        currency='¥'
+        discount={200}
+        totalInfo='满300元可用'
+        hasUseInfo
+        onReceived={() => {
+          console.log('receive')
+        }}
+        title='通用优惠券AA'
+        couponAmount={10}
+      />
+    </View>
+  </View>
 )
 
 export const receivedCoupon = () => (
-  <div className='m-bg-back'>
-    <ReceivedCoupon currency='¥' discount='10' couponAmount={1} totalInfo='满100元可用' />
-    <div className='m-margin-top-10'>
-      <ReceivedCoupon isReceived currency='¥' discount='100' couponAmount={0} totalInfo='满200元可用' />
-      <ReceivedCoupon isReceived currency='¥' discount='100' className='m-margin-left-10' totalInfo='满200元可用' />
-    </div>
-  </div>
+  <View className='m-bg-back'>
+    <ReceivedCoupon
+      currency='¥'
+      discount='10'
+      couponAmount={1}
+      totalInfo='满100元可用'
+    />
+    <View className='m-margin-top-10'>
+      <ReceivedCoupon
+        isReceived
+        currency='¥'
+        discount='100'
+        couponAmount={0}
+        totalInfo='满200元可用'
+      />
+      <ReceivedCoupon
+        isReceived
+        currency='¥'
+        discount='100'
+        className='m-margin-left-10'
+        totalInfo='满200元可用'
+      />
+    </View>
+  </View>
 )
 
 export default {

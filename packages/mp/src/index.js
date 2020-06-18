@@ -16,7 +16,6 @@ import {
   Badge,
   Checkbox,
   Radio,
-  Tabbar,
 } from '@gm-mobile/components'
 
 export {
@@ -29,7 +28,6 @@ export {
   Badge,
   Checkbox,
   Radio,
-  Tabbar,
   ImageMP,
   CounterMP,
   SwiperImgMP,
