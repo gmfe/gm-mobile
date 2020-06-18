@@ -20,11 +20,6 @@
     "@types/lodash" "^4.14.150"
     lodash "^4.17.15"
 
-"@gm-mobile/locales@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@gm-mobile/locales/-/locales-1.0.0.tgz#bd076d5402b47b93ea680d9321c3c8163f7e6c44"
-  integrity sha512-GL00FytCcq4IajRAI7tS3bVRdFQuNI2byozj3QWBUQqwAUJ4GcmCWs76crB4S754k9r6XQ/oMtvochlGcxZKwQ==
-
 "@types/big.js@^4.0.5":
   version "4.0.5"
   resolved "https://registry.yarnpkg.com/@types/big.js/-/big.js-4.0.5.tgz#62c61697646269e39191f24e55e8272f05f21fc0"

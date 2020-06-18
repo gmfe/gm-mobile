@@ -1,6 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 import { observable } from 'mobx'
+import { Flex } from '@gm-mobile/react'
 
 import Coupon from './coupon'
 import ReceivedCoupon from './received_coupon'
@@ -21,7 +22,7 @@ export const normal = () => (
         totalInfo='满1000元可用'
         dateInfo='2020-04-29~2020-05-05'
         title='分类优惠券AA'
-        label='仅限xxx商品使用'
+        label={['分类券', '新人券']}
         checked={store.checked}
         onCheck={() => store.setChecked(!store.checked)}
       />
@@ -31,10 +32,17 @@ export const normal = () => (
         currency='¥'
         discount={30}
         totalInfo='满1000元可用'
-        dateInfo='2020-05-05到期'
+        dateInfo={
+          <Flex wrap>
+            <span>2020-05-05</span>
+            <span>~</span>
+            <span>2020-06-06</span>
+          </Flex>
+        }
         label='仅限xxxxxx商品使用'
         title='分类优惠券B'
         hasUseInfo
+        couponAmount='4'
         useInfo={
           <div>
             1. aaa

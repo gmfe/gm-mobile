@@ -8,6 +8,36 @@ import _ from 'lodash'
 import SVGDownUp from '../../../svg/down-up-circle.svg'
 import SVGExpired from '../../../svg/expired.svg'
 
+const Label = (props) => {
+  const { label } = props
+  // 构造成数组形式
+  let labelList = label
+  if (!_.isArray(label) && typeof label === 'string') {
+    labelList = [label]
+  }
+
+  return (
+    <Flex>
+      {_.map(labelList, (labelItem, index) => {
+        return (
+          <span
+            className={classNames('m-coupon-right-header-label', {
+              'm-margin-left-5': index !== 0,
+            })}
+          >
+            {labelItem}
+          </span>
+        )
+      })}
+    </Flex>
+  )
+}
+
+Label.propTypes = {
+  /** 优惠券标签展示文字，必传，不考虑为空的情况 */
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
+}
+
 const Coupon = (props) => {
   const {
     currency,
@@ -81,14 +111,19 @@ const Coupon = (props) => {
             })}
           >
             <span className='m-coupon-right-header-title'>{title}</span>
-            {label && (
-              <span className='m-coupon-right-header-label'>{label}</span>
-            )}
-            <Flex alignCenter none className='m-coupon-right-header-date'>
-              {dateInfo || ''}
-              {couponAmount !== undefined
-                ? `${getLocale('可领')}${couponAmount}${getLocale('张')}`
-                : ''}
+            {label && <Label label={label} />}
+            <Flex
+              alignCenter
+              justifyBetween
+              none
+              className='m-coupon-right-header-date'
+            >
+              <Flex column>
+                {dateInfo || ''}
+                {couponAmount !== undefined
+                  ? `${getLocale('可领')}${couponAmount}${getLocale('张')}`
+                  : ''}
+              </Flex>
               {(onUse || onReceived) && (
                 <span
                   className='m-coupon-right-header-btn'
@@ -158,7 +193,7 @@ Coupon.propTypes = {
   /** 满减说明 */
   totalInfo: PropTypes.string,
   /** 优惠券标签展示文字，不传不展示标签 */
-  label: PropTypes.string,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   /** 优惠券标题 */
   title: PropTypes.string,
   /** 是否有使用说明 */
