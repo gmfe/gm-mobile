@@ -26,7 +26,7 @@ const SelectedList = ({ list, onSelect, onClose, ...rest }) => {
       <Mask onClick={onClose} />
       <div className='m-selected-list-content m-animated m-animated-slide-in-bottom'>
         <Flex alignCenter className='m-selected-list-content-title'>
-          {getLocale('已选商品')}（{selectedList.length}）
+          {getLocale('已选商品')}
           <Flex
             justifyCenter
             alignCenter
