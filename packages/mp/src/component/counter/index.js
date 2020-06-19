@@ -17,6 +17,8 @@ const Counter = ({
   precision,
   adjustPosition,
   className,
+  onSubmit,
+  onBlur,
   ...rest
 }) => {
   const text2Number = (value) => {
@@ -115,6 +117,8 @@ const Counter = ({
         confirmType='done'
         adjustPosition={adjustPosition}
         onInput={handleInput}
+        onBlur={onBlur}
+        onConfirm={onSubmit}
       />
       <View
         className={classNames('m-font m-font-plus-circle m-counter-plus', {
@@ -138,6 +142,10 @@ Counter.propTypes = {
   focus: PropTypes.bool,
   /** + / - 按钮回调, 输入回调 */
   onChange: PropTypes.func.isRequired,
+  /** 失焦回调 */
+  onBlur: PropTypes.func,
+  /** 完成按钮，事件回调 */
+  onSubmit: PropTypes.func,
   /** 禁用状态 */
   disabled: PropTypes.bool,
   /** 键盘弹起时，是否自动上推页面 */
@@ -152,6 +160,9 @@ Counter.defaultProps = {
   value: '',
   min: 0,
   precision: 2,
+  onBlur: () => null,
+  onSubmit: () => null,
+  getErrorMsg: () => null,
 }
 
 export default Counter
