@@ -8,6 +8,7 @@ import _range from 'lodash/range'
 import _groupBy from 'lodash/groupBy'
 import _map from 'lodash/map'
 import _noop from 'lodash/noop'
+import { is } from '@gm-mobile/tool'
 
 import View from '../view'
 import Head from './head'
@@ -35,6 +36,11 @@ const BaseCalendar = forwardRef((props, ref) => {
   /** 暴露给外部使用 */
   useImperativeHandle(ref, () => ({
     apiScrollToSelected: () => {
+      // TODO 小程序
+      if (is.weApp()) {
+        console.log('selected')
+        return
+      }
       const selector =
         type === TYPE.RANGE
           ? '.m-calendar-day-begin'
