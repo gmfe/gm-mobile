@@ -106,7 +106,7 @@ const Coupon = (props) => {
                 <Flex
                   alignCenter
                   justifyCenter
-                  className='m-coupon-right-expired-span'
+                  className='m-coupon-right-expired-text'
                 >
                   {isExpired ? getLocale('已过期') : getLocale('已使用')}
                 </Flex>
