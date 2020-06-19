@@ -136,7 +136,7 @@ Counter.propTypes = {
   precision: PropTypes.number,
   /** 获取焦点, 微信版本 6.3.30, focus 属性设置无效 */
   focus: PropTypes.bool,
-  /** + / - 按钮回调, 数字键盘确定按钮回调函数 */
+  /** + / - 按钮回调, 输入回调 */
   onChange: PropTypes.func.isRequired,
   /** 禁用状态 */
   disabled: PropTypes.bool,
