@@ -6,7 +6,9 @@ import {
   Flex,
   Button,
   SelectPicker,
-} from '@gm-mobile/react'
+  View,
+  Text,
+} from '@gm-mobile/components'
 import { getLocale } from '@gm-mobile/locales'
 import _find from 'lodash/find'
 import moment from 'moment'
@@ -107,14 +109,14 @@ const TabDateSelect = ({
             className='m-padding-tb-5 m-padding-lr-10'
             onClick={handleSelectServiceTime}
           >
-            <div className='m-margin-right-5'>{`${activeTab.selectedServiceTime.text}`}</div>
-            <i className='m-font m-font-arrow-triangle m-tab-date-select-icon' />
+            <View className='m-margin-right-5'>{`${activeTab.selectedServiceTime.text}`}</View>
+            <Text className='m-font m-font-arrow-triangle m-tab-date-select-icon' />
           </Flex>
         </Flex>
       )}
 
       <Flex flex column justifyBetween>
-        <div className='m-tab-date-select-calendar m-overflow-y m-flex-flex m-bg-back'>
+        <View className='m-tab-date-select-calendar m-overflow-y m-flex-flex m-bg-back'>
           <RangeCalendar
             ref={calendarRef}
             begin={beginDate}
@@ -127,22 +129,22 @@ const TabDateSelect = ({
               setEndDate(end)
             }}
           />
-        </div>
+        </View>
 
         <Flex alignCenter justifyCenter className='m-padding-tb-10'>
-          <div>{activeTab.text}</div>
-          <div className='m-text-bold m-bg-back m-margin-left-10 m-padding-tb-5 m-padding-lr-10 m-border-radius'>{`${moment(
+          <View>{activeTab.text}</View>
+          <View className='m-text-bold m-bg-back m-margin-left-10 m-padding-tb-5 m-padding-lr-10 m-border-radius'>{`${moment(
             beginDate
           ).format('YYYY-MM-DD')} ~ ${moment(endDate).format(
             'YYYY-MM-DD'
-          )}`}</div>
+          )}`}</View>
         </Flex>
 
-        <div className='m-padding-lr-15 m-padding-bottom-10'>
+        <View className='m-padding-lr-15 m-padding-bottom-10'>
           <Button type='primary' onClick={handleSaveSelect} block>
             {getLocale('确定')}
           </Button>
-        </div>
+        </View>
       </Flex>
     </Flex>
   )

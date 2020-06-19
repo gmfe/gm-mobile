@@ -22,6 +22,9 @@ const Stories = () => {
     if (packageName === 'qrcode') {
       return require(`../../../../../packages/qrcode/src/stories`)
     }
+    if (packageName === 'business-components') {
+      return require(`../../../../../packages/business-components/src/component/${folder}/stories`)
+    }
     return require(`../../../../../packages/mp/src/component/${folder}/stories`)
   }, [])
 

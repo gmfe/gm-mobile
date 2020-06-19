@@ -20,5 +20,7 @@
   "bugs": {
     "url": "https://github.com/gmfe/gm-mobile/issues"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@gm-mobile/business-components": "^2.0.0-alpha.8"
+  }
 }

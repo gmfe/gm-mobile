@@ -29,6 +29,12 @@ const qrCodeReq = require.context(
   /stories\.js$/
 )
 
+const businessComReq = require.context(
+  '../../../../packages/business-components/src/component/',
+  true,
+  /stories\.js$/
+)
+
 const storiesList = []
 
 _each(comReq.keys(), (key) => {
@@ -51,6 +57,15 @@ _each(qrCodeReq.keys(), (key) => {
   storiesList.push({
     module: qrCodeReq(key),
     packageName: 'qrcode',
+    path: key,
+  })
+})
+
+// 先加上
+_each(businessComReq.keys(), (key) => {
+  storiesList.push({
+    module: businessComReq(key),
+    packageName: 'business-components',
     path: key,
   })
 })

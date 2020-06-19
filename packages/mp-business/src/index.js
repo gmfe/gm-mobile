@@ -1,5 +1,7 @@
-function hello() {
-  console.log('hello')
-}
+import {
+  Coupon,
+  ReceivedCoupon,
+  TabDateSelect,
+} from '@gm-mobile/business-components'
 
-export { hello }
+export { Coupon, ReceivedCoupon, TabDateSelect }

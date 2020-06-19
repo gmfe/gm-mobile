@@ -20,5 +20,15 @@
   "bugs": {
     "url": "https://github.com/gmfe/gm-mobile/issues"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@gm-mobile/components": "^2.0.0-alpha.8",
+    "@gm-mobile/locales": "^2.0.0-alpha.8"
+  },
+  "peerDependencies": {
+    "classnames": "^2.2.6",
+    "lodash": "^4.17.15",
+    "moment": "^2.27.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1"
+  }
 }

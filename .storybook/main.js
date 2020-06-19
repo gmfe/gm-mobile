@@ -64,6 +64,7 @@ module.exports = {
   // 枚举，避免识别到 node_modules 的 stories
   stories: [
     '../packages/components/src/**/*stories.js',
+    '../packages/business-components/src/**/*stories.js',
     '../packages/react/src/**/*stories.js',
     '../packages/locales/src/**/*stories.js',
     '../packages/business/src/**/*stories.js',

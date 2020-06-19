@@ -1,6 +1,6 @@
 import { getLocale } from '@gm-mobile/locales'
 import React, { useState } from 'react'
-import { Flex, Checkbox } from '@gm-mobile/react'
+import { Flex, Checkbox, View, Text } from '@gm-mobile/components'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import _noop from 'lodash/noop'
@@ -42,7 +42,7 @@ const Coupon = (props) => {
   const isDisabled = disabled || isExpired || isUsed
 
   return (
-    <div
+    <View
       {...rest}
       className={classNames(
         'm-coupon-container',
@@ -50,16 +50,16 @@ const Coupon = (props) => {
         className
       )}
     >
-      <div className='m-coupon'>
+      <View className='m-coupon'>
         <Flex justifyCenter alignCenter column className='m-coupon-left'>
           <Flex justifyCenter alignCenter>
             <Flex alignEnd className='m-coupon-left-currency'>
               {currency}
             </Flex>
-            <span className='m-coupon-left-discount'>{discount}</span>
+            <Text className='m-coupon-left-discount'>{discount}</Text>
           </Flex>
           {totalInfo && (
-            <span className='m-coupon-left-total'>{totalInfo}</span>
+            <Text className='m-coupon-left-total'>{totalInfo}</Text>
           )}
         </Flex>
         <Flex column flex className='m-coupon-right' onClick={onCheck || _noop}>
@@ -72,9 +72,9 @@ const Coupon = (props) => {
               'm-coupon-right-header-padding': onCheck,
             })}
           >
-            <span className='m-coupon-right-header-title'>{title}</span>
+            <Text className='m-coupon-right-header-title'>{title}</Text>
             {label && (
-              <span className='m-coupon-right-header-label'>{label}</span>
+              <Text className='m-coupon-right-header-label'>{label}</Text>
             )}
             <Flex alignCenter none className='m-coupon-right-header-date'>
               {dateInfo || ''}
@@ -82,12 +82,12 @@ const Coupon = (props) => {
                 ? `${getLocale('可领')}${couponAmount}${getLocale('张')}`
                 : ''}
               {(onUse || onReceived) && (
-                <span
+                <Text
                   className='m-coupon-right-header-btn'
                   onClick={isDisabled ? _noop : onUse || onReceived}
                 >
                   {onReceived ? getLocale('立即领取') : getLocale('立即使用')}
-                </span>
+                </Text>
               )}
             </Flex>
             {onCheck && (
@@ -101,8 +101,8 @@ const Coupon = (props) => {
               />
             )}
             {isExpired || isUsed ? (
-              <div>
-                <i className='m-font m-font-expired m-coupon-right-expired' />
+              <View>
+                <Text className='m-font m-font-expired m-coupon-right-expired' />
                 <Flex
                   alignCenter
                   justifyCenter
@@ -110,7 +110,7 @@ const Coupon = (props) => {
                 >
                   {isExpired ? getLocale('已过期') : getLocale('已使用')}
                 </Flex>
-              </div>
+              </View>
             ) : null}
           </Flex>
           {hasUseInfo && (
@@ -129,16 +129,16 @@ const Coupon = (props) => {
                   active: showUseInfo,
                 })}
               >
-                <i className='m-font m-font-down-up-circle m-coupon-right-footer-down-up' />
+                <Text className='m-font m-font-down-up-circle m-coupon-right-footer-down-up' />
               </Flex>
             </Flex>
           )}
         </Flex>
-      </div>
+      </View>
       {showUseInfo && (
-        <div className='m-coupon-use-info'>{renderUseInfo()}</div>
+        <View className='m-coupon-use-info'>{renderUseInfo()}</View>
       )}
-    </div>
+    </View>
   )
 }
 
