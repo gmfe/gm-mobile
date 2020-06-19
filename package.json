@@ -10,7 +10,7 @@
     "build:weapp": "taro build --type weapp",
     "dev:weapp": "npm run build:weapp -- --watch",
     "svg": "rm -rf packages/components/src/fonts; node svg2font.js;",
-    "link": "cd packages/components; yarn link; cd ../mp; yarn link; cd ../mp-request; yarn link; cd ../tool;  yarn link; cd ../font; yarn link; cd ../qrcode; yarn link;"
+    "link": "cd packages/components; yarn link; cd ../mp; yarn link; cd ../mp-request; yarn link; cd ../tool;  yarn link; cd ../font; yarn link; cd ../qrcode; yarn link; cd ../mp-business; yarn link;"
   },
   "husky": {
     "hooks": {
