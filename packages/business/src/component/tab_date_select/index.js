@@ -107,7 +107,7 @@ const TabDateSelect = ({
             className='m-padding-tb-5 m-padding-lr-10'
             onClick={handleSelectServiceTime}
           >
-            <span className='m-margin-right-5'>{`${activeTab.selectedServiceTime.span}`}</span>
+            <div className='m-margin-right-5'>{`${activeTab.selectedServiceTime.text}`}</div>
             <i className='m-font m-font-arrow-triangle m-tab-date-select-icon' />
           </Flex>
         </Flex>
@@ -130,12 +130,12 @@ const TabDateSelect = ({
         </div>
 
         <Flex alignCenter justifyCenter className='m-padding-tb-10'>
-          <span>{activeTab.span}</span>
-          <span className='m-span-bold m-bg-back m-margin-left-10 m-padding-tb-5 m-padding-lr-10 m-border-radius'>{`${moment(
+          <div>{activeTab.text}</div>
+          <div className='m-text-bold m-bg-back m-margin-left-10 m-padding-tb-5 m-padding-lr-10 m-border-radius'>{`${moment(
             beginDate
           ).format('YYYY-MM-DD')} ~ ${moment(endDate).format(
             'YYYY-MM-DD'
-          )}`}</span>
+          )}`}</div>
         </Flex>
 
         <div className='m-padding-lr-15 m-padding-bottom-10'>
@@ -180,7 +180,7 @@ TabDateSelect.hide = () => {
 }
 
 TabDateSelect.propTypes = {
-  /** 切换 tabs 配置 [{ span, value, min, max }] */
+  /** 切换 tabs 配置 [{ text, value, min, max }] */
   tabs: PropTypes.array.isRequired,
   /** 选中的 tab value */
   selectedTab: PropTypes.any,
