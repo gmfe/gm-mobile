@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { View, Toast, Input } from '@gm-mobile/components'
@@ -17,10 +17,13 @@ const Counter = ({
   precision,
   adjustPosition,
   className,
-  onSubmit,
-  onBlur,
   ...rest
 }) => {
+  const [selfValue, setSelfValue] = useState(value)
+  useEffect(() => {
+    setSelfValue(value)
+  }, [value])
+
   const text2Number = (value) => {
     if (value === '') {
       return 0
@@ -28,8 +31,9 @@ const Counter = ({
     return _isNaN(parseFloat(value)) ? '' : parseFloat(value)
   }
 
-  const plusDisabled = !disabled && max && text2Number(value) >= max
-  const minusDisabled = !disabled && (value === '' || text2Number(value) === 0)
+  const plusDisabled = !disabled && max && text2Number(selfValue) >= max
+  const minusDisabled =
+    !disabled && (selfValue === '' || text2Number(selfValue) === 0)
 
   // // 检验是否超出大小值限制
   const checkValue = (value, type) => {
@@ -48,8 +52,8 @@ const Counter = ({
   }
 
   const handleChange = (type) => {
-    let v = text2Number(value)
-    const _precision = _includes(value, '.') ? precision : 0
+    let v = text2Number(selfValue)
+    const _precision = _includes(selfValue, '.') ? precision : 0
     if (type === 'minus') {
       if (minusDisabled) return
       // 小于0时展示为0不变
@@ -61,7 +65,7 @@ const Counter = ({
     if (plusDisabled) return
     // 如果存在最小值，以最小值开始相加
     v = v + 1
-    if (min && value === '') {
+    if (min && selfValue === '') {
       v = min
     }
     const cv = Big(checkValue(v, type)).toFixed(_precision)
@@ -78,9 +82,9 @@ const Counter = ({
     }
     // 限制最大数量
     if (v > max) {
-      onChange(max.toString())
+      setSelfValue(max.toString())
     } else {
-      onChange(value)
+      setSelfValue(value)
     }
   }
 
@@ -89,6 +93,10 @@ const Counter = ({
       const mes = getErrorMsg({ value: v, min, max })
       mes && Toast.tip(mes)
     }
+  }
+
+  const handleFinally = () => {
+    onChange(selfValue)
   }
 
   return (
@@ -112,13 +120,13 @@ const Counter = ({
         className='m-counter-content-text'
         type='digit'
         disabled={disabled}
-        value={value}
+        value={selfValue}
         focus={focus}
         confirmType='done'
         adjustPosition={adjustPosition}
         onInput={handleInput}
-        onBlur={onBlur}
-        onConfirm={onSubmit}
+        onBlur={handleFinally}
+        onConfirm={handleFinally}
       />
       <View
         className={classNames('m-font m-font-plus-circle m-counter-plus', {
@@ -131,21 +139,17 @@ const Counter = ({
 }
 
 Counter.propTypes = {
-  /** 当前展示值 */
+  /** 展示值 */
   value: PropTypes.string,
   /** 最小值, 默认为0 */
   min: PropTypes.number,
   /** 最大值 */
   max: PropTypes.number,
   precision: PropTypes.number,
+  /** +/- 号回调，数字确认键盘及失焦回调 */
+  onChange: PropTypes.func.isRequired,
   /** 获取焦点, 微信版本 6.3.30, focus 属性设置无效 */
   focus: PropTypes.bool,
-  /** + / - 按钮回调, 输入回调 */
-  onChange: PropTypes.func.isRequired,
-  /** 失焦回调 */
-  onBlur: PropTypes.func,
-  /** 完成按钮，事件回调 */
-  onSubmit: PropTypes.func,
   /** 禁用状态 */
   disabled: PropTypes.bool,
   /** 键盘弹起时，是否自动上推页面 */
@@ -160,8 +164,6 @@ Counter.defaultProps = {
   value: '',
   min: 0,
   precision: 2,
-  onBlur: () => null,
-  onSubmit: () => null,
   getErrorMsg: () => null,
 }
 
