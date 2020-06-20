@@ -6,6 +6,7 @@ import {
 } from './component/swiper'
 import StorageMP from './component/storage'
 import PageMP from './component/page'
+import MapMP from './component/map'
 
 import {
   // 不提供，请用 PageMP
@@ -107,4 +108,5 @@ export {
   SwiperImgMP,
   SwiperCategoryMP,
   StorageMP,
+  MapMP,
 }
