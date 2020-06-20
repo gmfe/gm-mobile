@@ -7,6 +7,7 @@ import _find from 'lodash/find'
 import _noop from 'lodash/noop'
 
 import Flex from '../flex'
+import View from '../view'
 import Text from '../text'
 import { TYPE } from './util'
 
@@ -78,6 +79,10 @@ const Day = ({
     ev = selected[1] && +moment(selected[1]).startOf('day')
   }
   const v = +value.startOf('day')
+  const isSelected = isSelectedDate()
+  const isBegin = type === TYPE.RANGE && selected[0] && v === bv
+  const isEnd = type === TYPE.RANGE && selected[1] && v === ev
+  const isActive = type === TYPE.RANGE && selected[0] && v > bv && v < ev
 
   const cn = classNames('m-calendar-day', {
     // 无状态
@@ -85,12 +90,19 @@ const Day = ({
     // 不可用
     disabled: disabled,
     // 单个选中态
-    'm-calendar-day-selected': isSelectedDate(),
+    'm-calendar-day-selected': isSelected,
     // 日期段选中态
-    'm-calendar-day-begin': type === TYPE.RANGE && selected[0] && v === bv,
-    'm-calendar-day-end': type === TYPE.RANGE && selected[1] && v === ev,
-    active: type === TYPE.RANGE && selected[0] && v > bv && v < ev,
+    'm-calendar-day-begin': isBegin,
+    'm-calendar-day-end': isEnd,
+    active: isActive,
   })
+
+  // 小程序通过id来滚动, 增加id属性
+  const id = isSelected
+    ? 'm-calendar-day-selected'
+    : isBegin
+    ? 'm-calendar-day-begin'
+    : null
 
   return (
     <Flex
@@ -98,8 +110,9 @@ const Day = ({
       alignCenter
       onClick={disabled ? _noop : handleClick}
       className={cn}
+      id={id}
     >
-      <Text
+      <View
         className={classNames('m-calendar-day-left', {
           'm-calendar-day-left-first': isSelectedDayGap('left'),
         })}
@@ -107,14 +120,14 @@ const Day = ({
       <Flex column alignCenter justifyCenter className='m-calendar-day-text'>
         {value.date()}
         {showDateLabel && type === TYPE.RANGE && (
-          <Text className='m-calendar-day-label'>
-            {v === bv && v === ev && getLocale('单天')}
-            {v === bv && v !== ev && getLocale('开始')}
-            {v !== bv && v === ev && getLocale('结束')}
-          </Text>
+          <View className='m-calendar-day-label'>
+            {v === bv && v === ev && <Text>{getLocale('单天')}</Text>}
+            {v === bv && v !== ev && <Text>{getLocale('开始')}</Text>}
+            {v !== bv && v === ev && <Text>{getLocale('结束')}</Text>}
+          </View>
         )}
       </Flex>
-      <Text
+      <View
         className={classNames('m-calendar-day-right', {
           'm-calendar-day-right-last': isSelectedDayGap('right'),
         })}

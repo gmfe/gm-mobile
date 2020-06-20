@@ -1,5 +1,4 @@
-import React, { useState, useRef, useImperativeHandle, forwardRef } from 'react'
-import { findDOMNode } from 'react-dom'
+import React, { useState, useImperativeHandle, forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import classNames from 'classnames'
@@ -8,6 +7,7 @@ import _range from 'lodash/range'
 import _groupBy from 'lodash/groupBy'
 import _map from 'lodash/map'
 import _noop from 'lodash/noop'
+import { ScrollView } from '@tarojs/components'
 
 import View from '../view'
 import Head from './head'
@@ -18,7 +18,7 @@ import { TYPE } from './util'
 
 const BaseCalendar = forwardRef((props, ref) => {
   const [isSelectBegin, setIsSelectBegin] = useState(true)
-  const refBaseCalendar = useRef(null)
+  const [scrollId, setScrollId] = useState('')
 
   const {
     type,
@@ -36,14 +36,8 @@ const BaseCalendar = forwardRef((props, ref) => {
   useImperativeHandle(ref, () => ({
     apiScrollToSelected: () => {
       const selector =
-        type === TYPE.RANGE
-          ? '.m-calendar-day-begin'
-          : '.m-calendar-day-selected'
-
-      const d = findDOMNode(refBaseCalendar.current).querySelector(selector)
-      if (d) {
-        d.scrollIntoView()
-      }
+        type === TYPE.RANGE ? 'm-calendar-day-begin' : 'm-calendar-day-selected'
+      setScrollId(selector)
     },
   }))
 
@@ -159,51 +153,55 @@ const BaseCalendar = forwardRef((props, ref) => {
     return _groupBy(_range(42), (v) => parseInt(v / 7))
   }
 
+  // scrollView需要固定高度，内部暂定350px
   return (
-    <View
-      {...rest}
-      ref={refBaseCalendar}
-      className={classNames('m-calendar', className)}
-    >
+    <View ref={ref} {...rest} className={classNames('m-calendar', className)}>
       <Week />
-      <Flex column none className='m-calendar-content m-padding-bottom-10'>
-        {_map(computedMonthList(), (currentMoment, cmi) => {
-          const m = moment(currentMoment).day(0).add(-1, 'day')
-          const dayGroup = getDayRowOfMonth(currentMoment)
+      <ScrollView
+        style={{ height: '350px' }}
+        scrollY
+        scrollIntoView={scrollId}
+        scrollWithAnimation
+      >
+        <Flex column none className='m-calendar-content m-padding-bottom-10'>
+          {_map(computedMonthList(), (currentMoment, cmi) => {
+            const m = moment(currentMoment).day(0).add(-1, 'day')
+            const dayGroup = getDayRowOfMonth(currentMoment)
 
-          return (
-            <Flex
-              column
-              none
-              key={cmi}
-              className={classNames({ 'm-margin-top-10': cmi !== 0 })}
-            >
-              <Head currentMoment={currentMoment} />
-              {_map(dayGroup, (v, i) => (
-                <Flex none key={i} className='m-padding-top-10'>
-                  {_map(v, (value, index) => {
-                    const mm = moment(m.add(1, 'day'))
+            return (
+              <Flex
+                column
+                none
+                key={cmi}
+                className={classNames({ 'm-margin-top-10': cmi !== 0 })}
+              >
+                <Head currentMoment={currentMoment} />
+                {_map(dayGroup, (v, i) => (
+                  <Flex none key={i} className='m-padding-top-10'>
+                    {_map(v, (value, index) => {
+                      const mm = moment(m.add(1, 'day'))
 
-                    return (
-                      <Day
-                        key={value}
-                        selected={selected}
-                        type={type}
-                        currentMoment={currentMoment}
-                        value={mm}
-                        locIndex={index}
-                        onClick={handleSelectDay}
-                        disabled={getDisabled(mm)}
-                        showDateLabel={showDateLabel}
-                      />
-                    )
-                  })}
-                </Flex>
-              ))}
-            </Flex>
-          )
-        })}
-      </Flex>
+                      return (
+                        <Day
+                          key={value}
+                          selected={selected}
+                          type={type}
+                          currentMoment={currentMoment}
+                          value={mm}
+                          locIndex={index}
+                          onClick={handleSelectDay}
+                          disabled={getDisabled(mm)}
+                          showDateLabel={showDateLabel}
+                        />
+                      )
+                    })}
+                  </Flex>
+                ))}
+              </Flex>
+            )
+          })}
+        </Flex>
+      </ScrollView>
     </View>
   )
 })

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import moment from 'moment'
 import { observable } from 'mobx'
 
@@ -38,6 +38,11 @@ export const info = () => (
 
 export const one = () => {
   const refCalendar = useRef(null)
+  useEffect(() => {
+    setTimeout(() => {
+      refCalendar.current.apiScrollToSelected()
+    }, 250)
+  }, [])
   return (
     <View style={{ height: '400px' }}>
       <Calendar
