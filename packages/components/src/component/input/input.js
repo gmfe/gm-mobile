@@ -6,6 +6,7 @@ const Input = React.forwardRef(({ form, className, ...rest }, ref) => {
   return (
     <input
       ref={ref}
+      placeholderClass='m-text-placeholder'
       {...rest}
       className={classNames(
         'm-input',
