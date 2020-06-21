@@ -1,19 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
+import _find from 'lodash/find'
+import _isNil from 'lodash/isNil'
+import _isNaN from 'lodash/isNaN'
+import { View, Text } from '@gm-mobile/components'
+import { Events } from '@tarojs/taro'
 
-import { formatNumber } from '@gm-common/number'
+import formatNumber from './util'
 import storage from '../storage'
+
+const events = new Events()
 
 const eventBus = {
   add(eventName, handler) {
-    window.addEventListener(eventName, handler)
+    events.on(eventName, handler)
   },
   dispatch(eventName, detail) {
-    window.dispatchEvent(new window.CustomEvent(eventName, { detail }))
+    events.trigger(eventName, { detail })
   },
   remove(eventName, handler) {
-    window.removeEventListener(eventName, handler)
+    events.off(eventName, handler)
   },
 }
 
@@ -27,7 +33,7 @@ let _unit = storage.get(unitKey) || '元'
 let _currencyList = [] // 多币种列表
 
 const getCurrentFromType = (type) =>
-  _.find(_currencyList, (item) => item.type === type)
+  _find(_currencyList, (item) => item.type === type)
 
 const format = (value, isFenUnit, formatOptions) => {
   if (isFenUnit) {
@@ -60,26 +66,26 @@ class Price extends React.Component {
     } = this.props
 
     const current = getCurrentFromType(feeType)
-    if (_.isNil(value) || _.isNaN(value)) {
+    if (_isNil(value) || _isNaN(value)) {
       return null
     }
 
     return (
-      <span>
+      <View>
         {value < 0 ? '-' : ''}
-        <span
+        <Text
           style={{
             fontSize: `${currencyScale > 1 ? '1' : currencyScale}em`,
           }}
         >
           {current ? current.symbol : _symbol}
-        </span>
+        </Text>
         {format(Math.abs(value), isFenUnit, {
           useGrouping,
           precision,
           keepZero,
         })}
-      </span>
+      </View>
     )
   }
 }

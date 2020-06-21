@@ -1,5 +1,4 @@
 import React from 'react'
-import { observable } from 'mobx'
 
 import Price from './'
 
