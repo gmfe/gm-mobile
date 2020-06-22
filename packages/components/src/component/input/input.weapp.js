@@ -15,6 +15,7 @@ const Input = ({ onChange, onInput, form, focus, className, ...rest }) => {
     <TInput
       {...rest}
       onInput={handleChange}
+      placeholderClass='m-text-placeholder'
       className={classNames(
         'm-input',
         {
