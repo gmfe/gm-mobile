@@ -10,6 +10,7 @@ import {
   Cell,
   Button,
   Toast,
+  ActionSheet,
 } from '../../../../packages/mp/src'
 
 // 不知道为啥，要写到 component
@@ -147,16 +148,17 @@ export default class Index extends Component {
                     access
                     key={twoKey}
                     onClick={() => {
-                      const itemList = _map(twoValue, (v, k) => k)
-                      wx.showActionSheet({
-                        itemList,
-                        success(res) {
-                          wx.navigateTo({
-                            url: `/package_a/pages/index/stories?${queryString.stringify(
-                              twoValue[itemList[res.tapIndex]]
-                            )}`,
-                          })
-                        },
+                      ActionSheet.render({
+                        data: _map(twoValue, (v, k) => ({
+                          value: v,
+                          text: k,
+                        })),
+                      }).then((value) => {
+                        wx.navigateTo({
+                          url: `/package_a/pages/index/stories?${queryString.stringify(
+                            value
+                          )}`,
+                        })
                       })
                     }}
                   >

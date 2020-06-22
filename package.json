@@ -71,7 +71,6 @@
     "less-loader": "^5.0.0",
     "lint-staged": "^10.2.0",
     "lodash": "^4.17.15",
-    "lodash-es": "^4.17.15",
     "mobx": "^5.15.4",
     "mobx-react": "^6.2.2",
     "moment": "^2.24.0",
