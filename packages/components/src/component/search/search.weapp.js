@@ -1,6 +1,5 @@
 import { getLocale } from '@gm-mobile/locales'
 import React from 'react'
-import ReactDOM from 'react-dom'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import _noop from 'lodash/noop'
@@ -20,13 +19,10 @@ const Search = ({
   className,
   ...rest
 }) => {
-  const refInput = React.createRef()
   const handleSearch = (e) => {
     e.preventDefault()
 
     onSearch(value)
-    // 回车后失焦
-    ReactDOM.findDOMNode(refInput.current).blur()
   }
 
   const handleChange = (e) => {
@@ -43,19 +39,18 @@ const Search = ({
   }
 
   return (
-    <form
+    <View
       {...rest}
       className={classNames('m-search m-flex m-flex-align-center', className)}
-      onSubmit={handleSearch}
     >
       <View className='m-search-input m-flex m-flex-flex'>
         <Text className='m-font m-font-search m-search-icon-search' />
         <Input
-          ref={refInput}
           type='text'
           value={value}
           onChange={handleChange}
           placeholder={placeholder}
+          onConfirm={handleSearch}
         />
         {value && (
           <Text
@@ -73,7 +68,7 @@ const Search = ({
           {searchText || getLocale('取消')}
         </Button>
       )}
-    </form>
+    </View>
   )
 }
 
