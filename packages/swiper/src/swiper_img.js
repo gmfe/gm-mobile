@@ -24,6 +24,19 @@ const SwiperImg = ({ data, options, className, ...rest }) => {
     })
   }, [])
 
+  // 解决loop开启的情况下，点击事件
+  useEffect(() => {
+    const bannerItems = document.getElementsByClassName('swiper-slide')
+    _.forEach(bannerItems, (item) => {
+      item.onclick = function (e) {
+        e.stopPropagation()
+        e.preventDefault()
+        var dataItem = JSON.parse(e.target.dataset.item) || {}
+        data[dataItem.index].onClick && data[dataItem.index].onClick(dataItem)
+      }
+    })
+  }, [data])
+
   return (
     <div
       ref={ref}
@@ -31,15 +44,13 @@ const SwiperImg = ({ data, options, className, ...rest }) => {
       className={classNames('swiper-container m-swiper-img', className)}
     >
       <div className='swiper-wrapper'>
-        {_.map(data, ({ onClick, img }) => (
-          <div
-            key={img}
-            className='swiper-slide'
-            onClick={() => {
-              onClick && onClick()
-            }}
-          >
-            <img data-src={img} className='swiper-lazy m-swiper-img-img' />
+        {_.map(data, (item, index) => (
+          <div key={index} className='swiper-slide'>
+            <img
+              data-src={item.img}
+              data-item={JSON.stringify({ ...item, index })}
+              className='swiper-lazy m-swiper-img-img'
+            />
           </div>
         ))}
       </div>
