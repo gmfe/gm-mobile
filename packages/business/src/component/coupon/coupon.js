@@ -22,7 +22,7 @@ const Label = (props) => {
         return (
           <span
             className={classNames('m-coupon-right-header-label', {
-              ' m-margin-left-5': index !== 0,
+              'm-margin-left-5': index !== 0,
             })}
           >
             {labelItem}
