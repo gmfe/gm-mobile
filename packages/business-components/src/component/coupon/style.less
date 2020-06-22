@@ -5,30 +5,95 @@
   cursor: pointer;
   overflow: hidden;
 
+  &.m-coupon-default {
+    .mCouponVariants(var(--m-color-bg-accent), var(--m-color-true-white));
+  }
+
+  &.m-coupon-vip {
+    .mCouponVariants(var(--m-color-coupon-bg-vip), var(--m-color-coupon-vip));
+  }
+
+  .m-coupon-use-info {
+    display: block;
+    padding: 10px;
+    background-color: var(--m-color-bg-back);
+    border-radius: 6px;
+    color: var(--m-color-desc);
+    margin-top: 2px;
+    font-size: 13px;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+
+    .m-coupon {
+      .mCouponSawtooth(var(--m-color-bg-coupon-disabled));
+
+      .m-coupon-left {
+        background-color: var(--m-color-bg-coupon-disabled);
+        color: var(--m-color-true-white);
+      }
+
+      .m-coupon-right {
+        .m-coupon-right-header {
+          .m-coupon-right-header-btn {
+            background-color: var(--m-color-bg-coupon-disabled);
+            color: var(--m-color-true-white);
+          }
+
+          .m-coupon-right-header-label {
+            background-color: var(--m-color-bg-coupon-disabled);
+            opacity: 0.6;
+            color: var(--m-color-default);
+          }
+        }
+      }
+    }
+  }
+}
+
+.mCouponSawtooth(@bgColor) {
+  &::before {
+    content: ' ';
+    position: absolute;
+    height: 100%;
+    width: 6px;
+    left: 0;
+    top: 0;
+    background-image:
+      radial-gradient(
+        transparent 0,
+        transparent 4px,
+        @bgColor 5px
+      );
+    background-size: 12px 12px;
+    background-position: 6px 2px;
+  }
+}
+
+.mCouponVariants(@bgColor, @color) {
   .m-coupon {
     display: flex;
     position: relative;
     background-color: transparent;
 
-    .mCouponSawtooth(var(--m-color-accent));
+    .mCouponSawtooth(@bgColor);
 
     .m-coupon-left {
       min-width: 105px;
-      color: var(--m-color-white);
-      background-color: var(--m-color-bg-accent);
+      color: @color;
+      background-color: @bgColor;
       margin-left: 5px;
 
       .m-coupon-left-currency {
         width: 10px;
         height: 35px;
         font-size: 14px;
-        color: var(--m-color-true-white);
       }
 
       .m-coupon-left-discount {
         font-size: 35px;
         font-weight: bold;
-        color: var(--m-color-true-white);
       }
 
       .m-coupon-left-total {
@@ -37,7 +102,6 @@
         height: 20px;
         text-align: center;
         font-size: 12px;
-        color: var(--m-color-true-white);
         opacity: 0.8;
       }
     }
@@ -84,8 +148,8 @@
           position: absolute;
           right: 10px;
           text-align: center;
-          background-color: var(--m-color-bg-accent);
-          color: var(--m-color-white);
+          background-color: @bgColor;
+          color: @color;
           border-radius: 30px;
         }
 
@@ -96,7 +160,7 @@
           height: 50px;
           top: 0;
           right: -5px;
-          color: #999,;
+          color: #999;
         }
 
         .m-coupon-right-expired-text {
@@ -154,61 +218,6 @@
         }
       }
     }
-  }
-
-  .m-coupon-use-info {
-    display: block;
-    padding: 10px;
-    background-color: var(--m-color-bg-back);
-    border-radius: 6px;
-    color: var(--m-color-desc);
-    margin-top: 2px;
-    font-size: 13px;
-  }
-
-  &.disabled {
-    cursor: not-allowed;
-
-    .m-coupon {
-      .mCouponSawtooth(var(--m-color-bg-coupon-disabled));
-
-      .m-coupon-left {
-        background-color: var(--m-color-bg-coupon-disabled);
-      }
-
-      .m-coupon-right {
-        .m-coupon-right-header {
-          .m-coupon-right-header-btn {
-            background-color: var(--m-color-bg-coupon-disabled);
-          }
-
-          .m-coupon-right-header-label {
-            background-color: var(--m-color-bg-coupon-disabled);
-            opacity: 0.6;
-            color: var(--m-color-default);
-          }
-        }
-      }
-    }
-  }
-}
-
-.mCouponSawtooth(@bgColor) {
-  &::before {
-    content: ' ';
-    position: absolute;
-    height: 100%;
-    width: 6px;
-    left: 0;
-    top: 0;
-    background-image:
-      radial-gradient(
-        transparent 0,
-        transparent 4px,
-        @bgColor 5px
-      );
-    background-size: 12px 12px;
-    background-position: 6px 2px;
   }
 }
 

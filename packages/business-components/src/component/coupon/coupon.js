@@ -24,6 +24,7 @@ const Coupon = (props) => {
     isUsed,
     onReceived,
     couponAmount,
+    type,
     ...rest
   } = props
 
@@ -46,6 +47,7 @@ const Coupon = (props) => {
       {...rest}
       className={classNames(
         'm-coupon-container',
+        `m-coupon-${type}`,
         { disabled: isDisabled },
         className
       )}
@@ -143,6 +145,7 @@ const Coupon = (props) => {
 }
 
 Coupon.propTypes = {
+  type: PropTypes.oneOf('default', 'vip'),
   /** 折扣金额货币符号 */
   currency: PropTypes.string.isRequired,
   /** 折扣金额 */
@@ -175,6 +178,10 @@ Coupon.propTypes = {
   couponAmount: PropTypes.number,
   className: PropTypes.string,
   style: PropTypes.object,
+}
+
+Coupon.defaultProps = {
+  type: 'default',
 }
 
 export default Coupon

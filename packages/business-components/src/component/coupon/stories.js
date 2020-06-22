@@ -43,6 +43,7 @@ export const normal = () => (
           </View>
         }
         onUse={() => console.log('use')}
+        type='vip'
       />
     </View>
     <View className='m-padding-15'>
