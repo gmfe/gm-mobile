@@ -16,11 +16,22 @@
   }
 
   &.disabled {
+    cursor: not-allowed;
+
     .m-checkbox-tick {
       background-color: var(--m-color-bg-back);
     }
+
+    .m-checkbox-child {
+      opacity: 0.5;
+    }
   }
-  .mDisabledWith();
+
+  &.m-checkbox-circle {
+    .m-checkbox-tick {
+      border-radius: 50%;
+    }
+  }
 
   &.m-checkbox-checked {
     .m-checkbox-tick {
@@ -39,11 +50,11 @@
         transform: rotate(-45deg);
       }
     }
-  }
 
-  &.m-checkbox-circle {
-    .m-checkbox-tick {
-      border-radius: 50%;
+    &.disabled {
+      .m-checkbox-tick {
+        opacity: 0.5;
+      }
     }
   }
 

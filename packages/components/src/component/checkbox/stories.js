@@ -13,7 +13,7 @@ const store = observable({
 })
 
 export const normal = () => (
-  <View>
+  <View className='m-bg-white'>
     <Checkbox
       checked={store.checked}
       onChange={() => {

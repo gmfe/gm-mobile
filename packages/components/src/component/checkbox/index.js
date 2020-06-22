@@ -35,7 +35,7 @@ const Checkbox = ({
       onClick={handleChange}
     >
       <View className='m-checkbox-tick' />
-      {children}
+      <View className='m-checkbox-child'>{children}</View>
     </View>
   )
 }
