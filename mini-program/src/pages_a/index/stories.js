@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo } from 'react'
 import { useRouter } from '@tarojs/taro'
 import { Observer } from 'mobx-react'
-import { View, PageMP } from '../../../../../packages/mp/src'
+import { View, PageMP } from '../../../../packages/mp/src'
 
 const Stories = () => {
   const {
@@ -17,15 +17,15 @@ const Stories = () => {
 
   const stories = useMemo(() => {
     if (packageName === 'components') {
-      return require(`../../../../../packages/components/src/component/${folder}/stories`)
+      return require(`../../../../packages/components/src/component/${folder}/stories`)
     }
     if (packageName === 'qrcode') {
-      return require(`../../../../../packages/qrcode/src/stories`)
+      return require(`../../../../packages/qrcode/src/stories`)
     }
     if (packageName === 'business-components') {
-      return require(`../../../../../packages/business-components/src/component/${folder}/stories`)
+      return require(`../../../../packages/business-components/src/component/${folder}/stories`)
     }
-    return require(`../../../../../packages/mp/src/component/${folder}/stories`)
+    return require(`../../../../packages/mp/src/component/${folder}/stories`)
   }, [])
 
   return (

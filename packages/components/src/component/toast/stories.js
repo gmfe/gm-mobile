@@ -12,9 +12,7 @@ export const normal = () => {
     <View>
       <Button onClick={() => handleToast('tip')}>Toast tip</Button>
       <Button onClick={() => handleToast('success')}>Toast success</Button>
-      <Button onClick={() => handleToast('info')}>Toast info</Button>
       <Button onClick={() => handleToast('warning')}>Toast warning</Button>
-      <Button onClick={() => handleToast('danger')}>Toast danger</Button>
       <Button
         onClick={() => {
           Toast.loading()
@@ -26,11 +24,7 @@ export const normal = () => {
         <Button
           onClick={() => {
             Toast.success({
-              children: (
-                <div>
-                  <div>保存成功啦保存成功啦保存成功啦保存成功啦</div>
-                </div>
-              ),
+              children: <View>保存成功啦保存成功啦保存成功啦保存成功啦</View>,
             })
           }}
         >

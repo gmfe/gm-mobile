@@ -155,7 +155,7 @@ export default class Index extends Component {
                         })),
                       }).then((value) => {
                         wx.navigateTo({
-                          url: `/package_a/pages/index/stories?${queryString.stringify(
+                          url: `/pages_a/index/stories?${queryString.stringify(
                             value
                           )}`,
                         })

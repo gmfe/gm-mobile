@@ -2,8 +2,8 @@ export default {
   pages: ['pages/index/index', 'pages/other/index'],
   subpackages: [
     {
-      root: 'package_a',
-      pages: ['pages/index/stories'],
+      root: 'pages_a',
+      pages: ['index/stories'],
     },
   ],
   tabBar: {
