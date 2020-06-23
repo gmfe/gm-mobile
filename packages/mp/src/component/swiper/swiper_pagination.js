@@ -25,7 +25,7 @@ const SwiperPagination = ({ type, data, current }) => {
 }
 
 SwiperPagination.propTypes = {
-  type: PropTypes.oneOf('dot', 'rect'),
+  type: PropTypes.oneOf(['dot', 'rect']),
   data: PropTypes.array,
   current: PropTypes.string,
 }

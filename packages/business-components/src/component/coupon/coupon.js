@@ -145,7 +145,7 @@ const Coupon = (props) => {
 }
 
 Coupon.propTypes = {
-  type: PropTypes.oneOf('default', 'vip'),
+  type: PropTypes.oneOf(['default', 'vip']),
   /** 折扣金额货币符号 */
   currency: PropTypes.string.isRequired,
   /** 折扣金额 */
