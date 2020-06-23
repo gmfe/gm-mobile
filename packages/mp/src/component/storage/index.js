@@ -1,3 +1,5 @@
 import { StorageFactory } from '@gm-mobile/tool'
 
-export default new StorageFactory('_gm-mobile_')
+const LocalStorage = new StorageFactory('_gm-mobile_')
+
+export default LocalStorage

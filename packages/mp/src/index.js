@@ -4,7 +4,7 @@ import {
   SwiperImg as SwiperImgMP,
   SwiperCategory as SwiperCategoryMP,
 } from './component/swiper'
-import StorageMP from './component/storage'
+import LocalStorage from './component/storage'
 import PageMP from './component/page'
 import MapMP from './component/map'
 import PriceMP from './component/price'
@@ -103,12 +103,12 @@ export {
   ConfirmCouplingPicker,
   SelectPicker,
   RepeatTimes,
+  LocalStorage,
   PageMP,
   ImageMP,
   CounterMP,
   SwiperImgMP,
   SwiperCategoryMP,
-  StorageMP,
   MapMP,
   PriceMP,
 }
