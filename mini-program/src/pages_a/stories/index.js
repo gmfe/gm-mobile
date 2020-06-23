@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo } from 'react'
 import { useRouter } from '@tarojs/taro'
 import { Observer } from 'mobx-react'
-import { View, PageMP } from '../../../../packages/mp/src'
+import { PageMP } from '../../../../packages/mp/src'
 
-const Stories = () => {
+const Index = () => {
   const {
     params: { packageName, root, component, store, folder },
   } = useRouter()
@@ -39,4 +39,4 @@ const Stories = () => {
   )
 }
 
-export default Stories
+export default Index

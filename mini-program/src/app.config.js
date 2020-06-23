@@ -3,7 +3,7 @@ export default {
   subpackages: [
     {
       root: 'pages_a',
-      pages: ['index/stories'],
+      pages: ['stories/index'],
     },
   ],
   tabBar: {
