@@ -20,6 +20,7 @@
     "url": "https://github.com/gmfe/gm-mobile/issues"
   },
   "dependencies": {
+    "@gm-common/tool": "^2.4.0",
     "@gm-mobile/locales": "^2.0.0-alpha.12"
   },
   "peerDependencies": {

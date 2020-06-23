@@ -1,3 +1,5 @@
 import { instance, Request } from './request'
 
-export { instance, Request }
+import configError from './config_error'
+
+export { instance, Request, configError }
