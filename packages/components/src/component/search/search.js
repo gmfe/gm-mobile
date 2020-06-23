@@ -18,6 +18,7 @@ const Search = ({
   onSearch,
   onChange,
   className,
+  autoFocus,
   ...rest
 }) => {
   const refInput = React.createRef()
@@ -52,10 +53,11 @@ const Search = ({
         <Text className='m-font m-font-search m-search-icon-search' />
         <Input
           ref={refInput}
-          type='text'
+          type='search'
           value={value}
           onChange={handleChange}
           placeholder={placeholder}
+          autoFocus={autoFocus}
         />
         {value && (
           <Text
@@ -82,6 +84,7 @@ Search.propTypes = {
   type: PropTypes.oneOf(['search', 'cancel']),
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  autoFocus: PropTypes.bool,
   /** 即时搜索可不传 */
   onSearch: PropTypes.func,
   onCancel: PropTypes.func,

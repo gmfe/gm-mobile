@@ -17,6 +17,7 @@ const Search = ({
   onSearch,
   onChange,
   className,
+  autoFocus,
   ...rest
 }) => {
   const handleSearch = (e) => {
@@ -48,6 +49,7 @@ const Search = ({
         <Input
           type='text'
           value={value}
+          focus={autoFocus}
           onChange={handleChange}
           placeholder={placeholder}
           onConfirm={handleSearch}
@@ -81,6 +83,7 @@ Search.propTypes = {
   onSearch: PropTypes.func,
   onCancel: PropTypes.func,
   placeholder: PropTypes.string,
+  autoFocus: PropTypes.bool,
   /** 自定义搜索按钮文案 */
   searchText: PropTypes.string,
   className: PropTypes.string,

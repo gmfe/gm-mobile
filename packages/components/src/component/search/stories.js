@@ -30,6 +30,7 @@ export const normal = () => {
         <Search
           placeholder='在站内搜索'
           value={store.value}
+          autoFocus
           onChange={(value) => store.setValue(value)}
           onSearch={(value) => console.log('搜索拉', value)}
         />
