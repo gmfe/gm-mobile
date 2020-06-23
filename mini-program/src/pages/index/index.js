@@ -3,13 +3,10 @@ import _map from 'lodash/map'
 import _each from 'lodash/each'
 import queryString from 'query-string'
 import {
-  View,
   Text,
   PageMP,
   Cells,
   Cell,
-  Button,
-  Toast,
   ActionSheet,
 } from '../../../../packages/mp/src'
 
@@ -32,6 +29,12 @@ const qrCodeReq = require.context(
 
 const businessComReq = require.context(
   '../../../../packages/business-components/src/component/',
+  true,
+  /stories\.js$/
+)
+
+const cookieReq = require.context(
+  '../../../../packages/cookie/',
   true,
   /stories\.js$/
 )
@@ -67,6 +70,14 @@ _each(businessComReq.keys(), (key) => {
   storiesList.push({
     module: businessComReq(key),
     packageName: 'business-components',
+    path: key,
+  })
+})
+
+_each(cookieReq.keys(), (key) => {
+  storiesList.push({
+    module: cookieReq(key),
+    packageName: 'cookie',
     path: key,
   })
 })

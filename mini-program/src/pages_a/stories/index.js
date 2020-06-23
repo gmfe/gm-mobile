@@ -25,6 +25,9 @@ const Index = () => {
     if (packageName === 'business-components') {
       return require(`../../../../packages/business-components/src/component/${folder}/stories`)
     }
+    if (packageName === 'cookie') {
+      return require(`../../../../packages/cookie/src/stories`)
+    }
     return require(`../../../../packages/mp/src/component/${folder}/stories`)
   }, [])
 

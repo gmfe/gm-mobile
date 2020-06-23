@@ -25,6 +25,7 @@
   },
   "peerDependencies": {
     "lodash": "^4.17.15",
-    "taro-axios": "^1.1.1"
+    "taro-axios": "^1.1.1",
+    "weapp-cookie": "^1.4.6"
   }
 }

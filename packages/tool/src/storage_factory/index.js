@@ -73,9 +73,9 @@ class StorageFactory {
     }
 
     _each(keys, (key) => {
-      result[key] = this.get(
-        key.startsWith(this.prefix) ? key.slice(this.prefix.length) : key
-      )
+      if (key.startsWith(this.prefix)) {
+        result[key] = this.get(key.slice(this.prefix.length))
+      }
     })
 
     return keys.length > 0 ? result : null

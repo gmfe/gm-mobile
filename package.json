@@ -10,7 +10,7 @@
     "build:weapp": "taro build --type weapp",
     "dev:weapp": "npm run build:weapp -- --watch",
     "svg": "rm -rf packages/components/src/fonts; node svg2font.js;",
-    "link": "cd packages/components; yarn link; cd ../mp; yarn link; cd ../mp-request; yarn link; cd ../tool;  yarn link; cd ../font; yarn link; cd ../qrcode; yarn link; cd ../mp-business; yarn link;"
+    "link": "cd packages/components; yarn link; cd ../mp; yarn link; cd ../mp-request; yarn link; cd ../tool;  yarn link; cd ../font; yarn link; cd ../qrcode; yarn link; cd ../mp-business; yarn link; cd ../cookie; yarn link;"
   },
   "husky": {
     "hooks": {
@@ -67,6 +67,7 @@
     "eslint-plugin-gm-react-app": "^3.1.2",
     "file-loader": "^6.0.0",
     "husky": "^4.2.5",
+    "js-cookie": "^2.2.1",
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
     "lint-staged": "^10.2.0",
@@ -88,7 +89,9 @@
     "stylelint": "^13.3.3",
     "stylelint-config-standard": "^20.0.0",
     "swiper": "^5.4.5",
+    "taro-axios": "^1.1.1",
     "url-loader": "^4.1.0",
+    "weapp-cookie": "^1.4.6",
     "weapp-qrcode": "^1.0.0",
     "webpack": "^4.43.0",
     "webpack-bundle-analyzer": "^3.8.0",
