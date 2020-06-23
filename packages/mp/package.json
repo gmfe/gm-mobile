@@ -22,7 +22,8 @@
   },
   "dependencies": {
     "@gm-mobile/components": "^2.0.0-alpha.14",
-    "@gm-mobile/locales": "^2.0.0-alpha.14"
+    "@gm-mobile/locales": "^2.0.0-alpha.14",
+    "@gm-mobile/tool": "^2.0.0-alpha.14"
   },
   "peerDependencies": {
     "@tarojs/components": "3.0.0-rc.3",
