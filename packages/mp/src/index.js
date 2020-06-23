@@ -55,6 +55,7 @@ import {
   ConfirmCouplingPicker,
   SelectPicker,
   RepeatTimes,
+  Tabbar,
 } from '@gm-mobile/components'
 
 export {
@@ -103,6 +104,7 @@ export {
   ConfirmCouplingPicker,
   SelectPicker,
   RepeatTimes,
+  Tabbar,
   PageMP,
   ImageMP,
   CounterMP,

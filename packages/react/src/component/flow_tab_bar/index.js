@@ -3,8 +3,7 @@ import _map from 'lodash/map'
 import _noop from 'lodash/noop'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Flex } from '@gm-mobile/components'
-import Item from './item'
+import { Flex, TabbarItem } from '@gm-mobile/components'
 
 const FlowBtnTabbar = ({
   leftConfigs,
@@ -20,7 +19,7 @@ const FlowBtnTabbar = ({
     <Flex {...rest} className={classNames('m-tabbar', className)}>
       <Flex flex className='m-margin-right-20'>
         {_map(leftConfigs, (config, index) => (
-          <Item
+          <TabbarItem
             key={index}
             config={config}
             index={index}
@@ -39,7 +38,7 @@ const FlowBtnTabbar = ({
       </Flex>
       <Flex flex className='m-margin-left-20'>
         {_map(rightConfigs, (config, index) => (
-          <Item
+          <TabbarItem
             key={index}
             config={config}
             index={index}
