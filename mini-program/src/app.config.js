@@ -1,9 +1,13 @@
 export default {
-  pages: ['pages/index/index', 'pages/other/index'],
+  pages: ['pages/index/index', 'pages/mp/index'],
   subpackages: [
     {
       root: 'pages_a',
       pages: ['stories/index'],
+    },
+    {
+      root: 'pages_b',
+      pages: ['page/index'],
     },
   ],
   tabBar: {
@@ -13,8 +17,8 @@ export default {
         text: '首页',
       },
       {
-        pagePath: 'pages/other/index',
-        text: '其他',
+        pagePath: 'pages/mp/index',
+        text: '小程序',
       },
     ],
   },

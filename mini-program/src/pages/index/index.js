@@ -98,47 +98,9 @@ _each(storiesList, ({ module, packageName, path }) => {
 })
 
 export default class Index extends Component {
-  onPullDownRefresh() {
-    Toast.loading('onPullDownRefresh')
-  }
-
-  onReachBottom() {
-    Toast.tip('onReachBottom')
-  }
-
   render() {
     return (
       <PageMP>
-        <Button
-          mini
-          onClick={() => {
-            wx.startPullDownRefresh({
-              success() {
-                console.log('success')
-              },
-              fail() {
-                console.log('fail')
-              },
-            })
-          }}
-        >
-          startPullDownRefresh
-        </Button>
-        <Button
-          mini
-          onClick={() => {
-            wx.stopPullDownRefresh({
-              success() {
-                console.log('success')
-              },
-              fail() {
-                console.log('fail')
-              },
-            })
-          }}
-        >
-          stopPullDownRefresh
-        </Button>
         {_map(dataMap, (oneValue, oneKey) => {
           return (
             <Cells key={oneKey} title={oneKey}>
@@ -169,9 +131,6 @@ export default class Index extends Component {
             </Cells>
           )
         })}
-        <View>onReachBottom</View>
-        <View>onReachBottom</View>
-        <View>onReachBottom</View>
       </PageMP>
     )
   }
