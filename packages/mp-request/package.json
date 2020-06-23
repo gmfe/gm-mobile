@@ -1,6 +1,6 @@
 {
   "name": "@gm-mobile/mp-request",
-  "version": "2.0.0-alpha.13",
+  "version": "2.0.0-alpha.14",
   "description": "> TODO: description",
   "author": "zhongsink <zhongink@gmail.com>",
   "homepage": "https://github.com/gmfe/gm-mobile#readme",
@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@gm-common/tool": "^2.4.0",
-    "@gm-mobile/locales": "^2.0.0-alpha.13"
+    "@gm-mobile/locales": "^2.0.0-alpha.14"
   },
   "peerDependencies": {
     "lodash": "^4.17.15",
