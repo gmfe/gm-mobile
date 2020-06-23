@@ -3,8 +3,7 @@ import _noop from 'lodash/noop'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import Flex from '../flex'
-import Badge from '../badge'
-import View from '../view'
+import { Badge, View } from '@gm-mobile/components'
 
 const Item = ({ config, index, selected, onClick }) => {
   const { icon, activeIcon, name, badge, showBadge } = config

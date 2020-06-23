@@ -4,7 +4,7 @@ import _map from 'lodash/map'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import Item from './item'
-import Flex from '../flex'
+import { Flex } from '@gm-mobile/components'
 
 const Tabbar = ({ configs, selected, onTabChange, className, ...rest }) => {
   return (

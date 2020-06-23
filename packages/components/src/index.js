@@ -27,7 +27,6 @@ import Textarea from './component/textarea'
 import { Input, InputMaxLength, InputPassword } from './component/input'
 import { Cells, Cell, CellForm, CellsForm } from './component/cell'
 import RepeatTimes from './component/repeat_times'
-import { Tabbar, TabbarItem } from './component/tab_bar'
 import {
   Picker,
   CouplingPicker,
@@ -81,6 +80,4 @@ export {
   ConfirmCouplingPicker,
   SelectPicker,
   RepeatTimes,
-  Tabbar,
-  TabbarItem,
 }
