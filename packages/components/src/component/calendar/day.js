@@ -98,11 +98,7 @@ const Day = ({
   })
 
   // 小程序通过id来滚动, 增加id属性
-  const id = isSelected
-    ? 'm-calendar-day-selected'
-    : isBegin
-    ? 'm-calendar-day-begin'
-    : null
+  const id = `m-calendar-${moment(value).format('YYYY-MM-DD')}`
 
   return (
     <Flex

@@ -1,5 +1,4 @@
-import React, { useState, useRef, useImperativeHandle, forwardRef } from 'react'
-import { findDOMNode } from 'react-dom'
+import React, { useState, useImperativeHandle, forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import classNames from 'classnames'
@@ -8,17 +7,19 @@ import _range from 'lodash/range'
 import _groupBy from 'lodash/groupBy'
 import _map from 'lodash/map'
 import _noop from 'lodash/noop'
+import { is } from '@gm-mobile/tool'
 
-import View from '../view'
+// import View from '../view'
 import Head from './head'
 import Day from './day'
 import Week from './week'
 import Flex from '../flex'
 import { TYPE } from './util'
+import ScrollIntoView from '../scroll_into_view'
 
 const BaseCalendar = forwardRef((props, ref) => {
   const [isSelectBegin, setIsSelectBegin] = useState(true)
-  const refBaseCalendar = useRef(null)
+  const [scrollId, setScrollId] = useState(null)
 
   const {
     type,
@@ -35,15 +36,17 @@ const BaseCalendar = forwardRef((props, ref) => {
   /** 暴露给外部使用 */
   useImperativeHandle(ref, () => ({
     apiScrollToSelected: () => {
-      const selector =
-        type === TYPE.RANGE
-          ? '.m-calendar-day-begin'
-          : '.m-calendar-day-selected'
+      const date = type === TYPE.RANGE ? selected[1] : selected[0]
+      let selector = `m-calendar-${moment(date).format('YYYY-MM-DD')}`
 
-      const d = findDOMNode(refBaseCalendar.current).querySelector(selector)
-      if (d) {
-        d.scrollIntoView()
+      if (!is.weApp()) {
+        selector =
+          type === TYPE.RANGE
+            ? '.m-calendar-day-begin'
+            : '.m-calendar-day-selected'
       }
+
+      setScrollId(selector)
     },
   }))
 
@@ -160,9 +163,10 @@ const BaseCalendar = forwardRef((props, ref) => {
   }
 
   return (
-    <View
+    <ScrollIntoView
+      style={{ height: '100%' }}
+      scrollIntoView={scrollId}
       {...rest}
-      ref={refBaseCalendar}
       className={classNames('m-calendar', className)}
     >
       <Week />
@@ -204,7 +208,7 @@ const BaseCalendar = forwardRef((props, ref) => {
           )
         })}
       </Flex>
-    </View>
+    </ScrollIntoView>
   )
 })
 
