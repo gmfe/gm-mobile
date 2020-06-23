@@ -107,11 +107,11 @@ export const receivedCoupon = () => (
     />
     <View className='m-margin-top-10'>
       <ReceivedCoupon
-        isReceived
         currency='¥'
         discount='100'
         couponAmount={0}
         totalInfo='满200元可用'
+        type='vip'
       />
       <ReceivedCoupon
         isReceived

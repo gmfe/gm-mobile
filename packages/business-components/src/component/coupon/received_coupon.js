@@ -15,11 +15,19 @@ const ReceivedCoupon = (props) => {
     className,
     isReceived,
     onReceived,
+    type,
     ...rest
   } = props
 
   return (
-    <View {...rest} className={classNames('m-received-coupon', className)}>
+    <View
+      {...rest}
+      className={classNames(
+        'm-received-coupon',
+        `m-received-coupon-${type}`,
+        className
+      )}
+    >
       <Flex className='m-received-coupon-container'>
         <Flex column justifyCenter className='m-received-coupon-left'>
           <Flex
@@ -72,6 +80,7 @@ const ReceivedCoupon = (props) => {
 }
 
 ReceivedCoupon.propTypes = {
+  type: PropTypes.oneOf(['default', 'vip']),
   /** 折扣金额货币符号 */
   currency: PropTypes.string.isRequired,
   /** 折扣金额 */
@@ -86,6 +95,10 @@ ReceivedCoupon.propTypes = {
   onReceived: PropTypes.func,
   className: PropTypes.string,
   style: PropTypes.object,
+}
+
+ReceivedCoupon.defaultProps = {
+  type: 'default',
 }
 
 export default ReceivedCoupon

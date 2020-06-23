@@ -231,6 +231,16 @@
     color: var(--m-color-coupon-disabled) !important;
   }
 
+  &.m-received-coupon-default {
+    .mReceivedCouponVariant(var(--m-color-bg-accent), var(--m-color-true-white), var(--m-color-accent));
+  }
+
+  &.m-received-coupon-vip {
+    .mReceivedCouponVariant(var(--m-color-coupon-bg-vip), var(--m-color-coupon-vip), var(--m-color-coupon-vip));
+  }
+}
+
+.mReceivedCouponVariant(@btnBg, @btnColor, @color) {
   .m-received-coupon-container {
     position: relative;
     border-radius: 6px;
@@ -255,7 +265,7 @@
 
     .m-received-coupon-left-header {
       font-size: 18px;
-      color: var(--m-color-accent);
+      color: @color;
       font-weight: bold;
 
       .m-received-coupon-left-currency {
@@ -282,15 +292,15 @@
     width: 34px;
     height: 44px;
     margin: 8px 0;
-    border-left: 1px dashed var(--m-color-accent);
+    border-left: 1px dashed @color;
 
     .m-received-coupon-right-btn {
       height: 36px;
       width: 18px;
       font-size: 11px;
-      background-color: var(--m-color-bg-accent);
+      background-color: @btnBg;
       text-align: center;
-      color: var(--m-color-white);
+      color: @btnColor;
       border-radius: 18px;
       padding: 4px 0;
 
