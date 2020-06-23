@@ -2,7 +2,7 @@ import React from 'react'
 import { findDOMNode } from 'react-dom'
 import { is } from '@gm-common/tool'
 
-class ScrollIntoView extends React.Component {
+class FormScrollIntoView extends React.Component {
   __mounted = false
 
   componentWillUnmount() {
@@ -31,4 +31,4 @@ class ScrollIntoView extends React.Component {
   }
 }
 
-export default ScrollIntoView
+export default FormScrollIntoView

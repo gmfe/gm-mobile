@@ -1,7 +1,7 @@
 // 表单
 import Uploader from './component/uploader'
 import { Keyboard, KeyboardWrap } from './component/keyboard'
-import ScrollIntoView from './component/scroll_into_view'
+import FormScrollIntoView from './component/form_scroll_into_view'
 
 // 基础
 import FlipNumber from './component/flip_number'
@@ -105,7 +105,7 @@ export {
   RangeCalendar,
   MultipleCalendar,
   Calendar,
-  ScrollIntoView,
+  FormScrollIntoView,
   // 基础
   FlipNumber,
   Image,

@@ -5,5 +5,5 @@ export const normal = () => {
 }
 
 export default {
-  title: '表单/ScrollIntoView',
+  title: '表单/FormScrollIntoView',
 }
