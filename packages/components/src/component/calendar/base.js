@@ -9,7 +9,6 @@ import _map from 'lodash/map'
 import _noop from 'lodash/noop'
 import { is } from '@gm-mobile/tool'
 
-// import View from '../view'
 import Head from './head'
 import Day from './day'
 import Week from './week'
