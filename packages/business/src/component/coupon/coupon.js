@@ -10,15 +10,10 @@ import SVGExpired from '../../../svg/expired.svg'
 
 const Label = (props) => {
   const { label } = props
-  // 构造成数组形式
-  let labelList = label
-  if (!_.isArray(label) && typeof label === 'string') {
-    labelList = [label]
-  }
 
   return (
     <Flex>
-      {_.map(labelList, (labelItem, index) => {
+      {_.map(label, (labelItem, index) => {
         return (
           <span
             className={classNames('m-coupon-right-header-label', {
@@ -35,7 +30,7 @@ const Label = (props) => {
 
 Label.propTypes = {
   /** 优惠券标签展示文字，必传，不考虑为空的情况 */
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
+  label: PropTypes.array.isRequired,
 }
 
 const Coupon = (props) => {
@@ -111,7 +106,7 @@ const Coupon = (props) => {
             })}
           >
             <span className='m-coupon-right-header-title'>{title}</span>
-            {label && <Label label={label} />}
+            {label.length > 0 && <Label label={label} />}
             <Flex
               alignCenter
               justifyBetween
@@ -193,7 +188,7 @@ Coupon.propTypes = {
   /** 满减说明 */
   totalInfo: PropTypes.string,
   /** 优惠券标签展示文字，不传不展示标签 */
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  label: PropTypes.array,
   /** 优惠券标题 */
   title: PropTypes.string,
   /** 是否有使用说明 */
