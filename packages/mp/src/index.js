@@ -7,7 +7,6 @@ import {
 import LocalStorage from './component/storage'
 import PageMP from './component/page'
 import MapMP from './component/map'
-import PriceMP from './component/price'
 
 import {
   // 不提供，请用 PageMP
@@ -55,6 +54,7 @@ import {
   ConfirmCouplingPicker,
   SelectPicker,
   RepeatTimes,
+  Price,
 } from '@gm-mobile/components'
 
 export {
@@ -104,11 +104,11 @@ export {
   SelectPicker,
   RepeatTimes,
   LocalStorage,
+  Price,
   PageMP,
   ImageMP,
   CounterMP,
   SwiperImgMP,
   SwiperCategoryMP,
   MapMP,
-  PriceMP,
 }

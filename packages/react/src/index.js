@@ -6,7 +6,6 @@ import FormScrollIntoView from './component/form_scroll_into_view'
 // 基础
 import FlipNumber from './component/flip_number'
 import Image from './component/image'
-import Price from './component/price'
 import Counter from './component/counter'
 import ProgressBar from './component/progress_bar'
 
@@ -72,6 +71,7 @@ import {
   ConfirmCouplingPicker,
   SelectPicker,
   RepeatTimes,
+  Price,
 } from '@gm-mobile/components'
 
 const Alert = Dialog.alert

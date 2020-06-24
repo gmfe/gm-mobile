@@ -27,6 +27,7 @@ import Textarea from './component/textarea'
 import { Input, InputMaxLength, InputPassword } from './component/input'
 import { Cells, Cell, CellForm, CellsForm } from './component/cell'
 import RepeatTimes from './component/repeat_times'
+import Price from './component/price'
 import {
   Picker,
   CouplingPicker,
@@ -80,4 +81,5 @@ export {
   ConfirmCouplingPicker,
   SelectPicker,
   RepeatTimes,
+  Price,
 }
