@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { findDOMNode } from 'react-dom'
 import Swiper from 'swiper'
@@ -7,7 +7,7 @@ import classNames from 'classnames'
 
 const SwiperImg = ({ data, options, className, ...rest }) => {
   const ref = useRef(null)
-  const id = Date.now()
+  const [key] = useState(Date.now())
 
   useEffect(() => {
     // eslint-disable-next-line no-new
@@ -27,7 +27,7 @@ const SwiperImg = ({ data, options, className, ...rest }) => {
 
   // 解决loop开启的情况下，点击事件
   useEffect(() => {
-    const bannerItems = document.getElementsByClassName(`swiper-slide-${id}`)
+    const bannerItems = document.getElementsByClassName(`swiper-slide-${key}`)
     _.forEach(bannerItems, (item) => {
       item.onclick = function (e) {
         e.stopPropagation()
@@ -46,7 +46,7 @@ const SwiperImg = ({ data, options, className, ...rest }) => {
     >
       <div className='swiper-wrapper'>
         {_.map(data, (item, index) => (
-          <div key={index} className={`swiper-slide swiper-slide-${id}`}>
+          <div key={index} className={`swiper-slide swiper-slide-${key}`}>
             <img
               data-src={item.img}
               data-item={JSON.stringify({ ...item, index })}
