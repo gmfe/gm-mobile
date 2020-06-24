@@ -9,11 +9,11 @@ import SVGDownUp from '../../../svg/down-up-circle.svg'
 import SVGExpired from '../../../svg/expired.svg'
 
 const Label = (props) => {
-  const { label } = props
+  const { labels } = props
 
   return (
     <Flex>
-      {_.map(label, (labelItem, index) => {
+      {_.map(labels, (labelItem, index) => {
         return (
           <span
             className={classNames('m-coupon-right-header-label', {
@@ -30,7 +30,7 @@ const Label = (props) => {
 
 Label.propTypes = {
   /** 优惠券标签展示文字，必传，不考虑为空的情况 */
-  label: PropTypes.array.isRequired,
+  labels: PropTypes.array.isRequired,
 }
 
 const Coupon = (props) => {
@@ -40,7 +40,7 @@ const Coupon = (props) => {
     totalInfo,
     dateInfo,
     title,
-    label,
+    labels,
     useInfo,
     onUse,
     className,
@@ -106,7 +106,7 @@ const Coupon = (props) => {
             })}
           >
             <span className='m-coupon-right-header-title'>{title}</span>
-            {label.length > 0 && <Label label={label} />}
+            {labels && labels.length > 0 && <Label labels={labels} />}
             <Flex
               alignCenter
               justifyBetween
@@ -187,8 +187,8 @@ Coupon.propTypes = {
   discount: PropTypes.number.isRequired,
   /** 满减说明 */
   totalInfo: PropTypes.string,
-  /** 优惠券标签展示文字，不传不展示标签 */
-  label: PropTypes.array,
+  /** 优惠券标签展示文字，不传不展示标签,数组形式：[label1,label2,...] */
+  labels: PropTypes.array,
   /** 优惠券标题 */
   title: PropTypes.string,
   /** 是否有使用说明 */
