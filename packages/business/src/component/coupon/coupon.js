@@ -15,7 +15,7 @@ const Coupon = (props) => {
     totalInfo,
     dateInfo,
     title,
-    label,
+    labels,
     useInfo,
     onUse,
     className,
@@ -81,8 +81,12 @@ const Coupon = (props) => {
             })}
           >
             <span className='m-coupon-right-header-title'>{title}</span>
-            {label && (
-              <span className='m-coupon-right-header-label'>{label}</span>
+            {labels && labels.length && (
+              <div>
+                {_.map(labels, (label) => (
+                  <span className='m-coupon-right-header-label'>{label}</span>
+                ))}
+              </div>
             )}
             <Flex alignCenter none className='m-coupon-right-header-date'>
               {dateInfo || ''}
@@ -157,8 +161,8 @@ Coupon.propTypes = {
   discount: PropTypes.number.isRequired,
   /** 满减说明 */
   totalInfo: PropTypes.string,
-  /** 优惠券标签展示文字，不传不展示标签 */
-  label: PropTypes.string,
+  /** 优惠券标签展示文字数组，不传不展示标签, 格式为: [label1, label2, ...] */
+  labels: PropTypes.array,
   /** 优惠券标题 */
   title: PropTypes.string,
   /** 是否有使用说明 */

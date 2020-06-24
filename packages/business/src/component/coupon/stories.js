@@ -21,7 +21,7 @@ export const normal = () => (
         totalInfo='满1000元可用'
         dateInfo='2020-04-29~2020-05-05'
         title='分类优惠券AA'
-        label='仅限xxx商品使用'
+        labels={['仅限xxx商品使用']}
         checked={store.checked}
         onCheck={() => store.setChecked(!store.checked)}
       />
@@ -32,7 +32,7 @@ export const normal = () => (
         discount={30}
         totalInfo='满1000元可用'
         dateInfo='2020-05-05到期'
-        label='仅限xxxxxx商品使用'
+        labels={['仅限xxx商品使用', '仅限新商户使用']}
         title='分类优惠券B'
         hasUseInfo
         useInfo={
@@ -52,7 +52,7 @@ export const normal = () => (
         totalInfo='满300元可用'
         hasUseInfo
         dateInfo='2020-05-05到期'
-        label='仅限xxxxxx商品使用'
+        labels={['仅限xxxxxx商品使用']}
         title='分类优惠券AA'
         onUse={() => console.log('use')}
         disabled
