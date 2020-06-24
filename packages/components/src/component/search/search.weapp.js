@@ -48,6 +48,7 @@ const Search = ({
         <Text className='m-font m-font-search m-search-icon-search' />
         <Input
           type='text'
+          confirmType='search'
           value={value}
           focus={autoFocus}
           onChange={handleChange}
