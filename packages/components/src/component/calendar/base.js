@@ -15,6 +15,7 @@ import Day from './day'
 import Week from './week'
 import Flex from '../flex'
 import { TYPE } from './util'
+import View from '../view'
 import ScrollIntoView from '../scroll_into_view'
 
 const BaseCalendar = forwardRef((props, ref) => {
@@ -163,52 +164,49 @@ const BaseCalendar = forwardRef((props, ref) => {
   }
 
   return (
-    <ScrollIntoView
-      style={{ height: '100%' }}
-      scrollIntoView={scrollId}
-      {...rest}
-      className={classNames('m-calendar', className)}
-    >
+    <View {...rest} className={classNames('m-calendar', className)}>
       <Week />
-      <Flex column none className='m-calendar-content m-padding-bottom-10'>
-        {_map(computedMonthList(), (currentMoment, cmi) => {
-          const m = moment(currentMoment).day(0).add(-1, 'day')
-          const dayGroup = getDayRowOfMonth(currentMoment)
+      <ScrollIntoView style={{ height: '350px' }} scrollIntoView={scrollId}>
+        <Flex column none className='m-calendar-content m-padding-bottom-10'>
+          {_map(computedMonthList(), (currentMoment, cmi) => {
+            const m = moment(currentMoment).day(0).add(-1, 'day')
+            const dayGroup = getDayRowOfMonth(currentMoment)
 
-          return (
-            <Flex
-              column
-              none
-              key={cmi}
-              className={classNames({ 'm-margin-top-10': cmi !== 0 })}
-            >
-              <Head currentMoment={currentMoment} />
-              {_map(dayGroup, (v, i) => (
-                <Flex none key={i} className='m-padding-top-10'>
-                  {_map(v, (value, index) => {
-                    const mm = moment(m.add(1, 'day'))
+            return (
+              <Flex
+                column
+                none
+                key={cmi}
+                className={classNames({ 'm-margin-top-10': cmi !== 0 })}
+              >
+                <Head currentMoment={currentMoment} />
+                {_map(dayGroup, (v, i) => (
+                  <Flex none key={i} className='m-padding-top-10'>
+                    {_map(v, (value, index) => {
+                      const mm = moment(m.add(1, 'day'))
 
-                    return (
-                      <Day
-                        key={value}
-                        selected={selected}
-                        type={type}
-                        currentMoment={currentMoment}
-                        value={mm}
-                        locIndex={index}
-                        onClick={handleSelectDay}
-                        disabled={getDisabled(mm)}
-                        showDateLabel={showDateLabel}
-                      />
-                    )
-                  })}
-                </Flex>
-              ))}
-            </Flex>
-          )
-        })}
-      </Flex>
-    </ScrollIntoView>
+                      return (
+                        <Day
+                          key={value}
+                          selected={selected}
+                          type={type}
+                          currentMoment={currentMoment}
+                          value={mm}
+                          locIndex={index}
+                          onClick={handleSelectDay}
+                          disabled={getDisabled(mm)}
+                          showDateLabel={showDateLabel}
+                        />
+                      )
+                    })}
+                  </Flex>
+                ))}
+              </Flex>
+            )
+          })}
+        </Flex>
+      </ScrollIntoView>
+    </View>
   )
 })
 
