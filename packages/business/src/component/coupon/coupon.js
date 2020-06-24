@@ -196,7 +196,7 @@ Coupon.propTypes = {
   /** 优惠券使用说明 */
   useInfo: PropTypes.element,
   /** 使用日期说明 */
-  dateInfo: PropTypes.string,
+  dateInfo: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   /** 立即使用回调函数 */
   onUse: PropTypes.func,
   /** 不可用状态 */
