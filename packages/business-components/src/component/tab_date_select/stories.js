@@ -30,14 +30,7 @@ export const normal = () => {
       console.log(selectedTab, begin, end)
     })
   }
-  return (
-    <View>
-      <Button onClick={handleClick}>Show TabDateSelect</Button>
-      <View style={{ display: 'none' }}>
-        <TabDateSelect tabs={tabs} onSelect={() => {}} />
-      </View>
-    </View>
-  )
+  return <Button onClick={handleClick}>Show TabDateSelect</Button>
 }
 
 export default {

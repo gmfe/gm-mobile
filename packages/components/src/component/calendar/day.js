@@ -8,7 +8,6 @@ import _noop from 'lodash/noop'
 
 import Flex from '../flex'
 import View from '../view'
-import Text from '../text'
 import { TYPE } from './util'
 
 const Day = ({
@@ -117,9 +116,9 @@ const Day = ({
         {value.date()}
         {showDateLabel && type === TYPE.RANGE && (
           <View className='m-calendar-day-label'>
-            {v === bv && v === ev && <Text>{getLocale('单天')}</Text>}
-            {v === bv && v !== ev && <Text>{getLocale('开始')}</Text>}
-            {v !== bv && v === ev && <Text>{getLocale('结束')}</Text>}
+            {v === bv && v === ev && getLocale('单天')}
+            {v === bv && v !== ev && getLocale('开始')}
+            {v !== bv && v === ev && getLocale('结束')}
           </View>
         )}
       </Flex>
@@ -136,7 +135,6 @@ Day.propTypes = {
   selected: PropTypes.array,
   /** 选择日期类型：one，range，multiple */
   type: PropTypes.oneOf(['one', 'range', 'multiple']),
-
   onClick: PropTypes.func,
   value: PropTypes.object,
   currentMoment: PropTypes.object,

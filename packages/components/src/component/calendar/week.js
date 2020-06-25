@@ -15,7 +15,7 @@ const weekDays = [
 ]
 const Week = () => {
   return (
-    <Flex className='m-calendar-week'>
+    <Flex none className='m-calendar-week'>
       {_map(weekDays, (v, i) => (
         <Flex flex justifyCenter alignCenter key={i}>
           {v}

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState } from 'react'
 import {
   Tabs,
   Popup,
@@ -36,18 +36,11 @@ const TabDateSelect = ({
   onSelect,
   serviceTimeList,
 }) => {
-  const calendarRef = useRef(null)
   const [beginDate, setBeginDate] = useState(begin)
   const [endDate, setEndDate] = useState(end)
   const [activeTab, setActiveTab] = useState(
     _find(tabs, (tab) => tab.value === selectedTab) || tabs[0]
   )
-
-  useEffect(() => {
-    setTimeout(() => {
-      calendarRef && calendarRef.current.apiScrollToSelected()
-    }, 250)
-  }, [])
 
   const handleSaveSelect = () => {
     onSelect({
@@ -116,9 +109,8 @@ const TabDateSelect = ({
       )}
 
       <Flex flex column justifyBetween>
-        <View className='m-tab-date-select-calendar m-overflow-y m-flex-flex m-bg-back'>
+        <View className='m-tab-date-select-calendar m-flex-flex m-bg-back'>
           <RangeCalendar
-            ref={calendarRef}
             begin={beginDate}
             end={endDate}
             min={activeTab.min}

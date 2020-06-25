@@ -1,25 +1,20 @@
-import React, { useState, useImperativeHandle, forwardRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import classNames from 'classnames'
 import _findIndex from 'lodash/findIndex'
-import _range from 'lodash/range'
-import _groupBy from 'lodash/groupBy'
 import _map from 'lodash/map'
 import _noop from 'lodash/noop'
-import { is } from '@gm-mobile/tool'
 
-import Head from './head'
-import Day from './day'
 import Week from './week'
-import Flex from '../flex'
+import Month from './month'
 import { TYPE } from './util'
 import View from '../view'
 import ScrollIntoView from '../scroll_into_view'
 
-const BaseCalendar = forwardRef((props, ref) => {
+const BaseCalendar = (props) => {
   const [isSelectBegin, setIsSelectBegin] = useState(true)
-  const [scrollId, setScrollId] = useState(null)
+  const [targetId, setTargetId] = useState('')
 
   const {
     type,
@@ -30,25 +25,17 @@ const BaseCalendar = forwardRef((props, ref) => {
     disabledDate,
     showDateLabel,
     className,
+    style,
     ...rest
   } = props
 
-  /** 暴露给外部使用 */
-  useImperativeHandle(ref, () => ({
-    apiScrollToSelected: () => {
+  useEffect(() => {
+    if (selected && selected.length) {
       const date = type === TYPE.RANGE ? selected[1] : selected[0]
-      let selector = `m-calendar-${moment(date).format('YYYY-MM-DD')}`
-
-      if (!is.weApp()) {
-        selector =
-          type === TYPE.RANGE
-            ? '.m-calendar-day-begin'
-            : '.m-calendar-day-selected'
-      }
-
-      setScrollId(selector)
-    },
-  }))
+      const id = `m-calendar-${moment(date).format('YYYY-MM-DD')}`
+      setTargetId(id)
+    }
+  }, [])
 
   // 多个日期选择
   const handleSelectMulDay = (m) => {
@@ -152,62 +139,28 @@ const BaseCalendar = forwardRef((props, ref) => {
     return arr
   }
 
-  const getDayRowOfMonth = (currentMoment) => {
-    if (
-      moment(currentMoment).day(0).add(35, 'day').month() !==
-      currentMoment.month()
-    ) {
-      return _groupBy(_range(35), (v) => parseInt(v / 7))
-    }
-    return _groupBy(_range(42), (v) => parseInt(v / 7))
-  }
-
   return (
     <View {...rest} className={classNames('m-calendar', className)}>
       <Week />
-      <ScrollIntoView style={{ height: '350px' }} scrollIntoView={scrollId}>
-        <Flex column none className='m-calendar-content m-padding-bottom-10'>
-          {_map(computedMonthList(), (currentMoment, cmi) => {
-            const m = moment(currentMoment).day(0).add(-1, 'day')
-            const dayGroup = getDayRowOfMonth(currentMoment)
-
-            return (
-              <Flex
-                column
-                none
-                key={cmi}
-                className={classNames({ 'm-margin-top-10': cmi !== 0 })}
-              >
-                <Head currentMoment={currentMoment} />
-                {_map(dayGroup, (v, i) => (
-                  <Flex none key={i} className='m-padding-top-10'>
-                    {_map(v, (value, index) => {
-                      const mm = moment(m.add(1, 'day'))
-
-                      return (
-                        <Day
-                          key={value}
-                          selected={selected}
-                          type={type}
-                          currentMoment={currentMoment}
-                          value={mm}
-                          locIndex={index}
-                          onClick={handleSelectDay}
-                          disabled={getDisabled(mm)}
-                          showDateLabel={showDateLabel}
-                        />
-                      )
-                    })}
-                  </Flex>
-                ))}
-              </Flex>
-            )
-          })}
-        </Flex>
+      <ScrollIntoView className='m-calendar-content' targetId={targetId}>
+        {_map(computedMonthList(), (currentMoment, cmi) => {
+          return (
+            <Month
+              key={cmi}
+              index={cmi}
+              currentMoment={currentMoment}
+              selected={selected}
+              type={type}
+              onSelectDay={handleSelectDay}
+              getDisabled={getDisabled}
+              showDateLabel={showDateLabel}
+            />
+          )
+        })}
       </ScrollIntoView>
     </View>
   )
-})
+}
 
 BaseCalendar.propTypes = {
   /** 选择日期数组 */

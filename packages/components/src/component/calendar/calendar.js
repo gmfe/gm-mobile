@@ -1,32 +1,23 @@
-import React, { forwardRef, useRef, useImperativeHandle } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import BaseCalendar from './base'
 import { TYPE } from './util'
 
-const Calendar = forwardRef(({ selected, onSelect, ...rest }, ref) => {
-  const refCalendar = useRef(null)
-
-  useImperativeHandle(ref, () => ({
-    apiScrollToSelected: () => {
-      refCalendar.current.apiScrollToSelected()
-    },
-  }))
-
+const Calendar = ({ selected, onSelect, ...rest }) => {
   const handleSelect = (selected) => {
     onSelect(selected[0])
   }
 
   return (
     <BaseCalendar
-      ref={refCalendar}
       {...rest}
       selected={[selected]}
       onSelect={handleSelect}
       type={TYPE.ONE}
     />
   )
-})
+}
 
 Calendar.propTypes = {
   /** 当前选中日期 */

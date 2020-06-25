@@ -1,44 +1,22 @@
-import React, { useRef, useEffect } from 'react'
-import { findDOMNode } from 'react-dom'
+import React, { useEffect } from 'react'
 import View from '../view'
 import PropTypes from 'prop-types'
 
 // 先 默认纵向滚动
-const ScrollIntoView = ({ children, scrollIntoView, options, ...rest }) => {
-  const scrollRef = useRef(null)
-
+const ScrollIntoView = ({ children, targetId, ...rest }) => {
   useEffect(() => {
-    if (scrollIntoView) {
-      const d = findDOMNode(scrollRef.current).querySelector(scrollIntoView)
-      if (d) {
-        if (options && options.scrollIntoViewIfNeeded) {
-          const op =
-            options.scrollIntoViewIfNeededOptions === undefined
-              ? true
-              : options.scrollIntoViewIfNeededOptions
-          d.scrollIntoViewIfNeeded(op)
-        } else {
-          d.scrollIntoView()
-        }
-      }
+    const d = document.getElementById(targetId)
+    if (d) {
+      d.scrollIntoView()
     }
-  }, [scrollIntoView])
+  }, [targetId])
 
-  return (
-    <View ref={scrollRef} {...rest}>
-      {children}
-    </View>
-  )
+  return <View {...rest}>{children}</View>
 }
 
 ScrollIntoView.propTypes = {
-  /** 滚动目标，用于 querySelector方法 */
-  scrollIntoView: PropTypes.string,
-  options: PropTypes.shape({
-    /** 不传默认采用 element.scrollIntoView */
-    scrollIntoViewIfNeeded: PropTypes.bool,
-    scrollIntoViewIfNeededOptions: PropTypes.bool,
-  }),
+  /** 滚动目标id */
+  targetId: PropTypes.string.isRequired,
   className: PropTypes.string,
   style: PropTypes.object,
 }

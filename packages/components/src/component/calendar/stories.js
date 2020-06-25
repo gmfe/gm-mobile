@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import moment from 'moment'
 import { observable } from 'mobx'
 
@@ -37,16 +37,9 @@ export const info = () => (
 )
 
 export const one = () => {
-  const refCalendar = useRef(null)
-  useEffect(() => {
-    setTimeout(() => {
-      refCalendar.current.apiScrollToSelected()
-    }, 250)
-  }, [])
   return (
     <View style={{ height: '400px' }}>
       <Calendar
-        ref={refCalendar}
         min={moment().add(-1, 'month').toDate()}
         max={moment().toDate()}
         selected={store.oneSelected}
@@ -57,11 +50,9 @@ export const one = () => {
 }
 
 export const range = () => {
-  const refCalendar = useRef(null)
   return (
     <View style={{ height: '400px' }}>
       <RangeCalendar
-        ref={refCalendar}
         min={moment().add(-1, 'month').toDate()}
         max={moment().toDate()}
         begin={store.begin}
@@ -74,11 +65,9 @@ export const range = () => {
 }
 
 export const multiple = () => {
-  const refCalendar = useRef(null)
   return (
     <View style={{ height: '400px' }}>
       <MultipleCalendar
-        ref={refCalendar}
         min={moment().add(-1, 'month').toDate()}
         max={moment().toDate()}
         selected={store.mulSelected}

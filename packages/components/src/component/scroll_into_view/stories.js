@@ -4,64 +4,37 @@ import View from '../view'
 import { is } from '@gm-mobile/tool'
 
 export const normal = () => {
-  const [scrollId, setScrollId] = useState(null)
+  const [scrollId, setScrollId] = useState('')
 
   useEffect(() => {
-    if (is.weApp()) {
-      setScrollId('gg')
-      return
-    }
-    setScrollId('.gg')
+    setScrollId('gg')
   }, [])
 
   return (
     <View>
       滑动到bbb处
-      <ScrollIntoView style={{ height: '100px', overflowY: 'auto' }} scrollIntoView={scrollId}>
-        <View className='aa' id='aa'>
-          aaa
-        </View>
-        <View className='bb' id='bb'>
-          aaa
-        </View>
-        <View className='cc' id='cc'>
-          aaa
-        </View>
-        <View className='dd' id='dd'>
-          aaa
-        </View>
-        <View className='ee' id='ee'>
-          aaa
-        </View>
-        <View className='ff' id='ff'>
-          aaa
-        </View>
-        <View className='gg' id='gg'>
-          bbb
-        </View>
-        <View className='hh' id='hh'>
-          aaa
-        </View>
-        <View className='ii' id='ii'>
-          aaa
-        </View>
-        <View className='jj' id='jj'>
-          aaa
-        </View>
-        <View className='kk' id='kk'>
-          aaa
-        </View>
-        <View className='ll' id='ll'>
-          aaa
-        </View>
-        <View className='mm' id='mm'>
-          aaa
-        </View>
+      <ScrollIntoView
+        style={{ height: '100px', overflowY: 'auto' }}
+        targetId={scrollId}
+      >
+        <View id='aa'>aaa</View>
+        <View id='bb'>aaa</View>
+        <View id='cc'>aaa</View>
+        <View id='dd'>aaa</View>
+        <View id='ee'>aaa</View>
+        <View id='ff'>aaa</View>
+        <View id='gg'>bbb</View>
+        <View id='hh'>aaa</View>
+        <View id='ii'>aaa</View>
+        <View id='jj'>aaa</View>
+        <View id='kk'>aaa</View>
+        <View id='ll'>aaa</View>
+        <View id='mm'>aaa</View>
       </ScrollIntoView>
     </View>
   )
 }
 
 export default {
-  title: '布局/ScrollIntoView',
+  title: '其他/ScrollIntoView',
 }
