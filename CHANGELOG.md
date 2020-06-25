@@ -12,6 +12,8 @@ Cell 废弃 href，跳转自主处理
 
 新增通用 ScrollIntoView
 
+Calendar 废弃 apiScrollToSelected, 默认自动滚到选择处
+
 # 1.x
 
 ## change
