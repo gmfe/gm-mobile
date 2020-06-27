@@ -7,10 +7,9 @@ import classNames from 'classnames'
 
 const SwiperImg = ({ data, options, className, ...rest }) => {
   const ref = useRef(null)
-  const key = useRef(null)
+  const key = Date.now()
 
   useEffect(() => {
-    key.current = Date.now()
     // eslint-disable-next-line no-new
     new Swiper(findDOMNode(ref.current), {
       loop: true,
@@ -28,9 +27,7 @@ const SwiperImg = ({ data, options, className, ...rest }) => {
 
   // 解决loop开启的情况下，点击事件
   useEffect(() => {
-    const bannerItems = document.getElementsByClassName(
-      `swiper-slide-${key.current}`
-    )
+    const bannerItems = document.getElementsByClassName(`swiper-slide-${key}`)
     _.forEach(bannerItems, (item) => {
       item.onclick = function (e) {
         e.stopPropagation()
@@ -49,10 +46,7 @@ const SwiperImg = ({ data, options, className, ...rest }) => {
     >
       <div className='swiper-wrapper'>
         {_.map(data, (item, index) => (
-          <div
-            key={index}
-            className={`swiper-slide swiper-slide-${key.current}`}
-          >
+          <div key={index} className={`swiper-slide swiper-slide-${key}`}>
             <img
               data-src={item.img}
               data-item={JSON.stringify({ ...item, index })}
