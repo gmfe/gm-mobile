@@ -18,7 +18,6 @@ export const normal = () => {
   })
 
   const handleCheckValue = ({ value, min, max }) => {
-    console.log(value);
     if (value > 10) {
       return '库存不足'
     }

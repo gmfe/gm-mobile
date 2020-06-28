@@ -46,6 +46,10 @@ const Counter = ({
   }
 
   const handleChange = (type) => {
+    if (disabled) {
+      return
+    }
+
     let v = text2Number(value)
     const _precision = _.includes(value, '.') ? precision : 0
     if (type === 'minus') {
@@ -96,6 +100,7 @@ const Counter = ({
         precision={precision}
         onSubmit={onChange}
         getErrorMsg={getErrorMsg}
+        disabled={disabled}
       >
         <div className='m-counter-content-text'>{value}</div>
       </KeyboardWrap>

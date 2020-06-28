@@ -1,3 +1,4 @@
+import { getLocale } from '@gm-mobile/locales'
 import React, { useState, useEffect } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
@@ -5,6 +6,38 @@ import { View, Toast, Input } from '@gm-mobile/components'
 import _isNaN from 'lodash/isNaN'
 import _includes from 'lodash/includes'
 import Big from 'big.js'
+
+const text2Number = (value) => {
+  if (value === '') {
+    return 0
+  }
+  return _isNaN(parseFloat(value)) ? '' : parseFloat(value)
+}
+
+const handleErrorMsg = ({ value, min, max, precision }) => {
+  let msg = null
+  const cv = text2Number(value)
+  if (max && cv > max) {
+    msg = `${getLocale('请输入小于')} ${max} ${getLocale('的数')}`
+  } else if (min && cv < min) {
+    msg = `${getLocale('请输入大于')} ${min} ${getLocale('的数')}`
+  }
+
+  if (min && max && msg) {
+    msg = `${getLocale('请输入大于')} ${min} ${getLocale(
+      '小于'
+    )} ${max} ${getLocale('的数')}`
+  }
+
+  // 精度校验
+  const num = value.split('.')
+  if (num.length > 1 && num[1].length > precision) {
+    msg =
+      msg ||
+      `${getLocale('最多只能输入小数点后')} ${precision} ${getLocale('位')}`
+  }
+  return msg
+}
 
 const Counter = ({
   value,
@@ -24,18 +57,11 @@ const Counter = ({
     setSelfValue(value)
   }, [value])
 
-  const text2Number = (value) => {
-    if (value === '') {
-      return 0
-    }
-    return _isNaN(parseFloat(value)) ? '' : parseFloat(value)
-  }
-
   const plusDisabled = !disabled && max && text2Number(selfValue) >= max
   const minusDisabled =
     !disabled && (selfValue === '' || text2Number(selfValue) === 0)
 
-  // // 检验是否超出大小值限制
+  // 检验是否超出大小值限制
   const checkValue = (value, type) => {
     if (max && value > max) {
       return value - 1
@@ -52,6 +78,10 @@ const Counter = ({
   }
 
   const handleChange = (type) => {
+    if (disabled) {
+      return
+    }
+
     let v = text2Number(selfValue)
     const _precision = _includes(selfValue, '.') ? precision : 0
     if (type === 'minus') {
@@ -74,25 +104,17 @@ const Counter = ({
 
   const handleInput = (e) => {
     const { value } = e.detail
-    const v = text2Number(value)
 
     // 优化交互体验,0和空均代表不添加商品
-    if (value !== '' && v !== 0) {
-      checkError(v)
+    if (value !== '') {
+      checkError(value)
     }
-    // 限制最大数量
-    if (v > max) {
-      setSelfValue(max.toString())
-    } else {
-      setSelfValue(value)
-    }
+    setSelfValue(value)
   }
 
   const checkError = (v) => {
-    if (getErrorMsg) {
-      const mes = getErrorMsg({ value: v, min, max })
-      mes && Toast.tip(mes)
-    }
+    const mes = getErrorMsg({ value: v, min, max, precision })
+    mes && Toast.tip(mes)
   }
 
   const handleFinally = () => {
@@ -122,7 +144,6 @@ const Counter = ({
         disabled={disabled}
         value={selfValue}
         focus={focus}
-        confirmType='done'
         adjustPosition={adjustPosition}
         onInput={handleInput}
         onBlur={handleFinally}
@@ -164,7 +185,7 @@ Counter.defaultProps = {
   value: '',
   min: 0,
   precision: 2,
-  getErrorMsg: () => null,
+  getErrorMsg: handleErrorMsg,
 }
 
 export default Counter
