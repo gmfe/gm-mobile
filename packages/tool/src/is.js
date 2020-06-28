@@ -23,6 +23,8 @@ const iOS = () => {
 
 const weixin = () => /MicroMessenger/i.test(navigator.userAgent)
 
+const phone = () => window.navigator.userAgent.includes('Mobile')
+
 const is = {
   web,
   weApp,
@@ -30,6 +32,7 @@ const is = {
   chinese,
   iOS,
   weixin,
+  phone,
 }
 
 export default is
