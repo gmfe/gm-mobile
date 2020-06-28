@@ -227,8 +227,23 @@
   width: auto;
   height: 60px;
 
-  .m-received-coupon-received {
-    color: var(--m-color-coupon-disabled) !important;
+  &.m-received-coupon-received {
+    .m-received-coupon-container {
+      .m-received-coupon-left {
+        .m-received-coupon-left-header,
+        .m-received-coupon-left-info,
+        .m-received-coupon-left-total {
+          color: var(--m-color-coupon-disabled) !important;
+        }
+      }
+
+      .m-received-coupon-right {
+        .m-received-coupon-right-btn {
+          background-color: var(--m-color-bg-coupon-disabled) !important;
+          color: var(--m-color-true-white) !important;
+        }
+      }
+    }
   }
 
   &.m-received-coupon-default {
@@ -255,58 +270,53 @@
       );
     background-position: right 42.5px top -8px;
     background-size: 100% 60px;
-  }
 
-  .m-received-coupon-left {
-    min-width: 90px;
-    height: 60px;
-    padding: 10px 15px;
-    white-space: nowrap;
+    .m-received-coupon-left {
+      min-width: 90px;
+      height: 60px;
+      padding: 10px 15px;
+      white-space: nowrap;
 
-    .m-received-coupon-left-header {
-      font-size: 18px;
-      color: @lightColor;
-      font-weight: bold;
+      .m-received-coupon-left-header {
+        font-size: 18px;
+        color: @lightColor;
+        font-weight: bold;
 
-      .m-received-coupon-left-currency {
-        margin-right: 3px;
+        .m-received-coupon-left-currency {
+          margin-right: 3px;
+        }
+
+        .m-received-coupon-left-info {
+          font-size: 12px;
+          font-weight: normal;
+          color: var(--m-color-desc);
+          margin-bottom: -2px;
+          transform: scale(0.9);
+        }
       }
 
-      .m-received-coupon-left-info {
+      .m-received-coupon-left-total {
+        line-height: 20px;
         font-size: 12px;
-        font-weight: normal;
-        color: var(--m-color-desc);
-        margin-bottom: -2px;
-        transform: scale(0.9);
+        color: @infoColor;
       }
     }
 
-    .m-received-coupon-left-total {
-      line-height: 20px;
-      font-size: 12px;
-      color: @infoColor;
-    }
-  }
+    .m-received-coupon-right {
+      width: 34px;
+      height: 44px;
+      margin: 8px 0;
+      border-left: 1px dashed @borderColor;
 
-  .m-received-coupon-right {
-    width: 34px;
-    height: 44px;
-    margin: 8px 0;
-    border-left: 1px dashed @borderColor;
-
-    .m-received-coupon-right-btn {
-      height: 36px;
-      width: 18px;
-      font-size: 11px;
-      background-color: @lightColor;
-      text-align: center;
-      color: @blackColor;
-      border-radius: 18px;
-      padding: 4px 0;
-
-      &.m-received-coupon-right-btn-received {
-        background-color: var(--m-color-bg-coupon-disabled);
-        color: var(--m-color-true-white);
+      .m-received-coupon-right-btn {
+        height: 36px;
+        width: 18px;
+        font-size: 11px;
+        background-color: @lightColor;
+        text-align: center;
+        color: @blackColor;
+        border-radius: 18px;
+        padding: 4px 0;
       }
     }
   }

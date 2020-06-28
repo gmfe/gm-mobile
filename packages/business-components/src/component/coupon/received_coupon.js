@@ -25,38 +25,24 @@ const ReceivedCoupon = (props) => {
       className={classNames(
         'm-received-coupon',
         `m-received-coupon-${type}`,
+        { 'm-received-coupon-received': isReceived },
         className
       )}
     >
       <Flex className='m-received-coupon-container'>
         <Flex column justifyCenter className='m-received-coupon-left'>
-          <Flex
-            alignCenter
-            className={classNames('m-received-coupon-left-header', {
-              'm-received-coupon-received': isReceived,
-            })}
-          >
+          <Flex alignCenter className='m-received-coupon-left-header'>
             <Text className='m-received-coupon-left-currency'>{currency}</Text>
             {discount}
             {couponAmount !== undefined && (
-              <Text
-                className={classNames('m-received-coupon-left-info', {
-                  'm-received-coupon-received': isReceived,
-                })}
-              >
+              <Text className='m-received-coupon-left-info'>
                 ({couponAmount}
                 {getLocale('张可领')})
               </Text>
             )}
           </Flex>
           {totalInfo && (
-            <Flex
-              className={classNames('m-received-coupon-left-total', {
-                'm-received-coupon-received': isReceived,
-              })}
-            >
-              {totalInfo}
-            </Flex>
+            <Flex className='m-received-coupon-left-total'>{totalInfo}</Flex>
           )}
         </Flex>
         <Flex
@@ -66,9 +52,7 @@ const ReceivedCoupon = (props) => {
           className='m-received-coupon-right'
         >
           <Text
-            className={classNames('m-received-coupon-right-btn', {
-              'm-received-coupon-right-btn-received': isReceived,
-            })}
+            className='m-received-coupon-right-btn'
             onClick={isReceived ? _noop : onReceived}
           >
             {getLocale('领取')}
