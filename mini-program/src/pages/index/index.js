@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import _map from 'lodash/map'
-import _each from 'lodash/each'
 import queryString from 'query-string'
+import _ from 'lodash'
 import {
   Text,
   PageMP,
@@ -41,7 +40,7 @@ const cookieReq = require.context(
 
 const storiesList = []
 
-_each(comReq.keys(), (key) => {
+_.each(comReq.keys(), (key) => {
   storiesList.push({
     module: comReq(key),
     packageName: 'components',
@@ -49,7 +48,7 @@ _each(comReq.keys(), (key) => {
   })
 })
 
-_each(mpReq.keys(), (key) => {
+_.each(mpReq.keys(), (key) => {
   storiesList.push({
     module: mpReq(key),
     packageName: 'mp',
@@ -57,7 +56,7 @@ _each(mpReq.keys(), (key) => {
   })
 })
 
-_each(qrCodeReq.keys(), (key) => {
+_.each(qrCodeReq.keys(), (key) => {
   storiesList.push({
     module: qrCodeReq(key),
     packageName: 'qrcode',
@@ -66,7 +65,7 @@ _each(qrCodeReq.keys(), (key) => {
 })
 
 // 先加上
-_each(businessComReq.keys(), (key) => {
+_.each(businessComReq.keys(), (key) => {
   storiesList.push({
     module: businessComReq(key),
     packageName: 'business-components',
@@ -74,7 +73,7 @@ _each(businessComReq.keys(), (key) => {
   })
 })
 
-_each(cookieReq.keys(), (key) => {
+_.each(cookieReq.keys(), (key) => {
   storiesList.push({
     module: cookieReq(key),
     packageName: 'cookie',
@@ -84,7 +83,7 @@ _each(cookieReq.keys(), (key) => {
 
 const dataMap = {}
 
-_each(storiesList, ({ module, packageName, path }) => {
+_.each(storiesList, ({ module, packageName, path }) => {
   // 算是个常规的 stories
   if (module.default && module.default.title) {
     const title = module.default.title
@@ -94,7 +93,7 @@ _each(storiesList, ({ module, packageName, path }) => {
     dataMap[root] = dataMap[root] || {}
     dataMap[root][component] = {}
 
-    _each(module, (value, key) => {
+    _.each(module, (value, key) => {
       if (key !== 'default') {
         dataMap[root][component][key] = {
           packageName,
@@ -112,17 +111,17 @@ export default class Index extends Component {
   render() {
     return (
       <PageMP>
-        {_map(dataMap, (oneValue, oneKey) => {
+        {_.map(dataMap, (oneValue, oneKey) => {
           return (
             <Cells key={oneKey} title={oneKey}>
-              {_map(oneValue, (twoValue, twoKey) => {
+              {_.map(oneValue, (twoValue, twoKey) => {
                 return (
                   <Cell
                     access
                     key={twoKey}
                     onClick={() => {
                       ActionSheet.render({
-                        data: _map(twoValue, (v, k) => ({
+                        data: _.map(twoValue, (v, k) => ({
                           value: v,
                           text: k,
                         })),
