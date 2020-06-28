@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
-import _map from 'lodash/map'
+import _ from 'lodash'
 
 const ActionSheet = {
   render({ data }) {
     return new Promise((resolve, reject) => {
-      const itemList = _map(data, (v) => v.text)
+      const itemList = _.map(data, (v) => v.text)
 
       wx.showActionSheet({
         itemList,

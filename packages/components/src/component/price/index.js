@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import _find from 'lodash/find'
-import _isNil from 'lodash/isNil'
-import _isNaN from 'lodash/isNaN'
+import _ from 'lodash'
 import View from '../view'
 import Text from '../text'
 import EventBus from './event_bus'
@@ -20,7 +18,7 @@ let _unit = Storage.get(unitKey) || '元'
 let _currencyList = [] // 多币种列表
 
 const getCurrentFromType = (type) =>
-  _find(_currencyList, (item) => item.type === type)
+  _.find(_currencyList, (item) => item.type === type)
 
 const format = (value, isFenUnit, formatOptions) => {
   if (isFenUnit) {
@@ -53,7 +51,7 @@ class Price extends React.Component {
     } = this.props
 
     const current = getCurrentFromType(feeType)
-    if (_isNil(value) || _isNaN(value)) {
+    if (_.isNil(value) || _.isNaN(value)) {
       return null
     }
 

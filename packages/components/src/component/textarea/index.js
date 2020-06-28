@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import _noop from 'lodash/noop'
+import _ from 'lodash'
 import classNames from 'classnames'
 import View from '../view'
 import Base from './base'
@@ -42,7 +42,7 @@ Textarea.propTypes = {
 }
 
 Textarea.defaultProps = {
-  onChange: _noop,
+  onChange: _.noop,
 }
 
 export default Textarea

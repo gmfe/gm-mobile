@@ -1,7 +1,7 @@
 import { getLocale } from '@gm-mobile/locales'
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import _noop from 'lodash/noop'
+import _ from 'lodash'
 import Flex from '../flex'
 import Mask from '../mask'
 import LayoutRoot from '../layout_root'
@@ -43,8 +43,8 @@ ErrorInput.propTypes = {
 }
 
 ErrorInput.defaultProps = {
-  onChange: _noop,
-  getError: _noop,
+  onChange: _.noop,
+  getError: _.noop,
 }
 
 const DialogStatics = {
@@ -76,7 +76,7 @@ const DialogStatics = {
     }
 
     return new Promise((resolve, reject) => {
-      const _onConfirm = options.onConfirm || _noop
+      const _onConfirm = options.onConfirm || _.noop
       options.onConfirm = () => {
         let result
 
@@ -113,7 +113,7 @@ const DialogStatics = {
         type === 'prompt' ||
         type === 'delete'
       ) {
-        const _onCancel = options.onCancel || _noop
+        const _onCancel = options.onCancel || _.noop
         options.onCancel = () => {
           DialogStatics.hide()
 

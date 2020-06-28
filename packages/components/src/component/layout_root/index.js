@@ -1,5 +1,5 @@
 import React from 'react'
-import _noop from 'lodash/noop'
+import _ from 'lodash'
 import View from '../view'
 import { is } from '@gm-mobile/tool'
 import getPath from './get_path'
@@ -78,7 +78,7 @@ LayoutRoot.removeComponent = (type) => {
 
 // 这种写法 附带 History 功能
 LayoutRoot.renderWith = (type, Component, options) => {
-  options = Object.assign({ onPopStateCallback: _noop }, options)
+  options = Object.assign({ onPopStateCallback: _.noop }, options)
 
   LayoutRoot.setComponent(type, Component)
 

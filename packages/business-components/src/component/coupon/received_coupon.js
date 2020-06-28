@@ -2,7 +2,7 @@ import { getLocale } from '@gm-mobile/locales'
 import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import _noop from 'lodash/noop'
+import _ from 'lodash'
 
 import { Flex, View, Text } from '@gm-mobile/components'
 
@@ -53,7 +53,7 @@ const ReceivedCoupon = (props) => {
         >
           <Text
             className='m-received-coupon-right-btn'
-            onClick={isReceived ? _noop : onReceived}
+            onClick={isReceived ? _.noop : onReceived}
           >
             {getLocale('领取')}
           </Text>

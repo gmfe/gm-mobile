@@ -1,6 +1,6 @@
 import { getLocale } from '@gm-mobile/locales'
 import React from 'react'
-import _map from 'lodash/map'
+import _ from 'lodash'
 
 import Flex from '../flex'
 
@@ -16,7 +16,7 @@ const weekDays = [
 const Week = () => {
   return (
     <Flex none className='m-calendar-week'>
-      {_map(weekDays, (v, i) => (
+      {_.map(weekDays, (v, i) => (
         <Flex flex justifyCenter alignCenter key={i}>
           {v}
         </Flex>

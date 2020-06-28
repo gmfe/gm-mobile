@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import _noop from 'lodash/noop'
+import _ from 'lodash'
 import { devWarnForHook } from '@gm-mobile/tool'
 
 import Flex from '../flex'
@@ -118,7 +118,7 @@ Popup.propTypes = {
 Popup.defaultProps = {
   // 动画有卡顿现象，先禁用
   disabledAnimate: true,
-  onHide: _noop,
+  onHide: _.noop,
 }
 
 export default Popup

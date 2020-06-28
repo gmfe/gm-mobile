@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Flex, Checkbox, View, Text } from '@gm-mobile/components'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import _noop from 'lodash/noop'
+import _ from 'lodash'
 
 const Coupon = (props) => {
   const {
@@ -64,7 +64,12 @@ const Coupon = (props) => {
             <Text className='m-coupon-left-total'>{totalInfo}</Text>
           )}
         </Flex>
-        <Flex column flex className='m-coupon-right' onClick={onCheck || _noop}>
+        <Flex
+          column
+          flex
+          className='m-coupon-right'
+          onClick={onCheck || _.noop}
+        >
           <Flex
             flex
             column
@@ -86,7 +91,7 @@ const Coupon = (props) => {
               {(onUse || onReceived) && (
                 <Text
                   className='m-coupon-right-header-btn'
-                  onClick={isDisabled ? _noop : onUse || onReceived}
+                  onClick={isDisabled ? _.noop : onUse || onReceived}
                 >
                   {onReceived ? getLocale('立即领取') : getLocale('立即使用')}
                 </Text>

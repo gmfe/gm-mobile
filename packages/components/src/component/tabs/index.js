@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import _noop from 'lodash/noop'
-import _map from 'lodash/map'
+import _ from 'lodash'
 import Text from '../text'
 import Flex from '../flex'
 
@@ -16,7 +15,7 @@ const Tabs = (props) => {
   return (
     <Flex {...rest} className={classNames(`m-tabs m-tabs-${type}`, className)}>
       <Flex className='m-tabs-content'>
-        {_map(tabs, (tab) => (
+        {_.map(tabs, (tab) => (
           <Flex
             justifyCenter
             alignCenter
@@ -48,7 +47,7 @@ Tabs.propTypes = {
 
 Tabs.defaultProps = {
   type: 'default',
-  onChange: _noop,
+  onChange: _.noop,
 }
 
 export default Tabs

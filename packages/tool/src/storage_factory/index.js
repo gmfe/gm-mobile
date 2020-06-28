@@ -1,4 +1,4 @@
-import _each from 'lodash/each'
+import _ from 'lodash'
 import is from '../is'
 
 const isWeApp = is.weApp()
@@ -72,7 +72,7 @@ class StorageFactory {
       }
     }
 
-    _each(keys, (key) => {
+    _.each(keys, (key) => {
       if (key.startsWith(this.prefix)) {
         result[key] = this.get(key.slice(this.prefix.length))
       }

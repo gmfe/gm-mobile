@@ -2,7 +2,7 @@ import { getLocale } from '@gm-mobile/locales'
 import React from 'react'
 import PropTypes from 'prop-types'
 import Picker from './component/picker'
-import _noop from 'lodash/noop'
+import _ from 'lodash'
 import PickerStatics from './statics'
 import Button from '../button'
 import View from '../view'
@@ -99,8 +99,8 @@ ConfirmPicker.propTypes = {
 }
 
 ConfirmPicker.defaultProps = {
-  onConfirm: _noop,
-  onCancel: _noop,
+  onConfirm: _.noop,
+  onCancel: _.noop,
 }
 
 export default ConfirmPicker

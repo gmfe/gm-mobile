@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Page from '../page'
 import Search from './search'
-import _noop from 'lodash/noop'
+import _ from 'lodash'
 
 const SearchPage = ({
   active,
@@ -45,7 +45,7 @@ SearchPage.propTypes = {
 }
 
 SearchPage.defaultProps = {
-  onSearch: _noop,
+  onSearch: _.noop,
 }
 
 export default SearchPage

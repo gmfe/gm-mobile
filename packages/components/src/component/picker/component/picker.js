@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import _map from 'lodash/map'
+import _ from 'lodash'
 import PickerColumn from './picker_column'
 import View from '../../view'
 
@@ -32,7 +32,7 @@ const Picker = ({
     <View {...rest} className={classNames('m-picker', className)}>
       {headers && headers.length !== 0 && (
         <View className='m-picker-header'>
-          {_map(headers, (header) => (
+          {_.map(headers, (header) => (
             <View key={header} className='m-picker-header-item'>
               {header}
             </View>
@@ -40,7 +40,7 @@ const Picker = ({
         </View>
       )}
       <View className='m-picker-inner' style={{ height: itemHeight * 6 }}>
-        {_map(datas, (v, i) => (
+        {_.map(datas, (v, i) => (
           <PickerColumn
             key={i}
             index={i}

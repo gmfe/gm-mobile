@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text } from '@gm-mobile/components'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import _map from 'lodash/map'
+import _ from 'lodash'
 
 const SwiperPagination = ({ type, data, current }) => {
   return (
@@ -12,7 +12,7 @@ const SwiperPagination = ({ type, data, current }) => {
         `m-swiper-pagination-${type}`
       )}
     >
-      {_map(data, (v) => (
+      {_.map(data, (v) => (
         <Text
           key={v}
           className={classNames('m-swiper-pagination-bulletin', {

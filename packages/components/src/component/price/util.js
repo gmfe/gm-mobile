@@ -1,5 +1,5 @@
-import _isNil from 'lodash/isNil'
-import _isNaN from 'lodash/isNaN'
+import _ from 'lodash'
+
 import Big from 'big.js'
 
 const defaultOptions = {
@@ -11,11 +11,11 @@ const defaultOptions = {
 // value 必须可以转为 Number 类型 否则返回 ''
 // 调用方可通过 Big.DP 设置位数 Big.RM 设置舍入方式
 const formatNumber = (value, options) => {
-  if (_isNil(value)) {
+  if (_.isNil(value)) {
     return ''
   }
   const number = Number(value)
-  if (_isNaN(number)) {
+  if (_.isNaN(number)) {
     return ''
   }
   const mergedOptions = { ...defaultOptions, ...options }

@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import classNames from 'classnames'
-import _findIndex from 'lodash/findIndex'
-import _map from 'lodash/map'
-import _noop from 'lodash/noop'
+import _ from 'lodash'
 
 import Week from './week'
 import Month from './month'
@@ -41,7 +39,7 @@ const BaseCalendar = (props) => {
   const handleSelectMulDay = (m) => {
     let _selected = selected.slice()
     // 点击相同日期，取消该日期选择
-    const dayIndex = _findIndex(
+    const dayIndex = _.findIndex(
       _selected,
       (date) => +moment(date).startOf('day') === +moment(m).startOf('day')
     )
@@ -143,7 +141,7 @@ const BaseCalendar = (props) => {
     <View {...rest} className={classNames('m-calendar', className)}>
       <Week />
       <ScrollIntoView className='m-calendar-content' targetId={targetId}>
-        {_map(computedMonthList(), (currentMoment, cmi) => {
+        {_.map(computedMonthList(), (currentMoment, cmi) => {
           return (
             <Month
               key={cmi}
@@ -182,7 +180,7 @@ BaseCalendar.propTypes = {
 }
 
 BaseCalendar.defaultProps = {
-  onSelect: _noop,
+  onSelect: _.noop,
 }
 
 export default BaseCalendar

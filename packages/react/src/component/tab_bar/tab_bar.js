@@ -1,6 +1,6 @@
 import React from 'react'
-import _noop from 'lodash/noop'
-import _map from 'lodash/map'
+import _ from 'lodash'
+
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import Item from './item'
@@ -9,7 +9,7 @@ import { Flex } from '@gm-mobile/components'
 const Tabbar = ({ configs, selected, onTabChange, className, ...rest }) => {
   return (
     <Flex {...rest} className={classNames('m-tabbar', className)}>
-      {_map(configs, (config, index) => (
+      {_.map(configs, (config, index) => (
         <Item
           key={index}
           config={config}
@@ -34,7 +34,7 @@ Tabbar.propTypes = {
 }
 
 Tabbar.defaultProps = {
-  onTabChange: _noop,
+  onTabChange: _.noop,
 }
 
 export default Tabbar

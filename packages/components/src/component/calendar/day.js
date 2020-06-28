@@ -3,9 +3,7 @@ import React from 'react'
 import moment from 'moment'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import _find from 'lodash/find'
-import _noop from 'lodash/noop'
-
+import _ from 'lodash'
 import Flex from '../flex'
 import View from '../view'
 import { TYPE } from './util'
@@ -52,7 +50,7 @@ const Day = ({
 
     let s = null
     if (type === TYPE.MULTIPLE) {
-      s = _find(selected, (date) => +moment(date).startOf('day') === v)
+      s = _.find(selected, (date) => +moment(date).startOf('day') === v)
     } else {
       // 单选直接判断
       s = +moment(selected[0]).startOf('day') === v
@@ -103,7 +101,7 @@ const Day = ({
     <Flex
       justifyCenter
       alignCenter
-      onClick={disabled ? _noop : handleClick}
+      onClick={disabled ? _.noop : handleClick}
       className={cn}
       id={id}
     >

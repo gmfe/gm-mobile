@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import _findIndex from 'lodash/findIndex'
+import _ from 'lodash'
 import View from '../../view'
 
 class PickerColumn extends React.Component {
@@ -38,7 +38,7 @@ class PickerColumn extends React.Component {
 
   computeTranslate = (props) => {
     const { options, value, itemHeight, columnHeight } = props
-    let selectedIndex = _findIndex(options, (option) => option.value === value)
+    let selectedIndex = _.findIndex(options, (option) => option.value === value)
     if (selectedIndex < 0) {
       // throw new ReferenceError();
       console.warn(

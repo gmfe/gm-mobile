@@ -1,5 +1,6 @@
 import React from 'react'
-import _noop from 'lodash/noop'
+import _ from 'lodash'
+
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import Flex from '../flex'
@@ -59,7 +60,7 @@ Item.propTypes = {
 }
 
 Item.defaultProps = {
-  onClick: _noop,
+  onClick: _.noop,
 }
 
 export default Item

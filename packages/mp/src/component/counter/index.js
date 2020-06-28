@@ -3,15 +3,14 @@ import React, { useState, useEffect } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { View, Toast, Input } from '@gm-mobile/components'
-import _isNaN from 'lodash/isNaN'
-import _includes from 'lodash/includes'
+import _ from 'lodash'
 import Big from 'big.js'
 
 const text2Number = (value) => {
   if (value === '') {
     return 0
   }
-  return _isNaN(parseFloat(value)) ? '' : parseFloat(value)
+  return _.isNaN(parseFloat(value)) ? '' : parseFloat(value)
 }
 
 const handleErrorMsg = ({ value, min, max, precision }) => {
@@ -83,7 +82,7 @@ const Counter = ({
     }
 
     let v = text2Number(selfValue)
-    const _precision = _includes(selfValue, '.') ? precision : 0
+    const _precision = _.includes(selfValue, '.') ? precision : 0
     if (type === 'minus') {
       if (minusDisabled) return
       // 小于0时展示为0不变

@@ -10,7 +10,7 @@ import {
   Text,
 } from '@gm-mobile/components'
 import { getLocale } from '@gm-mobile/locales'
-import _find from 'lodash/find'
+import _ from 'lodash'
 import moment from 'moment'
 import PropTypes from 'prop-types'
 
@@ -39,7 +39,7 @@ const TabDateSelect = ({
   const [beginDate, setBeginDate] = useState(begin)
   const [endDate, setEndDate] = useState(end)
   const [activeTab, setActiveTab] = useState(
-    _find(tabs, (tab) => tab.value === selectedTab) || tabs[0]
+    _.find(tabs, (tab) => tab.value === selectedTab) || tabs[0]
   )
 
   const handleSaveSelect = () => {
@@ -58,7 +58,7 @@ const TabDateSelect = ({
       data: serviceTimeList,
       value: activeTab.selectedServiceTime.value,
     }).then((value) => {
-      const serviceTime = _find(serviceTimeList, (item) => item.value === value)
+      const serviceTime = _.find(serviceTimeList, (item) => item.value === value)
       const { min, max } = getServiceTimeRange(serviceTime)
       if (
         moment(beginDate) < moment(min) ||
@@ -80,7 +80,7 @@ const TabDateSelect = ({
 
   const handleTabChange = (value) => {
     if (value !== activeTab.value) {
-      const tab = _find(tabs, (tab) => tab.value === value)
+      const tab = _.find(tabs, (tab) => tab.value === value)
       setActiveTab(tab)
       setBeginDate(tab.max)
       setEndDate(tab.max)

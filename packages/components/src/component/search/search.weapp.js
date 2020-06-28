@@ -2,7 +2,7 @@ import { getLocale } from '@gm-mobile/locales'
 import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import _noop from 'lodash/noop'
+import _ from 'lodash'
 import Input from '../input/input'
 import View from '../view'
 import Button from '../button'
@@ -92,8 +92,8 @@ Search.propTypes = {
 }
 
 Search.defaultProps = {
-  onSearch: _noop,
-  onCancel: _noop,
+  onSearch: _.noop,
+  onCancel: _.noop,
   placeholder: getLocale('搜索'),
   type: 'search',
 }

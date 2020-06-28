@@ -1,6 +1,6 @@
 import React from 'react'
-import _map from 'lodash/map'
-import _noop from 'lodash/noop'
+import _ from 'lodash'
+
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import Item from './item'
@@ -19,7 +19,7 @@ const FlowBtnTabbar = ({
   return (
     <Flex {...rest} className={classNames('m-tabbar', className)}>
       <Flex flex className='m-margin-right-20'>
-        {_map(leftConfigs, (config, index) => (
+        {_.map(leftConfigs, (config, index) => (
           <Item
             key={index}
             config={config}
@@ -38,7 +38,7 @@ const FlowBtnTabbar = ({
         {FlowButton}
       </Flex>
       <Flex flex className='m-margin-left-20'>
-        {_map(rightConfigs, (config, index) => (
+        {_.map(rightConfigs, (config, index) => (
           <Item
             key={index}
             config={config}
@@ -70,8 +70,8 @@ FlowBtnTabbar.propTypes = {
 }
 
 FlowBtnTabbar.defaultProps = {
-  onTabChange: _noop,
-  onFlowButtonClick: _noop,
+  onTabChange: _.noop,
+  onFlowButtonClick: _.noop,
 }
 
 export default FlowBtnTabbar

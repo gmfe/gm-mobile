@@ -1,10 +1,9 @@
 import { getLocale } from '@gm-mobile/locales'
 import React from 'react'
 import classNames from 'classnames'
-import _map from 'lodash/map'
+import _ from 'lodash'
+
 import moment from 'moment'
-import _range from 'lodash/range'
-import _groupBy from 'lodash/groupBy'
 import PropTypes from 'prop-types'
 
 import Flex from '../flex'
@@ -39,9 +38,9 @@ const Month = ({
       moment(currentMoment).day(0).add(35, 'day').month() !==
       currentMoment.month()
     ) {
-      return _groupBy(_range(35), (v) => parseInt(v / 7))
+      return _.groupBy(_.range(35), (v) => parseInt(v / 7))
     }
-    return _groupBy(_range(42), (v) => parseInt(v / 7))
+    return _.groupBy(_.range(42), (v) => parseInt(v / 7))
   }
 
   const lastDay = moment(currentMoment).day(0).add(-1, 'day')
@@ -59,9 +58,9 @@ const Month = ({
         {getLocale('年')}
         {months[month]}
       </Flex>
-      {_map(dayGroup, (v, i) => (
+      {_.map(dayGroup, (v, i) => (
         <Flex none key={i} className='m-padding-top-10'>
-          {_map(v, (value, index) => {
+          {_.map(v, (value, index) => {
             const day = moment(lastDay.add(1, 'day'))
 
             return (

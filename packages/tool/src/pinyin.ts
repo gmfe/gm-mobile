@@ -1,4 +1,4 @@
-import _forEach from 'lodash/forEach'
+import _ from 'lodash'
 
 let instance: (source: string, style?: string) => string
 const pinyin = (source: string, style?: string): string => {
@@ -715,7 +715,7 @@ const pinyin = (source: string, style?: string): string => {
   const _pinyin = (source: string, style?: string): string => {
     let foundPinyin = ''
 
-    _forEach(source, (target) => {
+    _.forEach(source, (target) => {
       foundPinyin += convert(target, style)
     })
 

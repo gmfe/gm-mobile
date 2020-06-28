@@ -1,5 +1,5 @@
-import _map from 'lodash/map'
-import _pickBy from 'lodash/pickBy'
+import _ from 'lodash'
+
 import { getLocale } from '@gm-mobile/locales'
 import axios from 'taro-axios'
 
@@ -10,7 +10,7 @@ const isProduction = process.env.NODE_ENV === 'production'
 
 function param(obj) {
   // encodeURIComponent
-  return _map(obj, function (v, k) {
+  return _.map(obj, function (v, k) {
     return [encodeURIComponent(k), '=', encodeURIComponent(v)].join('')
   })
     .join('&')
@@ -27,7 +27,7 @@ function processPostData(data) {
 
     // 过滤null  undefined 只Object 类型。
     // 会修改，所以 ...
-    data = _pickBy({ ...data }, (value) => {
+    data = _.pickBy({ ...data }, (value) => {
       return value !== null && value !== undefined
     })
 

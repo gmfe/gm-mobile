@@ -1,7 +1,6 @@
 import is from './is'
-import _sum from 'lodash/sum'
-import _map from 'lodash/map'
+import _ from 'lodash'
 
 export default function (text: string): number {
-  return _sum(_map(text, (v) => (is.isChinese(v) ? 2 : 1)))
+  return _.sum(_.map(text, (v) => (is.isChinese(v) ? 2 : 1)))
 }

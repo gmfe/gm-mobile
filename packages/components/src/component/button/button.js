@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import _noop from 'lodash/noop'
+import _ from 'lodash'
+
 import classNames from 'classnames'
 import Loading from '../loading'
 import BaseButton from './base'
@@ -89,7 +90,7 @@ Button.propTypes = {
 Button.defaultProps = {
   type: 'default',
   htmlType: 'button',
-  onClick: _noop,
+  onClick: _.noop,
 }
 
 export default Button
