@@ -1,6 +1,6 @@
 {
   "name": "@gm-mobile/react",
-  "version": "2.0.0-alpha.15",
+  "version": "2.0.0-alpha.16",
   "description": "",
   "author": "liyatang <liyatang@qq.com>",
   "homepage": "https://github.com/gmfe/gm-mobile#readme",
@@ -27,8 +27,8 @@
     "react-dom": "^16.13.1"
   },
   "dependencies": {
-    "@gm-mobile/components": "^2.0.0-alpha.15",
-    "@gm-mobile/locales": "^2.0.0-alpha.15",
-    "@gm-mobile/tool": "^2.0.0-alpha.15"
+    "@gm-mobile/components": "^2.0.0-alpha.16",
+    "@gm-mobile/locales": "^2.0.0-alpha.16",
+    "@gm-mobile/tool": "^2.0.0-alpha.16"
   }
 }
