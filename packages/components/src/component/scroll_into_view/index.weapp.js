@@ -14,8 +14,6 @@ const ScrollIntoView = ({ children, targetId, ...rest }) => {
 }
 
 ScrollIntoView.propTypes = {
-  /** 小程序 scrollView 参数设置，不传默认纵向 */
-  options: PropTypes.object,
   /** 滚动目标id */
   targetId: PropTypes.string.isRequired,
   style: PropTypes.object,
