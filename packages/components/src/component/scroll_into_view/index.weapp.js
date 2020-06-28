@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 import { ScrollView } from '@tarojs/components'
 
 // 先 默认纵向滚动
-const ScrollIntoView = ({ children, targetId, options, ...rest }) => {
-  const _options = options || { scrollY: true, scrollWithAnimation: true }
+const ScrollIntoView = ({ children, targetId, ...rest }) => {
+  const options = { scrollY: true, scrollWithAnimation: true }
 
   return (
-    <ScrollView {..._options} {...rest} scrollIntoView={targetId}>
+    <ScrollView {...options} {...rest} scrollIntoView={targetId}>
       {children}
     </ScrollView>
   )
