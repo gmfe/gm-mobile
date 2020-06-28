@@ -1,9 +1,12 @@
 import _map from 'lodash/map'
 import _pickBy from 'lodash/pickBy'
 import { getLocale } from '@gm-mobile/locales'
+import axios from 'taro-axios'
 
-const requestUrl = '//trace.guanmai.cn/api/logs/request/'
-const requestEnvUrl = '//trace.guanmai.cn/api/logs/environment/'
+const requestUrl = 'https://trace.guanmai.cn/api/logs/request/'
+const requestEnvUrl = 'https://trace.guanmai.cn/api/logs/environment/'
+
+const isProduction = process.env.NODE_ENV === 'production'
 
 function param(obj) {
   // encodeURIComponent
@@ -51,4 +54,30 @@ function getErrorMessage(error) {
   return message
 }
 
-export { requestUrl, requestEnvUrl, processPostData, getErrorMessage }
+function doFetch(url, data, options) {
+  options = options || {}
+  try {
+    axios({
+      url: `${url}?v=${Math.random()}`,
+      method: 'post',
+      data: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Guanmai-Request-Id': `${data.requestId}`,
+        ...options.headers,
+      },
+      ...options,
+    })
+  } catch (err) {
+    console.warn(err)
+  }
+}
+
+export {
+  requestUrl,
+  requestEnvUrl,
+  processPostData,
+  getErrorMessage,
+  doFetch,
+  isProduction,
+}

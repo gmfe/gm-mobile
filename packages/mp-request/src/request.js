@@ -1,7 +1,6 @@
 import axios from 'taro-axios'
 import { getLocale } from '@gm-mobile/locales'
 import _isArray from 'lodash/isArray'
-import { UUID } from '@gm-mobile/tool'
 import { processPostData, getErrorMessage } from './util'
 
 const instance = axios.create({
@@ -11,7 +10,6 @@ const instance = axios.create({
     'Content-Type': 'application/x-www-form-urlencoded',
     'X-Guanmai-Timeout': '30000',
     'X-Guanmai-Success-Code': '0',
-    'X-Guanmai-Request-Id': UUID.generate(),
   },
 })
 
