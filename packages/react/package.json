@@ -22,7 +22,6 @@
   },
   "peerDependencies": {
     "@gm-common/number": "^2.2.9",
-    "@gm-common/tool": "^2.2.9",
     "classnames": "^2.2.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"

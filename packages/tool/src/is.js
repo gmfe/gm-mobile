@@ -13,11 +13,23 @@ const chinese = (value) => {
   return /[\u4E00-\u9FA5]/.test(value)
 }
 
+let isiOS = null
+const iOS = () => {
+  if (isiOS === null) {
+    isiOS = !!window.navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)
+  }
+  return isiOS
+}
+
+const weixin = () => /MicroMessenger/i.test(navigator.userAgent)
+
 const is = {
   web,
   weApp,
   promise,
   chinese,
+  iOS,
+  weixin,
 }
 
 export default is

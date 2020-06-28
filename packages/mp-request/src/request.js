@@ -1,7 +1,7 @@
 import axios from 'taro-axios'
 import { getLocale } from '@gm-mobile/locales'
 import _isArray from 'lodash/isArray'
-import { UUID } from '@gm-common/tool'
+import { UUID } from '@gm-mobile/tool'
 import { processPostData, getErrorMessage } from './util'
 
 const instance = axios.create({

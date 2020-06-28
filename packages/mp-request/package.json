@@ -20,8 +20,8 @@
     "url": "https://github.com/gmfe/gm-mobile/issues"
   },
   "dependencies": {
-    "@gm-common/tool": "^2.4.0",
-    "@gm-mobile/locales": "^2.0.0-alpha.15"
+    "@gm-mobile/locales": "^2.0.0-alpha.15",
+    "@gm-mobile/tool": "^2.0.0-alpha.15"
   },
   "peerDependencies": {
     "lodash": "^4.17.15",
