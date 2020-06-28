@@ -8,9 +8,9 @@ import classNames from 'classnames'
 const SwiperImg = ({ data, options, className, ...rest }) => {
   const ref = useRef(null)
   const key = useRef(null)
+  key.current = Date.now()
 
   useEffect(() => {
-    key.current = Date.now()
     // eslint-disable-next-line no-new
     new Swiper(findDOMNode(ref.current), {
       loop: true,
