@@ -58,7 +58,10 @@ const TabDateSelect = ({
       data: serviceTimeList,
       value: activeTab.selectedServiceTime.value,
     }).then((value) => {
-      const serviceTime = _.find(serviceTimeList, (item) => item.value === value)
+      const serviceTime = _.find(
+        serviceTimeList,
+        (item) => item.value === value
+      )
       const { min, max } = getServiceTimeRange(serviceTime)
       if (
         moment(beginDate) < moment(min) ||

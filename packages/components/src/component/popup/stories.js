@@ -16,7 +16,7 @@ export const normal = () => {
                 <View>adsfas</View>
               </View>
             ),
-            onHide: Popup.hide
+            onHide: Popup.hide,
           })
         }}
       >
@@ -27,7 +27,7 @@ export const normal = () => {
           Popup.render({
             right: true,
             children: <View>lala</View>,
-            onHide: Popup.hide
+            onHide: Popup.hide,
           })
         }}
       >
@@ -38,7 +38,7 @@ export const normal = () => {
           Popup.render({
             bottom: true,
             children: <View>lala</View>,
-            onHide: Popup.hide
+            onHide: Popup.hide,
           })
         }}
       >
@@ -57,7 +57,7 @@ export const normal = () => {
             },
             children: <View>center</View>,
             disabledHeader: true,
-            onHide: Popup.hide
+            onHide: Popup.hide,
           })
         }}
       >
@@ -75,7 +75,7 @@ export const title = () => {
           title: '啦啦啦',
           bottom: true,
           children: <View>lala</View>,
-          onHide: Popup.hide
+          onHide: Popup.hide,
         })
       }}
     >

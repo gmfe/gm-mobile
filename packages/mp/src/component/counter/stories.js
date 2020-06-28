@@ -6,7 +6,7 @@ import { Page, View } from '@gm-mobile/components'
 const reducer = (state, action) => {
   return {
     ...state,
-    [action.type]: action.value
+    [action.type]: action.value,
   }
 }
 

@@ -26,7 +26,7 @@ export const mutiOrder = () => {
   const handleClick = () => {
     MutiOrderReceiveTimePicker.render({
       order: JSON.parse(orderStr),
-      title: '标题'
+      title: '标题',
     }).then(
       (values) => {
         console.log('resolve', values)
