@@ -7,7 +7,7 @@ const ScrollIntoView = ({ children, targetId, ...rest }) => {
   useEffect(() => {
     const d = document.getElementById(targetId)
     if (d) {
-      d.scrollIntoView()
+      d.scrollIntoViewIfNeeded(false)
     }
   }, [targetId])
 
