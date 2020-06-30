@@ -23,9 +23,9 @@ const config = {
       include: [path.resolve(__dirname, '../packages')],
     },
     webpackChain(chain, webpack) {
-      // chain
-      //   .plugin('analyzer')
-      //   .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin, [])
+      chain
+        .plugin('analyzer')
+        .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin, [])
 
       chain
         .plugin('ignorePlugin')
