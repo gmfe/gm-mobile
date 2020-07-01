@@ -71,7 +71,7 @@ const Popup = ({
       })}
     >
       {!disabledMask && <Mask opacity={opacity} onClick={onHide} />}
-      <div {...rest} className={cn} style={s}>
+      <Flex column {...rest} className={cn} style={s}>
         {!disabledHeader && (
           <Flex justifyBetween alignCenter className='m-popup-top'>
             <Flex flex column className='m-padding-left-15 m-text-16'>
@@ -86,7 +86,7 @@ const Popup = ({
           </Flex>
         )}
         <div className='m-popup-content m-flex-flex'>{children}</div>
-      </div>
+      </Flex>
     </div>
   )
 }
