@@ -16,14 +16,14 @@ const CSSVariable = {
   TYPE,
   theme: LocalStorage.get(KEY) || 'default',
   initTheme() {
-    document.body.classList.add(`m-theme-${this.theme}`)
+    document.documentElement.classList.add(`m-theme-${this.theme}`)
   },
   setTheme(theme) {
     if (!_.values(TYPE).includes(theme)) {
       return
     }
 
-    const cl = document.body.classList
+    const cl = document.documentElement.classList
     const old = this.theme
 
     cl.remove(`m-theme-${old}`)
@@ -32,10 +32,10 @@ const CSSVariable = {
     this.theme = theme
     LocalStorage.set(KEY, theme)
   },
-  // 只获取 body 上面的 css variable
+  // 只获取 html 上面的 css variable
   getValue(name) {
     if (!computedStyle) {
-      computedStyle = window.getComputedStyle(document.body)
+      computedStyle = window.getComputedStyle(document.documentElement)
     }
     // 有空格，要 trim
     return computedStyle.getPropertyValue(name).trim()
