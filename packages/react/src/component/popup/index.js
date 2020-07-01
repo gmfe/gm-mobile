@@ -71,7 +71,7 @@ const Popup = ({
       })}
     >
       {!disabledMask && <Mask opacity={opacity} onClick={onHide} />}
-      <Flex column {...rest} className={cn} style={s}>
+      <div {...rest} className={cn} style={s}>
         {!disabledHeader && (
           <Flex justifyBetween alignCenter className='m-popup-top'>
             <Flex flex column className='m-padding-left-15 m-text-16'>
@@ -86,7 +86,7 @@ const Popup = ({
           </Flex>
         )}
         <div className='m-popup-content m-flex-flex'>{children}</div>
-      </Flex>
+      </div>
     </div>
   )
 }
@@ -115,7 +115,7 @@ Popup.propTypes = {
 
 Popup.defaultProps = {
   // 动画有卡顿现象，先禁用
-  disabledAnimate: true,
+  disabledAnimate: false,
   onHide: _.noop,
 }
 
