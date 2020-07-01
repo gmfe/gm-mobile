@@ -6,7 +6,7 @@ import LayoutRoot from '../layout_root'
 import _ from 'lodash'
 import { devWarnForHook } from '@gm-common/tool'
 import Flex from '../flex'
-import Button from '../button'
+// import Button from '../button'
 import SVGCloseCircle from '../../../svg/close-circle.svg'
 
 const PopupStatics = {
@@ -71,22 +71,26 @@ const Popup = ({
       })}
     >
       {!disabledMask && <Mask opacity={opacity} onClick={onHide} />}
-      <Flex column {...rest} className={cn} style={s}>
+      <div {...rest} className={cn} style={s}>
         {!disabledHeader && (
           <Flex justifyBetween alignCenter className='m-popup-top'>
             <Flex flex column className='m-padding-left-15 m-text-16'>
               {title}
             </Flex>
 
-            <Button type='link' onClick={onHide}>
+            <Flex alignCenter onClick={onHide}>
+              <SVGCloseCircle className='m-text-20 m-text-placeholder' />
+            </Flex>
+
+            {/* <Button type='link' onClick={onHide}>
               <Flex alignCenter>
                 <SVGCloseCircle className='m-text-20 m-text-placeholder' />
               </Flex>
-            </Button>
+            </Button> */}
           </Flex>
         )}
         <div className='m-popup-content m-flex-flex'>{children}</div>
-      </Flex>
+      </div>
     </div>
   )
 }
