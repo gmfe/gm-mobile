@@ -73,13 +73,17 @@ const Popup = ({
       {!disabledMask && <Mask opacity={opacity} onClick={onHide} />}
       <div {...rest} className={cn} style={s}>
         {!disabledHeader && (
-          <Flex justifyBetween alignCenter className='m-popup-top'>
+          <Flex
+            justifyBetween
+            alignCenter
+            className='m-popup-top m-padding-tb-10'
+          >
             <Flex flex column className='m-padding-left-15 m-text-16'>
               {title}
             </Flex>
 
             <Flex alignCenter onClick={onHide}>
-              <SVGCloseCircle className='m-text-20 m-text-placeholder' />
+              <SVGCloseCircle className='m-text-20 m-text-placeholder m-padding-lr-15' />
             </Flex>
 
             {/* <Button type='link' onClick={onHide}>
