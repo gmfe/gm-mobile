@@ -2,7 +2,7 @@ import React from 'react'
 import { observable } from 'mobx'
 import _ from 'lodash'
 
-import Page from '../page'
+import { Page } from '@gm-mobile/components'
 import LetterIndex from './letter_index'
 import LetterIndexMultiple from './letter_index_multiple'
 

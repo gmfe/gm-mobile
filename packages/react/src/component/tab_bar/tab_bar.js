@@ -1,9 +1,10 @@
 import React from 'react'
 import _ from 'lodash'
+
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import Flex from '../flex'
 import Item from './item'
+import { Flex } from '@gm-mobile/components'
 
 const Tabbar = ({ configs, selected, onTabChange, className, ...rest }) => {
   return (

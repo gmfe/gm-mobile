@@ -1,0 +1,31 @@
+{
+  "name": "@gm-mobile/mp-request",
+  "version": "2.0.0-alpha.17",
+  "description": "> TODO: description",
+  "author": "zhongsink <zhongink@gmail.com>",
+  "homepage": "https://github.com/gmfe/gm-mobile#readme",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gmfe/gm-mobile.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/gmfe/gm-mobile/issues"
+  },
+  "dependencies": {
+    "@gm-mobile/locales": "^2.0.0-alpha.17",
+    "@gm-mobile/tool": "^2.0.0-alpha.17"
+  },
+  "peerDependencies": {
+    "lodash": "^4.17.15",
+    "taro-axios": "^1.1.1",
+    "weapp-cookie": "^1.4.6"
+  }
+}

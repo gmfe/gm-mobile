@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import classNames from 'classnames'
 import _ from 'lodash'
-import Flex from '../flex/index'
+import { Flex } from '@gm-mobile/components'
 import SliderFlag from '../slider_flag'
 import timeSync from './timeSync'
 

@@ -1,9 +1,10 @@
 import React from 'react'
-import Flex from '../flex'
-import classNames from 'classnames'
-import PropTypes from 'prop-types'
-import Badge from '../badge'
 import _ from 'lodash'
+
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import Flex from '../flex'
+import { Badge, View } from '@gm-mobile/components'
 
 const Item = ({ config, index, selected, onClick }) => {
   const { icon, activeIcon, name, badge, showBadge } = config
@@ -12,14 +13,21 @@ const Item = ({ config, index, selected, onClick }) => {
 
   const tab = () => (
     <Flex column justifyCenter alignCenter>
-      <div>
+      <View>
         {((isActive && !activeIcon) || (!isActive && icon)) &&
-          React.cloneElement(icon, { className: 'm-tabbar-nav-icon' })}
+          React.cloneElement(icon, {
+            className: classNames('m-tabbar-nav-icon', icon.props.className),
+          })}
         {isActive &&
           activeIcon &&
-          React.cloneElement(activeIcon, { className: 'm-tabbar-nav-icon' })}
-      </div>
-      <div className='m-tabbar-nav-name'>{name}</div>
+          React.cloneElement(activeIcon, {
+            className: classNames(
+              'm-tabbar-nav-icon',
+              activeIcon.props.className
+            ),
+          })}
+      </View>
+      <View className='m-tabbar-nav-name'>{name}</View>
     </Flex>
   )
 

@@ -2,7 +2,7 @@ import React, { useImperativeHandle, useRef } from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 import classNames from 'classnames'
-import Flex from '../flex'
+import { Flex } from '@gm-mobile/components'
 
 const Nav = React.forwardRef(
   ({ data, selected, onSelect, horizontal, className, ...rest }, ref) => {

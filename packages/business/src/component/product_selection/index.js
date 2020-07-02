@@ -5,11 +5,13 @@ import _ from 'lodash'
 
 import Bottom from './bottom'
 import SelectedList from './selected_list'
+import { PropTypes } from 'mobx-react'
 
 const ProductSelection = ({
   data,
   selected,
   onSelect,
+  onConfirm,
   className,
   style,
   ...rest
@@ -20,13 +22,14 @@ const ProductSelection = ({
 
   const handleSelect = (selected) => {
     setSelectedItem(selected)
+    onSelect(selected)
   }
 
   const handleConfirm = () => {
     if (isPopup) {
       setIsPopup(false)
     }
-    onSelect(selectedItem)
+    onConfirm(selectedItem)
   }
 
   const handleSelectedShow = () => {
@@ -73,6 +76,7 @@ const ProductSelection = ({
 
 ProductSelection.propTypes = {
   ...LetterIndexMultiple.propTypes,
+  onConfirm: PropTypes.func,
 }
 
 export default ProductSelection

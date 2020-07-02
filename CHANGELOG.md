@@ -1,4 +1,28 @@
-# 较 react-mgm 的变动
+# 2.x
+
+增加 小程序
+
+## breaking change
+
+Toast 废弃 info danger 方法
+
+Cell 废弃 href，跳转自主处理
+
+原ScrollIntoView -> FormScrollIntoView
+
+新增通用 ScrollIntoView
+
+Calendar 废弃 apiScrollToSelected, 默认自动滚到选择处
+
+MutiOrderReceiveTimePicker 更正 -> MultiOrderReceiveTimePicker
+
+package service_time 更正 -> service-time
+
+# 1.x
+
+## change
+
+较 react-mgm 的变动
 
 新增 Button
 

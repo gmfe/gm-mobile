@@ -5,8 +5,6 @@ import PropTypes from 'prop-types'
 import { Flex, Badge } from '@gm-mobile/react'
 import _ from 'lodash'
 
-import SVGCart from '../../../svg/cart.svg'
-
 const Bottom = ({ selected, onSelectedShow, onConfirm }) => {
   const disabled = selected.length === 0
   return (
@@ -25,7 +23,7 @@ const Bottom = ({ selected, onSelectedShow, onConfirm }) => {
           className='m-letter-multiple-list-bottom-icon'
           onClick={disabled ? _.noop : onSelectedShow}
         >
-          <SVGCart />
+          <i className='m-font m-font-cart' />
         </span>
         {getLocale('共选择')}
         {selected.length}

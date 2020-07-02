@@ -2,9 +2,8 @@ import React from 'react'
 import _ from 'lodash'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import Flex from '../flex'
+import { Flex, Text } from '@gm-mobile/components'
 import Item from './item'
-import SvgPlus from '../../../svg/plus.svg'
 
 const FlowBtnTabbar = ({
   leftConfigs,
@@ -35,7 +34,7 @@ const FlowBtnTabbar = ({
         onClick={onFlowButtonClick}
         className='m-tabbar-flow-wrapper m-bg-white-active-with'
       >
-        {FlowButton || <SvgPlus />}
+        {FlowButton || <Text className='m-font m-font-plus' />}
       </Flex>
       <Flex flex className='m-margin-left-20'>
         {_.map(rightConfigs, (config, index) => (
