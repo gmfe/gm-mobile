@@ -33,8 +33,8 @@ const SwiperImg = ({ data, options, style, height, ...rest }) => {
         onChange={handleChange}
         style={{ height: '100%' }}
       >
-        {_.map(data, ({ onClick, img }) => (
-          <SwiperItem key={img} itemId={img}>
+        {_.map(data, ({ onClick, img }, index) => (
+          <SwiperItem key={index} itemId={img}>
             <View
               style={{ width: '100%', height: '100%' }}
               onClick={() => {
