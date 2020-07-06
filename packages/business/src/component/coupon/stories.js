@@ -39,7 +39,11 @@ export const normal = () => (
             <span>2020-06-06</span>
           </Flex>
         }
-        labels={['仅限xxxxxx商品使用']}
+        labels={[
+          '仅限xxxxxx商品使用',
+          '商品使用',
+          '仅限xxxxxx商品使用',
+        ]}
         title='分类优惠券B'
         hasUseInfo
         couponAmount={4}
