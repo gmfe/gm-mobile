@@ -12,13 +12,11 @@ const Label = (props) => {
   const { labels } = props
 
   return (
-    <Flex>
+    <Flex wrap className='m-coupon-right-header-labels'>
       {_.map(labels, (labelItem, index) => {
         return (
           <span
-            className={classNames('m-coupon-right-header-label', {
-              'm-margin-left-5': index !== 0,
-            })}
+            className='m-coupon-right-header-label m-margin-left-5 m-margin-top-5'
             key={index + labelItem}
           >
             {labelItem}
