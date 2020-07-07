@@ -48,6 +48,8 @@ class Price extends React.Component {
       isFenUnit,
       keepZero,
       feeType,
+      className,
+      style,
     } = this.props
 
     const current = getCurrentFromType(feeType)
@@ -56,7 +58,7 @@ class Price extends React.Component {
     }
 
     return (
-      <View>
+      <View className={className} style={style}>
         {value < 0 ? '-' : ''}
         <Text
           style={{
@@ -89,6 +91,8 @@ Price.propTypes = {
   isFenUnit: PropTypes.bool,
   /** 多币种 */
   feeType: PropTypes.string,
+  className: PropTypes.string,
+  style: PropTypes.object,
 }
 
 Price.defaultProps = {
