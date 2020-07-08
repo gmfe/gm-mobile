@@ -18,11 +18,23 @@ const SwiperCategory = ({ options, children, style, height, ...rest }) => {
   }
 
   const s = Object.assign(style || {})
+  const translate = (index) => {
+    return options?.vertical ? `0px, ${index * 100}%` : `${index * 100}%, 0px`
+  }
   return (
     <View {...rest} style={{ ...s, height }}>
       <Swiper {...options} onChange={handleChange} style={{ height: '100%' }}>
         {React.Children.map(children, (v, i) => (
-          <SwiperItem key={i} itemId={data[i]}>
+          <SwiperItem
+            key={i}
+            itemId={data[i]}
+            style={{
+              transform: `translate(${translate(i)}) translateZ(0px)`,
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+            }}
+          >
             <View>{v}</View>
           </SwiperItem>
         ))}

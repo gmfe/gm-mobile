@@ -24,6 +24,9 @@ const SwiperImg = ({ data, options, style, height, ...rest }) => {
   if (height) {
     s.height = height
   }
+  const translate = (index) => {
+    return options?.vertical ? `0px, ${index * 100}%` : `${index * 100}%, 0px`
+  }
 
   return (
     <View {...rest} style={s}>
@@ -33,8 +36,17 @@ const SwiperImg = ({ data, options, style, height, ...rest }) => {
         onChange={handleChange}
         style={{ height: '100%' }}
       >
-        {_.map(data, ({ onClick, img }) => (
-          <SwiperItem key={img} itemId={img}>
+        {_.map(data, ({ onClick, img }, index) => (
+          <SwiperItem
+            key={img}
+            itemId={img}
+            style={{
+              transform: `translate(${translate(index)}) translateZ(0px)`,
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+            }}
+          >
             <View
               style={{ width: '100%', height: '100%' }}
               onClick={() => {
