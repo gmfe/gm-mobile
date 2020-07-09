@@ -51,6 +51,7 @@ const Search = ({
           confirmType='search'
           value={value}
           focus={autoFocus}
+          autoFocus={autoFocus}
           onChange={handleChange}
           placeholder={placeholder}
           onConfirm={handleSearch}
