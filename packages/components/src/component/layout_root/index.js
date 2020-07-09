@@ -67,15 +67,17 @@ LayoutRoot.setComponent = (type, com) => {
   // 说明：针对toast在切换页面后没有正常消失做清除处理
   if (type === TYPE.TOAST && com === null) {
     _.forIn(cbMap, (cb) => {
-      cb(type, com)
+      if (cb) {
+        cb(type, com)
+      }
     })
-  }
-
-  const path = getPath()
-  if (cbMap[path]) {
-    cbMap[path](type, com)
   } else {
-    console.warn('LayoutRoot is uninitialized')
+    const path = getPath()
+    if (cbMap[path]) {
+      cbMap[path](type, com)
+    } else {
+      console.warn('LayoutRoot is uninitialized')
+    }
   }
 }
 
