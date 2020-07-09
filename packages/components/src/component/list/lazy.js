@@ -58,8 +58,4 @@ Lazy.propTypes = {
   delay: PropTypes.number,
 }
 
-Lazy.defaultProps = {
-  delay: 500,
-}
-
 export default Lazy

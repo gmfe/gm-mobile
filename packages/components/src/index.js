@@ -37,6 +37,7 @@ import {
 } from './component/picker'
 import Panel from './component/panel'
 import ScrollIntoView from './component/scroll_into_view'
+import { Lazy, LazyList } from './component/list'
 
 export {
   Button,
@@ -86,4 +87,6 @@ export {
   Price,
   Panel,
   ScrollIntoView,
+  Lazy,
+  LazyList,
 }
