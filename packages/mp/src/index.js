@@ -9,6 +9,7 @@ import PageMP from './component/page'
 import MapMP from './component/map'
 import StatusBarMP from './component/status_bar'
 import SafeHeaderMP from './component/safe_header'
+import ReleaseListMP from './component/release_list'
 
 import {
   // 不提供，请用 PageMP
@@ -115,4 +116,5 @@ export {
   MapMP,
   StatusBarMP,
   SafeHeaderMP,
+  ReleaseListMP,
 }

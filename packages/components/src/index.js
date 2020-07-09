@@ -36,6 +36,7 @@ import {
   SelectPicker,
 } from './component/picker'
 import Panel from './component/panel'
+import ScrollIntoView from './component/scroll_into_view'
 
 export {
   Button,
@@ -84,4 +85,5 @@ export {
   RepeatTimes,
   Price,
   Panel,
+  ScrollIntoView,
 }
