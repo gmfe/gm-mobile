@@ -7,7 +7,7 @@ import React, {
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
-import { View } from '@gm-mobile/components'
+import View from '../view'
 import { ScrollView } from '@tarojs/components'
 import { Events } from '@tarojs/taro'
 
@@ -63,13 +63,20 @@ Item.propTypes = {
   visibleItemCount: PropTypes.number.isRequired,
 }
 
-Item.defaultProps = {
-  delay: 500,
-}
-
-const ReleaseList = forwardRef(
+const LazyList = forwardRef(
   (
-    { data, renderItem, itemHeight, itemKey, style, height, onScroll, ...rest },
+    {
+      data,
+      renderItem,
+      itemHeight,
+      itemKey,
+      style,
+      height,
+      onScroll,
+      delay,
+      visibleItemCount,
+      ...rest
+    },
     ref
   ) => {
     const [scrollTargetId, setScrollTargetId] = useState('')
@@ -93,7 +100,7 @@ const ReleaseList = forwardRef(
         index: countOffset,
       })
 
-      onScroll(currentItemKey)
+      onScroll({ currentItemKey, scrollTop })
     }
 
     const s = Object.assign({ height }, style || {})
@@ -115,7 +122,8 @@ const ReleaseList = forwardRef(
               itemHeight={itemHeight}
               itemId={`m-lazy-item-${key}`}
               itemIndex={index}
-              visibleItemCount={height / itemHeight + 1}
+              visibleItemCount={visibleItemCount || height / itemHeight + 1}
+              delay={delay}
             >
               {renderItem({ item, index })}
             </Item>
@@ -126,8 +134,8 @@ const ReleaseList = forwardRef(
   }
 )
 
-ReleaseList.Item = Item
-ReleaseList.propTypes = {
+LazyList.Item = Item
+LazyList.propTypes = {
   data: PropTypes.array.isRequired,
   /** ({item, index}) */
   renderItem: PropTypes.func.isRequired,
@@ -137,17 +145,22 @@ ReleaseList.propTypes = {
   itemKey: PropTypes.func,
   /** 列表高度, 计算当前需要渲染数据量 */
   height: PropTypes.number.isRequired,
-  /** 滚动事件, 参数为 当前滚可视区域内第一项数据的itemKey */
+  /** 滚动事件, 参数为 当前滚可视区域内第一项数据的itemKey及scrollTop,{ currentItemKey, scrollTop } */
   onScroll: PropTypes.func,
+  /** 设置滚动throttle delay 参数 */
+  delay: PropTypes.number,
+  /** 自定义一次渲染数据量 */
+  visibleItemCount: PropTypes.number,
   className: PropTypes.string,
   style: PropTypes.object,
 }
 
-ReleaseList.defaultProps = {
+LazyList.defaultProps = {
   itemKey: ({ item, index }) => {
     return index
   },
   onScroll: _.noop,
+  delay: 100,
 }
 
-export default React.memo(ReleaseList)
+export default React.memo(LazyList)
