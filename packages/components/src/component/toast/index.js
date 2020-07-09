@@ -58,7 +58,7 @@ const ToastStatics = {
 const Toast = ({ children, type }) => {
   let icon = null
   if (type === 'loading') {
-    icon = <Loading />
+    icon = <Loading _isToast />
     children = children || getLocale('加载中...')
   } else if (type === 'success') {
     icon = <Text className='m-font m-font-success-circle' />
