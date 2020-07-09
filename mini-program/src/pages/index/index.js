@@ -9,50 +9,14 @@ import {
   ActionSheet,
 } from '../../../../packages/mp/src'
 
+const storiesList = []
+
 // 不知道为啥，要写到 component
 const mpReq = require.context(
   '../../../../packages/mp/src/component/',
   true,
   /stories\.js$/
 )
-const comReq = require.context(
-  '../../../../packages/components/src/component/',
-  true,
-  /stories\.js$/
-)
-const qrCodeReq = require.context(
-  '../../../../packages/qrcode/',
-  true,
-  /stories\.js$/
-)
-
-const businessComReq = require.context(
-  '../../../../packages/business-components/src/component/',
-  true,
-  /stories\.js$/
-)
-
-const cookieReq = require.context(
-  '../../../../packages/cookie/',
-  true,
-  /stories\.js$/
-)
-
-const serviceTimeReq = require.context(
-  '../../../../packages/service-time/src/component',
-  true,
-  /stories\.js$/
-)
-
-const storiesList = []
-
-_.each(comReq.keys(), (key) => {
-  storiesList.push({
-    module: comReq(key),
-    packageName: 'components',
-    path: key,
-  })
-})
 
 _.each(mpReq.keys(), (key) => {
   storiesList.push({
@@ -62,6 +26,26 @@ _.each(mpReq.keys(), (key) => {
   })
 })
 
+const comReq = require.context(
+  '../../../../packages/components/src/component/',
+  true,
+  /stories\.js$/
+)
+
+_.each(comReq.keys(), (key) => {
+  storiesList.push({
+    module: comReq(key),
+    packageName: 'components',
+    path: key,
+  })
+})
+
+const qrCodeReq = require.context(
+  '../../../../packages/qrcode/',
+  true,
+  /stories\.js$/
+)
+
 _.each(qrCodeReq.keys(), (key) => {
   storiesList.push({
     module: qrCodeReq(key),
@@ -69,6 +53,12 @@ _.each(qrCodeReq.keys(), (key) => {
     path: key,
   })
 })
+
+const businessComReq = require.context(
+  '../../../../packages/business-components/src/component/',
+  true,
+  /stories\.js$/
+)
 
 _.each(businessComReq.keys(), (key) => {
   storiesList.push({
@@ -78,6 +68,12 @@ _.each(businessComReq.keys(), (key) => {
   })
 })
 
+const cookieReq = require.context(
+  '../../../../packages/cookie/',
+  true,
+  /stories\.js$/
+)
+
 _.each(cookieReq.keys(), (key) => {
   storiesList.push({
     module: cookieReq(key),
@@ -85,6 +81,12 @@ _.each(cookieReq.keys(), (key) => {
     path: key,
   })
 })
+
+const serviceTimeReq = require.context(
+  '../../../../packages/service-time/src/component',
+  true,
+  /stories\.js$/
+)
 
 _.each(serviceTimeReq.keys(), (key) => {
   storiesList.push({
