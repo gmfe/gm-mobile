@@ -5,13 +5,13 @@ import { is } from '@gm-mobile/tool'
 import getPath from './get_path'
 
 const TYPE = {
-  INNERLAYER: 'innerLayer',
+  INNER_LAYER: 'innerLayer',
   POPUP: 'popup',
   PICKER: 'picker',
   KEYBOARD: 'keyboard', // 和 picker 平级
   MODAL: 'modal',
   TOAST: 'toast',
-  NPROGRESS: 'nprogress',
+  N_PROGRESS: 'nProgress',
 }
 
 const cbMap = {}
@@ -29,7 +29,7 @@ class LayoutRoot extends React.Component {
       keyboard: null,
       modal: null,
       toast: null,
-      nprogress: null,
+      nProgress: null,
     }
   }
 
@@ -55,7 +55,7 @@ class LayoutRoot extends React.Component {
         {this.state.keyboard}
         {this.state.modal}
         {this.state.toast}
-        {this.state.nprogress}
+        {this.state.nProgress}
       </View>
     )
   }
@@ -95,7 +95,7 @@ LayoutRoot.renderWith = (type, Component, options) => {
   if (!is.weApp()) {
     const popstate = (e) => {
       const typeStack = [
-        TYPE.INNERLAYER,
+        TYPE.INNER_LAYER,
         TYPE.POPUP,
         TYPE.PICKER,
         TYPE.KEYBOARD,
