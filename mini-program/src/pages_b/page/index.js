@@ -1,6 +1,15 @@
 import React from 'react'
 import { Button, PageMP, Toast, View } from '../../../../packages/mp/src'
 import { useDidShow, usePullDownRefresh, useReachBottom } from '@tarojs/taro'
+import { useRequest } from 'ahooks'
+
+function getSome() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve('getSome data')
+    }, 2000)
+  })
+}
 
 const Index = () => {
   usePullDownRefresh(() => {
@@ -20,8 +29,10 @@ const Index = () => {
     Toast.tip('show')
   })
 
+  const { data, error, loading, run } = useRequest(getSome)
+
   return (
-    <PageMP>
+    <PageMP loading={loading} error={error}>
       <Button
         mini
         onClick={() => {
@@ -52,6 +63,16 @@ const Index = () => {
       >
         stopPullDownRefresh
       </Button>
+      <View>
+        {data}
+        <Button
+          onClick={() => {
+            run()
+          }}
+        >
+          重新加载页面数据
+        </Button>
+      </View>
       <View style={{ height: '100vh' }} />
       <View>onReachBottom</View>
       <View>onReachBottom</View>
