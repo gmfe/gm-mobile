@@ -133,18 +133,29 @@ export default class Index extends Component {
                     access
                     key={twoKey}
                     onClick={() => {
-                      ActionSheet.render({
-                        data: _.map(twoValue, (v, k) => ({
-                          value: v,
-                          text: k,
-                        })),
-                      }).then((value) => {
+                      const data = _.map(twoValue, (v, k) => ({
+                        value: v,
+                        text: k,
+                      }))
+
+                      // 只有一个就直接进去
+                      if (data.length === 1) {
                         wx.navigateTo({
                           url: `/pages_a/stories/index?${queryString.stringify(
-                            value
+                            data[0].value
                           )}`,
                         })
-                      })
+                      } else {
+                        ActionSheet.render({
+                          data,
+                        }).then((value) => {
+                          wx.navigateTo({
+                            url: `/pages_a/stories/index?${queryString.stringify(
+                              value
+                            )}`,
+                          })
+                        })
+                      }
                     }}
                   >
                     <Text>{twoKey}</Text>
