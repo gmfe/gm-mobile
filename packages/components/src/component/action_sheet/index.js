@@ -8,7 +8,7 @@ import Popup from '../popup'
 import View from '../view'
 
 const ActionSheetStatics = {
-  render({ title, data }) {
+  render({ title, data, renderItem }) {
     return new Promise((resolve, reject) => {
       Popup.render({
         disabledHeader: true,
@@ -16,6 +16,7 @@ const ActionSheetStatics = {
         bottom: true,
         children: (
           <ActionSheet
+            renderItem={renderItem}
             data={data}
             onSelect={(value) => {
               ActionSheetStatics.hide()
@@ -45,7 +46,7 @@ const ActionSheetStatics = {
   },
 }
 
-const ActionSheet = ({ data, onSelect, onCancel }) => {
+const ActionSheet = ({ data, renderItem, onSelect, onCancel }) => {
   const handleSelected = (option) => {
     onSelect(option.value)
   }
@@ -53,13 +54,13 @@ const ActionSheet = ({ data, onSelect, onCancel }) => {
   return (
     <View className='m-text-center m-bg-back'>
       <View className='m-bg-white'>
-        {_.map(data, (option) => (
+        {_.map(data, (option, index) => (
           <View
             key={option.value}
             className='m-padding-tb-15 m-border-1px-top-after m-bg-white-active-with'
             onClick={() => handleSelected(option)}
           >
-            {option.text}
+            {renderItem(option, index)}
           </View>
         ))}
       </View>
@@ -84,6 +85,12 @@ ActionSheet.propTypes = {
   onSelect: PropTypes.func.isRequired,
   /** 取消 */
   onCancel: PropTypes.func.isRequired,
+  /** 自定义选项样式 */
+  renderItem: PropTypes.func,
+}
+
+ActionSheet.defaultProps = {
+  renderItem: (option) => option.text,
 }
 
 export default ActionSheet
