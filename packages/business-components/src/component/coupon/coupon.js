@@ -9,11 +9,11 @@ const Label = (props) => {
   const { labels } = props
 
   return (
-    <Flex wrap>
+    <Flex wrap className='m-coupon-right-header-labels'>
       {_.map(labels, (labelItem, index) => {
         return (
           <Text
-            className='m-coupon-right-header-label m-margin-right-5 m-margin-bottom-5'
+            className='m-coupon-right-header-label m-margin-left-5 m-margin-top-5'
             key={index + labelItem}
           >
             {labelItem}
@@ -105,7 +105,12 @@ const Coupon = (props) => {
           >
             <Text className='m-coupon-right-header-title'>{title}</Text>
             {labels && labels.length > 0 && <Label labels={labels} />}
-            <Flex alignCenter none className='m-coupon-right-header-date'>
+            <Flex
+              none
+              alignCenter
+              justifyBetween
+              className='m-coupon-right-header-date'
+            >
               {dateInfo || ''}
               {couponAmount !== undefined
                 ? `${getLocale('可领')}${couponAmount}${getLocale('张')}`
