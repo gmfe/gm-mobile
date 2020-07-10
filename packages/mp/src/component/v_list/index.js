@@ -1,3 +1,3 @@
-import { LazyList as vListMP } from '@gm-mobile/components'
+import { LazyList as VListMP } from '@gm-mobile/components'
 
-export default vListMP
+export default VListMP
