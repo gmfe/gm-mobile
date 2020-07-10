@@ -114,9 +114,9 @@ const Day = ({
         {value.date()}
         {showDateLabel && type === TYPE.RANGE && (
           <View className='m-calendar-day-label'>
-            {v === bv && v === ev && getLocale('单天')}
-            {v === bv && v !== ev && getLocale('开始')}
-            {v !== bv && v === ev && getLocale('结束')}
+            {v === bv && v === ev && <View>{getLocale('单天')}</View>}
+            {v === bv && v !== ev && <View>{getLocale('开始')}</View>}
+            {v !== bv && v === ev && <View>{getLocale('结束')}</View>}
           </View>
         )}
       </Flex>

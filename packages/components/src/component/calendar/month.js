@@ -1,6 +1,5 @@
 import { getLocale } from '@gm-mobile/locales'
 import React from 'react'
-import classNames from 'classnames'
 import _ from 'lodash'
 
 import moment from 'moment'
@@ -48,11 +47,7 @@ const Month = ({
   const dayGroup = getDayRowOfMonth(currentMoment)
 
   return (
-    <Flex
-      column
-      none
-      className={classNames({ 'm-margin-top-10': index !== 0 })}
-    >
+    <Flex column none>
       <Flex flex className='m-calendar-month-head m-bg-back m-text-bold'>
         {currentMoment.year()}
         {getLocale('年')}

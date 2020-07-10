@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import _ from 'lodash'
-import ReleaseList from '.'
+import VListMP from '.'
 import { View, Button, Page } from '@gm-mobile/components'
 
 const Item = ({ data }) => {
@@ -17,7 +17,7 @@ const Item = ({ data }) => {
   )
 }
 
-export const releaseList = () => {
+export const vList = () => {
   const ref = useRef(null)
 
   return (
@@ -29,7 +29,7 @@ export const releaseList = () => {
       >
         scroll to 29
       </Button>
-      <ReleaseList
+      <VListMP
         ref={ref}
         height={500}
         data={_.range(30)}
@@ -43,5 +43,5 @@ export const releaseList = () => {
 }
 
 export default {
-  title: '布局/ReleaseList',
+  title: '布局/VList',
 }
