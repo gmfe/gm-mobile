@@ -1,6 +1,8 @@
-import React from 'react'
-import List from './'
+import React, { useRef } from 'react'
+import Nav from './'
 import { observable } from 'mobx'
+import View from '../view'
+import Button from '../button'
 
 const data = [
   {
@@ -44,28 +46,40 @@ const store = observable({
   },
 })
 
-export const normal = () => {
+export const Normal = () => {
+  const ref = useRef(null)
+
   return (
-    <div style={{ width: '100px', height: '300px' }}>
-      <List
-        data={data}
-        selected={store.value}
-        onSelect={(value) => store.setValue(value)}
-      />
-    </div>
+    <View>
+      <View style={{ width: '100px', height: '200px' }}>
+        <Nav
+          ref={ref}
+          data={data}
+          selected={store.value}
+          onSelect={(value) => store.setValue(value)}
+        />
+      </View>
+      <Button
+        onClick={() => {
+          ref.current.apiDoScrollToValue(8)
+        }}
+      >
+        滚动到 安心蔬菜
+      </Button>
+    </View>
   )
 }
 
 export const horizontal = () => {
   return (
-    <div style={{ width: '300px' }}>
-      <List
+    <View style={{ width: '300px' }}>
+      <Nav
         horizontal
         data={data}
         selected={store.value}
         onSelect={(value) => store.setValue(value)}
       />
-    </div>
+    </View>
   )
 }
 

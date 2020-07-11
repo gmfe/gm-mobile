@@ -58,6 +58,7 @@ import {
   SelectPicker,
   RepeatTimes,
   Price,
+  Nav,
 } from '@gm-mobile/components'
 
 export {
@@ -108,6 +109,7 @@ export {
   RepeatTimes,
   LocalStorage,
   Price,
+  Nav,
   PageMP,
   ImageMP,
   CounterMP,
