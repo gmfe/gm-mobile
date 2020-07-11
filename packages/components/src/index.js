@@ -38,7 +38,7 @@ import {
 import Panel from './component/panel'
 import ScrollIntoView from './component/scroll_into_view'
 import Nav from './component/nav'
-import { Lazy, LazyList } from './component/list'
+import VList from './component/v_list'
 
 export {
   Button,
@@ -89,6 +89,5 @@ export {
   Panel,
   ScrollIntoView,
   Nav,
-  Lazy,
-  LazyList,
+  VList,
 }

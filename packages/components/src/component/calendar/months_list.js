@@ -2,9 +2,8 @@ import React, { useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import _ from 'lodash'
-import { is } from '@gm-mobile/tool'
 
-import { LazyList } from '../list'
+import VList from '../v_list'
 import Month from './month'
 import { TYPE } from './util'
 
@@ -15,6 +14,7 @@ const MonthsList = ({
   onSelectDay,
   getDisabled,
   showDateLabel,
+  height,
 }) => {
   const refList = useRef(null)
 
@@ -33,24 +33,13 @@ const MonthsList = ({
     }
   }, [])
 
-  let listOptions = {
-    itemMinHeight: () => 235,
-    style: { height: 'calc(100% - 40px)' },
-  }
-
-  // itemHeight 目前只支持定高
-  if (is.weApp()) {
-    listOptions = {
-      height: 400,
-      itemHeight: 265,
-    }
-  }
-
   return (
-    <LazyList
+    <VList
       ref={refList}
       className='m-calendar-content'
       data={monthsList}
+      height={height}
+      itemHeight={265}
       renderItem={({ item, index }) => {
         return (
           <Month
@@ -65,13 +54,13 @@ const MonthsList = ({
           />
         )
       }}
-      {...listOptions}
     />
   )
 }
 
 MonthsList.propTypes = {
   monthsList: PropTypes.array.isRequired,
+  height: PropTypes.number.isRequired,
   selected: PropTypes.array,
   type: PropTypes.string,
   onSelectDay: PropTypes.func,
