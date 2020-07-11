@@ -70,15 +70,27 @@ export const Normal = () => {
   )
 }
 
-export const horizontal = () => {
+export const Horizontal = () => {
+  const ref = useRef(null)
+
   return (
-    <View style={{ width: '300px' }}>
-      <Nav
-        horizontal
-        data={data}
-        selected={store.value}
-        onSelect={(value) => store.setValue(value)}
-      />
+    <View>
+      <View style={{ width: '300px' }}>
+        <Nav
+          ref={ref}
+          horizontal
+          data={data}
+          selected={store.value}
+          onSelect={(value) => store.setValue(value)}
+        />
+      </View>
+      <Button
+        onClick={() => {
+          ref.current.apiDoScrollToValue(8)
+        }}
+      >
+        滚动到 安心蔬菜
+      </Button>
     </View>
   )
 }
