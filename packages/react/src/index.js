@@ -16,7 +16,6 @@ import { Lazy, LazyList } from './component/lazy'
 import PullUpDown from './component/pull_up_down'
 import List from './component/list'
 import Scroll from './component/scroll'
-import Nav from './component/nav'
 
 // 浮层
 import NProgress from './component/nprogress'
@@ -72,6 +71,7 @@ import {
   RepeatTimes,
   Price,
   Panel,
+  Nav,
 } from '@gm-mobile/components'
 
 const Alert = Dialog.alert

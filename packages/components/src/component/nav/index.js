@@ -1,25 +1,24 @@
-import React, { useImperativeHandle, useRef } from 'react'
+import React, { useImperativeHandle, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 import classNames from 'classnames'
-import { Flex } from '@gm-mobile/components'
+import Flex from '../flex'
+import View from '../view'
+import ScrollIntoView from '../scroll_into_view'
 
 const Nav = React.forwardRef(
   ({ data, selected, onSelect, horizontal, className, ...rest }, ref) => {
-    const refList = useRef(null)
+    const refId = useRef((Math.random() + '').slice(2))
+    const [targetId, setTargetId] = useState('')
 
     useImperativeHandle(ref, () => ({
       apiDoScrollToValue: (value) => {
-        const d = refList.current.querySelector(`[data-value="${value}"]`)
-        if (d) {
-          d.scrollIntoView()
-        }
+        setTargetId(`m-nav-item-${refId.current}-${value}`)
       },
     }))
 
     return (
-      <div
-        ref={refList}
+      <View
         {...rest}
         className={classNames(
           'm-nav',
@@ -29,7 +28,12 @@ const Nav = React.forwardRef(
           className
         )}
       >
-        <Flex column={!horizontal} className='m-nav-list'>
+        <ScrollIntoView
+          className={classNames('m-nav-list m-flex', {
+            'm-flex-column': !horizontal,
+          })}
+          targetId={targetId}
+        >
           {_.map(data, (v) => (
             <Flex
               none
@@ -38,7 +42,7 @@ const Nav = React.forwardRef(
               className={classNames('m-nav-item', {
                 active: selected === v.value,
               })}
-              data-value={v.value}
+              id={`m-nav-item-${refId.current}-${v.value}`}
               onClick={() => {
                 if (selected !== v.value) {
                   onSelect(v.value)
@@ -48,8 +52,8 @@ const Nav = React.forwardRef(
               {v.text}
             </Flex>
           ))}
-        </Flex>
-      </div>
+        </ScrollIntoView>
+      </View>
     )
   }
 )
