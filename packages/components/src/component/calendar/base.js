@@ -20,6 +20,7 @@ const BaseCalendar = (props) => {
     max,
     disabledDate,
     showDateLabel,
+    height,
     className,
     style,
     ...rest
@@ -127,13 +128,16 @@ const BaseCalendar = (props) => {
     return arr
   }
 
+  const s = Object.assign({ height }, style || {})
+
   return (
-    <View {...rest} className={classNames('m-calendar', className)}>
+    <View {...rest} className={classNames('m-calendar', className)} style={s}>
       <Week />
       <MonthsList
         monthsList={computedMonthList()}
         selected={selected}
         type={type}
+        height={height - 40}
         onSelectDay={handleSelectDay}
         getDisabled={getDisabled}
         showDateLabel={showDateLabel}
@@ -157,12 +161,15 @@ BaseCalendar.propTypes = {
   showDateLabel: PropTypes.bool,
   /** 自定义不可选日期 */
   disabledDate: PropTypes.func,
+  /** 定义日历高度，默认400 */
+  height: PropTypes.number,
   className: PropTypes.string,
   style: PropTypes.object,
 }
 
 BaseCalendar.defaultProps = {
   onSelect: _.noop,
+  height: 400,
 }
 
 export default BaseCalendar

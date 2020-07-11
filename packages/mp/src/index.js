@@ -9,7 +9,6 @@ import PageMP from './component/page'
 import MapMP from './component/map'
 import StatusBarMP from './component/status_bar'
 import SafeHeaderMP from './component/safe_header'
-import VListMP from './component/v_list'
 
 import {
   // 不提供，请用 PageMP
@@ -59,6 +58,7 @@ import {
   RepeatTimes,
   Price,
   Nav,
+  VList as VListMP,
 } from '@gm-mobile/components'
 
 export {

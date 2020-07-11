@@ -54,7 +54,11 @@ const Month = ({
         {months[month]}
       </Flex>
       {_.map(dayGroup, (v, i) => (
-        <Flex none key={i} className='m-padding-top-10'>
+        <Flex
+          none
+          key={i}
+          style={{ padding: _.size(dayGroup) > 5 ? '5px 0' : '9px 0' }}
+        >
           {_.map(v, (value, index) => {
             const day = moment(lastDay.add(1, 'day'))
 
