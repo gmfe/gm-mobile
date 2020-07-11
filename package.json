@@ -89,7 +89,7 @@
     "sortablejs": "^1.10.2",
     "style-loader": "^1.2.1",
     "styled-components": "^5.0.1",
-    "stylelint": "^13.3.3",
+    "stylelint": "13.3.3",
     "stylelint-config-standard": "^20.0.0",
     "swiper": "^5.4.5",
     "taro-axios": "^1.1.1",
