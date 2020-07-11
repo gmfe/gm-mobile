@@ -29,29 +29,30 @@ const Nav = React.forwardRef(
         )}
       >
         <ScrollIntoView
-          className={classNames('m-nav-list m-flex', {
-            'm-flex-column': !horizontal,
-          })}
+          horizontal={horizontal}
+          className='m-nav-list'
           targetId={targetId}
         >
-          {_.map(data, (v) => (
-            <Flex
-              none
-              key={v.value}
-              alignCenter
-              className={classNames('m-nav-item', {
-                active: selected === v.value,
-              })}
-              id={`m-nav-item-${refId.current}-${v.value}`}
-              onClick={() => {
-                if (selected !== v.value) {
-                  onSelect(v.value)
-                }
-              }}
-            >
-              {v.text}
-            </Flex>
-          ))}
+          <Flex column={!horizontal}>
+            {_.map(data, (v) => (
+              <Flex
+                none
+                key={v.value}
+                alignCenter
+                className={classNames('m-nav-item', {
+                  active: selected === v.value,
+                })}
+                id={`m-nav-item-${refId.current}-${v.value}`}
+                onClick={() => {
+                  if (selected !== v.value) {
+                    onSelect(v.value)
+                  }
+                }}
+              >
+                {v.text}
+              </Flex>
+            ))}
+          </Flex>
         </ScrollIntoView>
       </View>
     )
