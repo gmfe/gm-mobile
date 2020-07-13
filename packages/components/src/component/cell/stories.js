@@ -136,6 +136,8 @@ const store = observable({
 export const form = () => {
   return (
     <View className='m-padding-tb-10'>
+      <View className='m-text-red m-text-20'>Input 记得加 form </View>
+
       <CellsForm title='啦啦啦啦'>
         <CellForm required>
           <Input
