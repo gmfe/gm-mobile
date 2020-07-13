@@ -14,10 +14,8 @@ function getSystemInfo() {
   }
 
   // eslint-disable-next-line
-  return wx.getSystemInfo().then((data) => {
-    info = data
-    return data
-  })
+  info = wx.getSystemInfoSync()
+  return Promise.resolve(info)
 }
 
 const UtilMP = {
