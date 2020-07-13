@@ -13,6 +13,7 @@ import { getLocale } from '@gm-mobile/locales'
 import _ from 'lodash'
 import moment from 'moment'
 import PropTypes from 'prop-types'
+import getScreenHeight from './get_screen_height'
 
 const getServiceTimeRange = (serviceTime) => {
   const maxSpanEnd =
@@ -90,6 +91,8 @@ const TabDateSelect = ({
     }
   }
 
+  const calendarHeight = getScreenHeight() * 0.9 - 180 // popup头部 + tab + 底部
+
   return (
     <Flex column className='m-tab-date-select'>
       <Tabs tabs={tabs} active={activeTab.value} onChange={handleTabChange} />
@@ -112,12 +115,13 @@ const TabDateSelect = ({
       )}
 
       <Flex flex column justifyBetween>
-        <View className='m-tab-date-select-calendar m-flex-flex m-bg-back'>
+        <View className='m-tab-date-select-calendar m-flex-flex m-bg-white'>
           <RangeCalendar
             begin={beginDate}
             end={endDate}
             min={activeTab.min}
             max={activeTab.max}
+            height={calendarHeight}
             showDateLabel
             onSelect={({ begin, end }) => {
               setBeginDate(begin)

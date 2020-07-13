@@ -38,42 +38,37 @@ export const info = () => (
 
 export const one = () => {
   return (
-    <View style={{ height: '400px' }}>
-      <Calendar
-        min={moment().add(-1, 'month').toDate()}
-        max={moment().toDate()}
-        selected={store.oneSelected}
-        onSelect={(selected) => store.setOneSelected(selected)}
-      />
-    </View>
+    <Calendar
+      min={moment().add(-10, 'month').toDate()}
+      max={moment().toDate()}
+      height={500}
+      selected={store.oneSelected}
+      onSelect={(selected) => store.setOneSelected(selected)}
+    />
   )
 }
 
 export const range = () => {
   return (
-    <View style={{ height: '400px' }}>
-      <RangeCalendar
-        min={moment().add(-1, 'month').toDate()}
-        max={moment().toDate()}
-        begin={store.begin}
-        end={store.end}
-        onSelect={(selected) => store.setRangeSelected(selected)}
-        showDateLabel
-      />
-    </View>
+    <RangeCalendar
+      min={moment().add(-1, 'month').toDate()}
+      max={moment().toDate()}
+      begin={store.begin}
+      end={store.end}
+      onSelect={(selected) => store.setRangeSelected(selected)}
+      showDateLabel
+    />
   )
 }
 
 export const multiple = () => {
   return (
-    <View style={{ height: '400px' }}>
-      <MultipleCalendar
-        min={moment().add(-1, 'month').toDate()}
-        max={moment().toDate()}
-        selected={store.mulSelected}
-        onSelect={(selected) => store.setMulSelected(selected)}
-      />
-    </View>
+    <MultipleCalendar
+      min={moment().add(-1, 'month').toDate()}
+      max={moment().toDate()}
+      selected={store.mulSelected}
+      onSelect={(selected) => store.setMulSelected(selected)}
+    />
   )
 }
 

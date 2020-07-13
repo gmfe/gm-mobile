@@ -1,7 +1,9 @@
 import React, { useRef, useState } from 'react'
 import _ from 'lodash'
-import VListMP from '.'
-import { View, Button, Page } from '@gm-mobile/components'
+import VList from '.'
+import View from '../view'
+import Button from '../button'
+import Page from '../page'
 
 const Item = ({ data }) => {
   const [show, setShow] = useState(false)
@@ -29,7 +31,7 @@ export const vList = () => {
       >
         scroll to 29
       </Button>
-      <VListMP
+      <VList
         ref={ref}
         height={500}
         data={_.range(30)}

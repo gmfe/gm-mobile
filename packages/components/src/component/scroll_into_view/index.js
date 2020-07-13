@@ -19,6 +19,8 @@ ScrollIntoView.propTypes = {
   targetId: PropTypes.string.isRequired,
   /** 小程序独有 */
   horizontal: PropTypes.bool,
+  /** 滚动事件 */
+  onScroll: PropTypes.func,
   className: PropTypes.string,
   style: PropTypes.object,
 }
