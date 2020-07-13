@@ -146,9 +146,6 @@ export const form = () => {
               store.setValue('username', e.target.value)
             }}
             placeholder='请输入用户名'
-            onClick={() => {
-              console.log('click')
-            }}
           />
         </CellForm>
         <CellForm required label='名字' labelWidth='100px'>
@@ -160,6 +157,12 @@ export const form = () => {
               store.setValue('name', e.target.value)
             }}
             placeholder='请输入名字'
+            onClick={() => {
+              console.log('click')
+            }}
+            onFocus={() => {
+              console.log('focus')
+            }}
           />
         </CellForm>
       </CellsForm>
