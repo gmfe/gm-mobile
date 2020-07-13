@@ -49,6 +49,12 @@ const config = {
           generateScopedName: '[name]__[local]___[hash:base64:5]',
         },
       },
+      'postcss-preset-env': {
+        enable: true,
+        config: {
+          stage: 0,
+        },
+      },
     },
   },
   h5: {
