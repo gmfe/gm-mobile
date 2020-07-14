@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import queryString from 'query-string'
 import _ from 'lodash'
 import {
@@ -122,52 +122,50 @@ _.each(storiesList, ({ module, packageName, path }) => {
   }
 })
 
-export default class Index extends Component {
-  render() {
-    return (
-      <PageMP>
-        {_.map(dataMap, (oneValue, oneKey) => {
-          return (
-            <Cells key={oneKey} title={oneKey}>
-              {_.map(oneValue, (twoValue, twoKey) => {
-                return (
-                  <Cell
-                    access
-                    key={twoKey}
-                    onClick={() => {
-                      const data = _.map(twoValue, (v, k) => ({
-                        value: v,
-                        text: k,
-                      }))
+const Index = () => (
+  <PageMP>
+    {_.map(dataMap, (oneValue, oneKey) => {
+      return (
+        <Cells key={oneKey} title={oneKey}>
+          {_.map(oneValue, (twoValue, twoKey) => {
+            return (
+              <Cell
+                access
+                key={twoKey}
+                onClick={() => {
+                  const data = _.map(twoValue, (v, k) => ({
+                    value: v,
+                    text: k,
+                  }))
 
-                      // 只有一个就直接进去
-                      if (data.length === 1) {
-                        wx.navigateTo({
-                          url: `/pages_a/stories/index?${queryString.stringify(
-                            data[0].value
-                          )}`,
-                        })
-                      } else {
-                        ActionSheet.render({
-                          data,
-                        }).then((value) => {
-                          wx.navigateTo({
-                            url: `/pages_a/stories/index?${queryString.stringify(
-                              value
-                            )}`,
-                          })
-                        })
-                      }
-                    }}
-                  >
-                    <Text>{twoKey}</Text>
-                  </Cell>
-                )
-              })}
-            </Cells>
-          )
-        })}
-      </PageMP>
-    )
-  }
-}
+                  // 只有一个就直接进去
+                  if (data.length === 1) {
+                    wx.navigateTo({
+                      url: `/pages_a/stories/index?${queryString.stringify(
+                        data[0].value
+                      )}`,
+                    })
+                  } else {
+                    ActionSheet.render({
+                      data,
+                    }).then((value) => {
+                      wx.navigateTo({
+                        url: `/pages_a/stories/index?${queryString.stringify(
+                          value
+                        )}`,
+                      })
+                    })
+                  }
+                }}
+              >
+                <Text>{twoKey}</Text>
+              </Cell>
+            )
+          })}
+        </Cells>
+      )
+    })}
+  </PageMP>
+)
+
+export default Index

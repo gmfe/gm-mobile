@@ -10,6 +10,8 @@ import MapMP from './component/map'
 import StatusBarMP from './component/status_bar'
 import SafeHeaderMP from './component/safe_header'
 
+import useFirstDidShow from './hook/use_first_did_show'
+
 import {
   // 不提供，请用 PageMP
   // LayoutRoot,
@@ -119,4 +121,5 @@ export {
   MapMP,
   StatusBarMP,
   SafeHeaderMP,
+  useFirstDidShow,
 }
