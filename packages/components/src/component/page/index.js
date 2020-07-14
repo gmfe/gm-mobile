@@ -78,7 +78,7 @@ const Page = ({
 Page.propTypes = {
   loading: PropTypes.bool,
   error: PropTypes.bool,
-  onReload: PropTypes.bool,
+  onReload: PropTypes.func,
   children: PropTypes.node,
   white: PropTypes.bool,
   header: PropTypes.node,
