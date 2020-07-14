@@ -4,7 +4,7 @@ import { View } from '@tarojs/components'
 import classNames from 'classnames'
 import UtilMP from '../../util'
 
-const SafeHeaderMP = ({ className, style, children, ...rest }) => {
+const SafeHeaderMP = React.memo(({ className, style, children, ...rest }) => {
   const [right, setRight] = useState(100)
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const SafeHeaderMP = ({ className, style, children, ...rest }) => {
       {children}
     </View>
   )
-}
+})
 
 SafeHeaderMP.propTypes = {
   className: PropTypes.string,

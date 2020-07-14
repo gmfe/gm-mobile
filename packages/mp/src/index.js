@@ -4,7 +4,7 @@ import {
   SwiperImg as SwiperImgMP,
   SwiperCategory as SwiperCategoryMP,
 } from './component/swiper'
-import LocalStorage from './component/storage'
+import LocalStorage from './storage'
 import PageMP from './component/page'
 import MapMP from './component/map'
 import StatusBarMP from './component/status_bar'
