@@ -8,13 +8,11 @@ const SafeHeaderMP = ({ className, style, children, ...rest }) => {
   const [right, setRight] = useState(100)
 
   useEffect(() => {
-    // eslint-disable-next-line
     const rect = UtilMP.getMenuButtonBoundingClientRect()
 
-    // eslint-disable-next-line
     UtilMP.getSystemInfo().then((info) => {
-      // 不一定能读到胶囊
-      rect.left && setRight(info.windowWidth - rect.left)
+      // 不一定能读到胶囊,或者胶囊占据整个宽
+      setRight(rect?.left ? info.windowWidth - rect.left : 0)
     })
   }, [])
 
