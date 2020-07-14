@@ -13,7 +13,8 @@ const SafeHeaderMP = ({ className, style, children, ...rest }) => {
 
     // eslint-disable-next-line
     UtilMP.getSystemInfo().then((info) => {
-      setRight(info.windowWidth - rect.left)
+      // 不一定能读到胶囊
+      rect.left && setRight(info.windowWidth - rect.left)
     })
   }, [])
 
