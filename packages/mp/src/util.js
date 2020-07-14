@@ -2,7 +2,7 @@ let rect = null
 function getMenuButtonBoundingClientRect() {
   if (!rect) {
     // eslint-disable-next-line
-    rect = wx.getMenuButtonBoundingClientRect()
+    rect = wx.getMenuButtonBoundingClientRect ? wx.getMenuButtonBoundingClientRect() : null
   }
   return rect
 }
