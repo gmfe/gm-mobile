@@ -58,7 +58,7 @@ import {
   RepeatTimes,
   Price,
   Nav,
-  VList as VListMP,
+  VList,
 } from '@gm-mobile/components'
 
 export {
@@ -110,6 +110,7 @@ export {
   LocalStorage,
   Price,
   Nav,
+  VList,
   PageMP,
   ImageMP,
   CounterMP,
@@ -118,5 +119,4 @@ export {
   MapMP,
   StatusBarMP,
   SafeHeaderMP,
-  VListMP,
 }

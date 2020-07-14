@@ -51,7 +51,7 @@ export const one = () => {
 export const range = () => {
   return (
     <RangeCalendar
-      min={moment().add(-1, 'month').toDate()}
+      min={moment().add(-10, 'month').toDate()}
       max={moment().toDate()}
       begin={store.begin}
       end={store.end}

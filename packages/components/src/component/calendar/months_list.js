@@ -40,6 +40,7 @@ const MonthsList = ({
       data={monthsList}
       height={height}
       itemHeight={265}
+      distance={0}
       renderItem={({ item, index }) => {
         return (
           <Month

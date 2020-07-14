@@ -96,7 +96,7 @@ const VList = forwardRef(
     // 保证唯一性
     const tag = useRef((Math.random() + '').slice(2))
     const SCROLL_EVENT = `${EVENT_TYPE.V_LIST_SCROLL}_${tag.current}`
-    const SCROLL_ITEM = `m-list-item-${tag.current}`
+    const SCROLL_ITEM = `m-v-list-item-${tag.current}`
 
     useImperativeHandle(ref, () => ({
       apiDoScrollToKey: (key) => {
@@ -157,7 +157,7 @@ const VList = forwardRef(
               itemHeight={itemHeight}
               itemId={`${SCROLL_ITEM}-${key}`}
               itemIndex={index}
-              distance={distance || itemHeight}
+              distance={distance}
               listHeight={height}
               scrollEventName={SCROLL_EVENT}
             >
@@ -198,6 +198,7 @@ VList.defaultProps = {
   },
   onScroll: _.noop,
   delay: 100,
+  distance: 100,
 }
 
 export default React.memo(VList)
