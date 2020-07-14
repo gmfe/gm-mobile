@@ -1,5 +1,11 @@
 import React from 'react'
-import { Button, PageMP, Toast, View } from '../../../../packages/mp/src'
+import {
+  Button,
+  PageMP,
+  Toast,
+  View,
+  useFirstDidShow,
+} from '../../../../packages/mp/src'
 import { useDidShow, usePullDownRefresh, useReachBottom } from '@tarojs/taro'
 import { useRequest } from 'ahooks'
 
@@ -27,6 +33,10 @@ const Index = () => {
 
   useDidShow(() => {
     Toast.tip('show')
+  })
+
+  useFirstDidShow(() => {
+    console.log('useFirstDidShow')
   })
 
   const { data, error, loading, run } = useRequest(getSome)
