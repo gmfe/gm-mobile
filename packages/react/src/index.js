@@ -24,7 +24,7 @@ import NProgress from './component/nprogress'
 import { LetterIndex, LetterIndexMultiple } from './component/letter_index'
 import CSSVariable from './css_variable'
 import Canvas from './component/canvas'
-import { LocalStorage, SessionStorage } from './component/storage'
+import { LocalStorage, SessionStorage } from './storage'
 
 import {
   Button,
