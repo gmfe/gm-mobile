@@ -29,7 +29,7 @@ export function traceRequestInterceptor(options, config) {
 
 function traceResponseInterceptor(options, response) {
   const json = response.data
-  const { url, headers, params, data } = response.config
+  const { url, headers, params, data, request } = response.config
   const requestId = headers['X-Guanmai-Request-Id']
 
   report(requestUrl + options.platform, {
@@ -40,7 +40,9 @@ function traceResponseInterceptor(options, response) {
     requestId,
     resCode: json.code,
     resMsg: json.msg,
+    status: request && request.status,
     resTime: new Date() + '',
+    cookie: headers && headers.Cookie,
     time: timeMap[requestId] ? Date.now() - timeMap[requestId] : '',
   })
 
