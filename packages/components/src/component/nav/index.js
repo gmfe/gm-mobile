@@ -1,4 +1,4 @@
-import React, { useImperativeHandle, useRef, useState } from 'react'
+import React, { useEffect, useImperativeHandle, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 import classNames from 'classnames'
@@ -10,6 +10,10 @@ const Nav = React.forwardRef(
   ({ data, selected, onSelect, horizontal, className, ...rest }, ref) => {
     const refId = useRef((Math.random() + '').slice(2))
     const [targetId, setTargetId] = useState('')
+
+    useEffect(() => {
+      setTargetId(`m-nav-item-${refId.current}-${selected}`)
+    }, [selected])
 
     useImperativeHandle(ref, () => ({
       apiDoScrollToValue: (value) => {
