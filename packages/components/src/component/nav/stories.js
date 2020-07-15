@@ -61,10 +61,11 @@ export const Normal = () => {
       </View>
       <Button
         onClick={() => {
-          ref.current.apiDoScrollToValue(8)
+          store.setValue(8)
+          // ref.current.apiDoScrollToValue(8)
         }}
       >
-        滚动到 安心蔬菜
+        选 安心蔬菜
       </Button>
     </View>
   )
@@ -86,10 +87,11 @@ export const Horizontal = () => {
       </View>
       <Button
         onClick={() => {
-          ref.current.apiDoScrollToValue(8)
+          store.setValue(8)
+          // ref.current.apiDoScrollToValue(8)
         }}
       >
-        滚动到 安心蔬菜
+        选 安心蔬菜
       </Button>
     </View>
   )
