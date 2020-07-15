@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import Flex from '../flex'
 import View from '../view'
 import Button from '../button'
+import Status from '../status'
 
 const Page = ({
   loading,
@@ -32,26 +33,13 @@ const Page = ({
         className
       )}
     >
-      {loading && (
-        <View style={{ marginTop: '40vh' }} className='m-text-center'>
-          正在加载...
-        </View>
-      )}
+      {loading && <Status type='loading' style={{ marginTop: '40vh' }} />}
       {error && (
-        <View style={{ marginTop: '40vh' }} className='m-text-center'>
-          加载失败
-          <View>
-            <Button
-              mini
-              type='primary'
-              onClick={() => {
-                onReload()
-              }}
-            >
-              重新加载
-            </Button>
-          </View>
-        </View>
+        <Status
+          type='error'
+          style={{ marginTop: '40vh' }}
+          onReload={onReload}
+        />
       )}
       {!loading && !error && (
         <>

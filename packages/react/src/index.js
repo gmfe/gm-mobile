@@ -72,6 +72,8 @@ import {
   Price,
   Panel,
   Nav,
+  VList,
+  Status,
 } from '@gm-mobile/components'
 
 const Alert = Dialog.alert
@@ -157,4 +159,6 @@ export {
   LocalStorage,
   SessionStorage,
   Canvas,
+  VList,
+  Status,
 }

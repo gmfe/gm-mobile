@@ -61,6 +61,7 @@ import {
   Price,
   Nav,
   VList,
+  Status,
 } from '@gm-mobile/components'
 
 export {
@@ -113,6 +114,7 @@ export {
   Price,
   Nav,
   VList,
+  Status,
   PageMP,
   ImageMP,
   CounterMP,
