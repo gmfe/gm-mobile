@@ -39,10 +39,16 @@ const Index = () => {
     console.log('useFirstDidShow')
   })
 
-  const { data, error, loading, run } = useRequest(getSome)
+  const { error, loading, run } = useRequest(getSome)
 
   return (
-    <PageMP loading={loading} error={error}>
+    <PageMP
+      loading={loading}
+      error={error}
+      onReload={() => {
+        run()
+      }}
+    >
       <Button
         mini
         onClick={() => {
@@ -73,16 +79,6 @@ const Index = () => {
       >
         stopPullDownRefresh
       </Button>
-      <View>
-        {data}
-        <Button
-          onClick={() => {
-            run()
-          }}
-        >
-          重新加载页面数据
-        </Button>
-      </View>
       <View style={{ height: '100vh' }} />
       <View>onReachBottom</View>
       <View>onReachBottom</View>

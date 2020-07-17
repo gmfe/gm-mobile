@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import Flex from '../flex'
 import View from '../view'
-import Button from '../button'
 import Status from '../status'
 
 const Page = ({
