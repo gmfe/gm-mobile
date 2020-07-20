@@ -8,6 +8,8 @@ import PickerStatics from './statics'
 import {
   getReceiveTimeParams,
   processStartEndValuesWithCycleList,
+  processReceiveTimeLimit,
+  getCycleList,
   cycleListToDayList,
   getFlag,
   getStartCycleList,
@@ -189,6 +191,25 @@ ReceiveTimePicker.render = (props) => {
 
 ReceiveTimePicker.hide = () => {
   PickerStatics.hide()
+}
+
+// 校验是否有周期时间
+ReceiveTimePicker.verifyReceiveTime = (order) => {
+  const { order_time_limit } = order
+
+  // 运营周期
+  const { receive_time_limit } = order.receive_time
+  const start_order = order_time_limit.start
+  const isLastCycle = moment().isBefore(moment(start_order, 'HH:mm'))
+  // 如果当前时间小于下单的开始和结束时间，则为上个周期
+  if (order_time_limit.e_span_time === 1 && isLastCycle) {
+    receive_time_limit.s_span_time--
+    receive_time_limit.e_span_time--
+  }
+  const receive_time_limit_2 = processReceiveTimeLimit(receive_time_limit)
+  const cycleList = getCycleList(receive_time_limit_2)
+
+  return cycleList.length !== 0
 }
 
 ReceiveTimePicker.propTypes = {
