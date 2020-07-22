@@ -62,7 +62,7 @@ export const Normal = () => {
       <Button
         onClick={() => {
           store.setValue(8)
-          // ref.current.apiDoScrollToValue(8)
+          ref.current.apiDoScrollToValue(8)
         }}
       >
         选 安心蔬菜
@@ -88,7 +88,7 @@ export const Horizontal = () => {
       <Button
         onClick={() => {
           store.setValue(8)
-          // ref.current.apiDoScrollToValue(8)
+          ref.current.apiDoScrollToValue(8)
         }}
       >
         选 安心蔬菜
