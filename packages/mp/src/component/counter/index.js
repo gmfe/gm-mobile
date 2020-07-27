@@ -64,7 +64,7 @@ const Counter = ({
   // 检验是否超出大小值限制
   const checkValue = (value, type) => {
     if (max && value > max) {
-      return value - 1
+      return max
     }
 
     if (min && value < min) {
