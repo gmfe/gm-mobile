@@ -49,6 +49,7 @@ const Counter = ({
   precision,
   adjustPosition,
   className,
+  closeCheck,
   ...rest
 }) => {
   const [selfValue, setSelfValue] = useState(value)
@@ -105,7 +106,7 @@ const Counter = ({
     const { value } = e.detail
 
     // 优化交互体验,0和空均代表不添加商品
-    if (value !== '') {
+    if (value !== '' && !closeCheck) {
       checkError(value)
     }
     setSelfValue(value)
@@ -168,6 +169,8 @@ Counter.propTypes = {
   precision: PropTypes.number,
   /** +/- 号回调，数字确认键盘及失焦回调 */
   onChange: PropTypes.func.isRequired,
+  /** 关闭键盘上下限校验 */
+  closeCheck: PropTypes.bool,
   /** 获取焦点, 微信版本 6.3.30, focus 属性设置无效 */
   focus: PropTypes.bool,
   /** 禁用状态 */

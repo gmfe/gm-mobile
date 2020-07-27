@@ -12,9 +12,10 @@ const reducer = (state, action) => {
 
 export const normal = () => {
   const [state, dispatch] = useReducer(reducer, {
-    one: '',
-    two: '',
-    three: '',
+    defaultValue: '',
+    closeCheckValue: '',
+    disableValue: '',
+    diyValue: '',
   })
 
   const handleCheckValue = ({ value, min, max }) => {
@@ -33,21 +34,33 @@ export const normal = () => {
       default形式
       <View className='m-padding-10'>
         <Counter
-          value={state.one}
+          value={state.defaultValue}
           min={3}
           max={100}
           onChange={(value) => {
-            dispatch({ type: 'one', value })
+            dispatch({ type: 'defaultValue', value })
+          }}
+        />
+      </View>
+      关闭键盘上下限校验
+      <View className='m-padding-10'>
+        <Counter
+          value={state.closeCheckValue}
+          min={3}
+          max={100}
+          closeCheck
+          onChange={(value) => {
+            dispatch({ type: 'closeCheckValue', value })
           }}
         />
       </View>
       disable
       <View className='m-padding-10'>
         <Counter
-          value={state.two}
+          value={state.disableValue}
           disabled
           onChange={(value) => {
-            dispatch({ type: 'two', value })
+            dispatch({ type: 'disableValue', value })
           }}
         />
       </View>
@@ -56,9 +69,9 @@ export const normal = () => {
         <Counter
           min={3}
           max={10}
-          value={state.three}
+          value={state.diyValue}
           onChange={(value) => {
-            dispatch({ type: 'three', value })
+            dispatch({ type: 'diyValue', value })
           }}
           getErrorMsg={handleCheckValue}
         />
