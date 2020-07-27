@@ -1,6 +1,6 @@
 {
   "name": "@gm-mobile/mp-request",
-  "version": "2.0.1-alpha.25",
+  "version": "2.0.2-alpha.0",
   "description": "> TODO: description",
   "author": "zhongsink <zhongink@gmail.com>",
   "homepage": "https://github.com/gmfe/gm-mobile#readme",
@@ -20,8 +20,8 @@
     "url": "https://github.com/gmfe/gm-mobile/issues"
   },
   "dependencies": {
-    "@gm-mobile/locales": "^2.0.1-alpha.25",
-    "@gm-mobile/tool": "^2.0.1-alpha.25"
+    "@gm-mobile/locales": "^2.0.2-alpha.0",
+    "@gm-mobile/tool": "^2.0.2-alpha.0"
   },
   "peerDependencies": {
     "lodash": "^4.17.15",
