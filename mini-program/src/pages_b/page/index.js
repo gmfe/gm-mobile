@@ -1,6 +1,21 @@
 import React from 'react'
-import { Button, PageMP, Toast, View } from '../../../../packages/mp/src'
+import {
+  Button,
+  PageMP,
+  Toast,
+  View,
+  useFirstDidShow,
+} from '../../../../packages/mp/src'
 import { useDidShow, usePullDownRefresh, useReachBottom } from '@tarojs/taro'
+import { useRequest } from 'ahooks'
+
+function getSome() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve('getSome data')
+    }, 2000)
+  })
+}
 
 const Index = () => {
   usePullDownRefresh(() => {
@@ -20,8 +35,20 @@ const Index = () => {
     Toast.tip('show')
   })
 
+  useFirstDidShow(() => {
+    console.log('useFirstDidShow')
+  })
+
+  const { error, loading, run } = useRequest(getSome)
+
   return (
-    <PageMP>
+    <PageMP
+      loading={loading}
+      error={error}
+      onReload={() => {
+        run()
+      }}
+    >
       <Button
         mini
         onClick={() => {

@@ -4,9 +4,13 @@ import {
   SwiperImg as SwiperImgMP,
   SwiperCategory as SwiperCategoryMP,
 } from './component/swiper'
-import LocalStorage from './component/storage'
+import LocalStorage from './storage'
 import PageMP from './component/page'
 import MapMP from './component/map'
+import StatusBarMP from './component/status_bar'
+import SafeHeaderMP from './component/safe_header'
+
+import useFirstDidShow from './hook/use_first_did_show'
 
 import {
   // 不提供，请用 PageMP
@@ -55,6 +59,9 @@ import {
   SelectPicker,
   RepeatTimes,
   Price,
+  Nav,
+  VList,
+  Status,
 } from '@gm-mobile/components'
 
 export {
@@ -105,10 +112,16 @@ export {
   RepeatTimes,
   LocalStorage,
   Price,
+  Nav,
+  VList,
+  Status,
   PageMP,
   ImageMP,
   CounterMP,
   SwiperImgMP,
   SwiperCategoryMP,
   MapMP,
+  StatusBarMP,
+  SafeHeaderMP,
+  useFirstDidShow,
 }

@@ -136,6 +136,8 @@ const store = observable({
 export const form = () => {
   return (
     <View className='m-padding-tb-10'>
+      <View className='m-text-red m-text-20'>Input 记得加 form </View>
+
       <CellsForm title='啦啦啦啦'>
         <CellForm required>
           <Input
@@ -146,9 +148,6 @@ export const form = () => {
               store.setValue('username', e.target.value)
             }}
             placeholder='请输入用户名'
-            onClick={() => {
-              console.log('click')
-            }}
           />
         </CellForm>
         <CellForm required label='名字' labelWidth='100px'>
@@ -160,6 +159,12 @@ export const form = () => {
               store.setValue('name', e.target.value)
             }}
             placeholder='请输入名字'
+            onClick={() => {
+              console.log('click')
+            }}
+            onFocus={() => {
+              console.log('focus')
+            }}
           />
         </CellForm>
       </CellsForm>

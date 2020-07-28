@@ -5,6 +5,7 @@ import UUID from './uuid'
 import pinyin from './pinyin'
 import getCharLength from './get_char_length'
 import groupByWithIndex from './group_by_with_index'
+import Events from './events'
 
 export {
   is,
@@ -16,4 +17,5 @@ export {
   pinyin,
   getCharLength,
   groupByWithIndex,
+  Events,
 }

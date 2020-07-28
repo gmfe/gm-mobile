@@ -1,18 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import classNames from 'classnames'
 import _ from 'lodash'
 
 import Week from './week'
-import Month from './month'
 import { TYPE } from './util'
 import View from '../view'
-import ScrollIntoView from '../scroll_into_view'
+import MonthsList from './months_list'
 
 const BaseCalendar = (props) => {
   const [isSelectBegin, setIsSelectBegin] = useState(true)
-  const [targetId, setTargetId] = useState('')
 
   const {
     type,
@@ -22,18 +20,11 @@ const BaseCalendar = (props) => {
     max,
     disabledDate,
     showDateLabel,
+    height,
     className,
     style,
     ...rest
   } = props
-
-  useEffect(() => {
-    if (selected && selected.length) {
-      const date = type === TYPE.RANGE ? selected[1] : selected[0]
-      const id = `m-calendar-${moment(date).format('YYYY-MM-DD')}`
-      setTargetId(id)
-    }
-  }, [])
 
   // 多个日期选择
   const handleSelectMulDay = (m) => {
@@ -137,25 +128,20 @@ const BaseCalendar = (props) => {
     return arr
   }
 
+  const s = Object.assign({ height }, style || {})
+
   return (
-    <View {...rest} className={classNames('m-calendar', className)}>
+    <View {...rest} className={classNames('m-calendar', className)} style={s}>
       <Week />
-      <ScrollIntoView className='m-calendar-content' targetId={targetId}>
-        {_.map(computedMonthList(), (currentMoment, cmi) => {
-          return (
-            <Month
-              key={cmi}
-              index={cmi}
-              currentMoment={currentMoment}
-              selected={selected}
-              type={type}
-              onSelectDay={handleSelectDay}
-              getDisabled={getDisabled}
-              showDateLabel={showDateLabel}
-            />
-          )
-        })}
-      </ScrollIntoView>
+      <MonthsList
+        monthsList={computedMonthList()}
+        selected={selected}
+        type={type}
+        height={height - 40}
+        onSelectDay={handleSelectDay}
+        getDisabled={getDisabled}
+        showDateLabel={showDateLabel}
+      />
     </View>
   )
 }
@@ -175,12 +161,15 @@ BaseCalendar.propTypes = {
   showDateLabel: PropTypes.bool,
   /** 自定义不可选日期 */
   disabledDate: PropTypes.func,
+  /** 定义日历高度，默认400 */
+  height: PropTypes.number,
   className: PropTypes.string,
   style: PropTypes.object,
 }
 
 BaseCalendar.defaultProps = {
   onSelect: _.noop,
+  height: 400,
 }
 
 export default BaseCalendar

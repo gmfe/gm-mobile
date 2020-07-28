@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { LocalStorage } from './component/storage'
+import { LocalStorage } from './storage'
 
 const TYPE = {
   DEFAULT: 'default',

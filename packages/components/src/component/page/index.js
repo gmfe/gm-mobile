@@ -3,10 +3,12 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import Flex from '../flex'
 import View from '../view'
-import Loading from '../loading'
+import Status from '../status'
 
 const Page = ({
   loading,
+  error,
+  onReload,
   white,
   header,
   tabbar,
@@ -30,11 +32,15 @@ const Page = ({
         className
       )}
     >
-      {loading ? (
-        <View style={{ marginTop: '40vh' }} className='m-text-center'>
-          正在加载...
-        </View>
-      ) : (
+      {loading && <Status type='loading' style={{ marginTop: '40vh' }} />}
+      {error && (
+        <Status
+          type='error'
+          style={{ marginTop: '40vh' }}
+          onReload={onReload}
+        />
+      )}
+      {!loading && !error && (
         <>
           {header && (
             <Flex column none className='m-page-header m-flex-none'>
@@ -58,6 +64,8 @@ const Page = ({
 
 Page.propTypes = {
   loading: PropTypes.bool,
+  error: PropTypes.bool,
+  onReload: PropTypes.func,
   children: PropTypes.node,
   white: PropTypes.bool,
   header: PropTypes.node,

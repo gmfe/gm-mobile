@@ -16,8 +16,9 @@
 }
 
 .m-cell {
-  padding: 15px;
-  min-height: 52px;
+  padding-left: 15px;
+  padding-right: 15px;
+  min-height: var(--m-size-cell-height);
   background: var(--m-color-bg-white);
 
   &:active {
@@ -88,8 +89,7 @@
 
   &.m-cells-mini {
     .m-cell {
-      min-height: 30px;
-      padding: 5px 15px;
+      min-height: var(--m-size-cell-height-mini);
 
       &::after {
         border: none;

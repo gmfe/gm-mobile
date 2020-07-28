@@ -22,7 +22,10 @@ Item.propTypes = {
 }
 
 const LazyList = forwardRef(
-  ({ data, renderItem, itemMinHeight, itemKey, className, ...rest }, ref) => {
+  (
+    { data, renderItem, itemMinHeight, itemKey, delay, className, ...rest },
+    ref
+  ) => {
     const refList = useRef(null)
     const refId = useRef('' + Math.random())
 
@@ -52,6 +55,7 @@ const LazyList = forwardRef(
               minHeight={itemMinHeight({ item, index })}
               data-index={index}
               data-key={key}
+              delay={delay}
             >
               {renderItem({ item, index })}
             </Item>
@@ -71,14 +75,17 @@ LazyList.propTypes = {
   itemMinHeight: PropTypes.func.isRequired,
   /** ({item, index}) */
   itemKey: PropTypes.func,
+  /** 设置滚动throttle delay 参数 */
+  delay: PropTypes.number,
   className: PropTypes.string,
-  style: PropTypes.objectOf,
+  style: PropTypes.object,
 }
 
 LazyList.defaultProps = {
   itemKey: ({ item, index }) => {
     return index
   },
+  delay: 100,
 }
 
 export default React.memo(LazyList)
