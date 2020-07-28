@@ -3,5 +3,6 @@ import {
   ReceivedCoupon,
   TabDateSelect,
 } from '@gm-mobile/business-components'
+import BPage from './page'
 
-export { Coupon, ReceivedCoupon, TabDateSelect }
+export { Coupon, ReceivedCoupon, TabDateSelect, BPage }
