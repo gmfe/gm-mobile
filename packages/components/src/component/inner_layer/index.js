@@ -7,11 +7,14 @@ import View from '../view'
 
 const InnerLayerStatics = {
   render(props) {
-    LayoutRoot.renderWith(LayoutRoot.TYPE.INNERLAYER, <InnerLayer {...props} />)
+    LayoutRoot.renderWith(
+      LayoutRoot.TYPE.INNER_LAYER,
+      <InnerLayer {...props} />
+    )
   },
 
   hide() {
-    LayoutRoot.hideWith(LayoutRoot.TYPE.INNERLAYER)
+    LayoutRoot.hideWith(LayoutRoot.TYPE.INNER_LAYER)
   },
 }
 

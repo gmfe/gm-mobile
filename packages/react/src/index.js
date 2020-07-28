@@ -16,7 +16,6 @@ import { Lazy, LazyList } from './component/lazy'
 import PullUpDown from './component/pull_up_down'
 import List from './component/list'
 import Scroll from './component/scroll'
-import Nav from './component/nav'
 
 // 浮层
 import NProgress from './component/nprogress'
@@ -25,7 +24,7 @@ import NProgress from './component/nprogress'
 import { LetterIndex, LetterIndexMultiple } from './component/letter_index'
 import CSSVariable from './css_variable'
 import Canvas from './component/canvas'
-import { LocalStorage, SessionStorage } from './component/storage'
+import { LocalStorage, SessionStorage } from './storage'
 
 import {
   Button,
@@ -72,6 +71,9 @@ import {
   RepeatTimes,
   Price,
   Panel,
+  Nav,
+  VList,
+  Status,
 } from '@gm-mobile/components'
 
 const Alert = Dialog.alert
@@ -157,4 +159,6 @@ export {
   LocalStorage,
   SessionStorage,
   Canvas,
+  VList,
+  Status,
 }

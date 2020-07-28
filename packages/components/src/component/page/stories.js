@@ -46,6 +46,10 @@ export const loading = () => {
   return <Page loading>loading</Page>
 }
 
+export const error = () => {
+  return <Page error>error</Page>
+}
+
 export default {
   title: '布局/Page',
 }

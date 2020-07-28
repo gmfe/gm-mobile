@@ -36,6 +36,10 @@ import {
   SelectPicker,
 } from './component/picker'
 import Panel from './component/panel'
+import ScrollIntoView from './component/scroll_into_view'
+import Nav from './component/nav'
+import VList from './component/v_list'
+import Status from './component/status'
 
 export {
   Button,
@@ -84,4 +88,8 @@ export {
   RepeatTimes,
   Price,
   Panel,
+  ScrollIntoView,
+  Nav,
+  VList,
+  Status,
 }
