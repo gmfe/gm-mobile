@@ -198,7 +198,7 @@ ReceiveTimePicker.verifyReceiveTime = (order) => {
   const { order_time_limit } = order
 
   // 运营周期
-  const { receive_time_limit } = order.receive_time
+  const receive_time_limit = _.cloneDeep(order.receive_time.receive_time_limit)
   const start_order = order_time_limit.start
   const isLastCycle = moment().isBefore(moment(start_order, 'HH:mm'))
   // 如果当前时间小于下单的开始和结束时间，则为上个周期
