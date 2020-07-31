@@ -5,12 +5,14 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 
 import { Flex } from '@gm-mobile/react'
+import Labels from './labels'
 
 const ReceivedCoupon = (props) => {
   const {
     currency,
     discount,
     couponAmount,
+    labels,
     totalInfo,
     className,
     isReceived,
@@ -47,6 +49,13 @@ const ReceivedCoupon = (props) => {
                 'm-received-coupon-received': isReceived,
               })}
             >
+              {labels && labels.length > 0 && (
+                <Labels
+                  className='m-margin-right-5'
+                  disabled={isReceived}
+                  labels={labels}
+                />
+              )}
               {totalInfo}
             </Flex>
           )}
@@ -78,6 +87,8 @@ ReceivedCoupon.propTypes = {
   discount: PropTypes.string.isRequired,
   /** 可领的优惠券数量 */
   couponAmount: PropTypes.number,
+  /** 优惠券标签展示文字，不传不展示标签,数组形式：[label1,label2,...] */
+  labels: PropTypes.array,
   /** 满减说明 */
   totalInfo: PropTypes.string,
   /** 领取状态 */

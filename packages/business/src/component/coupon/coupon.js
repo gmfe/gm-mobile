@@ -5,32 +5,9 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
+import Labels from './labels'
 import SVGDownUp from '../../../svg/down-up-circle.svg'
 import SVGExpired from '../../../svg/expired.svg'
-
-const Label = (props) => {
-  const { labels } = props
-
-  return (
-    <Flex wrap className='m-coupon-right-header-labels'>
-      {_.map(labels, (labelItem, index) => {
-        return (
-          <span
-            className='m-coupon-right-header-label m-margin-left-5 m-margin-top-5'
-            key={index + labelItem}
-          >
-            {labelItem}
-          </span>
-        )
-      })}
-    </Flex>
-  )
-}
-
-Label.propTypes = {
-  /** 优惠券标签展示文字，必传，不考虑为空的情况 */
-  labels: PropTypes.array.isRequired,
-}
 
 const Coupon = (props) => {
   const {
@@ -105,7 +82,9 @@ const Coupon = (props) => {
             })}
           >
             <span className='m-coupon-right-header-title'>{title}</span>
-            {labels && labels.length > 0 && <Label labels={labels} />}
+            {labels && labels.length > 0 && (
+              <Labels disabled={isDisabled} labels={labels} />
+            )}
             <Flex
               alignCenter
               justifyBetween
