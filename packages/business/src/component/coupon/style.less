@@ -62,19 +62,6 @@
           color: var(--m-color-black);
         }
 
-        .m-coupon-right-header-labels {
-          margin: -5px 0 0 -5px;
-        }
-
-        .m-coupon-right-header-label {
-          display: inline-block;
-          background-color: var(--m-color-bg-accent-light);
-          color: var(--m-color-accent);
-          font-size: 12px;
-          padding: 0 5px;
-          border-radius: 2px;
-        }
-
         .m-coupon-right-header-date {
           height: auto;
           font-size: 12px;
@@ -181,12 +168,6 @@
           .m-coupon-right-header-btn {
             background-color: var(--m-color-bg-coupon-disabled);
           }
-
-          .m-coupon-right-header-label {
-            background-color: var(--m-color-bg-coupon-disabled);
-            opacity: 0.6;
-            color: var(--m-color-default);
-          }
         }
       }
     }
@@ -201,12 +182,11 @@
     width: 6px;
     left: 0;
     top: 0;
-    background-image:
-      radial-gradient(
-        transparent 0,
-        transparent 4px,
-        @bgColor 5px
-      );
+    background-image: radial-gradient(
+      transparent 0,
+      transparent 4px,
+      @bgColor 5px
+    );
     background-size: 12px 12px;
     background-position: 6px 2px;
   }
@@ -226,14 +206,13 @@
     position: relative;
     border-radius: 6px;
     height: 60px;
-    background-image:
-      radial-gradient(
-        circle at 9px 8px,
-        transparent 0%,
-        transparent 6px,
-        var(--m-color-bg-white) 6px,
-        var(--m-color-bg-white) 100%
-      );
+    background-image: radial-gradient(
+      circle at 9px 8px,
+      transparent 0%,
+      transparent 6px,
+      var(--m-color-bg-white) 6px,
+      var(--m-color-bg-white) 100%
+    );
     background-position: right 42.5px top -8px;
     background-size: 100% 60px;
   }
@@ -288,6 +267,23 @@
       &.m-received-coupon-right-btn-received {
         background-color: var(--m-color-bg-coupon-disabled);
       }
+    }
+  }
+}
+
+// 优惠券标签组件样式
+.m-coupon-labels {
+  .m-coupon-label {
+    display: inline-block;
+    background-color: var(--m-color-bg-accent-light);
+    color: var(--m-color-accent);
+    font-size: 12px;
+    padding: 0 5px;
+    border-radius: 2px;
+    &-disabled {
+      background-color: var(--m-color-bg-coupon-disabled);
+      opacity: 0.6;
+      color: var(--m-color-default);
     }
   }
 }

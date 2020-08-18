@@ -114,6 +114,11 @@ export const receivedCoupon = () => (
       currency='¥'
       discount='10'
       couponAmount={1}
+      labels={[
+        '仅限xxxxxx商品使用',
+        '商品使用',
+        '仅限xxxxxx商品使用',
+      ]}
       totalInfo='满100元可用'
     />
     <div className='m-margin-top-10'>
@@ -122,6 +127,9 @@ export const receivedCoupon = () => (
         currency='¥'
         discount='100'
         couponAmount={0}
+        labels={[
+          '仅限xxxxxx商品使用',
+        ]}
         totalInfo='满200元可用'
       />
       <ReceivedCoupon
