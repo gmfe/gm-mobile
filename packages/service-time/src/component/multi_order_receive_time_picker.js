@@ -55,12 +55,15 @@ const getCycList = ({
 }
 
 const getStartCycleList = (cycleList) => {
-  return _.map(cycleList, (list, i) => {
-    if (i === cycleList.length - 1) {
-      return _.slice(list, 0, -1)
-    }
-    return list
-  })
+  return _.filter(
+    _.map(cycleList, (list, i) => {
+      if (i === cycleList.length - 1) {
+        return _.slice(list, 0, -1)
+      }
+      return list
+    }),
+    (list) => list.length
+  )
 }
 
 const getEndCycleList = (startValue, cycleList) => {
