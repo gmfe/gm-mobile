@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo } from 'react'
 import { useRouter } from '@tarojs/taro'
 import { Observer } from 'mobx-react'
-import { PageMP } from '../../../../packages/mp/src'
+import { PageMP } from '../../../../packages/mp'
 
 const Index = () => {
   const {
@@ -16,20 +16,23 @@ const Index = () => {
   })
 
   const stories = useMemo(() => {
-    if (packageName === 'components') {
-      return require(`../../../../packages/components/src/component/${folder}/stories`)
+    if (packageName === 'c-react') {
+      return require(`../../../../packages/c-react/src/component/${folder}/stories`)
     }
-    if (packageName === 'qrcode') {
-      return require(`../../../../packages/qrcode/src/stories`)
+    if (packageName === 'c-qrcode') {
+      return require(`../../../../packages/c-qrcode/src/stories`)
     }
-    if (packageName === 'business-components') {
-      return require(`../../../../packages/business-components/src/component/${folder}/stories`)
+    if (packageName === 'c-business') {
+      return require(`../../../../packages/c-business/src/component/${folder}/stories`)
     }
-    if (packageName === 'cookie') {
-      return require(`../../../../packages/cookie/src/stories`)
+    if (packageName === 'c-cookie') {
+      return require(`../../../../packages/c-cookie/src/stories`)
     }
-    if (packageName === 'service-time') {
-      return require(`../../../../packages/service-time/src/component/stories`)
+    if (packageName === 'c-service-time') {
+      return require(`../../../../packages/c-service-time/src/component/${folder}/stories`)
+    }
+    if (packageName === 'c-tool') {
+      return require(`../../../../packages/c-tool/src/${folder}/stories`)
     }
     return require(`../../../../packages/mp/src/component/${folder}/stories`)
   }, [])

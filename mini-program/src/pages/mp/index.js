@@ -1,5 +1,5 @@
 import React from 'react'
-import { PageMP, Cells, Cell, View, Button } from '../../../../packages/mp/src'
+import { PageMP, Cells, Cell, View, Button } from '../../../../packages/mp'
 import { observable, autorun } from 'mobx'
 import { Observer } from 'mobx-react'
 

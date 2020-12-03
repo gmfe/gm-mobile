@@ -1,3 +1,12 @@
+# ts
+
+## breaking change
+
+InputProps form => isForm
+TextAreaProps form => isForm
+LayoutRoot TYPE => Type
+TabDateSelect value 字段类型: any =》 string
+
 # 2.x
 
 增加 小程序
@@ -83,3 +92,4 @@ Popup 关闭需要提供 onHide
 LetterIndex, LetterIndexMultiple 移除 getFirstLetter
 
 原 LetterIndexMultiple 底部按钮调整，在 business 模块新增 ProductSelection
+

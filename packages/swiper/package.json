@@ -1,6 +1,6 @@
 {
   "name": "@gm-mobile/swiper",
-  "version": "2.0.5",
+  "version": "2.0.6-alpha.2",
   "description": "> TODO: description",
   "author": "liyatang <liyatang@qq.com>",
   "homepage": "https://github.com/gmfe/gm-mobile#readme",
@@ -8,8 +8,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "src/index.js",
-  "types": "src/index.js",
+  "main": "src/index.ts",
+  "types": "src/types.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gmfe/gm-mobile.git"
@@ -21,7 +21,7 @@
     "url": "https://github.com/gmfe/gm-mobile/issues"
   },
   "dependencies": {
-    "@gm-mobile/react": "^2.0.5"
+    "@gm-mobile/react": "^2.0.6-alpha.2"
   },
   "peerDependencies": {
     "react": "^16.13.1",

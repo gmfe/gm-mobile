@@ -1,13 +1,7 @@
 import React from 'react'
 import queryString from 'query-string'
 import _ from 'lodash'
-import {
-  Text,
-  PageMP,
-  Cells,
-  Cell,
-  ActionSheet,
-} from '../../../../packages/mp/src'
+import { Text, PageMP, Cells, Cell, ActionSheet } from '../../../../packages/mp'
 
 const storiesList = []
 
@@ -15,7 +9,7 @@ const storiesList = []
 const mpReq = require.context(
   '../../../../packages/mp/src/component/',
   true,
-  /stories\.js$/
+  /stories\.(js|tsx)$/
 )
 
 _.each(mpReq.keys(), (key) => {
@@ -27,71 +21,85 @@ _.each(mpReq.keys(), (key) => {
 })
 
 const comReq = require.context(
-  '../../../../packages/components/src/component/',
+  '../../../../packages/c-react/src/component/',
   true,
-  /stories\.js$/
+  /stories\.(js|tsx)$/
 )
 
 _.each(comReq.keys(), (key) => {
   storiesList.push({
     module: comReq(key),
-    packageName: 'components',
+    packageName: 'c-react',
     path: key,
   })
 })
 
 const qrCodeReq = require.context(
-  '../../../../packages/qrcode/',
+  '../../../../packages/c-qrcode/',
   true,
-  /stories\.js$/
+  /stories\.(js|tsx)$/
 )
 
 _.each(qrCodeReq.keys(), (key) => {
   storiesList.push({
     module: qrCodeReq(key),
-    packageName: 'qrcode',
+    packageName: 'c-qrcode',
     path: key,
   })
 })
 
 const businessComReq = require.context(
-  '../../../../packages/business-components/src/component/',
+  '../../../../packages/c-business/src/component/',
   true,
-  /stories\.js$/
+  /stories\.(js|tsx)$/
 )
 
 _.each(businessComReq.keys(), (key) => {
   storiesList.push({
     module: businessComReq(key),
-    packageName: 'business-components',
+    packageName: 'c-business',
     path: key,
   })
 })
 
 const cookieReq = require.context(
-  '../../../../packages/cookie/',
+  '../../../../packages/c-cookie/',
   true,
-  /stories\.js$/
+  /stories\.(js|tsx)$/
 )
 
 _.each(cookieReq.keys(), (key) => {
   storiesList.push({
     module: cookieReq(key),
-    packageName: 'cookie',
+    packageName: 'c-cookie',
     path: key,
   })
 })
 
 const serviceTimeReq = require.context(
-  '../../../../packages/service-time/src/component',
+  '../../../../packages/c-service-time/src/component',
   true,
-  /stories\.js$/
+  /stories\.(js|tsx)$/
 )
 
 _.each(serviceTimeReq.keys(), (key) => {
   storiesList.push({
     module: serviceTimeReq(key),
-    packageName: 'service-time',
+    packageName: 'c-service-time',
+    path: key,
+  })
+})
+
+const toolCom = require.context(
+  '../../../../packages/c-tool/src',
+  true,
+  /stories\.(js|tsx)$/
+)
+
+_.each(toolCom.keys(), (key) => {
+  storiesList.push({
+    module: toolCom(key),
+    packageName: 'c-tool',
     path: key,
   })
 })
@@ -154,6 +162,7 @@ const Index = () => (
                           value
                         )}`,
                       })
+                      return null
                     })
                   }
                 }}

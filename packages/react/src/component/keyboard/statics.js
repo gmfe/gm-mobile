@@ -1,5 +1,5 @@
 import React from 'react'
-import { LayoutRoot, Popup } from '@gm-mobile/components'
+import { LayoutRoot, Popup } from '@gm-mobile/c-react'
 import Keyboard from './keyboard'
 // import EVENT_TYPE from '../../event_type'
 // import { KEYBOARD_LABEL, isKeyboardNeedHide } from './util'
@@ -37,9 +37,9 @@ import Keyboard from './keyboard'
 //     )
 
 //     if (this.active) {
-//       LayoutRoot.setComponent(LayoutRoot.TYPE.KEYBOARD, com)
+//       LayoutRoot.setComponent(LayoutRoot.Type.KEYBOARD, com)
 //     } else {
-//       LayoutRoot.renderWith(LayoutRoot.TYPE.KEYBOARD, com, {
+//       LayoutRoot.renderWith(LayoutRoot.Type.KEYBOARD, com, {
 //         onPopStateCallback() {
 //           dispatchKeyboardEvent(EVENT_TYPE.KEYBOARD_HIDE)
 //           document.body.removeEventListener('click', handleWindowClick)
@@ -61,7 +61,7 @@ import Keyboard from './keyboard'
 //   hide() {
 //     // true => false 才通知
 //     if (this.active) {
-//       LayoutRoot.hideWith(LayoutRoot.TYPE.KEYBOARD)
+//       LayoutRoot.hideWith(LayoutRoot.Type.KEYBOARD)
 
 //       dispatchKeyboardEvent(EVENT_TYPE.KEYBOARD_HIDE)
 //       // 关闭键盘记得remove
@@ -76,7 +76,7 @@ import Keyboard from './keyboard'
 const KeyboardStatics = {
   render({ title, onHide, ...rest }) {
     LayoutRoot.renderWith(
-      LayoutRoot.TYPE.KEYBOARD,
+      LayoutRoot.Type.KEYBOARD,
       <Popup
         title={title}
         onHide={() => {
@@ -91,7 +91,7 @@ const KeyboardStatics = {
   },
 
   hide() {
-    LayoutRoot.hideWith(LayoutRoot.TYPE.KEYBOARD)
+    LayoutRoot.hideWith(LayoutRoot.Type.KEYBOARD)
   },
 }
 

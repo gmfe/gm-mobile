@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text } from '@gm-mobile/components'
+import { View, Text } from '@gm-mobile/c-react'
 import FlowBtnTabbar from './flow_btn_tab_bar'
 import Tabbar from './tab_bar'
 
