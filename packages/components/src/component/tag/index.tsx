@@ -1,10 +1,24 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC, ReactNode } from 'react'
 import classNames from 'classnames'
 
 import View from '../view'
 
-const TagWrap = ({ tag, bottom, block, className, children, ...rest }) => {
+interface TagWrapProps {
+  tag: string | ReactNode
+  bottom?: boolean
+  block?: boolean
+  className?: string
+  style?: object
+}
+
+const TagWrap: FC<TagWrapProps> = ({
+  tag,
+  bottom,
+  block,
+  className,
+  children,
+  ...rest
+}) => {
   return (
     <View
       {...rest}
@@ -21,14 +35,6 @@ const TagWrap = ({ tag, bottom, block, className, children, ...rest }) => {
       {tag && <View className='m-tag'>{tag}</View>}
     </View>
   )
-}
-
-TagWrap.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
-  bottom: PropTypes.bool,
-  block: PropTypes.bool,
-  className: PropTypes.string,
-  style: PropTypes.object,
 }
 
 export default TagWrap
