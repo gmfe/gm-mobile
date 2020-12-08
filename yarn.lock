@@ -981,7 +981,7 @@
 
 "@babel/plugin-transform-typeof-symbol@^7.12.1", "@babel/plugin-transform-typeof-symbol@^7.2.0", "@babel/plugin-transform-typeof-symbol@^7.8.4":
   version "7.12.1"
-  resolved "https://registry.npm.taobao.org/@babel/plugin-transform-typeof-symbol/download/@babel/plugin-transform-typeof-symbol-7.12.1.tgz?cache=0&sync_timestamp=1602799953235&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fplugin-transform-typeof-symbol%2Fdownload%2F%40babel%2Fplugin-transform-typeof-symbol-7.12.1.tgz#9ca6be343d42512fbc2e68236a82ae64bc7af78a"
+  resolved "https://registry.npm.taobao.org/@babel/plugin-transform-typeof-symbol/download/@babel/plugin-transform-typeof-symbol-7.12.1.tgz#9ca6be343d42512fbc2e68236a82ae64bc7af78a"
   integrity sha1-nKa+ND1CUS+8LmgjaoKuZLx694o=
   dependencies:
     "@babel/helper-plugin-utils" "^7.10.4"
