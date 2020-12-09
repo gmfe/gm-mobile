@@ -11,3 +11,27 @@ xxx: 常规（web)
 小程序接入时直接 `<View className='xxx' />` 即可
 
 web 与 小程序皆提供 storybook，直接跑命令即可。
+
+# 运行
+
+## web
+```
+yarn
+
+lerna bootstrap
+
+yarn start
+```
+
+## 小程序
+```
+yarn
+
+lerna bootstrap
+
+// 开发调试
+yarn dev:weapp // tip: 真机调试，请运行打包指令，进行压缩
+
+// 打包
+yarn build:weapp
+```
