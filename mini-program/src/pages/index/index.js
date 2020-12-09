@@ -15,7 +15,7 @@ const storiesList = []
 const mpReq = require.context(
   '../../../../packages/mp/src/component/',
   true,
-  /stories\.js$/
+  /stories\.(js|tsx)$/
 )
 
 _.each(mpReq.keys(), (key) => {
@@ -29,7 +29,7 @@ _.each(mpReq.keys(), (key) => {
 const comReq = require.context(
   '../../../../packages/c-react/src/component/',
   true,
-  /stories\.js$/
+  /stories\.(js|tsx)$/
 )
 
 _.each(comReq.keys(), (key) => {
@@ -43,7 +43,7 @@ _.each(comReq.keys(), (key) => {
 const qrCodeReq = require.context(
   '../../../../packages/c-qrcode/',
   true,
-  /stories\.js$/
+  /stories\.(js|tsx)$/
 )
 
 _.each(qrCodeReq.keys(), (key) => {
@@ -57,7 +57,7 @@ _.each(qrCodeReq.keys(), (key) => {
 const businessComReq = require.context(
   '../../../../packages/c-business/src/component/',
   true,
-  /stories\.js$/
+  /stories\.(js|tsx)$/
 )
 
 _.each(businessComReq.keys(), (key) => {
@@ -71,7 +71,7 @@ _.each(businessComReq.keys(), (key) => {
 const cookieReq = require.context(
   '../../../../packages/c-cookie/',
   true,
-  /stories\.js$/
+  /stories\.(js|tsx)$/
 )
 
 _.each(cookieReq.keys(), (key) => {
@@ -85,7 +85,7 @@ _.each(cookieReq.keys(), (key) => {
 const serviceTimeReq = require.context(
   '../../../../packages/c-service-time/src/component',
   true,
-  /stories\.js$/
+  /stories\.(js|tsx)$/
 )
 
 _.each(serviceTimeReq.keys(), (key) => {
