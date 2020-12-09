@@ -1,15 +1,38 @@
-import React, { useState, useRef, useEffect } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState, useRef, useEffect, ComponentType, CSSProperties } from 'react'
 import classNames from 'classnames'
 import { Image } from '@tarojs/components'
-import error from './error.png'
-import placeholder from './placeholder.png'
+import { ImageProps as TaroImageProps } from '@tarojs/components/types/Image'
+import IMAGE_ERROR from './error.png'
+import IMAGE_PLACEHOLDER from './placeholder.png'
+
+type PickType<T, K extends keyof T> = T[K]
+
+export interface ImageProps extends TaroImageProps {
+  /** 图片地址 */
+  src: string,
+  /** 图片高度 */
+  height?: string,
+  /** 图片宽度 */
+  width?: string,
+  /** 是否为圆形 */
+  round?: boolean,
+  /** 默认占位图地址 */
+  placeholder?: string,
+  /** 加载出错占位图 */
+  error?: string,
+  style?: CSSProperties,
+  /** 图片懒加载。只针对 page 与 scroll-view 下的 image 有效
+   * @default true
+   * @supported weapp, swan, alipay, tt
+   */
+  lazyLoad?: boolean
+}
 
 /**
  * tip：image组件默认宽度300px、高度240px
  * tip：image组件中二维码/小程序码图片不支持长按识别。仅在wx.previewImage中支持长按识别
  */
-const ImageMP = ({
+const ImageMP: ComponentType<ImageProps> = ({
   src,
   width,
   height,
@@ -20,8 +43,12 @@ const ImageMP = ({
   style,
   onLoad,
   onError,
+  lazyLoad,
   ...rest
 }) => {
+  placeholder = placeholder || IMAGE_PLACEHOLDER
+  error = error || IMAGE_ERROR
+  lazyLoad = lazyLoad === undefined || true
   const reloadCount = useRef(0)
   const [pSrc, setPSrc] = useState(src || placeholder)
 
@@ -30,7 +57,7 @@ const ImageMP = ({
     setPSrc(src)
   }, [src])
 
-  const handleError = (e) => {
+  const handleError: PickType<ImageProps, 'onError'> = (e) => {
     if (reloadCount.current < 2) {
       // 获取失败重新请求两次
       reloadCount.current++
@@ -43,7 +70,7 @@ const ImageMP = ({
     }
   }
 
-  const handleLoad = (e) => {
+  const handleLoad: PickType<ImageProps, 'onLoad'> = (e) => {
     onLoad && onLoad(e)
     reloadCount.current = 0
   }
@@ -64,35 +91,6 @@ const ImageMP = ({
       })}
     />
   )
-}
-
-ImageMP.propTypes = {
-  /** 图片地址 */
-  src: PropTypes.string,
-  /** 图片高度 */
-  height: PropTypes.string,
-  /** 图片宽度 */
-  width: PropTypes.string,
-  /** 是否为圆形 */
-  round: PropTypes.bool,
-  /** 默认占位图地址 */
-  placeholder: PropTypes.string,
-  /** 加载出错占位图 */
-  error: PropTypes.string,
-  className: PropTypes.string,
-  style: PropTypes.object,
-  onLoad: PropTypes.func,
-  onError: PropTypes.func,
-  webp: PropTypes.bool,
-  showMenuByLongpress: PropTypes.bool,
-  lazyLoad: PropTypes.bool,
-  mode: PropTypes.string,
-}
-
-ImageMP.defaultProps = {
-  placeholder: placeholder,
-  error: error,
-  lazyLoad: true,
 }
 
 export default ImageMP
