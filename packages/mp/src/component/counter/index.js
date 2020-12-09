@@ -2,7 +2,7 @@ import { getLocale } from '@gm-mobile/locales'
 import React, { useState, useEffect } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import { View, Toast, Input } from '@gm-mobile/components'
+import { View, Toast, Input } from '@gm-mobile/c-react'
 import _ from 'lodash'
 import Big from 'big.js'
 

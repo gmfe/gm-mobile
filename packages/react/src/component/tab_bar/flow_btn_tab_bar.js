@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Flex, Text } from '@gm-mobile/components'
+import { Flex, Text } from '@gm-mobile/c-react'
 import Item from './item'
 
 const FlowBtnTabbar = ({

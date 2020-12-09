@@ -62,7 +62,7 @@ import {
   Nav,
   VList,
   Status,
-} from '@gm-mobile/components'
+} from '@gm-mobile/c-react'
 
 export {
   // 不提供，请用 PageMP

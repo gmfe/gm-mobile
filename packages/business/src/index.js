@@ -5,6 +5,6 @@ import {
   Coupon,
   ReceivedCoupon,
   TabDateSelect,
-} from '@gm-mobile/business-components'
+} from '@gm-mobile/c-business'
 
 export { Coupon, ReceivedCoupon, ProductSelection, TabDateSelect, Signature }

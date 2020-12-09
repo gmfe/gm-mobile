@@ -27,7 +27,7 @@ _.each(mpReq.keys(), (key) => {
 })
 
 const comReq = require.context(
-  '../../../../packages/components/src/component/',
+  '../../../../packages/c-react/src/component/',
   true,
   /stories\.js$/
 )
@@ -35,13 +35,13 @@ const comReq = require.context(
 _.each(comReq.keys(), (key) => {
   storiesList.push({
     module: comReq(key),
-    packageName: 'components',
+    packageName: 'c-react',
     path: key,
   })
 })
 
 const qrCodeReq = require.context(
-  '../../../../packages/qrcode/',
+  '../../../../packages/c-qrcode/',
   true,
   /stories\.js$/
 )
@@ -49,13 +49,13 @@ const qrCodeReq = require.context(
 _.each(qrCodeReq.keys(), (key) => {
   storiesList.push({
     module: qrCodeReq(key),
-    packageName: 'qrcode',
+    packageName: 'c-qrcode',
     path: key,
   })
 })
 
 const businessComReq = require.context(
-  '../../../../packages/business-components/src/component/',
+  '../../../../packages/c-business/src/component/',
   true,
   /stories\.js$/
 )
@@ -63,13 +63,13 @@ const businessComReq = require.context(
 _.each(businessComReq.keys(), (key) => {
   storiesList.push({
     module: businessComReq(key),
-    packageName: 'business-components',
+    packageName: 'c-business',
     path: key,
   })
 })
 
 const cookieReq = require.context(
-  '../../../../packages/cookie/',
+  '../../../../packages/c-cookie/',
   true,
   /stories\.js$/
 )
@@ -77,13 +77,13 @@ const cookieReq = require.context(
 _.each(cookieReq.keys(), (key) => {
   storiesList.push({
     module: cookieReq(key),
-    packageName: 'cookie',
+    packageName: 'c-cookie',
     path: key,
   })
 })
 
 const serviceTimeReq = require.context(
-  '../../../../packages/service-time/src/component',
+  '../../../../packages/c-service-time/src/component',
   true,
   /stories\.js$/
 )
@@ -91,7 +91,7 @@ const serviceTimeReq = require.context(
 _.each(serviceTimeReq.keys(), (key) => {
   storiesList.push({
     module: serviceTimeReq(key),
-    packageName: 'service-time',
+    packageName: 'c-service-time',
     path: key,
   })
 })

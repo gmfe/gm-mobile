@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Input, Button, Toast } from '@gm-mobile/components'
+import { View, Input, Button, Toast } from '@gm-mobile/c-react'
 import Storage from './index'
 
 const key = 'input'

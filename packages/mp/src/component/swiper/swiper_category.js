@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Swiper, SwiperItem } from '@tarojs/components'
-import { View } from '@gm-mobile/components'
+import { View } from '@gm-mobile/c-react'
 import SwiperPagination from './swiper_pagination'
 
 const SwiperCategory = ({ options, children, style, height, ...rest }) => {

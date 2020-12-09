@@ -3,7 +3,7 @@ import _ from 'lodash'
 
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Badge, View, Flex } from '@gm-mobile/components'
+import { Badge, View, Flex } from '@gm-mobile/c-react'
 
 const Item = ({ config, index, selected, onClick }) => {
   const { icon, activeIcon, name, badge, showBadge } = config

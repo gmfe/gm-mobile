@@ -21,6 +21,6 @@
     "url": "https://github.com/gmfe/gm-mobile/issues"
   },
   "dependencies": {
-    "@gm-mobile/business-components": "^2.0.5"
+    "@gm-mobile/c-business": "^2.0.5"
   }
 }

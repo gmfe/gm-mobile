@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View } from '@gm-mobile/components'
+import { View } from '@gm-mobile/c-react'
 import UtilMP from '../../util'
 
 const StatusBarMP = React.memo((style, ...rest) => {

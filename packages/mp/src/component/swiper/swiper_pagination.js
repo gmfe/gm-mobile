@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text } from '@gm-mobile/components'
+import { View, Text } from '@gm-mobile/c-react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import _ from 'lodash'

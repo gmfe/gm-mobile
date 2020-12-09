@@ -1,6 +1,6 @@
 import React from 'react'
 import { observable } from 'mobx'
-import { Page, Button } from '@gm-mobile/components'
+import { Page, Button } from '@gm-mobile/c-react'
 import KeyboardWrap from './wrap'
 
 const numStore = observable({

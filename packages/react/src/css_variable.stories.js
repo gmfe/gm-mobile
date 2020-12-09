@@ -1,7 +1,7 @@
 import React from 'react'
 import CSSVariable from './css_variable'
 import _ from 'lodash'
-import { Flex } from '@gm-mobile/components'
+import { Flex } from '@gm-mobile/c-react'
 
 export const normal = () => {
   return (

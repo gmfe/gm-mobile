@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
-import { is } from '@gm-mobile/tool'
+import { is } from '@gm-mobile/c-tool'
 import classNames from 'classnames'
 
 const Uploader = ({

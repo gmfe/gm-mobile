@@ -1,7 +1,3 @@
-import {
-  Coupon,
-  ReceivedCoupon,
-  TabDateSelect,
-} from '@gm-mobile/business-components'
+import { Coupon, ReceivedCoupon, TabDateSelect } from '@gm-mobile/c-business'
 
 export { Coupon, ReceivedCoupon, TabDateSelect }

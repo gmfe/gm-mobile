@@ -1,7 +1,7 @@
 import React from 'react'
 import SwiperImg from './swiper_img'
 import SwiperCategory from './swiper_category'
-import { View } from '@gm-mobile/components'
+import { View } from '@gm-mobile/c-react'
 
 const arr = [
   {

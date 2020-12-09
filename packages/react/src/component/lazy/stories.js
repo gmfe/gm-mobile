@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import _ from 'lodash'
-import { Page } from '@gm-mobile/components'
+import { Page } from '@gm-mobile/c-react'
 import { Lazy, LazyList } from './'
 
 export const normal = () => {

@@ -74,7 +74,7 @@ import {
   Nav,
   VList,
   Status,
-} from '@gm-mobile/components'
+} from '@gm-mobile/c-react'
 
 const Alert = Dialog.alert
 const Confirm = Dialog.confirm
