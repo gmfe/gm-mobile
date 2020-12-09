@@ -7,13 +7,13 @@
   resolved "https://registry.npmjs.org/@gm-mobile/c-react/-/components-2.0.0-alpha.17.tgz#5e6d5ae6de73c18463941e12bc801b618159feb2"
   integrity sha512-RTQnw9fPkEqaW2v5gP3m/Q8mwgX2DgkQQVW3MfdBlGRdRRm7dDYoc0dBu3i+2lqozl9bfMdrla//Z5lcWFB8Ew==
   dependencies:
-    "@gm-mobile/mp-font" "^2.0.0-alpha.17"
+    "@gm-mobile/c-font" "^2.0.0-alpha.17"
     "@gm-mobile/locales" "^2.0.0-alpha.17"
     "@gm-mobile/c-tool" "^2.0.0-alpha.17"
 
-"@gm-mobile/mp-font@^2.0.0-alpha.17":
+"@gm-mobile/c-font@^2.0.0-alpha.17":
   version "2.0.0-alpha.17"
-  resolved "https://registry.npmjs.org/@gm-mobile/mp-font/-/font-2.0.0-alpha.17.tgz#ce4d80d1674949e5c56679ab077ee2a14ee5728f"
+  resolved "https://registry.npmjs.org/@gm-mobile/c-font/-/font-2.0.0-alpha.17.tgz#ce4d80d1674949e5c56679ab077ee2a14ee5728f"
   integrity sha512-kT8xDXsZGHpJx5j+50VWHJkoHFR3xVwpJf4klLzEFwpJ5nT7Xq4g3h1PtOxjjqZudy25FpApCOuv3v7lkp9n5A==
 
 "@gm-mobile/locales@^2.0.0-alpha.17":

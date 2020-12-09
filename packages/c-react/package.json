@@ -23,7 +23,7 @@
   "dependencies": {
     "@gm-mobile/c-tool": "^2.0.6-alpha.1",
     "@gm-mobile/locales": "^2.0.6-alpha.1",
-    "@gm-mobile/mp-font": "^2.0.6-alpha.1"
+    "@gm-mobile/c-font": "^2.0.6-alpha.1"
   },
   "peerDependencies": {
     "@tarojs/components": "3.0.0-rc.6",

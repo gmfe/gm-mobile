@@ -1,7 +1,7 @@
 const WebpackIconfontPluginNodejs = require('webpack-iconfont-plugin-nodejs')
 const path = require('path')
 
-const dir = 'packages/mp-font'
+const dir = 'packages/c-font'
 
 const options = {
   fontName: 'gm-mobile-icons',
