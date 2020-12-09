@@ -1,6 +1,6 @@
 {
   "name": "@gm-mobile/mp",
-  "version": "2.0.5",
+  "version": "2.0.6-alpha.2",
   "description": "",
   "author": "liyatang <liyatang@qq.com>",
   "homepage": "https://github.com/gmfe/gm-mobile#readme",
@@ -21,9 +21,9 @@
     "url": "https://github.com/gmfe/gm-mobile/issues"
   },
   "dependencies": {
-    "@gm-mobile/components": "^2.0.5",
-    "@gm-mobile/locales": "^2.0.5",
-    "@gm-mobile/tool": "^2.0.5"
+    "@gm-mobile/c-react": "^2.0.6-alpha.2",
+    "@gm-mobile/c-tool": "^2.0.6-alpha.2",
+    "@gm-mobile/locales": "^2.0.6-alpha.2"
   },
   "peerDependencies": {
     "@tarojs/components": "3.0.0-rc.6",

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Flex } from '@gm-mobile/components'
+import { Flex } from '@gm-mobile/c-react'
 import classNames from 'classnames'
 import _ from 'lodash'
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { Page as PageBase, LayoutRoot } from '@gm-mobile/components'
+import { Page as PageBase, LayoutRoot } from '@gm-mobile/c-react'
 
 const PageMP = (props) => {
   const refLoading = useRef(false)

@@ -8,7 +8,7 @@ import React, {
 } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Flex, Loading } from '@gm-mobile/components'
+import { Flex, Loading } from '@gm-mobile/c-react'
 import _ from 'lodash'
 import Lazy from '../lazy'
 

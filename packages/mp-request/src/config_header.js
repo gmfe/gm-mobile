@@ -1,4 +1,4 @@
-import { UUID } from '@gm-mobile/tool'
+import { UUID } from '@gm-mobile/c-tool'
 import { instance } from './request'
 
 function configHeaders({ clientName, version }) {

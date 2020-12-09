@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react'
 
 import Counter from './'
-import { Page, View } from '@gm-mobile/components'
+import { Page, View } from '@gm-mobile/c-react'
 
 const reducer = (state, action) => {
   return {

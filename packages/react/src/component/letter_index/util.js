@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { pinyin } from '@gm-mobile/tool'
+import { pinyin } from '@gm-mobile/c-tool'
 
 const letterList = _.map(_.range(65, 91), (v) => String.fromCharCode(v))
 letterList.push('#') // 无法识别字母的使用 # 代替

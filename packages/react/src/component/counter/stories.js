@@ -2,7 +2,7 @@ import React from 'react'
 import { observable } from 'mobx'
 
 import Counter from './'
-import { Page } from '@gm-mobile/components'
+import { Page } from '@gm-mobile/c-react'
 
 const store = observable({
   one: '',

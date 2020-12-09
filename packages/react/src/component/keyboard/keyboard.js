@@ -2,7 +2,7 @@ import { getLocale } from '@gm-mobile/locales'
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
-import { Flex, Toast, Button } from '@gm-mobile/components'
+import { Flex, Toast, Button } from '@gm-mobile/c-react'
 
 import BaseKeyboard from './_keyboard'
 import { TYPE, text2Number } from './util'

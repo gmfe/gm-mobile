@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
-import { Flex } from '@gm-mobile/components'
+import { Flex } from '@gm-mobile/c-react'
 import { TYPE, KEYS } from './util'
 
 const BaseKeyboard = (props) => {

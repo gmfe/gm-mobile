@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from './index'
-import { Flex, Text, View } from '@gm-mobile/components'
+import { Flex, Text, View } from '@gm-mobile/c-react'
 
 const src =
   'https://js.guanmai.cn/static_storage/json/common/logo/default/logo.pure.png?'

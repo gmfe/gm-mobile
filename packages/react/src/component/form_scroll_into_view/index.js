@@ -1,6 +1,6 @@
 import React from 'react'
 import { findDOMNode } from 'react-dom'
-import { is } from '@gm-mobile/tool'
+import { is } from '@gm-mobile/c-tool'
 
 class FormScrollIntoView extends React.Component {
   __mounted = false

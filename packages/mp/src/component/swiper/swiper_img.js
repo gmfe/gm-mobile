@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Swiper, SwiperItem } from '@tarojs/components'
 import _ from 'lodash'
-import { View } from '@gm-mobile/components'
+import { View } from '@gm-mobile/c-react'
 
 import Image from '../image'
 import SwiperPagination from './swiper_pagination'
