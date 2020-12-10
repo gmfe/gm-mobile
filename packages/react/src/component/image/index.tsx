@@ -4,6 +4,26 @@ import classNames from 'classnames'
 import IMAGE_ERROR from './error.png'
 import IMAGE_PLACEHOLDER from './placeholder.png'
 
+type objectFixTypes = 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
+interface ImageProps {
+  /** 图片地址 */
+  src?: string
+  /** 图片高度 */
+  height?: number
+  /** 图片宽度 */
+  width?: number
+  /** 是否为圆形 */
+  round?: boolean
+  /** 填充模式 */
+  objectFix?: objectFixTypes
+  /** 默认占位图地址 */
+  placeholder?: string
+  /** 加载出错占位图 */
+  error?: string
+  className?: string
+  style?: CSSProperties
+}
+
 const Image: FC<ImageProps> = ({
   src,
   width,
@@ -55,29 +75,4 @@ const ImageWrapper: FC<ImageProps> = (props) => (
 )
 
 export default ImageWrapper
-
-export type objectFixTypes =
-  | 'contain'
-  | 'cover'
-  | 'fill'
-  | 'none'
-  | 'scale-down'
-
-export interface ImageProps {
-  /** 图片地址 */
-  src?: string
-  /** 图片高度 */
-  height?: number
-  /** 图片宽度 */
-  width?: number
-  /** 是否为圆形 */
-  round?: boolean
-  /** 填充模式 */
-  objectFix?: objectFixTypes
-  /** 默认占位图地址 */
-  placeholder?: string
-  /** 加载出错占位图 */
-  error?: string
-  className?: string
-  style?: CSSProperties
-}
+export type { ImageProps }

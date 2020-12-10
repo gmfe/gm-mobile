@@ -7,6 +7,25 @@ import IMAGE_PLACEHOLDER from './placeholder.png'
 
 type PickType<T, K extends keyof T> = T[K]
 
+interface ImageProps extends TaroImageProps {
+  /** 图片高度 */
+  height?: string
+  /** 图片宽度 */
+  width?: string
+  /** 是否为圆形 */
+  round?: boolean
+  /** 默认占位图地址 */
+  placeholder?: string
+  /** 加载出错占位图 */
+  error?: string
+  style?: CSSProperties
+  /** 图片懒加载。只针对 page 与 scroll-view 下的 image 有效
+   * @default true
+   * @supported weapp, swan, alipay, tt
+   */
+  lazyLoad?: boolean
+}
+
 /**
  * tip：image组件默认宽度300px、高度240px
  * tip：image组件中二维码/小程序码图片不支持长按识别。仅在wx.previewImage中支持长按识别
@@ -71,21 +90,4 @@ const ImageMP: FC<ImageProps> = ({
 
 export default ImageMP
 
-export interface ImageProps extends TaroImageProps {
-  /** 图片高度 */
-  height?: string
-  /** 图片宽度 */
-  width?: string
-  /** 是否为圆形 */
-  round?: boolean
-  /** 默认占位图地址 */
-  placeholder?: string
-  /** 加载出错占位图 */
-  error?: string
-  style?: CSSProperties
-  /** 图片懒加载。只针对 page 与 scroll-view 下的 image 有效
-   * @default true
-   * @supported weapp, swan, alipay, tt
-   */
-  lazyLoad?: boolean
-}
+export type { ImageProps }
