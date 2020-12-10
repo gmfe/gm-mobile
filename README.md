@@ -35,3 +35,11 @@ yarn dev:weapp // tip: 真机调试，请运行打包指令，进行压缩
 // 打包
 yarn build:weapp
 ```
+
+# 添加图标
+将图片放入 packages/c-font/svg
+运行指令
+```
+yarn svg
+```
+tip: 规范文件命名
