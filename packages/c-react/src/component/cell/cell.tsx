@@ -5,17 +5,7 @@ import Flex from '../flex'
 import View from '../view'
 import Text from '../text'
 
-interface CellProps {
-  /** 右边带箭头 */
-  access?: boolean
-  /** 左边有图标的情况 */
-  icon?: ReactNode
-  left?: ReactNode | string
-  right?: ReactNode | string
-  className?: string
-  style?: CSSProperties
-  onClick: (event: MouseEvent<HTMLDivElement>) => void
-}
+import type { CellProps } from './types'
 
 const Cell: FC<CellProps> = ({
   access,
@@ -60,4 +50,3 @@ const Cell: FC<CellProps> = ({
 }
 
 export default Cell
-export type { CellProps }

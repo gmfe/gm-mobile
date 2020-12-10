@@ -1,11 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC, CSSProperties } from 'react'
 import Cell from './cell'
 import View from '../view'
 import Text from '../text'
 import classNames from 'classnames'
 
-const CellForm = ({
+import type { CellFormProps } from './types'
+
+const CellForm: FC<CellFormProps> = ({
   label,
   labelWidth,
   error,
@@ -33,19 +34,6 @@ const CellForm = ({
       {error && <View className='m-cell-form-error'>{error}</View>}
     </>
   )
-}
-
-CellForm.propTypes = {
-  /** 标签 */
-  label: PropTypes.string,
-  /** 标签宽度 */
-  labelWidth: PropTypes.string,
-  /** 错误信息显示 */
-  error: PropTypes.string,
-  /** 必填项 */
-  required: PropTypes.bool,
-  className: PropTypes.string,
-  style: PropTypes.object,
 }
 
 export default CellForm

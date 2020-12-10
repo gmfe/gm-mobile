@@ -6,7 +6,7 @@ import Cell from './cell'
 import CellsForm from './cells_form'
 import CellForm from './cell_form'
 import Flex from '../flex'
-import ButtonTime from '../button'
+import { ButtonTime } from '../button'
 import View from '../view'
 import Text from '../text'
 import Toast from '../toast'
@@ -19,13 +19,13 @@ export const normal = () => {
     <View className='m-bg-back m-padding-tb-10'>
       <Cells title='title 说明'>
         <Cell>children 文字</Cell>
-        <Cell right={'right 说明文字'}>children 文字</Cell>
-        <Cell access right={'right 说明文字'}>
+        <Cell right='right 说明文字'>children 文字</Cell>
+        <Cell access right='right 说明文字'>
           children 文字
         </Cell>
         <Cell
           access
-          right={'right 说明文字'}
+          right='right 说明文字'
           onClick={() => {
             if (is.weApp()) {
               Toast.tip('小程序自主处理跳转')
@@ -47,7 +47,7 @@ export const normal = () => {
               style={{ fontSize: '16px', lineHeight: 1 }}
             />
           }
-          right={'right 说明文字'}
+          right='right 说明文字'
         >
           children 文字
         </Cell>
@@ -59,7 +59,7 @@ export const normal = () => {
               style={{ fontSize: '20px' }}
             />
           }
-          right={'right 说明文字'}
+          right='right 说明文字'
         >
           children 文字
         </Cell>
@@ -121,6 +121,8 @@ export const mini = () => {
 }
 
 const store = observable({
+  username: '',
+  name: '',
   value: '',
   age: '',
   password: '',
@@ -239,6 +241,7 @@ export const form = () => {
               type='primary'
               onClick={() => {
                 Toast.tip('do 发送验证码')
+                return false
               }}
             >
               重新发送

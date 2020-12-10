@@ -2,12 +2,7 @@ import React, { FC, CSSProperties } from 'react'
 import classNames from 'classnames'
 import View from '../view'
 
-interface CellsProps {
-  title?: string
-  mini?: boolean
-  className?: string
-  style?: CSSProperties
-}
+import type { CellsProps } from './types'
 
 const Cells: FC<CellsProps> = ({
   title,
