@@ -1,9 +1,21 @@
-import React from 'react'
+import React, { FC, CSSProperties } from 'react'
 import classNames from 'classnames'
-import PropTypes from 'prop-types'
 import View from '../view'
 
-const Cells = ({ title, mini, className, children, ...rest }) => {
+interface CellsProps {
+  title?: string
+  mini?: boolean
+  className?: string
+  style?: CSSProperties
+}
+
+const Cells: FC<CellsProps> = ({
+  title,
+  mini,
+  className,
+  children,
+  ...rest
+}) => {
   return (
     <View
       {...rest}
@@ -19,13 +31,6 @@ const Cells = ({ title, mini, className, children, ...rest }) => {
       <View className='m-cells-content'>{children}</View>
     </View>
   )
-}
-
-Cells.propTypes = {
-  title: PropTypes.string,
-  mini: PropTypes.bool,
-  className: PropTypes.string,
-  style: PropTypes.object,
 }
 
 export default Cells

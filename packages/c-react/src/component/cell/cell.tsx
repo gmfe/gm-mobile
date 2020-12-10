@@ -1,25 +1,32 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC, ReactNode, CSSProperties, MouseEvent } from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
 import Flex from '../flex'
 import View from '../view'
 import Text from '../text'
 
-const Cell = ({
+interface CellProps {
+  /** 右边带箭头 */
+  access?: boolean
+  /** 左边有图标的情况 */
+  icon?: ReactNode
+  left?: ReactNode | string
+  right?: ReactNode | string
+  className?: string
+  style?: CSSProperties
+  onClick: (event: MouseEvent<HTMLDivElement>) => void
+}
+
+const Cell: FC<CellProps> = ({
   access,
   icon,
   left,
   right,
-  onClick,
+  onClick = _.noop,
   children,
   className,
   ...rest
 }) => {
-  const handleClick = (e) => {
-    onClick(e)
-  }
-
   return (
     <Flex
       {...rest}
@@ -32,7 +39,7 @@ const Cell = ({
         },
         className
       )}
-      onClick={handleClick}
+      onClick={onClick}
     >
       {icon && <View className='m-cell-icon'>{icon}</View>}
       {left && <View className='m-cell-left'>{left}</View>}
@@ -52,21 +59,5 @@ const Cell = ({
   )
 }
 
-Cell.propTypes = {
-  /** 右边带箭头 */
-  access: PropTypes.bool,
-  /** 左边有图标的情况 */
-  icon: PropTypes.element,
-  left: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
-  right: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
-  onClick: PropTypes.func,
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
-
-Cell.defaultProps = {
-  onClick: _.noop,
-}
-
 export default Cell
+export type { CellProps }
