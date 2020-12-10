@@ -1,13 +1,4 @@
 {
-  "compilerOptions": {
-    "jsx": "react",
-    "baseUrl": "./",
-    "importsNotUsedAsValues": "preserve",
-    "esModuleInterop": true,
-    "paths": {
-      "@/*": ["src/*"]
-    }
-  },
   "include": [
     "packages/**/*",
     "global.d.ts",
