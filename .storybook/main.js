@@ -62,17 +62,27 @@ const webpackFinal = (config) => {
 
 module.exports = {
   // 枚举，避免识别到 node_modules 的 stories
+  // todo: 暂时兼容js和tsx
   stories: [
     '../packages/c-react/src/**/*stories.js',
     '../packages/c-business/src/**/*stories.js',
     '../packages/react/src/**/*stories.js',
-    '../packages/react/src/**/*stories.tsx',
     '../packages/locales/src/**/*stories.js',
     '../packages/business/src/**/*stories.js',
     '../packages/c-service-time/src/**/*stories.js',
     '../packages/swiper/src/**/*stories.js',
     '../packages/c-qrcode/src/**/*stories.js',
     '../other/**/*.stories.js',
+
+    '../packages/c-react/src/**/*stories.tsx',
+    '../packages/c-business/src/**/*stories.tsx',
+    '../packages/react/src/**/*stories.tsx',
+    '../packages/locales/src/**/*stories.tsx',
+    '../packages/business/src/**/*stories.tsx',
+    '../packages/c-service-time/src/**/*stories.tsx',
+    '../packages/swiper/src/**/*stories.tsx',
+    '../packages/c-qrcode/src/**/*stories.tsx',
+    '../other/**/*.stories.tsx',
   ],
   webpackFinal,
 }
