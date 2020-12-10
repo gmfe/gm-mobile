@@ -1,31 +1,32 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { FC, useState, MouseEvent } from 'react'
 import _ from 'lodash'
-
 import classNames from 'classnames'
 import Loading from '../loading'
 import BaseButton from './base'
 import { is } from '@gm-mobile/c-tool'
+import { ButtonProps } from './types'
 
-const Button = ({
-  type,
+const Button: FC<ButtonProps> = ({
+  type = 'default',
   plain,
   mini,
   block,
   noRound,
   disabled,
-  onClick,
+  onClick = _.noop,
   loading,
   children,
-  htmlType,
+  htmlType = 'button',
   className,
   ...rest
 }) => {
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
-  const loadFlag = loading || isLoading
+  const loadFlag: boolean = loading || isLoading
 
-  const handleClick = (e) => {
+  const handleClick = (
+    e: MouseEvent<HTMLButtonElement> | MouseEvent<HTMLAnchorElement>
+  ) => {
     if (loadFlag) {
       return
     }
@@ -64,33 +65,6 @@ const Button = ({
       {children}
     </BaseButton>
   )
-}
-
-// 只封装了 loading
-Button.propTypes = {
-  type: PropTypes.oneOf(['default', 'primary', 'danger', 'link']),
-  plain: PropTypes.bool,
-  mini: PropTypes.bool,
-  block: PropTypes.bool,
-  noRound: PropTypes.bool,
-  loading: PropTypes.bool,
-  /** 仅web 用。原生的 type */
-  htmlType: PropTypes.string,
-  /** 仅小程序 */
-  formType: PropTypes.string,
-  /** 仅小程序 */
-  openType: PropTypes.string,
-  /** 返回 Promise 才有 loading */
-  onClick: PropTypes.func,
-  disabled: PropTypes.bool,
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
-
-Button.defaultProps = {
-  type: 'default',
-  htmlType: 'button',
-  onClick: _.noop,
 }
 
 export default Button

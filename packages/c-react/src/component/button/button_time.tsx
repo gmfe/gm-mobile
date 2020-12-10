@@ -1,10 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, FC } from 'react'
 import Button from './button'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { is } from '@gm-mobile/c-tool'
+import { ButtonTimeProps } from './types'
 
-const ButtonTime = ({ time, onClick, className, children, ...rest }) => {
+const ButtonTime: FC<ButtonTimeProps> = ({
+  time = 60,
+  onClick,
+  className,
+  children,
+  ...rest
+}) => {
   const [second, setSecond] = useState(0)
   const timer = useRef(null)
 
@@ -22,8 +28,8 @@ const ButtonTime = ({ time, onClick, className, children, ...rest }) => {
       return
     }
     if (is.promise(fn)) {
-      return fn.then(() => {
-        startCount()
+      return (fn as Promise<any>).then(() => {
+        return startCount()
       })
     }
 
@@ -53,18 +59,6 @@ const ButtonTime = ({ time, onClick, className, children, ...rest }) => {
       {!!second && `(${second}s)`}
     </Button>
   )
-}
-
-ButtonTime.propTypes = {
-  ...Button.propTypes,
-  /** 计时的时间 */
-  time: PropTypes.number,
-  /** 函数需要返回 bool 值, true 开始计时，false 不计时 */
-  onClick: PropTypes.func.isRequired,
-}
-
-ButtonTime.defaultProps = {
-  time: 60,
 }
 
 export default ButtonTime
