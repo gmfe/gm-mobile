@@ -1,4 +1,9 @@
 {
+  "compilerOptions": {
+    "jsx": "react",
+    "importsNotUsedAsValues": "preserve",
+    "esModuleInterop": true,
+  },
   "include": [
     "packages/**/*",
     "global.d.ts",
