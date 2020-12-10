@@ -1,4 +1,5 @@
 {
+  "extends": "ts-config-gm-react-app/tsconfig",
   "compilerOptions": {
     "jsx": "react",
     "importsNotUsedAsValues": "preserve",
