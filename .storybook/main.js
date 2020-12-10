@@ -66,6 +66,7 @@ module.exports = {
     '../packages/c-react/src/**/*stories.js',
     '../packages/c-business/src/**/*stories.js',
     '../packages/react/src/**/*stories.js',
+    '../packages/react/src/**/*stories.tsx',
     '../packages/locales/src/**/*stories.js',
     '../packages/business/src/**/*stories.js',
     '../packages/c-service-time/src/**/*stories.js',

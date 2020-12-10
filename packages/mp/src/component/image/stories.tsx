@@ -70,88 +70,68 @@ export const mode = () => (
 
     <Text>aspectFit：保持纵横比缩放图片，使图片的长边能完全显示出来</Text>
     <View style={flex}>
-      <Image objectFix='contain' mode='aspectFit' src={src2} style={style1} />
-      <Image objectFix='contain' mode='aspectFit' src={src2} style={style2} />
+      <Image mode='aspectFit' src={src2} style={style1} />
+      <Image mode='aspectFit' src={src2} style={style2} />
     </View>
 
     <Text>aspectFill：保持纵横比缩放图片，只保证图片的短边能完全显示出来</Text>
     <View style={flex}>
-      <Image objectFix='cover' mode='aspectFill' src={src2} style={style1} />
-      <Image objectFix='cover' mode='aspectFill' src={src2} style={style2} />
+      <Image mode='aspectFill' src={src2} style={style1} />
+      <Image mode='aspectFill' src={src2} style={style2} />
     </View>
 
     <Text>top：不缩放图片，只显示图片的顶部区域</Text>
     <View style={flex}>
-      <Image objectFix='none' mode='top' src={src2} style={style1} />
-      <Image objectFix='none' mode='top' src={src2} style={style2} />
+      <Image mode='top' src={src2} style={style1} />
+      <Image mode='top' src={src2} style={style2} />
     </View>
 
     <Text>bottom：不缩放图片，只显示图片的底部区域</Text>
     <View style={flex}>
-      <Image objectFix='scale-down' mode='bottom' src={src2} style={style1} />
-      <Image objectFix='scale-down' mode='bottom' src={src2} style={style2} />
+      <Image mode='bottom' src={src2} style={style1} />
+      <Image mode='bottom' src={src2} style={style2} />
     </View>
 
     <Text>center：不缩放图片，只显示图片的中间区域</Text>
     <View style={flex}>
-      <Image objectFix='scale-down' mode='center' src={src2} style={style1} />
-      <Image objectFix='scale-down' mode='center' src={src2} style={style2} />
+      <Image mode='center' src={src2} style={style1} />
+      <Image mode='center' src={src2} style={style2} />
     </View>
 
     <Text>left：不缩放图片，只显示图片的左边区域</Text>
     <View style={flex}>
-      <Image objectFix='scale-down' mode='left' src={src2} style={style1} />
-      <Image objectFix='scale-down' mode='left' src={src2} style={style2} />
+      <Image mode='left' src={src2} style={style1} />
+      <Image mode='left' src={src2} style={style2} />
     </View>
 
     <Text>right：不缩放图片，只显示图片的右边边区域</Text>
     <View style={flex}>
-      <Image objectFix='scale-down' mode='right' src={src2} style={style1} />
-      <Image objectFix='scale-down' mode='right' src={src2} style={style2} />
+      <Image mode='right' src={src2} style={style1} />
+      <Image mode='right' src={src2} style={style2} />
     </View>
 
     <Text>top left：不缩放图片，只显示图片的左上边区域</Text>
     <View style={flex}>
-      <Image objectFix='scale-down' mode='top left' src={src2} style={style1} />
-      <Image objectFix='scale-down' mode='top left' src={src2} style={style2} />
+      <Image mode='top left' src={src2} style={style1} />
+      <Image mode='top left' src={src2} style={style2} />
     </View>
 
     <Text>top right：不缩放图片，只显示图片的右上边区域</Text>
     <View style={flex}>
-      <Image
-        objectFix='scale-down'
-        mode='top right'
-        src={src2}
-        style={style1}
-      />
-      <Image
-        objectFix='scale-down'
-        mode='top right'
-        src={src2}
-        style={style2}
-      />
+      <Image mode='top right' src={src2} style={style1} />
+      <Image mode='top right' src={src2} style={style2} />
     </View>
 
     <Text>bottom left：不缩放图片，只显示图片的左下边区域</Text>
     <View style={flex}>
-      <Image
-        objectFix='scale-down'
-        mode='bottom left'
-        src={src2}
-        style={style1}
-      />
-      <Image
-        objectFix='scale-down'
-        mode='bottom left'
-        src={src2}
-        style={style2}
-      />
+      <Image mode='bottom left' src={src2} style={style1} />
+      <Image mode='bottom left' src={src2} style={style2} />
     </View>
 
     <Text>bottom right：不缩放图片，只显示图片的右下边区域</Text>
     <View style={flex}>
-      <Image objectFix='scale-down' mode='bottom' src={src2} style={style1} />
-      <Image objectFix='scale-down' mode='bottom' src={src2} style={style2} />
+      <Image mode='bottom' src={src2} style={style1} />
+      <Image mode='bottom' src={src2} style={style2} />
     </View>
   </View>
 )
