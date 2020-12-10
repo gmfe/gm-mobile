@@ -1,14 +1,27 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { CSSProperties, FC } from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
 import View from '../view'
 
-const Checkbox = ({
+interface CheckboxProps {
+  /** 选中态 */
+  checked: boolean
+  /** 圆形 */
+  circle?: boolean
+  /** 主题色 */
+  primary?: boolean
+  disabled?: boolean
+  /** 回调函数 */
+  onChange?: () => void
+  className?: string
+  style?: CSSProperties
+}
+
+const Checkbox: FC<CheckboxProps> = ({
   className,
   disabled,
   checked,
-  onChange,
+  onChange = _.noop,
   circle,
   primary,
   children,
@@ -38,24 +51,6 @@ const Checkbox = ({
       <View className='m-checkbox-child'>{children}</View>
     </View>
   )
-}
-
-Checkbox.propTypes = {
-  /** 选中态 */
-  checked: PropTypes.bool.isRequired,
-  /** 圆形 */
-  circle: PropTypes.bool,
-  /** 主题色 */
-  primary: PropTypes.bool,
-  disabled: PropTypes.bool,
-  /** 回调函数 */
-  onChange: PropTypes.func,
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
-
-Checkbox.defaultProps = {
-  onChange: _.noop,
 }
 
 export default Checkbox
