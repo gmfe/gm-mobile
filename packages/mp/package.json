@@ -26,7 +26,7 @@
     "@gm-mobile/locales": "^2.0.6-alpha.2"
   },
   "peerDependencies": {
-    "@tarojs/components": "3.0.0-rc.6",
+    "@tarojs/components": "3.0.18",
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",
     "moment": "^2.26.0",

@@ -26,8 +26,8 @@
     "@gm-mobile/locales": "^2.0.6-alpha.2"
   },
   "peerDependencies": {
-    "@tarojs/components": "3.0.0-rc.6",
-    "@tarojs/taro": "3.0.0-rc.6",
+    "@tarojs/components": "3.0.18",
+    "@tarojs/taro": "3.0.18",
     "big.js": "^5.2.2",
     "classnames": "^2.2.6",
     "prop-types": "^15.7.2",
