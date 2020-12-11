@@ -6,7 +6,9 @@
     "esModuleInterop": true,
   },
   "include": [
+    "**/*.ts", "**/*.tsx",
     "packages/**/*",
     "global.d.ts",
   ],
+  "exclude": ["node_modules"]
 }

@@ -24,6 +24,9 @@
     "./packages/**/*.js": [
       "eslint --cache --fix"
     ],
+    "./packages/**/*.ts": [
+      "eslint --cache --fix"
+    ],
     "./packages/**/*.less": [
       "stylelint --cache --fix"
     ]
@@ -45,8 +48,9 @@
     "@gm-react-app/scripts-lib": "^3.5.0-beta.0",
     "@storybook/addon-info": "^5.3.21",
     "@storybook/addon-notes": "^5.3.21",
-    "@storybook/addon-storysource": "^5.3.14",
+    "@storybook/addon-storysource": "^5.3.21",
     "@storybook/addons": "^5.3.18",
+    "@storybook/preset-typescript": "^3.0.0",
     "@storybook/react": "^5.3.14",
     "@storybook/theming": "^5.3.18",
     "@svgr/webpack": "^5.5.0",
