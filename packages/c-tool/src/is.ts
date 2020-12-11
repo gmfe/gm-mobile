@@ -7,9 +7,9 @@ function web() {
   return process.env.TARO_ENV === 'undefined'
 }
 
-const promise = (arg) => toString.call(arg) === '[object Promise]'
+const promise = (arg: any) => toString.call(arg) === '[object Promise]'
 
-const chinese = (value) => {
+const chinese = (value: string): boolean => {
   return /[\u4E00-\u9FA5]/.test(value)
 }
 

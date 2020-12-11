@@ -4,12 +4,15 @@ import is from '../is'
 const isWeApp = is.weApp()
 
 class StorageFactory {
-  constructor(prefix, target) {
+  prefix: string
+  target: Storage
+
+  constructor(prefix: string, target: Storage) {
     this.prefix = prefix
     this.target = target
   }
 
-  set(key, value) {
+  set(key: string, value: any): void {
     try {
       if (isWeApp) {
         wx.setStorageSync(`${this.prefix}${key}`, value)
@@ -21,9 +24,9 @@ class StorageFactory {
     }
   }
 
-  get(key) {
+  get(key: string): any {
     try {
-      let value
+      let value: any
 
       if (isWeApp) {
         value = wx.getStorageSync(this.prefix + key)
@@ -42,7 +45,7 @@ class StorageFactory {
     }
   }
 
-  remove(key) {
+  remove(key: string): void {
     if (isWeApp) {
       wx.removeStorageSync(this.prefix + key)
     } else {

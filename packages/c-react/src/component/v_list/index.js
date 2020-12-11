@@ -47,12 +47,12 @@ const Item = React.memo(
         }
       }
 
-      Events.on(scrollEventName, doLazy)
+      Events.add(scrollEventName, doLazy)
 
       // 初始偏移值默认为0
       doLazy({ detail: { scrollTop: 0 } })
       return () => {
-        Events.off(scrollEventName, doLazy)
+        Events.remove(scrollEventName, doLazy)
       }
     }, [])
 
@@ -108,7 +108,7 @@ const VList = forwardRef(
     const doLazy = useRef(
       _.throttle((scrollTop) => {
         const detail = { scrollTop }
-        Events.trigger(SCROLL_EVENT, detail)
+        Events.dispatch(SCROLL_EVENT, detail)
 
         // 有定义才做，不消耗多余性能
         if (onScrollToKey) {

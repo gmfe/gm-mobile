@@ -1,22 +1,20 @@
-import { ReactNode, CSSProperties, MouseEvent } from 'react'
+import { ReactNode, MouseEvent, HTMLAttributes } from 'react'
 
-export interface CellProps {
-  /** 右边带箭头 */
+export interface CellProps extends HTMLAttributes<HTMLDivElement> {
+  /** 用于右侧需要带箭头的情况 */
   access?: boolean
-  /** 左边有图标的情况 */
+  /** 用于左侧有图标的情况 */
   icon?: ReactNode
+  /** 左侧内容 */
   left?: ReactNode | string
+  /** 右侧内容 */
   right?: ReactNode | string
-  className?: string
-  style?: CSSProperties
   onClick?: (event: MouseEvent<HTMLDivElement>) => void
 }
 
-export interface CellsProps {
+export interface CellsProps extends HTMLAttributes<HTMLDivElement> {
   title?: string
   mini?: boolean
-  className?: string
-  style?: CSSProperties
 }
 
 export interface CellFormProps extends CellProps {
@@ -26,10 +24,8 @@ export interface CellFormProps extends CellProps {
   labelWidth?: string
   /** 错误信息显示 */
   error?: string
-  /** 必填项 */
+  /** 是否为必填项 */
   required?: boolean
-  className?: string
-  style?: CSSProperties
 }
 
 export type CellsFormProps = CellsProps

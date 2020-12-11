@@ -3017,6 +3017,11 @@
     "@types/webpack-sources" "*"
     source-map "^0.6.0"
 
+"@types/wechat-miniprogram@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@types/wechat-miniprogram/-/wechat-miniprogram-3.1.0.tgz#b7c2bbe7738857372627e82e972145ec5bc6f04a"
+  integrity sha512-p9nePsWeNcZrwUwoiLTU5s1Z4KpXeCSbGYxmU9IhGyXQZA0oeYdQVvA1QBlcRbKayRS4TQvZlSV8OSx4fpnCpg==
+
 "@typescript-eslint/eslint-plugin@^2.27.0":
   version "2.34.0"
   resolved "https://registry.npm.taobao.org/@typescript-eslint/eslint-plugin/download/@typescript-eslint/eslint-plugin-2.34.0.tgz?cache=0&sync_timestamp=1606862327693&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40typescript-eslint%2Feslint-plugin%2Fdownload%2F%40typescript-eslint%2Feslint-plugin-2.34.0.tgz#6f8ce8a46c7dea4a6f1d171d2bb8fbae6dac2be9"
