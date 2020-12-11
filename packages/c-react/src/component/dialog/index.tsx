@@ -1,17 +1,22 @@
 import { getLocale } from '@gm-mobile/locales'
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState, FC } from 'react'
 import _ from 'lodash'
 import Flex from '../flex'
 import Mask from '../mask'
 import LayoutRoot from '../layout_root'
 import View from '../view'
 import Input from './input'
+import {
+  ErrorInputProps,
+  DialogBaseProps,
+  DialogStaticsTypes,
+  DialogTypes,
+} from './types'
 
-const ErrorInput = ({
-  getError,
+const ErrorInput: FC<ErrorInputProps> = ({
+  getError = _.noop,
   defaultValue,
-  onChange,
+  onChange = _.noop,
   className,
   ...rest
 }) => {
@@ -35,19 +40,7 @@ const ErrorInput = ({
   )
 }
 
-ErrorInput.propTypes = {
-  defaultValue: PropTypes.string,
-  onChange: PropTypes.func,
-  className: PropTypes.string,
-  getError: PropTypes.func,
-}
-
-ErrorInput.defaultProps = {
-  onChange: _.noop,
-  getError: _.noop,
-}
-
-const DialogStatics = {
+const DialogStatics: DialogStaticsTypes = {
   render(options, type) {
     if (typeof options === 'string') {
       options = {
@@ -94,7 +87,7 @@ const DialogStatics = {
         Promise.resolve(result).then(() => {
           DialogStatics.hide()
 
-          setTimeout(() => {
+          return setTimeout(() => {
             resolve(type === 'prompt' ? inputValue : undefined)
           }, 50)
         })
@@ -152,11 +145,11 @@ const DialogStatics = {
   },
 }
 
-const Dialog = ({
-  title,
-  confirmText,
+const DialogBase: FC<DialogBaseProps> = ({
+  title = getLocale('提示'),
+  confirmText = getLocale('确定'),
   onConfirm,
-  cancelText,
+  cancelText = getLocale('取消'),
   onCancel,
   otherText,
   onOther,
@@ -203,28 +196,7 @@ const Dialog = ({
   )
 }
 
-Object.assign(Dialog, DialogStatics)
-
-Dialog.propTypes = {
-  title: PropTypes.string,
-  onConfirm: PropTypes.func.isRequired,
-  confirmText: PropTypes.string,
-  onCancel: PropTypes.func,
-  cancelText: PropTypes.string,
-  otherText: PropTypes.string, // 当有三个按钮时
-  onOther: PropTypes.func,
-  /** prompt 的时候有用 */
-  promptText: PropTypes.string,
-  /** prompt 的时候有用 */
-  promptInputProps: PropTypes.object,
-  /**  */
-  promptGetError: PropTypes.func,
-}
-
-Dialog.defaultProps = {
-  title: getLocale('提示'),
-  confirmText: getLocale('确定'),
-  cancelText: getLocale('取消'),
-}
+const Dialog = Object.assign(DialogBase, DialogStatics)
 
 export default Dialog
+export { DialogTypes }

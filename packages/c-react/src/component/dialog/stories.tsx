@@ -1,5 +1,5 @@
 import React from 'react'
-import Dialog from './'
+import Dialog from '.'
 import Toast from '../toast'
 import View from '../view'
 import Button from '../button'
@@ -9,9 +9,7 @@ export const normal = () => {
     <View>
       <Button
         onClick={() => {
-          Dialog.alert('啦啦啦啦').then(() => {
-            console.log('resolve')
-          })
+          Dialog.alert('啦啦啦啦').then(() => console.log('resolve'))
         }}
       >
         alert
@@ -19,9 +17,7 @@ export const normal = () => {
       <Button
         onClick={() => {
           Dialog.confirm('是否要啥啥啥').then(
-            () => {
-              console.log('resolve')
-            },
+            () => console.log('resolve'),
             () => {
               console.log('reject')
             }
@@ -33,9 +29,7 @@ export const normal = () => {
       <Button
         onClick={() => {
           Dialog.delete('是否要删除').then(
-            () => {
-              console.log('resolve')
-            },
+            () => console.log('resolve'),
             () => {
               console.log('reject')
             }
@@ -83,9 +77,7 @@ export const normal = () => {
               }
             },
           }).then(
-            (value) => {
-              console.log('resolve', value)
-            },
+            (value) => console.log('resolve', value),
             () => {
               console.log('reject')
             }
