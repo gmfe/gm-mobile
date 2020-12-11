@@ -1,8 +1,11 @@
-import Cells from './cells'
-import CellsForm from './cells_form'
-import Cell from './cell'
-import CellForm from './cell_form'
-import type { CellProps, CellsProps, CellFormProps } from './types'
+export { default as Cell } from './cell'
+export { default as Cells } from './cells'
+export { default as CellForm } from './cell_form'
+export { default as CellsForm } from './cells_form'
 
-export { Cells, Cell, CellsForm, CellForm }
-export type { CellProps, CellsProps, CellFormProps }
+export type {
+  CellProps,
+  CellsProps,
+  CellFormProps,
+  CellsFormProps,
+} from './types'
