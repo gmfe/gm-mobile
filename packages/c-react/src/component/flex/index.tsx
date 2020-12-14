@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { forwardRef } from 'react'
 import classNames from 'classnames'
 import View from '../view'
+import { FlexProps } from './types'
 
-const Flex = React.forwardRef(
+const Flex = forwardRef<HTMLDivElement, FlexProps>(
   (
     {
       flex,
@@ -84,7 +84,7 @@ const Flex = React.forwardRef(
     const s = Object.assign({}, style)
     if (flex) {
       s.flex = typeof flex === 'boolean' ? 1 : flex
-      s.WebKitFlex = typeof flex === 'boolean' ? 1 : flex
+      s.WebkitFlex = typeof flex === 'boolean' ? 1 : flex
     }
     if (height) {
       s.height = height
@@ -97,35 +97,5 @@ const Flex = React.forwardRef(
   }
 )
 
-Flex.propTypes = {
-  flex: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
-  auto: PropTypes.bool,
-  none: PropTypes.bool,
-  width: PropTypes.string,
-  height: PropTypes.string,
-  row: PropTypes.bool,
-  column: PropTypes.bool,
-  wrap: PropTypes.bool,
-  nowrap: PropTypes.bool,
-  justifyStart: PropTypes.bool,
-  justifyEnd: PropTypes.bool,
-  justifyCenter: PropTypes.bool,
-  justifyBetween: PropTypes.bool,
-  justifyAround: PropTypes.bool,
-  alignStart: PropTypes.bool,
-  alignEnd: PropTypes.bool,
-  alignCenter: PropTypes.bool,
-  alignBaseline: PropTypes.bool,
-  alignStretch: PropTypes.bool,
-  alignContentStart: PropTypes.bool,
-  alignContentEnd: PropTypes.bool,
-  alignContentCenter: PropTypes.bool,
-  alignContentBetween: PropTypes.bool,
-  alignContentAround: PropTypes.bool,
-  alignContentStretch: PropTypes.bool,
-  children: PropTypes.any,
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
-
 export default Flex
+export { FlexProps }
