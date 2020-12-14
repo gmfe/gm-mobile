@@ -62,7 +62,7 @@ class StorageFactory {
   }
 
   getAll() {
-    const result = {}
+    const result: { [key: string]: any } = {}
 
     let keys = []
 
@@ -76,8 +76,10 @@ class StorageFactory {
     }
 
     _.each(keys, (key) => {
-      if (key.startsWith(this.prefix)) {
-        result[key] = this.get(key.slice(this.prefix.length))
+      if ((key as string).startsWith(this.prefix)) {
+        result[key as string] = this.get(
+          (key as string).slice(this.prefix.length)
+        )
       }
     })
 

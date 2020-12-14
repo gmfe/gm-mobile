@@ -13,7 +13,7 @@ const chinese = (value: string): boolean => {
   return /[\u4E00-\u9FA5]/.test(value)
 }
 
-let isiOS = null
+let isiOS: boolean | null = null
 const iOS = () => {
   if (isiOS === null) {
     isiOS = !!window.navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)
