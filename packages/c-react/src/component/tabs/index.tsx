@@ -1,14 +1,25 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC, HTMLAttributes } from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
 import Text from '../text'
 import Flex from '../flex'
 
-const Tabs = (props) => {
-  const { tabs, active, onChange, className, type, ...rest } = props
+interface TabsProps extends HTMLAttributes<HTMLDivElement> {
+  tabs: { value: number; text: string }[] // tabs数据
+  active: any // 当前选中tab对应value值
+  onChange: () => void
+  type: 'default' | 'label' | 'capsule'
+}
 
-  const handleChange = (value) => {
+const Tabs: FC<TabsProps> = ({
+  tabs,
+  active,
+  onChange = _.noop,
+  type = 'default',
+  className,
+  ...rest
+}) => {
+  const handleChange = (value: number) => {
     onChange(value)
   }
 
@@ -31,23 +42,6 @@ const Tabs = (props) => {
       </Flex>
     </Flex>
   )
-}
-
-Tabs.propTypes = {
-  /** tabs数据，格式为 [{ value, text }] */
-  tabs: PropTypes.array.isRequired,
-  /** 当前选中tab对应value值 */
-  active: PropTypes.any.isRequired,
-  /** 触发回调函数 */
-  onChange: PropTypes.func,
-  /** 暂定义为默认式，标签式，胶囊式 */
-  type: PropTypes.oneOf(['default', 'label', 'capsule']),
-  className: PropTypes.string,
-}
-
-Tabs.defaultProps = {
-  type: 'default',
-  onChange: _.noop,
 }
 
 export default Tabs

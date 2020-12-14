@@ -2,7 +2,7 @@ import React from 'react'
 import { observable } from 'mobx'
 import View from '../view'
 
-import Tabs from './'
+import Tabs from '.'
 
 const store = {
   active: 1,
