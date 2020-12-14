@@ -1,7 +1,7 @@
 import React from 'react'
 import Tooltip from './index'
 
-import View from '../view'
+import { View } from '../view'
 
 export const normal = () => {
   return (

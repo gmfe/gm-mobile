@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
-import View from '../view'
+import { View } from '../view'
 import { SwitchProps } from './types'
 
 const Switch: FC<SwitchProps> = ({

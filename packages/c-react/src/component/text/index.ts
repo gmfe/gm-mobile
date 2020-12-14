@@ -1,4 +1,4 @@
 import Text, { TextProps } from './text'
 
-export default Text
+export { Text }
 export type { TextProps }

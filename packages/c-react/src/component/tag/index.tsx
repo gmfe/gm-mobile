@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react'
 import classNames from 'classnames'
 
-import View from '../view'
+import { View } from '../view'
 
 interface TagWrapProps {
   tag: string | ReactNode

@@ -1,6 +1,6 @@
 import React from 'react'
 import Label from './index'
-import View from '../view'
+import { View } from '../view'
 
 export const normal = () => (
   <View>

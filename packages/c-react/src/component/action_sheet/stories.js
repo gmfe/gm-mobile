@@ -1,7 +1,7 @@
 import React from 'react'
 import ActionSheet from './index'
 import classNames from 'classnames'
-import Button from '../button'
+import { Button } from '../button'
 
 export const normal = () => {
   const data = [

@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react'
 import _ from 'lodash'
 import VList from '.'
-import View from '../view'
-import Button from '../button'
+import { View } from '../view'
+import { Button } from '../button'
 import Page from '../page'
 
 const Item = ({ data }) => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import View from '../view'
+import { View } from '../view'
 import SVGLoading from './loading.svg'
 import SVGLoading2 from './loading2.svg'
 import { Image } from '@tarojs/components'

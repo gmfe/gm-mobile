@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import classNames from 'classnames'
-import View from '../view'
+import { View } from '../view'
 import { FlexProps } from './types'
 
 const Flex = forwardRef<HTMLDivElement, FlexProps>(

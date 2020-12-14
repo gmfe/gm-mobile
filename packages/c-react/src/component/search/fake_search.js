@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import Flex from '../flex'
-import Text from '../text'
+import { Text } from '../text'
 
 const FakeSearch = ({
   placeholder,

@@ -1,6 +1,7 @@
 import React from 'react'
-import Button, { ButtonTime } from '.'
-import View from '../view'
+import Button from './button'
+import ButtonTime from './button_time'
+import { View } from '../view'
 
 function handleClick() {
   console.log('click')

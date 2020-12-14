@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Button from '../button'
+import { Button } from '../button'
 import InnerLayer from '.'
-import View from '../view'
+import { View } from '../view'
 
 export const Normal = () => {
   const handleCancel = () => {

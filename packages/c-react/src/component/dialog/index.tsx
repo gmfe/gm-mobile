@@ -4,7 +4,7 @@ import _ from 'lodash'
 import Flex from '../flex'
 import Mask from '../mask'
 import LayoutRoot from '../layout_root'
-import View from '../view'
+import { View } from '../view'
 import Input from './input'
 import {
   ErrorInputProps,

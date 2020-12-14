@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import Cell from './cell'
-import View from '../view'
-import Text from '../text'
+import { View } from '../view'
+import { Text } from '../text'
 import classNames from 'classnames'
 
 import type { CellFormProps } from './types'

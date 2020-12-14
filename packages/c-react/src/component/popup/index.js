@@ -7,9 +7,9 @@ import { devWarnForHook } from '@gm-mobile/c-tool'
 import Flex from '../flex'
 import Mask from '../mask'
 import LayoutRoot from '../layout_root'
-import Button from '../button'
-import View from '../view'
-import Text from '../text'
+import { Button } from '../button'
+import { View } from '../view'
+import { Text } from '../text'
 
 const PopupStatics = {
   render(options) {

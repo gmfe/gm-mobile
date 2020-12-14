@@ -2,7 +2,7 @@ import React from 'react'
 import { observable } from 'mobx'
 
 import Radio from './'
-import View from '../view'
+import { View } from '../view'
 
 const store = observable({
   checked: true,

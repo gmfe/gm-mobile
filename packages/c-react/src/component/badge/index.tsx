@@ -1,6 +1,6 @@
 import React, { CSSProperties, FC } from 'react'
 import classNames from 'classnames'
-import View from '../view'
+import { View } from '../view'
 
 interface BadgeProps {
   /** 徽章显示的数字 */

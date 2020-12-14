@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
-import View from '../view'
-import Text from '../text'
+import { View } from '../view'
+import { Text } from '../text'
 import EventBus from './event_bus'
 import Storage from './storage'
 

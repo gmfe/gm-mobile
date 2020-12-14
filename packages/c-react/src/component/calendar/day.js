@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 import Flex from '../flex'
-import View from '../view'
+import { View } from '../view'
 import { TYPE } from './util'
 
 const Day = ({

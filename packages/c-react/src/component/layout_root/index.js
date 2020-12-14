@@ -1,6 +1,6 @@
 import React from 'react'
 import _ from 'lodash'
-import View from '../view'
+import { View } from '../view'
 import { is } from '@gm-mobile/c-tool'
 import getPath from './get_path'
 

@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
-import View from '../../view'
+import { View } from '../../view'
 
 class PickerColumn extends React.Component {
   constructor(props) {

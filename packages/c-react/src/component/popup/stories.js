@@ -1,8 +1,8 @@
 import React from 'react'
 
 import Popup from './index'
-import View from '../view'
-import Button from '../button'
+import { View } from '../view'
+import { Button } from '../button'
 
 export const normal = () => {
   return (

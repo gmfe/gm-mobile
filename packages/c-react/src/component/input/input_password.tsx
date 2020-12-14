@@ -1,8 +1,8 @@
 import React, { useState, FC } from 'react'
 import Input from './input'
 import classNames from 'classnames'
-import View from '../view'
-import Text from '../text'
+import { View } from '../view'
+import { Text } from '../text'
 import { InputProps } from './type'
 
 const InputPassword: FC<InputProps> = (props) => {

@@ -1,6 +1,6 @@
 import React, { FC, CSSProperties } from 'react'
 import classNames from 'classnames'
-import View from '../view'
+import { View } from '../view'
 
 import type { CellsProps } from './types'
 

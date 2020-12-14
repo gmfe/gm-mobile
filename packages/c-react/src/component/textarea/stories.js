@@ -1,7 +1,7 @@
 import React from 'react'
 import Textarea from './index'
 import { observable } from 'mobx'
-import View from '../view'
+import { View } from '../view'
 
 const store = observable({
   value: '',

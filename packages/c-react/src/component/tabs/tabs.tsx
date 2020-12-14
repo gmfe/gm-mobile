@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
-import Text from '../text'
+import { Text } from '../text'
 import Flex from '../flex'
 import { TabsProps } from './types'
 

@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import Input from './input'
-import View from '../view'
+import { View } from '../view'
 import { InputMaxLengthProps } from './type'
 
 const InputMaxLength = forwardRef<HTMLInputElement, InputMaxLengthProps>(

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 import classNames from 'classnames'
-import View from '../view'
+import { View } from '../view'
 import Base from './base'
 
 const Textarea = ({ value, disabled, maxLength, form, className, ...rest }) => {

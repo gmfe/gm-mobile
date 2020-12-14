@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import Flex from '../flex'
-import View from '../view'
+import { View } from '../view'
 
 const Divider: FC = ({ children }) => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react'
 import Badge from './index'
-import View from '../view'
+import { View } from '../view'
 
 export const normal = () => (
   <View style={{ padding: '20px' }}>

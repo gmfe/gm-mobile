@@ -1,5 +1,5 @@
 import React from 'react'
-import View from '../view'
+import { View } from '../view'
 import Page from './'
 
 export const normal = () => {

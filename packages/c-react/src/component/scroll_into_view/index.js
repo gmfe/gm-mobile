@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import View from '../view'
+import { View } from '../view'
 import PropTypes from 'prop-types'
 
 // 先 默认纵向滚动

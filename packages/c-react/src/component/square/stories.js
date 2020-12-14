@@ -1,7 +1,7 @@
 import React from 'react'
 import Square from './'
 
-import View from '../view'
+import { View } from '../view'
 
 export const Normal = () => {
   return (

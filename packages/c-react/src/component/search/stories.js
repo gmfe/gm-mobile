@@ -3,8 +3,8 @@ import Search from './search'
 import SearchPage from './page'
 import FakeSearch from './fake_search'
 import Flex from '../flex'
-import View from '../view'
-import Button from '../button'
+import { View } from '../view'
+import { Button } from '../button'
 import { observable } from 'mobx'
 
 const store = observable({

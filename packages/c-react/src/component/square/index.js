@@ -2,7 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
-import View from '../view'
+import { View } from '../view'
 
 const Square = (props) => {
   const { className, children, ...rest } = props

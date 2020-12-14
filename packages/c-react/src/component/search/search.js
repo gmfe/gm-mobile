@@ -5,9 +5,9 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 import Input from '../input/input'
-import View from '../view'
-import Button from '../button'
-import Text from '../text'
+import { View } from '../view'
+import { Button } from '../button'
+import { Text } from '../text'
 
 const Search = ({
   value,

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import _ from 'lodash'
 import PickerColumn from './picker_column'
-import View from '../../view'
+import { View } from '../../view'
 
 const Picker = ({
   datas,

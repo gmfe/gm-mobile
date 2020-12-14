@@ -6,7 +6,7 @@ import _ from 'lodash'
 
 import Week from './week'
 import { TYPE } from './util'
-import View from '../view'
+import { View } from '../view'
 import MonthsList from './months_list'
 
 const BaseCalendar = (props) => {

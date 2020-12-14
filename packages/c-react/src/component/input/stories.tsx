@@ -3,7 +3,7 @@ import Input from './input'
 import InputPassword from './input_password'
 import { observable } from 'mobx'
 import InputMaxLength from './input_max_length'
-import View from '../view'
+import { View } from '../view'
 
 const store = observable({
   value: '',

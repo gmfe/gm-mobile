@@ -2,8 +2,8 @@ import React, { FC } from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
 import Flex from '../flex'
-import View from '../view'
-import Text from '../text'
+import { View } from '../view'
+import { Text } from '../text'
 
 import type { CellProps } from './types'
 

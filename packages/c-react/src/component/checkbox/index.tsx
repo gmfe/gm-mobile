@@ -1,7 +1,7 @@
 import React, { CSSProperties, FC } from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
-import View from '../view'
+import { View } from '../view'
 
 interface CheckboxProps {
   /** 选中态 */

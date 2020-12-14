@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ScrollIntoView from './index'
-import View from '../view'
+import { View } from '../view'
 import { is } from '@gm-mobile/c-tool'
 
 export const normal = () => {

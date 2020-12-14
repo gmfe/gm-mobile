@@ -1,8 +1,8 @@
 import React, { useRef } from 'react'
 import Nav from './'
 import { observable } from 'mobx'
-import View from '../view'
-import Button from '../button'
+import { View } from '../view'
+import { Button } from '../button'
 
 const data = [
   {

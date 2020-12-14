@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import moment from 'moment'
 import { observable } from 'mobx'
 
-import View from '../view'
+import { View } from '../view'
 import Calendar from './calendar'
 import RangeCalendar from './range_calendar'
 import MultipleCalendar from './multiple_calendar'

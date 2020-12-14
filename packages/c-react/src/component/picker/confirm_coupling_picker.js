@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 import CouplingPicker from './component/coupling_picker'
 import _ from 'lodash'
 import PickerStatics from './statics'
-import Button from '../button'
-import View from '../view'
+import { Button } from '../button'
+import { View } from '../view'
 
 class ConfirmCouplingPicker extends React.Component {
   constructor(props) {

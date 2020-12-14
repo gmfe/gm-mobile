@@ -1,7 +1,7 @@
 import React from 'react'
 import TagWrap from './index'
 
-import View from '../view'
+import { View } from '../view'
 
 export const Normal = () => {
   return (

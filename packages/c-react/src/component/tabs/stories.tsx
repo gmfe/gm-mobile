@@ -1,6 +1,6 @@
 import React from 'react'
 import { observable } from 'mobx'
-import View from '../view'
+import { View } from '../view'
 
 import Tabs from './tabs'
 

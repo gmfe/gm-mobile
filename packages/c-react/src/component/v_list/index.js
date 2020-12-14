@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 import { Events, is } from '@gm-mobile/c-tool'
 
-import View from '../view'
+import { View } from '../view'
 import EVENT_TYPE from '../../event_type'
 import ScrollIntoView from '../scroll_into_view'
 

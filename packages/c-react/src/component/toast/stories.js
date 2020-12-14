@@ -1,6 +1,6 @@
 import React from 'react'
-import View from '../view'
-import Button from '../button'
+import { View } from '../view'
+import { Button } from '../button'
 import Toast from './'
 
 export const normal = () => {

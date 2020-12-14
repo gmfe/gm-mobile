@@ -1,4 +1,4 @@
 import View, { ViewProps } from './view'
 
-export default View
+export { View }
 export type { ViewProps }
