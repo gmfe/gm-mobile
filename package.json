@@ -14,6 +14,7 @@
   },
   "husky": {
     "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged"
     }
   },
@@ -42,9 +43,16 @@
       "last 1 safari version"
     ]
   },
+  "commitlint": {
+    "extends": [
+      "@gm-react-app/commitlint-gm-react-app"
+    ]
+  },
   "dependencies": {
     "@babel/core": "^7.12.9",
+    "@commitlint/cli": "^11.0.0",
     "@gm-common/number": "^2.9.3",
+    "@gm-react-app/commitlint-gm-react-app": "^3.4.8",
     "@gm-react-app/scripts-lib": "^3.5.0-beta.0",
     "@storybook/addon-info": "^5.3.21",
     "@storybook/addon-notes": "^5.3.21",
