@@ -1,12 +1,17 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC, HTMLAttributes } from 'react'
 import classNames from 'classnames'
 import Flex from '../flex'
 import View from '../view'
 import Button from '../button'
 import emptyImg from './empty.png'
 
-const Status = React.memo(
+interface StatusProps extends HTMLAttributes<HTMLDivElement> {
+  type: 'loading' | 'error' | 'empty'
+  tip: string
+  onReload: () => void // type === error 有效
+}
+
+const Status: FC<StatusProps> = React.memo(
   ({ type, tip, onReload, className, children, ...rest }) => {
     let content = null
     if (type === 'loading') {
@@ -54,13 +59,5 @@ const Status = React.memo(
     )
   }
 )
-
-Status.propTypes = {
-  type: PropTypes.oneOf(['loading', 'error', 'empty']),
-  tip: PropTypes.string,
-  /** type === error 有效 */
-  onReload: PropTypes.func,
-  className: PropTypes.string,
-}
 
 export default Status
