@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { FC } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
 import LayoutRoot from '../layout_root'
 import View from '../view'
+import { InnerLayerProps } from './types'
 
 const InnerLayerStatics = {
   render(props) {
@@ -18,7 +19,11 @@ const InnerLayerStatics = {
   },
 }
 
-const InnerLayer = ({ className, children, ...rest }) => (
+const InnerLayerWithStatics: FC<InnerLayerProps> = ({
+  className,
+  children,
+  ...rest
+}) => (
   <View
     {...rest}
     className={classNames(
@@ -30,11 +35,7 @@ const InnerLayer = ({ className, children, ...rest }) => (
   </View>
 )
 
-Object.assign(InnerLayer, InnerLayerStatics)
-
-InnerLayer.propTypes = {
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
+const InnerLayer = Object.assign(InnerLayerWithStatics, InnerLayerStatics)
 
 export default InnerLayer
+export { InnerLayerProps }
