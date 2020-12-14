@@ -1,16 +1,11 @@
-import React, { FC, HTMLAttributes } from 'react'
+import React, { FC } from 'react'
 import classNames from 'classnames'
 import Flex from '../flex'
 import View from '../view'
 import Button from '../button'
 import emptyImg from './empty.png'
 import _ from 'lodash'
-
-interface StatusProps extends HTMLAttributes<HTMLDivElement> {
-  type: 'loading' | 'error' | 'empty'
-  tip?: string
-  onReload?: () => void // type === error 有效
-}
+import { StatusProps } from './types'
 
 const Status: FC<StatusProps> = React.memo(
   ({ type, tip, onReload = _.noop, className, children, ...rest }) => {

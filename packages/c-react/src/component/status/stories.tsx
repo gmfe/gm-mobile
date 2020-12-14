@@ -1,5 +1,5 @@
 import React from 'react'
-import Status from '.'
+import Status from './status'
 import View from '../view'
 
 export const Normal = () => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import Switch from './index'
+import Switch from './switch'
 import { observable } from 'mobx'
 import View from '../view'
 

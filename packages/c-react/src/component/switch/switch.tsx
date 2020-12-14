@@ -1,13 +1,8 @@
-import React, { FC, HTMLAttributes } from 'react'
+import React, { FC } from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
 import View from '../view'
-
-interface SwitchProps extends HTMLAttributes<HTMLDivElement> {
-  checked: boolean
-  onChange: () => void
-  disabled?: boolean
-}
+import { SwitchProps } from './types'
 
 const Switch: FC<SwitchProps> = ({
   checked,

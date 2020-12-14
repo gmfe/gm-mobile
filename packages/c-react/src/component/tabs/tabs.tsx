@@ -3,14 +3,7 @@ import classNames from 'classnames'
 import _ from 'lodash'
 import Text from '../text'
 import Flex from '../flex'
-
-interface TabsProps {
-  tabs: { value: number; text: string }[] // tabs数据
-  active: any // 当前选中tab对应value值
-  onChange: (index: number) => void
-  type?: 'default' | 'label' | 'capsule'
-  className?: string
-}
+import { TabsProps } from './types'
 
 const Tabs: FC<TabsProps> = ({
   tabs,
