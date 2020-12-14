@@ -18,7 +18,7 @@ const webpackFinal = (config) => {
   })
 
   config.module.rules.push({
-    test: /\.stories\.jsx?$/,
+    test: /\.stories\.tsx?$/,
     loaders: [require.resolve('@storybook/source-loader')],
     enforce: 'pre',
   })

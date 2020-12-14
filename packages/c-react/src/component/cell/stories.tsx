@@ -130,7 +130,7 @@ const store = observable({
   position: '',
   address: '',
   code: '',
-  setValue(field, value) {
+  setValue(field: string, value: string) {
     this[field] = value
   },
 })
