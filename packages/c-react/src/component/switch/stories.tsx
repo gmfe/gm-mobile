@@ -5,7 +5,7 @@ import View from '../view'
 
 const store = observable({
   checked: false,
-  setChecked(checked) {
+  setChecked(checked: boolean) {
     this.checked = checked
   },
 })

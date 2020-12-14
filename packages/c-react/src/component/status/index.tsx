@@ -4,15 +4,16 @@ import Flex from '../flex'
 import View from '../view'
 import Button from '../button'
 import emptyImg from './empty.png'
+import _ from 'lodash'
 
 interface StatusProps extends HTMLAttributes<HTMLDivElement> {
   type: 'loading' | 'error' | 'empty'
-  tip: string
-  onReload: () => void // type === error 有效
+  tip?: string
+  onReload?: () => void // type === error 有效
 }
 
 const Status: FC<StatusProps> = React.memo(
-  ({ type, tip, onReload, className, children, ...rest }) => {
+  ({ type, tip, onReload = _.noop, className, children, ...rest }) => {
     let content = null
     if (type === 'loading') {
       content = <View className='m-text-center'>{tip || '正在加载...'}</View>

@@ -1,10 +1,21 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC, HTMLAttributes } from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
 import View from '../view'
 
-const Switch = ({ checked, disabled, onChange, className, ...rest }) => {
+interface SwitchProps extends HTMLAttributes<HTMLDivElement> {
+  checked: boolean
+  onChange: () => void
+  disabled?: boolean
+}
+
+const Switch: FC<SwitchProps> = ({
+  checked,
+  disabled,
+  onChange = _.noop,
+  className,
+  ...rest
+}) => {
   const handleClick = () => {
     if (disabled) return
     onChange()
@@ -23,18 +34,6 @@ const Switch = ({ checked, disabled, onChange, className, ...rest }) => {
       onClick={handleClick}
     />
   )
-}
-
-Switch.propTypes = {
-  checked: PropTypes.bool.isRequired,
-  onChange: PropTypes.func.isRequired,
-  disabled: PropTypes.bool,
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
-
-Switch.defaultProps = {
-  onChange: _.noop,
 }
 
 export default Switch

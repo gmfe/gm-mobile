@@ -6,7 +6,7 @@ import Tabs from '.'
 
 const store = {
   active: 1,
-  setActiveTab(index) {
+  setActiveTab(index: number) {
     this.active = index
   },
 }
