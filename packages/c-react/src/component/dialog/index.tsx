@@ -197,7 +197,7 @@ const DialogBase: FC<DialogBaseProps> = ({
             flex
             column
             className='m-dialog-btn m-dialog-btn-confirm'
-            onClick={() => onConfirm}
+            onClick={() => onConfirm && onConfirm()}
           >
             {confirmText}
           </Flex>

@@ -11,7 +11,7 @@ interface ErrorInputProps {
 }
 
 interface DialogBaseProps {
-  onConfirm?: (value: string) => Promise<void>
+  onConfirm?: (value?: string) => Promise<void>
   title?: string
   confirmText?: string
   onCancel?: () => Promise<void>
