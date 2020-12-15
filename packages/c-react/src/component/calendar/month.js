@@ -5,7 +5,7 @@ import _ from 'lodash'
 import moment from 'moment'
 import PropTypes from 'prop-types'
 
-import Flex from '../flex'
+import { Flex } from '../flex'
 import Day from './day'
 
 const months = [

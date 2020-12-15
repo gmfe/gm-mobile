@@ -2,7 +2,7 @@ import { getLocale } from '@gm-mobile/locales'
 import React from 'react'
 import _ from 'lodash'
 
-import Flex from '../flex'
+import { Flex } from '../flex'
 
 const weekDays = [
   getLocale('日'),

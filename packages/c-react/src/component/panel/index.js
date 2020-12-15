@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import Flex from '../flex'
+import { Flex } from '../flex'
 import { View } from '../view'
 import { Text } from '../text'
 

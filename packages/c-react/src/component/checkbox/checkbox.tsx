@@ -1,9 +1,9 @@
-import React, { CSSProperties, FC } from 'react'
+import React, { FC, HTMLAttributes } from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { View } from '../view'
 
-interface CheckboxProps {
+interface CheckboxProps extends HTMLAttributes<HTMLDivElement> {
   /** 选中态 */
   checked: boolean
   /** 圆形 */
@@ -13,8 +13,6 @@ interface CheckboxProps {
   disabled?: boolean
   /** 回调函数 */
   onChange?: () => void
-  className?: string
-  style?: CSSProperties
 }
 
 const Checkbox: FC<CheckboxProps> = ({

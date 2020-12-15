@@ -2,7 +2,7 @@ import { getLocale } from '@gm-mobile/locales'
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import Flex from '../flex'
+import { Flex } from '../flex'
 import { Text } from '../text'
 
 const FakeSearch = ({

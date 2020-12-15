@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 import classNames from 'classnames'
-import PropTypes from 'prop-types'
 
 import LayoutRoot from '../layout_root'
 import { View } from '../view'

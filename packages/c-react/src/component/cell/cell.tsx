@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
-import Flex from '../flex'
+import { Flex } from '../flex'
 import { View } from '../view'
 import { Text } from '../text'
 

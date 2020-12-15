@@ -2,7 +2,7 @@ import React, { useImperativeHandle, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 import classNames from 'classnames'
-import Flex from '../flex'
+import { Flex } from '../flex'
 import { View } from '../view'
 import ScrollIntoView from '../scroll_into_view'
 

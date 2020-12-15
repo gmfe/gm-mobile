@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import classNames from 'classnames'
-import Flex from '../flex'
+import { Flex } from '../flex'
 import { View } from '../view'
 import { Button } from '../button'
 import emptyImg from './empty.png'
