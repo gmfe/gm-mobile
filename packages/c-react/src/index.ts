@@ -12,7 +12,6 @@ import Tooltip from './component/tooltip'
 import ActionSheet from './component/action_sheet'
 import { RangeCalendar, MultipleCalendar, Calendar } from './component/calendar'
 import { Search, FakeSearch, SearchPage } from './component/search'
-import InnerLayer from './component/inner_layer'
 import Textarea from './component/textarea'
 import { Input, InputMaxLength, InputPassword } from './component/input'
 import RepeatTimes from './component/repeat_times'
@@ -47,7 +46,6 @@ export {
   Search,
   FakeSearch,
   SearchPage,
-  InnerLayer,
   Input,
   InputMaxLength,
   InputPassword,
@@ -78,3 +76,4 @@ export * from './component/tag_wrap'
 export * from './component/dialog'
 export * from './component/flex'
 export * from './component/divider'
+export * from './component/inner_layer'
