@@ -98,4 +98,4 @@ const Flex = forwardRef<HTMLDivElement, FlexProps>(
 )
 
 export default Flex
-export { FlexProps }
+export type { FlexProps }

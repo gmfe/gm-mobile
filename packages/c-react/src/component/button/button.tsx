@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import Loading from '../loading'
 import BaseButton from './base'
 import { is } from '@gm-mobile/c-tool'
-import { ButtonProps } from './types'
+import type { ButtonProps } from './types'
 
 const Button: FC<ButtonProps> = ({
   type = 'default',
@@ -58,7 +58,7 @@ const Button: FC<ButtonProps> = ({
         },
         className
       )}
-      disabled={loadFlag || disabled}
+      disabled={!!(loadFlag || disabled)}
       onClick={handleClick}
     >
       {loadFlag && <Loading className='m-btn-loading' />}

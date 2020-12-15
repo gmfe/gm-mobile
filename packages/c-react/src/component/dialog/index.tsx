@@ -1,5 +1,5 @@
 import { getLocale } from '@gm-mobile/locales'
-import React, { useState, FC } from 'react'
+import React, { useState, FC, ChangeEvent } from 'react'
 import _ from 'lodash'
 import Flex from '../flex'
 import Mask from '../mask'
@@ -22,7 +22,7 @@ const ErrorInput: FC<ErrorInputProps> = ({
 }) => {
   const [value, setValue] = useState(defaultValue || '')
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e)
     setValue(e.target.value)
   }
@@ -199,4 +199,4 @@ const DialogBase: FC<DialogBaseProps> = ({
 const Dialog = Object.assign(DialogBase, DialogStatics)
 
 export default Dialog
-export { DialogTypes }
+export type { DialogTypes }

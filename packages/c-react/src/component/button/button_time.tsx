@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, FC } from 'react'
+import React, { useEffect, useRef, useState, FC, MouseEvent } from 'react'
 import Button from './button'
 import classNames from 'classnames'
 import { is } from '@gm-mobile/c-tool'
@@ -12,7 +12,7 @@ const ButtonTime: FC<ButtonTimeProps> = ({
   ...rest
 }) => {
   const [second, setSecond] = useState(0)
-  const timer = useRef(null)
+  const timer = useRef<undefined | number>()
 
   useEffect(() => {
     return () => {
@@ -22,13 +22,13 @@ const ButtonTime: FC<ButtonTimeProps> = ({
     }
   }, [])
 
-  const handleClick = (e) => {
+  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     const fn = onClick(e)
     if (fn === false) {
       return
     }
     if (is.promise(fn)) {
-      return (fn as Promise<any>).then(() => {
+      return (fn as Promise<void>).then(() => {
         return startCount()
       })
     }

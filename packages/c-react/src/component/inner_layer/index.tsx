@@ -19,7 +19,7 @@ const InnerLayerStatics = {
   },
 }
 
-const InnerLayerWithStatics: FC<InnerLayerProps> = ({
+const InnerLayerBase: FC<InnerLayerProps> = ({
   className,
   children,
   ...rest
@@ -35,7 +35,7 @@ const InnerLayerWithStatics: FC<InnerLayerProps> = ({
   </View>
 )
 
-const InnerLayer = Object.assign(InnerLayerWithStatics, InnerLayerStatics)
+const InnerLayer = Object.assign(InnerLayerBase, InnerLayerStatics)
 
 export default InnerLayer
-export { InnerLayerProps }
+export type { InnerLayerProps }

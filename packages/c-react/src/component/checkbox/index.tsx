@@ -55,4 +55,4 @@ const Checkbox: FC<CheckboxProps> = ({
 
 export default Checkbox
 
-export { CheckboxProps }
+export type { CheckboxProps }

@@ -7,7 +7,7 @@ import View from '../view'
 
 const store = observable({
   value: '',
-  setValue(value) {
+  setValue(value: string) {
     this.value = value
   },
 })

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, ButtonTime } from '.'
+import Button, { ButtonTime } from '.'
 import View from '../view'
 
 function handleClick() {

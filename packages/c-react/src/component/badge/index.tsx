@@ -40,7 +40,7 @@ const Badge: FC<BadgeProps> = (props) => {
 
   let displayText = !dot ? count : ''
 
-  if (count > overflowCount) {
+  if (count && count > overflowCount) {
     displayText = overflowCount + (showOverflow ? '+' : '')
   }
 
@@ -53,4 +53,4 @@ const Badge: FC<BadgeProps> = (props) => {
 }
 
 export default Badge
-export { BadgeProps }
+export type { BadgeProps }

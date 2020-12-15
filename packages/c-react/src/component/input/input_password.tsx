@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, FC } from 'react'
 import Input from './input'
 import classNames from 'classnames'
 import View from '../view'
 import Text from '../text'
+import { InputProps } from './type'
 
-const InputPassword = (props) => {
+const InputPassword: FC<InputProps> = (props) => {
   const [show, setShow] = useState(false)
 
   const handleShow = () => {
@@ -24,10 +25,6 @@ const InputPassword = (props) => {
       </Text>
     </View>
   )
-}
-
-InputPassword.propTypes = {
-  ...Input.propTypes,
 }
 
 export default InputPassword

@@ -28,4 +28,4 @@ interface FlexProps extends HTMLAttributes<HTMLDivElement> {
   alignContentStretch?: boolean
 }
 
-export { FlexProps }
+export type { FlexProps }

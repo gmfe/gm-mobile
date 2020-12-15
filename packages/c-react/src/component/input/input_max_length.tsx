@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { forwardRef } from 'react'
 import Input from './input'
 import View from '../view'
+import { InputMaxLengthProps } from './type'
 
-const InputMaxLength = React.forwardRef(
+const InputMaxLength = forwardRef<HTMLInputElement, InputMaxLengthProps>(
   ({ className, maxLength, value, ...rest }, ref) => {
     return (
       <View className='m-input-max-length'>
@@ -17,11 +17,5 @@ const InputMaxLength = React.forwardRef(
     )
   }
 )
-
-InputMaxLength.propTypes = {
-  ...Input.propTypes,
-  /** 最大可输入字数 */
-  maxLength: PropTypes.number,
-}
 
 export default InputMaxLength
