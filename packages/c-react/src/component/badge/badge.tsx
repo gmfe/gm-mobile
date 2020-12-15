@@ -1,4 +1,4 @@
-import React, { CSSProperties, FC, HTMLAttributes } from 'react'
+import React, { FC, HTMLAttributes } from 'react'
 import classNames from 'classnames'
 import { View } from '../view'
 
