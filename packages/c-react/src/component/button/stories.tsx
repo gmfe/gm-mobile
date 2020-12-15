@@ -3,7 +3,7 @@ import Button from './button'
 import ButtonTime from './button_time'
 import { View } from '../view'
 
-function handleClick() {
+function handleClick(): Promise<void> {
   console.log('click')
   return new Promise((resolve) =>
     setTimeout(() => {
