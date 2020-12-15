@@ -7,3 +7,10 @@ declare module '*.jpg'
 declare module '*.jpeg'
 declare module '*.gif'
 declare module '*.bmp'
+
+/** 其它需要后续添加 */
+interface Window {
+  __NAME__: string
+}
+
+declare const __NAME__ = 'mobile'

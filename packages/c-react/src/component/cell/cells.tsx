@@ -1,8 +1,8 @@
-import React, { FC, CSSProperties } from 'react'
+import React, { FC } from 'react'
 import classNames from 'classnames'
 import { View } from '../view'
 
-import type { CellsProps } from './types'
+import { CellsProps } from './types'
 
 const Cells: FC<CellsProps> = ({
   title,

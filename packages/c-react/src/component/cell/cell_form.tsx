@@ -4,7 +4,7 @@ import { View } from '../view'
 import { Text } from '../text'
 import classNames from 'classnames'
 
-import type { CellFormProps } from './types'
+import { CellFormProps } from './types'
 
 const CellForm: FC<CellFormProps> = ({
   label,

@@ -20,8 +20,10 @@
   "bugs": {
     "url": "https://github.com/gmfe/gm-mobile/issues"
   },
-  "peerDependencies": {
-    "lodash": "^4.17.15",
+  "peerDependencies": {   
     "react": "^16.13.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.20"
   }
 }

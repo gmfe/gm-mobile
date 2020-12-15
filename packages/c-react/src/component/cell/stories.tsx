@@ -120,7 +120,7 @@ export const mini = () => {
   )
 }
 
-const store = observable({
+const initStore: { [key: string]: any } = {
   username: '',
   name: '',
   value: '',
@@ -133,7 +133,9 @@ const store = observable({
   setValue(field: string, value: string) {
     this[field] = value
   },
-})
+}
+
+const store = observable(initStore)
 
 export const form = () => {
   return (

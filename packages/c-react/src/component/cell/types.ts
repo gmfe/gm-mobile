@@ -1,6 +1,6 @@
 import { ReactNode, MouseEvent, HTMLAttributes } from 'react'
 
-export interface CellProps extends HTMLAttributes<HTMLDivElement> {
+interface CellProps extends HTMLAttributes<HTMLDivElement> {
   /** 用于右侧需要带箭头的情况 */
   access?: boolean
   /** 用于左侧有图标的情况 */
@@ -12,12 +12,12 @@ export interface CellProps extends HTMLAttributes<HTMLDivElement> {
   onClick?: (event: MouseEvent<HTMLDivElement>) => void
 }
 
-export interface CellsProps extends HTMLAttributes<HTMLDivElement> {
+interface CellsProps extends HTMLAttributes<HTMLDivElement> {
   title?: string
   mini?: boolean
 }
 
-export interface CellFormProps extends CellProps {
+interface CellFormProps extends CellProps {
   /** 标签 */
   label?: string
   /** 标签宽度 */
@@ -29,3 +29,5 @@ export interface CellFormProps extends CellProps {
 }
 
 export type CellsFormProps = CellsProps
+
+export type { CellProps, CellsProps, CellFormProps }
