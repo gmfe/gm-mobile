@@ -3,9 +3,9 @@ import classNames from 'classnames'
 
 import LayoutRoot from '../layout_root'
 import { View } from '../view'
-import { InnerLayerProps } from './types'
+import { InnerLayerProps, InnerLayerStaticsTypes } from './types'
 
-const InnerLayerStatics = {
+const InnerLayerStatics: InnerLayerStaticsTypes = {
   render(props: InnerLayerProps) {
     LayoutRoot.renderWith(
       LayoutRoot.TYPE.INNER_LAYER,

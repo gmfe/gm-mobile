@@ -1,4 +1,8 @@
 import { HTMLAttributes } from 'react'
 
 type InnerLayerProps = HTMLAttributes<HTMLDivElement>
-export type { InnerLayerProps }
+interface InnerLayerStaticsTypes {
+  render: (props: InnerLayerProps) => void
+  hide: () => void
+}
+export type { InnerLayerProps, InnerLayerStaticsTypes }
