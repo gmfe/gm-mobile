@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { FC, HTMLAttributes } from 'react'
 import classNames from 'classnames'
-import PropTypes from 'prop-types'
 
 import { View } from '../view'
 
-const Square = (props) => {
-  const { className, children, ...rest } = props
+const Square: FC<HTMLAttributes<HTMLDivElement>> = ({
+  className,
+  children,
+  ...rest
+}) => {
   const cn = classNames('m-square-inner', className)
 
   return (
@@ -15,10 +17,6 @@ const Square = (props) => {
       </View>
     </View>
   )
-}
-
-Square.propTypes = {
-  className: PropTypes.string,
 }
 
 export default Square

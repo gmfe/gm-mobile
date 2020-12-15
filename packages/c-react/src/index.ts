@@ -6,7 +6,6 @@ import Page from './component/page'
 import Toast from './component/toast'
 import Label from './component/label'
 import Radio from './component/radio'
-import Square from './component/square'
 import Popup from './component/popup'
 import Tooltip from './component/tooltip'
 import ActionSheet from './component/action_sheet'
@@ -34,7 +33,6 @@ export {
   Page,
   Toast,
   Label,
-  Square,
   RangeCalendar,
   MultipleCalendar,
   Calendar,
@@ -76,3 +74,4 @@ export * from './component/flex'
 export * from './component/divider'
 export * from './component/inner_layer'
 export * from './component/scroll_into_view'
+export * from './component/square'

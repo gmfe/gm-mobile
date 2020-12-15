@@ -5,16 +5,16 @@ import { View } from '../view'
 import Tabs from './tabs'
 
 const store = {
-  active: 1,
-  setActiveTab(index: number) {
+  active: '1',
+  setActiveTab(index: string) {
     this.active = index
   },
 }
 
 const tabsList = [
-  { value: 1, text: '模块一' },
-  { value: 2, text: '模块二' },
-  { value: 3, text: '模块三' },
+  { value: '1', text: '模块一' },
+  { value: '2', text: '模块二' },
+  { value: '3', text: '模块三' },
 ]
 const defaultStore = observable(store)
 
