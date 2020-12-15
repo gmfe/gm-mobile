@@ -5,7 +5,7 @@ import Flex from '../flex'
 import { View } from '../view'
 import { Text } from '../text'
 
-import type { CellProps } from './types'
+import { CellProps } from './types'
 
 const Cell: FC<CellProps> = ({
   access,
