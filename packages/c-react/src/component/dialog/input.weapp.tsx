@@ -1,9 +1,10 @@
 import React, { FC } from 'react'
-import { Input as TInput } from '@tarojs/components'
+import { Input as TInput, BaseEventOrig } from '@tarojs/components'
 import { TInputProps } from './types'
+import { InputProps as TaroInputProps } from '@tarojs/components/types/Input'
 
 const Input: FC<TInputProps> = ({ autoFocus, onChange, ...rest }) => {
-  const handleInput = (e) => {
+  const handleInput = (e: BaseEventOrig<TaroInputProps.inputEventDetail>) => {
     onChange && onChange(e)
   }
 

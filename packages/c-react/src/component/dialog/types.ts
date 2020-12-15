@@ -4,8 +4,8 @@ import { CommonEventFunction } from '@tarojs/components'
 
 interface ErrorInputProps {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
-  getError: (value: string) => string
   autoFocus: boolean
+  getError?: (value: string) => string | void
   className?: string
   defaultValue?: string
 }
@@ -23,19 +23,18 @@ interface DialogBaseProps {
   /** prompt 的时候有用 */
   promptInputProps?: { [key: string]: string }
   /**  */
-  promptGetError?: (value: string) => string
+  promptGetError?: (value: string) => string | void
 }
 interface RenderOptions extends PromptOptions {
   children?: string | React.ReactNode
   confirmText?: React.ReactNode
-  onConfirm?: () => void
   onCancel?: () => void
   otherText?: string
   onOther?: () => void
 }
 
 interface PromptOptions {
-  promptGetError?: (value: string) => string
+  promptGetError?: (value: string) => string | void
   promptText?: string
   promptInputProps?: {
     [key: string]: string
@@ -43,11 +42,8 @@ interface PromptOptions {
   onConfirm?: (value: string) => void | boolean
 }
 
-interface DialogStaticsTypes {
-  render: (
-    options: RenderOptions & string,
-    type?: string
-  ) => Promise<void | string>
+interface DialogStaticsTypes<T> {
+  render: (options: T, type?: string) => Promise<void | string>
   alert: (options: string) => Promise<void | string>
   confirm: (options: string) => Promise<void | string>
   delete: (options: string) => Promise<void | string>
@@ -56,7 +52,7 @@ interface DialogStaticsTypes {
 }
 
 type InputProps = InputHTMLAttributes<HTMLInputElement>
-type DialogTypes = DialogBaseProps & DialogStaticsTypes
+type DialogTypes = DialogBaseProps & DialogStaticsTypes<string | RenderOptions>
 
 interface TInputProps extends TaroInputProps {
   onChange?: CommonEventFunction<TaroInputProps.inputEventDetail>
@@ -69,4 +65,5 @@ export type {
   DialogStaticsTypes,
   DialogTypes,
   TInputProps,
+  RenderOptions,
 }

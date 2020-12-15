@@ -11,10 +11,11 @@ import {
   DialogBaseProps,
   DialogStaticsTypes,
   DialogTypes,
+  RenderOptions,
 } from './types'
 
 const ErrorInput: FC<ErrorInputProps> = ({
-  getError = _.noop,
+  getError,
   defaultValue,
   onChange = _.noop,
   className,
@@ -35,19 +36,21 @@ const ErrorInput: FC<ErrorInputProps> = ({
         onChange={handleChange}
         {...rest}
       />
-      <View className='m-text-red m-text-12'>{getError(value)}</View>
+      <View className='m-text-red m-text-12'>
+        {(getError && getError(value)) || ''}
+      </View>
     </>
   )
 }
 
-const DialogStatics: DialogStaticsTypes = {
+const DialogStatics: DialogStaticsTypes<string | RenderOptions> = {
   render(options, type) {
     if (typeof options === 'string') {
       options = {
-        children: options,
+        children: options as string,
       }
     }
-    options = { ...options }
+    options = { ...(options as RenderOptions) }
 
     let inputValue = ''
 
@@ -69,9 +72,10 @@ const DialogStatics: DialogStaticsTypes = {
     }
 
     return new Promise((resolve, reject) => {
-      const _onConfirm = options.onConfirm || _.noop
-      options.onConfirm = () => {
-        let result
+      const renderOptions = options as RenderOptions
+      const _onConfirm = renderOptions.onConfirm || _.noop
+      renderOptions.onConfirm = () => {
+        let result: boolean | void
 
         // 如果是 prompt，需要把 input 传过去
         if (type === 'prompt') {
@@ -80,7 +84,11 @@ const DialogStatics: DialogStaticsTypes = {
           result = _onConfirm()
         }
         // 如果是 prompt，且 result 是 false，则阻止默认行为
-        if (type === 'prompt' && result === false) {
+        if (
+          type === 'prompt' &&
+          typeof result === 'boolean' &&
+          result === false
+        ) {
           return
         }
 
@@ -94,20 +102,20 @@ const DialogStatics: DialogStaticsTypes = {
       }
 
       if (type === 'delete') {
-        options.confirmText = (
+        renderOptions.confirmText = (
           <View className='m-text-danger'>{getLocale('删除')}</View>
         )
       }
 
       // confirm prompt delete 和 onCancel 都会涉及 reject
       if (
-        options.onCancel ||
+        renderOptions.onCancel ||
         type === 'confirm' ||
         type === 'prompt' ||
         type === 'delete'
       ) {
-        const _onCancel = options.onCancel || _.noop
-        options.onCancel = () => {
+        const _onCancel = renderOptions.onCancel || _.noop
+        renderOptions.onCancel = () => {
           DialogStatics.hide()
 
           const reason = _onCancel()
@@ -117,15 +125,18 @@ const DialogStatics: DialogStaticsTypes = {
         }
       }
 
-      if (options.onOther && options.otherText) {
-        const _onOther = options.onOther
-        options.onOther = () => {
+      if (renderOptions.onOther && renderOptions.otherText) {
+        const _onOther = renderOptions.onOther
+        renderOptions.onOther = () => {
           DialogStatics.hide()
           _onOther()
         }
       }
 
-      LayoutRoot.renderWith(LayoutRoot.TYPE.MODAL, <Dialog {...options} />)
+      LayoutRoot.renderWith(
+        LayoutRoot.TYPE.MODAL,
+        <DialogBase {...(options as DialogBaseProps)} />
+      )
     })
   },
   alert(options) {
@@ -186,7 +197,7 @@ const DialogBase: FC<DialogBaseProps> = ({
             flex
             column
             className='m-dialog-btn m-dialog-btn-confirm'
-            onClick={onConfirm}
+            onClick={() => onConfirm}
           >
             {confirmText}
           </Flex>
