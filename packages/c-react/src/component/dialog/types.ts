@@ -2,7 +2,7 @@ import { InputHTMLAttributes, ChangeEvent } from 'react'
 import { InputProps as TaroInputProps } from '@tarojs/components/types/Input'
 import { CommonEventFunction } from '@tarojs/components'
 
-interface ErrorInputProps {
+interface ErrorInputProps extends InputProps {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
   autoFocus: boolean
   getError?: (value: string) => string | void
@@ -52,7 +52,7 @@ interface DialogStaticsTypes<T> {
 }
 
 type InputProps = InputHTMLAttributes<HTMLInputElement>
-type DialogTypes = DialogBaseProps & DialogStaticsTypes<string | RenderOptions>
+type DialogProps = DialogBaseProps & DialogStaticsTypes<string | RenderOptions>
 
 interface TInputProps extends TaroInputProps {
   onChange?: CommonEventFunction<TaroInputProps.inputEventDetail>
@@ -63,7 +63,7 @@ export type {
   DialogBaseProps,
   InputProps,
   DialogStaticsTypes,
-  DialogTypes,
+  DialogProps,
   TInputProps,
   RenderOptions,
 }
