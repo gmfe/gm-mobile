@@ -13,8 +13,6 @@ interface BadgeProps extends HTMLAttributes<HTMLDivElement> {
   overflowCount?: number
   /** 是否显示 '+' 表示数值溢出 */
   showOverflow?: boolean
-  className?: string
-  style?: CSSProperties
 }
 
 const Badge: FC<BadgeProps> = (props) => {
