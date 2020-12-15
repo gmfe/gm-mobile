@@ -1,8 +1,8 @@
-import React, { CSSProperties, FC } from 'react'
+import React, { CSSProperties, FC, HTMLAttributes } from 'react'
 import classNames from 'classnames'
 import { View } from '../view'
 
-interface BadgeProps {
+interface BadgeProps extends HTMLAttributes<HTMLDivElement> {
   /** 徽章显示的数字 */
   count?: number
   /** 是否仅显示红点 */

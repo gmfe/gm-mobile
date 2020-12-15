@@ -22,9 +22,7 @@ const ButtonTime: FC<ButtonTimeProps> = ({
     }
   }, [])
 
-  const handleClick = (
-    e: MouseEvent<HTMLButtonElement>
-  ): void | Promise<void> => {
+  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     const fn = onClick(e)
     if (fn === false) {
       return
@@ -35,7 +33,7 @@ const ButtonTime: FC<ButtonTimeProps> = ({
       })
     }
 
-    startCount()
+    return startCount()
   }
 
   const startCount = () => {
