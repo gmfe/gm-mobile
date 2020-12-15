@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from './index'
+import Image from './image'
 
 const src =
   'https://js.guanmai.cn/static_storage/json/common/logo/default/logo.pure.png?'

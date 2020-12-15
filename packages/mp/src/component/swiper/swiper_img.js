@@ -4,7 +4,7 @@ import { Swiper, SwiperItem } from '@tarojs/components'
 import _ from 'lodash'
 import { View } from '@gm-mobile/c-react'
 
-import Image from '../image'
+import { ImageMP } from '../image'
 import SwiperPagination from './swiper_pagination'
 
 const SwiperImg = ({ data, options, style, height, ...rest }) => {
@@ -53,7 +53,7 @@ const SwiperImg = ({ data, options, style, height, ...rest }) => {
                 onClick && onClick()
               }}
             >
-              <Image src={img} width='100%' height='100%' />
+              <ImageMP src={img} width='100%' height='100%' />
             </View>
           </SwiperItem>
         ))}

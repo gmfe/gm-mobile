@@ -1,4 +1,3 @@
-import ImageMP from './component/image'
 import CounterMP from './component/counter'
 import {
   SwiperImg as SwiperImgMP,
@@ -116,7 +115,6 @@ export {
   VList,
   Status,
   PageMP,
-  ImageMP,
   CounterMP,
   SwiperImgMP,
   SwiperCategoryMP,
@@ -125,3 +123,5 @@ export {
   SafeHeaderMP,
   useFirstDidShow,
 }
+
+export * from './component/image'

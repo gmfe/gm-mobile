@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from './index'
+import Image from './image'
 import { Flex, Text, View } from '@gm-mobile/c-react'
 
 const src =

@@ -7,7 +7,7 @@ import IMAGE_PLACEHOLDER from './placeholder.png'
 
 type PickType<T, K extends keyof T> = T[K]
 
-interface ImageProps extends TaroImageProps {
+interface ImageMPProps extends TaroImageProps {
   /** 图片高度 */
   height?: string
   /** 图片宽度 */
@@ -30,7 +30,7 @@ interface ImageProps extends TaroImageProps {
  * tip：image组件默认宽度300px、高度240px
  * tip：image组件中二维码/小程序码图片不支持长按识别。仅在wx.previewImage中支持长按识别
  */
-const ImageMP: FC<ImageProps> = ({
+const ImageMP: FC<ImageMPProps> = ({
   src,
   width,
   height,
@@ -52,7 +52,7 @@ const ImageMP: FC<ImageProps> = ({
     setPSrc(src)
   }, [src])
 
-  const handleError: PickType<ImageProps, 'onError'> = (e) => {
+  const handleError: PickType<ImageMPProps, 'onError'> = (e) => {
     if (reloadCount.current < 2) {
       // 获取失败重新请求两次
       reloadCount.current++
@@ -65,7 +65,7 @@ const ImageMP: FC<ImageProps> = ({
     }
   }
 
-  const handleLoad: PickType<ImageProps, 'onLoad'> = (e) => {
+  const handleLoad: PickType<ImageMPProps, 'onLoad'> = (e) => {
     onLoad && onLoad(e)
     reloadCount.current = 0
   }
@@ -90,4 +90,4 @@ const ImageMP: FC<ImageProps> = ({
 
 export default ImageMP
 
-export type { ImageProps }
+export type { ImageMPProps }

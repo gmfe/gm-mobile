@@ -5,7 +5,6 @@ import FormScrollIntoView from './component/form_scroll_into_view'
 
 // 基础
 import FlipNumber from './component/flip_number'
-import Image from './component/image'
 import Counter from './component/counter'
 import ProgressBar from './component/progress_bar'
 
@@ -21,7 +20,10 @@ import Scroll from './component/scroll'
 import NProgress from './component/nprogress'
 
 // 其他
-import { LetterIndex, LetterIndexMultiple } from './component/letter_index'
+import {
+  LetterIndex,
+  LetterIndexMultiple,
+} from './component/letter_index/index'
 import CSSVariable from './css_variable'
 import Canvas from './component/canvas'
 import { LocalStorage, SessionStorage } from './storage'
@@ -110,7 +112,6 @@ export {
   FormScrollIntoView,
   // 基础
   FlipNumber,
-  Image,
   Label,
   Loading,
   Price,
@@ -162,3 +163,5 @@ export {
   VList,
   Status,
 }
+
+export * from './component/image'
