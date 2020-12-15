@@ -8,7 +8,6 @@ import Toast from './component/toast'
 import Label from './component/label'
 import Badge from './component/badge'
 import Dialog from './component/dialog'
-import TagWrap from './component/tag'
 import Checkbox from './component/checkbox'
 import Radio from './component/radio'
 import Square from './component/square'
@@ -44,7 +43,6 @@ export {
   Toast,
   Label,
   Badge,
-  TagWrap,
   Square,
   RangeCalendar,
   MultipleCalendar,
@@ -86,3 +84,4 @@ export * from './component/badge'
 export * from './component/switch'
 export * from './component/status'
 export * from './component/tabs'
+export * from './component/tag_wrap'

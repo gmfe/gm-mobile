@@ -38,3 +38,4 @@ const TagWrap: FC<TagWrapProps> = ({
 }
 
 export default TagWrap
+export type { TagWrapProps }
