@@ -7,10 +7,10 @@ import View from '../view'
 import { InnerLayerProps } from './types'
 
 const InnerLayerStatics = {
-  render(props) {
+  render(props: InnerLayerProps) {
     LayoutRoot.renderWith(
       LayoutRoot.TYPE.INNER_LAYER,
-      <InnerLayer {...props} />
+      <InnerLayerBase {...props} />
     )
   },
 
