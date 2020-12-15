@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import ScrollIntoView from './index'
+import ScrollIntoView from './scroll_into_view'
 import { View } from '../view'
-import { is } from '@gm-mobile/c-tool'
 
-export const normal = () => {
+export const Normal = () => {
   const [scrollId, setScrollId] = useState('')
 
   useEffect(() => {

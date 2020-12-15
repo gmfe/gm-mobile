@@ -24,7 +24,6 @@ import {
   SelectPicker,
 } from './component/picker'
 import Panel from './component/panel'
-import ScrollIntoView from './component/scroll_into_view'
 import Nav from './component/nav'
 import VList from './component/v_list'
 
@@ -58,7 +57,6 @@ export {
   RepeatTimes,
   Price,
   Panel,
-  ScrollIntoView,
   Nav,
   VList,
 }
@@ -77,3 +75,4 @@ export * from './component/dialog'
 export * from './component/flex'
 export * from './component/divider'
 export * from './component/inner_layer'
+export * from './component/scroll_into_view'

@@ -1,6 +1,6 @@
 interface TabsProps {
   /** tabs数据 */
-  tabs: { value: number; text: string }[]
+  tabs: { value: any; text: string }[]
   /** 当前选中tab对应value值 */
   active: any
   onChange?: (index: number) => void

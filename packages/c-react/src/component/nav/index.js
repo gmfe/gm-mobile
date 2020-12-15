@@ -4,7 +4,7 @@ import _ from 'lodash'
 import classNames from 'classnames'
 import { Flex } from '../flex'
 import { View } from '../view'
-import ScrollIntoView from '../scroll_into_view'
+import { ScrollIntoView } from '../scroll_into_view'
 
 const Nav = React.forwardRef(
   ({ data, selected, onSelect, horizontal, className, ...rest }, ref) => {
