@@ -1,3 +1,4 @@
+// 无特殊直接export * from xxx 即可
 import Flex from './component/flex'
 import LayoutRoot from './component/layout_root'
 import Loading from './component/loading'
