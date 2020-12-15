@@ -1,5 +1,4 @@
 // 无特殊直接export * from xxx 即可
-import { Flex } from './component/flex'
 import LayoutRoot from './component/layout_root'
 import Loading from './component/loading'
 import Mask from './component/mask'
@@ -8,7 +7,6 @@ import Toast from './component/toast'
 import Label from './component/label'
 import Radio from './component/radio'
 import Square from './component/square'
-import { Divider } from './component/divider'
 import Popup from './component/popup'
 import Tooltip from './component/tooltip'
 import ActionSheet from './component/action_sheet'
@@ -32,7 +30,6 @@ import Nav from './component/nav'
 import VList from './component/v_list'
 
 export {
-  Flex,
   LayoutRoot,
   Loading,
   Mask,
@@ -44,7 +41,6 @@ export {
   MultipleCalendar,
   Calendar,
   Radio,
-  Divider,
   Popup,
   Tooltip,
   ActionSheet,
@@ -79,3 +75,6 @@ export * from './component/switch'
 export * from './component/status'
 export * from './component/tabs'
 export * from './component/tag_wrap'
+export * from './component/dialog'
+export * from './component/flex'
+export * from './component/divider'
