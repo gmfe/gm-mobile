@@ -1,17 +1,14 @@
 // 无特殊直接export * from xxx 即可
-import Flex from './component/flex'
+import { Flex } from './component/flex'
 import LayoutRoot from './component/layout_root'
 import Loading from './component/loading'
 import Mask from './component/mask'
 import Page from './component/page'
 import Toast from './component/toast'
 import Label from './component/label'
-import Badge from './component/badge'
-import Dialog from './component/dialog'
-import Checkbox from './component/checkbox'
 import Radio from './component/radio'
 import Square from './component/square'
-import Divider from './component/divider'
+import { Divider } from './component/divider'
 import Popup from './component/popup'
 import Tooltip from './component/tooltip'
 import ActionSheet from './component/action_sheet'
@@ -42,13 +39,10 @@ export {
   Page,
   Toast,
   Label,
-  Badge,
   Square,
   RangeCalendar,
   MultipleCalendar,
   Calendar,
-  Dialog,
-  Checkbox,
   Radio,
   Divider,
   Popup,

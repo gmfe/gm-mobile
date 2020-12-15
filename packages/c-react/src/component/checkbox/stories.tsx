@@ -1,7 +1,7 @@
 import React from 'react'
 import { observable } from 'mobx'
 
-import Checkbox from '.'
+import { Checkbox } from '.'
 import { View } from '../view'
 
 const store = observable({
