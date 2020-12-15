@@ -22,7 +22,9 @@ const ButtonTime: FC<ButtonTimeProps> = ({
     }
   }, [])
 
-  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (
+    e: MouseEvent<HTMLButtonElement>
+  ): void | Promise<void> => {
     const fn = onClick(e)
     if (fn === false) {
       return
