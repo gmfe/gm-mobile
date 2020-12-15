@@ -5,17 +5,20 @@ import { View } from '../view'
 import { Button } from '../button'
 import emptyImg from './empty.png'
 import _ from 'lodash'
+import { getLocale } from '@gm-mobile/locales'
 import { StatusProps } from './types'
 
 const Status: FC<StatusProps> = React.memo(
   ({ type, tip, onReload = _.noop, className, children, ...rest }) => {
     let content = null
     if (type === 'loading') {
-      content = <View className='m-text-center'>{tip || '正在加载...'}</View>
+      content = (
+        <View className='m-text-center'>{tip || getLocale('正在加载...')}</View>
+      )
     } else if (type === 'error') {
       content = (
         <View className='m-text-center'>
-          <View>加载失败！</View>
+          <View>{getLocale('加载失败！')}</View>
           <View>
             <Button
               mini
@@ -24,7 +27,7 @@ const Status: FC<StatusProps> = React.memo(
                 onReload()
               }}
             >
-              重新加载
+              {getLocale('重新加载')}
             </Button>
           </View>
         </View>

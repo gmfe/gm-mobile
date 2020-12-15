@@ -6,9 +6,7 @@ import Mask from './component/mask'
 import Page from './component/page'
 import Toast from './component/toast'
 import Label from './component/label'
-import { Tabs } from './component/tabs'
 import Badge from './component/badge'
-import { Switch } from './component/switch'
 import Dialog from './component/dialog'
 import TagWrap from './component/tag'
 import Checkbox from './component/checkbox'
@@ -36,7 +34,6 @@ import Panel from './component/panel'
 import ScrollIntoView from './component/scroll_into_view'
 import Nav from './component/nav'
 import VList from './component/v_list'
-import { Status } from './component/status'
 
 export {
   Flex,
@@ -46,9 +43,7 @@ export {
   Page,
   Toast,
   Label,
-  Tabs,
   Badge,
-  Switch,
   TagWrap,
   Square,
   RangeCalendar,
@@ -80,7 +75,6 @@ export {
   ScrollIntoView,
   Nav,
   VList,
-  Status,
 }
 
 export * from './component/button'
@@ -89,3 +83,6 @@ export * from './component/text'
 export * from './component/cell'
 export * from './component/checkbox'
 export * from './component/badge'
+export * from './component/switch'
+export * from './component/status'
+export * from './component/tabs'
