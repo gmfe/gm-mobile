@@ -11,8 +11,8 @@ import { BaseCalendarProps } from './types'
 
 const BaseCalendar: FC<BaseCalendarProps> = ({
   type,
-  selected = [],
-  onSelect = _.noop,
+  selected,
+  onSelect,
   min,
   max,
   disabledDate,

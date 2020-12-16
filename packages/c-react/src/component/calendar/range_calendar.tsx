@@ -3,6 +3,7 @@ import moment from 'moment'
 import _ from 'lodash'
 
 import BaseCalendar from './base'
+import { CALENDAR_TYPE } from './util'
 import { RangeCalendarProps } from './types'
 
 const RangeCalendar: FC<RangeCalendarProps> = ({
@@ -23,7 +24,7 @@ const RangeCalendar: FC<RangeCalendarProps> = ({
       {...rest}
       selected={[_begin, _end]}
       onSelect={handleSelected}
-      type='range'
+      type={CALENDAR_TYPE.RANGE}
     />
   )
 }

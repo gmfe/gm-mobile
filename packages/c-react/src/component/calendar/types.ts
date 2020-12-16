@@ -20,8 +20,10 @@ interface DayProps {
   /** 内部定义的选择日期类型 */
   type: CalendarType
   onClick: (date: Moment) => void
+  /** 日期，可能是该月 / 上月 / 下月 */
   value: Moment
-  currentMoment: Moment
+  /** 当前日历所在月份 */
+  currentMonth: number
   disabled?: boolean
   showDateLabel?: boolean
   /** 内部用，当前渲染日期所在日历位置 */

@@ -14,18 +14,18 @@ const Day: FC<DayProps> = ({
   value,
   selected,
   type,
-  currentMoment,
+  currentMonth,
   disabled,
   showDateLabel,
   locIndex,
 }) => {
-  const nowMountStart = +moment().startOf('day')
+  const v = +value.startOf('day')
 
   const handleClick = () => {
-    onClick(value.toDate())
+    onClick(value)
   }
 
-  // 判断当前渲染日期是否为所在月份的 第一天/最后一天
+  // 为处理选中背景色，判断当前渲染日期是否为所在月份的 第一天/最后一天
   const isSelectedDayGap = (type: 'left' | 'right') => {
     const first = moment(value).startOf('month').date()
     const last = moment(value).endOf('month').date()
@@ -40,8 +40,6 @@ const Day: FC<DayProps> = ({
   }
 
   const isSelectedDate = () => {
-    const v = +value.startOf('day')
-
     if (type === CALENDAR_TYPE.RANGE) {
       return (
         v === +moment(selected[0]).startOf('day') &&
@@ -63,29 +61,27 @@ const Day: FC<DayProps> = ({
     return false
   }
 
-  const wm = currentMoment.month()
+  // 不是当前月份的日期，不需要展示
   const vm = value.month()
-
-  if (wm !== vm) {
+  if (currentMonth !== vm) {
     return <Flex className='m-calendar-day' />
   }
 
   let bv = null
   let ev = null
+  let isActive = false
   if (type === CALENDAR_TYPE.RANGE) {
     bv = selected[0] && +moment(selected[0]).startOf('day')
     ev = selected[1] && +moment(selected[1]).startOf('day')
+    isActive = selected[0] && v > bv && v < ev
   }
-  const v = +value.startOf('day')
   const isSelected = isSelectedDate()
   const isBegin = type === CALENDAR_TYPE.RANGE && selected[0] && v === bv
   const isEnd = type === CALENDAR_TYPE.RANGE && selected[1] && v === ev
-  const isActive =
-    type === CALENDAR_TYPE.RANGE && selected[0] && v > bv && v < ev
 
   const cn = classNames('m-calendar-day', {
     // 无状态
-    'm-calendar-day-now': nowMountStart === +value.startOf('day'),
+    'm-calendar-day-now': +moment().startOf('day') === v,
     // 不可用
     disabled: disabled,
     // 单个选中态
@@ -96,16 +92,13 @@ const Day: FC<DayProps> = ({
     active: isActive,
   })
 
-  // 小程序通过id来滚动, 增加id属性
-  const id = `m-calendar-${moment(value).format('YYYY-MM-DD')}`
-
   return (
     <Flex
       justifyCenter
       alignCenter
       onClick={disabled ? _.noop : handleClick}
       className={cn}
-      id={id}
+      id={`m-calendar-${moment(value).format('YYYY-MM-DD')}`} // 小程序通过id来滚动, 增加id属性
     >
       <View
         className={classNames('m-calendar-day-left', {

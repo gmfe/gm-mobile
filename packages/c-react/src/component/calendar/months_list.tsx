@@ -19,7 +19,7 @@ const MonthsList: FC<MonthListProps> = ({
   const refList = useRef(null)
 
   useEffect(() => {
-    if (selected && selected.length) {
+    if (selected.length) {
       const date = type === CALENDAR_TYPE.RANGE ? selected[1] : selected[0]
       const targetId = _.findIndex(
         monthsList,
