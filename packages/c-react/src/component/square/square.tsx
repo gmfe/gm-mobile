@@ -1,13 +1,10 @@
-import React, { FC, HTMLAttributes } from 'react'
+import React, { FC } from 'react'
 import classNames from 'classnames'
+import { SquareProps } from './types'
 
 import { View } from '../view'
 
-const Square: FC<HTMLAttributes<HTMLDivElement>> = ({
-  className,
-  children,
-  ...rest
-}) => {
+const Square: FC<SquareProps> = ({ className, children, ...rest }) => {
   const cn = classNames('m-square-inner', className)
 
   return (

@@ -13,7 +13,7 @@ const Tabs: FC<TabsProps> = ({
   className,
   ...rest
 }) => {
-  const handleChange = (value: number) => {
+  const handleChange = (value: string) => {
     onChange(value)
   }
 
