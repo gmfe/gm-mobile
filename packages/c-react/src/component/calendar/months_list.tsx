@@ -1,13 +1,13 @@
-import React, { useRef, useEffect } from 'react'
-import PropTypes from 'prop-types'
-import moment from 'moment'
+import React, { FC, useRef, useEffect } from 'react'
+import moment, { Moment } from 'moment'
 import _ from 'lodash'
 
 import VList from '../v_list'
 import Month from './month'
-import { TYPE } from './util'
+import { CALENDAR_TYPE } from './util'
+import { MonthListProps } from './types'
 
-const MonthsList = ({
+const MonthsList: FC<MonthListProps> = ({
   monthsList,
   selected,
   type,
@@ -20,7 +20,7 @@ const MonthsList = ({
 
   useEffect(() => {
     if (selected && selected.length) {
-      const date = type === TYPE.RANGE ? selected[1] : selected[0]
+      const date = type === CALENDAR_TYPE.RANGE ? selected[1] : selected[0]
       const targetId = _.findIndex(
         monthsList,
         (item) =>
@@ -41,12 +41,11 @@ const MonthsList = ({
       height={height}
       itemHeight={265}
       distance={0}
-      renderItem={({ item, index }) => {
+      renderItem={(month: { item: Moment; index: number }) => {
         return (
           <Month
-            key={index}
-            index={index}
-            currentMoment={item}
+            key={month.index}
+            currentMoment={month.item}
             selected={selected}
             type={type}
             onSelectDay={onSelectDay}
@@ -57,16 +56,6 @@ const MonthsList = ({
       }}
     />
   )
-}
-
-MonthsList.propTypes = {
-  monthsList: PropTypes.array.isRequired,
-  height: PropTypes.number.isRequired,
-  selected: PropTypes.array,
-  type: PropTypes.string,
-  onSelectDay: PropTypes.func,
-  getDisabled: PropTypes.func,
-  showDateLabel: PropTypes.bool,
 }
 
 export default MonthsList

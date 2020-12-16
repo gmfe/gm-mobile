@@ -9,7 +9,6 @@ import Radio from './component/radio'
 import Popup from './component/popup'
 import Tooltip from './component/tooltip'
 import ActionSheet from './component/action_sheet'
-import { RangeCalendar, MultipleCalendar, Calendar } from './component/calendar'
 import { Search, FakeSearch, SearchPage } from './component/search'
 import Textarea from './component/textarea'
 import { Input, InputMaxLength, InputPassword } from './component/input'
@@ -33,9 +32,6 @@ export {
   Page,
   Toast,
   Label,
-  RangeCalendar,
-  MultipleCalendar,
-  Calendar,
   Radio,
   Popup,
   Tooltip,
@@ -75,3 +71,4 @@ export * from './component/divider'
 export * from './component/inner_layer'
 export * from './component/scroll_into_view'
 export * from './component/square'
+export * from './component/calendar'

@@ -1,14 +1,15 @@
 import { getLocale } from '@gm-mobile/locales'
-import React from 'react'
+import React, { FC } from 'react'
 import moment from 'moment'
 import classNames from 'classnames'
-import PropTypes from 'prop-types'
 import _ from 'lodash'
+
 import { Flex } from '../flex'
 import { View } from '../view'
-import { TYPE } from './util'
+import { CALENDAR_TYPE } from './util'
+import { DayProps } from './types'
 
-const Day = ({
+const Day: FC<DayProps> = ({
   onClick,
   value,
   selected,
@@ -21,11 +22,11 @@ const Day = ({
   const nowMountStart = +moment().startOf('day')
 
   const handleClick = () => {
-    onClick(value)
+    onClick(value.toDate())
   }
 
   // 判断当前渲染日期是否为所在月份的 第一天/最后一天
-  const isSelectedDayGap = (type) => {
+  const isSelectedDayGap = (type: 'left' | 'right') => {
     const first = moment(value).startOf('month').date()
     const last = moment(value).endOf('month').date()
 
@@ -41,7 +42,7 @@ const Day = ({
   const isSelectedDate = () => {
     const v = +value.startOf('day')
 
-    if (type === TYPE.RANGE) {
+    if (type === CALENDAR_TYPE.RANGE) {
       return (
         v === +moment(selected[0]).startOf('day') &&
         v === +moment(selected[1]).startOf('day')
@@ -49,7 +50,7 @@ const Day = ({
     }
 
     let s = null
-    if (type === TYPE.MULTIPLE) {
+    if (type === CALENDAR_TYPE.MULTIPLE) {
       s = _.find(selected, (date) => +moment(date).startOf('day') === v)
     } else {
       // 单选直接判断
@@ -71,15 +72,16 @@ const Day = ({
 
   let bv = null
   let ev = null
-  if (type === TYPE.RANGE) {
+  if (type === CALENDAR_TYPE.RANGE) {
     bv = selected[0] && +moment(selected[0]).startOf('day')
     ev = selected[1] && +moment(selected[1]).startOf('day')
   }
   const v = +value.startOf('day')
   const isSelected = isSelectedDate()
-  const isBegin = type === TYPE.RANGE && selected[0] && v === bv
-  const isEnd = type === TYPE.RANGE && selected[1] && v === ev
-  const isActive = type === TYPE.RANGE && selected[0] && v > bv && v < ev
+  const isBegin = type === CALENDAR_TYPE.RANGE && selected[0] && v === bv
+  const isEnd = type === CALENDAR_TYPE.RANGE && selected[1] && v === ev
+  const isActive =
+    type === CALENDAR_TYPE.RANGE && selected[0] && v > bv && v < ev
 
   const cn = classNames('m-calendar-day', {
     // 无状态
@@ -112,7 +114,7 @@ const Day = ({
       />
       <Flex column alignCenter justifyCenter className='m-calendar-day-text'>
         {value.date()}
-        {showDateLabel && type === TYPE.RANGE && (
+        {showDateLabel && type === CALENDAR_TYPE.RANGE && (
           <View className='m-calendar-day-label'>
             {v === bv && v === ev && <View>{getLocale('单天')}</View>}
             {v === bv && v !== ev && <View>{getLocale('开始')}</View>}
@@ -127,19 +129,6 @@ const Day = ({
       />
     </Flex>
   )
-}
-
-Day.propTypes = {
-  selected: PropTypes.array,
-  /** 选择日期类型：one，range，multiple */
-  type: PropTypes.oneOf(['one', 'range', 'multiple']),
-  onClick: PropTypes.func,
-  value: PropTypes.object,
-  currentMoment: PropTypes.object,
-  disabled: PropTypes.bool,
-  showDateLabel: PropTypes.bool,
-  /** 当前渲染日期所在日历位置 */
-  locIndex: PropTypes.number,
 }
 
 export default Day

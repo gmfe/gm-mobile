@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import moment from 'moment'
 import { observable } from 'mobx'
 
@@ -15,14 +15,14 @@ const store = observable({
   oneSelected: min,
   begin: min,
   end: max,
-  setRangeSelected({ begin, end }) {
-    this.begin = begin
-    this.end = end
+  setRangeSelected(selected: { begin: Date; end: Date }) {
+    this.begin = selected.begin
+    this.end = selected.end
   },
-  setMulSelected(selected) {
+  setMulSelected(selected: Date[]) {
     this.mulSelected = selected
   },
-  setOneSelected(selected) {
+  setOneSelected(selected: Date) {
     this.oneSelected = selected
   },
 })

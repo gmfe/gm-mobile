@@ -1,12 +1,11 @@
 import { getLocale } from '@gm-mobile/locales'
-import React from 'react'
+import React, { FC } from 'react'
 import _ from 'lodash'
-
-import moment from 'moment'
-import PropTypes from 'prop-types'
+import moment, { Moment } from 'moment'
 
 import { Flex } from '../flex'
 import Day from './day'
+import { MonthProps } from './types'
 
 const months = [
   getLocale('1月'),
@@ -23,23 +22,22 @@ const months = [
   getLocale('12月'),
 ]
 
-const Month = ({
+const Month: FC<MonthProps> = ({
   currentMoment,
-  index,
   selected,
   type,
   onSelectDay,
   getDisabled,
   showDateLabel,
 }) => {
-  const getDayRowOfMonth = (currentMoment) => {
+  const getDayRowOfMonth = (currentMoment: Moment) => {
     if (
       moment(currentMoment).day(0).add(35, 'day').month() !==
       currentMoment.month()
     ) {
-      return _.groupBy(_.range(35), (v) => parseInt(v / 7))
+      return _.groupBy(_.range(35), (v) => parseInt(`${v / 7}`))
     }
-    return _.groupBy(_.range(42), (v) => parseInt(v / 7))
+    return _.groupBy(_.range(42), (v) => parseInt(`${v / 7}`))
   }
 
   const lastDay = moment(currentMoment).day(0).add(-1, 'day')
@@ -80,16 +78,6 @@ const Month = ({
       ))}
     </Flex>
   )
-}
-
-Month.propTypes = {
-  currentMoment: PropTypes.object,
-  index: PropTypes.number,
-  selected: PropTypes.array,
-  type: PropTypes.string,
-  onSelectDay: PropTypes.func,
-  getDisabled: PropTypes.func,
-  showDateLabel: PropTypes.bool,
 }
 
 export default Month

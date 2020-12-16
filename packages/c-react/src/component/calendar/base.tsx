@@ -1,33 +1,31 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import moment from 'moment'
+import React, { FC, useState } from 'react'
+import moment, { Moment } from 'moment'
 import classNames from 'classnames'
 import _ from 'lodash'
 
 import Week from './week'
-import { TYPE } from './util'
 import { View } from '../view'
 import MonthsList from './months_list'
+import { CALENDAR_TYPE } from './util'
+import { BaseCalendarProps } from './types'
 
-const BaseCalendar = (props) => {
+const BaseCalendar: FC<BaseCalendarProps> = ({
+  type,
+  selected = [],
+  onSelect = _.noop,
+  min,
+  max,
+  disabledDate,
+  showDateLabel,
+  height = 400,
+  className,
+  style,
+  ...rest
+}) => {
   const [isSelectBegin, setIsSelectBegin] = useState(true)
 
-  const {
-    type,
-    selected,
-    onSelect,
-    min,
-    max,
-    disabledDate,
-    showDateLabel,
-    height,
-    className,
-    style,
-    ...rest
-  } = props
-
   // 多个日期选择
-  const handleSelectMulDay = (m) => {
+  const handleSelectMulDay = (m: Moment) => {
     let _selected = selected.slice()
     // 点击相同日期，取消该日期选择
     const dayIndex = _.findIndex(
@@ -43,9 +41,9 @@ const BaseCalendar = (props) => {
     onSelect(_selected)
   }
 
-  const handleSelectDay = (m) => {
+  const handleSelectDay = (m: Moment) => {
     // 日期段选择
-    if (type === TYPE.RANGE) {
+    if (type === CALENDAR_TYPE.RANGE) {
       let sb = selected[0]
       let se = selected[1]
 
@@ -70,7 +68,7 @@ const BaseCalendar = (props) => {
       return
     }
 
-    if (type === TYPE.MULTIPLE) {
+    if (type === CALENDAR_TYPE.MULTIPLE) {
       handleSelectMulDay(m)
       return
     }
@@ -78,16 +76,14 @@ const BaseCalendar = (props) => {
     onSelect([m.toDate()])
   }
 
-  const getDisabled = (m) => {
-    let _min = min
-    let _max = max
+  const getDisabled = (m: Moment) => {
     // disabledDate 优先
     if (disabledDate) {
-      return disabledDate(m)
+      return disabledDate(m.toDate())
     }
 
-    _min = min ? moment(min).startOf('day') : null
-    _max = max ? moment(max).startOf('day') : null
+    const _min = min ? moment(min).startOf('day') : null
+    const _max = max ? moment(max).startOf('day') : null
 
     let disabled = false
 
@@ -106,7 +102,7 @@ const BaseCalendar = (props) => {
     let mMin = null
     let mMax = null
 
-    if (type === TYPE.RANGE) {
+    if (type === CALENDAR_TYPE.RANGE) {
       const _min = min || selected[0]
       const _max = max || selected[1]
 
@@ -144,32 +140,6 @@ const BaseCalendar = (props) => {
       />
     </View>
   )
-}
-
-BaseCalendar.propTypes = {
-  /** 选择日期数组 */
-  selected: PropTypes.array,
-  /** 选择日期类型：one，range，multiple -- 单选，日期段，多个日期 */
-  type: PropTypes.oneOf(['one', 'range', 'multiple']),
-  /** 回调函数 */
-  onSelect: PropTypes.func,
-  /** 可选日期最小值 */
-  min: PropTypes.object,
-  /** 可选日期最大值 */
-  max: PropTypes.object,
-  /** 显示日期下方标签备注, 备注包括：单天，开始，结束, 一般配合 日期段选择 使用 */
-  showDateLabel: PropTypes.bool,
-  /** 自定义不可选日期 */
-  disabledDate: PropTypes.func,
-  /** 定义日历高度，默认400 */
-  height: PropTypes.number,
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
-
-BaseCalendar.defaultProps = {
-  onSelect: _.noop,
-  height: 400,
 }
 
 export default BaseCalendar
