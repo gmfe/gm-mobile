@@ -12,7 +12,6 @@ import ActionSheet from './component/action_sheet'
 import { Search, FakeSearch, SearchPage } from './component/search'
 import Textarea from './component/textarea'
 import { Input, InputMaxLength, InputPassword } from './component/input'
-import RepeatTimes from './component/repeat_times'
 import Price from './component/price'
 import {
   Picker,
@@ -48,7 +47,6 @@ export {
   ConfirmPicker,
   ConfirmCouplingPicker,
   SelectPicker,
-  RepeatTimes,
   Price,
   Panel,
   Nav,
@@ -72,3 +70,4 @@ export * from './component/inner_layer'
 export * from './component/scroll_into_view'
 export * from './component/square'
 export * from './component/calendar'
+export * from './component/repeat_times'

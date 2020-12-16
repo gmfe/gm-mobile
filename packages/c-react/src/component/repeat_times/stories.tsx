@@ -1,5 +1,5 @@
 import React from 'react'
-import RepeatTimes from './index'
+import RepeatTimes from './repeat_times'
 import { View } from '../view'
 
 export const Normal = () => {

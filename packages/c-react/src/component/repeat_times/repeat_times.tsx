@@ -1,10 +1,14 @@
-import React, { useRef, useState } from 'react'
-import PropTypes from 'prop-types'
+import { useRef, useState, FC, cloneElement, ReactElement } from 'react'
+import { RepeatTimesProps } from './types'
 import Toast from '../toast'
 
-const RepeatTimes = ({ repeat, onRepeat, children }) => {
+const RepeatTimes: FC<RepeatTimesProps> = ({
+  repeat = 5,
+  onRepeat,
+  children,
+}) => {
   const [times, setTimes] = useState(0)
-  const timer = useRef(null)
+  const timer = useRef<number>()
 
   const handleClick = () => {
     clearTimeout(timer.current)
@@ -25,18 +29,9 @@ const RepeatTimes = ({ repeat, onRepeat, children }) => {
     }
   }
 
-  return React.cloneElement(children, {
+  return cloneElement(children as ReactElement, {
     onClick: handleClick,
   })
-}
-
-RepeatTimes.propTypes = {
-  repeat: PropTypes.number,
-  onRepeat: PropTypes.func.isRequired,
-}
-
-RepeatTimes.defaultProps = {
-  repeat: 5,
 }
 
 export default RepeatTimes

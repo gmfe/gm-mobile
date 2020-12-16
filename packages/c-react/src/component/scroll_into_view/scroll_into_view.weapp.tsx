@@ -1,9 +1,17 @@
-import React, { FC } from 'react'
+import React, { FC, CSSProperties } from 'react'
 import { ScrollView } from '@tarojs/components'
-import { ScrollIntoViewWeAPPProps } from './types'
+export interface ScrollIntoViewProps {
+  /** 滚动目标id */
+  targetId: string
+  onScroll?: () => void
+  /** 小程序独有 */
+  horizontal: boolean
+  style?: CSSProperties
+  className?: string
+}
 
 // 先 默认纵向滚动
-const ScrollIntoView: FC<ScrollIntoViewWeAPPProps> = ({
+const ScrollIntoView: FC<ScrollIntoViewProps> = ({
   children,
   targetId,
   horizontal,

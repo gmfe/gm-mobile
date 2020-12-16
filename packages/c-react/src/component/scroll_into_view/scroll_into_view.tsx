@@ -1,6 +1,10 @@
-import React, { useEffect, FC } from 'react'
+import React, { useEffect, FC, HTMLAttributes } from 'react'
 import { View } from '../view'
-import { ScrollIntoViewProps } from './types'
+export interface ScrollIntoViewProps extends HTMLAttributes<HTMLDivElement> {
+  /** 滚动目标id */
+  targetId: string
+  onScroll?: () => void
+}
 
 // 先 默认纵向滚动
 const ScrollIntoView: FC<ScrollIntoViewProps> = ({
