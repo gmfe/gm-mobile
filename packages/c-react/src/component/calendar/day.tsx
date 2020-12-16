@@ -1,5 +1,5 @@
 import { getLocale } from '@gm-mobile/locales'
-import React, { FC } from 'react'
+import React, { FC, memo } from 'react'
 import moment from 'moment'
 import classNames from 'classnames'
 import _ from 'lodash'
@@ -19,13 +19,14 @@ const Day: FC<DayProps> = ({
   showDateLabel,
   locIndex,
 }) => {
+  // 各种判断用
   const v = +value.startOf('day')
 
   const handleClick = () => {
     onClick(value)
   }
 
-  // 为处理选中背景色，判断当前渲染日期是否为所在月份的 第一天/最后一天
+  // 日期单独选中为正方形，选择一段时连续高亮，需要处理中间部分背景色，判断当前渲染日期是否为所在月份的 第一天/最后一天
   const isSelectedDayGap = (type: 'left' | 'right') => {
     const first = moment(value).startOf('month').date()
     const last = moment(value).endOf('month').date()
@@ -98,11 +99,11 @@ const Day: FC<DayProps> = ({
       alignCenter
       onClick={disabled ? _.noop : handleClick}
       className={cn}
-      id={`m-calendar-${moment(value).format('YYYY-MM-DD')}`} // 小程序通过id来滚动, 增加id属性
     >
       <View
         className={classNames('m-calendar-day-left', {
-          'm-calendar-day-left-first': isSelectedDayGap('left'),
+          'm-calendar-day-left-first':
+            type === CALENDAR_TYPE.RANGE && isSelectedDayGap('left'),
         })}
       />
       <Flex column alignCenter justifyCenter className='m-calendar-day-text'>
@@ -117,11 +118,12 @@ const Day: FC<DayProps> = ({
       </Flex>
       <View
         className={classNames('m-calendar-day-right', {
-          'm-calendar-day-right-last': isSelectedDayGap('right'),
+          'm-calendar-day-right-last':
+            type === CALENDAR_TYPE.RANGE && isSelectedDayGap('right'),
         })}
       />
     </Flex>
   )
 }
 
-export default Day
+export default memo(Day)

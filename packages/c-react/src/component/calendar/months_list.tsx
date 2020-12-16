@@ -27,6 +27,7 @@ const MonthsList: FC<MonthListProps> = ({
           moment(item).year() === moment(date).year() &&
           moment(item).month() === moment(date).month()
       )
+
       setTimeout(() => {
         refList.current.apiDoScrollToKey(targetId)
       }, 200)

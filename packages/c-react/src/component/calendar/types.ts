@@ -3,12 +3,6 @@
 // • 在 Month 挂个变量
 // • month.js
 // • 固定高度
-// day.js
-// • currentMoment 可以传 currentMonth
-// • isSelectedDayGap 用的时候才运算
-// • 不过度计算 value.startOf('day') 算了几次
-// • id 只计算一次够了，用数字比YYYY-MM-DD更快
-// • memo
 
 import { HTMLAttributes } from 'react'
 import { Moment } from 'moment'

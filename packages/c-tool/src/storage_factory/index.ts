@@ -9,7 +9,8 @@ class StorageFactory {
 
   constructor(prefix: string, target: Storage) {
     // @ts-ignore
-    this.prefix = __NAME__ + `_${prefix}`
+    this.prefix = prefix
+    // this.prefix = __NAME__ + `_${prefix}`
     this.target = target
   }
 
