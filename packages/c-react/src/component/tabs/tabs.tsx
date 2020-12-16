@@ -13,10 +13,6 @@ const Tabs: FC<TabsProps> = ({
   className,
   ...rest
 }) => {
-  const handleChange = (value: string) => {
-    onChange(value)
-  }
-
   return (
     <Flex {...rest} className={classNames(`m-tabs m-tabs-${type}`, className)}>
       <Flex className='m-tabs-content'>
@@ -28,7 +24,7 @@ const Tabs: FC<TabsProps> = ({
               active: active === tab.value,
             })}
             key={tab.value}
-            onClick={() => handleChange(tab.value)}
+            onClick={() => onChange(tab.value)}
           >
             <Text className='m-tabs-item-text'>{tab.text}</Text>
           </Flex>
