@@ -8,8 +8,7 @@ class StorageFactory {
   target: Storage
 
   constructor(prefix: string, target: Storage) {
-    // this.prefix = window.__NAME__ + `_${prefix}`
-    this.prefix = prefix
+    this.prefix = __NAME__ + `_${prefix}`
     this.target = target
   }
 

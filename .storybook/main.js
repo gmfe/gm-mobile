@@ -1,5 +1,6 @@
 const path = require('path')
 const _ = require('lodash')
+const webpack = require('webpack')
 
 const webpackFinal = (config) => {
   _.each(config.module.rules, (rule) => {
@@ -74,6 +75,13 @@ const webpackFinal = (config) => {
   })
 
   config.resolve.extensions.push('.ts', '.tsx')
+
+  // 由于 storybook 会先跑 stories，直接会先调用__NAME__导致报错，所以放在preview.js初始化没有作用，直接先注入初始化。
+  config.plugins.push(
+    new webpack.DefinePlugin({    
+      __NAME__: JSON.stringify('none'),
+    })
+  )
 
   return config
 }
