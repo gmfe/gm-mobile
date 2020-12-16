@@ -18,10 +18,7 @@ interface DialogBaseProps {
   /** prompt 的时候有用 */
   promptText?: string
   /** prompt 的时候有用 */
-  promptInputProps?: Omit<
-    InputHTMLAttributes<HTMLInputElement>,
-    'defaultValue'
-  > & { defaultValue?: string }
+  promptInputProps?: ErrorInputProps
   /**  */
   promptGetError?: (value: string) => string | void
 }
@@ -36,10 +33,7 @@ interface RenderOptions extends PromptOptions {
 interface PromptOptions {
   promptGetError?: (value: string) => string | void
   promptText?: string
-  promptInputProps?: Omit<
-    InputHTMLAttributes<HTMLInputElement>,
-    'defaultValue'
-  > & { defaultValue?: string }
+  promptInputProps?: ErrorInputProps
   onConfirm?: (value: string) => void | boolean
 }
 

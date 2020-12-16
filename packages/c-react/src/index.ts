@@ -11,7 +11,6 @@ import Tooltip from './component/tooltip'
 import ActionSheet from './component/action_sheet'
 import { Search, FakeSearch, SearchPage } from './component/search'
 import Textarea from './component/textarea'
-import { Input, InputMaxLength, InputPassword } from './component/input'
 import Price from './component/price'
 import {
   Picker,
@@ -38,9 +37,6 @@ export {
   Search,
   FakeSearch,
   SearchPage,
-  Input,
-  InputMaxLength,
-  InputPassword,
   Textarea,
   Picker,
   CouplingPicker,
@@ -71,3 +67,4 @@ export * from './component/scroll_into_view'
 export * from './component/square'
 export * from './component/calendar'
 export * from './component/repeat_times'
+export * from './component/input'

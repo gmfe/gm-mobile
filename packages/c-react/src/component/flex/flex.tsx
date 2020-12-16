@@ -7,6 +7,7 @@ const Flex = forwardRef<HTMLDivElement, FlexProps>(
   (
     {
       flex,
+      block,
 
       auto,
       none,
@@ -48,6 +49,7 @@ const Flex = forwardRef<HTMLDivElement, FlexProps>(
     const cn = classNames(
       {
         'm-flex': true,
+        'm-flex-block': block,
 
         'm-flex-flex': flex,
         'm-flex-auto': auto,

@@ -2,6 +2,8 @@ import { HTMLAttributes } from 'react'
 
 interface FlexProps extends HTMLAttributes<HTMLDivElement> {
   flex?: number | boolean
+  /** 本身是 display:flex，flex 会使子元素 flex-item。设置 block 即可 */
+  block?: boolean
   auto?: boolean
   none?: boolean
   width?: string
