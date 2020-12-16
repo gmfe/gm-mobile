@@ -68,8 +68,9 @@ export const normal = () => {
               if (value.length > 5) {
                 return '超过5个字啦'
               }
+              return ''
             },
-            onConfirm: (value) => {
+            onConfirm: (value): boolean | void => {
               console.log('confirm', value)
               if (value === '') {
                 Toast.tip('请输入')

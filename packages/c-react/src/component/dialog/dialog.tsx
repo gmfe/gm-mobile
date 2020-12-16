@@ -30,10 +30,10 @@ const ErrorInput: FC<ErrorInputProps> = ({
   return (
     <>
       <Input
+        {...rest}
         className='m-dialog-input'
         value={value}
         onChange={handleChange}
-        {...rest}
       />
       <View className='m-text-red m-text-12'>
         {(getError && getError(value)) || ''}
@@ -58,8 +58,8 @@ const DialogStatics: DialogStaticsTypes<string | RenderOptions> = {
         <View className='m-text-left'>
           <View>{options.promptText}</View>
           <ErrorInput
-            className='m-padding-tb-10'
             {...options.promptInputProps}
+            className='m-padding-tb-10'
             autoFocus
             getError={options.promptGetError}
             onChange={(e) => {

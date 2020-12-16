@@ -1,12 +1,9 @@
-import { InputHTMLAttributes, ChangeEvent } from 'react'
+import { InputHTMLAttributes } from 'react'
 import { InputProps as TaroInputProps } from '@tarojs/components/types/Input'
 import { CommonEventFunction } from '@tarojs/components'
 
 interface ErrorInputProps extends InputProps {
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void
-  autoFocus: boolean
   getError?: (value: string) => string | void
-  className?: string
   defaultValue?: string
 }
 
@@ -21,7 +18,10 @@ interface DialogBaseProps {
   /** prompt 的时候有用 */
   promptText?: string
   /** prompt 的时候有用 */
-  promptInputProps?: { [key: string]: string }
+  promptInputProps?: Omit<
+    InputHTMLAttributes<HTMLInputElement>,
+    'defaultValue'
+  > & { defaultValue?: string }
   /**  */
   promptGetError?: (value: string) => string | void
 }
@@ -36,9 +36,10 @@ interface RenderOptions extends PromptOptions {
 interface PromptOptions {
   promptGetError?: (value: string) => string | void
   promptText?: string
-  promptInputProps?: {
-    [key: string]: string
-  }
+  promptInputProps?: Omit<
+    InputHTMLAttributes<HTMLInputElement>,
+    'defaultValue'
+  > & { defaultValue?: string }
   onConfirm?: (value: string) => void | boolean
 }
 
