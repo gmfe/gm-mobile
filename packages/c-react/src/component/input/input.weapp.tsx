@@ -1,4 +1,4 @@
-import React, { FC, InputHTMLAttributes } from 'react'
+import React, { ChangeEvent, FC, InputHTMLAttributes } from 'react'
 import classNames from 'classnames'
 import { Input as TInput, BaseEventOrig } from '@tarojs/components'
 import { InputProps as TaroInputProps } from '@tarojs/components/types/Input'
@@ -13,9 +13,13 @@ const Input: FC<TaroInputProps & InputHTMLAttributes<HTMLInputElement>> = ({
   className,
   ...rest
 }) => {
-  const handleChange = (e: BaseEventOrig<TaroInputProps.inputEventDetail>) => {
-    onChange && onChange(e)
-    onInput && onInput(e)
+  const handleChange = (
+    e:
+      | BaseEventOrig<TaroInputProps.inputEventDetail>
+      | ChangeEvent<HTMLInputElement>
+  ) => {
+    onChange && onChange(e as ChangeEvent<HTMLInputElement>)
+    onInput && onInput(e as BaseEventOrig<TaroInputProps.inputEventDetail>)
   }
 
   return (
