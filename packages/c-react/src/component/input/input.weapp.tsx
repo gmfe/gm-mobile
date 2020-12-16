@@ -1,12 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC, InputHTMLAttributes } from 'react'
 import classNames from 'classnames'
-import { Input as TInput } from '@tarojs/components'
+import { Input as TInput, BaseEventOrig } from '@tarojs/components'
+import { InputProps as TaroInputProps } from '@tarojs/components/types/Input'
 
 // 做了 onInput 到 onChange 的改变
 
-const Input = ({ onChange, onInput, form, focus, className, ...rest }) => {
-  const handleChange = (e) => {
+const Input: FC<TaroInputProps & InputHTMLAttributes<HTMLInputElement>> = ({
+  onChange,
+  form,
+  onInput,
+  focus,
+  className,
+  ...rest
+}) => {
+  const handleChange = (e: BaseEventOrig<TaroInputProps.inputEventDetail>) => {
     onChange && onChange(e)
     onInput && onInput(e)
   }
@@ -25,22 +32,6 @@ const Input = ({ onChange, onInput, form, focus, className, ...rest }) => {
       )}
     />
   )
-}
-
-Input.propTypes = {
-  type: PropTypes.oneOf(['text', 'number', 'idcard', 'digit']),
-  value: PropTypes.string,
-  onChange: PropTypes.func,
-  onInput: PropTypes.func,
-  placeholder: PropTypes.string,
-  focus: PropTypes.bool,
-  form: PropTypes.bool,
-  disabled: PropTypes.bool,
-  className: PropTypes.string,
-  style: PropTypes.object,
-  password: PropTypes.bool,
-  /* 小程序特有 */
-  confirmType: PropTypes.oneOf(['send', 'search', 'next', 'go', 'done']),
 }
 
 export default Input
