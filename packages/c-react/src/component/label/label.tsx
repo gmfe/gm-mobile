@@ -18,7 +18,7 @@ const Label: FC<LabelProps> = ({
   return (
     <View
       {...rest}
-      className={classNames('m-label', className, `m-label-${type}`)}
+      className={classNames('m-label', `m-label-${type}`, className)}
     >
       {text}
     </View>

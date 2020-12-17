@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from 'react'
+import React, { InputHTMLAttributes } from 'react'
 import { InputProps as TaroInputProps } from '@tarojs/components/types/Input'
 import { CommonEventFunction } from '@tarojs/components'
 
