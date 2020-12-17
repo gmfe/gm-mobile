@@ -2,11 +2,11 @@ import React, { ChangeEvent, FC } from 'react'
 import classNames from 'classnames'
 import { Input as TInput, BaseEventOrig } from '@tarojs/components'
 import { InputProps as TaroInputProps } from '@tarojs/components/types/Input'
-import { TInputProps } from './type'
+import { InputProps } from './type'
 
 // 做了 onInput 到 onChange 的改变
 
-const Input: FC<TInputProps> = ({
+const Input: FC<Omit<InputProps, 'type'>> = ({
   onChange,
   isForm,
   onInput,
