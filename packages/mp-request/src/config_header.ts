@@ -1,15 +1,18 @@
 import { UUID } from '@gm-mobile/c-tool'
 import { instance } from './request'
 
-function configHeaders({ clientName, version }) {
+function configHeaders() {
   const clientId = UUID.generate()
 
+  const clientName = __CLIENT_NAME__ // eslint-disable-line
+  const version = __VERSION__ // eslint-disable-line
+
   instance.defaults.headers.common[
-    'X-Guanmai-Client'
+    'X-Client'
   ] = `${clientName}/${version} ${clientId}`
 
   instance.interceptors.request.use((config) => {
-    config.headers['X-Guanmai-Request-Id'] = UUID.generate()
+    config.headers['X-Request-Id'] = UUID.generate()
 
     return config
   })

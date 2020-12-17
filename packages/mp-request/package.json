@@ -8,7 +8,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "src/index.js",
+  "main": "src/index.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gmfe/gm-mobile.git"
@@ -21,7 +21,9 @@
   },
   "dependencies": {
     "@gm-mobile/c-tool": "^2.0.6-alpha.2",
-    "@gm-mobile/locales": "^2.0.6-alpha.2"
+    "@gm-mobile/locales": "^2.0.6-alpha.2",
+    "@gm-mobile/mp": "^2.0.6-alpha.2",
+    "js-base64": "^3.6.0"
   },
   "peerDependencies": {
     "lodash": "^4.17.15",
