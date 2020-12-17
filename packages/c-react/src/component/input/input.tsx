@@ -1,10 +1,9 @@
 import React, { forwardRef } from 'react'
 import classNames from 'classnames'
-import { InputProps } from './type'
+import { WInputProps } from './type'
 
-const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ isFrom, className, ...rest }, ref) => {
-    console.log('form', isFrom)
+const Input = forwardRef<HTMLInputElement, Omit<WInputProps, 'onInput'>>(
+  ({ isForm, className, ...rest }, ref) => {
     return (
       <input
         ref={ref}
@@ -12,7 +11,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         className={classNames(
           'm-input',
           {
-            'm-input-form': isFrom,
+            'm-input-form': isForm,
           },
           className
         )}

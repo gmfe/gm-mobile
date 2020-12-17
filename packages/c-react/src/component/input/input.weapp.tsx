@@ -1,13 +1,14 @@
-import React, { ChangeEvent, FC, InputHTMLAttributes } from 'react'
+import React, { ChangeEvent, FC } from 'react'
 import classNames from 'classnames'
 import { Input as TInput, BaseEventOrig } from '@tarojs/components'
 import { InputProps as TaroInputProps } from '@tarojs/components/types/Input'
+import { TInputProps } from './type'
 
 // 做了 onInput 到 onChange 的改变
 
-const Input: FC<TaroInputProps & InputHTMLAttributes<HTMLInputElement>> = ({
+const Input: FC<TInputProps> = ({
   onChange,
-  form,
+  isForm,
   onInput,
   focus,
   className,
@@ -30,7 +31,7 @@ const Input: FC<TaroInputProps & InputHTMLAttributes<HTMLInputElement>> = ({
       className={classNames(
         'm-input',
         {
-          'm-input-form': form,
+          'm-input-form': isForm,
         },
         className
       )}

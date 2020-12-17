@@ -1,5 +1,5 @@
 import React from 'react'
-import Loading from './index'
+import { Loading } from './index'
 import { View } from '../view'
 
 export const normal = () => (

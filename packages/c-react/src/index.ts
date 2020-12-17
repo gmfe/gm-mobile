@@ -1,6 +1,5 @@
 // 无特殊直接export * from xxx 即可
 import LayoutRoot from './component/layout_root'
-import Loading from './component/loading'
 import Mask from './component/mask'
 import Page from './component/page'
 import Toast from './component/toast'
@@ -24,7 +23,6 @@ import VList from './component/v_list'
 
 export {
   LayoutRoot,
-  Loading,
   Mask,
   Page,
   Toast,
@@ -67,3 +65,4 @@ export * from './component/calendar'
 export * from './component/repeat_times'
 export * from './component/input'
 export * from './component/label'
+export * from './component/loading'

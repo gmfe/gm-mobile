@@ -1,10 +1,25 @@
 import { InputHTMLAttributes } from 'react'
+import { InputProps as TaroInputProps } from '@tarojs/components/types/Input'
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  isFrom?: boolean
+// web Input
+interface WInputProps extends InputHTMLAttributes<HTMLInputElement> {
+  isForm?: boolean
 }
+// 小程序 Input
+type TInputProps = TaroInputProps & WInputProps
+
 interface InputMaxLengthProps extends InputHTMLAttributes<HTMLInputElement> {
   value: string
 }
 
-export type { InputProps, InputMaxLengthProps }
+type InputPasswordProps = WInputProps
+
+type InputProps = WInputProps | TInputProps
+
+export type {
+  InputProps,
+  InputMaxLengthProps,
+  TInputProps,
+  WInputProps,
+  InputPasswordProps,
+}

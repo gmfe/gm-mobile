@@ -140,13 +140,13 @@ const store = observable(initStore)
 export const form = () => {
   return (
     <View className='m-padding-tb-10'>
-      <View className='m-text-red m-text-20'>Input 记得加 form </View>
+      <View className='m-text-red m-text-20'>Input 记得加 isForm </View>
 
       <CellsForm title='啦啦啦啦'>
         <CellForm required>
           <Input
             type='text'
-            form
+            isForm
             value={store.username}
             onChange={(e) => {
               store.setValue('username', e.target.value)
@@ -157,7 +157,7 @@ export const form = () => {
         <CellForm required label='名字' labelWidth='100px'>
           <Input
             type='text'
-            form
+            isForm
             value={store.name}
             onChange={(e) => {
               store.setValue('name', e.target.value)
@@ -176,7 +176,7 @@ export const form = () => {
         <CellForm label='年龄' labelWidth='100px'>
           <Input
             type='number'
-            form
+            isForm
             value={store.age}
             onChange={(e) => {
               store.setValue('age', e.target.value)
@@ -186,7 +186,7 @@ export const form = () => {
         </CellForm>
         <CellForm label='密码' labelWidth='100px' error='填错啦'>
           <InputPassword
-            form
+            isForm
             value={store.password}
             onChange={(e) => {
               store.setValue('password', e.target.value)
@@ -261,7 +261,7 @@ export const form = () => {
       <CellsForm title='带标题的情况'>
         <CellForm label='名字' labelWidth='100px'>
           <Input
-            form
+            isForm
             type='text'
             value={store.value}
             onChange={(e) => {
@@ -272,7 +272,7 @@ export const form = () => {
         </CellForm>
         <CellForm label='年龄' labelWidth='100px'>
           <Input
-            form
+            isForm
             type='number'
             value={store.age}
             onChange={(e) => {

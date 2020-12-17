@@ -31,12 +31,12 @@ export const normal = () => {
   )
 }
 
-export const isFrom = () => {
+export const isForm = () => {
   return (
     <View>
       <Input
         value={store.value}
-        isFrom
+        isForm
         onChange={(e) => store.setValue(e.target.value)}
         placeholder='请输入'
       />

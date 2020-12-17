@@ -1,9 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC, HTMLAttributes } from 'react'
 import classNames from 'classnames'
 import { View } from '../view'
 
-const Icon = (props) => {
+interface LoadingProps extends HTMLAttributes<HTMLDivElement> {
+  _isToast?: boolean
+}
+
+const Icon: FC<HTMLAttributes<HTMLOrSVGElement>> = (props) => {
   return (
     <svg
       {...props}
@@ -137,7 +140,7 @@ const Icon = (props) => {
   )
 }
 
-const Icon2 = (props) => {
+const Icon2: FC<HTMLAttributes<HTMLOrSVGElement>> = (props) => {
   return (
     <svg
       {...props}
@@ -272,7 +275,12 @@ const Icon2 = (props) => {
   )
 }
 
-const Loading = ({ children, className, _isToast, ...rest }) => {
+const Loading: FC<LoadingProps> = ({
+  children,
+  className,
+  _isToast,
+  ...rest
+}) => {
   return (
     <View {...rest} className={classNames('m-loading', className)}>
       {_isToast ? (
@@ -285,10 +293,5 @@ const Loading = ({ children, className, _isToast, ...rest }) => {
   )
 }
 
-Loading.propTypes = {
-  className: PropTypes.string,
-  style: PropTypes.object,
-  _isToast: PropTypes.bool,
-}
-
 export default Loading
+export type { LoadingProps }
