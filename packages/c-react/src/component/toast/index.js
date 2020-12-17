@@ -5,8 +5,8 @@ import classNames from 'classnames'
 import { View } from '../view'
 import { Text } from '../text'
 import LayoutRoot from '../layout_root'
-import Loading from '../loading'
-import Mask from '../mask'
+import { Loading } from '../loading'
+import { Mask } from '../mask'
 import { Flex } from '../flex'
 
 let timer = null

@@ -13,7 +13,7 @@ interface InputMaxLengthProps extends InputHTMLAttributes<HTMLInputElement> {
   maxLength: number
 }
 
-type InputPasswordProps = WInputProps
+type InputPasswordProps = InputProps
 
 type InputProps = WInputProps | TInputProps
 
