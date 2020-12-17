@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react'
 import classNames from 'classnames'
 import { WInputProps } from './type'
 
-const Input = forwardRef<HTMLInputElement, Omit<WInputProps, 'onInput'>>(
+const Input = forwardRef<HTMLInputElement, WInputProps>(
   ({ isForm, className, ...rest }, ref) => {
     return (
       <input
