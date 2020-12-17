@@ -1,6 +1,5 @@
 import { getLocale } from '@gm-mobile/locales'
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC } from 'react'
 import classNames from 'classnames'
 import { View } from '../view'
 import { Text } from '../text'
@@ -8,9 +7,10 @@ import LayoutRoot from '../layout_root'
 import { Loading } from '../loading'
 import { Mask } from '../mask'
 import { Flex } from '../flex'
+import { ToastProps, ToastStaticsTypes } from './types'
 
-let timer = null
-const ToastStatics = {
+let timer: any = null
+const ToastStatics: ToastStaticsTypes = {
   clear() {
     clearTimeout(timer)
     LayoutRoot.removeComponent(LayoutRoot.TYPE.TOAST)
@@ -55,7 +55,7 @@ const ToastStatics = {
   },
 }
 
-const Toast = ({ children, type }) => {
+const ToastBase: FC<ToastProps> = ({ children, type }) => {
   let icon = null
   if (type === 'loading') {
     icon = <Loading _isToast />
@@ -85,15 +85,6 @@ const Toast = ({ children, type }) => {
   )
 }
 
-Object.assign(Toast, ToastStatics)
-
-Toast.propTypes = {
-  time: PropTypes.any, // 在组件上没意义，单纯给静态方法调用参考
-  type: PropTypes.oneOf(['success', 'warning', 'loading']),
-}
-
-Toast.defaultProps = {
-  time: 2000,
-}
+const Toast = Object.assign(ToastBase, ToastStatics)
 
 export default Toast

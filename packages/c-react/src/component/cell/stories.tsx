@@ -9,7 +9,7 @@ import { Flex } from '../flex'
 import { ButtonTime } from '../button'
 import { View } from '../view'
 import { Text } from '../text'
-import Toast from '../toast'
+import { Toast } from '../toast'
 
 import { Input, InputPassword } from '../input'
 import Textarea from '../textarea'

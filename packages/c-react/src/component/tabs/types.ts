@@ -6,7 +6,6 @@ interface TabsProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   active: string
   onChange?: (value: string) => void
   type?: 'default' | 'label' | 'capsule'
-  className?: string
 }
 
 export type { TabsProps }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Dialog } from '.'
-import Toast from '../toast'
+import { Toast } from '../toast'
 import { View } from '../view'
 import { Button } from '../button'
 

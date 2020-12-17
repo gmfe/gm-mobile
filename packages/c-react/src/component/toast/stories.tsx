@@ -1,10 +1,11 @@
 import React from 'react'
 import { View } from '../view'
 import { Button } from '../button'
-import Toast from './'
+import Toast from './toast'
+import { ToastStaticsTypes } from './types'
 
 export const normal = () => {
-  const handleToast = (type) => {
+  const handleToast = <T extends keyof ToastStaticsTypes>(type: T) => {
     Toast[type]('提示' + type)
   }
 

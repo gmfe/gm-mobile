@@ -1,6 +1,6 @@
 import { useRef, useState, FC, cloneElement, ReactElement } from 'react'
 import { RepeatTimesProps } from './types'
-import Toast from '../toast'
+import { Toast } from '../toast'
 
 const RepeatTimes: FC<RepeatTimesProps> = ({
   repeat = 5,
@@ -8,7 +8,7 @@ const RepeatTimes: FC<RepeatTimesProps> = ({
   children,
 }) => {
   const [times, setTimes] = useState(0)
-  const timer = useRef<number>()
+  const timer = useRef<number | undefined>()
 
   const handleClick = () => {
     clearTimeout(timer.current)
