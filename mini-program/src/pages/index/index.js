@@ -1,13 +1,7 @@
 import React from 'react'
 import queryString from 'query-string'
 import _ from 'lodash'
-import {
-  Text,
-  PageMP,
-  Cells,
-  Cell,
-  ActionSheet,
-} from '../../../../packages/mp/src'
+import { Text, PageMP, Cells, Cell, ActionSheet } from '../../../../packages/mp'
 
 const storiesList = []
 

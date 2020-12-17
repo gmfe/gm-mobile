@@ -9,6 +9,10 @@ export const normal = () => {
         本组件只是个简单的封装
       </View>
       <View>特别的 props 是 none，flex 会坍缩，提供 none 则不会坍缩</View>
+
+      <View className='tw-bg-red-50 hover_tw-bg-red-400 tw-p-2d5'>
+        tailwind
+      </View>
     </View>
   )
 }

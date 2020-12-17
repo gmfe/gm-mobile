@@ -57,6 +57,12 @@ const config = {
           stage: 0,
         },
       },
+      tailwindcss: {
+        enable: true,
+      },
+      'postcss-mp-tailwind': {
+        enable: true,
+      },
     },
   },
   h5: {

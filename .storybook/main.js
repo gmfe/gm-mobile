@@ -47,6 +47,14 @@ const webpackFinal = (config) => {
         loader: 'css-loader',
       },
       {
+        loader: require.resolve('postcss-loader'),
+        options: {
+          postcssOptions: {
+            plugins: [require('tailwindcss')],
+          },
+        },
+      },
+      {
         loader: 'less-loader',
       },
     ],
@@ -76,9 +84,8 @@ const webpackFinal = (config) => {
 
   config.resolve.extensions.push('.ts', '.tsx')
 
-  // 由于 storybook 会先跑 stories，直接会先调用__NAME__导致报错，所以放在preview.js初始化没有作用，直接先注入初始化。
   config.plugins.push(
-    new webpack.DefinePlugin({    
+    new webpack.DefinePlugin({
       __NAME__: JSON.stringify('none'),
     })
   )
@@ -115,28 +122,18 @@ module.exports = {
       },
     },
   ],
-  // 枚举，避免识别到 node_modules 的 stories
+  // 枚举，避免识别到tail node_modules 的 stories
   // todo: 暂时兼容js和ts
   stories: [
-    '../packages/c-react/src/**/*stories.js',
-    '../packages/c-business/src/**/*stories.js',
-    '../packages/react/src/**/*stories.js',
-    '../packages/locales/src/**/*stories.js',
-    '../packages/business/src/**/*stories.js',
-    '../packages/c-service-time/src/**/*stories.js',
-    '../packages/swiper/src/**/*stories.js',
-    '../packages/c-qrcode/src/**/*stories.js',
-    '../other/**/*.stories.js',
-
-    '../packages/c-react/src/**/*stories.{tsx,ts}',
-    '../packages/c-business/src/**/*stories.{tsx,ts}',
-    '../packages/react/src/**/*stories.{tsx,ts}',
-    '../packages/locales/src/**/*stories.{tsx,ts}',
-    '../packages/business/src/**/*stories.{tsx,ts}',
-    '../packages/c-service-time/src/**/*stories.{tsx,ts}',
-    '../packages/swiper/src/**/*stories.{tsx,ts}',
-    '../packages/c-qrcode/src/**/*stories.{tsx,ts}',
-    '../other/**/*.stories.{tsx,ts}',
+    '../packages/c-react/src/**/*stories.{tsx,ts,js}',
+    '../packages/c-business/src/**/*stories.{tsx,ts,js}',
+    '../packages/react/src/**/*stories.{tsx,ts,js}',
+    '../packages/locales/src/**/*stories.{tsx,ts,js}',
+    '../packages/business/src/**/*stories.{tsx,ts,js}',
+    '../packages/c-service-time/src/**/*stories.{tsx,ts,js}',
+    '../packages/swiper/src/**/*stories.{tsx,ts,js}',
+    '../packages/c-qrcode/src/**/*stories.{tsx,ts,js}',
+    '../other/**/*.stories.{tsx,ts,js}',
   ],
   webpackFinal,
 }
