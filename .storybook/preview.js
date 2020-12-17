@@ -10,8 +10,6 @@ import '../packages/react/src/index.less'
 import '../packages/swiper/src/index.less'
 import '../packages/business/src/index.less'
 
-window.__NAME__ = 'mobile'
-
 addParameters({
   options: {
     showRoots: true,

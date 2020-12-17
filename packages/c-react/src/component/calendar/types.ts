@@ -1,9 +1,3 @@
-// months_list.js
-// • 高度的定义交给month定义，因为属于 month 的，months_list 只是使用者。
-// • 在 Month 挂个变量
-// • month.js
-// • 固定高度
-
 import { HTMLAttributes } from 'react'
 import { Moment } from 'moment'
 

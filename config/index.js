@@ -12,7 +12,9 @@ const config = {
   sourceRoot: 'mini-program/src',
   outputRoot: 'dist',
   plugins: [],
-  defineConstants: {},
+  defineConstants: {
+    __NAME__: '"none"',
+  },
   copy: {
     patterns: [],
     options: {},
