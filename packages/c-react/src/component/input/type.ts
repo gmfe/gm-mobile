@@ -10,6 +10,7 @@ type TInputProps = TaroInputProps & WInputProps
 
 interface InputMaxLengthProps extends InputHTMLAttributes<HTMLInputElement> {
   value: string
+  maxLength: number
 }
 
 type InputPasswordProps = WInputProps
