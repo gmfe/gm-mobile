@@ -1,18 +1,29 @@
 import React, { FC, useState } from 'react'
-import moment, { Moment } from 'moment'
+import { getLocale } from '@gm-mobile/locales'
+import moment from 'moment'
 import classNames from 'classnames'
 import _ from 'lodash'
 
-import Week from './week'
 import { View } from '../view'
+import { Flex } from '../flex'
 import MonthsList from './months_list'
 import { CALENDAR_TYPE } from './util'
 import { BaseCalendarProps } from './types'
 
+const weekDays = [
+  getLocale('日'),
+  getLocale('一'),
+  getLocale('二'),
+  getLocale('三'),
+  getLocale('四'),
+  getLocale('五'),
+  getLocale('六'),
+]
+
 const BaseCalendar: FC<BaseCalendarProps> = ({
   type,
   selected,
-  onSelect,
+  onSelect = _.noop,
   min,
   max,
   disabledDate,
@@ -25,7 +36,7 @@ const BaseCalendar: FC<BaseCalendarProps> = ({
   const [isSelectBegin, setIsSelectBegin] = useState(true)
 
   // 多个日期选择
-  const handleSelectMulDay = (m: Moment) => {
+  const handleSelectMulDay = (m: Date) => {
     let _selected = selected.slice()
     // 点击相同日期，取消该日期选择
     const dayIndex = _.findIndex(
@@ -36,12 +47,12 @@ const BaseCalendar: FC<BaseCalendarProps> = ({
     if (dayIndex !== -1) {
       _selected.splice(dayIndex, 1)
     } else {
-      _selected = _selected.concat([m.toDate()])
+      _selected = _selected.concat([m])
     }
     onSelect(_selected)
   }
 
-  const handleSelectDay = (m: Moment) => {
+  const handleSelectDay = (m: Date) => {
     // 日期段选择
     if (type === CALENDAR_TYPE.RANGE) {
       let sb = selected[0]
@@ -49,17 +60,17 @@ const BaseCalendar: FC<BaseCalendarProps> = ({
 
       // 一开始选择 开始时间
       if (isSelectBegin) {
-        sb = m.toDate()
-        se = m.toDate()
+        sb = m
+        se = m
 
         setIsSelectBegin(false)
       } else {
         if (+m < +sb) {
           se = sb
-          sb = m.toDate()
+          sb = m
           setIsSelectBegin(true)
         } else {
-          se = m.toDate()
+          se = m
           setIsSelectBegin(true)
         }
       }
@@ -73,69 +84,30 @@ const BaseCalendar: FC<BaseCalendarProps> = ({
       return
     }
 
-    onSelect([m.toDate()])
+    onSelect([m])
   }
-
-  const getDisabled = (m: Moment) => {
-    // disabledDate 优先
-    if (disabledDate) {
-      return disabledDate(m.toDate())
-    }
-
-    const _min = min ? moment(min).startOf('day') : null
-    const _max = max ? moment(max).startOf('day') : null
-
-    let disabled = false
-
-    if (_min && m < _min) {
-      disabled = true
-    }
-    if (_max && m > _max) {
-      disabled = true
-    }
-
-    return disabled
-  }
-
-  const computedMonthList = () => {
-    // 优先 min，其次 begin ，其次 当前
-    let mMin = null
-    let mMax = null
-
-    if (type === CALENDAR_TYPE.RANGE) {
-      const _min = min || selected[0]
-      const _max = max || selected[1]
-
-      mMin = (_min ? moment(_min) : moment()).startOf('month')
-      mMax = (_max ? moment(_max) : moment()).startOf('month')
-    } else {
-      mMin = moment(min).startOf('month')
-      mMax = moment(max).startOf('month')
-    }
-
-    const arr = []
-
-    // eslint-disable-next-line
-    while (mMin <= mMax) {
-      arr.push(moment(mMin))
-      mMin.add(1, 'month')
-    }
-
-    return arr
-  }
-
-  const s = Object.assign({ height }, style || {})
 
   return (
-    <View {...rest} className={classNames('m-calendar', className)} style={s}>
-      <Week />
+    <View
+      {...rest}
+      className={classNames('m-calendar', className)}
+      style={{ height, ...(style || {}) }}
+    >
+      <Flex none className='m-calendar-week'>
+        {_.map(weekDays, (v, i) => (
+          <Flex flex justifyCenter alignCenter key={i}>
+            {v}
+          </Flex>
+        ))}
+      </Flex>
       <MonthsList
-        monthsList={computedMonthList()}
         selected={selected}
         type={type}
-        height={height - 40}
+        height={height - 40} // 固定展示星期头部高度40
         onSelectDay={handleSelectDay}
-        getDisabled={getDisabled}
+        min={min}
+        max={max}
+        disabledDate={disabledDate}
         showDateLabel={showDateLabel}
       />
     </View>

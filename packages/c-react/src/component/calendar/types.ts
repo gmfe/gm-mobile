@@ -7,14 +7,14 @@ interface DayProps {
   selected: Date[]
   /** 内部定义的选择日期类型 */
   type: CalendarType
-  onClick: (date: Moment) => void
+  onClick: (date: Date) => void
   /** 日期，可能是该月 / 上月 / 下月 */
   value: Moment
   /** 当前日历所在月份 */
   currentMonth: number
-  disabled?: boolean
+  disabled: boolean
   showDateLabel?: boolean
-  /** 内部用，当前渲染日期所在日历位置 */
+  /** 内部用，当前渲染日期所在日历位置index */
   locIndex: number
 }
 
@@ -22,19 +22,15 @@ interface MonthProps {
   currentMoment: Moment
   selected: Date[]
   type: CalendarType
-  onSelectDay: (date: Moment) => void
-  getDisabled: (date: Moment) => boolean
+  onSelectDay: (date: Date) => void
   showDateLabel?: boolean
+  min?: Date
+  max?: Date
+  disabledDate?: (date: Date) => boolean
 }
 
-interface MonthListProps {
-  monthsList: Moment[]
+interface MonthListProps extends Omit<MonthProps, 'currentMoment'> {
   height: number
-  selected: Date[]
-  type: CalendarType
-  onSelectDay: (date: Moment) => void
-  getDisabled: (date: Moment) => boolean
-  showDateLabel?: boolean
 }
 
 interface BaseCalendarProps
@@ -44,7 +40,7 @@ interface BaseCalendarProps
   /** 选择日期类型：one，range，multiple -- 单选，日期段，多个日期 */
   type: CalendarType
   /** 回调函数 */
-  onSelect: (dates: Date[]) => void
+  onSelect?: (dates: Date[]) => void
   /** 可选日期最小值 */
   min?: Date
   /** 可选日期最大值 */
@@ -70,7 +66,7 @@ interface RangeCalendarProps
   /** 结束日期 */
   end?: Date
   /** 回调函数 */
-  onSelect: (selected: { begin: Date; end: Date }) => void
+  onSelect?: (selected: { begin: Date; end: Date }) => void
 }
 
 type MultipleCalendarProps = Omit<BaseCalendarProps, 'type'>

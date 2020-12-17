@@ -23,7 +23,7 @@ const Day: FC<DayProps> = ({
   const v = +value.startOf('day')
 
   const handleClick = () => {
-    onClick(value)
+    onClick(value.toDate())
   }
 
   // 日期单独选中为正方形，选择一段时连续高亮，需要处理中间部分背景色，判断当前渲染日期是否为所在月份的 第一天/最后一天

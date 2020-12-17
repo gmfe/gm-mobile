@@ -23,11 +23,13 @@ const months = [
 ]
 
 const Month: FC<MonthProps> = ({
-  currentMoment,
-  selected,
+  min,
+  max,
   type,
+  selected,
   onSelectDay,
-  getDisabled,
+  disabledDate,
+  currentMoment,
   showDateLabel,
 }) => {
   const getDayRowOfMonth = (currentMoment: Moment) => {
@@ -38,6 +40,28 @@ const Month: FC<MonthProps> = ({
       return _.groupBy(_.range(35), (v) => parseInt(`${v / 7}`))
     }
     return _.groupBy(_.range(42), (v) => parseInt(`${v / 7}`))
+  }
+
+  const getDisabled = (m: Date) => {
+    // disabledDate 优先
+    if (disabledDate) {
+      return disabledDate(m)
+    }
+
+    const _min = min ? +moment(min).startOf('day') : null
+    const _max = max ? +moment(max).startOf('day') : null
+    const _m = +moment(m).startOf('day')
+
+    let disabled = false
+
+    if (_min && _m < _min) {
+      disabled = true
+    }
+    if (_max && _m > _max) {
+      disabled = true
+    }
+
+    return disabled
   }
 
   const lastDay = moment(currentMoment).day(0).add(-1, 'day')
@@ -55,6 +79,7 @@ const Month: FC<MonthProps> = ({
         <Flex
           none
           key={i}
+          // 目前定了固定高度，防止当月天数较小留出空白，暂做一下处理
           style={{ padding: _.size(dayGroup) > 5 ? '5px 0' : '9px 0' }}
         >
           {_.map(v, (value, index) => {
@@ -69,7 +94,7 @@ const Month: FC<MonthProps> = ({
                 value={day}
                 locIndex={index}
                 onClick={onSelectDay}
-                disabled={getDisabled(day)}
+                disabled={getDisabled(day.toDate())}
                 showDateLabel={showDateLabel}
               />
             )

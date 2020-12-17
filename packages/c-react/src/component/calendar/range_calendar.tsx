@@ -7,8 +7,8 @@ import { CALENDAR_TYPE } from './util'
 import { RangeCalendarProps } from './types'
 
 const RangeCalendar: FC<RangeCalendarProps> = ({
-  begin,
-  end,
+  begin = moment().toDate(),
+  end = moment().toDate(),
   onSelect = _.noop,
   ...rest
 }) => {
@@ -16,13 +16,10 @@ const RangeCalendar: FC<RangeCalendarProps> = ({
     onSelect({ begin: selected[0], end: selected[1] })
   }
 
-  const _begin: Date = begin || moment().toDate()
-  const _end: Date = end || moment().toDate()
-
   return (
     <BaseCalendar
       {...rest}
-      selected={[_begin, _end]}
+      selected={[begin, end]}
       onSelect={handleSelected}
       type={CALENDAR_TYPE.RANGE}
     />
