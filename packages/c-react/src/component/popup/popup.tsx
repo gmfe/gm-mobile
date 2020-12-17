@@ -1,5 +1,4 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC } from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { devWarnForHook } from '@gm-mobile/c-tool'
@@ -10,8 +9,9 @@ import LayoutRoot from '../layout_root'
 import { Button } from '../button'
 import { View } from '../view'
 import { Text } from '../text'
+import { PopupProps, PopupStaticsTypes } from './types'
 
-const PopupStatics = {
+const PopupStatics: PopupStaticsTypes<PopupProps> = {
   render(options) {
     LayoutRoot.renderWith(LayoutRoot.TYPE.POPUP, <Popup {...options} />)
   },
@@ -20,8 +20,8 @@ const PopupStatics = {
   },
 }
 
-const Popup = ({
-  title,
+const PopupBase: FC<PopupProps> = ({
+  title = '',
   left,
   right,
   bottom,
@@ -30,11 +30,12 @@ const Popup = ({
   opacity,
   className,
   style,
-  onHide,
+  onHide = _.noop,
   isPickPopup,
   disabledHeader,
   disabledMask,
-  disabledAnimate,
+  /** 动画有卡顿现象，先禁用 */
+  disabledAnimate = true,
   children,
   ...rest
 }) => {
@@ -93,32 +94,6 @@ const Popup = ({
   )
 }
 
-Object.assign(Popup, PopupStatics)
-
-Popup.propTypes = {
-  title: PropTypes.string,
-  onHide: PropTypes.func,
-  left: PropTypes.bool,
-  right: PropTypes.bool,
-  bottom: PropTypes.bool,
-  width: PropTypes.string,
-  height: PropTypes.string,
-  opacity: PropTypes.number,
-  disabledHeader: PropTypes.bool,
-  disabledMask: PropTypes.bool,
-  disabledAnimate: PropTypes.bool,
-
-  // 内部用
-  isPickPopup: PropTypes.bool,
-
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
-
-Popup.defaultProps = {
-  // 动画有卡顿现象，先禁用
-  disabledAnimate: true,
-  onHide: _.noop,
-}
+const Popup = Object.assign(PopupBase, PopupStatics)
 
 export default Popup

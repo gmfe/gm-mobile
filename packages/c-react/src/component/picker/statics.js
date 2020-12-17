@@ -1,6 +1,6 @@
 import React from 'react'
 import LayoutRoot from '../layout_root'
-import Popup from '../popup'
+import { Popup } from '../popup'
 
 const PickerStatics = {
   render(options) {

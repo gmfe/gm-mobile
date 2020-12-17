@@ -4,7 +4,7 @@ import _ from 'lodash'
 
 import PropTypes from 'prop-types'
 
-import Popup from '../popup'
+import { Popup } from '../popup'
 import { View } from '../view'
 
 const ActionSheetStatics = {

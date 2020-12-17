@@ -3,7 +3,6 @@ import LayoutRoot from './component/layout_root'
 import Page from './component/page'
 import Toast from './component/toast'
 import Radio from './component/radio'
-import Popup from './component/popup'
 import Tooltip from './component/tooltip'
 import ActionSheet from './component/action_sheet'
 import { Search, FakeSearch, SearchPage } from './component/search'
@@ -25,7 +24,6 @@ export {
   Page,
   Toast,
   Radio,
-  Popup,
   Tooltip,
   ActionSheet,
   Search,
@@ -65,3 +63,4 @@ export * from './component/input'
 export * from './component/label'
 export * from './component/loading'
 export * from './component/mask'
+export * from './component/popup'

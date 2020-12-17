@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Popup from '../popup'
+import { Popup } from '../popup'
 import { View } from '../view'
 
 const Tooltip = ({ title, content, onClick, children }) => {

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Popup from './index'
+import { Popup } from './'
 import { View } from '../view'
 import { Button } from '../button'
 
