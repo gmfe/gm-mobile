@@ -1,7 +1,7 @@
 import React, { FC, useState, MouseEvent } from 'react'
 import _ from 'lodash'
 import classNames from 'classnames'
-import Loading from '../loading'
+import { Loading } from '../loading'
 import BaseButton from './base'
 import { is } from '@gm-mobile/c-tool'
 import type { ButtonProps } from './types'
