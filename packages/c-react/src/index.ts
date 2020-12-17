@@ -4,7 +4,6 @@ import Loading from './component/loading'
 import Mask from './component/mask'
 import Page from './component/page'
 import Toast from './component/toast'
-import Label from './component/label'
 import Radio from './component/radio'
 import Popup from './component/popup'
 import Tooltip from './component/tooltip'
@@ -29,7 +28,6 @@ export {
   Mask,
   Page,
   Toast,
-  Label,
   Radio,
   Popup,
   Tooltip,
@@ -68,3 +66,4 @@ export * from './component/square'
 export * from './component/calendar'
 export * from './component/repeat_times'
 export * from './component/input'
+export * from './component/label'
