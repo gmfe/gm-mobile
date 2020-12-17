@@ -1,6 +1,8 @@
 import { InputHTMLAttributes } from 'react'
 
-type InputProps = InputHTMLAttributes<HTMLInputElement>
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  isFrom?: boolean
+}
 interface InputMaxLengthProps extends InputHTMLAttributes<HTMLInputElement> {
   value: string
 }

@@ -3,7 +3,8 @@ import classNames from 'classnames'
 import { InputProps } from './type'
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ form, className, ...rest }, ref) => {
+  ({ isFrom, className, ...rest }, ref) => {
+    console.log('form', isFrom)
     return (
       <input
         ref={ref}
@@ -11,7 +12,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         className={classNames(
           'm-input',
           {
-            'm-input-form': form,
+            'm-input-form': isFrom,
           },
           className
         )}

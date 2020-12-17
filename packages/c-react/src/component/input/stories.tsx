@@ -31,6 +31,26 @@ export const normal = () => {
   )
 }
 
+export const isFrom = () => {
+  return (
+    <View>
+      <Input
+        value={store.value}
+        isFrom
+        onChange={(e) => store.setValue(e.target.value)}
+        placeholder='请输入'
+      />
+      disabled
+      <Input
+        value={store.value}
+        onChange={(e) => store.setValue(e.target.value)}
+        placeholder='请输入'
+        disabled
+      />
+    </View>
+  )
+}
+
 export const maxLength = () => {
   return (
     <InputMaxLength
