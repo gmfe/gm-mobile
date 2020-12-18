@@ -2,7 +2,7 @@ import { HTMLAttributes, ReactNode } from 'react'
 
 interface ToastProps extends HTMLAttributes<HTMLDivElement> {
   /** 在组件上没意义，单纯给静态方法调用参考 */
-  time?: any
+  time?: number
   type?: 'success' | 'warning' | 'loading'
 }
 
