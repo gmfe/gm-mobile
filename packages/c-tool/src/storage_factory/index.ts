@@ -5,9 +5,9 @@ const isWeApp = is.weApp()
 
 class StorageFactory {
   prefix: string
-  target: Storage
+  target?: Storage
 
-  constructor(prefix: string, target: Storage) {
+  constructor(prefix: string, target?: Storage) {
     // @ts-ignore
     this.prefix = __NAME__ + `_${prefix}`
     this.target = target
@@ -18,7 +18,10 @@ class StorageFactory {
       if (isWeApp) {
         wx.setStorageSync(`${this.prefix}${key}`, value)
       } else {
-        this.target.setItem(`${this.prefix}${key}`, JSON.stringify(value))
+        ;(this.target as Storage).setItem(
+          `${this.prefix}${key}`,
+          JSON.stringify(value)
+        )
       }
     } catch (err) {
       console.warn('Storage set error', err)
@@ -32,7 +35,7 @@ class StorageFactory {
       if (isWeApp) {
         value = wx.getStorageSync(this.prefix + key)
       } else {
-        value = this.target.getItem(this.prefix + key)
+        value = (this.target as Storage).getItem(this.prefix + key)
         if (value) {
           value = JSON.parse(value)
         }
@@ -50,7 +53,7 @@ class StorageFactory {
     if (isWeApp) {
       wx.removeStorageSync(this.prefix + key)
     } else {
-      this.target.removeItem(this.prefix + key)
+      ;(this.target as Storage).removeItem(this.prefix + key)
     }
   }
 
@@ -58,7 +61,7 @@ class StorageFactory {
     if (isWeApp) {
       wx.clearStorage()
     } else {
-      this.target.clear()
+      ;(this.target as Storage).clear()
     }
   }
 
@@ -71,8 +74,8 @@ class StorageFactory {
       const info = wx.getStorageInfoSync()
       keys = info.keys || []
     } else {
-      for (let i = 0; i < this.target.length; i++) {
-        keys.push(this.target.key(i))
+      for (let i = 0; i < (this.target as Storage).length; i++) {
+        keys.push((this.target as Storage).key(i))
       }
     }
 
