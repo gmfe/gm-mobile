@@ -12,7 +12,6 @@ import {
   ConfirmCouplingPicker,
   SelectPicker,
 } from './component/picker'
-import Panel from './component/panel'
 import Nav from './component/nav'
 import VList from './component/v_list'
 
@@ -30,7 +29,6 @@ export {
   ConfirmPicker,
   ConfirmCouplingPicker,
   SelectPicker,
-  Panel,
   Nav,
   VList,
 }
@@ -61,3 +59,4 @@ export * from './component/popup'
 export * from './component/toast'
 export * from './component/radio'
 export * from './component/price'
+export * from './component/panel'

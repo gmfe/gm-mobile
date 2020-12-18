@@ -1,5 +1,5 @@
 import React from 'react'
-import Panel from './index'
+import Panel from './panel'
 import { View } from '../view'
 
 export const normal = () => {
