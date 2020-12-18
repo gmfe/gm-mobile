@@ -1,3 +1,9 @@
+# ts
+
+## breaking change
+
+Input的Props from => isForm
+
 # 2.x
 
 增加 小程序
@@ -84,4 +90,3 @@ LetterIndex, LetterIndexMultiple 移除 getFirstLetter
 
 原 LetterIndexMultiple 底部按钮调整，在 business 模块新增 ProductSelection
 
-Input的Props from=>isForm
