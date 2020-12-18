@@ -1,14 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC } from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { View } from '../view'
+import { RadioProps } from './types'
 
-const Radio = ({
+const Radio: FC<RadioProps> = ({
   className,
   disabled,
   checked,
-  onChange,
+  onChange = _.noop,
   children,
   ...rest
 }) => {
@@ -34,20 +34,6 @@ const Radio = ({
       {children}
     </View>
   )
-}
-
-Radio.propTypes = {
-  /** 选中态 */
-  checked: PropTypes.bool.isRequired,
-  disabled: PropTypes.bool,
-  /** 回调函数 */
-  onChange: PropTypes.func,
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
-
-Radio.defaultProps = {
-  onChange: _.noop,
 }
 
 export default Radio
