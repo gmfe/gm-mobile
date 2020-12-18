@@ -11,7 +11,7 @@ import { View } from '../view'
 import { Text } from '../text'
 import { PopupProps, PopupStaticsTypes } from './types'
 
-const PopupStatics: PopupStaticsTypes<PopupProps> = {
+const PopupStatics: PopupStaticsTypes = {
   render(options) {
     LayoutRoot.renderWith(LayoutRoot.TYPE.POPUP, <Popup {...options} />)
   },

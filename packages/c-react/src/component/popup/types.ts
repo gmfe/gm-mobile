@@ -1,10 +1,5 @@
 import { HTMLAttributes } from 'react'
 
-interface PopupStaticsTypes<T> {
-  render: (options: T) => void
-  hide: () => void
-}
-
 interface PopupProps extends HTMLAttributes<HTMLDivElement> {
   title?: string
   onHide?: () => void
@@ -23,6 +18,11 @@ interface PopupProps extends HTMLAttributes<HTMLDivElement> {
   disabledAnimate?: boolean
   /** 内部用 */
   isPickPopup?: boolean
+}
+
+interface PopupStaticsTypes {
+  render: (options: PopupProps) => void
+  hide: () => void
 }
 
 export type { PopupProps, PopupStaticsTypes }
