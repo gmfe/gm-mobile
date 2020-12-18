@@ -15,7 +15,7 @@ const unitKey = 'Price#unit'
 let _symbol = Storage.get(symbolKey) || '¥'
 let _unit = Storage.get(unitKey) || '元'
 // [{ symbol: '￥', type: 'CNY', unit: '元' },...]
-let _currencyList: any[] = [] // 多币种列表
+let _currencyList: { symbol: string; type: string; unit: string }[] = [] // 多币种列表
 
 const getCurrentFromType = (type: string) =>
   _.find(_currencyList, (item) => item.type === type)
@@ -36,7 +36,7 @@ const PriceStatics: PriceStaticsTypes = {
     if (!symbol || symbol === _symbol) return
     _symbol = symbol
     Storage.set(symbolKey, symbol)
-    Events.dispatch('REACT_MGM_UPDATE_PRICE')
+    Events.dispatch('GM_MOBILE_UPDATE_PRICE')
   },
   // 获得符号
   getCurrency(type = '') {
