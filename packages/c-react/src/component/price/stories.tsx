@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Price from './'
+import Price from './price'
 import { View } from '../view'
 
 export const normal = () => {

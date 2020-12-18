@@ -5,7 +5,6 @@ import Tooltip from './component/tooltip'
 import ActionSheet from './component/action_sheet'
 import { Search, FakeSearch, SearchPage } from './component/search'
 import Textarea from './component/textarea'
-import Price from './component/price'
 import {
   Picker,
   CouplingPicker,
@@ -31,7 +30,6 @@ export {
   ConfirmPicker,
   ConfirmCouplingPicker,
   SelectPicker,
-  Price,
   Panel,
   Nav,
   VList,
@@ -62,3 +60,4 @@ export * from './component/mask'
 export * from './component/popup'
 export * from './component/toast'
 export * from './component/radio'
+export * from './component/price'
