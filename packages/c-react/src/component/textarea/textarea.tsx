@@ -1,11 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC } from 'react'
 import _ from 'lodash'
 import classNames from 'classnames'
 import { View } from '../view'
 import Base from './base'
 
-const Textarea = ({ value, disabled, maxLength, form, className, ...rest }) => {
+import { TextareaProps } from './types'
+
+const Textarea: FC<TextareaProps> = ({
+  value,
+  disabled,
+  maxLength,
+  isForm,
+  className,
+  ...rest
+}) => {
   return (
     <View className='m-textarea-container'>
       <Base
@@ -14,7 +22,7 @@ const Textarea = ({ value, disabled, maxLength, form, className, ...rest }) => {
         className={classNames(
           'm-textarea',
           {
-            'm-textarea-form': form,
+            'm-textarea-form': isForm,
             disabled,
           },
           className
@@ -28,22 +36,6 @@ const Textarea = ({ value, disabled, maxLength, form, className, ...rest }) => {
       )}
     </View>
   )
-}
-
-Textarea.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func,
-  disabled: PropTypes.bool,
-  maxLength: PropTypes.number,
-  /** 小程序 */
-  autoHeight: PropTypes.bool,
-  form: PropTypes.bool,
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
-
-Textarea.defaultProps = {
-  onChange: _.noop,
 }
 
 export default Textarea

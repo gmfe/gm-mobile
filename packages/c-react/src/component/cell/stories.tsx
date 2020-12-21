@@ -12,7 +12,7 @@ import { Text } from '../text'
 import { Toast } from '../toast'
 
 import { Input, InputPassword } from '../input'
-import Textarea from '../textarea'
+import { Textarea } from '../textarea'
 
 export const normal = () => {
   return (
@@ -163,12 +163,6 @@ export const form = () => {
               store.setValue('name', e.target.value)
             }}
             placeholder='请输入名字'
-            onClick={() => {
-              console.log('click')
-            }}
-            onFocus={() => {
-              console.log('focus')
-            }}
           />
         </CellForm>
       </CellsForm>
@@ -226,7 +220,7 @@ export const form = () => {
         </CellForm>
         <CellForm label='收货地址' labelWidth='100px'>
           <Textarea
-            form
+            isForm
             value={store.address}
             onChange={(e) => {
               store.setValue('address', e.target.value)

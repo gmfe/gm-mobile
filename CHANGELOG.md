@@ -2,7 +2,8 @@
 
 ## breaking change
 
-Input的Props from => isForm
+InputProps form => isForm
+TextAreaProps form => isForm
 
 # 2.x
 

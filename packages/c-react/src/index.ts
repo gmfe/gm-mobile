@@ -4,7 +4,7 @@ import Page from './component/page'
 import Tooltip from './component/tooltip'
 import ActionSheet from './component/action_sheet'
 import { Search, FakeSearch, SearchPage } from './component/search'
-import Textarea from './component/textarea'
+import { Textarea } from './component/textarea'
 import {
   Picker,
   CouplingPicker,
