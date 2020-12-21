@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react'
+import { ChangeEvent, CSSProperties } from 'react'
 import { BaseEventOrig } from '@tarojs/components'
 import { InputProps as TaroInputProps } from '@tarojs/components/types/Input'
 
@@ -15,10 +15,11 @@ type InputProps = {
   isForm?: boolean
   className?: string
   focus?: boolean
-  type?: 'text' | 'password'
+  type?: 'text' | 'password' | 'number'
   placeholderClass?: string
   placeholder?: string
   disabled?: boolean
+  style?: CSSProperties
 }
 
 export type { InputProps, InputMaxLengthProps, InputPasswordProps }
