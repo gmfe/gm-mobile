@@ -18,11 +18,11 @@ interface InputProps {
   placeholder?: string
   disabled?: boolean
   style?: CSSProperties
-  password?: boolean
 
   /* 小程序特有 */
   onInput?: (e: BaseEventOrig<TaroInputProps.inputEventDetail>) => void
   confirmType?: 'send' | 'search' | 'next' | 'go' | 'done'
+  password?: boolean
 }
 
 export type { InputProps, InputMaxLengthProps, InputPasswordProps }
