@@ -10,19 +10,19 @@ const defaultOptions = {
 // 格式化 value 为 '1,234,5.00' 这种形式
 // value 必须可以转为 Number 类型 否则返回 ''
 // 调用方可通过 Big.DP 设置位数 Big.RM 设置舍入方式
-const formatNumber = (value, options) => {
+const formatNumber = (value: number, options?: object) => {
   if (_.isNil(value)) {
     return ''
   }
-  const number = Number(value)
-  if (_.isNaN(number)) {
+
+  if (_.isNaN(value)) {
     return ''
   }
   const mergedOptions = { ...defaultOptions, ...options }
   const { precision, keepZero, useGrouping } = mergedOptions
 
-  const sign = number < 0 ? '-' : ''
-  const roundNumber = Big(Math.abs(number)).round(precision)
+  const sign = value < 0 ? '-' : ''
+  const roundNumber = Big(Math.abs(value)).round(precision)
   let strNumber = roundNumber.toString()
   // 保留末尾 0
   if (keepZero) {
