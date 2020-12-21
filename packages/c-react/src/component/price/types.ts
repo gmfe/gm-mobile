@@ -17,7 +17,15 @@ interface PriceProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 interface PriceStaticsTypes {
-  format: (value: number, isFenUnit?: boolean, formatOptions?: object) => string
+  format: (
+    value: number,
+    isFenUnit?: boolean,
+    formatOptions?: {
+      precision?: number
+      keepZero?: boolean
+      useGrouping?: boolean
+    }
+  ) => string
   setCurrencyList: (list: []) => void
   setCurrency: (symbol: string) => void
   getCurrency: (type: string) => void

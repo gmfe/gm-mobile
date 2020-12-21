@@ -10,7 +10,14 @@ const defaultOptions = {
 // 格式化 value 为 '1,234,5.00' 这种形式
 // value 必须可以转为 Number 类型 否则返回 ''
 // 调用方可通过 Big.DP 设置位数 Big.RM 设置舍入方式
-const formatNumber = (value: number, options?: object) => {
+const formatNumber = (
+  value: number,
+  options?: {
+    precision?: number
+    keepZero?: boolean
+    useGrouping?: boolean
+  }
+) => {
   if (_.isNil(value)) {
     return ''
   }
