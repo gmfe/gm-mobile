@@ -20,6 +20,7 @@ type InputProps = {
   placeholder?: string
   disabled?: boolean
   style?: CSSProperties
+  password?: boolean
 }
 
 export type { InputProps, InputMaxLengthProps, InputPasswordProps }
