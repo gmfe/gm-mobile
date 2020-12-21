@@ -1,8 +1,13 @@
 import React from 'react'
 import { View } from '../view'
+import { Mask } from '.'
 
 export const normal = () => {
-  return <View>todo</View>
+  return (
+    <View>
+      <Mask />
+    </View>
+  )
 }
 
 export default {
