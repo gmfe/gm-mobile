@@ -1,18 +1,18 @@
-import React, { useImperativeHandle, useRef, useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useImperativeHandle, useRef, useState, forwardRef } from 'react'
 import _ from 'lodash'
 import classNames from 'classnames'
 import { Flex } from '../flex'
 import { View } from '../view'
 import { ScrollIntoView } from '../scroll_into_view'
+import { NavProps, NavApi } from './types'
 
-const Nav = React.forwardRef(
+const Nav = forwardRef<NavApi, NavProps>(
   ({ data, selected, onSelect, horizontal, className, ...rest }, ref) => {
     const refId = useRef((Math.random() + '').slice(2))
     const [targetId, setTargetId] = useState('')
 
     useImperativeHandle(ref, () => ({
-      apiDoScrollToValue: (value) => {
+      apiDoScrollToValue: (value: any) => {
         setTargetId(`m-nav-item-${refId.current}-${value}`)
       },
     }))
@@ -58,19 +58,5 @@ const Nav = React.forwardRef(
     )
   }
 )
-
-Nav.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.any.isRequired,
-      text: PropTypes.string.isRequired,
-    })
-  ),
-  selected: PropTypes.any.isRequired,
-  onSelect: PropTypes.func.isRequired,
-  horizontal: PropTypes.bool,
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
 
 export default Nav

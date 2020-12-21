@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import Nav from './'
+import { Nav } from '.'
 import { observable } from 'mobx'
 import { View } from '../view'
 import { Button } from '../button'
@@ -41,7 +41,7 @@ const data = [
 
 const store = observable({
   value: 1,
-  setValue(value) {
+  setValue(value: any) {
     this.value = value
   },
 })
@@ -56,12 +56,13 @@ export const Normal = () => {
           ref={ref}
           data={data}
           selected={store.value}
-          onSelect={(value) => store.setValue(value)}
+          onSelect={(value: any) => store.setValue(value)}
         />
       </View>
       <Button
         onClick={() => {
           store.setValue(8)
+          // @ts-ignore
           ref.current.apiDoScrollToValue(8)
         }}
       >
@@ -82,12 +83,13 @@ export const Horizontal = () => {
           horizontal
           data={data}
           selected={store.value}
-          onSelect={(value) => store.setValue(value)}
+          onSelect={(value: any) => store.setValue(value)}
         />
       </View>
       <Button
         onClick={() => {
           store.setValue(8)
+          // @ts-ignore
           ref.current.apiDoScrollToValue(8)
         }}
       >
