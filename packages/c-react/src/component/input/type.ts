@@ -8,14 +8,13 @@ interface InputMaxLengthProps extends Omit<InputProps, 'onInput'> {
 
 type InputPasswordProps = Omit<InputProps, 'onInput'>
 
-type InputProps = {
+interface InputProps {
   value: string
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
   isForm?: boolean
   className?: string
   focus?: boolean
   type?: 'text' | 'password' | 'number' | 'idcard' | 'digit'
-  placeholderClass?: string
   placeholder?: string
   disabled?: boolean
   style?: CSSProperties

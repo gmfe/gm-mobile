@@ -3,7 +3,10 @@ import _ from 'lodash'
 
 import { BaseTextareaProps } from './types'
 
-const Base: FC<BaseTextareaProps> = ({ onChange = _.noop, ...rest }) => {
+const Base: FC<Omit<BaseTextareaProps, 'onInput'>> = ({
+  onChange = _.noop,
+  ...rest
+}) => {
   return <textarea {...rest} onChange={onChange} />
 }
 

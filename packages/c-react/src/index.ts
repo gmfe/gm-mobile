@@ -3,7 +3,6 @@ import LayoutRoot from './component/layout_root'
 import Tooltip from './component/tooltip'
 import ActionSheet from './component/action_sheet'
 import { Search, FakeSearch, SearchPage } from './component/search'
-import { Textarea } from './component/textarea'
 import {
   Picker,
   CouplingPicker,
@@ -20,7 +19,6 @@ export {
   Search,
   FakeSearch,
   SearchPage,
-  Textarea,
   Picker,
   CouplingPicker,
   ConfirmPicker,
@@ -58,3 +56,4 @@ export * from './component/price'
 export * from './component/panel'
 export * from './component/page'
 export * from './component/nav'
+export * from './component/textarea'
