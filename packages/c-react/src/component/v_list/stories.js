@@ -3,7 +3,7 @@ import _ from 'lodash'
 import VList from '.'
 import { View } from '../view'
 import { Button } from '../button'
-import Page from '../page'
+import { Page } from '../page'
 
 const Item = ({ data }) => {
   const [show, setShow] = useState(false)

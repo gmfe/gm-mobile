@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Page from '../page'
+import { Page } from '../page'
 import Search from './search'
 import _ from 'lodash'
 
