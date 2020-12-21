@@ -1,6 +1,5 @@
 // 无特殊直接export * from xxx 即可
 import LayoutRoot from './component/layout_root'
-import Page from './component/page'
 import Tooltip from './component/tooltip'
 import ActionSheet from './component/action_sheet'
 import { Search, FakeSearch, SearchPage } from './component/search'
@@ -17,7 +16,6 @@ import VList from './component/v_list'
 
 export {
   LayoutRoot,
-  Page,
   Tooltip,
   ActionSheet,
   Search,
@@ -60,3 +58,4 @@ export * from './component/toast'
 export * from './component/radio'
 export * from './component/price'
 export * from './component/panel'
+export * from './component/page'

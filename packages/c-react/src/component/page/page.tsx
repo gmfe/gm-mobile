@@ -1,11 +1,23 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { CSSProperties, FC, HtmlHTMLAttributes, ReactNode } from 'react'
 import classNames from 'classnames'
 import { Flex } from '../flex'
 import { View } from '../view'
 import { Status } from '../status'
 
-const Page = ({
+interface PageProps extends HtmlHTMLAttributes<HTMLDivElement> {
+  loading?: boolean
+  error?: boolean
+  onReload?: () => void
+  white?: boolean
+  header?: ReactNode
+  tabbar?: ReactNode
+  top?: ReactNode
+  bottom?: ReactNode
+  pageClassName?: string
+  pageStyle?: CSSProperties
+}
+
+const Page: FC<PageProps> = ({
   loading,
   error,
   onReload,
@@ -62,20 +74,5 @@ const Page = ({
   )
 }
 
-Page.propTypes = {
-  loading: PropTypes.bool,
-  error: PropTypes.bool,
-  onReload: PropTypes.func,
-  children: PropTypes.node,
-  white: PropTypes.bool,
-  header: PropTypes.node,
-  tabbar: PropTypes.node,
-  top: PropTypes.node,
-  bottom: PropTypes.node,
-  pageClassName: PropTypes.string,
-  pageStyle: PropTypes.object,
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
-
 export default Page
+export type { PageProps }

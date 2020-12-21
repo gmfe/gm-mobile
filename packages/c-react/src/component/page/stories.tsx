@@ -1,6 +1,6 @@
 import React from 'react'
 import { View } from '../view'
-import Page from './'
+import { Page } from '.'
 
 export const normal = () => {
   return (
