@@ -26,7 +26,6 @@ const Search: FC<SearchProps> = ({
     e.preventDefault()
 
     onSearch && onSearch(value)
-    console.log(1111)
     // 回车后失焦
     ;(ReactDOM.findDOMNode(refInput.current) as HTMLElement).blur()
   }
