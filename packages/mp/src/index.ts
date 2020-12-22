@@ -4,7 +4,6 @@ import {
   SwiperCategory as SwiperCategoryMP,
 } from './component/swiper'
 import LocalStorage from './storage'
-import PageMP from './component/page'
 import MapMP from './component/map'
 import StatusBarMP from './component/status_bar'
 import SafeHeaderMP from './component/safe_header'
@@ -114,7 +113,6 @@ export {
   Nav,
   VList,
   Status,
-  PageMP,
   CounterMP,
   SwiperImgMP,
   SwiperCategoryMP,
@@ -125,3 +123,4 @@ export {
 }
 
 export * from './component/image'
+export * from './component/page'
