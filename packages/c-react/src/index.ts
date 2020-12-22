@@ -1,25 +1,9 @@
 // 无特殊直接export * from xxx 即可
 import LayoutRoot from './component/layout_root'
 import ActionSheet from './component/action_sheet'
-import {
-  Picker,
-  CouplingPicker,
-  ConfirmPicker,
-  ConfirmCouplingPicker,
-  SelectPicker,
-} from './component/picker'
 import VList from './component/v_list'
 
-export {
-  LayoutRoot,
-  ActionSheet,
-  Picker,
-  CouplingPicker,
-  ConfirmPicker,
-  ConfirmCouplingPicker,
-  SelectPicker,
-  VList,
-}
+export { LayoutRoot, ActionSheet, VList }
 
 export * from './component/button'
 export * from './component/view'
@@ -53,3 +37,4 @@ export * from './component/nav'
 export * from './component/textarea'
 export * from './component/search'
 export * from './component/tooltip'
+export * from './component/picker'

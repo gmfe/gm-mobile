@@ -1,20 +1,25 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
+
 import PickerColumn from './picker_column'
 import { View } from '../../view'
+import { Option, CouplingPickerState, CouplingPickerProps } from './types'
 
-class CouplingPicker extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      selected: props.values,
-    }
+class CouplingPicker extends Component<
+  CouplingPickerProps,
+  CouplingPickerState
+> {
+  static defaultProps = {
+    itemHeight: 40,
+    renderOption: (dataIndex: number, option: Option) => option.text,
   }
 
-  handleChange = (index, option) => {
+  readonly state: CouplingPickerState = {
+    selected: this.props.values,
+  }
+
+  private _handleChange = (index: number, option: Option) => {
     const { onChange } = this.props
     const { selected } = this.state
     selected[index] = option ? option.value : ''
@@ -28,10 +33,10 @@ class CouplingPicker extends React.Component {
     const {
       datas,
       values, // eslint-disable-line
-      itemHeight,
+      itemHeight = 40,
       onChange, // eslint-disable-line
       className,
-      renderOption,
+      renderOption = (dataIndex: number, option: Option) => option.text,
       ...rest
     } = this.props
 
@@ -41,13 +46,13 @@ class CouplingPicker extends React.Component {
     }
 
     const arr = []
-    let subList1 = []
-    let subList2 = []
+    let subList1: Option[] = []
+    let subList2: Option[] = []
     for (let i = 0; i < selected.length; i++) {
       if (i === 0) {
         arr[0] = _.map(datas, (v) => {
           if (v.value === selected[i]) {
-            subList1 = v.children
+            subList1 = v.children || []
           }
           return {
             ...v,
@@ -58,7 +63,7 @@ class CouplingPicker extends React.Component {
       } else if (i === 1) {
         arr[1] = _.map(subList1, (v) => {
           if (v.value === selected[i]) {
-            subList2 = v.children
+            subList2 = v.children || []
           }
           return {
             ...v,
@@ -85,7 +90,7 @@ class CouplingPicker extends React.Component {
               value={selected[i]}
               itemHeight={itemHeight}
               columnHeight={itemHeight * 6}
-              onChange={this.handleChange}
+              onChange={this._handleChange}
             />
           ))}
           <View
@@ -96,23 +101,6 @@ class CouplingPicker extends React.Component {
       </View>
     )
   }
-}
-
-CouplingPicker.propTypes = {
-  /** [{value, text, children: [{value, text, children: [{value, text, children: []}]}]}] */
-  datas: PropTypes.array.isRequired,
-  values: PropTypes.array.isRequired,
-  itemHeight: PropTypes.number,
-  onChange: PropTypes.func.isRequired,
-  /** 此 dataIndex 是 datas 的所以 */
-  renderOption: PropTypes.func,
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
-
-CouplingPicker.defaultProps = {
-  itemHeight: 40,
-  renderOption: (dataIndex, option) => option.text,
 }
 
 export default CouplingPicker

@@ -1,21 +1,22 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC } from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
+
 import PickerColumn from './picker_column'
 import { View } from '../../view'
+import { Option, PickerProps } from './types'
 
-const Picker = ({
+const Picker: FC<PickerProps> = ({
   datas,
   values,
-  itemHeight,
+  itemHeight = 40,
   onChange,
   className,
-  renderOption,
+  renderOption = (dataIndex: number, option: Option) => option.text,
   headers,
   ...rest
 }) => {
-  const handleChange = (index, option) => {
+  const handleChange = (index: number, option: Option) => {
     const newValues = values.slice()
 
     newValues[index] = option.value
@@ -44,7 +45,7 @@ const Picker = ({
           <PickerColumn
             key={i}
             index={i}
-            options={v}
+            options={[v]}
             renderOption={renderOption}
             value={values[i]}
             itemHeight={itemHeight}
@@ -59,24 +60,6 @@ const Picker = ({
       </View>
     </View>
   )
-}
-
-Picker.propTypes = {
-  /** [ [{value, text}] ] */
-  datas: PropTypes.array.isRequired,
-  values: PropTypes.array.isRequired,
-  /** 每列数据title, 格式为 [header, ...] */
-  headers: PropTypes.array,
-  itemHeight: PropTypes.number,
-  onChange: PropTypes.func.isRequired,
-  renderOption: PropTypes.func,
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
-
-Picker.defaultProps = {
-  itemHeight: 40,
-  renderOption: (dataIndex, option) => option.text, // 此 dataIndex 是 datas 的所以
 }
 
 export default Picker

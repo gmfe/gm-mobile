@@ -1,6 +1,7 @@
 import React from 'react'
 import Picker from './component/picker'
 import { observable } from 'mobx'
+
 import ConfirmPicker from './confirm_picker'
 import ConfirmCouplingPicker from './confirm_coupling_picker'
 import SelectPicker from './select_picker'
@@ -159,12 +160,12 @@ const selectData = [
 const store = observable({
   datas,
   values: ['Mr.', 'Micheal', 'Jordan'],
-  setValues(values) {
+  setValues(values: string[]) {
     this.values = values
   },
   couplingData,
   couplingValues: ['T7936', 'S11186', '777777'],
-  setCouplingValues(values) {
+  setCouplingValues(values: string[]) {
     this.couplingValues = values
   },
 })
@@ -172,7 +173,7 @@ const store = observable({
 const selectStore = observable({
   data: selectData,
   value: null,
-  setValue(v) {
+  setValue(v: any) {
     this.value = v
   },
 })
@@ -211,6 +212,7 @@ export const confirmPicker = () => {
       (values) => {
         console.log('resolve', values)
         store.setValues(values)
+        return null
       },
       () => {
         console.log('reject')
@@ -230,6 +232,7 @@ export const confirmCouplingPicker = () => {
       (values) => {
         console.log('resolve', values)
         store.setCouplingValues(values)
+        return null
       },
       () => {
         console.log('reject')
@@ -249,6 +252,7 @@ export const selectPicker = () => {
       (value) => {
         console.log('resolve', value)
         selectStore.setValue(value)
+        return null
       },
       () => {
         console.log('reject')

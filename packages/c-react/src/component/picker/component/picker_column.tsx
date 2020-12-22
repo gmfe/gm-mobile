@@ -1,27 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { Component, createRef, CSSProperties, TouchEvent } from 'react'
+import { findDOMNode } from 'react-dom'
 import _ from 'lodash'
+
 import { View } from '../../view'
+import { Option, PickerColumnProps, PickerColumnState } from './types'
 
-class PickerColumn extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isMoving: false,
-      startTouchY: 0,
-      startScrollerTranslate: 0,
-      ...this.computeTranslate(props),
-    }
-  }
-
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.state.isMoving) {
-      return
-    }
-    this.setState(this.computeTranslate(nextProps))
-  }
-
-  computeTranslate = (props) => {
+class PickerColumn extends Component<PickerColumnProps, PickerColumnState> {
+  computeTranslate = (props: PickerColumnProps) => {
     const { options, value, itemHeight, columnHeight } = props
     let selectedIndex = _.findIndex(options, (option) => option.value === value)
     if (selectedIndex < 0) {
@@ -46,53 +31,81 @@ class PickerColumn extends React.Component {
     }
   }
 
-  handleOptionSelected = (newOption) => {
+  readonly state: PickerColumnState = {
+    isMoving: false,
+    startTouchY: 0,
+    startScrollerTranslate: 0,
+    ...this.computeTranslate(this.props),
+  }
+
+  private _refScroll = createRef<HTMLDivElement>()
+
+  componentDidMount() {
+    const dom = findDOMNode(this._refScroll.current) as HTMLDivElement
+    dom.addEventListener(
+      'touchmove',
+      (this.handleTouchMove as any) as EventListener
+    )
+  }
+
+  componentWillUnmount() {
+    const dom = findDOMNode(this._refScroll.current) as HTMLDivElement
+    dom.removeEventListener(
+      'touchmove',
+      (this.handleTouchMove as any) as EventListener
+    )
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps: Readonly<PickerColumnProps>) {
+    if (this.state.isMoving) {
+      return
+    }
+    this.setState(this.computeTranslate(nextProps))
+  }
+
+  handleOptionSelected = (newOption: Option) => {
     this.props.onChange(this.props.index, newOption)
   }
 
-  handleTouchStart = (event) => {
-    const startTouchY = event.changedTouches[0].pageY
+  private _handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    const startTouchY = event.targetTouches[0].pageY
     this.setState(({ scrollerTranslate }) => ({
       startTouchY,
       startScrollerTranslate: scrollerTranslate,
     }))
   }
 
-  handleTouchMove = (event) => {
+  handleTouchMove = (event: TouchEvent<HTMLDivElement>) => {
     event.preventDefault()
 
-    const touchY = event.changedTouches[0].pageY
-    this.setState(
-      ({
-        isMoving,
-        startTouchY,
-        startScrollerTranslate,
-        minTranslate,
-        maxTranslate,
-      }) => {
-        if (!isMoving) {
-          return {
-            isMoving: true,
-          }
-        }
-
-        let nextScrollerTranslate =
-          startScrollerTranslate + touchY - startTouchY
-        if (nextScrollerTranslate < minTranslate) {
-          nextScrollerTranslate =
-            minTranslate - Math.pow(minTranslate - nextScrollerTranslate, 0.8)
-        } else if (nextScrollerTranslate > maxTranslate) {
-          nextScrollerTranslate =
-            maxTranslate + Math.pow(nextScrollerTranslate - maxTranslate, 0.8)
-        }
+    const touchY = event.targetTouches[0].pageY
+    this.setState((prevState: PickerColumnState) => {
+      if (!prevState.isMoving) {
         return {
-          scrollerTranslate: nextScrollerTranslate,
+          isMoving: true,
+          scrollerTranslate: prevState.scrollerTranslate,
         }
       }
-    )
+
+      let nextScrollerTranslate =
+        prevState.startScrollerTranslate + touchY - prevState.startTouchY
+      if (nextScrollerTranslate < prevState.minTranslate) {
+        nextScrollerTranslate =
+          prevState.minTranslate -
+          Math.pow(prevState.minTranslate - nextScrollerTranslate, 0.8)
+      } else if (nextScrollerTranslate > prevState.maxTranslate) {
+        nextScrollerTranslate =
+          prevState.maxTranslate +
+          Math.pow(nextScrollerTranslate - prevState.maxTranslate, 0.8)
+      }
+      return {
+        isMoving: prevState.isMoving,
+        scrollerTranslate: nextScrollerTranslate,
+      }
+    })
   }
 
-  handleTouchEnd = () => {
+  private _handleTouchEnd = () => {
     if (!this.state.isMoving) {
       return
     }
@@ -119,19 +132,20 @@ class PickerColumn extends React.Component {
     }, 0)
   }
 
-  handleTouchCancel = () => {
+  private _handleTouchCancel = () => {
     if (!this.state.isMoving) {
       return
     }
-    this.setState((startScrollerTranslate) => ({
+
+    this.setState((prevState: PickerColumnState) => ({
       isMoving: false,
       startTouchY: 0,
       startScrollerTranslate: 0,
-      scrollerTranslate: startScrollerTranslate,
+      scrollerTranslate: prevState.startScrollerTranslate,
     }))
   }
 
-  handleOptionClick = (option) => {
+  handleOptionClick = (option: Option) => {
     this.handleOptionSelected(option)
   }
 
@@ -160,9 +174,9 @@ class PickerColumn extends React.Component {
 
   render() {
     const translateString = `translate3d(0, ${this.state.scrollerTranslate}px, 0)`
-    const style = {
-      MsTransform: translateString,
-      MozTransform: translateString,
+    const style: CSSProperties = {
+      // MsTransform: translateString,
+      // MozTransform: translateString,
       OTransform: translateString,
       WebkitTransform: translateString,
       transform: translateString,
@@ -173,28 +187,19 @@ class PickerColumn extends React.Component {
     return (
       <View className='m-picker-column'>
         <View
+          ref={this._refScroll}
           className='m-picker-scroll'
           style={style}
-          onTouchStart={this.handleTouchStart}
-          onTouchMove={this.handleTouchMove}
-          onTouchEnd={this.handleTouchEnd}
-          onTouchCancel={this.handleTouchCancel}
+          onTouchStart={this._handleTouchStart}
+          // onTouchMove={this.handleTouchMove}
+          onTouchEnd={this._handleTouchEnd}
+          onTouchCancel={this._handleTouchCancel}
         >
           {this.renderOptions()}
         </View>
       </View>
     )
   }
-}
-
-PickerColumn.propTypes = {
-  options: PropTypes.array.isRequired,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.any.isRequired,
-  itemHeight: PropTypes.number.isRequired,
-  columnHeight: PropTypes.number.isRequired,
-  onChange: PropTypes.func.isRequired,
-  renderOption: PropTypes.func.isRequired,
 }
 
 export default PickerColumn

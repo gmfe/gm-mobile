@@ -1,15 +1,16 @@
 import { getLocale } from '@gm-mobile/locales'
-import PropTypes from 'prop-types'
 import _ from 'lodash'
-import ConfirmPicker from './confirm_picker'
 
-const SelectPicker = {
+import ConfirmPicker from './confirm_picker'
+import { Option, SelectPickerTypes } from './types'
+
+const SelectPicker: SelectPickerTypes = {
   render({ data, value, title }) {
     // 转换下
     const datas = [data]
     const values = []
 
-    // 找不到得有个默认的
+    // 找不到, 默认展示第一个
     const item = _.find(data, (v) => v.value === value)
     if (item) {
       values[0] = item.value
@@ -22,23 +23,15 @@ const SelectPicker = {
       datas,
       values,
     }).then((values) => {
-      // 转回去
-      const item = _.find(data, (v) => v.value === values[0])
+      // 回传当前选中值
+      const item = _.find(data, (v) => v.value === values[0]) as Option
       return item.value
     })
   },
+
   hide() {
     ConfirmPicker.hide()
   },
-}
-
-SelectPicker.propTypes = {
-  /** 格式:[{ value, text }] */
-  data: PropTypes.array,
-  /** 底部弹框标题展示 */
-  title: PropTypes.string,
-  /** 当前选中项 */
-  value: PropTypes.any,
 }
 
 export default SelectPicker
