@@ -11,13 +11,13 @@ const store = observable({
   value: '',
   searchValue: '', // 搜索结果用的值
   active: false,
-  setValue(value) {
+  setValue(value: string) {
     this.value = value
   },
-  setActive(active) {
+  setActive(active: boolean) {
     this.active = active
   },
-  setSearchValue(value) {
+  setSearchValue(value: string) {
     this.searchValue = value
   },
 })
@@ -45,7 +45,7 @@ export const cancel = () => {
       <View>带取消按钮（点Header的搜索按钮）</View>
       <View>
         <Search
-          type={'cancel'}
+          type='cancel'
           placeholder='在站内搜索'
           value={store.value}
           onChange={(value) => store.setValue(value)}

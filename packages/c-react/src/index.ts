@@ -2,7 +2,11 @@
 import LayoutRoot from './component/layout_root'
 import Tooltip from './component/tooltip'
 import ActionSheet from './component/action_sheet'
+<<<<<<< HEAD
 import { Search, FakeSearch, SearchPage } from './component/search'
+=======
+import { Textarea } from './component/textarea'
+>>>>>>> WIP: search
 import {
   Picker,
   CouplingPicker,
@@ -16,9 +20,13 @@ export {
   LayoutRoot,
   Tooltip,
   ActionSheet,
+<<<<<<< HEAD
   Search,
   FakeSearch,
   SearchPage,
+=======
+  Textarea,
+>>>>>>> WIP: search
   Picker,
   CouplingPicker,
   ConfirmPicker,
@@ -55,5 +63,9 @@ export * from './component/radio'
 export * from './component/price'
 export * from './component/panel'
 export * from './component/page'
+<<<<<<< HEAD
 export * from './component/nav'
 export * from './component/textarea'
+=======
+export * from './component/search'
+>>>>>>> WIP: search

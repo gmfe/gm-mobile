@@ -1,15 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC } from 'react'
 import { Page } from '../page'
 import Search from './search'
+import { SearchPageProps } from './type'
 import _ from 'lodash'
 
-const SearchPage = ({
+const SearchPage: FC<SearchPageProps> = ({
   active,
   header,
   value,
   onChange,
-  onSearch,
+  onSearch = _.noop,
   onCancel,
   children,
   ...rest
@@ -32,20 +32,6 @@ const SearchPage = ({
       {children}
     </Page>
   )
-}
-
-SearchPage.propTypes = {
-  active: PropTypes.bool.isRequired,
-  onCancel: PropTypes.func.isRequired,
-  /** 存在建议搜索词，所以需要把 value 交给调用方控制 */
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  onSearch: PropTypes.func,
-  ...Page.propTypes,
-}
-
-SearchPage.defaultProps = {
-  onSearch: _.noop,
 }
 
 export default SearchPage

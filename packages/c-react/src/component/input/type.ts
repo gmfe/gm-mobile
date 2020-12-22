@@ -1,4 +1,4 @@
-import { ChangeEvent, CSSProperties } from 'react'
+import { ChangeEvent, CSSProperties, FormEvent } from 'react'
 import { BaseEventOrig } from '@tarojs/components'
 import { InputProps as TaroInputProps } from '@tarojs/components/types/Input'
 
@@ -14,10 +14,12 @@ interface InputProps {
   isForm?: boolean
   className?: string
   focus?: boolean
-  type?: 'text' | 'password' | 'number' | 'idcard' | 'digit'
+  type?: 'text' | 'password' | 'number' | 'idcard' | 'digit' | 'search'
   placeholder?: string
   disabled?: boolean
   style?: CSSProperties
+  autoFocus?: boolean
+  onConfirm?: (e: FormEvent<HTMLFormElement>) => void
 
   /* 小程序特有 */
   onInput?: (e: BaseEventOrig<TaroInputProps.inputEventDetail>) => void

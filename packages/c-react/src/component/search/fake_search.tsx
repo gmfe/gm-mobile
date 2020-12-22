@@ -1,12 +1,12 @@
 import { getLocale } from '@gm-mobile/locales'
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC } from 'react'
 import classNames from 'classnames'
 import { Flex } from '../flex'
 import { Text } from '../text'
+import { FakeSearchProps } from './type'
 
-const FakeSearch = ({
-  placeholder,
+const FakeSearch: FC<FakeSearchProps> = ({
+  placeholder = getLocale('搜索'),
   center,
   className,
   style,
@@ -35,19 +35,6 @@ const FakeSearch = ({
       </Flex>
     </Flex>
   )
-}
-
-FakeSearch.propTypes = {
-  onClick: PropTypes.func,
-  placeholder: PropTypes.string,
-  center: PropTypes.bool,
-  light: PropTypes.bool,
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
-
-FakeSearch.defaultProps = {
-  placeholder: getLocale('搜索'),
 }
 
 export default FakeSearch

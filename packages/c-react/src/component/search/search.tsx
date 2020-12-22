@@ -1,42 +1,42 @@
 import { getLocale } from '@gm-mobile/locales'
-import React from 'react'
+import React, { ChangeEvent, FC, FormEvent, createRef } from 'react'
 import ReactDOM from 'react-dom'
 import classNames from 'classnames'
-import PropTypes from 'prop-types'
 import _ from 'lodash'
 import Input from '../input/input'
 import { View } from '../view'
 import { Button } from '../button'
 import { Text } from '../text'
+import { SearchProps } from './type'
 
-const Search = ({
+const Search: FC<SearchProps> = ({
   value,
-  placeholder,
+  placeholder = getLocale('搜索'),
   searchText,
-  type,
-  onCancel,
-  onSearch,
+  type = 'search',
+  onCancel = _.noop,
+  onSearch = _.noop,
   onChange,
   className,
   autoFocus,
   ...rest
 }) => {
-  const refInput = React.createRef()
-  const handleSearch = (e) => {
+  const refInput = createRef<HTMLInputElement>()
+  const handleSearch = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    onSearch(value)
+    onSearch && onSearch(value)
     // 回车后失焦
-    ReactDOM.findDOMNode(refInput.current).blur()
+    ;(ReactDOM.findDOMNode(refInput.current) as HTMLElement).blur()
   }
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value)
   }
 
   const handleCancel = () => {
     onChange('')
-    onCancel()
+    onCancel && onCancel()
   }
 
   const handleClean = () => {
@@ -67,7 +67,7 @@ const Search = ({
         )}
       </View>
       {type === 'search' ? (
-        <Button type='link' mini onClick={handleSearch}>
+        <Button type='primary' mini htmlType='submit'>
           {searchText || getLocale('搜索')}
         </Button>
       ) : (
@@ -77,29 +77,6 @@ const Search = ({
       )}
     </form>
   )
-}
-
-Search.propTypes = {
-  /** 'search': 带搜索按钮 'cancel'：带取消按钮 */
-  type: PropTypes.oneOf(['search', 'cancel']),
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  autoFocus: PropTypes.bool,
-  /** 即时搜索可不传 */
-  onSearch: PropTypes.func,
-  onCancel: PropTypes.func,
-  placeholder: PropTypes.string,
-  /** 自定义搜索按钮文案 */
-  searchText: PropTypes.string,
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
-
-Search.defaultProps = {
-  onSearch: _.noop,
-  onCancel: _.noop,
-  placeholder: getLocale('搜索'),
-  type: 'search',
 }
 
 export default Search
