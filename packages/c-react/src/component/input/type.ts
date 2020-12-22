@@ -20,6 +20,7 @@ interface InputProps {
   style?: CSSProperties
   autoFocus?: boolean
   onConfirm?: (e: FormEvent<HTMLFormElement>) => void
+  adjustPosition?: boolean
 
   /* 小程序特有 */
   onInput?: (e: BaseEventOrig<TaroInputProps.inputEventDetail>) => void

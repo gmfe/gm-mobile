@@ -1,4 +1,3 @@
-import CounterMP from './component/counter'
 import {
   SwiperImg as SwiperImgMP,
   SwiperCategory as SwiperCategoryMP,
@@ -113,7 +112,6 @@ export {
   Nav,
   VList,
   Status,
-  CounterMP,
   SwiperImgMP,
   SwiperCategoryMP,
   MapMP,
@@ -124,3 +122,4 @@ export {
 
 export * from './component/image'
 export * from './component/page'
+export * from './component/counter'

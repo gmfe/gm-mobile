@@ -1,16 +1,22 @@
 import React, { useReducer } from 'react'
-
-import Counter from './'
+import { Counter } from '.'
 import { Page, View } from '@gm-mobile/c-react'
 
-const reducer = (state, action) => {
+interface ErrorMsg {
+  value: string
+  min: number
+  max?: number
+  precision?: number
+}
+
+const reducer = (state: any, action: any) => {
   return {
     ...state,
     [action.type]: action.value,
   }
 }
 
-export const normal = () => {
+export const Normal = () => {
   const [state, dispatch] = useReducer(reducer, {
     defaultValue: '',
     closeCheckValue: '',
@@ -18,15 +24,15 @@ export const normal = () => {
     diyValue: '',
   })
 
-  const handleCheckValue = ({ value, min, max }) => {
-    if (value > 10) {
+  const handleCheckValue = ({ value, min, max }: ErrorMsg) => {
+    if (+value > 10) {
       return '库存不足'
     }
 
-    if (value < 3) {
+    if (+value < 3) {
       return '最小起售为3'
     }
-    return null
+    return ''
   }
 
   return (

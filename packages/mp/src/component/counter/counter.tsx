@@ -1,19 +1,50 @@
 import { getLocale } from '@gm-mobile/locales'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, FC, HtmlHTMLAttributes } from 'react'
 import classNames from 'classnames'
-import PropTypes from 'prop-types'
 import { View, Toast, Input } from '@gm-mobile/c-react'
 import _ from 'lodash'
 import Big from 'big.js'
+import { BaseEventOrig } from '@tarojs/components'
+import { InputProps as TaroInputProps } from '@tarojs/components/types/Input'
 
-const text2Number = (value) => {
+interface CounterProps
+  extends Omit<HtmlHTMLAttributes<HTMLDivElement>, 'onChange'> {
+  /** +/- 号回调，数字确认键盘及失焦回调 */
+  onChange: (value: string) => void
+  /** 展示值 */
+  value?: string
+  /** 最小值, 默认为0 */
+  min?: number
+  /** 最大值 */
+  max?: number
+  precision?: number
+  /** 关闭键盘上下限校验 */
+  closeCheck?: boolean
+  /** 获取焦点, 微信版本 6.3.30, focus 属性设置无效 */
+  focus?: boolean
+  /** 禁用状态 */
+  disabled?: boolean
+  /** 键盘弹起时，是否自动上推页面 */
+  adjustPosition?: boolean
+  /** 触发最小或最大值时，回调 */
+  getErrorMsg?: (value: ErrorMsg) => string
+}
+
+interface ErrorMsg {
+  value: string
+  min: number
+  max?: number
+  precision?: number
+}
+
+const text2Number = (value: string) => {
   if (value === '') {
     return 0
   }
   return _.isNaN(parseFloat(value)) ? '' : parseFloat(value)
 }
 
-const handleErrorMsg = ({ value, min, max, precision }) => {
+const handleErrorMsg = ({ value, min, max, precision }: ErrorMsg) => {
   let msg = null
   const cv = text2Number(value)
   if (max && cv > max) {
@@ -30,7 +61,7 @@ const handleErrorMsg = ({ value, min, max, precision }) => {
 
   // 精度校验
   const num = value.split('.')
-  if (num.length > 1 && num[1].length > precision) {
+  if (num.length > 1 && num[1].length > precision!) {
     msg =
       msg ||
       `${getLocale('最多只能输入小数点后')} ${precision} ${getLocale('位')}`
@@ -38,15 +69,15 @@ const handleErrorMsg = ({ value, min, max, precision }) => {
   return msg
 }
 
-const Counter = ({
-  value,
-  min,
+const Counter: FC<CounterProps> = ({
+  value = '',
+  min = 0,
   max,
   onChange,
   focus,
   disabled,
-  getErrorMsg,
-  precision,
+  getErrorMsg = handleErrorMsg,
+  precision = 2,
   adjustPosition,
   className,
   closeCheck,
@@ -62,7 +93,7 @@ const Counter = ({
     !disabled && (selfValue === '' || text2Number(selfValue) === 0)
 
   // 检验是否超出大小值限制
-  const checkValue = (value, type) => {
+  const checkValue = (value: number, type: 'minus' | 'plus') => {
     if (max && value > max) {
       return max
     }
@@ -77,12 +108,12 @@ const Counter = ({
     return value
   }
 
-  const handleChange = (type) => {
+  const handleChange = (type: 'minus' | 'plus') => {
     if (disabled) {
       return
     }
 
-    let v = text2Number(selfValue)
+    let v = text2Number(selfValue) as number
     const _precision = _.includes(selfValue, '.') ? precision : 0
     if (type === 'minus') {
       if (minusDisabled) return
@@ -102,7 +133,7 @@ const Counter = ({
     onChange(cv)
   }
 
-  const handleInput = (e) => {
+  const handleInput = (e: BaseEventOrig<TaroInputProps.inputEventDetail>) => {
     const { value } = e.detail
 
     // 优化交互体验,0和空均代表不添加商品
@@ -112,7 +143,7 @@ const Counter = ({
     setSelfValue(value)
   }
 
-  const checkError = (v) => {
+  const checkError = (v: string) => {
     const mes = getErrorMsg({ value: v, min, max, precision })
     mes && Toast.tip(mes)
   }
@@ -145,6 +176,7 @@ const Counter = ({
         value={selfValue}
         focus={focus}
         adjustPosition={adjustPosition}
+        // @ts-ignore
         onInput={handleInput}
         onBlur={handleFinally}
         onConfirm={handleFinally}
@@ -159,35 +191,5 @@ const Counter = ({
   )
 }
 
-Counter.propTypes = {
-  /** 展示值 */
-  value: PropTypes.string,
-  /** 最小值, 默认为0 */
-  min: PropTypes.number,
-  /** 最大值 */
-  max: PropTypes.number,
-  precision: PropTypes.number,
-  /** +/- 号回调，数字确认键盘及失焦回调 */
-  onChange: PropTypes.func.isRequired,
-  /** 关闭键盘上下限校验 */
-  closeCheck: PropTypes.bool,
-  /** 获取焦点, 微信版本 6.3.30, focus 属性设置无效 */
-  focus: PropTypes.bool,
-  /** 禁用状态 */
-  disabled: PropTypes.bool,
-  /** 键盘弹起时，是否自动上推页面 */
-  adjustPosition: PropTypes.bool,
-  /** 触发最小或最大值时，回调 */
-  getErrorMsg: PropTypes.func,
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
-
-Counter.defaultProps = {
-  value: '',
-  min: 0,
-  precision: 2,
-  getErrorMsg: handleErrorMsg,
-}
-
 export default Counter
+export type { CounterProps }
