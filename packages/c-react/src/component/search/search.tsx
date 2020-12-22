@@ -1,5 +1,5 @@
 import { getLocale } from '@gm-mobile/locales'
-import React, { ChangeEvent, FC, FormEvent, createRef } from 'react'
+import React, { ChangeEvent, FC, FormEvent, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import classNames from 'classnames'
 import _ from 'lodash'
@@ -21,7 +21,7 @@ const Search: FC<SearchProps> = ({
   autoFocus,
   ...rest
 }) => {
-  const refInput = createRef<HTMLInputElement>()
+  const refInput = useRef<HTMLInputElement | null>(null)
   const handleSearch = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
@@ -68,7 +68,7 @@ const Search: FC<SearchProps> = ({
         )}
       </View>
       {type === 'search' ? (
-        <Button type='primary' mini htmlType='submit'>
+        <Button type='link' mini htmlType='submit'>
           {searchText || getLocale('搜索')}
         </Button>
       ) : (
