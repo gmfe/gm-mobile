@@ -1,19 +1,23 @@
-import React, { useState, useRef, useEffect } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState, useRef, useEffect, FC } from 'react'
 import _ from 'lodash'
+import { LazyProps } from './types'
 
-function isElementOverViewport(dom) {
-  const rect = dom.getBoundingClientRect()
-  return (
-    rect.bottom >= 0 &&
-    rect.right >= 0 &&
-    rect.left <= (window.innerWidth || document.documentElement.clientWidth) &&
-    rect.top <= (window.innerHeight || document.documentElement.clientHeight)
-  )
+function isElementOverViewport(dom: HTMLDivElement | null) {
+  if (dom) {
+    const rect = dom.getBoundingClientRect()
+    return (
+      rect.bottom >= 0 &&
+      rect.right >= 0 &&
+      rect.left <=
+        (window.innerWidth || document.documentElement.clientWidth) &&
+      rect.top <= (window.innerHeight || document.documentElement.clientHeight)
+    )
+  }
+  return false
 }
 
-const Lazy = ({ targetId, delay, children, ...rest }) => {
-  const ref = useRef(null)
+const Lazy: FC<LazyProps> = ({ targetId, delay, children, ...rest }) => {
+  const ref = useRef<HTMLDivElement>(null)
   const [show, setShow] = useState(false)
 
   useEffect(() => {
@@ -49,13 +53,6 @@ const Lazy = ({ targetId, delay, children, ...rest }) => {
       {show && children}
     </div>
   )
-}
-
-Lazy.propTypes = {
-  /** 指定监听滚动的dom id */
-  targetId: PropTypes.string,
-  /** throttle delay */
-  delay: PropTypes.number,
 }
 
 export default Lazy

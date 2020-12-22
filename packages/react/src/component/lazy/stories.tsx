@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, FC } from 'react'
 import _ from 'lodash'
 import { Page } from '@gm-mobile/c-react'
-import { Lazy, LazyList } from './'
+import { Lazy, LazyList } from '.'
+import { LazyListRef } from './types'
 
 export const normal = () => {
   return (
@@ -15,7 +16,7 @@ export const normal = () => {
   )
 }
 
-const Item = ({ data }) => {
+const Item: FC<{ data: any }> = ({ data }) => {
   const [show, setShow] = useState(false)
   return (
     <div
@@ -29,14 +30,14 @@ const Item = ({ data }) => {
   )
 }
 
-export const lazyList = () => {
-  const ref = useRef(null)
+export const LazyListDemo = () => {
+  const ref = useRef<LazyListRef>(null)
 
   return (
     <Page>
       <button
         onClick={() => {
-          ref.current.apiDoScrollToKey(29)
+          ref.current && ref.current.apiDoScrollToKey(29)
         }}
       >
         scroll to 29

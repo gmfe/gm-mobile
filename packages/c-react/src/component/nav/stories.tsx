@@ -3,6 +3,7 @@ import { Nav } from '.'
 import { observable } from 'mobx'
 import { View } from '../view'
 import { Button } from '../button'
+import { NavApi } from './types'
 
 const data = [
   {
@@ -47,7 +48,7 @@ const store = observable({
 })
 
 export const Normal = () => {
-  const ref = useRef(null)
+  const ref = useRef<NavApi>(null)
 
   return (
     <View>
@@ -62,8 +63,7 @@ export const Normal = () => {
       <Button
         onClick={() => {
           store.setValue(8)
-          // @ts-ignore
-          ref.current.apiDoScrollToValue(8)
+          ref.current && ref.current.apiDoScrollToValue(8)
         }}
       >
         选 安心蔬菜
@@ -73,7 +73,7 @@ export const Normal = () => {
 }
 
 export const Horizontal = () => {
-  const ref = useRef(null)
+  const ref = useRef<NavApi>(null)
 
   return (
     <View>
@@ -89,8 +89,7 @@ export const Horizontal = () => {
       <Button
         onClick={() => {
           store.setValue(8)
-          // @ts-ignore
-          ref.current.apiDoScrollToValue(8)
+          ref.current && ref.current.apiDoScrollToValue(8)
         }}
       >
         选 安心蔬菜
