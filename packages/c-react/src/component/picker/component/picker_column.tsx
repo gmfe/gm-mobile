@@ -6,6 +6,10 @@ import { View } from '../../view'
 import { Option, PickerColumnProps, PickerColumnState } from './types'
 
 class PickerColumn extends Component<PickerColumnProps, PickerColumnState> {
+  handleOptionSelected = (newOption: Option) => {
+    this.props.onChange(this.props.index, newOption)
+  }
+
   computeTranslate = (props: PickerColumnProps) => {
     const { options, value, itemHeight, columnHeight } = props
     let selectedIndex = _.findIndex(options, (option) => option.value === value)
@@ -61,10 +65,6 @@ class PickerColumn extends Component<PickerColumnProps, PickerColumnState> {
       return
     }
     this.setState(this.computeTranslate(nextProps))
-  }
-
-  handleOptionSelected = (newOption: Option) => {
-    this.props.onChange(this.props.index, newOption)
   }
 
   private _handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {

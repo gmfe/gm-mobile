@@ -45,7 +45,7 @@ const Picker: FC<PickerProps> = ({
           <PickerColumn
             key={i}
             index={i}
-            options={[v]}
+            options={v}
             renderOption={renderOption}
             value={values[i]}
             itemHeight={itemHeight}
