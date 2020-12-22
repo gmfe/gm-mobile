@@ -1,6 +1,5 @@
 import React from 'react'
-import Tooltip from './index'
-
+import { Tooltip } from './index'
 import { View } from '../view'
 
 export const normal = () => {

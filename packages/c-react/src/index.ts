@@ -1,6 +1,5 @@
 // 无特殊直接export * from xxx 即可
 import LayoutRoot from './component/layout_root'
-import Tooltip from './component/tooltip'
 import ActionSheet from './component/action_sheet'
 import {
   Picker,
@@ -13,7 +12,6 @@ import VList from './component/v_list'
 
 export {
   LayoutRoot,
-  Tooltip,
   ActionSheet,
   Picker,
   CouplingPicker,
@@ -54,3 +52,4 @@ export * from './component/page'
 export * from './component/nav'
 export * from './component/textarea'
 export * from './component/search'
+export * from './component/tooltip'
