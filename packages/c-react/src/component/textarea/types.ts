@@ -1,6 +1,4 @@
 import { ChangeEvent, CSSProperties } from 'react'
-import { BaseEventOrig } from '@tarojs/components'
-import { TextareaProps as TaroTextareaProps } from '@tarojs/components/types/Textarea'
 
 interface BaseTextareaProps {
   value: string
@@ -14,12 +12,12 @@ interface BaseTextareaProps {
   /** 小程序 onInput => onChange */
   onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void
   /** 仅用在小程序 */
-  onInput?: (event: BaseEventOrig<TaroTextareaProps.onInputEventDetail>) => void
+  onInput?: (event: ChangeEvent<HTMLTextAreaElement>) => void
   className?: string
   style?: CSSProperties
 }
 
-interface TextareaProps extends BaseTextareaProps {
+interface TextareaProps extends Omit<BaseTextareaProps, 'onInput'> {
   isForm?: boolean
 }
 
