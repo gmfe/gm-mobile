@@ -11,7 +11,6 @@ import ProgressBar from './component/progress_bar'
 // 布局
 import Header from './component/header'
 import { Tabbar, FlowBtnTabbar } from './component/tab_bar'
-import { Lazy, LazyList } from './component/lazy'
 import PullUpDown from './component/pull_up_down'
 import List from './component/list'
 import Scroll from './component/scroll'
@@ -128,8 +127,6 @@ export {
   FlowBtnTabbar,
   Square,
   Panel,
-  Lazy,
-  LazyList,
   PullUpDown,
   List,
   Scroll,
@@ -165,3 +162,4 @@ export {
 }
 
 export * from './component/image'
+export * from './component/lazy'
