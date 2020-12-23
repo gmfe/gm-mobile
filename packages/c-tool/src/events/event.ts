@@ -1,12 +1,19 @@
+// 自定义事件
 const Events = {
-  add(eventName: string, handler: (event: Event) => any) {
-    window.addEventListener(eventName, handler)
+  add<ED = any>(
+    eventName: string,
+    handler: (event: CustomEvent<ED>) => unknown
+  ): void {
+    window.addEventListener(eventName, handler as EventListener)
   },
-  dispatch(eventName: string, detail?: any) {
+  dispatch<ED = any>(eventName: string, detail?: ED): void {
     window.dispatchEvent(new window.CustomEvent(eventName, { detail }))
   },
-  remove(eventName: string, handler: (event: Event) => any) {
-    window.removeEventListener(eventName, handler)
+  remove<ED = any>(
+    eventName: string,
+    handler: (event: CustomEvent<ED>) => unknown
+  ): void {
+    window.removeEventListener(eventName, handler as EventListener)
   },
 }
 

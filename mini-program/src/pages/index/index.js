@@ -90,6 +90,20 @@ _.each(serviceTimeReq.keys(), (key) => {
   })
 })
 
+const toolCom = require.context(
+  '../../../../packages/c-tool/src',
+  true,
+  /stories\.(js|tsx)$/
+)
+
+_.each(toolCom.keys(), (key) => {
+  storiesList.push({
+    module: toolCom(key),
+    packageName: 'c-tool',
+    path: key,
+  })
+})
+
 const dataMap = {}
 
 _.each(storiesList, ({ module, packageName, path }) => {
