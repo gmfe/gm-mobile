@@ -1,8 +1,8 @@
-import React from 'react'
+import { Component, cloneElement, ReactElement } from 'react'
 import { findDOMNode } from 'react-dom'
 import { is } from '@gm-mobile/c-tool'
 
-class FormScrollIntoView extends React.Component {
+class FormScrollIntoView extends Component {
   __mounted = false
 
   componentWillUnmount() {
@@ -10,22 +10,27 @@ class FormScrollIntoView extends React.Component {
   }
 
   handleFocus = () => {
-    const { onFocus } = this.props.children.props
+    const children = this.props.children as HTMLElement
 
-    onFocus && onFocus()
+    // @ts-ignore
+    children.onFocus && children.onFocus()
 
     if (!is.iOS()) {
       setTimeout(() => {
         if (!this.__mounted) {
           const target = findDOMNode(this)
-          target.scrollIntoViewIfNeeded()
+          if (target) {
+            // @ts-ignore
+            target.scrollIntoViewIfNeeded()
+          }
         }
       }, 500)
     }
   }
 
   render() {
-    return React.cloneElement(this.props.children, {
+    const { children } = this.props
+    return cloneElement(children as ReactElement, {
       onFocus: this.handleFocus,
     })
   }
