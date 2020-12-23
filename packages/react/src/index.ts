@@ -1,5 +1,4 @@
 // 表单
-import Uploader from './component/uploader'
 import { Keyboard, KeyboardWrap } from './component/keyboard'
 
 // 基础
@@ -91,7 +90,6 @@ export {
   InputPassword,
   InputMaxLength,
   Switch,
-  Uploader,
   Textarea,
   Cells,
   Cell,
@@ -162,3 +160,4 @@ export {
 export * from './component/image'
 export * from './component/lazy'
 export * from './component/form_scroll_into_view'
+export * from './component/uploader'
