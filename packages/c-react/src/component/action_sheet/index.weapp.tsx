@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types'
 import _ from 'lodash'
+import { ActionSheetProps } from './type'
 
-const ActionSheet = {
+const ActionSheet: ActionSheetProps = {
   render({ data }) {
     return new Promise((resolve, reject) => {
       const itemList = _.map(data, (v) => v.text)
@@ -21,14 +21,4 @@ const ActionSheet = {
     // nothing
   },
 }
-
-ActionSheet.propTypes = {
-  /** 选项数组 [{ text, value }] */
-  data: PropTypes.array.isRequired,
-  /** 选择回调 */
-  onSelect: PropTypes.func.isRequired,
-  /** 取消 */
-  onCancel: PropTypes.func.isRequired,
-}
-
 export default ActionSheet
