@@ -4,9 +4,9 @@ import classNames from 'classnames'
 import { Flex } from '../flex'
 import { View } from '../view'
 import { ScrollIntoView } from '../scroll_into_view'
-import { NavProps, NavApi } from './types'
+import { NavProps, NavRef } from './types'
 
-const Nav = forwardRef<NavApi, NavProps>(
+const Nav = forwardRef<NavRef, NavProps>(
   ({ data, selected, onSelect, horizontal, className, ...rest }, ref) => {
     const refId = useRef((Math.random() + '').slice(2))
     const [targetId, setTargetId] = useState('')

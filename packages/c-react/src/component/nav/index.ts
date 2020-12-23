@@ -1,2 +1,2 @@
 export { default as Nav } from './nav'
-export type { NavProps, NavApi } from './types'
+export type { NavProps, NavRef } from './types'

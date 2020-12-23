@@ -3,7 +3,7 @@ import { Nav } from '.'
 import { observable } from 'mobx'
 import { View } from '../view'
 import { Button } from '../button'
-import { NavApi } from './types'
+import { NavRef } from './types'
 
 const data = [
   {
@@ -48,7 +48,7 @@ const store = observable({
 })
 
 export const Normal = () => {
-  const ref = useRef<NavApi>(null)
+  const ref = useRef<NavRef>(null)
 
   return (
     <View>
@@ -73,7 +73,7 @@ export const Normal = () => {
 }
 
 export const Horizontal = () => {
-  const ref = useRef<NavApi>(null)
+  const ref = useRef<NavRef>(null)
 
   return (
     <View>
