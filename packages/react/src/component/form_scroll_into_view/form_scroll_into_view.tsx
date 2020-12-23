@@ -10,10 +10,9 @@ class FormScrollIntoView extends Component {
   }
 
   handleFocus = () => {
-    const children = this.props.children as HTMLElement
+    const { onFocus } = (this.props.children as ReactElement).props
 
-    // @ts-ignore
-    children.onFocus && children.onFocus()
+    onFocus && onFocus()
 
     if (!is.iOS()) {
       setTimeout(() => {
