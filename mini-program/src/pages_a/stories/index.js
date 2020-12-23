@@ -31,6 +31,9 @@ const Index = () => {
     if (packageName === 'c-service-time') {
       return require(`../../../../packages/c-service-time/src/component/stories`)
     }
+    if (packageName === 'c-tool') {
+      return require(`../../../../packages/c-tool/src/${folder}/stories`)
+    }
     return require(`../../../../packages/mp/src/component/${folder}/stories`)
   }, [])
 
