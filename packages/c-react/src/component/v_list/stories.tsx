@@ -35,7 +35,7 @@ export const vList = () => {
         ref={ref}
         height={500}
         data={_.range(30)}
-        renderItem={({ item, index }) => {
+        renderItem={({ item }: any): React.ReactElement => {
           return <Item data={item} />
         }}
         itemHeight={100}

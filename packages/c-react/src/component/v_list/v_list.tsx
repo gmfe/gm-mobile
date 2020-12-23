@@ -4,16 +4,18 @@ import React, {
   useImperativeHandle,
   useEffect,
   useRef,
+  FC,
+  memo,
 } from 'react'
-import PropTypes from 'prop-types'
 import _ from 'lodash'
 import { Events, is } from '@gm-mobile/c-tool'
 
 import { View } from '../view'
 import EVENT_TYPE from '../../event_type'
 import { ScrollIntoView } from '../scroll_into_view'
+import { VListItemProps, VListProps } from './type'
 
-const Item = React.memo(
+const Item: FC<VListItemProps> = memo(
   ({
     itemId,
     itemHeight,
@@ -27,7 +29,9 @@ const Item = React.memo(
     const refShow = useRef(false)
 
     useEffect(() => {
-      const doLazy = (event) => {
+      const doLazy = (
+        event: Event | { detail: { scrollTop: number } }
+      ): void => {
         const { scrollTop } = event.detail
         if (
           (itemIndex + 1) * itemHeight < scrollTop - distance ||
@@ -51,7 +55,7 @@ const Item = React.memo(
 
       // 初始偏移值默认为0
       doLazy({ detail: { scrollTop: 0 } })
-      return () => {
+      return (): void => {
         Events.remove(scrollEventName, doLazy)
       }
     }, [])
@@ -64,29 +68,20 @@ const Item = React.memo(
   }
 )
 
-Item.propTypes = {
-  itemId: PropTypes.string.isRequired,
-  itemHeight: PropTypes.number.isRequired,
-  itemIndex: PropTypes.number.isRequired,
-  // 内部监听事件用
-  scrollEventName: PropTypes.string,
-  /** 列表高度 */
-  listHeight: PropTypes.number.isRequired,
-  distance: PropTypes.number,
-}
-
-const VList = forwardRef(
+const VList: FC<VListProps> = forwardRef(
   (
     {
       data,
       renderItem,
       itemHeight,
-      itemKey,
+      itemKey = (data: { item: any; index: number }) => {
+        return data.index
+      },
       style,
       height,
-      onScroll,
-      delay,
-      distance,
+      onScroll = _.noop,
+      delay = 100,
+      distance = 100,
       onScrollToKey,
       ...rest
     },
@@ -99,7 +94,7 @@ const VList = forwardRef(
     const SCROLL_ITEM = `m-v-list-item-${tag.current}`
 
     useImperativeHandle(ref, () => ({
-      apiDoScrollToKey: (key) => {
+      apiDoScrollToKey: (key: string) => {
         setScrollTargetId(`${SCROLL_ITEM}-${key}`)
       },
     }))
@@ -123,7 +118,7 @@ const VList = forwardRef(
       }, delay)
     )
 
-    const handleScroll = (event) => {
+    const handleScroll = (event: Event) => {
       onScroll(event)
 
       let scrollTop = 0
@@ -170,35 +165,4 @@ const VList = forwardRef(
   }
 )
 
-VList.propTypes = {
-  data: PropTypes.array.isRequired,
-  /** ({item, index}) */
-  renderItem: PropTypes.func.isRequired,
-  /** 以固定高度计算 */
-  itemHeight: PropTypes.number.isRequired,
-  /** 列表高度 */
-  height: PropTypes.number.isRequired,
-  /** 定义item key值({item, index}) */
-  itemKey: PropTypes.func,
-  /** 滚动事件 */
-  onScroll: PropTypes.func,
-  /** 设置滚动throttle delay 参数, 默认100ms */
-  delay: PropTypes.number,
-  /** 定义可视区域外增加的渲染距离, 默认为itemHeight */
-  distance: PropTypes.number,
-  /** 设置滚动到Key事件, 参数为当前可视区域内第一个元素itemKey */
-  onScrollToKey: PropTypes.func,
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
-
-VList.defaultProps = {
-  itemKey: ({ item, index }) => {
-    return index
-  },
-  onScroll: _.noop,
-  delay: 100,
-  distance: 100,
-}
-
-export default React.memo(VList)
+export default memo(VList)
