@@ -29,9 +29,7 @@ const Item: FC<VListItemProps> = memo(
     const refShow = useRef(false)
 
     useEffect(() => {
-      const doLazy = (
-        event: Event | { detail: { scrollTop: number } }
-      ): void => {
+      const doLazy = (event: CustomEvent<{ scrollTop: number }>): void => {
         const { scrollTop } = event.detail
         if (
           (itemIndex + 1) * itemHeight < scrollTop - distance ||
@@ -54,7 +52,7 @@ const Item: FC<VListItemProps> = memo(
       Events.add(scrollEventName, doLazy)
 
       // 初始偏移值默认为0
-      doLazy({ detail: { scrollTop: 0 } })
+      Events.dispatch(scrollEventName, { scrollTop: 0 })
       return (): void => {
         Events.remove(scrollEventName, doLazy)
       }
@@ -118,7 +116,8 @@ const VList: FC<VListProps> = forwardRef(
       }, delay)
     )
 
-    const handleScroll = (event: Event) => {
+    // 这个onscroll的event不知道哪里来的detail，先any吧
+    const handleScroll = (event: any) => {
       onScroll(event)
 
       let scrollTop = 0
