@@ -1,10 +1,23 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC, HTMLAttributes, ReactNode } from 'react'
 import { Flex } from '@gm-mobile/c-react'
 import classNames from 'classnames'
 import _ from 'lodash'
 
-const Header = ({ title, hideBack, onBack, right, className, ...rest }) => {
+interface HeaderProps extends HTMLAttributes<HTMLDivElement> {
+  onBack?: () => void
+  title?: string
+  hideBack?: boolean
+  right?: ReactNode
+}
+
+const Header: FC<HeaderProps> = ({
+  title,
+  hideBack,
+  onBack = _.noop,
+  right,
+  className,
+  ...rest
+}) => {
   const handleBack = () => {
     onBack()
   }
@@ -35,17 +48,5 @@ const Header = ({ title, hideBack, onBack, right, className, ...rest }) => {
   )
 }
 
-Header.propTypes = {
-  onBack: PropTypes.func,
-  title: PropTypes.string,
-  hideBack: PropTypes.bool,
-  right: PropTypes.element,
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
-
-Header.defaultProps = {
-  onBack: _.noop,
-}
-
 export default Header
+export type { HeaderProps }

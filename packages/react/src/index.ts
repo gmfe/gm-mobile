@@ -7,7 +7,6 @@ import Counter from './component/counter'
 import ProgressBar from './component/progress_bar'
 
 // 布局
-import Header from './component/header'
 import { Tabbar, FlowBtnTabbar } from './component/tab_bar'
 import PullUpDown from './component/pull_up_down'
 import List from './component/list'
@@ -118,7 +117,6 @@ export {
   Flex,
   Divider,
   Page,
-  Header,
   Tabbar,
   FlowBtnTabbar,
   Square,
@@ -161,3 +159,4 @@ export * from './component/image'
 export * from './component/lazy'
 export * from './component/form_scroll_into_view'
 export * from './component/uploader'
+export * from './component/header'
