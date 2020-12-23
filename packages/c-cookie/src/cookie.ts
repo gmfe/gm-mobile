@@ -1,13 +1,13 @@
 import cookies from 'js-cookie'
 
 const Cookie = {
-  get(key) {
+  get(key: string) {
     return cookies.get(key)
   },
-  set(key, value) {
+  set(key: string, value: string | object) {
     return cookies.set(key, value)
   },
-  remove(key) {
+  remove(key: string) {
     cookies.remove(key)
   },
 }
