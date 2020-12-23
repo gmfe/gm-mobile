@@ -10,7 +10,7 @@ import { View } from '../view'
 
 interface TooltipProps {
   content: ReactNode
-  onClick: (e: MouseEvent<HTMLDivElement>) => void
+  onClick?: (e: MouseEvent<HTMLDivElement>) => void
   title?: string
 }
 
