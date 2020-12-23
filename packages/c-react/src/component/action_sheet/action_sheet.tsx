@@ -1,13 +1,16 @@
 import { getLocale } from '@gm-mobile/locales'
-import React from 'react'
+import React, { FC } from 'react'
 import _ from 'lodash'
-
-import PropTypes from 'prop-types'
-
 import { Popup } from '../popup'
 import { View } from '../view'
+import {
+  ActionSheetBaseProps,
+  SelectData,
+  ActionSheetStaticsProps,
+  ActionSheetProps,
+} from './type'
 
-const ActionSheetStatics = {
+const ActionSheetStatics: ActionSheetStaticsProps = {
   render({ title, data, renderItem }) {
     return new Promise((resolve, reject) => {
       Popup.render({
@@ -15,10 +18,10 @@ const ActionSheetStatics = {
         title: title,
         bottom: true,
         children: (
-          <ActionSheet
+          <ActionSheetBase
             renderItem={renderItem}
             data={data}
-            onSelect={(value) => {
+            onSelect={(value: string | number) => {
               ActionSheetStatics.hide()
               setTimeout(() => {
                 resolve(value)
@@ -46,9 +49,14 @@ const ActionSheetStatics = {
   },
 }
 
-const ActionSheet = ({ data, renderItem, onSelect, onCancel }) => {
-  const handleSelected = (option) => {
-    onSelect(option.value)
+const ActionSheetBase: FC<ActionSheetBaseProps> = ({
+  data,
+  renderItem = (option) => option.text,
+  onSelect,
+  onCancel,
+}) => {
+  const handleSelected = (option: SelectData) => {
+    onSelect && onSelect(option.value)
   }
 
   return (
@@ -76,21 +84,7 @@ const ActionSheet = ({ data, renderItem, onSelect, onCancel }) => {
   )
 }
 
-Object.assign(ActionSheet, ActionSheetStatics)
-
-ActionSheet.propTypes = {
-  /** 选项数组 [{ text, value }] */
-  data: PropTypes.array.isRequired,
-  /** 选择回调 */
-  onSelect: PropTypes.func.isRequired,
-  /** 取消 */
-  onCancel: PropTypes.func.isRequired,
-  /** 自定义选项样式 */
-  renderItem: PropTypes.func,
-}
-
-ActionSheet.defaultProps = {
-  renderItem: (option) => option.text,
-}
+const ActionSheet = Object.assign(ActionSheetBase, ActionSheetStatics)
 
 export default ActionSheet
+export type { ActionSheetProps }

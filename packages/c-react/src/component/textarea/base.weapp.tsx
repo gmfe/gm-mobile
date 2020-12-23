@@ -1,28 +1,25 @@
 import React, { FC, ChangeEvent } from 'react'
-import { Textarea, BaseEventOrig } from '@tarojs/components'
-import { TextareaProps as TaroTextareaProps } from '@tarojs/components/types/Textarea'
+import { Textarea } from '@tarojs/components'
 import _ from 'lodash'
 
 import { BaseTextareaProps } from './types'
 
 const Base: FC<BaseTextareaProps> = ({
   onChange = _.noop,
-  onInput,
+  onInput = _.noop,
   ...rest
 }) => {
-  const handleChange = (
-    e:
-      | BaseEventOrig<TaroTextareaProps.onInputEventDetail>
-      | ChangeEvent<HTMLInputElement>
-  ) => {
-    onChange && onChange(e as ChangeEvent<HTMLInputElement>)
-    onInput && onInput(e as BaseEventOrig<TaroTextareaProps.onInputEventDetail>)
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    onChange && onChange(e)
+    /** @ts-ignore */
+    onInput && onInput(e)
   }
 
   return (
     <Textarea
       {...rest}
       placeholderClass='m-text-placeholder'
+      /** @ts-ignore */
       onInput={handleChange}
     />
   )

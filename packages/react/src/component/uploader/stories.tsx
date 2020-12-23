@@ -1,16 +1,16 @@
 import React from 'react'
-import Uploader from './'
+import Uploader from './uploader'
 import { observable } from 'mobx'
 
 const store = observable({
-  img: null,
-  setImg(img) {
+  img: '',
+  setImg(img: string) {
     this.img = img
   },
 })
 
 export const normal = () => {
-  const handleUploader = (files) => {
+  const handleUploader = (files: { preview: string }[]) => {
     console.log(typeof files[0].preview)
     store.setImg(files[0].preview)
   }

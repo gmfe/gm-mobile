@@ -1,35 +1,35 @@
-import React, { useRef } from 'react'
-import PropTypes from 'prop-types'
+import React, { useRef, FC, ChangeEvent, DragEvent } from 'react'
 import { is } from '@gm-mobile/c-tool'
 import classNames from 'classnames'
+import { UploaderProps, UploaderFile } from './types'
 
-const Uploader = ({
+const Uploader: FC<UploaderProps> = ({
   accept,
-  multiple,
+  multiple = false,
   onUpload,
   children,
   className,
   ...rest
 }) => {
-  const refInput = useRef(null)
+  const refInput = useRef<HTMLInputElement>(null)
 
-  const handleUpload = (e) => {
-    const uploadedFiles = e.dataTransfer ? e.dataTransfer.files : e.target.files
-    const max = multiple ? uploadedFiles.length : 1
+  const handleUpload = (
+    e: ChangeEvent<HTMLInputElement> | DragEvent<HTMLInputElement>
+  ) => {
+    const uploadedFiles = (e as DragEvent<HTMLInputElement>).dataTransfer
+      ? (e as DragEvent<HTMLInputElement>).dataTransfer.files
+      : (e as ChangeEvent<HTMLInputElement>).target.files!
 
-    const files = []
-    for (let i = 0; i < max; i++) {
-      const file = uploadedFiles[i]
-      file.preview = window.URL.createObjectURL(file)
-      files.push(file)
-    }
+    const files: UploaderFile[] = Array.from(uploadedFiles).map((file) =>
+      Object.assign(file, { preview: window.URL.createObjectURL(file) })
+    )
 
     onUpload(files, e)
   }
 
   const handleClick = () => {
-    refInput.current.value = null
-    refInput.current.click()
+    refInput.current!.value = ''
+    refInput.current!.click()
   }
 
   return (
@@ -57,18 +57,6 @@ const Uploader = ({
       />
     </div>
   )
-}
-
-Uploader.propTypes = {
-  multiple: PropTypes.bool,
-  onUpload: PropTypes.func.isRequired,
-  accept: PropTypes.string,
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
-
-Uploader.defaultProps = {
-  multiple: false,
 }
 
 export default Uploader

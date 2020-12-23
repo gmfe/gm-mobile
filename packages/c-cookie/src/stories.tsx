@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
-import { View, Input, Button } from '../../mp'
-import Cookie from './index'
+import { View, Input, Button } from '../../mp/src'
+import Cookie from './cookie'
+import { is } from '@gm-mobile/c-tool'
 
 const key = 'input'
 
-Cookie.initDomain('guanmai.cn')
+if (is.weApp()) {
+  Cookie.initDomain('guanmai.cn')
+}
 
 export const Normal = () => {
   const [value, setValue] = useState(Cookie.get(key) || '')

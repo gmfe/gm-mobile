@@ -1,5 +1,5 @@
 import React from 'react'
-import ActionSheet from './index'
+import { ActionSheet } from './index'
 import classNames from 'classnames'
 import { Button } from '../button'
 
@@ -17,6 +17,7 @@ export const normal = () => {
     }).then(
       (value) => {
         console.log(value)
+        return null
       },
       () => {
         console.log('reject')
@@ -47,6 +48,7 @@ export const customItem = () => {
     }).then(
       (value) => {
         console.log(value)
+        return null
       },
       () => {
         console.log('reject')

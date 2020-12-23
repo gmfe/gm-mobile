@@ -1,25 +1,9 @@
-import React, {
-  useEffect,
-  useRef,
-  HtmlHTMLAttributes,
-  ReactNode,
-  CSSProperties,
-  FC,
-} from 'react'
-import { Page as PageBase, LayoutRoot } from '@gm-mobile/c-react'
-
-interface PageMPProps extends HtmlHTMLAttributes<HTMLDivElement> {
-  loading?: boolean
-  error?: boolean
-  onReload?: () => void
-  white?: boolean
-  header?: ReactNode
-  tabbar?: ReactNode
-  top?: ReactNode
-  bottom?: ReactNode
-  pageClassName?: string
-  pageStyle?: CSSProperties
-}
+import React, { useEffect, useRef, FC } from 'react'
+import {
+  Page as PageBase,
+  LayoutRoot,
+  PageProps as PageMPProps,
+} from '@gm-mobile/c-react'
 
 const PageMP: FC<PageMPProps> = (props) => {
   const refLoading = useRef<boolean | undefined>(false)

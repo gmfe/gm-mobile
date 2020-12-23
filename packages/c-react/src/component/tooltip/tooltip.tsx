@@ -2,14 +2,15 @@ import React, {
   cloneElement,
   FC,
   ReactElement,
-  HTMLAttributes,
   MouseEvent,
+  ReactNode,
 } from 'react'
 import { Popup } from '../popup'
 import { View } from '../view'
 
-interface TooltipProps extends HTMLAttributes<HTMLDivElement> {
-  content: ReactElement
+interface TooltipProps {
+  content: ReactNode
+  onClick?: (e: MouseEvent<HTMLDivElement>) => void
   title?: string
 }
 

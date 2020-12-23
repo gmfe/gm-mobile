@@ -10,7 +10,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Flex, Loading } from '@gm-mobile/c-react'
 import _ from 'lodash'
-import Lazy from '../lazy'
+import { Lazy } from '../lazy'
 
 const Scroll = forwardRef(
   (
