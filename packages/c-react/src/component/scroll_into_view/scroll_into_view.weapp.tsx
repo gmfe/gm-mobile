@@ -16,6 +16,7 @@ const ScrollIntoView: FC<ScrollIntoViewProps> = ({
   }
 
   return (
+    /** @ts-ignore */
     <ScrollView {...options} {...rest} scrollY scrollIntoView={targetId}>
       {children}
     </ScrollView>
