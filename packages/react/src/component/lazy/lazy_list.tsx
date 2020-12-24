@@ -51,7 +51,6 @@ const LazyList: LazyListFC<LazyListRef, LazyListProps> = forwardRef<
               key={key}
               targetId={refId.current}
               minHeight={itemMinHeight({ item, index })}
-              data-index={index}
               data-key={key}
               delay={delay}
             >
