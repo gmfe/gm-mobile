@@ -117,14 +117,16 @@ const VList: FC<VListProps> = forwardRef(
     )
 
     // 这个onscroll的event不知道哪里来的detail，先any吧
-    const handleScroll = (event: any) => {
+    const handleScroll = (event: React.UIEvent<HTMLDivElement>) => {
       onScroll(event)
 
       let scrollTop = 0
       if (is.weApp()) {
-        scrollTop = event.detail.scrollTop
+        scrollTop = (event as any).detail.scrollTop
       } else {
-        scrollTop = event.target.scrollTop
+        if (event.target instanceof HTMLDivElement) {
+          scrollTop = event.target.scrollTop
+        }
       }
 
       doLazy.current(scrollTop)
