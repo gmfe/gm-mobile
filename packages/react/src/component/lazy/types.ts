@@ -4,6 +4,7 @@ import {
   PropsWithoutRef,
   RefAttributes,
   FC,
+  ReactNode,
 } from 'react'
 
 interface LazyProps extends HTMLAttributes<HTMLDivElement> {
@@ -19,16 +20,16 @@ interface ItemProps {
   delay?: number
 }
 
-type ItemParm = {
+type ItemParams = {
   item: any
   index: number
 }
 
 interface LazyListProps extends HTMLAttributes<HTMLDivElement> {
   data: any[]
-  renderItem: (param: ItemParm) => any
-  itemMinHeight: (param: ItemParm) => any
-  itemKey?: (param: ItemParm) => any
+  renderItem: (param: ItemParams) => ReactNode
+  itemMinHeight: (param: ItemParams) => number
+  itemKey?: (param: ItemParams) => string
   /** 设置滚动throttle delay 参数 */
   delay?: number
 }
@@ -46,7 +47,7 @@ export type {
   LazyProps,
   ItemProps,
   LazyListProps,
-  ItemParm,
+  ItemParams,
   LazyListRef,
   LazyListFC,
 }

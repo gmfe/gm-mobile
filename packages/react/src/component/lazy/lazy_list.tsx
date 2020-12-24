@@ -1,7 +1,7 @@
 import React, { useImperativeHandle, useRef, forwardRef, memo } from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
-import { LazyListProps, ItemParm, LazyListRef, LazyListFC } from './types'
+import { LazyListProps, ItemParams, LazyListRef, LazyListFC } from './types'
 import Item from './item'
 
 const LazyList: LazyListFC<LazyListRef, LazyListProps> = forwardRef<
@@ -13,7 +13,7 @@ const LazyList: LazyListFC<LazyListRef, LazyListProps> = forwardRef<
       data,
       renderItem,
       itemMinHeight,
-      itemKey = (parm: ItemParm) => {
+      itemKey = (parm: ItemParams) => {
         return parm.index
       },
       delay = 100,
