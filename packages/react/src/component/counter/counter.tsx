@@ -1,16 +1,45 @@
-import React from 'react'
+import React, { FC, HtmlHTMLAttributes } from 'react'
 import classNames from 'classnames'
-import PropTypes from 'prop-types'
 import _ from 'lodash'
 import Big from 'big.js'
-
 import { KeyboardWrap } from '../keyboard'
 
-const Counter = ({
-  value,
-  min,
+interface CounterProps
+  extends Omit<HtmlHTMLAttributes<HTMLDivElement>, 'onChange'> {
+  /** + / - 按钮回调, 数字键盘确定按钮回调函数 */
+  onChange: (value: string) => void
+  /** 当前展示值 */
+  value?: string
+  /** 键盘标题, 辅助展示 */
+  title?: string
+  /** 最小值, 默认为0 */
+  min?: number
+  /** 最大值 */
+  max?: number
+  /** 键盘输入数字精度, 可输入几位小数 及 展示 */
+  precision?: number
+  /** 默认为mini尺寸 */
+  large?: boolean
+  /** 禁用状态 */
+  disabled?: boolean
+  /** 回调函数, 自定义不同情况下的错误提示信息, 参数为value, min, max, precision
+   * 满足条件返回错误信息，string类型
+   * 否则返回null
+   */
+  getErrorMsg?: (value: ErrorMsg) => string
+}
+interface ErrorMsg {
+  value: string
+  min?: number
+  max?: number
+  precision?: number
+}
+
+const Counter: FC<CounterProps> = ({
+  value = '',
+  min = 0,
   max,
-  precision,
+  precision = 2,
   title,
   onChange,
   large,
@@ -19,7 +48,7 @@ const Counter = ({
   className,
   ...rest
 }) => {
-  const text2Number = (value) => {
+  const text2Number = (value: string) => {
     if (value === '') {
       return 0
     }
@@ -30,7 +59,7 @@ const Counter = ({
   const minusDisabled = value === '' || text2Number(value) === 0
 
   // 检验是否超出大小值限制
-  const checkValue = (value, type) => {
+  const checkValue = (value: number, type: 'minus' | 'plus') => {
     if (max && value > max) {
       return value - 1
     }
@@ -45,12 +74,12 @@ const Counter = ({
     return value
   }
 
-  const handleChange = (type) => {
+  const handleChange = (type: 'minus' | 'plus') => {
     if (disabled) {
       return
     }
 
-    let v = text2Number(value)
+    let v = text2Number(value!) as number
     const _precision = _.includes(value, '.') ? precision : 0
     if (type === 'minus') {
       if (minusDisabled) return
@@ -115,32 +144,6 @@ const Counter = ({
   )
 }
 
-Counter.propTypes = {
-  /** 当前展示值 */
-  value: PropTypes.string,
-  /** 键盘标题, 辅助展示 */
-  title: PropTypes.string,
-  /** 最小值, 默认为0 */
-  min: PropTypes.number,
-  /** 最大值 */
-  max: PropTypes.number,
-  /** 键盘输入数字精度, 可输入几位小数 及 展示 */
-  precision: PropTypes.number,
-  /** + / - 按钮回调, 数字键盘确定按钮回调函数 */
-  onChange: PropTypes.func.isRequired,
-  /** 默认为mini尺寸 */
-  large: PropTypes.bool,
-  /** 禁用状态 */
-  disabled: PropTypes.bool,
-  /** 回调函数, 自定义不同情况下的错误提示信息, 参数为value, min, max, precision
-   * 满足条件返回错误信息，string类型
-   * 否则返回null
-   */
-  getErrorMsg: PropTypes.func,
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
-
 Counter.defaultProps = {
   value: '',
   min: 0,
@@ -148,3 +151,4 @@ Counter.defaultProps = {
 }
 
 export default Counter
+export type { CounterProps, ErrorMsg }

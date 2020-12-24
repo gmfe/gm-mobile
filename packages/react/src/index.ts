@@ -3,7 +3,6 @@ import { Keyboard, KeyboardWrap } from './component/keyboard'
 
 // 基础
 import FlipNumber from './component/flip_number'
-import Counter from './component/counter'
 import ProgressBar from './component/progress_bar'
 
 // 布局
@@ -109,7 +108,6 @@ export {
   Label,
   Loading,
   Price,
-  Counter,
   Badge,
   TagWrap,
   ProgressBar,
@@ -160,3 +158,4 @@ export * from './component/lazy'
 export * from './component/form_scroll_into_view'
 export * from './component/uploader'
 export * from './component/header'
+export * from './component/counter'

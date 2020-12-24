@@ -32,7 +32,7 @@ interface CounterProps
 
 interface ErrorMsg {
   value: string
-  min: number
+  min?: number
   max?: number
   precision?: number
 }

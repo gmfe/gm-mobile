@@ -1,31 +1,32 @@
 import React from 'react'
 import { observable } from 'mobx'
 
-import Counter from './'
+import { Counter, ErrorMsg } from '.'
 import { Page } from '@gm-mobile/c-react'
 
 const store = observable({
   one: '',
   two: '',
   three: '',
-  setValue(type, v) {
+  isActive: '',
+  setValue(type: 'one' | 'two' | 'three', v: string) {
     this[type] = v
   },
-  setIsActive(type) {
+  setIsActive(type: 'one' | 'two' | 'three') {
     this.isActive = type
   },
 })
 
 export const normal = () => {
-  const handleCheckValue = ({ value, min, max, precision }) => {
-    if (value > 10) {
+  const handleCheckValue = ({ value, min, max, precision }: ErrorMsg) => {
+    if (+value > 10) {
       return '库存不足'
     }
 
-    if (value < 3) {
+    if (+value < 3) {
       return '最小起售为3'
     }
-    return null
+    return ''
   }
   return (
     <Page>
