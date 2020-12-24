@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { FC, HTMLAttributes } from 'react'
 import classNames from 'classnames'
-import PropTypes from 'prop-types'
 
-const ProgressBar = ({
+interface ProgressBarProps extends HTMLAttributes<HTMLDivElement> {
+  /** 百分比 */
+  percentage: number
+  /** 文字是否在进度条里面 */
+  textInside?: boolean
+  /** 是否显示文字 */
+  showText?: boolean
+  /** 显示的文字 */
+  text?: string
+}
+
+const ProgressBar: FC<ProgressBarProps> = ({
   showText,
   className,
   percentage,
   text,
-  textInside,
+  textInside = false,
   ...rest
 }) => {
   return (
@@ -30,20 +40,5 @@ const ProgressBar = ({
   )
 }
 
-ProgressBar.propTypes = {
-  /** 文字是否在进度条里面 */
-  textInside: PropTypes.bool,
-  /** 是否显示文字 */
-  showText: PropTypes.bool,
-  className: PropTypes.string,
-  /** 百分比 */
-  percentage: PropTypes.number.isRequired,
-  /** 显示的文字 */
-  text: PropTypes.string,
-}
-
-ProgressBar.defaultProps = {
-  textInside: false,
-}
-
 export default ProgressBar
+export type { ProgressBarProps }

@@ -3,7 +3,6 @@ import { Keyboard, KeyboardWrap } from './component/keyboard'
 
 // 基础
 import FlipNumber from './component/flip_number'
-import ProgressBar from './component/progress_bar'
 
 // 布局
 import { Tabbar, FlowBtnTabbar } from './component/tab_bar'
@@ -110,7 +109,6 @@ export {
   Price,
   Badge,
   TagWrap,
-  ProgressBar,
   // 布局
   Flex,
   Divider,
@@ -159,3 +157,4 @@ export * from './component/form_scroll_into_view'
 export * from './component/uploader'
 export * from './component/header'
 export * from './component/counter'
+export * from './component/progress_bar'
