@@ -3,7 +3,7 @@ import { HTMLAttributes, ChangeEvent, DragEvent } from 'react'
 interface UploaderProps extends HTMLAttributes<HTMLDivElement> {
   multiple?: boolean
   onUpload: (
-    files: { preview: string }[],
+    files: UploaderFile[],
     e?: ChangeEvent<HTMLInputElement> | DragEvent<HTMLInputElement>
   ) => void
   accept?: string
