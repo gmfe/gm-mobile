@@ -14,7 +14,7 @@ const LazyList: LazyListFC<LazyListRef, LazyListProps> = forwardRef<
       renderItem,
       itemMinHeight,
       itemKey = (parm: ItemParams) => {
-        return parm.index
+        return String(parm.index)
       },
       delay = 100,
       className,

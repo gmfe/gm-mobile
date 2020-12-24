@@ -32,12 +32,13 @@ const Item: FC<{ data: any }> = ({ data }) => {
 
 export const LazyListDemo = () => {
   const ref = useRef<LazyListRef>(null)
+  const data = _.range(30)
 
   return (
     <Page>
       <button
         onClick={() => {
-          ref.current && ref.current.apiDoScrollToKey(29)
+          ref.current && ref.current.apiDoScrollToKey('29')
         }}
       >
         scroll to 29
@@ -45,7 +46,7 @@ export const LazyListDemo = () => {
       <LazyList
         ref={ref}
         style={{ height: '100vh' }}
-        data={_.range(30)}
+        data={data}
         renderItem={({ item, index }) => {
           return <Item data={item} />
         }}

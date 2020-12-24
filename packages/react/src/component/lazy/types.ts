@@ -40,7 +40,7 @@ interface LazyListFC<T, P>
 }
 
 interface LazyListRef {
-  apiDoScrollToKey: (key: number | string) => void
+  apiDoScrollToKey: (key: string) => void
 }
 
 export type {
