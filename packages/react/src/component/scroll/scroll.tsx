@@ -5,24 +5,27 @@ import React, {
   useImperativeHandle,
   useRef,
   useState,
+  UIEvent,
 } from 'react'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Flex, Loading } from '@gm-mobile/c-react'
 import _ from 'lodash'
 import { Lazy } from '../lazy'
+import { ScrollProps, ScrollRef } from './types'
 
-const Scroll = forwardRef(
+const Scroll = forwardRef<ScrollRef, ScrollProps>(
   (
     {
       data,
       renderItem,
-      itemKey,
+      itemKey = ({ index }) => {
+        return String(index)
+      },
       onLoadMore,
       noMore,
       lazy,
       itemMinHeight,
-      onScroll,
+      onScroll = _.noop,
       className,
       ...rest
     },
@@ -30,15 +33,18 @@ const Scroll = forwardRef(
   ) => {
     const [loadingMore, setLoadingMore] = useState(false)
     const refScrollTop = useRef(0)
-    const refList = useRef(null)
+    const refList = useRef<HTMLDivElement>(null)
     const refId = useRef(Math.random() + '')
 
     useEffect(() => {}, [])
 
     useImperativeHandle(ref, () => ({
       apiDoScrollToKey: (key) => {
-        const dom = refList.current.querySelector(`[data-key="${key}"]`)
+        const dom = refList.current
+          ? refList.current.querySelector(`[data-key="${key}"]`)
+          : null
         if (dom) {
+          // @ts-ignore
           dom.scrollIntoViewIfNeeded()
         }
       },
@@ -59,8 +65,8 @@ const Scroll = forwardRef(
       })
     }
 
-    const handleScroll = (e) => {
-      const newTop = e.target.scrollTop
+    const handleScroll = (e: UIEvent<HTMLElement>) => {
+      const newTop = e.currentTarget.scrollTop
       const oldTop = refScrollTop.current
 
       refScrollTop.current = newTop
@@ -68,7 +74,10 @@ const Scroll = forwardRef(
       // 向下滚动才触发
       if (newTop > oldTop && !loadingMore) {
         // 一定阈值才触发
-        if (e.target.clientHeight + newTop + 30 + 50 >= e.target.scrollHeight) {
+        if (
+          e.currentTarget.clientHeight + newTop + 30 + 50 >=
+          e.currentTarget.scrollHeight
+        ) {
           handleBottom()
         }
       }
@@ -93,9 +102,13 @@ const Scroll = forwardRef(
                   data-key={itemKey({ item, index })}
                   className='m-scroll-item'
                   targetId={refId.current}
-                  style={{
-                    minHeight: itemMinHeight({ item, index }),
-                  }}
+                  style={
+                    itemMinHeight
+                      ? {
+                          minHeight: itemMinHeight({ item, index }),
+                        }
+                      : {}
+                  }
                 >
                   {renderItem({ item, index })}
                 </Lazy>
@@ -125,30 +138,5 @@ const Scroll = forwardRef(
     )
   }
 )
-
-Scroll.propTypes = {
-  data: PropTypes.array.isRequired,
-  /** ({item, index}) */
-  renderItem: PropTypes.func.isRequired,
-  /** ({item, index}) */
-  itemKey: PropTypes.func.isRequired,
-  /** return promise */
-  onLoadMore: PropTypes.func.isRequired,
-  noMore: PropTypes.bool,
-  /** item 是否lazy，如果是，需要提供 itemMinHeight */
-  lazy: PropTypes.bool,
-  /** ({item, index}) */
-  itemMinHeight: PropTypes.func,
-  onScroll: PropTypes.func,
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
-
-Scroll.defaultProps = {
-  onScroll: _.noop,
-  itemKey: ({ item, index }) => {
-    return index
-  },
-}
 
 export default Scroll
