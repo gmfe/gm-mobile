@@ -1,4 +1,4 @@
-import React, { Component, CSSProperties } from 'react'
+import React, { Component } from 'react'
 import _ from 'lodash'
 import { View, ITouchEvent } from '@tarojs/components'
 
@@ -49,7 +49,6 @@ class PickerColumn extends Component<PickerColumnProps, PickerColumnState> {
   }
 
   private _handleTouchStart = (event: ITouchEvent) => {
-    // const startTouchY = event.changedTouches[0].pageY
     const startTouchY = event.touches[0].pageY
     this.setState(({ scrollerTranslate }) => ({
       startTouchY,
@@ -60,7 +59,6 @@ class PickerColumn extends Component<PickerColumnProps, PickerColumnState> {
   private _handleTouchMove = (event: ITouchEvent) => {
     event.preventDefault()
 
-    // const touchY = event.changedTouches[0].pageY
     const touchY = event.touches[0].pageY
     this.setState((prevState: PickerColumnState) => {
       if (!prevState.isMoving) {
@@ -156,9 +154,9 @@ class PickerColumn extends Component<PickerColumnProps, PickerColumnState> {
 
   render() {
     const translateString = `translate3d(0, ${this.state.scrollerTranslate}px, 0)`
-    const style: CSSProperties = {
-      // MsTransform: translateString,
-      // MozTransform: translateString,
+    const style: any = {
+      MsTransform: translateString,
+      MozTransform: translateString,
       OTransform: translateString,
       WebkitTransform: translateString,
       transform: translateString,

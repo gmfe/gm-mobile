@@ -1,4 +1,4 @@
-import React, { Component, createRef, CSSProperties, TouchEvent } from 'react'
+import React, { Component, createRef, TouchEvent } from 'react'
 import { findDOMNode } from 'react-dom'
 import _ from 'lodash'
 
@@ -174,9 +174,9 @@ class PickerColumn extends Component<PickerColumnProps, PickerColumnState> {
 
   render() {
     const translateString = `translate3d(0, ${this.state.scrollerTranslate}px, 0)`
-    const style: CSSProperties = {
-      // MsTransform: translateString,
-      // MozTransform: translateString,
+    const style: any = {
+      MsTransform: translateString,
+      MozTransform: translateString,
       OTransform: translateString,
       WebkitTransform: translateString,
       transform: translateString,
@@ -191,7 +191,6 @@ class PickerColumn extends Component<PickerColumnProps, PickerColumnState> {
           className='m-picker-scroll'
           style={style}
           onTouchStart={this._handleTouchStart}
-          // onTouchMove={this.handleTouchMove}
           onTouchEnd={this._handleTouchEnd}
           onTouchCancel={this._handleTouchCancel}
         >

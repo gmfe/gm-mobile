@@ -1,13 +1,6 @@
 import { ReactNode } from 'react'
 import { PopupProps } from '../popup'
-
-type Value = any
-
-interface Option {
-  value: Value
-  text: Value
-  children?: Option[]
-}
+import { Value, Option } from './component/types'
 
 type OptionsProps = PopupProps
 

@@ -49,6 +49,7 @@ interface CouplingPickerProps extends Omit<PickerProps, 'datas' | 'headers'> {
 }
 
 export type {
+  Value,
   Option,
   PickerProps,
   PickerColumnProps,
