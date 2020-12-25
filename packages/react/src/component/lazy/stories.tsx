@@ -47,7 +47,7 @@ export const LazyListDemo = () => {
         ref={ref}
         style={{ height: '100vh' }}
         data={data}
-        renderItem={({ item, index }) => {
+        renderItem={({ item }) => {
           return <Item data={item} />
         }}
         itemMinHeight={() => 100}

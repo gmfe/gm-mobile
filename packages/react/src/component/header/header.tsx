@@ -24,8 +24,8 @@ const Header: FC<HeaderProps> = ({
 
   return (
     <Flex
-      justifyBetween
       {...rest}
+      justifyBetween
       className={classNames('m-header m-text-white m-padding-lr-15', className)}
     >
       <Flex alignCenter>

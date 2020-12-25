@@ -18,7 +18,7 @@ const store = observable({
 })
 
 export const normal = () => {
-  const handleCheckValue = ({ value, min, max, precision }: ErrorMsg) => {
+  const handleCheckValue = ({ value }: ErrorMsg) => {
     if (+value > 10) {
       return '库存不足'
     }

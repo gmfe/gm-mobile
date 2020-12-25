@@ -162,6 +162,7 @@ const Index = () => (
                           value
                         )}`,
                       })
+                      return null
                     })
                   }
                 }}

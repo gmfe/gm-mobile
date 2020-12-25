@@ -38,7 +38,7 @@ export const customItem = () => {
     ActionSheet.render({
       data,
       title: 'title',
-      renderItem: (option, index) => {
+      renderItem: (option) => {
         return (
           <div className={classNames({ 'm-text-red': option.value === 3 })}>
             {option.text}

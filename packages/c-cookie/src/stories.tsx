@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { View, Input, Button } from '../../mp/src'
+import { View, Input, Button } from '../../mp'
 import Cookie from './cookie'
 import { is } from '@gm-mobile/c-tool'
 
 const key = 'input'
 
 if (is.weApp()) {
+  // @ts-ignore
   Cookie.initDomain('guanmai.cn')
 }
 

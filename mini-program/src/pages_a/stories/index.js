@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo } from 'react'
 import { useRouter } from '@tarojs/taro'
 import { Observer } from 'mobx-react'
-import { PageMP } from '../../../../packages/mp/src'
+import { PageMP } from '../../../../packages/mp'
 
 const Index = () => {
   const {
