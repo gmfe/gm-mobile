@@ -1,4 +1,3 @@
-// @ts-ignore
 import cookies from 'weapp-cookie'
 
 const Cookie = {

@@ -8,7 +8,6 @@ import FlipNumber from './component/flip_number'
 import { Tabbar, FlowBtnTabbar } from './component/tab_bar'
 import PullUpDown from './component/pull_up_down'
 import List from './component/list'
-import Scroll from './component/scroll'
 
 // 浮层
 import NProgress from './component/nprogress'
@@ -119,7 +118,6 @@ export {
   Panel,
   PullUpDown,
   List,
-  Scroll,
   Nav,
   Tabs,
   // 浮层
@@ -158,3 +156,4 @@ export * from './component/uploader'
 export * from './component/header'
 export * from './component/counter'
 export * from './component/progress_bar'
+export * from './component/scroll'

@@ -8,6 +8,9 @@ declare module '*.jpeg'
 declare module '*.gif'
 declare module '*.bmp'
 
+/** cookie */
+declare module 'weapp-cookie'
+
 /** 其它需要后续添加 */
 interface Window {
   __NAME__: string
