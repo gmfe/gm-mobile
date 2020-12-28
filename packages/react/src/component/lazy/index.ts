@@ -6,6 +6,6 @@ export type {
   LazyProps,
   LazyListProps,
   LazyListRef,
-  ItemProps,
+  LazyListItemProps,
   LazyListFC,
 } from './types'

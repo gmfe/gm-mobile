@@ -14,7 +14,7 @@ interface LazyProps extends HTMLAttributes<HTMLDivElement> {
   delay?: number
 }
 
-interface ItemProps {
+interface LazyListItemProps {
   targetId: string
   minHeight: number
   delay?: number
@@ -36,7 +36,7 @@ interface LazyListProps extends HTMLAttributes<HTMLDivElement> {
 
 interface LazyListFC<T, P>
   extends ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<T>> {
-  Item?: FC<ItemProps>
+  Item?: FC<LazyListItemProps>
 }
 
 interface LazyListRef {
@@ -45,7 +45,7 @@ interface LazyListRef {
 
 export type {
   LazyProps,
-  ItemProps,
+  LazyListItemProps,
   LazyListProps,
   ItemParams,
   LazyListRef,

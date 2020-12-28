@@ -1,9 +1,9 @@
 import React, { useRef, memo, FC } from 'react'
 import Lazy from './lazy'
 import _ from 'lodash'
-import { ItemProps } from './types'
+import { LazyListItemProps } from './types'
 
-const Item: FC<ItemProps> = memo(
+const Item: FC<LazyListItemProps> = memo(
   ({ targetId, minHeight, children, ...rest }) => {
     // minHeight 不会变，提高性能
     const refStyle = useRef({
