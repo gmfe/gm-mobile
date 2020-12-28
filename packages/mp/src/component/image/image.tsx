@@ -4,8 +4,7 @@ import { Image } from '@tarojs/components'
 import { ImageProps as TaroImageProps } from '@tarojs/components/types/Image'
 import IMAGE_ERROR from './error.png'
 import IMAGE_PLACEHOLDER from './placeholder.png'
-
-type PickType<T, K extends keyof T> = T[K]
+import { PickType } from '../../util'
 
 interface ImageMPProps extends TaroImageProps {
   /** 图片高度 */

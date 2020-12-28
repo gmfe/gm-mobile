@@ -1,4 +1,4 @@
-let rect = null
+let rect: any = null
 function getMenuButtonBoundingClientRect() {
   if (!rect) {
     // eslint-disable-next-line
@@ -7,13 +7,12 @@ function getMenuButtonBoundingClientRect() {
   return rect
 }
 
-let info = null
+let info: any = null
 function getSystemInfo() {
   if (info) {
     return Promise.resolve(info)
   }
 
-  // eslint-disable-next-line
   info = wx.getSystemInfoSync()
   return Promise.resolve(info)
 }
@@ -22,5 +21,7 @@ const UtilMP = {
   getMenuButtonBoundingClientRect,
   getSystemInfo,
 }
+
+export type PickType<T, K extends keyof T> = T[K]
 
 export default UtilMP
