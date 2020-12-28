@@ -11,13 +11,11 @@ interface BaseTextareaProps {
   autoHeight?: boolean
   /** 小程序 onInput => onChange */
   onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void
-  /** 仅用在小程序 */
-  onInput?: (event: ChangeEvent<HTMLTextAreaElement>) => void
   className?: string
   style?: CSSProperties
 }
 
-interface TextareaProps extends Omit<BaseTextareaProps, 'onInput'> {
+interface TextareaProps extends BaseTextareaProps {
   isForm?: boolean
 }
 

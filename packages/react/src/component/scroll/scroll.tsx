@@ -1,7 +1,6 @@
 import { getLocale } from '@gm-mobile/locales'
 import React, {
   forwardRef,
-  useEffect,
   useImperativeHandle,
   useRef,
   useState,

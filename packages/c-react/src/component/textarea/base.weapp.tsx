@@ -4,15 +4,9 @@ import _ from 'lodash'
 
 import { BaseTextareaProps } from './types'
 
-const Base: FC<BaseTextareaProps> = ({
-  onChange = _.noop,
-  onInput = _.noop,
-  ...rest
-}) => {
+const Base: FC<BaseTextareaProps> = ({ onChange = _.noop, ...rest }) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange && onChange(e)
-    /** @ts-ignore */
-    onInput && onInput(e)
   }
 
   return (
