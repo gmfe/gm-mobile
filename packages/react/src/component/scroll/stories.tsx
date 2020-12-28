@@ -72,7 +72,7 @@ export const Lazy = () => {
         onLoadMore={handleLoadMore}
         noMore={store.noMore}
         lazy
-        itemMinHeight={(params: { item: any; index: number }) => {
+        itemMinHeight={() => {
           return '50px'
         }}
       />

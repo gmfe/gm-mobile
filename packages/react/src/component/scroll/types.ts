@@ -13,7 +13,7 @@ interface ScrollProps extends HTMLAttributes<HTMLDivElement> {
   noMore?: boolean
   /** item 是否lazy，如果是，需要提供 itemMinHeight */
   lazy?: boolean
-  itemMinHeight?: (params: ItemParams) => string
+  itemMinHeight?: (params?: ItemParams) => string
   onScroll?: (event: UIEvent<HTMLDivElement>) => void
 }
 
