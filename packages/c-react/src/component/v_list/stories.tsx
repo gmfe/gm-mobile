@@ -1,11 +1,12 @@
 import React, { useRef, useState } from 'react'
 import _ from 'lodash'
-import VList from '.'
+import { VList } from '.'
 import { View } from '../view'
 import { Button } from '../button'
 import { Page } from '../page'
+import { VListRef } from './type'
 
-const Item = ({ data }) => {
+const Item = ({ data }: any) => {
   const [show, setShow] = useState(false)
   return (
     <View
@@ -19,14 +20,14 @@ const Item = ({ data }) => {
   )
 }
 
-export const vList = () => {
-  const ref = useRef(null)
+export const VListDemo = () => {
+  const ref = useRef<VListRef>(null)
 
   return (
     <Page>
       <Button
         onClick={() => {
-          ref.current.apiDoScrollToKey(29)
+          ref.current!.apiDoScrollToKey(29)
         }}
       >
         scroll to 29

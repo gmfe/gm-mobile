@@ -2,7 +2,7 @@ import React, { FC, useRef, useEffect } from 'react'
 import moment, { Moment } from 'moment'
 import _ from 'lodash'
 
-import VList from '../v_list'
+import { VList } from '../v_list'
 import Month from './month'
 import { CALENDAR_TYPE } from './util'
 import { MonthListProps } from './types'

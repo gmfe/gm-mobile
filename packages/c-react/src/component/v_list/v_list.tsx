@@ -13,7 +13,7 @@ import { Events, is } from '@gm-mobile/c-tool'
 import { View } from '../view'
 import EVENT_TYPE from '../../event_type'
 import { ScrollIntoView } from '../scroll_into_view'
-import { VListItemProps, VListProps } from './type'
+import { VListItemProps, VListProps, VListRef } from './type'
 
 const Item: FC<VListItemProps> = memo(
   ({
@@ -66,7 +66,7 @@ const Item: FC<VListItemProps> = memo(
   }
 )
 
-const VList: FC<VListProps> = forwardRef(
+const VList = forwardRef<VListRef, VListProps>(
   (
     {
       data,

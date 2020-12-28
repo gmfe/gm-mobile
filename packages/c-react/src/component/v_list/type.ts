@@ -1,4 +1,3 @@
-import { CSSProperties } from 'react'
 import { ScrollIntoViewProps } from '../scroll_into_view'
 
 interface VListItemProps {
@@ -12,7 +11,7 @@ interface VListItemProps {
   distance: number
 }
 
-interface VListProps extends ScrollIntoViewProps {
+interface VListProps extends Omit<ScrollIntoViewProps, 'targetId'> {
   data: any[]
   /** ({item, index}) */
   renderItem: (data: { item: any; index: number }) => React.ReactElement
@@ -21,20 +20,17 @@ interface VListProps extends ScrollIntoViewProps {
   /** 列表高度 */
   height: number
   /** 定义item key值({item, index}) */
-  itemKey: (data: {
-    item: any
-    index: number
-  }) => string | number | null | undefined
-  /** 滚动事件 */
-  onScroll: (event: Event) => void
+  itemKey?: (data: { item: any; index: number }) => string | number
   /** 设置滚动throttle delay 参数, 默认100ms */
   delay?: number
   /** 定义可视区域外增加的渲染距离, 默认为itemHeight */
   distance?: number
   /** 设置滚动到Key事件, 参数为当前可视区域内第一个元素itemKey */
-  onScrollToKey?: (key: string | number | null | undefined) => void
-  className?: string
-  style?: CSSProperties
+  onScrollToKey?: (key: string | number) => void
 }
 
-export type { VListItemProps, VListProps }
+interface VListRef {
+  apiDoScrollToKey: (value: any) => void
+}
+
+export type { VListItemProps, VListProps, VListRef }
