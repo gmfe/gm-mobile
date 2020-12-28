@@ -63,7 +63,8 @@ const Scroll = forwardRef<ScrollRef, ScrollProps>(
     }
 
     const handleScroll = (e: UIEvent<HTMLDivElement>) => {
-      const newTop = e.currentTarget.scrollTop
+      const target = e.target as HTMLDivElement
+      const newTop = target.scrollTop
       const oldTop = refScrollTop.current
 
       refScrollTop.current = newTop
@@ -71,10 +72,7 @@ const Scroll = forwardRef<ScrollRef, ScrollProps>(
       // 向下滚动才触发
       if (newTop > oldTop && !loadingMore) {
         // 一定阈值才触发
-        if (
-          e.currentTarget.clientHeight + newTop + 30 + 50 >=
-          e.currentTarget.scrollHeight
-        ) {
+        if (target.clientHeight + newTop + 30 + 50 >= target.scrollHeight) {
           handleBottom()
         }
       }
