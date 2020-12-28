@@ -144,11 +144,5 @@ const Counter: FC<CounterProps> = ({
   )
 }
 
-Counter.defaultProps = {
-  value: '',
-  min: 0,
-  precision: 2,
-}
-
 export default Counter
 export type { CounterProps, ErrorMsg }

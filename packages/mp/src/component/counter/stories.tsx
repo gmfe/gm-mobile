@@ -4,7 +4,7 @@ import { Page, View } from '@gm-mobile/c-react'
 
 interface ErrorMsg {
   value: string
-  min: number
+  min?: number
   max?: number
   precision?: number
 }
