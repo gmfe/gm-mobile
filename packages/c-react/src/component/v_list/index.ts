@@ -1,3 +1,3 @@
 export { default as VList } from './v_list'
 
-export type { VListItemProps, VListProps } from './type'
+export type { VListRef, VListProps } from './type'
