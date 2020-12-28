@@ -36,8 +36,6 @@ const Scroll = forwardRef<ScrollRef, ScrollProps>(
     const refList = useRef<HTMLDivElement>(null)
     const refId = useRef(Math.random() + '')
 
-    useEffect(() => {}, [])
-
     useImperativeHandle(ref, () => ({
       apiDoScrollToKey: (key) => {
         const dom = refList.current
@@ -65,7 +63,7 @@ const Scroll = forwardRef<ScrollRef, ScrollProps>(
       })
     }
 
-    const handleScroll = (e: UIEvent<HTMLElement>) => {
+    const handleScroll = (e: UIEvent<HTMLDivElement>) => {
       const newTop = e.currentTarget.scrollTop
       const oldTop = refScrollTop.current
 
