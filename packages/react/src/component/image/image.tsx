@@ -1,11 +1,17 @@
-import React, { useState, useRef, FC, CSSProperties } from 'react'
+import React, {
+  useState,
+  useRef,
+  FC,
+  CSSProperties,
+  HTMLAttributes,
+} from 'react'
 import classNames from 'classnames'
 
 import IMAGE_ERROR from './error.png'
 import IMAGE_PLACEHOLDER from './placeholder.png'
 
 type objectFixTypes = 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
-interface ImageProps {
+interface ImageProps extends HTMLAttributes<HTMLImageElement> {
   /** 图片地址 */
   src?: string
   /** 图片高度 */
@@ -53,9 +59,13 @@ const Image: FC<ImageProps> = ({
     reloadCount.current = 0
   }
 
-  const _className = classNames(`m-image-${objectFix}`, className, {
-    'm-image-round': round,
-  })
+  const _className = classNames(
+    `m-image-${objectFix}`,
+    {
+      'm-image-round': round,
+    },
+    className
+  )
 
   return (
     <img

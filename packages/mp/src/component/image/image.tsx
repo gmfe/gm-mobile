@@ -80,9 +80,12 @@ const ImageMP: FC<ImageMPProps> = ({
       }}
       onError={handleError}
       onLoad={handleLoad}
-      className={classNames(className, {
-        'm-image-round': round,
-      })}
+      className={classNames(
+        {
+          'm-image-round': round,
+        },
+        className
+      )}
     />
   )
 }
