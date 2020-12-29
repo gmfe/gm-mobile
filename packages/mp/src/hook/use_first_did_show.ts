@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { useDidShow, useDidHide } from '@tarojs/taro'
 
-const useFirstDidShow = (fun) => {
+const useFirstDidShow = (fun: () => any) => {
   const isFirst = useRef(true)
 
   useDidShow(() => {

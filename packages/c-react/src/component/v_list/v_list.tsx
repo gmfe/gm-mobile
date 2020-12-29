@@ -8,7 +8,7 @@ import React, {
   memo,
 } from 'react'
 import _ from 'lodash'
-import { Events, is } from '@gm-mobile/c-tool'
+import { Events } from '@gm-mobile/c-tool'
 
 import { View } from '../view'
 import EVENT_TYPE from '../../event_type'

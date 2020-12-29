@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Input, Button, Toast } from '@gm-mobile/c-react'
 import Storage from './index'
 
@@ -7,7 +7,7 @@ const key = 'input'
 export const Normal = () => {
   const [value, setValue] = useState(Storage.get(key) || '')
 
-  React.useEffect(() => {
+  useEffect(() => {
     Storage.set('bool', true)
   }, [])
 
