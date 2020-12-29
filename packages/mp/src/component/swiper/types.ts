@@ -23,6 +23,6 @@ export interface SwiperCategoryProps extends ViewProps {
 
 export interface SwiperPaginationProps {
   type: 'dot' | 'rect'
-  data: (string | number)[]
+  data: string[]
   current: string | null
 }
