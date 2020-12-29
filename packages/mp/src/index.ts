@@ -1,4 +1,3 @@
-import { SwiperImg, SwiperCategory } from './component/swiper'
 import LocalStorage from './storage'
 import SafeHeaderMP from './component/safe_header'
 
@@ -107,8 +106,6 @@ export {
   Nav,
   VList,
   Status,
-  SwiperImg,
-  SwiperCategory,
   SafeHeaderMP,
   useFirstDidShow,
 }
@@ -118,3 +115,4 @@ export * from './component/page'
 export * from './component/counter'
 export * from './component/status_bar'
 export * from './component/map'
+export * from './component/swiper'
