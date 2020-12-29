@@ -10,8 +10,6 @@ interface LayoutRootState {
   nProgress: null | ReactNode
 }
 
-interface LayoutRootProps {}
-
 enum LayoutRootType {
   INNER_LAYER = 'innerLayer',
   POPUP = 'popup',
@@ -40,10 +38,5 @@ interface CBMapType {
   ) => void
 }
 
-export type {
-  LayoutRootState,
-  CBMapType,
-  LayoutRootStaticsTypes,
-  LayoutRootProps,
-}
+export type { LayoutRootState, CBMapType, LayoutRootStaticsTypes }
 export { LayoutRootType }

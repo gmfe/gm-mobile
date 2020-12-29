@@ -8,13 +8,12 @@ import {
   LayoutRootState,
   CBMapType,
   LayoutRootStaticsTypes,
-  LayoutRootProps,
 } from './types'
 
 const cbMap: CBMapType = {}
 
-class LayoutRootBase extends Component<LayoutRootProps, LayoutRootState> {
-  path: string
+class LayoutRootBase extends Component<LayoutRootState> {
+  path: string = getPath()
 
   readonly state: LayoutRootState = {
     innerLayer: null,
@@ -24,12 +23,6 @@ class LayoutRootBase extends Component<LayoutRootProps, LayoutRootState> {
     modal: null,
     toast: null,
     nProgress: null,
-  }
-
-  constructor(props: LayoutRootProps) {
-    super(props)
-
-    this.path = getPath()
   }
 
   componentDidMount() {
