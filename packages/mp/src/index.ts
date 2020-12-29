@@ -1,7 +1,4 @@
-import {
-  SwiperImg as SwiperImgMP,
-  SwiperCategory as SwiperCategoryMP,
-} from './component/swiper'
+import { SwiperImg, SwiperCategory } from './component/swiper'
 import LocalStorage from './storage'
 import SafeHeaderMP from './component/safe_header'
 
@@ -110,8 +107,8 @@ export {
   Nav,
   VList,
   Status,
-  SwiperImgMP,
-  SwiperCategoryMP,
+  SwiperImg,
+  SwiperCategory,
   SafeHeaderMP,
   useFirstDidShow,
 }
