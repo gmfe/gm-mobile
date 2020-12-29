@@ -54,6 +54,7 @@ class LayoutRootBase extends Component<LayoutRootState> {
 }
 
 const LayoutRootStatics: LayoutRootStaticsTypes = {
+  Type: LayoutRootType,
   setComponent(type, com) {
     // 说明：针对toast在切换页面后没有正常消失做清除处理
     if (type === LayoutRootType.TOAST && com === null) {

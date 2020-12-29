@@ -5,7 +5,7 @@ import { devWarnForHook } from '@gm-mobile/c-tool'
 
 import { Flex } from '../flex'
 import { Mask } from '../mask'
-import { LayoutRoot, LayoutRootType } from '../layout_root'
+import { LayoutRoot } from '../layout_root'
 import { Button } from '../button'
 import { View } from '../view'
 import { Text } from '../text'
@@ -13,10 +13,10 @@ import { PopupProps, PopupStaticsTypes } from './types'
 
 const PopupStatics: PopupStaticsTypes = {
   render(options) {
-    LayoutRoot.renderWith(LayoutRootType.POPUP, <Popup {...options} />)
+    LayoutRoot.renderWith(LayoutRoot.Type.POPUP, <Popup {...options} />)
   },
   hide() {
-    LayoutRoot.hideWith(LayoutRootType.POPUP)
+    LayoutRoot.hideWith(LayoutRoot.Type.POPUP)
   },
 }
 

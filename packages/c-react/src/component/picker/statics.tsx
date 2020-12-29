@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { LayoutRoot, LayoutRootType } from '../layout_root'
+import { LayoutRoot } from '../layout_root'
 import { Popup } from '../popup'
 import { OptionsProps, PickerStaticTypes } from './types'
 
 const PickerStatics: PickerStaticTypes = {
   render(options: OptionsProps) {
     LayoutRoot.renderWith(
-      LayoutRootType.PICKER,
+      LayoutRoot.Type.PICKER,
       <Popup
         {...options}
         onHide={() => {
@@ -22,7 +22,7 @@ const PickerStatics: PickerStaticTypes = {
   },
 
   hide() {
-    LayoutRoot.hideWith(LayoutRootType.PICKER)
+    LayoutRoot.hideWith(LayoutRoot.Type.PICKER)
   },
 }
 

@@ -3,7 +3,7 @@ import React, { useState, FC, ChangeEvent } from 'react'
 import _ from 'lodash'
 import { Flex } from '../flex'
 import { Mask } from '../mask'
-import { LayoutRoot, LayoutRootType } from '../layout_root'
+import { LayoutRoot } from '../layout_root'
 import { View } from '../view'
 import Input from './input'
 import {
@@ -133,7 +133,7 @@ const DialogStatics: DialogStaticsTypes<string | RenderOptions> = {
       }
 
       LayoutRoot.renderWith(
-        LayoutRootType.MODAL,
+        LayoutRoot.Type.MODAL,
         <DialogBase {...(options as DialogBaseProps)} />
       )
     })
@@ -151,7 +151,7 @@ const DialogStatics: DialogStaticsTypes<string | RenderOptions> = {
     return DialogStatics.render(options, 'prompt')
   },
   hide() {
-    LayoutRoot.hideWith(LayoutRootType.MODAL)
+    LayoutRoot.hideWith(LayoutRoot.Type.MODAL)
   },
 }
 

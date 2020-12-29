@@ -29,6 +29,7 @@ interface LayoutRootStaticsTypes {
     options?: object
   ) => void
   hideWith: (type: LayoutRootType) => void
+  Type: any
 }
 
 interface CBMapType {
