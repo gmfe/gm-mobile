@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import './app.less'
 
 window.Symbol = window.Symbol || Symbol

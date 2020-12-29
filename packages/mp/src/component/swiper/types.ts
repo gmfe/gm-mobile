@@ -1,4 +1,3 @@
-import { CSSProperties } from 'react'
 import { ViewProps } from '@gm-mobile/c-react'
 import { SwiperProps } from '@tarojs/components/types/Swiper'
 
@@ -11,14 +10,12 @@ export interface SwiperImgProps extends ViewProps {
   options?: SwiperProps
   /** 定义 swiper 高度，官方默认 150px */
   height?: string
-  style?: CSSProperties
 }
 
 export interface SwiperCategoryProps extends ViewProps {
   /** swiper 容器高度 */
   height: string
   options?: SwiperProps
-  style?: CSSProperties
 }
 
 export interface SwiperPaginationProps {

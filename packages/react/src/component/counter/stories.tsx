@@ -1,7 +1,7 @@
 import React from 'react'
 import { observable } from 'mobx'
 
-import { Counter, CounterErrorMsg } from '.'
+import Counter, { CounterErrorMsg } from './counter'
 import { Page } from '@gm-mobile/c-react'
 
 const store = observable({

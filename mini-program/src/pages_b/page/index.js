@@ -5,7 +5,7 @@ import {
   Toast,
   View,
   useFirstDidShow,
-} from '../../../../packages/mp/src'
+} from '../../../../packages/mp'
 import { useDidShow, usePullDownRefresh, useReachBottom } from '@tarojs/taro'
 import { useRequest } from 'ahooks'
 
