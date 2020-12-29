@@ -1,3 +1,2 @@
-import QRCode from './qrcode'
-
-export default QRCode
+export { default as QRCode } from './qrcode'
+export type { QRCodeProps } from './type'
