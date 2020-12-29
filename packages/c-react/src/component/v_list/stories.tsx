@@ -4,7 +4,7 @@ import { VList } from '.'
 import { View } from '../view'
 import { Button } from '../button'
 import { Page } from '../page'
-import { VListRef } from './type'
+import { VListRef } from './types'
 
 const Item = ({ data }: any) => {
   const [show, setShow] = useState(false)

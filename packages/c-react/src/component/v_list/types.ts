@@ -30,7 +30,7 @@ interface VListProps extends Omit<ScrollIntoViewProps, 'targetId'> {
 }
 
 interface VListRef {
-  apiDoScrollToKey: (value: any) => void
+  apiDoScrollToKey: (key: string) => void
 }
 
 export type { VListItemProps, VListProps, VListRef }

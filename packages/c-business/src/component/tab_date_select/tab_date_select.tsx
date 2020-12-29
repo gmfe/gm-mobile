@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { ReactElement, useState } from 'react'
 import {
   Tabs,
   Popup,
@@ -12,10 +12,16 @@ import {
 import { getLocale } from '@gm-mobile/locales'
 import _ from 'lodash'
 import moment from 'moment'
-import PropTypes from 'prop-types'
 import getScreenHeight from './get_screen_height'
+import {
+  TabDateSelectProps,
+  TabDateSelectServiceTime,
+  TabDateSelectStaticProps,
+} from './types'
 
-const getServiceTimeRange = (serviceTime) => {
+const getServiceTimeRange = (
+  serviceTime: TabDateSelectServiceTime
+): { min: Date; max: Date } => {
   const maxSpanEnd =
     serviceTime.type === 2
       ? serviceTime.receive_time_limit.e_span_time
@@ -24,19 +30,19 @@ const getServiceTimeRange = (serviceTime) => {
   const daysWithSpan = moment().add(maxSpanEnd, 'd')
   const maxTemp = daysWithSpan.isAfter(days30) ? days30 : daysWithSpan
   return {
-    min: moment(maxTemp).add(-3, 'month'),
-    max: maxTemp,
+    min: moment(maxTemp).add(-3, 'month').toDate(),
+    max: maxTemp.toDate(),
   }
 }
 
-const TabDateSelect = ({
+function TabDateSelectBase({
   tabs,
   selectedTab,
   begin,
   end,
   onSelect,
   serviceTimeList,
-}) => {
+}: TabDateSelectProps): ReactElement<any, any> | null {
   const [beginDate, setBeginDate] = useState(begin)
   const [endDate, setEndDate] = useState(end)
   const [activeTab, setActiveTab] = useState(
@@ -56,14 +62,14 @@ const TabDateSelect = ({
 
   const handleSelectServiceTime = () => {
     SelectPicker.render({
-      data: serviceTimeList,
-      value: activeTab.selectedServiceTime.value,
+      data: serviceTimeList!,
+      value: activeTab.selectedServiceTime!.value,
     }).then((value) => {
       const serviceTime = _.find(
         serviceTimeList,
         (item) => item.value === value
       )
-      const { min, max } = getServiceTimeRange(serviceTime)
+      const { min, max } = getServiceTimeRange(serviceTime!)
       if (
         moment(beginDate) < moment(min) ||
         moment(beginDate) > moment(max) ||
@@ -79,15 +85,16 @@ const TabDateSelect = ({
         max,
         selectedServiceTime: serviceTime,
       })
+      return null
     })
   }
 
-  const handleTabChange = (value) => {
+  const handleTabChange = (value: string) => {
     if (value !== activeTab.value) {
       const tab = _.find(tabs, (tab) => tab.value === value)
-      setActiveTab(tab)
-      setBeginDate(tab.max)
-      setEndDate(tab.max)
+      setActiveTab(tab!)
+      setBeginDate(tab!.max)
+      setEndDate(tab!.max)
     }
   }
 
@@ -149,50 +156,38 @@ const TabDateSelect = ({
   )
 }
 
-TabDateSelect.render = ({ title, ...rest }) => {
-  return new Promise((resolve, reject) => {
-    Popup.render({
-      title: title,
-      bottom: true,
-      height: '90%',
-      children: (
-        <TabDateSelect
-          {...rest}
-          onSelect={(result) => {
-            TabDateSelect.hide()
-            setTimeout(() => {
-              resolve(result)
-            }, 50)
-          }}
-        />
-      ),
-      onHide: () => {
-        TabDateSelect.hide()
-        setTimeout(() => {
-          reject(new Error())
-        }, 50)
-      },
+const TabDateSelectStatic: TabDateSelectStaticProps = {
+  render({ title, ...rest }) {
+    return new Promise((resolve, reject) => {
+      Popup.render({
+        title: title,
+        bottom: true,
+        height: '90%',
+        children: (
+          <TabDateSelect
+            {...rest}
+            onSelect={(result) => {
+              TabDateSelect.hide()
+              setTimeout(() => {
+                resolve(result)
+              }, 50)
+            }}
+          />
+        ),
+        onHide: () => {
+          TabDateSelect.hide()
+          setTimeout(() => {
+            reject(new Error())
+          }, 50)
+        },
+      })
     })
-  })
+  },
+  hide() {
+    Popup.hide()
+  },
 }
 
-TabDateSelect.hide = () => {
-  Popup.hide()
-}
-
-TabDateSelect.propTypes = {
-  /** 切换 tabs 配置 [{ text, value, min, max }] */
-  tabs: PropTypes.array.isRequired,
-  /** 选中的 tab value */
-  selectedTab: PropTypes.any,
-  /** 开始日期 */
-  begin: PropTypes.object,
-  /** 结束日期 */
-  end: PropTypes.object,
-  /** 确定回调 */
-  onSelect: PropTypes.func.isRequired,
-  /** 运营周期列表 */
-  serviceTimeList: PropTypes.array,
-}
+const TabDateSelect = Object.assign(TabDateSelectBase, TabDateSelectStatic)
 
 export default TabDateSelect
