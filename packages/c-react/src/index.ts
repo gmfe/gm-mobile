@@ -1,7 +1,4 @@
 // 无特殊直接export * from xxx 即可
-import LayoutRoot from './component/layout_root'
-
-export { LayoutRoot }
 
 export * from './component/button'
 export * from './component/view'
@@ -38,3 +35,4 @@ export * from './component/tooltip'
 export * from './component/picker'
 export * from './component/action_sheet'
 export * from './component/v_list'
+export * from './component/layout_root'

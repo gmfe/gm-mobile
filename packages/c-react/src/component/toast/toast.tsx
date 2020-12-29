@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import classNames from 'classnames'
 import { View } from '../view'
 import { Text } from '../text'
-import LayoutRoot from '../layout_root'
+import { LayoutRoot, LayoutRootType } from '../layout_root'
 import { Loading } from '../loading'
 import { Mask } from '../mask'
 import { Flex } from '../flex'
@@ -13,7 +13,7 @@ let timer: any = null
 const ToastStatics: ToastStaticsTypes = {
   clear() {
     clearTimeout(timer)
-    LayoutRoot.removeComponent(LayoutRoot.TYPE.TOAST)
+    LayoutRoot.removeComponent(LayoutRootType.TOAST)
   },
   _tip(options = {}, type) {
     clearTimeout(timer)
@@ -39,7 +39,7 @@ const ToastStatics: ToastStaticsTypes = {
       }, options.time)
     }
 
-    LayoutRoot.setComponent(LayoutRoot.TYPE.TOAST, <Toast {...options} />)
+    LayoutRoot.setComponent(LayoutRootType.TOAST, <Toast {...options} />)
   },
   tip(options) {
     ToastStatics._tip(options)
