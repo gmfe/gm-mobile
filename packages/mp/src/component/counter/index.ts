@@ -1,2 +1,2 @@
-export { default as Counter } from './counter'
-export type { CounterProps } from './counter'
+export { default as CounterMP } from './counter'
+export type { CounterMPProps } from './counter'

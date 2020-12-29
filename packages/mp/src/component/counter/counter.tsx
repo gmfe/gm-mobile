@@ -7,7 +7,7 @@ import Big from 'big.js'
 import { BaseEventOrig } from '@tarojs/components'
 import { InputProps as TaroInputProps } from '@tarojs/components/types/Input'
 
-interface CounterProps
+interface CounterMPProps
   extends Omit<HtmlHTMLAttributes<HTMLDivElement>, 'onChange'> {
   /** +/- 号回调，数字确认键盘及失焦回调 */
   onChange: (value: string) => void
@@ -27,10 +27,10 @@ interface CounterProps
   /** 键盘弹起时，是否自动上推页面 */
   adjustPosition?: boolean
   /** 触发最小或最大值时，回调 */
-  getErrorMsg?: (value: CounterErrorMsg) => string
+  getErrorMsg?: (value: CounterMPErrorMsg) => string
 }
 
-interface CounterErrorMsg {
+interface CounterMPErrorMsg {
   value: string
   min?: number
   max?: number
@@ -44,7 +44,7 @@ const text2Number = (value: string) => {
   return _.isNaN(parseFloat(value)) ? '' : parseFloat(value)
 }
 
-const handleErrorMsg = ({ value, min, max, precision }: CounterErrorMsg) => {
+const handleErrorMsg = ({ value, min, max, precision }: CounterMPErrorMsg) => {
   let msg = null
   const cv = text2Number(value)
   if (max && cv > max) {
@@ -69,7 +69,7 @@ const handleErrorMsg = ({ value, min, max, precision }: CounterErrorMsg) => {
   return msg
 }
 
-const Counter: FC<CounterProps> = ({
+const CounterMP: FC<CounterMPProps> = ({
   value = '',
   min = 0,
   max,
@@ -191,5 +191,5 @@ const Counter: FC<CounterProps> = ({
   )
 }
 
-export default Counter
-export type { CounterProps }
+export default CounterMP
+export type { CounterMPProps }

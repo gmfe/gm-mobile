@@ -1,8 +1,8 @@
 import React, { useReducer } from 'react'
-import { Counter } from '.'
+import { CounterMP } from '.'
 import { Page, View } from '@gm-mobile/c-react'
 
-interface CounterErrorMsg {
+interface CounterMPErrorMsg {
   value: string
   min?: number
   max?: number
@@ -24,7 +24,7 @@ export const Normal = () => {
     diyValue: '',
   })
 
-  const handleCheckValue = ({ value, min, max }: CounterErrorMsg) => {
+  const handleCheckValue = ({ value, min, max }: CounterMPErrorMsg) => {
     if (+value > 10) {
       return '库存不足'
     }
@@ -39,7 +39,7 @@ export const Normal = () => {
     <Page>
       default形式
       <View className='m-padding-10'>
-        <Counter
+        <CounterMP
           value={state.defaultValue}
           min={3}
           max={100}
@@ -50,7 +50,7 @@ export const Normal = () => {
       </View>
       关闭键盘上下限校验
       <View className='m-padding-10'>
-        <Counter
+        <CounterMP
           value={state.closeCheckValue}
           min={3}
           max={100}
@@ -62,7 +62,7 @@ export const Normal = () => {
       </View>
       disable
       <View className='m-padding-10'>
-        <Counter
+        <CounterMP
           value={state.disableValue}
           disabled
           onChange={(value) => {
@@ -72,7 +72,7 @@ export const Normal = () => {
       </View>
       自定义提示信息
       <View className='m-padding-10'>
-        <Counter
+        <CounterMP
           min={3}
           max={10}
           value={state.diyValue}
