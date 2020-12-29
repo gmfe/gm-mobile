@@ -1,4 +1,7 @@
-export { default as SwiperImg } from './swiper_img'
-export { default as SwiperCategory } from './swiper_category'
+export { default as SwiperImgMP } from './swiper_img'
+export { default as SwiperCategoryMP } from './swiper_category'
 
-export type { SwiperImgProps, SwiperCategoryProps } from './types'
+export type {
+  SwiperImgProps as SwiperImgMPProps,
+  SwiperCategoryProps as SwiperCategoryMPProps,
+} from './types'
