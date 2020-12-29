@@ -2,7 +2,7 @@ import React, { useReducer } from 'react'
 import { Counter } from '.'
 import { Page, View } from '@gm-mobile/c-react'
 
-interface ErrorMsg {
+interface CounterErrorMsg {
   value: string
   min?: number
   max?: number
@@ -24,7 +24,7 @@ export const Normal = () => {
     diyValue: '',
   })
 
-  const handleCheckValue = ({ value, min, max }: ErrorMsg) => {
+  const handleCheckValue = ({ value, min, max }: CounterErrorMsg) => {
     if (+value > 10) {
       return '库存不足'
     }

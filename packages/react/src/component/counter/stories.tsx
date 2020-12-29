@@ -1,7 +1,7 @@
 import React from 'react'
 import { observable } from 'mobx'
 
-import { Counter, ErrorMsg } from '.'
+import { Counter, CounterErrorMsg } from '.'
 import { Page } from '@gm-mobile/c-react'
 
 const store = observable({
@@ -18,7 +18,7 @@ const store = observable({
 })
 
 export const normal = () => {
-  const handleCheckValue = ({ value }: ErrorMsg) => {
+  const handleCheckValue = ({ value }: CounterErrorMsg) => {
     if (+value > 10) {
       return '库存不足'
     }

@@ -27,10 +27,10 @@ interface CounterProps
   /** 键盘弹起时，是否自动上推页面 */
   adjustPosition?: boolean
   /** 触发最小或最大值时，回调 */
-  getErrorMsg?: (value: ErrorMsg) => string
+  getErrorMsg?: (value: CounterErrorMsg) => string
 }
 
-interface ErrorMsg {
+interface CounterErrorMsg {
   value: string
   min?: number
   max?: number
@@ -44,7 +44,7 @@ const text2Number = (value: string) => {
   return _.isNaN(parseFloat(value)) ? '' : parseFloat(value)
 }
 
-const handleErrorMsg = ({ value, min, max, precision }: ErrorMsg) => {
+const handleErrorMsg = ({ value, min, max, precision }: CounterErrorMsg) => {
   let msg = null
   const cv = text2Number(value)
   if (max && cv > max) {

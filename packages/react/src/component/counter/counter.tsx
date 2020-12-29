@@ -26,9 +26,9 @@ interface CounterProps
    * 满足条件返回错误信息，string类型
    * 否则返回null
    */
-  getErrorMsg?: (value: ErrorMsg) => string
+  getErrorMsg?: (value: CounterErrorMsg) => string
 }
-interface ErrorMsg {
+interface CounterErrorMsg {
   value: string
   min?: number
   max?: number
@@ -145,4 +145,4 @@ const Counter: FC<CounterProps> = ({
 }
 
 export default Counter
-export type { CounterProps, ErrorMsg }
+export type { CounterProps, CounterErrorMsg }
