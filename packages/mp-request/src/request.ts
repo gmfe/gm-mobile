@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from 'taro-axios'
+import { axios, AxiosRequestConfig } from 'taro-axios'
 import _ from 'lodash'
 import { LocalStorage } from '@gm-mobile/mp'
 import {

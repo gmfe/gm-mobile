@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Input, Button } from '../../mp'
+import { View, Input, Button } from '../../c-react'
 import Cookie from './cookie'
 import { is } from '@gm-mobile/c-tool'
 
