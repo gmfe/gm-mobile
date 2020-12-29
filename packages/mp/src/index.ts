@@ -4,7 +4,6 @@ import {
 } from './component/swiper'
 import LocalStorage from './storage'
 import MapMP from './component/map'
-import StatusBarMP from './component/status_bar'
 import SafeHeaderMP from './component/safe_header'
 
 import useFirstDidShow from './hook/use_first_did_show'
@@ -115,7 +114,6 @@ export {
   SwiperImgMP,
   SwiperCategoryMP,
   MapMP,
-  StatusBarMP,
   SafeHeaderMP,
   useFirstDidShow,
 }
@@ -123,3 +121,4 @@ export {
 export * from './component/image'
 export * from './component/page'
 export * from './component/counter'
+export * from './component/status_bar'
