@@ -14,7 +14,7 @@ const webpackFinal = (config) => {
     }
 
     if (rule.loader && rule.loader.includes('file-loader')) {
-      rule.test = /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani|pdf)(\?.*)?$/
+      rule.test = /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani|pdf|svg)(\?.*)?$/
     }
   })
 
@@ -22,19 +22,6 @@ const webpackFinal = (config) => {
     test: /\.stories\.tsx?$/,
     loaders: [require.resolve('@storybook/source-loader')],
     enforce: 'pre',
-  })
-
-  config.module.rules.push({
-    test: /(gm-mobile-icons)\.(woff|woff2|ttf|eot|svg)($|\?)/,
-    use: [
-      {
-        loader: 'url-loader',
-        options: {
-          limit: 1024,
-          name: 'static/media/font/[name].[hash:8].[ext]',
-        },
-      },
-    ],
   })
 
   config.module.rules.push({
