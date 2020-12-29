@@ -22,6 +22,7 @@
   },
   "peerDependencies": {
     "qrcode.react": "^1.0.0",
-    "weapp-qrcode": "^1.0.0"
+    "weapp-qrcode": "^1.0.0",
+    "@types/qrcode.react": "^1.0.1"
   }
 }

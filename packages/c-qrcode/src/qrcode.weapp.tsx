@@ -1,17 +1,17 @@
-import React, { useEffect, useMemo } from 'react'
-import PropTypes from 'prop-types'
+import React, { useEffect, useMemo, FC } from 'react'
 import { Canvas } from '@tarojs/components'
 import drawQrCode from 'weapp-qrcode'
+import { LevelMapProps, QRCodeProps } from './type'
 
-const levelMap = {
+const levelMap: LevelMapProps = {
   L: 1,
   M: 0,
   Q: 3,
   H: 2,
 }
 
-const QRCode = ({ value, size, level }) => {
-  const id = useMemo(() => Math.random(), [])
+const QRCode: FC<QRCodeProps> = ({ value, size = 200, level = 'L' }) => {
+  const id = useMemo(() => Math.random().toString(), [])
 
   useEffect(() => {
     drawQrCode({
@@ -33,16 +33,6 @@ const QRCode = ({ value, size, level }) => {
       }}
     />
   )
-}
-
-QRCode.propTypes = {
-  value: PropTypes.string.isRequired,
-  size: PropTypes.number,
-  level: PropTypes.oneOf(['L', 'M', 'Q', 'H']),
-}
-
-QRCode.defaultProps = {
-  size: 200,
 }
 
 export default QRCode
