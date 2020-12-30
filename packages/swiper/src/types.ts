@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react'
+import { HTMLAttributes, FC } from 'react'
 import { FlexProps } from '@gm-mobile/react'
 import { SwiperOptions } from 'swiper'
 
@@ -16,7 +16,7 @@ export interface SwiperCategoryProps extends HTMLAttributes<HTMLDivElement> {
   className?: string
 }
 
-export interface PreviewImageProps extends FlexProps {
+export interface _PreviewImageProps extends FlexProps {
   /** 图片数组 [{onClick, img}] */
   images: { onClick?(): any; img: string }[]
   /** 关闭预览回调 */
@@ -27,6 +27,9 @@ export interface PreviewImageProps extends FlexProps {
 }
 
 export interface PreviewImageStaticsProps {
-  render(options: PreviewImageProps): void
+  render(options: _PreviewImageProps): void
   hide(): void
 }
+
+export type PreviewImageProps = FC<_PreviewImageProps> &
+  PreviewImageStaticsProps

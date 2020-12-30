@@ -2,9 +2,14 @@ import React, { useState, FC } from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { Flex, LayoutRoot, Image } from '@gm-mobile/react'
+
 import SwiperImg from '../swiper_img'
 
-import { PreviewImageProps, PreviewImageStaticsProps } from '../types'
+import {
+  PreviewImageProps,
+  PreviewImageStaticsProps,
+  _PreviewImageProps,
+} from '../types'
 
 const PreviewImageStatics: PreviewImageStaticsProps = {
   render(options) {
@@ -20,7 +25,7 @@ const PreviewImageStatics: PreviewImageStaticsProps = {
   },
 }
 
-const PreviewImage: FC<PreviewImageProps> = ({
+const PreviewImage: FC<_PreviewImageProps> = ({
   images,
   defaultIndex = 0,
   className,
@@ -61,6 +66,7 @@ const PreviewImage: FC<PreviewImageProps> = ({
                 pagination: { el: 'null' },
                 on: {
                   slideChange: function () {
+                    // @ts-ignore：这里的指针指向的是 swiper 实例
                     handleChange(this.realIndex)
                   },
                 },
@@ -75,4 +81,4 @@ const PreviewImage: FC<PreviewImageProps> = ({
 
 Object.assign(PreviewImage, PreviewImageStatics)
 
-export default PreviewImage as FC<PreviewImageProps> & PreviewImageStaticsProps
+export default PreviewImage as PreviewImageProps
