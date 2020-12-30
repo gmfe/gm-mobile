@@ -1,13 +1,15 @@
 import { ReactNode } from 'react'
 
+type State = null | ReactNode
+
 interface LayoutRootState {
-  innerLayer: null | ReactNode
-  popup: null | ReactNode
-  picker: null | ReactNode
-  keyboard: null | ReactNode
-  modal: null | ReactNode
-  toast: null | ReactNode
-  nProgress: null | ReactNode
+  innerLayer?: State
+  popup?: State
+  picker?: State
+  keyboard?: State
+  modal?: State
+  toast?: State
+  nProgress?: State
 }
 
 enum LayoutRootType {
@@ -20,24 +22,17 @@ enum LayoutRootType {
   N_PROGRESS = 'nProgress',
 }
 
-interface LayoutRootStaticsTypes {
-  setComponent: (type: LayoutRootType, com: null | ReactNode) => void
+interface LayoutRootStatic {
+  Type: typeof LayoutRootType
+  setComponent: (type: LayoutRootType, com: State) => void
   removeComponent: (type: LayoutRootType) => void
-  renderWith: (
-    type: LayoutRootType,
-    Component: null | ReactNode,
-    options?: object
-  ) => void
+  renderWith: (type: LayoutRootType, Component: State, options?: object) => void
   hideWith: (type: LayoutRootType) => void
-  Type: any
 }
 
 interface CBMapType {
-  [propName: string]: (
-    type: LayoutRootType,
-    component: null | ReactNode
-  ) => void
+  [propName: string]: ((type: LayoutRootType, component: State) => void) | null
 }
 
-export type { LayoutRootState, CBMapType, LayoutRootStaticsTypes }
+export type { LayoutRootState, CBMapType, LayoutRootStatic }
 export { LayoutRootType }

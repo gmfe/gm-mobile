@@ -4,6 +4,7 @@
 
 InputProps form => isForm
 TextAreaProps form => isForm
+LayoutRoot TYPE => Type
 
 # 2.x
 
