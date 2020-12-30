@@ -73,7 +73,7 @@ const VList = forwardRef<VListRef, VListProps>(
       renderItem,
       itemHeight,
       itemKey = (data: { item: any; index: number }) => {
-        return data.index
+        return _.toString(data.index)
       },
       style,
       height,

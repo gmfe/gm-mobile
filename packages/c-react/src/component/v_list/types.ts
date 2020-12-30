@@ -20,7 +20,7 @@ interface VListProps extends Omit<ScrollIntoViewProps, 'targetId'> {
   /** 列表高度 */
   height: number
   /** 定义item key值({item, index}) */
-  itemKey?: (data: { item: any; index: number }) => string | number
+  itemKey?: (data: { item: any; index: number }) => string
   /** 设置滚动throttle delay 参数, 默认100ms */
   delay?: number
   /** 定义可视区域外增加的渲染距离, 默认为itemHeight */

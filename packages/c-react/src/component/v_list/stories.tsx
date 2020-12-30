@@ -27,7 +27,7 @@ export const VListDemo = () => {
     <Page>
       <Button
         onClick={() => {
-          ref.current!.apiDoScrollToKey(29)
+          ref.current!.apiDoScrollToKey('29')
         }}
       >
         scroll to 29
