@@ -1,8 +1,8 @@
 import React from 'react'
-import { Popup, LayoutRoot } from '@gm-mobile/c-react'
+import { Popup, LayoutRoot, PopupProps } from '@gm-mobile/c-react'
 
 const PickerStatics = {
-  render(options) {
+  render(options: PopupProps) {
     const _onHide = options.onHide
     options.onHide = () => {
       PickerStatics.hide()

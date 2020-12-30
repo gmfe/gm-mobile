@@ -1,8 +1,8 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, FC } from 'react'
 import { getLocale } from '@gm-mobile/locales'
 import { CouplingPicker, Flex, Button, View } from '@gm-mobile/c-react'
 import _ from 'lodash'
-import PropTypes from 'prop-types'
+
 import moment from 'moment'
 import PickerStatics from './statics'
 import {
@@ -15,18 +15,10 @@ import {
   processReceiveTimeLimit,
   getCycleList,
 } from './utils'
+import { weekMap } from './enum'
+import { ServiceTimePickerProps, ServiceTimePickerStaticTypes } from './types'
 
-const weekMap = {
-  0: getLocale('周日'),
-  1: getLocale('周一'),
-  2: getLocale('周二'),
-  3: getLocale('周三'),
-  4: getLocale('周四'),
-  5: getLocale('周五'),
-  6: getLocale('周六'),
-}
-
-const cycleToPickerList = (cycleList) => {
+const cycleToPickerList = (cycleList: any) => {
   const dayList = cycleListToDayList(cycleList)
 
   const pickerList = _.map(dayList, (list) => {
@@ -49,18 +41,21 @@ const cycleToPickerList = (cycleList) => {
   return pickerList
 }
 
-const getStartDateFromValues = (startValues, cycleList) => {
+const getStartDateFromValues = (startValues: any, cycleList: any) => {
   const startDatas = cycleToPickerList(getStartCycleList(cycleList))
 
   const one = _.find(startDatas, (v) => v.value === startValues[0])
-  let two = _.find(one.children, (v) => v.value === startValues[1])
+  let two = _.find(one!.children, (v) => v.value === startValues[1])
   if (!two) {
-    two = one.children[0]
+    two = one!.children[0]
   }
   return two.date
 }
 
-const ReceiveTimePicker = ({ onConfirm, order }) => {
+const ReceiveTimePickerBase: FC<ServiceTimePickerProps> = ({
+  onConfirm = _.noop,
+  order,
+}) => {
   const {
     receive_time_limit,
     receive_time,
@@ -104,11 +99,11 @@ const ReceiveTimePicker = ({ onConfirm, order }) => {
     })
   }
 
-  const handleStartChange = (values) => {
+  const handleStartChange = (values: any[]) => {
     setStartValue([...values])
   }
 
-  const handleEndChange = (values) => {
+  const handleEndChange = (values: any[]) => {
     setEndValue([...values])
   }
 
@@ -164,63 +159,65 @@ const ReceiveTimePicker = ({ onConfirm, order }) => {
   )
 }
 
-ReceiveTimePicker.render = (props) => {
-  return new Promise((resolve, reject) => {
-    PickerStatics.render({
-      bottom: true,
-      title: getLocale('收货时间'),
-      onHide: () => {
-        setTimeout(() => {
-          reject(new Error())
-        }, 50)
-      },
-      children: (
-        <ReceiveTimePicker
-          {...props}
-          onConfirm={(values) => {
-            PickerStatics.hide()
-            setTimeout(() => {
-              resolve(values)
-            }, 50)
-          }}
-        />
-      ),
+const ReceiveTimePickerStatic: ServiceTimePickerStaticTypes = {
+  render(props: any) {
+    return new Promise((resolve, reject) => {
+      PickerStatics.render({
+        bottom: true,
+        title: getLocale('收货时间'),
+        onHide: () => {
+          setTimeout(() => {
+            reject(new Error('9090'))
+          }, 50)
+        },
+        children: (
+          <ReceiveTimePicker
+            {...props}
+            onConfirm={(values: any) => {
+              PickerStatics.hide()
+              setTimeout(() => {
+                resolve(values)
+              }, 50)
+            }}
+          />
+        ),
+      })
     })
-  })
+  },
+  // 校验是否有周期时间
+  verifyReceiveTime(order: any) {
+    const { order_time_limit } = order
+
+    // 运营周期
+    const receive_time_limit = _.cloneDeep(
+      order.receive_time.receive_time_limit
+    )
+    const start_order = order_time_limit.start
+    const isLastCycle = moment().isBefore(moment(start_order, 'HH:mm'))
+    // 如果当前时间小于下单的开始和结束时间，则为上个周期
+    if (order_time_limit.e_span_time === 1 && isLastCycle) {
+      receive_time_limit.s_span_time--
+      receive_time_limit.e_span_time--
+    }
+    const receive_time_limit_2 = processReceiveTimeLimit(receive_time_limit)
+    const cycleList = getCycleList(receive_time_limit_2)
+
+    return cycleList.length !== 0
+  },
+  hide() {
+    PickerStatics.hide()
+  },
 }
 
-// 校验是否有周期时间
-ReceiveTimePicker.verifyReceiveTime = (order) => {
-  const { order_time_limit } = order
+// ReceiveTimePicker.propTypes = {
+//   onConfirm: PropTypes.func,
+//   order: PropTypes.object.isRequired,
+// }
 
-  // 运营周期
-  const receive_time_limit = _.cloneDeep(order.receive_time.receive_time_limit)
-  const start_order = order_time_limit.start
-  const isLastCycle = moment().isBefore(moment(start_order, 'HH:mm'))
-  // 如果当前时间小于下单的开始和结束时间，则为上个周期
-  if (order_time_limit.e_span_time === 1 && isLastCycle) {
-    receive_time_limit.s_span_time--
-    receive_time_limit.e_span_time--
-  }
-  const receive_time_limit_2 = processReceiveTimeLimit(receive_time_limit)
-  const cycleList = getCycleList(receive_time_limit_2)
-
-  return cycleList.length !== 0
-}
-
-ReceiveTimePicker.hide = () => {
-  PickerStatics.hide()
-}
-
-ReceiveTimePicker.propTypes = {
-  onConfirm: PropTypes.func,
-  order: PropTypes.object.isRequired,
-}
-
-ReceiveTimePicker.defaultProps = {
-  onConfirm: _.noop,
-}
-
+const ReceiveTimePicker = Object.assign(
+  ReceiveTimePickerBase,
+  ReceiveTimePickerStatic
+)
 /**
  * 普通下单收货时间选择器
  */

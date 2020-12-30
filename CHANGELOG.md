@@ -5,6 +5,7 @@
 InputProps form => isForm
 TextAreaProps form => isForm
 LayoutRoot TYPE => Type
+TabDateSelect value 字段类型: any =》 string
 
 # 2.x
 

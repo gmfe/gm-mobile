@@ -37,7 +37,7 @@ interface TabDateSelectProps {
   serviceTimeList?: TabDateSelectServiceTime[]
 }
 
-interface TabDateSelectStaticProps {
+interface TabDateSelectStaticTypes {
   render(
     data: Omit<TabDateSelectProps, 'onSelect'> & {
       title?: string
@@ -51,5 +51,5 @@ export type {
   TabDateSelectItem,
   TabDateSelectServiceTime,
   TabDataSelectSaveParams,
-  TabDateSelectStaticProps,
+  TabDateSelectStaticTypes,
 }

@@ -1,11 +1,15 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, FC } from 'react'
 import { getLocale } from '@gm-mobile/locales'
 import { CouplingPicker, Flex, Button, View } from '@gm-mobile/c-react'
 import _ from 'lodash'
 import moment from 'moment'
-import PropTypes from 'prop-types'
+
 import PickerStatics from './statics'
 import { getReceiveTimeParams } from './utils'
+import {
+  MultiOrderReceiveTimePickerProps,
+  MultiOrderReceiveTimePickerStaticTypes,
+} from './types'
 
 // 获取运营时间范围
 // 只关注时间，不关注日期
@@ -15,7 +19,7 @@ const getCycList = ({
   receiveEndSpan,
   r_end, // 次日时间
   receiveTimeSpan, // 间隔
-}) => {
+}: any) => {
   let start = moment()
     .add(receiveStartSpan, 'day')
     .set({
@@ -54,7 +58,7 @@ const getCycList = ({
   return result
 }
 
-const getStartCycleList = (cycleList) => {
+const getStartCycleList = (cycleList: any[]) => {
   return _.filter(
     _.map(cycleList, (list, i) => {
       if (i === cycleList.length - 1) {
@@ -66,7 +70,7 @@ const getStartCycleList = (cycleList) => {
   )
 }
 
-const getEndCycleList = (startValue, cycleList) => {
+const getEndCycleList = (startValue: any[], cycleList: any[]) => {
   const startMoment = moment()
     .add(startValue[0], 'day')
     .set({
@@ -80,7 +84,7 @@ const getEndCycleList = (startValue, cycleList) => {
 }
 
 // 生成pick需要的当日，日次数据
-const columnGenerator = (cycList) => {
+const columnGenerator = (cycList: any[]) => {
   return _.map(cycList, (v) => ({
     text: v[0].moment.isBefore(moment().endOf('day'))
       ? getLocale('当日')
@@ -90,7 +94,10 @@ const columnGenerator = (cycList) => {
   }))
 }
 
-const MultiOrderReceiveTimePicker = ({ onConfirm, order }) => {
+const MultiOrderReceiveTimePickerBase: FC<MultiOrderReceiveTimePickerProps> = ({
+  onConfirm = _.noop,
+  order,
+}) => {
   const { receive_time_limit } = useMemo(() => {
     return getReceiveTimeParams(order)
   }, [order])
@@ -121,11 +128,11 @@ const MultiOrderReceiveTimePicker = ({ onConfirm, order }) => {
     })
   }
 
-  const handleStartChange = (values) => {
+  const handleStartChange = (values: any[]) => {
     setStartValue([...values])
   }
 
-  const handleEndChange = (values) => {
+  const handleEndChange = (values: any[]) => {
     setEndValue([...values])
   }
 
@@ -158,43 +165,40 @@ const MultiOrderReceiveTimePicker = ({ onConfirm, order }) => {
   )
 }
 
-MultiOrderReceiveTimePicker.render = (props) => {
-  return new Promise((resolve, reject) => {
-    PickerStatics.render({
-      bottom: true,
-      title: props.title,
-      onHide: () => {
-        setTimeout(() => {
-          reject(new Error())
-        }, 50)
-      },
-      children: (
-        <MultiOrderReceiveTimePicker
-          {...props}
-          onConfirm={(values) => {
-            PickerStatics.hide()
-            setTimeout(() => {
-              resolve(values)
-            }, 50)
-          }}
-        />
-      ),
+const MultiOrderReceiveTimePickerStatic: MultiOrderReceiveTimePickerStaticTypes = {
+  render(props: any) {
+    return new Promise((resolve, reject) => {
+      PickerStatics.render({
+        bottom: true,
+        title: props.title,
+        onHide: () => {
+          setTimeout(() => {
+            reject(new Error())
+          }, 50)
+        },
+        children: (
+          <MultiOrderReceiveTimePicker
+            {...props}
+            onConfirm={(values) => {
+              PickerStatics.hide()
+              setTimeout(() => {
+                resolve(values)
+              }, 50)
+            }}
+          />
+        ),
+      })
     })
-  })
+  },
+  hide() {
+    PickerStatics.hide()
+  },
 }
 
-MultiOrderReceiveTimePicker.hide = () => {
-  PickerStatics.hide()
-}
-
-MultiOrderReceiveTimePicker.propTypes = {
-  onConfirm: PropTypes.func,
-  order: PropTypes.object.isRequired,
-}
-
-MultiOrderReceiveTimePicker.defaultProps = {
-  onConfirm: _.noop,
-}
+const MultiOrderReceiveTimePicker = Object.assign(
+  MultiOrderReceiveTimePickerBase,
+  MultiOrderReceiveTimePickerStatic
+)
 
 /**
  * 多日下单收货时间选择器

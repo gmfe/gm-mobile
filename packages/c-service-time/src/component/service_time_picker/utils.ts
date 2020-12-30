@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import moment from 'moment'
+import moment, { DurationInputArg1, Moment } from 'moment'
 
 // 注意：为了方便，此库的日期都用 moment 格式表示，非 Date
 // 选开始才选结束
@@ -32,7 +32,7 @@ import moment from 'moment'
  * 目前 receiveTimeSpan 为 null，即代表非预售（预算这个一定有值）
  * 非预售可以通过 e_span_time 和 s_span_time 来判断是否跨天
  */
-function processReceiveTimeLimit(receive_time_limit) {
+function processReceiveTimeLimit(receive_time_limit: any) {
   const { receiveEndSpan, s_span_time, e_span_time } = receive_time_limit
 
   return {
@@ -43,7 +43,7 @@ function processReceiveTimeLimit(receive_time_limit) {
 }
 
 // 处理 默认收货时间时间。receive_time 可能不存在。默认收货时间可能不合法，和当前时间比较
-function processStartEndValuesWithCycleList(receiveTime, cycleList) {
+function processStartEndValuesWithCycleList(receiveTime: any, cycleList: any) {
   if (!receiveTime) {
     return {
       startValues: [],
@@ -78,7 +78,7 @@ function processStartEndValuesWithCycleList(receiveTime, cycleList) {
   let startValues = [defaultSpanStartFlag, defaultStart]
   let endValues = [defaultSpanEndFlag, defaultEnd]
 
-  const list = _.flatten(cycleList)
+  const list: any[] = _.flatten(cycleList)
   const hasStart = _.find(list, (v) => +v === +start)
   const hasEnd = _.find(list, (v) => +v === +end)
   if (!hasStart) {
@@ -94,11 +94,11 @@ function processStartEndValuesWithCycleList(receiveTime, cycleList) {
   }
 }
 
-function getFlag(m) {
-  return Math.floor((m - moment().startOf('day')) / (3600 * 24 * 1000))
+function getFlag(m: any) {
+  return Math.floor((m - (moment().startOf('day') as any)) / (3600 * 24 * 1000))
 }
 
-function getTime(spanTime, timeStr, orderTime = null) {
+function getTime(spanTime: DurationInputArg1, timeStr: any, orderTime = null) {
   const time = orderTime ? moment(orderTime) : moment()
   return time
     .add(spanTime, 'days')
@@ -110,7 +110,11 @@ function getTime(spanTime, timeStr, orderTime = null) {
 }
 
 // 获取一个周期的时间
-function getOneCycleTimes(spanTime, receive_time_limit, orderTime = null) {
+function getOneCycleTimes(
+  spanTime: DurationInputArg1,
+  receive_time_limit: any,
+  orderTime = null
+) {
   const { receiveEndSpan, r_start, r_end, receiveTimeSpan } = receive_time_limit
 
   const now = orderTime ? moment(orderTime) : moment()
@@ -132,7 +136,7 @@ function getOneCycleTimes(spanTime, receive_time_limit, orderTime = null) {
 }
 
 // 核心。把周期时间输出一个二维数组，每个元素是当前周期的时间点
-function getCycleList(receive_time_limit, orderTime = null) {
+function getCycleList(receive_time_limit: any, orderTime = null) {
   const { s_span_time, e_span_time } = receive_time_limit
 
   const end = e_span_time + 1
@@ -150,7 +154,7 @@ function getCycleList(receive_time_limit, orderTime = null) {
 }
 
 // 获取开始收货时间的带选项
-function getStartCycleList(cycleList) {
+function getStartCycleList(cycleList: any) {
   const result = _.map(cycleList, (list) => {
     return list.slice(0, -1)
   })
@@ -160,9 +164,9 @@ function getStartCycleList(cycleList) {
 
 // 获取开始后货时间的待选项。
 // 当开始选择后，自然有开始时间 startDate，根据此时间去查属于哪个周期，自然得到待选项
-function getEndCycleList(startDate, cycleList) {
+function getEndCycleList(startDate: any, cycleList: any) {
   let cycleIndex = 0
-  _.each(cycleList, (list, i) => {
+  _.each(cycleList, (list, i: number) => {
     if (startDate >= list[0]) {
       cycleIndex = i
     }
@@ -172,14 +176,14 @@ function getEndCycleList(startDate, cycleList) {
 }
 
 // 周期列表格式对用户看到的待选项UI并不友好，估需要转换下，按日期格式分
-function cycleListToDayList(cycleList) {
+function cycleListToDayList(cycleList: any) {
   const result = []
   // 打平
   const list = _.flatten(cycleList)
 
-  let dayEnd = null
-  let temp = []
-  _.each(list, (d) => {
+  let dayEnd: Moment | null = null
+  let temp: any[] = []
+  _.each(list, (d: any) => {
     if (!dayEnd) {
       dayEnd = moment(d).endOf('day')
     }
@@ -201,7 +205,7 @@ function cycleListToDayList(cycleList) {
 /**
  * 返回计算收货时间需要的参数
  */
-const getReceiveTimeParams = (order) => {
+const getReceiveTimeParams = (order: any) => {
   order = _.cloneDeep(order)
   const { order_time_limit } = order
 
@@ -260,7 +264,7 @@ const getReceiveTimeParams = (order) => {
   }
 }
 
-const convertDay2Bit = (flag) => {
+const convertDay2Bit = (flag: any) => {
   const day = moment().add(flag, 'd').day() || 7 // 1-7 周日值为0 修正
   return 1 << (day - 1)
 }

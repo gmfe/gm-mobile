@@ -16,7 +16,7 @@ import getScreenHeight from './get_screen_height'
 import {
   TabDateSelectProps,
   TabDateSelectServiceTime,
-  TabDateSelectStaticProps,
+  TabDateSelectStaticTypes,
 } from './types'
 
 const getServiceTimeRange = (
@@ -156,7 +156,7 @@ function TabDateSelectBase({
   )
 }
 
-const TabDateSelectStatic: TabDateSelectStaticProps = {
+const TabDateSelectStatic: TabDateSelectStaticTypes = {
   render({ title, ...rest }) {
     return new Promise((resolve, reject) => {
       Popup.render({

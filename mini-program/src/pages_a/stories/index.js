@@ -29,7 +29,7 @@ const Index = () => {
       return require(`../../../../packages/c-cookie/src/stories`)
     }
     if (packageName === 'c-service-time') {
-      return require(`../../../../packages/c-service-time/src/component/stories`)
+      return require(`../../../../packages/c-service-time/src/component/${folder}/stories`)
     }
     if (packageName === 'c-tool') {
       return require(`../../../../packages/c-tool/src/${folder}/stories`)
