@@ -7,16 +7,16 @@ const NProgressStatics = {
   start: function () {
     clearTimeout(timer)
     key = Math.random()
-    LayoutRoot.setComponent(LayoutRoot.TYPE.N_PROGRESS, <NProgress key={key} />)
+    LayoutRoot.setComponent(LayoutRoot.Type.N_PROGRESS, <NProgress key={key} />)
   },
   done: function () {
     clearTimeout(timer)
     LayoutRoot.setComponent(
-      LayoutRoot.TYPE.N_PROGRESS,
+      LayoutRoot.Type.N_PROGRESS,
       <NProgress key={key} percent={100} />
     )
     timer = setTimeout(function () {
-      LayoutRoot.removeComponent(LayoutRoot.TYPE.N_PROGRESS)
+      LayoutRoot.removeComponent(LayoutRoot.Type.N_PROGRESS)
     }, 250)
   },
 }

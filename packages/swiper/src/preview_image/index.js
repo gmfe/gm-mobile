@@ -11,11 +11,11 @@ const PreviewImageStatics = {
       PreviewImageStatics.hide()
     }
 
-    LayoutRoot.renderWith(LayoutRoot.TYPE.POPUP, <PreviewImage {...options} />)
+    LayoutRoot.renderWith(LayoutRoot.Type.POPUP, <PreviewImage {...options} />)
   },
 
   hide() {
-    LayoutRoot.hideWith(LayoutRoot.TYPE.POPUP)
+    LayoutRoot.hideWith(LayoutRoot.Type.POPUP)
   },
 }
 
