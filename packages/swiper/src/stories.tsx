@@ -1,6 +1,7 @@
 import React from 'react'
-import { SwiperImg, SwiperCategory } from './'
+import { SwiperImg, SwiperCategory } from '.'
 import _ from 'lodash'
+
 const arr = [
   {
     onClick: () => {

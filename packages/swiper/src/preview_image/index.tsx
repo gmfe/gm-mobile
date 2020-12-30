@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState, FC } from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { Flex, LayoutRoot, Image } from '@gm-mobile/react'
 import SwiperImg from '../swiper_img'
 
-const PreviewImageStatics = {
+import { PreviewImageProps, PreviewImageStaticsProps } from '../types'
+
+const PreviewImageStatics: PreviewImageStaticsProps = {
   render(options) {
     options.onHide = () => {
       PreviewImageStatics.hide()
@@ -19,10 +20,16 @@ const PreviewImageStatics = {
   },
 }
 
-const PreviewImage = ({ images, defaultIndex, className, onHide, ...rest }) => {
+const PreviewImage: FC<PreviewImageProps> = ({
+  images,
+  defaultIndex = 0,
+  className,
+  onHide = _.noop,
+  ...rest
+}) => {
   const [index, setIndex] = useState(defaultIndex)
 
-  const handleChange = (index) => {
+  const handleChange = (index: number) => {
     setIndex(index)
   }
 
@@ -51,7 +58,7 @@ const PreviewImage = ({ images, defaultIndex, className, onHide, ...rest }) => {
               options={{
                 initialSlide: defaultIndex,
                 autoplay: false,
-                pagination: { el: null },
+                pagination: { el: 'null' },
                 on: {
                   slideChange: function () {
                     handleChange(this.realIndex)
@@ -68,20 +75,4 @@ const PreviewImage = ({ images, defaultIndex, className, onHide, ...rest }) => {
 
 Object.assign(PreviewImage, PreviewImageStatics)
 
-PreviewImage.defaultProps = {
-  onHide: _.noop,
-  defaultIndex: 0,
-}
-
-PreviewImage.propTypes = {
-  /** 图片数组 [{onClick, img}] */
-  images: PropTypes.array.isRequired,
-  /** 关闭预览回调 */
-  onHide: PropTypes.func,
-  /** 多图片预览时，默认预览的图片下标 */
-  defaultIndex: PropTypes.number,
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
-
-export default PreviewImage
+export default PreviewImage as FC<PreviewImageProps> & PreviewImageStaticsProps

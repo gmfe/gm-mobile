@@ -1,5 +1,9 @@
 {
   "extends": "ts-config-gm-react-app/tsconfig",
+  "types" : [
+    "react-dom",
+    "swiper",
+  ],
   "compilerOptions": {
     "jsx": "react",
     "importsNotUsedAsValues": "preserve",
