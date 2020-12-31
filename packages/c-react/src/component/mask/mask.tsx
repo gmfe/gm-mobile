@@ -12,8 +12,8 @@ const Mask: FC<MaskProps> = ({ opacity = 0.5, className, style, ...rest }) => {
       {...rest}
       className={classNames('m-mask', className)}
       style={{
-        opacity,
         ...style,
+        opacity,
       }}
     />
   )
