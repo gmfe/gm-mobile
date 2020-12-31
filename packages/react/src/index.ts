@@ -18,7 +18,6 @@ import {
   LetterIndexMultiple,
 } from './component/letter_index/index'
 import CSSVariable from './css_variable'
-import Canvas from './component/canvas'
 import { LocalStorage, SessionStorage } from './storage'
 
 import { Dialog } from '@gm-mobile/c-react'
@@ -48,7 +47,6 @@ export {
   CSSVariable,
   LocalStorage,
   SessionStorage,
-  Canvas,
 }
 
 export * from '@gm-mobile/c-react'
@@ -61,3 +59,4 @@ export * from './component/header'
 export * from './component/counter'
 export * from './component/progress_bar'
 export * from './component/scroll'
+export * from './component/canvas'

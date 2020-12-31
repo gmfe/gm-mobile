@@ -1,5 +1,5 @@
 import React from 'react'
-import Canvas from '.'
+import Canvas from './canvas'
 
 export const normal = () => {
   return <Canvas width={400} height={600} />
