@@ -3,7 +3,7 @@ interface SelectData {
   text: string
   value: string | number
 }
-interface ActionSheetStaticsProps {
+interface ActionSheetStatic {
   render: (value: {
     data: SelectData[]
     title?: string
@@ -19,11 +19,11 @@ interface ActionSheetBaseProps {
   onCancel?: () => void
 }
 
-type ActionSheetProps = ActionSheetStaticsProps & ActionSheetBaseProps
+type ActionSheetProps = ActionSheetStatic & ActionSheetBaseProps
 
 export type {
   ActionSheetProps,
   ActionSheetBaseProps,
   SelectData,
-  ActionSheetStaticsProps,
+  ActionSheetStatic,
 }

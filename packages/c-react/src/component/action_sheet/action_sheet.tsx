@@ -6,11 +6,11 @@ import { View } from '../view'
 import {
   ActionSheetBaseProps,
   SelectData,
-  ActionSheetStaticsProps,
+  ActionSheetStatic,
   ActionSheetProps,
 } from './type'
 
-const ActionSheetStatics: ActionSheetStaticsProps = {
+const ActionSheetStatics: ActionSheetStatic = {
   render({ title, data, renderItem }) {
     return new Promise((resolve, reject) => {
       Popup.render({
