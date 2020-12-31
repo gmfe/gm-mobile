@@ -8,7 +8,6 @@ export * from './component/image'
 export * from './component/page'
 export * from './component/counter'
 export * from './component/status_bar'
-export * from './component/map'
 export * from './component/swiper'
 export * from './component/safe_header'
 export { LocalStorage, useFirstDidShow }
