@@ -15,7 +15,7 @@ interface TabDateSelectItem {
   selectedServiceTime?: TabDateSelectServiceTime
 }
 
-interface TabDataSelectSaveParams {
+interface TabDateSelectSaveParams {
   selectedTab: string
   begin: Date
   end: Date
@@ -32,7 +32,7 @@ interface TabDateSelectProps {
   /** 结束日期 */
   end: Date
   /** 确定回调 */
-  onSelect: (data: TabDataSelectSaveParams) => void
+  onSelect: (data: TabDateSelectSaveParams) => void
   /** 运营周期列表 */
   serviceTimeList?: TabDateSelectServiceTime[]
 }
@@ -42,7 +42,7 @@ interface TabDateSelectStaticTypes {
     data: Omit<TabDateSelectProps, 'onSelect'> & {
       title?: string
     } // 使用promise形式，去掉onSelect
-  ): Promise<TabDataSelectSaveParams>
+  ): Promise<TabDateSelectSaveParams>
   hide(): void
 }
 
@@ -50,6 +50,6 @@ export type {
   TabDateSelectProps,
   TabDateSelectItem,
   TabDateSelectServiceTime,
-  TabDataSelectSaveParams,
+  TabDateSelectSaveParams,
   TabDateSelectStaticTypes,
 }

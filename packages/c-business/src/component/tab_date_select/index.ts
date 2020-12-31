@@ -1,1 +1,1 @@
-export { default as TabDataSelect } from './tab_date_select'
+export { default as TabDateSelect } from './tab_date_select'
