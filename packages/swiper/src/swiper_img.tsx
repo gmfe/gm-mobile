@@ -12,7 +12,7 @@ const SwiperImg: FC<SwiperImgProps> = ({
   className,
   ...rest
 }) => {
-  const ref = useRef<HTMLDivElement | null>(null)
+  const ref = useRef<HTMLDivElement>(null)
   const key = useRef<number | null>(null)
   key.current = Date.now()
 
@@ -49,9 +49,9 @@ const SwiperImg: FC<SwiperImgProps> = ({
 
   return (
     <div
+      {...rest}
       ref={ref}
       className={classNames('swiper-container m-swiper-img', className)}
-      {...rest}
     >
       <div id={`swiper-slide-${key.current}`} className='swiper-wrapper'>
         {_.map(data, (item, index) => (

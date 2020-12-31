@@ -8,7 +8,7 @@ import SwiperImg from '../swiper_img'
 import {
   PreviewImageProps,
   PreviewImageStaticsProps,
-  _PreviewImageProps,
+  PreviewImageFC,
 } from '../types'
 
 const PreviewImageStatics: PreviewImageStaticsProps = {
@@ -25,7 +25,7 @@ const PreviewImageStatics: PreviewImageStaticsProps = {
   },
 }
 
-const PreviewImage: FC<_PreviewImageProps> = ({
+const PreviewImage: FC<PreviewImageProps> = ({
   images,
   defaultIndex = 0,
   className,
@@ -81,4 +81,4 @@ const PreviewImage: FC<_PreviewImageProps> = ({
 
 Object.assign(PreviewImage, PreviewImageStatics)
 
-export default PreviewImage as PreviewImageProps
+export default PreviewImage as PreviewImageFC

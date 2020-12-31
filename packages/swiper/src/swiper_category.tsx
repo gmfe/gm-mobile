@@ -10,7 +10,7 @@ const SwiperCategory: FC<SwiperCategoryProps> = ({
   children,
   ...rest
 }) => {
-  const ref = useRef(null)
+  const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     // eslint-disable-next-line no-new
