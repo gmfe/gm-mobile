@@ -1,10 +1,9 @@
 import { Option } from '@gm-mobile/c-react/src/component/picker/types'
-import { DurationInputArg1 } from 'moment'
 
 interface TabDateSelectServiceTime extends Option {
   type: number
-  receive_time_limit: { e_span_time: DurationInputArg1 }
-  order_time_limit: { e_span_time: DurationInputArg1 }
+  receive_time_limit: { e_span_time: number }
+  order_time_limit: { e_span_time: number }
 }
 
 interface TabDateSelectItem {

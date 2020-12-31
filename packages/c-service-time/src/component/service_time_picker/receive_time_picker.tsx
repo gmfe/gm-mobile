@@ -119,6 +119,7 @@ const ReceiveTimePickerBase: FC<ServiceTimePickerProps> = ({
             renderOption={(dataIndex, option) => {
               if (dataIndex === 0) {
                 return `${option.text} ${
+                  // @ts-ignore
                   option.date ? weekMap[moment(option.date).day()] : ''
                 }`
               }
@@ -136,6 +137,7 @@ const ReceiveTimePickerBase: FC<ServiceTimePickerProps> = ({
             renderOption={(dataIndex, option) => {
               if (dataIndex === 0) {
                 return `${option.text}${
+                  // @ts-ignore
                   option.date ? weekMap[moment(option.date).day()] : ''
                 }`
               }
