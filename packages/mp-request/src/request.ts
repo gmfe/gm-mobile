@@ -1,12 +1,6 @@
 import { axios, AxiosRequestConfig } from 'taro-axios'
 import _ from 'lodash'
-import { LocalStorage } from '@gm-mobile/mp'
-import {
-  processPostData,
-  ACCESS_TOKEN_KEY,
-  requestTrim,
-  formatToResponse,
-} from './util'
+import { requestTrim, formatToResponse } from './util'
 import { Response } from './types'
 
 const instance = axios.create({
@@ -17,20 +11,6 @@ const instance = axios.create({
     'X-Timeout': '30000',
     'X-Success-Code': '0',
   },
-})
-
-// 处理下数据
-instance.interceptors.request.use((config) => {
-  const localAuthInfo = LocalStorage.get(ACCESS_TOKEN_KEY)
-  if (config.method === 'post') {
-    config.data = processPostData(config.data)
-  }
-
-  if (localAuthInfo && localAuthInfo.access_token) {
-    config.headers.authorization = localAuthInfo.access_token
-  }
-
-  return config
 })
 
 class RequestBase<Data> {
