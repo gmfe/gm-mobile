@@ -9,37 +9,9 @@ const platform = __NAME__ // eslint-disable-line
 
 const requestUrl = '//trace.guanmai.cn/api/logs/request/'
 const requestEnvUrl = '//trace.guanmai.cn/api/logs/environment/'
-const ACCESS_TOKEN_KEY = 'TOKEN_KEY_V1.0'
+const accessTokenKey = 'ACCESS_TOKEN_KEY'
+const authInfoKey = 'AUTH_INTERFACE_KEY'
 const isProduction = process.env.NODE_ENV === 'production'
-
-function param(obj: { [key: string]: any }) {
-  // encodeURIComponent
-  return _.map(obj, function (v, k) {
-    return [encodeURIComponent(k), '=', encodeURIComponent(v)].join('')
-  })
-    .join('&')
-    .replace(/%20/g, '+')
-}
-
-function processPostData(data: { [key: string]: any }) {
-  let body
-  if (toString.call(data) !== '[object Object]') {
-    // json string 和 其他情况
-    body = data
-  } else {
-    // object
-
-    // 过滤null  undefined 只Object 类型。
-    // 会修改，所以 ...
-    data = _.pickBy({ ...data }, (value) => {
-      return value !== null && value !== undefined
-    })
-
-    body = param(data)
-  }
-
-  return body
-}
 
 function getErrorMessage(error: { [key: string]: any }): string {
   let message
@@ -185,9 +157,9 @@ function getUrlRandom(url: string): string {
 export {
   requestUrl,
   requestEnvUrl,
-  processPostData,
   getErrorMessage,
-  ACCESS_TOKEN_KEY,
+  accessTokenKey,
+  authInfoKey,
   platform,
   report,
   isProduction,
