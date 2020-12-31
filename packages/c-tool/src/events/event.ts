@@ -1,17 +1,17 @@
 // 自定义事件
 const Events = {
-  add<ED = any>(
+  add<D = any>(
     eventName: string,
-    handler: (event: CustomEvent<ED>) => unknown
+    handler: (event: CustomEvent<D>) => void
   ): void {
     window.addEventListener(eventName, handler as EventListener)
   },
-  dispatch<ED = any>(eventName: string, detail?: ED): void {
+  dispatch<D = any>(eventName: string, detail?: D): void {
     window.dispatchEvent(new window.CustomEvent(eventName, { detail }))
   },
-  remove<ED = any>(
+  remove<D = any>(
     eventName: string,
-    handler: (event: CustomEvent<ED>) => unknown
+    handler: (event: CustomEvent<D>) => void
   ): void {
     window.removeEventListener(eventName, handler as EventListener)
   },

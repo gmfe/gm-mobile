@@ -3,18 +3,18 @@ import { Events as TaroEvents } from '@tarojs/taro'
 const TaroEvent = new TaroEvents()
 
 const Events = {
-  add<ED = any>(
+  add<D = any>(
     eventName: string,
-    handler: (event: CustomEvent<ED>) => unknown
+    handler: (event: CustomEvent<D>) => void
   ): void {
     TaroEvent.on(eventName, handler)
   },
-  dispatch<ED = any>(eventName: string, detail?: ED): void {
+  dispatch<D = any>(eventName: string, detail?: D): void {
     TaroEvent.trigger(eventName, { detail })
   },
-  remove<ED = any>(
+  remove<D = any>(
     eventName: string,
-    handler: (event: CustomEvent<ED>) => unknown
+    handler: (event: CustomEvent<D>) => void
   ): void {
     TaroEvent.off(eventName, handler)
   },
