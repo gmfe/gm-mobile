@@ -1,12 +1,12 @@
 import { getLocale } from '@gm-mobile/locales'
-import React from 'react'
+import React, { FC } from 'react'
 import classNames from 'classnames'
-import PropTypes from 'prop-types'
 import _ from 'lodash'
-
 import { Flex, View, Text } from '@gm-mobile/c-react'
 
-const ReceivedCoupon = (props) => {
+import { ReceivedCouponProps } from './types'
+
+const ReceivedCoupon: FC<ReceivedCouponProps> = (props) => {
   const {
     currency,
     discount,
@@ -15,7 +15,7 @@ const ReceivedCoupon = (props) => {
     className,
     isReceived,
     onReceived,
-    type,
+    type = 'default',
     ...rest
   } = props
 
@@ -61,28 +61,6 @@ const ReceivedCoupon = (props) => {
       </Flex>
     </View>
   )
-}
-
-ReceivedCoupon.propTypes = {
-  type: PropTypes.oneOf(['default', 'vip']),
-  /** 折扣金额货币符号 */
-  currency: PropTypes.string.isRequired,
-  /** 折扣金额 */
-  discount: PropTypes.string.isRequired,
-  /** 可领的优惠券数量 */
-  couponAmount: PropTypes.number,
-  /** 满减说明 */
-  totalInfo: PropTypes.string,
-  /** 领取状态 */
-  isReceived: PropTypes.bool,
-  /** 领取回调函数 */
-  onReceived: PropTypes.func,
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
-
-ReceivedCoupon.defaultProps = {
-  type: 'default',
 }
 
 export default ReceivedCoupon

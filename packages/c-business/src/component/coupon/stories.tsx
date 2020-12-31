@@ -1,5 +1,4 @@
 import React from 'react'
-import moment from 'moment'
 import { observable } from 'mobx'
 
 import Coupon from './coupon'
@@ -8,7 +7,7 @@ import { View, Flex, Text } from '@gm-mobile/c-react'
 
 const store = observable({
   checked: false,
-  setChecked(checked) {
+  setChecked(checked: boolean) {
     this.checked = checked
   },
 })
@@ -22,8 +21,8 @@ export const normal = () => (
         totalInfo='满1000元可用'
         dateInfo='2020-04-29~2020-05-05'
         title='分类优惠券AA'
-        labels={['仅限xxx商品使用'
-  ]}      checked={store.checked}
+        labels={['仅限xxx商品使用']}
+        checked={store.checked}
         onCheck={() => store.setChecked(!store.checked)}
       />
     </View>

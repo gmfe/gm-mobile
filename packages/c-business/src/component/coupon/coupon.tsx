@@ -1,11 +1,11 @@
 import { getLocale } from '@gm-mobile/locales'
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import { Flex, Checkbox, View, Text } from '@gm-mobile/c-react'
 import classNames from 'classnames'
-import PropTypes from 'prop-types'
 import _ from 'lodash'
+import { CouponProps, LabelsProps } from './types'
 
-const Label = (props) => {
+const Labels: FC<LabelsProps> = (props) => {
   const { labels } = props
 
   return (
@@ -24,12 +24,7 @@ const Label = (props) => {
   )
 }
 
-Label.propTypes = {
-  /** 优惠券标签展示文字，必传，不考虑为空的情况 */
-  labels: PropTypes.array.isRequired,
-}
-
-const Coupon = (props) => {
+const Coupon: FC<CouponProps> = (props) => {
   const {
     currency,
     discount,
@@ -48,7 +43,7 @@ const Coupon = (props) => {
     isUsed,
     onReceived,
     couponAmount,
-    type,
+    type = 'default',
     ...rest
   } = props
 
@@ -104,7 +99,7 @@ const Coupon = (props) => {
             })}
           >
             <Text className='m-coupon-right-header-title'>{title}</Text>
-            {labels && labels.length > 0 && <Label labels={labels} />}
+            {labels && labels.length > 0 && <Labels labels={labels} />}
             <Flex
               none
               alignCenter
@@ -130,7 +125,7 @@ const Coupon = (props) => {
                 circle
                 primary
                 disabled={disabled}
-                checked={checked}
+                checked={!!checked}
                 onChange={onCheck}
               />
             )}
@@ -174,46 +169,6 @@ const Coupon = (props) => {
       )}
     </View>
   )
-}
-
-Coupon.propTypes = {
-  type: PropTypes.oneOf(['default', 'vip']),
-  /** 折扣金额货币符号 */
-  currency: PropTypes.string.isRequired,
-  /** 折扣金额 */
-  discount: PropTypes.number.isRequired,
-  /** 满减说明 */
-  totalInfo: PropTypes.string,
-  /** 优惠券标签展示文字，不传不展示标签 */
-  labels: PropTypes.array,
-  /** 优惠券标题 */
-  title: PropTypes.string,
-  /** 是否有使用说明 */
-  hasUseInfo: PropTypes.bool,
-  /** 优惠券使用说明 */
-  useInfo: PropTypes.element,
-  /** 使用日期说明 */
-  dateInfo: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  /** 立即使用回调函数 */
-  onUse: PropTypes.func,
-  /** 不可用状态 */
-  disabled: PropTypes.bool,
-  /** 优惠券的勾选状态 */
-  checked: PropTypes.bool,
-  /** 优惠券勾选回调函数 */
-  onCheck: PropTypes.func,
-  /** 优惠券是否过期 */
-  isExpired: PropTypes.bool,
-  /** 优惠券是否已使用 */
-  isUsed: PropTypes.bool,
-  onReceived: PropTypes.func,
-  couponAmount: PropTypes.number,
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
-
-Coupon.defaultProps = {
-  type: 'default',
 }
 
 export default Coupon
