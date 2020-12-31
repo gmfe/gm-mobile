@@ -1,5 +1,6 @@
 import React from 'react'
 import { ActionSheet } from './index'
+import { View } from '../view'
 import classNames from 'classnames'
 import { Button } from '../button'
 
@@ -40,9 +41,9 @@ export const customItem = () => {
       title: 'title',
       renderItem: (option) => {
         return (
-          <div className={classNames({ 'm-text-red': option.value === 3 })}>
+          <View className={classNames({ 'm-text-red': option.value === 3 })}>
             {option.text}
-          </div>
+          </View>
         )
       },
     }).then(
