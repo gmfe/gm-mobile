@@ -1,9 +1,9 @@
 /* 此文件由脚本自动生成 */
-import lng1 from './zh.json'
-import lng2 from './zh-HK.json'
-import lng3 from './en.json'
-import lng4 from './th.json'
-import lng5 from './ug.json'
+import lng1 from './lng/zh.json'
+import lng2 from './lng/zh-HK.json'
+import lng3 from './lng/en.json'
+import lng4 from './lng/th.json'
+import lng5 from './lng/ug.json'
 
 const moduleMap = {
   zh: lng1,
@@ -19,7 +19,7 @@ const setLocale = (lng) => {
 }
 
 const getLocale = (text) => {
-  const languageMap = moduleMap[_language] || moduleMap['zh']
+  const languageMap = moduleMap[_language] || moduleMap.zh
   return languageMap[text] || text
 }
 
