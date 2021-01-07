@@ -57,9 +57,13 @@ const Scroll = forwardRef<ScrollRef, ScrollProps>(
 
       const result = onLoadMore()
 
-      result.finally(() => {
-        setLoadingMore(false)
-      })
+      result
+        .then(() => {
+          return setLoadingMore(false)
+        })
+        .catch(() => {
+          setLoadingMore(false)
+        })
     }
 
     const handleScroll = (e: UIEvent<HTMLDivElement>) => {
