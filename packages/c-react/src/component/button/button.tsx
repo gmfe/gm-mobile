@@ -39,9 +39,13 @@ const Button: FC<ButtonProps> = ({
 
     setIsLoading(true)
 
-    Promise.resolve(result).finally(() => {
-      setIsLoading(false)
-    })
+    Promise.resolve(result)
+      .then(() => {
+        return setIsLoading(false)
+      })
+      .catch(() => {
+        setIsLoading(false)
+      })
   }
 
   return (
