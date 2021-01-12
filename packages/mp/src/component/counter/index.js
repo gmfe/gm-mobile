@@ -2,9 +2,11 @@ import { getLocale } from '@gm-mobile/locales'
 import React, { useState, useEffect } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import { View, Toast, Input } from '@gm-mobile/components'
+import { View, Toast, Keyboard, KeyboardWrap } from '@gm-mobile/components'
 import _ from 'lodash'
 import Big from 'big.js'
+
+import { Input } from '@tarojs/components'
 
 const text2Number = (value) => {
   if (value === '') {
@@ -50,6 +52,8 @@ const Counter = ({
   adjustPosition,
   className,
   closeCheck,
+  large,
+  title,
   ...rest
 }) => {
   const [selfValue, setSelfValue] = useState(value)
@@ -125,7 +129,12 @@ const Counter = ({
     <View
       {...rest}
       className={classNames(
-        'm-counter m-counter-default',
+        'm-counter-default',
+        {
+          'm-counter': !large,
+          'm-counter-large': large,
+
+        },
         {
           disabled,
         },
@@ -135,12 +144,20 @@ const Counter = ({
       <View
         className={classNames('m-font m-font-minus-circle m-counter-minus', {
           disabled: minusDisabled,
+          displaynone: minusDisabled
         })}
+
         onClick={() => handleChange('minus')}
       />
+
+      {/*
       <Input
-        className='m-counter-content-text'
-        type='digit'
+        className={classNames('m-counter-content-text', {
+          displaynone: minusDisabled
+        })}
+        form
+        confirmType="done"
+        type='text'
         disabled={disabled}
         value={selfValue}
         focus={focus}
@@ -149,10 +166,32 @@ const Counter = ({
         onBlur={handleFinally}
         onConfirm={handleFinally}
       />
+
+     */}
+
+
+      {/*
+
+      */}
+
+
+      <KeyboardWrap
+        defaultValue={value}
+        title={title}
+        min={min}
+        max={max}
+        precision={precision}
+        onSubmit={onChange}
+        getErrorMsg={getErrorMsg}
+      >
+        <View className='m-counter-content-text'>{value > 0 ? value : ''}</View>
+      </KeyboardWrap>
+
       <View
         className={classNames('m-font m-font-plus-circle m-counter-plus', {
           disabled: plusDisabled,
         })}
+
         onClick={() => handleChange('plus')}
       />
     </View>
@@ -160,6 +199,10 @@ const Counter = ({
 }
 
 Counter.propTypes = {
+
+  /** 键盘title */
+  title: PropTypes.string,
+
   /** 展示值 */
   value: PropTypes.string,
   /** 最小值, 默认为0 */
@@ -181,12 +224,14 @@ Counter.propTypes = {
   getErrorMsg: PropTypes.func,
   className: PropTypes.string,
   style: PropTypes.object,
+  large: PropTypes.bool
 }
 
 Counter.defaultProps = {
   value: '',
   min: 0,
   precision: 2,
+  large: false,
   getErrorMsg: handleErrorMsg,
 }
 

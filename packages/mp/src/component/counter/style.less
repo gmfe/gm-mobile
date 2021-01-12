@@ -3,22 +3,51 @@
   cursor: pointer;
   user-select: none;
   font-weight: bold;
-  width: 98px;
-  height: 25px;
-  line-height: 21px;
+  /*width: 98px;*/
+  /*height: 25px;*/
+  line-height: 25px;
+  width: 75 xpx;
+  line-height: 25px;
+  display: flex;
+  align-items: center;
 
   .mDisabledWith();
 
   .m-counter-content-text {
-    border-bottom: 0.5px solid var(--m-color-border-dark);
-    width: 44px;
+    /*border-bottom: 0.5px solid var(--m-color-border-dark);*/
+    width: 28px;
     margin: 0 2px;
   }
 
-  .mCounterVariants(25px, 25px, 14px, 3px);
+  .mCounterVariants(25px, 25px, 14px, 3px, 23px);
 }
 
-.mCounterVariants(@iconWidth, @height, @size, @margin) {
+.m-counter-large {
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  font-weight: bold;
+  /*width: 98px;*/
+  /*height: 25px;*/
+  line-height: 40px;
+  /*width: 75xpx;*/
+  line-height: 40px;
+  display: flex;
+  align-items: center;
+
+  .mDisabledWith();
+
+  .m-counter-content-text {
+    /*border-bottom: 0.5px solid var(--m-color-border-dark);*/
+    width: 28px;
+    margin: 0 2px;
+  }
+
+  .mCounterVariants(40px, 40px, 16px, 3px, 36px);
+}
+
+
+.mCounterVariants(@iconWidth, @height, @size, @margin, @fontSize) {
   .m-counter-content-text {
     display: inline-block;
     overflow-y: hidden;
@@ -43,7 +72,7 @@
     width: @iconWidth;
     font-size: @iconWidth;
     text-align: center;
-    margin: @margin 0;
+    /*margin: @margin 0;*/
     color: var(--m-color-primary);
     transform: translate3d(0, 0, 0);
 
@@ -53,4 +82,13 @@
 
     .mDisabledWith();
   }
+
+  .m-counter-plus {
+    font-size: @fontSize !important;
+  }
+
+}
+
+.displaynone {
+  display: none !important;
 }

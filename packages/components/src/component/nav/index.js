@@ -37,8 +37,10 @@ const Nav = React.forwardRef(
             {_.map(data, (v) => (
               <Flex
                 none
+                column
                 key={v.value}
                 alignCenter
+                justifyCenter
                 className={classNames('m-nav-item', {
                   active: selected === v.value,
                 })}
@@ -49,7 +51,8 @@ const Nav = React.forwardRef(
                   }
                 }}
               >
-                {v.text}
+                <View class='m-text-14'>{v.text}</View>
+                <View class='m-text-12'>{v.subText}</View>
               </Flex>
             ))}
           </Flex>

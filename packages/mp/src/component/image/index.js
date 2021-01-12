@@ -20,6 +20,7 @@ const ImageMP = ({
   style,
   onLoad,
   onError,
+  mode,
   ...rest
 }) => {
   const reloadCount = useRef(0)
@@ -50,6 +51,7 @@ const ImageMP = ({
 
   return (
     <Image
+      SwiperImgMP
       {...rest}
       src={pSrc}
       style={{
@@ -57,6 +59,7 @@ const ImageMP = ({
         height,
         ...style,
       }}
+      mode={mode}
       onError={handleError}
       onLoad={handleLoad}
       className={classNames(className, {

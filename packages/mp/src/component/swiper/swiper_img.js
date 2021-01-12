@@ -7,7 +7,7 @@ import { View } from '@gm-mobile/components'
 import Image from '../image'
 import SwiperPagination from './swiper_pagination'
 
-const SwiperImg = ({ data, options, style, height, ...rest }) => {
+const SwiperImg = ({ data, options, style, height, mode, ...rest }) => {
   const _data = _.map(data, (d) => d.img)
   const init = _data.length ? _data[0] : null
   const [current, setCurrent] = useState(init)
@@ -53,7 +53,7 @@ const SwiperImg = ({ data, options, style, height, ...rest }) => {
                 onClick && onClick()
               }}
             >
-              <Image src={img} width='100%' height='100%' />
+              <Image mode={mode} src={img} width='100%' height='100%'/>
             </View>
           </SwiperItem>
         ))}
@@ -76,6 +76,7 @@ SwiperImg.propTypes = {
   height: PropTypes.string,
   className: PropTypes.string,
   style: PropTypes.object,
+  mode: PropTypes.string
 }
 
 export default SwiperImg
