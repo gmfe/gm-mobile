@@ -28,7 +28,7 @@ const LayoutRoot: FC & LayoutRootStatic = () => {
     return () => {
       delete cbMap[path]
     }
-  })
+  }, [])
 
   // 有层级关系
   return (
