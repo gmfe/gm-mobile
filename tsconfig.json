@@ -8,6 +8,9 @@
     "jsx": "react",
     "importsNotUsedAsValues": "preserve",
     "esModuleInterop": true,
+    "paths": {
+      "@/*": ["mini-program/*"]
+    }
   },
   "include": [
     "**/*.ts", "**/*.tsx",

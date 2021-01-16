@@ -10,6 +10,7 @@ import { Button } from '../button'
 import { View } from '../view'
 import { Text } from '../text'
 import { PopupProps, PopupStaticsTypes } from './types'
+import CustomTabbar from '../custom_tabbar'
 
 const PopupStatics: PopupStaticsTypes = {
   render(options) {
@@ -89,6 +90,7 @@ const PopupBase: FC<PopupProps> = ({
           </Flex>
         )}
         <View className='m-popup-content'>{children}</View>
+        <CustomTabbar />
       </View>
     </View>
   )

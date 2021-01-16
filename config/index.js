@@ -20,6 +20,9 @@ const config = {
     options: {},
   },
   framework: 'react',
+  alias: {
+    '@': path.resolve(__dirname, '..', 'mini-program'),
+  },
   mini: {
     compile: {
       include: [path.resolve(__dirname, '../packages')],
