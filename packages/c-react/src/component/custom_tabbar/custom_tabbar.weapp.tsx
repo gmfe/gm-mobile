@@ -1,4 +1,6 @@
 import React from 'react'
+// @ts-ignore
+// eslint-disable-next-line import/no-unresolved
 import appConfig from '@/app.config'
 import { getCurrentPages } from '@tarojs/taro'
 import _ from 'lodash'

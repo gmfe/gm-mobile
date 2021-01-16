@@ -10,7 +10,7 @@ import { Button } from '../button'
 import { View } from '../view'
 import { Text } from '../text'
 import { PopupProps, PopupStaticsTypes } from './types'
-import CustomTabbar from '../custom_tabbar'
+import { CustomTabbar } from '../custom_tabbar'
 
 const PopupStatics: PopupStaticsTypes = {
   render(options) {
