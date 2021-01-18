@@ -6,17 +6,27 @@ import { getCurrentPages } from '@tarojs/taro'
 import _ from 'lodash'
 import { View } from '../view'
 
+function getCustomTabbarHeight(): number {
+  let height = 0
+  if (appConfig.tabBar.custom) {
+    const path = _.last(getCurrentPages())?.route
+    if (_.find(appConfig.tabBar.list, (v) => v.pagePath === path)) {
+      height = 49
+    }
+  }
+
+  return height
+}
+
 const CustomTabbar = () => {
-  if (!appConfig.tabBar.custom) {
+  const height = getCustomTabbarHeight()
+  if (height === 0) {
     return null
   }
 
-  const path = _.last(getCurrentPages())?.route
-  if (_.find(appConfig.tabBar.list, (v) => v.pagePath === path)) {
-    return <View style={{ height: '49px' }} />
-  }
-
-  return null
+  return <View style={{ height: `${height}px` }} />
 }
+
+CustomTabbar.getCustomTabbarHeight = getCustomTabbarHeight
 
 export default CustomTabbar
