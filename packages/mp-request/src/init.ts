@@ -26,7 +26,7 @@ export function initAuth(url: string, field: string) {
     const { url } = response.config
 
     if (authInfo?.url === url && authInfo?.field) {
-      const accessToken = _.get(json, authInfo.field)
+      accessToken = _.get(json, authInfo.field)
       if (accessToken && typeof accessToken === 'string')
         LocalStorage.set(accessTokenKey, accessToken)
     }
