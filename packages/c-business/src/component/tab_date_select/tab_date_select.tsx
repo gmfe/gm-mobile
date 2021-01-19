@@ -8,6 +8,7 @@ import {
   SelectPicker,
   View,
   Text,
+  CustomTabbar,
 } from '@gm-mobile/c-react'
 import { getLocale } from '@gm-mobile/locales'
 import _ from 'lodash'
@@ -98,7 +99,8 @@ function TabDateSelectBase({
     }
   }
 
-  const calendarHeight = getScreenHeight() * 0.9 - 180 // popup头部 + tab + 底部
+  const tabbarHeight = CustomTabbar.getCustomTabbarHeight() // 若是有自定已tabbar，需要底部撑开，防止被遮挡
+  const calendarHeight = getScreenHeight() * 0.9 - 180 - tabbarHeight // popup头部 + tab + 底部
 
   return (
     <Flex column className='m-tab-date-select'>
