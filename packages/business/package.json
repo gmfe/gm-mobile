@@ -1,6 +1,6 @@
 {
   "name": "@gm-mobile/business",
-  "version": "3.0.13",
+  "version": "3.0.14",
   "description": "> TODO: description",
   "author": "liyatang <liyatang@qq.com>",
   "homepage": "https://github.com/gmfe/business#readme",
@@ -21,10 +21,10 @@
     "url": "https://github.com/gmfe/business/issues"
   },
   "dependencies": {
-    "@gm-mobile/c-business": "^3.0.13",
-    "@gm-mobile/c-react": "^3.0.13",
-    "@gm-mobile/locales": "^3.0.13",
-    "@gm-mobile/react": "^3.0.13"
+    "@gm-mobile/c-business": "^3.0.14",
+    "@gm-mobile/c-react": "^3.0.14",
+    "@gm-mobile/locales": "^3.0.14",
+    "@gm-mobile/react": "^3.0.14"
   },
   "peerDependencies": {
     "react": "^16.13.1"
