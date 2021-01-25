@@ -18,6 +18,8 @@ interface CounterMPProps
   /** 最大值 */
   max?: number
   precision?: number
+  /** inputType */
+  inputType: 'digit' | 'number'
   /** 关闭键盘上下限校验 */
   closeCheck?: boolean
   /** 获取焦点, 微信版本 6.3.30, focus 属性设置无效 */
@@ -81,6 +83,7 @@ const CounterMP: FC<CounterMPProps> = ({
   adjustPosition,
   className,
   closeCheck,
+  inputType = 'digit',
   ...rest
 }) => {
   const [selfValue, setSelfValue] = useState(value)
@@ -171,7 +174,7 @@ const CounterMP: FC<CounterMPProps> = ({
       />
       <Input
         className='m-counter-content-text'
-        type='digit'
+        type={inputType}
         disabled={disabled}
         value={selfValue}
         focus={focus}

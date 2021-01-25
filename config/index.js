@@ -21,7 +21,7 @@ const config = {
   },
   framework: 'react',
   alias: {
-    '@': path.resolve(__dirname, '..', 'mini-program'),
+    '@': path.resolve(__dirname, '..', 'mini-program/src'),
   },
   mini: {
     compile: {
