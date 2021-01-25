@@ -126,6 +126,7 @@ function TabDateSelectBase({
       <Flex flex column justifyBetween>
         <View className='m-tab-date-select-calendar m-flex-flex m-bg-white'>
           <RangeCalendar
+            key={activeTab.value}
             begin={beginDate}
             end={endDate}
             min={activeTab.min}
