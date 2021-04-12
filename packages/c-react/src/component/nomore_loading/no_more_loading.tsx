@@ -20,7 +20,7 @@ const NoMoreLoading: FC<NoMoreLoadingProps> = ({
   ...rest
 }) => {
   return (
-    <View className={classNames(className)} style={{ ...style }} {...rest}>
+    <View {...rest} className={classNames(className)} style={{ ...style }}>
       {isLoading && (
         <Flex justifyCenter alignCenter row>
           <Image src={loading_img} style={{ width: '30px', height: '30px' }} />
