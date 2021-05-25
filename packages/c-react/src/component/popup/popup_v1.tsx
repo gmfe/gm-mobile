@@ -5,32 +5,40 @@ import { devWarnForHook } from '@gm-mobile/c-tool'
 
 import { Flex } from '../flex'
 import { Mask } from '../mask'
-import { LayoutRoot } from '../layout_root'
+import { LayoutRoot, LayoutRootV1 } from '../layout_root'
 import { Button } from '../button'
 import { View } from '../view'
 import { Text } from '../text'
-import { PopupProps, PopupStaticsTypes } from './types'
+import { PopupV1Props, PopupStaticsV1Types } from './types'
 import { CustomTabbar } from '../custom_tabbar'
+import { addUuidToOption } from '../../utils'
 
-const PopupStatics: PopupStaticsTypes = {
+const PopupStatics: PopupStaticsV1Types = {
   render(options) {
-    LayoutRoot.renderWith(LayoutRoot.Type.POPUP, <Popup {...options} />)
+    const id = addUuidToOption(options)
+    LayoutRootV1.renderWith(LayoutRoot.Type.POPUP, <PopupV1 {...options} />)
+    return this.hide.bind(this, id)
   },
-  hide() {
-    LayoutRoot.hideWith(LayoutRoot.Type.POPUP)
+  hide(id: string) {
+    if (!id) {
+      console.error('need id when manual hide')
+    }
+    LayoutRootV1.hideWith(LayoutRoot.Type.POPUP, id)
   },
 }
 
-const PopupBase: FC<PopupProps> = ({
+const PopupBase: FC<PopupV1Props> = ({
   title = '',
   left,
   right,
   bottom,
+  center,
   width,
   height,
   opacity,
   className,
   style,
+  id,
   onHide = _.noop,
   isPickPopup,
   disabledHeader,
@@ -38,6 +46,11 @@ const PopupBase: FC<PopupProps> = ({
   /** 动画有卡顿现象，先禁用 */
   disabledAnimate = true,
   children,
+  closeText,
+  headerClassName,
+  titleClassName,
+  titleCenter,
+  clickMaskClose = true,
   ...rest
 }) => {
   devWarnForHook(() => {
@@ -52,6 +65,7 @@ const PopupBase: FC<PopupProps> = ({
       'm-popup-left': left,
       'm-popup-right': right,
       'm-popup-bottom': bottom,
+      'm-popup-center': center,
       'm-popup-box-shadow': opacity === 0 || disabledMask,
       'm-animated': !disabledAnimate,
       'm-animated-slide-in-left': left,
@@ -68,23 +82,47 @@ const PopupBase: FC<PopupProps> = ({
     s.height = height
   }
 
+  const hidePopup = () => {
+    id && PopupV1.hide(id)
+  }
+  const onTempHide = () => {
+    Promise.resolve(onHide()).then(hidePopup)
+  }
   return (
     <View
       className={classNames('m-popup-container', {
         'm-popup-picker-container': isPickPopup,
       })}
     >
-      {!disabledMask && <Mask opacity={opacity} onClick={onHide} />}
+      {!disabledMask && (
+        <Mask
+          opacity={opacity}
+          onClick={clickMaskClose ? onTempHide : undefined}
+        />
+      )}
       <View {...rest} className={cn} style={s}>
         {!disabledHeader && (
-          <Flex justifyBetween alignCenter className='m-popup-top'>
-            <Flex flex column className='m-padding-left-15 m-text-16'>
+          <Flex
+            justifyBetween
+            alignCenter
+            className={classNames('m-popup-top m-relative', headerClassName)}
+          >
+            <Flex
+              flex
+              className={classNames(
+                'm-padding-left-15 m-text-16',
+                { 'm-flex-justify-center': titleCenter },
+                titleClassName
+              )}
+            >
               {title}
             </Flex>
 
-            <Button type='link' onClick={onHide}>
+            <Button type='link' onClick={onTempHide}>
               <Flex alignCenter>
-                <Text className='m-font m-font-close-circle m-text-20 m-text-placeholder' />
+                {closeText ?? (
+                  <Text className='m-font m-font-close-circle m-text-20 m-text-placeholder' />
+                )}
               </Flex>
             </Button>
           </Flex>
@@ -95,6 +133,7 @@ const PopupBase: FC<PopupProps> = ({
     </View>
   )
 }
-const Popup = Object.assign(PopupBase, PopupStatics)
 
-export default Popup
+const PopupV1 = Object.assign(PopupBase, PopupStatics)
+
+export default PopupV1
