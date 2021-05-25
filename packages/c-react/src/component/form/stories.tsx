@@ -11,7 +11,7 @@ import { default as TempForm } from './form'
 import { Input, InputPassword } from '../input'
 import { Textarea } from '../textarea'
 import { useFormRef } from '../../hooks'
-
+import { FormPicker } from '../picker'
 const initStore: { [key: string]: any } = {
   username: '',
   name: '',
@@ -19,6 +19,7 @@ const initStore: { [key: string]: any } = {
   age: '',
   password: '',
   area: '',
+  areas: [],
   position: '',
   address: '',
   code: '',
@@ -28,7 +29,85 @@ const initStore: { [key: string]: any } = {
 }
 
 const store = observable(initStore)
+const areaData = [
+  {
+    value: 1,
+    text: '四川省',
+    children: [
+      {
+        value: 5,
+        text: '成都市',
+        children: [
+          {
+            value: 6,
+            text: '锦江区',
+            children: [
+              {
+                value: 7,
+                text: '九眼桥',
+              },
+              {
+                value: 8,
+                text: '兰桂坊',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 2,
+    text: '广东省',
+    children: [
+      {
+        value: 9,
+        text: '东莞市',
+        children: [
+          {
+            value: 10,
+            text: '长安镇',
+          },
+        ],
+      },
+      {
+        value: 99,
+        text: '广州市',
+        children: [
+          {
+            value: 101,
+            text: '番禺区',
+            children: [
+              {
+                value: 1011,
+                text: '广东工业大学',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 3,
+    text: '江西省',
+    children: [
+      {
+        value: 11,
+        text: '南昌市',
+      },
+    ],
+  },
+]
 
+const selectData = [
+  { value: 1, text: '深圳' },
+  { value: 2, text: '罗湖' },
+  { value: 3, text: '南山' },
+  { value: 4, text: '宝安' },
+  { value: 5, text: '福田' },
+  { value: 6, text: '龙岗' },
+]
 export const Form = () => {
   const form = useFormRef()
   return (
@@ -56,19 +135,15 @@ export const Form = () => {
             <InputPassword isForm placeholder='请输入密码' />
           </FormItem>
           <FormItem
-            label='地理标签'
-            labelWidth='100px'
             access
-            right={<View>请选择</View>}
-            onClick={() => {
-              Toast.tip('push 地理标签页面')
-            }}
+            label='商户位置'
+            labelWidth='100px'
+            name='selectPicker'
           >
-            {store.area ? (
-              <View>{store.area}</View>
-            ) : (
-              <View className='m-text-placeholder'>省市区县、乡镇</View>
-            )}
+            <FormPicker data={selectData} placeholder='请选择省市区县、乡镇' />
+          </FormItem>
+          <FormItem access label='省市区' labelWidth='100px' name='areas'>
+            <FormPicker data={areaData} placeholder='请选择省市区' />
           </FormItem>
           <FormItem
             label='商户位置'
