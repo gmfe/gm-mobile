@@ -1,7 +1,7 @@
 import { ChangeEvent, CSSProperties } from 'react'
 
 interface BaseTextareaProps {
-  value: string
+  value?: string
   placeholder?: string
   /** web独有 */
   rows?: number

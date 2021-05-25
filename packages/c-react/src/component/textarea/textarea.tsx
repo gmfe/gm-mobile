@@ -7,7 +7,7 @@ import Base from './base'
 import { TextareaProps } from './types'
 
 const Textarea: FC<TextareaProps> = ({
-  value,
+  value = '',
   disabled,
   maxLength,
   isForm,
@@ -31,7 +31,7 @@ const Textarea: FC<TextareaProps> = ({
       />
       {maxLength && (
         <View className='m-textarea-max-length'>
-          {value.length}/{maxLength}
+          {value?.length || 0}/{maxLength}
         </View>
       )}
     </View>

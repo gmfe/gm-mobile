@@ -15,6 +15,7 @@ const Cell: FC<CellProps> = ({
   onClick = _.noop,
   children,
   className,
+  noActive,
   ...rest
 }) => {
   return (
@@ -26,6 +27,7 @@ const Cell: FC<CellProps> = ({
         {
           'm-cell-access': access,
           'm-cell-with-icon': icon,
+          'm-cell-no-active': noActive,
         },
         className
       )}

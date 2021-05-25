@@ -137,13 +137,13 @@ const initStore: { [key: string]: any } = {
 
 const store = observable(initStore)
 
-export const form = () => {
+export const CellFormDemo = () => {
   return (
     <View className='m-padding-tb-10'>
       <View className='m-text-red m-text-20'>Input 记得加 isForm </View>
 
       <CellsForm title='啦啦啦啦'>
-        <CellForm required>
+        <CellForm required noActive>
           <Input
             type='text'
             isForm
