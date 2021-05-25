@@ -22,10 +22,13 @@ class CouplingPicker extends Component<
   private _handleChange = (index: number, option: Option) => {
     const { onChange } = this.props
     const { selected } = this.state
-    selected[index] = option ? option.value : ''
-
-    this.setState({ selected })
-    onChange(selected)
+    const tempSelect = [...selected]
+    tempSelect[index] = option ? option.value : ''
+    // 前后一致这里setState也会触发更新，陷入死循环，故做层判断
+    if (tempSelect.join() !== selected.join()) {
+      this.setState({ selected: tempSelect })
+      onChange(tempSelect)
+    }
   }
 
   render() {
@@ -46,24 +49,13 @@ class CouplingPicker extends Component<
     }
 
     const arr = []
-    let subList1: Option[] = []
-    let subList2: Option[] = []
+    const subList: Option[][] = []
     for (let i = 0; i < selected.length; i++) {
       if (i === 0) {
+        // i = 0遍历datas第一层
         arr[0] = _.map(datas, (v) => {
           if (v.value === selected[i]) {
-            subList1 = v.children || []
-          }
-          return {
-            ...v,
-            value: v.value,
-            text: v.text,
-          }
-        })
-      } else if (i === 1) {
-        arr[1] = _.map(subList1, (v) => {
-          if (v.value === selected[i]) {
-            subList2 = v.children || []
+            subList[0] = v.children || []
           }
           return {
             ...v,
@@ -72,7 +64,11 @@ class CouplingPicker extends Component<
           }
         })
       } else {
-        arr[i] = _.map(subList2, (v) => {
+        // selected 的index >=1 的为datas第一层选择项的children
+        arr[i] = _.map(subList[i - 1], (v) => {
+          if (v.value === selected[i]) {
+            subList[i] = v.children || []
+          }
           return { ...v, value: v.value, text: v.text }
         })
       }
