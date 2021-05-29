@@ -1,3 +1,4 @@
+import { UUID } from '@gm-mobile/c-tool'
 import { anyCallback } from '../types'
 
 export function isFalsy(value: any): boolean {
@@ -13,4 +14,15 @@ export function judgeFunction(fn?: anyCallback, ...args: any[]): void {
   if (typeof fn === 'function') {
     fn(...args)
   }
+}
+/**
+ * @description: 给options加上uuid
+ * @param {options}
+ */
+export function addUuidToOption(options: any): string {
+  if (options.id === undefined) {
+    options.id = UUID.generate()
+  }
+  options.key = options.key || options.id
+  return options.id
 }
