@@ -11,7 +11,7 @@ import { default as TempForm } from './form'
 import { Input, InputPassword } from '../input'
 import { Textarea } from '../textarea'
 import { useFormRef } from '../../hooks'
-import { FormPicker } from '../picker'
+import { PickerV1 } from '../picker'
 const initStore: { [key: string]: any } = {
   username: '',
   name: '',
@@ -140,10 +140,10 @@ export const Form = () => {
             labelWidth='100px'
             name='selectPicker'
           >
-            <FormPicker data={selectData} placeholder='请选择省市区县、乡镇' />
+            <PickerV1 data={selectData} placeholder='请选择省市区县、乡镇' />
           </FormItem>
           <FormItem access label='省市区' labelWidth='100px' name='areas'>
-            <FormPicker data={areaData} placeholder='请选择省市区' />
+            <PickerV1 data={areaData} placeholder='请选择省市区' />
           </FormItem>
           <FormItem
             label='商户位置'

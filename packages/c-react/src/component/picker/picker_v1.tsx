@@ -54,18 +54,18 @@ function PickerV1<T extends string | number = string>({
   if (!Array.isArray(value)) {
     value = value === undefined ? [] : [value]
   }
-
-  if (!value?.length) {
-    let data0 = data[0]
-    while (data0) {
-      value.push(data0.value)
-      data0 = data0.children?.[0]!
-    }
-  }
   const onClick = () => {
+    const values = [...(value as T[])]
+    if (!values?.length) {
+      let data0 = data[0]
+      while (data0) {
+        values.push(data0.value)
+        data0 = data0.children?.[0]!
+      }
+    }
     ConfirmCouplingPicker.render({
       datas: data,
-      values: value as T[],
+      values,
       title,
       headers,
       renderOption,
