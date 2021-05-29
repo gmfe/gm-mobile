@@ -1,5 +1,4 @@
 import { ReactNode } from 'react'
-import { CellProps } from '../cell'
 import { PopupProps } from '../popup'
 import { Value, Option } from './component/types'
 import { ViewProps } from '../view'

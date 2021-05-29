@@ -21,7 +21,7 @@ interface CellsProps extends HTMLAttributes<HTMLDivElement> {
 
 interface CellFormProps extends CellProps {
   /** 标签 */
-  label?: string
+  label?: ReactNode
   /** 标签宽度 */
   labelWidth?: string
   /** 错误信息显示 */

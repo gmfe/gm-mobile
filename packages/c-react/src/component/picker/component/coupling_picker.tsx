@@ -26,8 +26,9 @@ class CouplingPicker extends Component<
     tempSelect[index] = option ? option.value : ''
     // 前后一致这里setState也会触发更新，陷入死循环，故做层判断
     if (tempSelect.join() !== selected.join()) {
-      this.setState({ selected: tempSelect })
-      onChange(tempSelect)
+      this.setState({ selected: tempSelect }, () => {
+        onChange([...tempSelect])
+      })
     }
   }
 
