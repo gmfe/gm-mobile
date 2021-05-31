@@ -17,7 +17,7 @@ const PopupStatics: PopupStaticsV1Types = {
   render(options) {
     const id = addUuidToOption(options)
     LayoutRootV1.renderWith(LayoutRoot.Type.POPUP, <PopupV1 {...options} />)
-    return id
+    return this.hide.bind(this, id)
   },
   hide(id: string) {
     if (!id) {
