@@ -113,7 +113,7 @@ export const PopupV1 = () => {
                                 <View>
                                   <Button
                                     onClick={() => {
-                                      const id4 = TempPopupV1.render({
+                                      const hdeId4 = TempPopupV1.render({
                                         title: '啦啦啦4',
                                         left: true,
                                         children: (
@@ -126,9 +126,7 @@ export const PopupV1 = () => {
                                                 children: (
                                                   <Button
                                                     type='primary'
-                                                    onClick={() => {
-                                                      TempPopupV1.hide(id4)
-                                                    }}
+                                                    onClick={hdeId4}
                                                   >
                                                     关闭左弹框
                                                   </Button>

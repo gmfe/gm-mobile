@@ -1,4 +1,5 @@
 import { HTMLAttributes, ReactNode } from 'react'
+import { anyCallback } from '../../types'
 
 interface PopupProps extends HTMLAttributes<HTMLDivElement> {
   title?: string
@@ -33,14 +34,14 @@ interface PopupV1Props extends Omit<PopupProps, 'onHide'> {
   /** title的class,针对的是title文本 */
   titleClassName?: string
   /** title是否居中 */
-  titleCenter?: string
+  titleCenter?: boolean
   /** onHide是监听关闭后的回调，而不是关闭Popup的命令，如果要几秒后关闭弹窗可以返回一个Promise */
   onHide?: () => Promise<any> | void
 }
 
 interface PopupStaticsV1Types {
   /** 支持多个Popup，后pop的层级更高，会返回一个id，用于特殊情况下想自己关闭弹窗，否则内部会默认关闭 */
-  render: (options: PopupV1Props) => string
+  render: (options: PopupV1Props) => anyCallback
   /** 与renderV1配套，只用于特殊情况下需要手动关闭才使用，传入id可以关闭特定的弹窗 */
   hide: (id: string) => void
 }
