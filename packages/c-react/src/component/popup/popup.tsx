@@ -95,7 +95,6 @@ const PopupBase: FC<PopupProps> = ({
     </View>
   )
 }
-/** @deprecated 请使用PopupV1 */
 const Popup = Object.assign(PopupBase, PopupStatics)
 
 export default Popup
