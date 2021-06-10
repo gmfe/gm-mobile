@@ -8,5 +8,9 @@
       "graphType": "all"
     }
   },
+<<<<<<< HEAD
   "version": "3.5.0"
+=======
+  "version": "3.1.0-alpha.2"
+>>>>>>> v3.1.0-alpha.2
 }
