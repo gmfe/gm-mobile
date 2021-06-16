@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Page, Flex, Button } from '@gm-mobile/react'
 
-const View = ({ disabledEdit, onClick, image }) => {
+export const View = ({ disabledEdit, onClick, image }) => {
   return (
     <Page
       white

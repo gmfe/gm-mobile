@@ -2,7 +2,7 @@ import React from 'react'
 
 export const containerFull = () => {
   return (
-    <div className='m-container-full'>
+    <div className='m-container-full m-padding-20'>
       <div>header</div>
       <div>m-container-full 方便做布局</div>
     </div>

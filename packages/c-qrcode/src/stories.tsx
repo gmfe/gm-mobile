@@ -7,4 +7,5 @@ export const normal = () => {
 
 export default {
   title: 'QRCode/QRCode',
+  component: QRCode,
 }

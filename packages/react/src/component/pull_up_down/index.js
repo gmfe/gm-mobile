@@ -3,7 +3,7 @@ import Base from './base'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
-const PullUpDown = ({
+export const PullUpDown = ({
   topRender,
   bottomRender,
   onPullDown,

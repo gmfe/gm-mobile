@@ -35,7 +35,7 @@ interface CounterErrorMsg {
   precision?: number
 }
 
-const Counter: FC<CounterProps> = ({
+export const Counter: FC<CounterProps> = ({
   value = '',
   min = 0,
   max,

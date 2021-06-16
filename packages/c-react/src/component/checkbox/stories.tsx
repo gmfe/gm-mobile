@@ -63,4 +63,5 @@ export const normal = () => (
 
 export default {
   title: '表单/Checkbox',
+  component: Checkbox,
 }

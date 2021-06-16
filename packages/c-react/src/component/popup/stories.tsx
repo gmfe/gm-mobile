@@ -86,4 +86,5 @@ export const title = () => {
 
 export default {
   title: '浮层/Popup',
+  component: Popup,
 }

@@ -15,7 +15,7 @@ interface CheckboxProps extends HTMLAttributes<HTMLDivElement> {
   onChange?: () => void
 }
 
-const Checkbox: FC<CheckboxProps> = ({
+export const Checkbox: FC<CheckboxProps> = ({
   className,
   disabled,
   checked,

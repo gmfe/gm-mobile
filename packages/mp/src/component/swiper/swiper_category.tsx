@@ -6,7 +6,7 @@ import _ from 'lodash'
 import { SwiperCategoryProps } from './types'
 import SwiperPagination from './swiper_pagination'
 
-const SwiperCategory: FC<SwiperCategoryProps> = ({
+export const SwiperCategory: FC<SwiperCategoryProps> = ({
   options,
   children,
   style,

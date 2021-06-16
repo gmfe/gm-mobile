@@ -7,4 +7,5 @@ export const normal = () => {
 
 export default {
   title: '其他/Canvas',
+  component: Canvas,
 }

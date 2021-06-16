@@ -27,4 +27,5 @@ export const Edit = () => {
 
 export default {
   title: '业务/Signature',
+  component: Signature,
 }

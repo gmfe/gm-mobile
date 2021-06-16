@@ -43,7 +43,7 @@ import KeyboardStatics from './statics'
 // }
 
 // 遮罩状态
-const KeyboardWrap = ({ children, ...rest }) => {
+export const KeyboardWrap = ({ children, ...rest }) => {
   const handleClick = () => {
     if (rest.disabled) {
       return

@@ -88,4 +88,5 @@ export const Normal = () => {
 
 export default {
   title: '基础/Counter',
+  component: CounterMP,
 }

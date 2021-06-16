@@ -40,4 +40,5 @@ export const normal = () => {
 
 export default {
   title: '浮层/Mask',
+  component: Popup,
 }

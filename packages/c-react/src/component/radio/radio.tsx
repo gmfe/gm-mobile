@@ -4,7 +4,7 @@ import _ from 'lodash'
 import { View } from '../view'
 import { RadioProps } from './types'
 
-const Radio: FC<RadioProps> = ({
+export const Radio: FC<RadioProps> = ({
   className,
   disabled,
   checked,

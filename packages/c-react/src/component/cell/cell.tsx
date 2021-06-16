@@ -7,7 +7,7 @@ import { Text } from '../text'
 
 import { CellProps } from './types'
 
-const Cell: FC<CellProps> = ({
+export const Cell: FC<CellProps> = ({
   access,
   icon,
   left,

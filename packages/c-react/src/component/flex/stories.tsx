@@ -1,5 +1,6 @@
 import React from 'react'
 import { View } from '../view'
+import Flex from './flex'
 
 export const normal = () => {
   return (
@@ -15,4 +16,5 @@ export const normal = () => {
 
 export default {
   title: '布局/Flex',
+  component: Flex,
 }

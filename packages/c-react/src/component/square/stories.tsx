@@ -13,4 +13,5 @@ export const Normal = () => {
 
 export default {
   title: '布局/Square',
+  component: Square,
 }

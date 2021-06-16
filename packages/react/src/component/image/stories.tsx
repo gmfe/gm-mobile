@@ -65,4 +65,5 @@ export const objectFix = () => (
 
 export default {
   title: '基础/Image',
+  component: Image,
 }

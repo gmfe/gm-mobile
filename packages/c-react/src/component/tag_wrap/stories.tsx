@@ -21,4 +21,5 @@ export const Normal = () => {
 
 export default {
   title: '基础/Tag',
+  component: TagWrap,
 }

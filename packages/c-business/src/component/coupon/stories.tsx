@@ -143,4 +143,5 @@ export const receivedCoupon = () => (
 
 export default {
   title: '业务/Coupon',
+  component: Coupon,
 }

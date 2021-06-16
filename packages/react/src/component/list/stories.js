@@ -81,4 +81,5 @@ export const group = () => (
 
 export default {
   title: '布局/List',
+  component: List,
 }

@@ -5,7 +5,7 @@ import { View } from '../view'
 import { Text } from '../text'
 import { PanelProps } from './types'
 
-const Panel: FC<PanelProps> = ({
+export const Panel: FC<PanelProps> = ({
   title,
   onTitle,
   action,

@@ -1,5 +1,5 @@
 import React from 'react'
-import Switch from './switch'
+import Switch from './Switch'
 import { observable } from 'mobx'
 import { View } from '../view'
 
@@ -39,4 +39,5 @@ export const normal = () => {
 
 export default {
   title: '表单/Switch',
+  component: Switch,
 }

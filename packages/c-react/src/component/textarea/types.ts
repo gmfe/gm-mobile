@@ -1,4 +1,4 @@
-import { ChangeEvent, CSSProperties } from 'react'
+import { ChangeEvent, CSSProperties, LegacyRef, Ref, RefObject } from 'react'
 
 interface BaseTextareaProps {
   value: string
@@ -13,6 +13,7 @@ interface BaseTextareaProps {
   onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void
   className?: string
   style?: CSSProperties
+  childRef?: RefObject<HTMLTextAreaElement>
 }
 
 interface TextareaProps extends BaseTextareaProps {

@@ -6,7 +6,13 @@ import classNames from 'classnames'
 import Item from './item'
 import { Flex } from '@gm-mobile/c-react'
 
-const Tabbar = ({ configs, selected, onTabChange, className, ...rest }) => {
+export const Tabbar = ({
+  configs,
+  selected,
+  onTabChange,
+  className,
+  ...rest
+}) => {
   return (
     <Flex {...rest} className={classNames('m-tabbar', className)}>
       {_.map(configs, (config, index) => (

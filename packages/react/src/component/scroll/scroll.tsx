@@ -12,7 +12,7 @@ import _ from 'lodash'
 import { Lazy } from '../lazy'
 import { ScrollProps, ScrollRef } from './types'
 
-const Scroll = forwardRef<ScrollRef, ScrollProps>(
+export const Scroll = forwardRef<ScrollRef, ScrollProps>(
   (
     {
       data,

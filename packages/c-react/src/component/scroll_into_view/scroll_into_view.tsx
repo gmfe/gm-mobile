@@ -3,7 +3,7 @@ import { View } from '../view'
 import { ScrollIntoViewProps } from './types'
 
 // 先 默认纵向滚动
-const ScrollIntoView: FC<ScrollIntoViewProps> = ({
+export const ScrollIntoView: FC<ScrollIntoViewProps> = ({
   children,
   targetId,
   ...rest

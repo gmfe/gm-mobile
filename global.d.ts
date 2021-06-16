@@ -13,6 +13,7 @@ interface Window {
   __NAME__: string
   __CLIENT_NAME__: string
   __VERSION__: string
+  wx: WechatMiniprogram.Wx
 }
 
 declare const __NAME__ = 'mobile'

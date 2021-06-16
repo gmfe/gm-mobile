@@ -74,4 +74,5 @@ export const inputPassword = () => {
 
 export default {
   title: '表单/Input',
+  component: Input,
 }

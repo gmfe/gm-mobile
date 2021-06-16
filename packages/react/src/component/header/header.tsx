@@ -10,7 +10,7 @@ interface HeaderProps extends HTMLAttributes<HTMLDivElement> {
   right?: ReactNode
 }
 
-const Header: FC<HeaderProps> = ({
+export const Header: FC<HeaderProps> = ({
   title,
   hideBack,
   onBack = _.noop,

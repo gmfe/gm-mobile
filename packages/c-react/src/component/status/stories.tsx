@@ -19,4 +19,5 @@ export const Normal = () => {
 
 export default {
   title: '布局/Status',
+  component: Status,
 }

@@ -84,7 +84,7 @@ const ActionSheetBase: FC<ActionSheetBaseProps> = ({
   )
 }
 
-const ActionSheet = Object.assign(ActionSheetBase, ActionSheetStatics)
+export const ActionSheet = Object.assign(ActionSheetBase, ActionSheetStatics)
 
 export default ActionSheet
 export type { ActionSheetProps }

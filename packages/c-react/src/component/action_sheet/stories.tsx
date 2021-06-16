@@ -61,4 +61,5 @@ export const customItem = () => {
 
 export default {
   title: '浮层/ActionSheet',
+  component: ActionSheet,
 }

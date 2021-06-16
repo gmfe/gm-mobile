@@ -12,7 +12,7 @@ const KEY = 'theme'
 
 let computedStyle = null
 
-const CSSVariable = {
+export const CSSVariable = {
   TYPE,
   theme: LocalStorage.get(KEY) || 'default',
   initTheme() {

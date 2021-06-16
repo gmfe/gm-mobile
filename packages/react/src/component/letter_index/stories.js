@@ -60,4 +60,5 @@ export const Multiple = () => (
 
 export default {
   title: '其他/LetterIndex',
+  component: LetterIndex,
 }

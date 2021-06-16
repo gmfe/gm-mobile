@@ -15,7 +15,7 @@ interface BadgeProps extends HTMLAttributes<HTMLDivElement> {
   showOverflow?: boolean
 }
 
-const Badge: FC<BadgeProps> = (props) => {
+export const Badge: FC<BadgeProps> = (props) => {
   const {
     children,
     count,

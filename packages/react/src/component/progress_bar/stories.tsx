@@ -12,4 +12,5 @@ export const normal = () => {
 
 export default {
   title: '基础/ProgressBar',
+  component: ProgressBar,
 }

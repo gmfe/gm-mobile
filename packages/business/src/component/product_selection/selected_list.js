@@ -4,7 +4,7 @@ import _ from 'lodash'
 import PropTypes from 'prop-types'
 import { Flex, Mask } from '@gm-mobile/react'
 
-const SelectedList = ({ list, onSelect, onClose, ...rest }) => {
+export const SelectedList = ({ list, onSelect, onClose, ...rest }) => {
   const [selectedList, setSelectedList] = useState(list)
 
   const handleDelete = (item) => {

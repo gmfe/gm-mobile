@@ -12,7 +12,7 @@ interface ProgressBarProps extends HTMLAttributes<HTMLDivElement> {
   text?: string
 }
 
-const ProgressBar: FC<ProgressBarProps> = ({
+export const ProgressBar: FC<ProgressBarProps> = ({
   showText,
   className,
   percentage,

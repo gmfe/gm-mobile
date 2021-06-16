@@ -53,4 +53,5 @@ export const bottom = () => {
 
 export default {
   title: '布局/PullUpDown',
+  component: PullUpDown,
 }

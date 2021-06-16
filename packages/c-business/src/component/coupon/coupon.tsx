@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import _ from 'lodash'
 import { CouponProps, LabelsProps } from './types'
 
-const Labels: FC<LabelsProps> = (props) => {
+export const Labels: FC<LabelsProps> = (props) => {
   const { labels } = props
 
   return (
@@ -24,7 +24,7 @@ const Labels: FC<LabelsProps> = (props) => {
   )
 }
 
-const Coupon: FC<CouponProps> = (props) => {
+export const Coupon: FC<CouponProps> = (props) => {
   const {
     currency,
     discount,

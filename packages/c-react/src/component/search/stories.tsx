@@ -142,4 +142,5 @@ export const searchPage = () => {
 
 export default {
   title: '其他/Search',
+  component: Search,
 }

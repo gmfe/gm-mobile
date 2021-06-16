@@ -265,4 +265,5 @@ export const selectPicker = () => {
 
 export default {
   title: '表单/Picker',
+  component: Picker,
 }

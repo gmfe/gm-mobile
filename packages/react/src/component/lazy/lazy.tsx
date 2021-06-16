@@ -16,7 +16,7 @@ function isElementOverViewport(dom: HTMLDivElement | null) {
   return false
 }
 
-const Lazy: FC<LazyProps> = ({ targetId, delay, children, ...rest }) => {
+export const Lazy: FC<LazyProps> = ({ targetId, delay, children, ...rest }) => {
   const ref = useRef<HTMLDivElement>(null)
   const [show, setShow] = useState(false)
 

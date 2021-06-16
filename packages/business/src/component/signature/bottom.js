@@ -4,7 +4,7 @@ import { Flex, Button } from '@gm-mobile/react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
-const Bottom = ({ isEdit, onReset, onSubmit }) => {
+export const Bottom = ({ isEdit, onReset, onSubmit }) => {
   return (
     <Flex
       column

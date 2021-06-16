@@ -1,4 +1,4 @@
-import { ChangeEvent, CSSProperties, FormEvent } from 'react'
+import { ChangeEvent, CSSProperties, FormEvent, RefObject } from 'react'
 import { BaseEventOrig } from '@tarojs/components'
 import { InputProps as TaroInputProps } from '@tarojs/components/types/Input'
 

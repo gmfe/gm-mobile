@@ -92,4 +92,5 @@ export const flowBtn = () => {
 
 export default {
   title: '布局/Tabbar',
+  component: Tabbar,
 }

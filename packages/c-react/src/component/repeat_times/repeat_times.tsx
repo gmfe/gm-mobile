@@ -2,7 +2,7 @@ import { useRef, useState, FC, cloneElement, ReactElement } from 'react'
 import { RepeatTimesProps } from './types'
 import { Toast } from '../toast'
 
-const RepeatTimes: FC<RepeatTimesProps> = ({
+export const RepeatTimes: FC<RepeatTimesProps> = ({
   repeat = 5,
   onRepeat,
   children,

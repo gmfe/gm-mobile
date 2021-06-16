@@ -28,4 +28,5 @@ export const accent = () => (
 
 export default {
   title: '基础/Label',
+  component: Label,
 }

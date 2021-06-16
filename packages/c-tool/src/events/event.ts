@@ -1,5 +1,5 @@
 // 自定义事件
-const Events = {
+export const Events = {
   add<D = any>(
     eventName: string,
     handler: (event: CustomEvent<D>) => void

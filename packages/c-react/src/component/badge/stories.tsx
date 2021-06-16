@@ -30,4 +30,5 @@ export const corner = () => (
 
 export default {
   title: '基础/Badge',
+  component: Badge,
 }

@@ -14,7 +14,12 @@ interface TooltipProps {
   title?: string
 }
 
-const Tooltip: FC<TooltipProps> = ({ title, content, onClick, children }) => {
+export const Tooltip: FC<TooltipProps> = ({
+  title,
+  content,
+  onClick,
+  children,
+}) => {
   const handleClick = (e: MouseEvent<HTMLDivElement>) => {
     Popup.render({
       title,

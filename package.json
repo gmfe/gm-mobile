@@ -9,7 +9,8 @@
     "publish-beta": "lerna publish --force-publish --dist-tag beta --preid beta --registry https://registry.npmjs.org/",
     "build:weapp": "taro build --type weapp",
     "dev:weapp": "npm run build:weapp -- --watch",
-    "svg": "rm -rf packages/components/src/fonts; node svg2font.ts;"
+    "svg": "rm -rf packages/components/src/fonts; node svg2font.ts;",
+    "chromatic": "npx chromatic --project-token=1706a24a8d6a"
   },
   "husky": {
     "hooks": {
@@ -53,13 +54,18 @@
     "@gm-common/number": "^2.9.5",
     "@gm-react-app/commitlint-gm-react-app": "^3.5.0",
     "@gm-react-app/scripts-lib": "^3.5.0",
-    "@storybook/addon-info": "^5.3.21",
-    "@storybook/addon-notes": "^5.3.21",
-    "@storybook/addon-storysource": "^5.3.21",
-    "@storybook/addons": "^5.3.18",
+    "@mdx-js/loader": "^1.6.22",
+    "@storybook/addon-actions": "^6.2.9",
+    "@storybook/addon-controls": "^6.2.9",
+    "@storybook/addon-docs": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-links": "^6.2.9",
+    "@storybook/addon-storysource": "^6.2.9",
+    "@storybook/addons": "^6.2.9",
+    "@storybook/preset-create-react-app": "^3.1.7",
     "@storybook/preset-typescript": "^3.0.0",
-    "@storybook/react": "^5.3.14",
-    "@storybook/theming": "^5.3.18",
+    "@storybook/react": "^6.2.9",
+    "@storybook/theming": "^6.2.9",
     "@svgr/webpack": "^5.5.0",
     "@tarojs/cli": "3.0.18",
     "@tarojs/components": "3.0.18",
@@ -81,7 +87,7 @@
     "babel-plugin-lodash": "^3.3.4",
     "babel-preset-gm-react-app": "^3.5.0-beta.0",
     "big.js": "^6.0.3",
-    "core-js": "2.6.10",
+    "core-js": "^3.0.1",
     "css-loader": "^3.5.3",
     "eslint": "^6.8.0",
     "eslint-plugin-gm-react-app": "^3.5.0-beta.0",
@@ -123,5 +129,7 @@
     "webpack-bundle-analyzer": "^3.8.0",
     "webpack-iconfont-plugin-nodejs": "^1.0.17"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "chromatic": "^5.9.0"
+  }
 }

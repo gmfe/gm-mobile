@@ -6,7 +6,7 @@ import BaseCalendar from './base'
 import { CALENDAR_TYPE } from './util'
 import { CalendarProps } from './types'
 
-const Calendar: FC<CalendarProps> = ({
+export const Calendar: FC<CalendarProps> = ({
   selected = moment().toDate(),
   onSelect = _.noop,
   ...rest

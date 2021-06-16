@@ -81,4 +81,5 @@ export const WithServiceTime = () => {
 
 export default {
   title: '业务/TabDateSelect',
+  component: TabDateSelect,
 }

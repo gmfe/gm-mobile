@@ -49,4 +49,5 @@ export const normal = () => {
 
 export default {
   title: '布局/Tabs',
+  component: Tabs,
 }

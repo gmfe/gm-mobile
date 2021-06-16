@@ -63,4 +63,5 @@ export const normal = () => {
 
 export default {
   title: '基础/Counter',
+  component: Counter,
 }

@@ -7,7 +7,7 @@ import Bottom from './bottom'
 import SelectedList from './selected_list'
 import { PropTypes } from 'mobx-react'
 
-const ProductSelection = ({
+export const ProductSelection = ({
   data,
   selected,
   onSelect,

@@ -82,4 +82,5 @@ export const Lazy = () => {
 
 export default {
   title: '布局/Scroll',
+  component: Scroll,
 }

@@ -1,8 +1,8 @@
-import React, { forwardRef } from 'react'
+import React, { createRef, forwardRef } from 'react'
 import classNames from 'classnames'
 import { InputProps } from './type'
 
-const Input = forwardRef<HTMLInputElement, Omit<InputProps, 'onInput'>>(
+export const Input = forwardRef<HTMLInputElement, Omit<InputProps, 'onInput'>>(
   ({ isForm, className, ...rest }, ref) => {
     return (
       <input

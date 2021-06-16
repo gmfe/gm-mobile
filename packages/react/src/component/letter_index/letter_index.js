@@ -7,7 +7,7 @@ import Letter from './letter'
 import { Flex } from '@gm-mobile/c-react'
 import { data2Group } from './util'
 
-const LetterIndex = ({
+export const LetterIndex = ({
   selected,
   data,
   renderItem,

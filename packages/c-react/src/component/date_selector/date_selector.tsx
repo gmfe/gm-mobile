@@ -17,7 +17,7 @@ const weekDays = [
   getLocale('六'),
 ]
 
-const DateSelector: FC<DateSelectorProps> = ({
+export const DateSelector: FC<DateSelectorProps> = ({
   selected,
   onSelect,
   disabledDate,

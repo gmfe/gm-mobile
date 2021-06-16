@@ -138,4 +138,5 @@ export const mode = () => (
 
 export default {
   title: '基础/Image',
+  component: Image,
 }

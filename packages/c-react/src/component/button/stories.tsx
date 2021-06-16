@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { FC } from 'react'
 import Button from './button'
 import ButtonTime from './button_time'
 import { View } from '../view'
+import { ButtonProps } from './types'
 
 function handleClick(): Promise<void> {
   console.log('click')
@@ -12,15 +13,20 @@ function handleClick(): Promise<void> {
   )
 }
 
-export const normal = () => (
+export const normal: FC<ButtonProps> = (args) => (
   <View>
     默认
     <View>
-      <Button>默认</Button>
+      <Button {...args}>默认</Button>
 
-      <Button type='primary'>主色</Button>
-      <Button type='danger'>危险</Button>
+      <Button {...args} type='primary'>
+        主色
+      </Button>
+      <Button {...args} type='danger'>
+        危险
+      </Button>
       <Button
+        {...args}
         type='link'
         onClick={() => {
           window.open('https://www.google.com')
@@ -31,85 +37,68 @@ export const normal = () => (
     </View>
     plain
     <View>
-      <Button plain>默认</Button>
-      <Button plain type='primary'>
-        主色
-      </Button>
-      <Button plain type='danger'>
-        危险
-      </Button>
-      <Button plain type='link'>
-        Link
+      <Button {...args} plain>
+        默认
       </Button>
     </View>
     disabled
     <View>
-      <Button disabled>默认</Button>
-      <Button disabled type='primary'>
-        主色
-      </Button>
-      <Button disabled type='danger'>
-        危险
-      </Button>
-      <Button disabled type='link'>
-        Link
+      <Button {...args} disabled>
+        默认
       </Button>
     </View>
     size
     <View>
-      <Button type='primary' mini>
+      <Button {...args} mini>
         默认
       </Button>
-      <Button mini>小按钮</Button>
-      <Button mini type='link'>
+      <Button {...args} mini>
+        小按钮
+      </Button>
+      <Button {...args} mini type='link'>
         Link
       </Button>
-      <Button mini type='link' className='m-text'>
+      <Button {...args} mini type='link' className='m-text'>
         纯文字
       </Button>
     </View>
     block
     <View>
-      <Button block type='primary'>
+      <Button {...args} block type='primary'>
         主色
       </Button>
-      <Button block mini plain>
+      <Button {...args} block mini plain>
         主色
       </Button>
     </View>
     noRound
     <View>
-      <Button noRound type='primary'>
+      <Button {...args} noRound type='primary'>
         主色
       </Button>
     </View>
-  </View>
-)
-
-export const loading = () => (
-  <View>
     loading
     <View>
-      <Button loading>加载中</Button>
+      <Button {...args} loading>
+        加载中
+      </Button>
     </View>
     onClick promise
     <View>
-      <Button onClick={handleClick}>点击显示 loading</Button>
-      <Button type='primary' onClick={handleClick}>
+      <Button {...args} onClick={handleClick}>
         点击显示 loading
       </Button>
-      <Button type='danger' onClick={handleClick}>
+      <Button {...args} type='primary' onClick={handleClick}>
+        点击显示 loading
+      </Button>
+      <Button {...args} type='danger' onClick={handleClick}>
         点击显示 loading
       </Button>
     </View>
-  </View>
-)
-
-export const buttonTime = () => (
-  <View>
     <View>
       <View>输入项不为空，才允许计时(通过onClick事件控制)</View>
       <ButtonTime
+        {...args}
         mini
         time={10}
         type='primary'
@@ -123,7 +112,7 @@ export const buttonTime = () => (
     </View>
     <View>
       <View>异步计时(通过onClick事件控制)</View>
-      <ButtonTime time={10} type='primary' onClick={handleClick}>
+      <ButtonTime {...args} time={10} type='primary' onClick={handleClick}>
         获取验证码
       </ButtonTime>
     </View>
@@ -132,4 +121,5 @@ export const buttonTime = () => (
 
 export default {
   title: '表单/Button',
+  component: Button,
 }

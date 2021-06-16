@@ -34,7 +34,7 @@ const InnerLayerBase: FC<InnerLayerProps> = ({
   </View>
 )
 
-const InnerLayer = Object.assign(InnerLayerBase, InnerLayerStatics)
+export const InnerLayer = Object.assign(InnerLayerBase, InnerLayerStatics)
 
 export default InnerLayer
 export type { InnerLayerProps }

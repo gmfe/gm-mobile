@@ -5,7 +5,7 @@ import { Text } from '../text'
 import { Flex } from '../flex'
 import { TabsProps } from './types'
 
-const Tabs: FC<TabsProps> = ({
+export const Tabs: FC<TabsProps> = ({
   tabs,
   active,
   onChange = _.noop,

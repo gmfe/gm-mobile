@@ -8,7 +8,7 @@ import _ from 'lodash'
 import { getLocale } from '@gm-mobile/locales'
 import { StatusProps } from './types'
 
-const Status: FC<StatusProps> = memo(
+export const Status: FC<StatusProps> = memo(
   ({ type, tip, onReload = _.noop, className, children, ...rest }) => {
     let content = null
     if (type === 'loading') {

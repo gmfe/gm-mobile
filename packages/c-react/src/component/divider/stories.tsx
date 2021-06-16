@@ -6,4 +6,5 @@ export const normal = () => {
 }
 export default {
   title: '布局/Divider',
+  component: Divider,
 }

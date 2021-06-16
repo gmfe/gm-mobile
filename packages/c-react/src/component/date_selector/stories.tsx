@@ -55,4 +55,5 @@ export const DisabledDate = () => {
 
 export default {
   title: '表单/DateSelector',
+  component: DateSelector,
 }

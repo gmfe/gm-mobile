@@ -100,4 +100,5 @@ export const Horizontal = () => {
 
 export default {
   title: '布局/Nav',
+  component: Nav,
 }

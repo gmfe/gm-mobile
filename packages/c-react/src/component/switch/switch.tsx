@@ -4,7 +4,7 @@ import _ from 'lodash'
 import { View } from '../view'
 import { SwitchProps } from './types'
 
-const Switch: FC<SwitchProps> = ({
+export const Switch: FC<SwitchProps> = ({
   checked,
   disabled,
   onChange = _.noop,

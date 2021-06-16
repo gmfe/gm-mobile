@@ -2,7 +2,7 @@ import React, { useImperativeHandle, useRef, forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import Base from './base'
 
-const List = forwardRef(
+export const List = forwardRef(
   ({ data, selected, multiple, isGroupList, onSelect, ...rest }, ref) => {
     const refList = useRef(null)
 
