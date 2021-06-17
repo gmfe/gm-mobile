@@ -8,6 +8,7 @@ import { Input } from '../input'
 import { Textarea } from '../textarea'
 
 /** 是否小程序端 */
+// @ts-ignore
 const mp = !!window.wx
 /** 是否ios */
 const ios = mp && wx.getSystemInfoSync().platform === 'ios'
@@ -198,7 +199,7 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
           )}
           <Flex
             className={classNames(
-              'text-field-input-box',
+              'text-field-inner',
               {
                 'm-border': outlined,
                 'border-bottom': bottomLined,

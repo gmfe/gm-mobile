@@ -1,26 +1,28 @@
 .text-field {
   position: relative;
   &.disabled {
-    cursor: not-allowed !important;
-    opacity: 0.75;
-    & * {
-      cursor: not-allowed !important;
+    cursor: not-allowed;
+    opacity: 0.5;
+    .text-field-inner,
+    .textfield-input,
+    .textfield-textarea {
+      cursor: inherit;
     }
   }
-  & input,
-  & textarea {
+  & .textfield-input,
+  & .textfield-textarea {
     width: 100%;
     height: 100%;
     caret-color: var(--m-color-primary);
     font: inherit;
   }
   // ios小程序显示有问题
-  &.ios textarea {
+  &.ios .textfield-textarea {
     margin-left: -5px;
     margin-top: -5px;
   }
   &.active {
-    .text-field-input-box {
+    .text-field-inner {
       border-color: var(--m-color-primary) !important;
     }
     .border-bottom {
@@ -35,14 +37,14 @@
     }
   }
   &.highlight {
-    .text-field-input-box {
+    .text-field-inner {
       background-color: var(--m-color-bg-secondary) !important;
     }
   }
   .text-field-placeholder {
     color: var(--m-color-placeholder);
   }
-  .text-field-input-box {
+  .text-field-inner {
     cursor: text;
     &.border-radius {
       border-radius: 5px;
@@ -96,7 +98,7 @@
     width: 100%;
   }
   &.text-field-error {
-    .text-field-input-box {
+    .text-field-inner {
       border-color: fade(red, 50) !important;
       &.border-bottom {
         &:before,

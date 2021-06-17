@@ -4,6 +4,8 @@ import { TextFieldProps } from './types'
 import { Meta, Story } from '@storybook/react'
 import { Text } from '../text/text'
 import { Button } from '../button'
+import { View } from '../view'
+import { Page } from '../page'
 
 const Template: Story<TextFieldProps> = ({ value = '输入内容', ...rest }) => {
   const [state, setState] = useState({
@@ -86,6 +88,29 @@ Misc.args = {
   type: 'password',
   outlined: true,
   err: '密码不能为空',
+}
+
+export const Search = () => {
+  return (
+    <Page
+      style={{ height: '100px' }}
+      top={
+        <View className='m-padding-tb-10 m-padding-lr-10'>
+          <TextField
+            block
+            round
+            mini
+            innerClassName='m-bg-white m-padding-lr-10 m-padding-tb-5'
+            placeholder='搜索'
+            left={<Text className='m-font-search' />}
+            value=''
+          />
+        </View>
+      }
+    >
+      page
+    </Page>
+  )
 }
 
 export default {

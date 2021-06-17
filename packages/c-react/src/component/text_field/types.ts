@@ -1,10 +1,10 @@
-import { CSSProperties, ReactNode, RefObject } from 'react'
+import { CSSProperties, ReactNode } from 'react'
+import { InputProps as MPInputProps } from '@tarojs/components/types/Input'
 import { InputProps } from '../input'
-
 interface TextFieldProps
   extends Omit<
-    InputProps,
-    'style' | 'onBlur' | 'onFocus' | 'onClick' | 'onChange'
+    InputProps & MPInputProps,
+    'style' | 'onBlur' | 'onFocus' | 'onClick' | 'onChange' | 'type'
   > {
   value: string
   /** 输入事件, e在web中为ChangeEvent，在小程序中为onInputEventDetail */
