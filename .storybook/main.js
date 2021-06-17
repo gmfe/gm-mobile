@@ -85,6 +85,7 @@ module.exports = {
     '@storybook/addon-actions',
     '@storybook/addon-links',
     '@storybook/addon-essentials',
+    '@storybook/addon-viewport'
   ],
   // 枚举，避免识别到tail node_modules 的 stories
   // todo: 暂时兼容js和ts

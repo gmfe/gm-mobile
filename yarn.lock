@@ -3329,7 +3329,7 @@
     "@storybook/components" "6.2.9"
     core-js "^3.8.2"
 
-"@storybook/addon-viewport@6.2.9":
+"@storybook/addon-viewport@6.2.9", "@storybook/addon-viewport@^6.2.9":
   version "6.2.9"
   resolved "https://registry.nlark.com/@storybook/addon-viewport/download/@storybook/addon-viewport-6.2.9.tgz#e380de567cea6c24c4e933efa009e80428d5b49e"
   integrity sha1-44DeVnzqbCTE6TPvoAnoBCjVtJ4=

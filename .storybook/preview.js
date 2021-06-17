@@ -2,13 +2,13 @@ import React from 'react'
 import { addDecorator, addParameters } from '@storybook/react'
 import { LayoutRoot, CSSVariable } from '../packages/react/src'
 import { Observer } from 'mobx-react'
+import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport'
 
 import './less.less'
 
 import '../packages/react/src/index.less'
 import '../packages/swiper/src/index.less'
 import '../packages/business/src/index.less'
-
 
 addParameters({
   options: {
@@ -28,4 +28,10 @@ if (
   window.matchMedia('(prefers-color-scheme: dark)').matches
 ) {
   CSSVariable.setTheme(CSSVariable.TYPE.DARK)
+}
+
+export const parameters = {
+  viewport: {
+    viewports: MINIMAL_VIEWPORTS,
+  },
 }
