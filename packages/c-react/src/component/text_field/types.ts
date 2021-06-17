@@ -59,7 +59,7 @@ interface TextFieldProps
   innerClassName?: string
   /** 校验报错后的错误类 */
   errClassName?: string
-  /** 键盘和输入框距离 */
+  /** 键盘和输入框距离，小程序特有 */
   cursorSpacing?: number
   onBlur?: () => void
   onFocus?: () => void

@@ -24,7 +24,7 @@ const Template: Story<TextFieldProps> = ({ value = '输入内容', ...rest }) =>
 export const Usage = Template.bind({})
 Usage.args = {
   prefix: '用户名: ',
-  right: <Text className='m-font-success-circle m-text-primary' />,
+  right: '×',
   bottomLined: true,
   errClassName: 'm-text-right',
 }
@@ -46,7 +46,7 @@ Background.args = {
 export const Outlined = Template.bind({})
 Outlined.args = {
   outlined: true,
-  left: <Text className='m-text-desc m-margin-right-5'>密码: </Text>,
+  left: <Text className='m-text-desc m-margin-right-5'>密码：</Text>,
   type: 'password',
   right: Usage.args.suffix,
   placeholder: '请输入内容...',
