@@ -98,7 +98,7 @@ export class DigitalKeyboard {
                 value = value?.slice(0, value.length - 1)
               }
 
-              if (value && !value.endsWith('.')) {
+              if (btn.type === 'digit' && value && !value.endsWith('.')) {
                 const num = parseFloat(value)
                 if (!isNaN(num as number)) {
                   value = clamp(

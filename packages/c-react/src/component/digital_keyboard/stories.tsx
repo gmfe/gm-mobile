@@ -1,15 +1,20 @@
 import React, { useRef } from 'react'
-import { Meta, Story } from '@storybook/react'
+import { Story } from '@storybook/react'
 import { TextField } from '../text_field'
 import { DigitalKeyboard, DigitalKeyboardProps } from '.'
 import { Text } from '../text'
-import Btn from './Btn'
+import { Btn } from './Btn'
 import { View } from '../view'
 import { Toast } from '../toast'
 import { Page } from '../page'
 import { Flex } from '../flex'
 
 const Template: Story<DigitalKeyboardProps> = (args) => {
+  Object.keys(args).forEach((key) => {
+    // @ts-ignore
+    if (args[key] === undefined) delete args[key]
+  })
+
   const form = {
     apple: '1.00',
     peach: '0.50',
