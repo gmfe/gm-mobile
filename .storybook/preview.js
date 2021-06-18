@@ -2,19 +2,12 @@ import React from 'react'
 import { addDecorator, addParameters } from '@storybook/react'
 import { LayoutRoot, CSSVariable } from '../packages/react/src'
 import { Observer } from 'mobx-react'
-import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport'
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
 
 import './less.less'
-
 import '../packages/react/src/index.less'
 import '../packages/swiper/src/index.less'
 import '../packages/business/src/index.less'
-
-addParameters({
-  options: {
-    showRoots: true,
-  },
-})
 
 addDecorator((storeFn) => (
   <React.Fragment>
@@ -31,7 +24,21 @@ if (
 }
 
 export const parameters = {
+  options: {
+    showRoots: true,
+  },
   viewport: {
-    viewports: MINIMAL_VIEWPORTS,
+    viewports: {
+      gm: {
+        name: 'gm-preview',
+        styles: {
+          width: '375px',
+          height: '600px',
+        },
+        type: 'mobile',
+      },
+      ...INITIAL_VIEWPORTS,
+    },
+    defaultViewport: 'gm',
   },
 }

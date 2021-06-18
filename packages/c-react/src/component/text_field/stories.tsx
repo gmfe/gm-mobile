@@ -42,7 +42,7 @@ export const Background = Template.bind({})
 Background.args = {
   ...Usage.args,
   bottomLined: false,
-  className: 'm-bg-back m-padding-lr-5',
+  className: 'm-bg-light m-padding-lr-5',
 }
 
 export const Outlined = Template.bind({})
@@ -69,7 +69,7 @@ WithButton.args = {
   large: true,
   value: '9527',
   outlined: true,
-  width: '400px',
+  width: '300px',
   right: (
     <Button
       mini
