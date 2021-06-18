@@ -41,4 +41,9 @@ export const parameters = {
     },
     defaultViewport: 'gm',
   },
+  docs: {
+    source: {
+      type: 'code',
+    },
+  },
 }

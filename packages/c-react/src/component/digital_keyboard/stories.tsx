@@ -1,22 +1,24 @@
 import React, { useRef } from 'react'
 import { Meta, Story } from '@storybook/react'
 import { TextField } from '../text_field'
-import { CustomKeyboard, CustomKeyboardProps } from '.'
+import { DigitalKeyboard, DigitalKeyboardProps } from '.'
 import { Text } from '../text'
 import Btn from './Btn'
 import { View } from '../view'
 import { Toast } from '../toast'
+import { Page } from '../page'
+import { Flex } from '../flex'
 
-const Template: Story<CustomKeyboardProps> = (args) => {
+const Template: Story<DigitalKeyboardProps> = (args) => {
   const form = {
     apple: '1.00',
     peach: '0.50',
   }
   const { current: keyboard } = useRef(
-    new CustomKeyboard({
+    new DigitalKeyboard({
       ...args,
       form: form,
-      active: 's',
+      active: '',
       async onAction(btn) {
         if (btn.label === '确认') {
           console.log('result:', 'apple', keyboard.get('apple'))
@@ -28,6 +30,7 @@ const Template: Story<CustomKeyboardProps> = (args) => {
 
   return (
     <View style={{ height: '300px' }}>
+      <View className='m-margin-tb-20'>请在Canvas中预览键盘</View>
       {Object.keys(form).map((name) => {
         return (
           <TextField
@@ -100,14 +103,6 @@ Usage.argTypes = {
       required: false,
     },
   },
-  show: {
-    description: '`boolean` 是否显示',
-    defaultValue: true,
-    type: {
-      name: 'boolean',
-      require: false,
-    },
-  },
   int: {
     description: '`boolean` 整数类型键盘',
     type: {
@@ -142,6 +137,61 @@ Usage.argTypes = {
     control: false,
     type: {},
   },
+  '.show()': {
+    description: '`()=>void` 使用Popup.layout(...)从下方弹出键盘组件。',
+    type: {
+      name: 'function',
+    },
+  },
+  '.hide()': {
+    description: '`()=>void` 关闭弹出。等同于Popup.hide()',
+    type: {
+      name: 'function',
+    },
+  },
+  '.children': {
+    description: '`ReactComponent` 键盘组件节点',
+    type: {
+      name: 'function',
+    },
+  },
+  '.active': {
+    description: 'keyboard当前活动于的form key',
+    control: false,
+    type: {
+      name: 'string',
+    },
+  },
+  '.setInt()': {
+    description: '`(int?: boolean)=>void` 设置为整数型键盘',
+    type: {
+      name: 'function',
+    },
+  },
+  '.get()': {
+    description: '`(key?: string)=>string` 取指定form key的值',
+    type: {
+      name: 'function',
+    },
+  },
+  '.set()': {
+    description: '`(key?: string, value?:string)=>void` 设置指定form key的值',
+    type: {
+      name: 'function',
+    },
+  },
+  '.setActive()': {
+    description: '`(key?: string)=>void` 设置active',
+    type: {
+      name: 'function',
+    },
+  },
+  '.next()': {
+    description: '`()=>void` 设置active为form中的当前key的下一个key',
+    type: {
+      name: 'function',
+    },
+  },
 }
 Usage.args = {
   rewriteMode: true,
@@ -150,9 +200,45 @@ Usage.args = {
   max: 9999.99,
 }
 
+export const CustomLayout = () => {
+  const form = {
+    apple: '1.00',
+    peach: '0.50',
+  }
+  const { current: keyboard } = useRef(
+    new DigitalKeyboard({
+      form: form,
+      active: '',
+    })
+  )
+
+  return (
+    <Page>
+      <Flex
+        height='100px'
+        className='m-bg-accent m-margin-tb-10'
+        alignCenter
+        justifyCenter
+      >
+        头部
+      </Flex>
+      <View>显示在指定位置</View>
+      <View>{keyboard.children}</View>
+      <Flex
+        height='100px'
+        className='m-bg-accent m-margin-tb-10'
+        alignCenter
+        justifyCenter
+      >
+        尾部
+      </Flex>
+    </Page>
+  )
+}
+
 export const CustomActions = () => {
   // 通过继承的方式自定义keys
-  class Keyboard extends CustomKeyboard {
+  class Keyboard extends DigitalKeyboard {
     get actionKeys() {
       return [
         new Btn({
@@ -168,6 +254,7 @@ export const CustomActions = () => {
           flex: 3,
           className: 'm-bg-primary m-text-white',
           fn: (value) => {
+            this.hide()
             return this.get(this.active)
           },
         }),

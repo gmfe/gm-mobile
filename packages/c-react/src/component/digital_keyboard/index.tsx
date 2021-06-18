@@ -11,7 +11,7 @@ import { Popup } from '../popup'
 // @ts-ignore
 const mp = !!window.wx
 
-export type CustomKeyboardProps = Omit<KeyboardProps, 'value' | 'int'> & {
+export type DigitalKeyboardProps = Omit<KeyboardProps, 'value' | 'int'> & {
   /** 增加键盘上方额外内容 */
   header?: ReactNode
   /** form的key，默认活动字段 */
@@ -32,7 +32,7 @@ export type CustomKeyboardProps = Omit<KeyboardProps, 'value' | 'int'> & {
   max?: number
 }
 
-export class CustomKeyboard {
+export class DigitalKeyboard {
   constructor({
     header,
     form,
@@ -46,7 +46,7 @@ export class CustomKeyboard {
     max,
     style,
     ...rest
-  }: CustomKeyboardProps) {
+  }: DigitalKeyboardProps) {
     this.form = form
     this.active = active || Object.keys(form)[0]
     const Children = observer(() => {
@@ -220,4 +220,6 @@ export class CustomKeyboard {
     Popup.hide()
   }
 }
-export default CustomKeyboard
+export default DigitalKeyboard
+
+export { Btn } from './Btn'

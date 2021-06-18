@@ -1,4 +1,4 @@
-export default class Btn {
+export class Btn {
   /** 按钮文本 */
   label?: string
   /** 按钮占位，默认1个位置 */
@@ -14,3 +14,5 @@ export default class Btn {
     Object.assign(this, { label, flex, className, fn })
   }
 }
+
+export default Btn
