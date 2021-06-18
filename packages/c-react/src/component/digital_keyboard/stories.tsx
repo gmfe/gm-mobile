@@ -294,4 +294,11 @@ export const CustomActions = () => {
 
 export default {
   title: '表单/DigitalKeyboard',
+  parameters: {
+    docs: {
+      source: {
+        type: 'code',
+      },
+    },
+  },
 }
