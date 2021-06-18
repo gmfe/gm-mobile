@@ -293,5 +293,5 @@ export const CustomActions = () => {
 }
 
 export default {
-  title: '表单/Digital Keyboard',
+  title: '表单/DigitalKeyboard',
 }
