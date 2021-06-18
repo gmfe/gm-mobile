@@ -43,7 +43,7 @@ export const parameters = {
   },
   docs: {
     source: {
-      type: 'code',
+      type: 'auto',
     },
   },
 }

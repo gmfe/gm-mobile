@@ -12,8 +12,7 @@ if (
   theme = themes.light
 }
 
-// theme.brandImage =
-//   'https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png'
+theme.brandImage = ''
 theme.brandTitle = 'gm-mobile'
 
 addons.setConfig({
