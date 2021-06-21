@@ -6,7 +6,7 @@ import { View } from '../view'
 import { ScrollIntoView } from '../scroll_into_view'
 import { NavProps, NavRef } from './types'
 
-const Nav = forwardRef<NavRef, NavProps>(
+export const Nav = forwardRef<NavRef, NavProps>(
   ({ data, selected, onSelect, horizontal, className, ...rest }, ref) => {
     const refId = useRef((Math.random() + '').slice(2))
     const [targetId, setTargetId] = useState('')

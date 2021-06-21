@@ -9,7 +9,7 @@ const getDefaultImage = (width, height) => {
   )}/uh/${parseInt(height / 3)}`
 }
 
-const Edit = ({ isEdit, output, image, onSave }) => {
+export const Edit = ({ isEdit, output, image, onSave }) => {
   const canvasRef = useRef(null)
   const [area, setArea] = useState({
     width: 0,

@@ -4,7 +4,7 @@ import Swiper from 'swiper'
 import classNames from 'classnames'
 import { SwiperCategoryProps } from './types'
 
-const SwiperCategory: FC<SwiperCategoryProps> = ({
+export const SwiperCategory: FC<SwiperCategoryProps> = ({
   options,
   className,
   children,

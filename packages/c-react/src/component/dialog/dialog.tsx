@@ -206,6 +206,6 @@ const DialogBase: FC<DialogBaseProps> = ({
   )
 }
 
-const Dialog = Object.assign(DialogBase, DialogStatics)
+export const Dialog = Object.assign(DialogBase, DialogStatics)
 
 export default Dialog

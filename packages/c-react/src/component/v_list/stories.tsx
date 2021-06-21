@@ -47,4 +47,5 @@ export const VListDemo = () => {
 
 export default {
   title: '布局/VList',
+  component: VList,
 }

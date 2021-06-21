@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import QRCodeReact from 'qrcode.react'
 import { QRCodeProps } from './type'
 
-const QRCode: FC<QRCodeProps> = (props) => {
+export const QRCode: FC<QRCodeProps> = (props) => {
   return <QRCodeReact {...props} />
 }
 

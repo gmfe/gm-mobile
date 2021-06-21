@@ -6,7 +6,7 @@ import BaseButton from './base'
 import { is } from '@gm-mobile/c-tool'
 import type { ButtonProps } from './types'
 
-const Button: FC<ButtonProps> = ({
+export const Button: FC<ButtonProps> = ({
   type = 'default',
   plain,
   mini,

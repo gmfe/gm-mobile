@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { View } from '../view'
 import { FlexProps } from './types'
 
-const Flex = forwardRef<HTMLDivElement, FlexProps>(
+export const Flex = forwardRef<HTMLDivElement, FlexProps>(
   (
     {
       flex,

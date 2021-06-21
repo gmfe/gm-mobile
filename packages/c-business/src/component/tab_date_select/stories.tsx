@@ -1,6 +1,6 @@
 import React from 'react'
 import moment from 'moment'
-import TabDateSelect from './tab_date_select'
+import { TabDateSelect } from './tab_date_select'
 import { Button } from '@gm-mobile/c-react'
 
 const tabs = [
@@ -14,7 +14,7 @@ const tabs = [
     text: '按收货日期',
     value: '2',
     min: moment().subtract(365, 'day').toDate(),
-    max: moment().add(30, 'days').toDate(),
+    max: moment().toDate(),
   },
 ]
 
@@ -81,4 +81,5 @@ export const WithServiceTime = () => {
 
 export default {
   title: '业务/TabDateSelect',
+  component: TabDateSelect,
 }

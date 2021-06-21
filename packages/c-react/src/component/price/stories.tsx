@@ -40,4 +40,5 @@ export const normal = () => {
 
 export default {
   title: '基础/Price',
+  component: Price,
 }

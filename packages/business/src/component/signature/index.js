@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import View from './view'
 import Edit from './edit'
 
-const Signature = ({ isEdit, image, disabledEdit, output, onSave }) => {
+export const Signature = ({ isEdit, image, disabledEdit, output, onSave }) => {
   const [isEdited, setEdit] = useState(!!isEdit)
 
   if (!isEdited && image) {

@@ -12,4 +12,5 @@ export const normal = () => {
 
 export default {
   title: '浮层/ToolTip',
+  component: Tooltip,
 }

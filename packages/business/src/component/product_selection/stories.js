@@ -42,4 +42,5 @@ export const Normal = () => (
 
 export default {
   title: '业务/ProductSelection',
+  component: ProductSelection,
 }

@@ -105,6 +105,6 @@ class PriceBase extends Component<PriceProps> {
   }
 }
 
-const Price = Object.assign(PriceBase, PriceStatics)
+export const Price = Object.assign(PriceBase, PriceStatics)
 
 export default Price

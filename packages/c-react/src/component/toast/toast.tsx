@@ -84,6 +84,6 @@ const ToastBase: FC<ToastProps> = ({ children, type }) => {
   )
 }
 
-const Toast = Object.assign(ToastBase, ToastStatics)
+export const Toast = Object.assign(ToastBase, ToastStatics)
 
 export default Toast

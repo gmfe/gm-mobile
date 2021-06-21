@@ -45,4 +45,5 @@ export const multiOrder = () => {
 
 export default {
   title: '业务/ReceiveTimePicker',
+  component: ReceiveTimePicker,
 }

@@ -191,6 +191,9 @@ const TabDateSelectStatic: TabDateSelectStaticTypes = {
   },
 }
 
-const TabDateSelect = Object.assign(TabDateSelectBase, TabDateSelectStatic)
+export const TabDateSelect = Object.assign(
+  TabDateSelectBase,
+  TabDateSelectStatic
+)
 
 export default TabDateSelect

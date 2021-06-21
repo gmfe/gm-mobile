@@ -29,7 +29,7 @@ interface ImageMPProps extends TaroImageProps {
  * tip：image组件默认宽度300px、高度240px
  * tip：image组件中二维码/小程序码图片不支持长按识别。仅在wx.previewImage中支持长按识别
  */
-const ImageMP: FC<ImageMPProps> = ({
+export const ImageMP: FC<ImageMPProps> = ({
   src,
   width,
   height,

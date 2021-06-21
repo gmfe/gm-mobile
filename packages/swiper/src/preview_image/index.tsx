@@ -25,7 +25,7 @@ const PreviewImageStatics: PreviewImageStaticsProps = {
   },
 }
 
-const PreviewImage: FC<PreviewImageProps> = ({
+export const PreviewImage: FC<PreviewImageProps> = ({
   images,
   defaultIndex = 0,
   className,

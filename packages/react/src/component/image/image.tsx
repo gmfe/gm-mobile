@@ -80,7 +80,7 @@ const Image: FC<ImageProps> = ({
   )
 }
 
-const ImageWrapper: FC<ImageProps> = (props) => (
+export const ImageWrapper: FC<ImageProps> = (props) => (
   <Image key={props.src} {...props} />
 )
 

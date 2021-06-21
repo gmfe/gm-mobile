@@ -7,4 +7,5 @@ export const normal = () => {
 
 export default {
   title: '基础/FlipNumber',
+  component: FlipNumber,
 }

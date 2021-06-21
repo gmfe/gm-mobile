@@ -69,7 +69,7 @@ const initCanvas = (canvas: HTMLCanvasElement, image = '') => {
   }
 }
 
-const Canvas = forwardRef<CanvasRef, CanvasProps>((props, ref) => {
+export const Canvas = forwardRef<CanvasRef, CanvasProps>((props, ref) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const { background } = props
   useImperativeHandle(ref, () => ({

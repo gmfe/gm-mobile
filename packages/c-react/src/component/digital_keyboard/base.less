@@ -1,0 +1,49 @@
+.keyboard {
+  @background: darken(white, 3);
+  @btn: white;
+  @text: black;
+  background-color: @background;
+  overflow: hidden;
+  transition: all 0.2s;
+  position: relative;
+  height: 0%;
+  top: 100vh;
+  &.show {
+    height: 100%;
+    top: 0;
+  }
+  .keyboard-item {
+    padding: 3px;
+    height: 60px;
+    .keyboard-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      color: @text;
+      // font-weight: bold;
+      border-radius: 5px;
+      background-color: @btn;
+      overflow: hidden;
+      cursor: pointer;
+      &.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+      &:active {
+        position: relative;
+        &:after {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background-color: currentColor;
+          opacity: 0.2;
+        }
+      }
+    }
+  }
+}

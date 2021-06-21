@@ -3,7 +3,7 @@ import { is } from '@gm-mobile/c-tool'
 import classNames from 'classnames'
 import { UploaderProps, UploaderFile } from './types'
 
-const Uploader: FC<UploaderProps> = ({
+export const Uploader: FC<UploaderProps> = ({
   accept,
   multiple = false,
   onUpload,

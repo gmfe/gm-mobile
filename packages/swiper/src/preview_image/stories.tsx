@@ -48,4 +48,5 @@ export const multiImgs = () => (
 
 export default {
   title: 'Swiper/PreviewImage',
+  component: PreviewImage,
 }

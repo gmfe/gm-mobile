@@ -10,4 +10,5 @@ export const normal = () => (
 
 export default {
   title: '基础/Loading',
+  component: Loading,
 }

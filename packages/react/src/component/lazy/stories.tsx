@@ -58,4 +58,5 @@ export const LazyListDemo = () => {
 
 export default {
   title: '布局/Lazy',
+  component: Lazy,
 }

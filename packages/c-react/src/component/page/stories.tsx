@@ -52,4 +52,5 @@ export const error = () => {
 
 export default {
   title: '布局/Page',
+  component: Page,
 }

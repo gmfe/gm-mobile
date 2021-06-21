@@ -4,7 +4,7 @@ import _ from 'lodash'
 import classNames from 'classnames'
 import { getNumLength, formatNum, getRawArray, filterForNum } from './utils'
 
-class FlipNumber extends React.Component {
+export class FlipNumber extends React.Component {
   constructor(props) {
     super(props)
     this.state = {

@@ -66,7 +66,7 @@ const Item: FC<VListItemProps> = memo(
   }
 )
 
-const VList = forwardRef<VListRef, VListProps>(
+export const VList = forwardRef<VListRef, VListProps>(
   (
     {
       data,

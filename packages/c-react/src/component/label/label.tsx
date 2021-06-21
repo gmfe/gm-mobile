@@ -9,7 +9,7 @@ interface LabelProps extends HTMLAttributes<HTMLDivElement> {
   type?: 'default' | 'plain' | 'accent' | 'primary'
 }
 
-const Label: FC<LabelProps> = ({
+export const Label: FC<LabelProps> = ({
   text,
   type = 'default',
   className,

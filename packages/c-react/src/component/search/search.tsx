@@ -9,7 +9,7 @@ import { Button } from '../button'
 import { Text } from '../text'
 import { SearchProps } from './type'
 
-const Search: FC<SearchProps> = ({
+export const Search: FC<SearchProps> = ({
   value,
   placeholder = getLocale('搜索'),
   searchText,

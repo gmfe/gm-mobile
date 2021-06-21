@@ -73,4 +73,5 @@ export const category = () => {
 
 export default {
   title: '布局/Swiper',
+  component: SwiperCategory,
 }

@@ -17,7 +17,7 @@ interface PageProps extends HtmlHTMLAttributes<HTMLDivElement> {
   pageStyle?: CSSProperties
 }
 
-const Page: FC<PageProps> = ({
+export const Page: FC<PageProps> = ({
   loading,
   error,
   onReload,

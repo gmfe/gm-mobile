@@ -1,6 +1,7 @@
 import React from 'react'
 import { observable } from 'mobx'
 import { Input } from '@gm-mobile/c-react'
+import { FormScrollIntoView } from '.'
 
 const store = observable({
   value: '',
@@ -26,4 +27,5 @@ export const normal = () => {
 
 export default {
   title: '表单/FormScrollIntoView',
+  component: FormScrollIntoView,
 }

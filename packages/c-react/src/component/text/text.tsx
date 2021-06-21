@@ -2,7 +2,7 @@ import React, { forwardRef, HTMLAttributes } from 'react'
 
 type TextProps = HTMLAttributes<HTMLSpanElement>
 
-const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
+export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
   return <span ref={ref} {...props} />
 })
 

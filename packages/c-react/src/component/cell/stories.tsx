@@ -282,4 +282,5 @@ export const form = () => {
 
 export default {
   title: '表单/Cell',
+  component: Cells,
 }

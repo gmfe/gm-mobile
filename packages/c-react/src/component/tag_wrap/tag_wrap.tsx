@@ -11,7 +11,7 @@ interface TagWrapProps {
   style?: object
 }
 
-const TagWrap: FC<TagWrapProps> = ({
+export const TagWrap: FC<TagWrapProps> = ({
   tag,
   bottom,
   block,

@@ -4,7 +4,7 @@ import { View } from '../view'
 
 import { CellsProps } from './types'
 
-const Cells: FC<CellsProps> = ({
+export const Cells: FC<CellsProps> = ({
   title,
   mini,
   className,

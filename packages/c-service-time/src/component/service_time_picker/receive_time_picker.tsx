@@ -216,7 +216,7 @@ const ReceiveTimePickerStatic: ServiceTimePickerStaticTypes = {
 //   order: PropTypes.object.isRequired,
 // }
 
-const ReceiveTimePicker = Object.assign(
+export const ReceiveTimePicker = Object.assign(
   ReceiveTimePickerBase,
   ReceiveTimePickerStatic
 )

@@ -8,7 +8,12 @@ if (
   window.matchMedia('(prefers-color-scheme: dark)').matches
 ) {
   theme = themes.dark
+} else {
+  theme = themes.light
 }
+
+theme.brandImage = ''
+theme.brandTitle = 'gm-mobile'
 
 addons.setConfig({
   theme,

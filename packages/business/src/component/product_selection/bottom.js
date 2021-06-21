@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { Flex, Badge } from '@gm-mobile/react'
 import _ from 'lodash'
 
-const Bottom = ({ selected, onSelectedShow, onConfirm }) => {
+export const Bottom = ({ selected, onSelectedShow, onConfirm }) => {
   const disabled = selected.length === 0
   return (
     <Flex

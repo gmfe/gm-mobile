@@ -71,7 +71,7 @@ const handleErrorMsg = ({ value, min, max, precision }: CounterMPErrorMsg) => {
   return msg
 }
 
-const CounterMP: FC<CounterMPProps> = ({
+export const CounterMP: FC<CounterMPProps> = ({
   value = '',
   min = 0,
   max,

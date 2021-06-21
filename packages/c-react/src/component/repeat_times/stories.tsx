@@ -16,4 +16,5 @@ export const Normal = () => {
 
 export default {
   title: '其他/RepeatTimes',
+  component: RepeatTimes,
 }

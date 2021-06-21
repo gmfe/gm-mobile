@@ -6,7 +6,7 @@ import PickerColumn from './picker_column'
 import { View } from '../../view'
 import { Option, PickerProps } from './types'
 
-const Picker: FC<PickerProps> = ({
+export const Picker: FC<PickerProps> = ({
   datas,
   values,
   itemHeight = 40,

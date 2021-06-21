@@ -74,4 +74,5 @@ export const multiple = () => {
 
 export default {
   title: '表单/Calendar',
+  component: Calendar,
 }

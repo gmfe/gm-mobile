@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { Flex } from '../flex'
 import { View } from '../view'
 
-const Divider: FC = ({ children }) => {
+export const Divider: FC = ({ children }) => {
   return (
     <Flex className='m-divider'>
       <Flex flex className='m-divider-line' />

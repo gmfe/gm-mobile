@@ -275,7 +275,7 @@ const Icon2: FC<HTMLAttributes<HTMLOrSVGElement>> = (props) => {
   )
 }
 
-const Loading: FC<LoadingProps> = ({
+export const Loading: FC<LoadingProps> = ({
   children,
   className,
   _isToast,

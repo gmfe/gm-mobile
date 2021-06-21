@@ -45,4 +45,5 @@ export const Normal: FC = () => {
 
 export default {
   title: '工具/Event',
+  component: Events,
 }

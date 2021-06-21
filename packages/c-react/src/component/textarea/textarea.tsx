@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { createRef, FC, forwardRef } from 'react'
 import _ from 'lodash'
 import classNames from 'classnames'
 import { View } from '../view'
@@ -6,18 +6,20 @@ import Base from './base'
 
 import { TextareaProps } from './types'
 
-const Textarea: FC<TextareaProps> = ({
+export const Textarea: FC<TextareaProps> = ({
   value,
   disabled,
   maxLength,
   isForm,
   className,
+  childRef,
   ...rest
 }) => {
   return (
     <View className='m-textarea-container'>
       <Base
         {...rest}
+        ref={childRef}
         value={value}
         className={classNames(
           'm-textarea',

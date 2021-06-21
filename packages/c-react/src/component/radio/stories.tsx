@@ -24,4 +24,5 @@ export const Normal = () => {
 
 export default {
   title: '表单/Radio',
+  component: Radio,
 }
