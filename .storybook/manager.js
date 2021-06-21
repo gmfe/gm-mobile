@@ -1,5 +1,6 @@
 import { addons } from '@storybook/addons'
 import { themes } from '@storybook/theming'
+import { version } from '../lerna.json'
 
 let theme = null
 
@@ -13,7 +14,7 @@ if (
 }
 
 theme.brandImage = ''
-theme.brandTitle = 'gm-mobile'
+theme.brandTitle = `gm-mobile ${version}`
 
 addons.setConfig({
   theme,

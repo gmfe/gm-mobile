@@ -218,7 +218,7 @@ export const CustomLayout = () => {
   )
 
   return (
-    <Page>
+    <Page style={{ width: '100%' }}>
       <Flex
         height='100px'
         className='m-bg-accent m-margin-tb-10'
