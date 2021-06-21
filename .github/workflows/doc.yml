@@ -33,7 +33,7 @@ jobs:
 
       - run: |
           cd gm-mobile
-          yarn
+          yarn install --ignore-engines
           npx lerna bootstrap
           npm run build
           rm -rf .github && rm -rf .storybook && rm -rf packages
