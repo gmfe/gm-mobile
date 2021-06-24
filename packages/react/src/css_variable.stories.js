@@ -3,10 +3,10 @@ import CSSVariable from './css_variable'
 import _ from 'lodash'
 import { Button, Flex } from '@gm-mobile/c-react'
 
-export const normal = () => {
+export const Theme = () => {
   return (
     <div>
-      <div>theme</div>
+      <div className='m-text-primary m-bg-back m-margin-20'>theme</div>
       {_.map(CSSVariable.TYPE, (v, k) => (
         <Button
           onClick={() => {
@@ -20,7 +20,14 @@ export const normal = () => {
   )
 }
 
+Theme.parameters = {
+  docs: {
+    source: {
+      type: 'code',
+    },
+  },
+}
+
 export default {
-  title: 'Theme',
-  component: CSSVariable,
+  title: 'Design',
 }

@@ -100,6 +100,7 @@ module.exports = {
     '../packages/c-qrcode/src/**/*stories.{tsx,ts,js,mdx}',
     '../packages/c-cookie/src/**/*stories.{tsx,ts,js,mdx}',
     '../packages/c-tool/src/**/*stories.{tsx,ts,js,mdx}',
+    '../packages/c-font/**/*stories.{tsx,ts,js,mdx}',
     '../other/**/*.stories.{tsx,ts,js,mdx}',
     '../other/text_field.stories.mdx',
   ],
