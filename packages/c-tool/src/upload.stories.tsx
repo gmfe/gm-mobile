@@ -1,6 +1,4 @@
-import { noop } from 'lodash'
-import React, { FC, useEffect } from 'react'
-import router from './router_mp'
+import React from 'react'
 
 export const Normal = () => {
   return <div>小程序上传图片示例</div>
@@ -31,10 +29,10 @@ wx.chooseImage({
         token: upload_token,
       }
     })
-    return await uploadFile({
+    return await upload({
       tempPath,
-      type: FileType.FILE_TYPE_MERCHANDISE_SSU_IMAGE,
-      progress: console.log,
+      dir,
+      token
     })
   })
   .then((file) => {

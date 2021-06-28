@@ -1,6 +1,4 @@
-import { noop } from 'lodash'
-import React, { FC, useEffect } from 'react'
-import router from './router_mp'
+import React from 'react'
 
 export const Normal = () => {
   return (
