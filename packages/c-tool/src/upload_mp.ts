@@ -1,10 +1,5 @@
-import { UUID } from '@gm-mobile/c-tool'
 import moment from 'moment'
-// import {
-//   FileType,
-//   GetQiniuUploadToken,
-//   GetQiniuUploadTokenResponse,
-// } from 'gm_api/src/cloudapi'
+import UUID from './uuid'
 
 const DOMAIN = 'https://qncdn.guanmai.cn/'
 const UPLOAD_URL = 'https://upload-z2.qiniup.com'
