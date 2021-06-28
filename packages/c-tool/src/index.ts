@@ -7,6 +7,7 @@ import getCharLength from './get_char_length'
 import groupByWithIndex from './group_by_with_index'
 import Events from './events'
 import Router from './router_mp'
+import upload from './upload_mp'
 
 export {
   is,
@@ -20,4 +21,5 @@ export {
   groupByWithIndex,
   Events,
   Router,
+  upload,
 }
