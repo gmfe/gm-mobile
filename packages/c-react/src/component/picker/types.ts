@@ -44,8 +44,8 @@ type ConfirmCouplingPickerTypes = BasePickerTypes<ConfirmCouplingPickerProps>
 interface PickerTextProps {
   selected?: (string | number)[]
   placeholder?: string
-  /** placeHoder是否靠右 */
-  placeholderRight?: boolean
+  /** 文本是否靠右 */
+  textRight?: boolean
   map: { [k: string]: string }
 }
 interface PickerV1Props<T extends string | number = string>
@@ -54,7 +54,7 @@ interface PickerV1Props<T extends string | number = string>
       'title' | 'headers' | 'renderOption'
     >,
     Omit<ViewProps, 'onChange'>,
-    Pick<PickerTextProps, 'placeholder' | 'placeholderRight'> {
+    Pick<PickerTextProps, 'placeholder' | 'textRight'> {
   data?: Option<T>[]
   value?: T[] | T
   onChange?(value?: T[] | T): void

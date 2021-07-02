@@ -1,11 +1,11 @@
 import React, { FC, useMemo } from 'react'
 import _ from 'lodash'
+import classNames from 'classnames'
+
 import ConfirmCouplingPicker from './confirm_coupling_picker'
 import { View } from '../view'
 import { PickerTextProps, PickerV1Props } from './types'
 import { Flex } from '../flex'
-import { Text } from '../text'
-
 function mapValueToText(
   data: PickerV1Props['data'] = [],
   map: { [k: string]: string } = {}
@@ -21,7 +21,7 @@ const PickerText: FC<PickerTextProps> = ({
   placeholder,
   selected = [],
   map,
-  placeholderRight,
+  textRight,
 }) => {
   const textArr: string[] = []
   selected.forEach((selected) => {
@@ -30,10 +30,12 @@ const PickerText: FC<PickerTextProps> = ({
   const textStr = textArr.join('/')
   return (
     <Flex>
-      <Text>{textStr}</Text>
-      {placeholder && !textStr && (
-        <Flex className='m-text-placeholder' justifyEnd={placeholderRight}>
-          {placeholder}
+      {!!(placeholder || textStr) && (
+        <Flex
+          className={classNames('m-w-100p', { 'm-text-placeholder': !textStr })}
+          justifyEnd={textRight}
+        >
+          {textStr || placeholder}
         </Flex>
       )}
     </Flex>
@@ -48,6 +50,7 @@ function PickerV1<T extends string | number = string>({
   valueArr = true,
   renderOption,
   onChange,
+  textRight,
   ...res
 }: PickerV1Props<T>) {
   // Picker需要接受的value必须为数组
@@ -88,7 +91,12 @@ function PickerV1<T extends string | number = string>({
   }, [data])
   return (
     <View onClick={onClick} {...res}>
-      <PickerText placeholder={placeholder} selected={value} map={map} />
+      <PickerText
+        placeholder={placeholder}
+        selected={value}
+        map={map}
+        textRight={textRight}
+      />
     </View>
   )
 }
