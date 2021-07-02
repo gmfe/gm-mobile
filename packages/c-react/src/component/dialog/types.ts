@@ -21,6 +21,7 @@ interface DialogBaseProps {
   promptInputProps?: ErrorInputProps
   /**  */
   promptGetError?: (value: string) => string | void
+  hideBottom?: boolean
 }
 interface RenderOptions extends PromptOptions {
   children?: string | React.ReactNode
@@ -28,6 +29,7 @@ interface RenderOptions extends PromptOptions {
   onCancel?: () => void
   otherText?: string
   onOther?: () => void
+  hideBottom?: boolean
 }
 
 interface PromptOptions {
@@ -39,7 +41,7 @@ interface PromptOptions {
 
 interface DialogStaticsTypes<T> {
   render: (options: T, type?: string) => Promise<void | string>
-  alert: (options: string) => Promise<void | string>
+  alert: (options: string | RenderOptions) => Promise<void | string>
   confirm: (options: string) => Promise<void | string>
   delete: (options: string) => Promise<void | string>
   prompt: (options: PromptOptions) => Promise<void | string>
