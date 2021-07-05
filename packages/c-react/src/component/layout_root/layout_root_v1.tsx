@@ -3,7 +3,7 @@ import _ from 'lodash'
 import { is } from '@gm-mobile/c-tool'
 
 import { View } from '../view'
-
+import getPath from './get_path'
 import {
   LayoutRootType,
   LayoutRootState,
@@ -13,11 +13,11 @@ import {
 
 const cbMap: CBMapV1Type = {}
 
-const path: string = 'LayoutRootV1'
 /**
  * @description: 目前仅用于Popup的多层弹窗
  */
 const LayoutRootV1: FC & LayoutV1RootStatic = () => {
+  const path = getPath()
   const [state, setState] = useState<LayoutRootState>({})
 
   useEffect(() => {
@@ -73,6 +73,7 @@ LayoutRootV1.setComponent = (type, com, id) => {
       }
     })
   } else {
+    const path = getPath()
     if (cbMap[path]) {
       cbMap[path]!(type, com, id)
     } else {
