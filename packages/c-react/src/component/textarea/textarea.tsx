@@ -1,4 +1,4 @@
-import React, { createRef, FC, forwardRef } from 'react'
+import React, { FC } from 'react'
 import _ from 'lodash'
 import classNames from 'classnames'
 import { View } from '../view'
@@ -6,8 +6,8 @@ import Base from './base'
 
 import { TextareaProps } from './types'
 
-export const Textarea: FC<TextareaProps> = ({
-  value,
+const Textarea: FC<TextareaProps> = ({
+  value = '',
   disabled,
   maxLength,
   isForm,
@@ -33,7 +33,7 @@ export const Textarea: FC<TextareaProps> = ({
       />
       {maxLength && (
         <View className='m-textarea-max-length'>
-          {value.length}/{maxLength}
+          {value?.length || 0}/{maxLength}
         </View>
       )}
     </View>

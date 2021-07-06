@@ -5,6 +5,7 @@ import { observable } from 'mobx'
 import ConfirmPicker from './confirm_picker'
 import ConfirmCouplingPicker from './confirm_coupling_picker'
 import SelectPicker from './select_picker'
+import { default as TempPickerV1 } from './picker_v1'
 import { View } from '../view'
 import { Button } from '../button'
 import { Text } from '../text'
@@ -173,8 +174,12 @@ const store = observable({
 const selectStore = observable({
   data: selectData,
   value: null,
+  pickerv1Value: undefined,
   setValue(v: any) {
     this.value = v
+  },
+  onPickerv1Change(pickerv1Value: string) {
+    this.pickerv1Value = pickerv1Value
   },
 })
 
@@ -262,7 +267,17 @@ export const selectPicker = () => {
 
   return <Button onClick={handleClick}>select picker</Button>
 }
-
+export const PickerV1 = () => {
+  return (
+    <TempPickerV1<string>
+      data={selectStore.data.slice()}
+      value={selectStore.pickerv1Value}
+      onChange={(value) => selectStore.onPickerv1Change(value)}
+      valueArr={false}
+      placeholder='请选择区域'
+    />
+  )
+}
 export default {
   title: '表单/Picker',
   component: Picker,

@@ -2,11 +2,12 @@ import { ChangeEvent, CSSProperties, FormEvent, RefObject } from 'react'
 import { BaseEventOrig } from '@tarojs/components'
 import { InputProps as TaroInputProps } from '@tarojs/components/types/Input'
 
-interface InputMaxLengthProps extends Omit<InputProps, 'onInput'> {
+interface InputMaxLengthProps extends InputPasswordProps {
   maxLength: number
 }
 
-type InputPasswordProps = Omit<InputProps, 'onInput'>
+type InputPasswordProps = Omit<InputProps, 'onInput' | 'value' | 'onChange'> &
+  Partial<Pick<InputProps, 'value' | 'onChange'>>
 
 interface InputProps {
   value: string

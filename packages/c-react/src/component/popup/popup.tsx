@@ -95,7 +95,6 @@ const PopupBase: FC<PopupProps> = ({
     </View>
   )
 }
-
-export const Popup = Object.assign(PopupBase, PopupStatics)
+const Popup = Object.assign(PopupBase, PopupStatics)
 
 export default Popup

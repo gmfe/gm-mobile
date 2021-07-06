@@ -1,15 +1,15 @@
 import { ReactNode } from 'react'
 
-type State = null | ReactNode
+type State = ReactNode
 
 interface LayoutRootState {
-  innerLayer?: State
-  popup?: State
-  picker?: State
-  keyboard?: State
-  modal?: State
-  toast?: State
-  nProgress?: State
+  innerLayer?: State[]
+  popup?: State[]
+  picker?: State[]
+  keyboard?: State[]
+  modal?: State[]
+  toast?: State[]
+  nProgress?: State[]
 }
 
 enum LayoutRootType {
@@ -33,6 +33,23 @@ interface LayoutRootStatic {
 interface CBMapType {
   [propName: string]: ((type: LayoutRootType, component: State) => void) | null
 }
-
-export type { LayoutRootState, CBMapType, LayoutRootStatic }
+interface LayoutV1RootStatic {
+  Type: typeof LayoutRootType
+  setComponent: (type: LayoutRootType, com: State, id?: string) => void
+  removeComponent: (type: LayoutRootType, id?: string) => void
+  renderWith: (type: LayoutRootType, Component: State, options?: object) => void
+  hideWith: (type: LayoutRootType, id?: string) => void
+}
+interface CBMapV1Type {
+  [propName: string]:
+    | ((type: LayoutRootType, component: State, id?: string) => void)
+    | null
+}
+export type {
+  LayoutRootState,
+  CBMapType,
+  LayoutRootStatic,
+  LayoutV1RootStatic,
+  CBMapV1Type,
+}
 export { LayoutRootType }

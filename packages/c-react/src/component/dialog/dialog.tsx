@@ -163,44 +163,55 @@ const DialogBase: FC<DialogBaseProps> = ({
   onCancel,
   otherText,
   onOther,
+  hideBottom,
   children,
 }) => {
   return (
     <View className='m-dialog-container'>
-      <Mask />
+      <Mask
+        onClick={() => {
+          /**
+           * 如果设置了隐藏底部，这时候没有可以关闭弹窗的地方
+           * 则点击阴影部分会关闭弹窗
+           */
+          hideBottom && DialogStatics.hide()
+        }}
+      />
       <View className='m-dialog m-animated-in m-animated-fade-in'>
         <View className='m-dialog-title'>{title}</View>
         <View className='m-dialog-content'>{children}</View>
-        <Flex className='m-dialog-bottom'>
-          {onCancel && (
+        {!hideBottom && (
+          <Flex className='m-dialog-bottom'>
+            {onCancel && (
+              <Flex
+                flex
+                column
+                className='m-dialog-btn m-dialog-btn-cancel'
+                onClick={onCancel}
+              >
+                {cancelText}
+              </Flex>
+            )}
+            {otherText && (
+              <Flex
+                flex
+                column
+                className='m-dialog-btn m-dialog-btn-other'
+                onClick={onOther}
+              >
+                {otherText}
+              </Flex>
+            )}
             <Flex
               flex
               column
-              className='m-dialog-btn m-dialog-btn-cancel'
-              onClick={onCancel}
+              className='m-dialog-btn m-dialog-btn-confirm'
+              onClick={() => onConfirm && onConfirm()}
             >
-              {cancelText}
+              {confirmText}
             </Flex>
-          )}
-          {otherText && (
-            <Flex
-              flex
-              column
-              className='m-dialog-btn m-dialog-btn-other'
-              onClick={onOther}
-            >
-              {otherText}
-            </Flex>
-          )}
-          <Flex
-            flex
-            column
-            className='m-dialog-btn m-dialog-btn-confirm'
-            onClick={() => onConfirm && onConfirm()}
-          >
-            {confirmText}
           </Flex>
-        </Flex>
+        )}
       </View>
     </View>
   )

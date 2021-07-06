@@ -2,10 +2,10 @@ import { CSSProperties, ReactNode } from 'react'
 
 type Value = any
 
-interface Option {
+interface Option<T extends string | number = string> {
   value: Value
   text: Value
-  children?: Option[]
+  children?: Option<T>[]
 }
 
 interface PickerColumnProps {

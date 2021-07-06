@@ -2,6 +2,7 @@ import React, { useEffect, useRef, FC } from 'react'
 import {
   Page as PageBase,
   LayoutRoot,
+  LayoutRootV1,
   PageProps as PageMPProps,
 } from '@gm-mobile/c-react'
 
@@ -24,6 +25,7 @@ const PageMP: FC<PageMPProps> = (props) => {
     <>
       <PageBase {...props} />
       <LayoutRoot />
+      <LayoutRootV1 />
     </>
   )
 }

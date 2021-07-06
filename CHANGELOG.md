@@ -7,6 +7,28 @@ TextAreaProps form => isForm
 LayoutRoot TYPE => Type
 TabDateSelect value 字段类型: any =》 string
 
+
+# 3.1.0
+
+## c-react add
+1. 增加LayoutV1，用于支持PopupV1多个弹框
+2. 增加PopupV1
+- 支持多个弹框
+- render会返回hide函数，可以关闭该弹框
+- hide(PopUpId: string)可以关闭特定Popup，一般不用到
+- 增加center(boolean),即弹框在中间
+
+3.增加PickerV1
+
+- 支持自动显示选中后的文本
+- 主要提供value和onChange
+- valueArr(boolean)用于onChange返回array或者string
+- 增加center(boolean),即弹框在中间
+
+4.增加Form受控表单（用法和gm-pc一样）
+
+
+
 # 2.x
 
 增加 小程序
