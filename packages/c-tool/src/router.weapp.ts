@@ -20,7 +20,7 @@ interface RouteEvent {
   openType: string
   path: string
   query: {
-    [key: string]: string
+    [key: string]: string | undefined
   }
   webviewId: number
 }
@@ -90,8 +90,8 @@ export default class Router {
     option: any,
     next: () => Promise<Taro.General.CallbackResult>
   ) {
-    wx.setStorageSync(PAGE_URL_LAST_TIME, option)
     const parsed = this._parse(option)
+    wx.setStorageSync(PAGE_URL_LAST_TIME, parsed)
 
     const to =
       parsed?.url || this._transition[this.route.path]?.from || this.route.path
