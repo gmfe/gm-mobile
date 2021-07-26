@@ -51,6 +51,7 @@ function PickerV1<T extends string | number = string>({
   renderOption,
   onChange,
   textRight,
+  disabled,
   ...res
 }: PickerV1Props<T>) {
   // Picker需要接受的value必须为数组
@@ -58,6 +59,7 @@ function PickerV1<T extends string | number = string>({
     value = value === undefined ? [] : [value]
   }
   const onClick = () => {
+    if (disabled) return
     const values = [...(value as T[])]
     if (!values?.length) {
       let data0 = data[0]

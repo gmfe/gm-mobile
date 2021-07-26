@@ -60,6 +60,8 @@ interface PickerV1Props<T extends string | number = string>
   onChange?(value?: T[] | T): void
   /**  onChange时回调的value是否要array */
   valueArr?: boolean
+  /** 是否禁用 */
+  disabled?: boolean
 }
 export type {
   Option,
