@@ -50,6 +50,7 @@ const PopupBase: FC<PopupV1Props> = ({
   headerClassName,
   titleClassName,
   titleCenter,
+  clickMaskClose = true,
   ...rest
 }) => {
   devWarnForHook(() => {
@@ -93,7 +94,12 @@ const PopupBase: FC<PopupV1Props> = ({
         'm-popup-picker-container': isPickPopup,
       })}
     >
-      {!disabledMask && <Mask opacity={opacity} onClick={onTempHide} />}
+      {!disabledMask && (
+        <Mask
+          opacity={opacity}
+          onClick={clickMaskClose ? onTempHide : undefined}
+        />
+      )}
       <View {...rest} className={cn} style={s}>
         {!disabledHeader && (
           <Flex

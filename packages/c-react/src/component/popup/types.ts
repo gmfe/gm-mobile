@@ -38,6 +38,8 @@ interface PopupV1Props extends Omit<PopupProps, 'onHide'> {
   /** onHide是监听关闭后的回调，而不是关闭Popup的命令，如果要几秒后关闭弹窗可以返回一个Promise */
   onHide?: () => Promise<any> | void
   center?: boolean
+  /** 点击mask是否关闭弹窗 */
+  clickMaskClose?: boolean
 }
 
 interface PopupStaticsV1Types {
