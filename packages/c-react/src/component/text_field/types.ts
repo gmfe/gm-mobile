@@ -51,8 +51,6 @@ interface TextFieldProps
   maxLength?: number
   /** 数字类型时的最小值限制 */
   min?: number
-  /** type为number时，小数位数限制，默认不做处理 */
-  fractionDigits?: number
   /** 数字类型时的最大值限制 */
   max?: number
   style?: CSSProperties

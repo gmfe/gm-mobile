@@ -7,14 +7,20 @@ import { Button } from '../button'
 import { View } from '../view'
 import { Page } from '../page'
 
-const Template: Story<TextFieldProps> = ({ value, ...rest }) => {
+const Template: Story<TextFieldProps> = ({ value = '输入内容', ...rest }) => {
   const [state, setState] = useState({
-    value: '',
+    value,
   })
-  const handleInput = (e: any) => {
-    setState({ ...state, value: e.target.value })
-  }
-  return <TextField {...rest} value={state.value} onChange={handleInput} />
+  return (
+    <TextField
+      value={state.value}
+      onChange={(e) => {
+        setState({ ...state, value: e.target.value })
+      }}
+      err={state.value === '' ? '不能为空' : undefined}
+      {...rest}
+    />
+  )
 }
 
 export const Usage = Template.bind({})
@@ -46,17 +52,16 @@ Outlined.args = {
   type: 'password',
   right: Usage.args.suffix,
   placeholder: '请输入内容...',
+  value: '...',
 }
 
-export const Number = Template.bind({})
-Number.args = {
-  bottomLined: true,
-  placeholder: 'number',
-  type: 'number',
-  left: <span className='m-border-right m-padding-right-5'>min:0</span>,
-  right: <span className='m-border-left m-padding-left-5'>max:100</span>,
-  min: 0,
-  max: 100,
+export const Round = Template.bind({})
+Round.args = {
+  className: 'm-text-20',
+  large: true,
+  value: 'set border-radius',
+  round: true,
+  outlined: true,
 }
 
 export const WithButton = Template.bind({})
@@ -111,11 +116,9 @@ export const Search = () => {
 export default {
   title: '表单/TextField',
   component: TextField,
-  parameters: {
-    docs: {
-      source: {
-        type: 'dynamic',
-      },
+  argTypes: {
+    onChange: {
+      action: 'onChange',
     },
   },
 } as Meta
