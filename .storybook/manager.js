@@ -16,6 +16,6 @@ if (
 theme.brandImage = ''
 theme.brandTitle = `gm-mobile ${version}`
 
-addons.setConfig({
-  theme,
-})
+// addons.setConfig({
+//   theme,
+// })
