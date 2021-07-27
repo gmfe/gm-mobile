@@ -4,18 +4,19 @@ import { version } from '../lerna.json'
 
 let theme = null
 
-if (
-  window.matchMedia &&
-  window.matchMedia('(prefers-color-scheme: dark)').matches
-) {
-  theme = themes.dark
-} else {
-  theme = themes.light
-}
+// if (
+//   window.matchMedia &&
+//   window.matchMedia('(prefers-color-scheme: dark)').matches
+// ) {
+//   theme = themes.dark
+// } else {
+//   theme = themes.light
+// }
 
+theme = themes.light
 theme.brandImage = ''
 theme.brandTitle = `gm-mobile ${version}`
 
-// addons.setConfig({
-//   theme,
-// })
+addons.setConfig({
+  theme,
+})
