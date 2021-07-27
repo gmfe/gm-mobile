@@ -25,6 +25,8 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
   id = uniqueId('textField-')
   inputRef: RefObject<HTMLInputElement | HTMLTextAreaElement> = createRef()
 
+  lastValue = ''
+
   onClick(e: MouseEvent<HTMLInputElement> | any) {
     if (!mp) e.persist()
     const target = mp ? e.mpEvent.currentTarget : e.target
@@ -64,12 +66,22 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
       !value.endsWith('.') &&
       ['digit', 'number'].includes(this.props.type || '')
     ) {
-      const float = parseFloat(value)
-      value = clamp(
-        float,
-        min === undefined ? -float : min,
-        max === undefined ? float : max
-      ).toString()
+      const float = parseFloat(value.replace(/\D\./g, ''))
+      if (isNaN(float)) {
+        value = ''
+      } else {
+        value = clamp(
+          float,
+          min === undefined ? -float : min,
+          max === undefined ? float : max
+        )
+        if (this.props.fractionDigits && value.toString().indexOf('.') !== -1) {
+          const [int, fraction] = value.toString().split('.')
+          value = `${int}.${fraction.slice(0, this.props.fractionDigits)}`
+        } else {
+          value = value.toString()
+        }
+      }
     }
     let updated
     if (mp) {
@@ -88,6 +100,10 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
         ...e,
         ...updated,
       })
+    if (value === this.lastValue) {
+      this.forceUpdate()
+    }
+    this.lastValue = value
   }
 
   render() {
@@ -96,7 +112,7 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
       errClassName,
       className,
       style,
-      onChange = _.noop,
+      onChange,
       left,
       prefix,
       suffix,
@@ -125,8 +141,11 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
       onBlur,
       onClick,
       onConfirm,
+      fractionDigits,
       ...rest
+      // 注意，不用传给input或area的props要在此列出来，不然rest会带过去
     } = this.props
+
     const { active } = this.state
     if (!show) return null
     let height
