@@ -6,6 +6,7 @@ import { TextFieldProps } from './types'
 import { View } from '../view'
 import { Input } from '../input'
 import { Textarea } from '../textarea'
+import { IReactionDisposer, observable, reaction, runInAction } from 'mobx'
 
 /** 是否小程序端 */
 // @ts-ignore
@@ -14,43 +15,69 @@ const mp = !!window.wx
 const ios = mp && wx.getSystemInfoSync().platform === 'ios'
 
 interface TextFieldState {
+  /** 是否输入状态 */
   active: boolean
 }
 
+const store = observable({ active: '' })
+
 export class TextField extends Component<TextFieldProps, TextFieldState> {
+  constructor(props: TextFieldProps) {
+    super(props)
+    this.dispose = reaction(
+      () => store.active,
+      (active) => {
+        // 切换TextField更新active，因为小程序上快速在TextField间切换会有选中状态问题
+        if (active === this.id) {
+          this.setState((state) => ({ ...state, active: true }))
+          // 小程序上同一个input已focus的，再次focus会触发onBlur
+          if (this.target === 'WRAPPER') this.focus()
+        } else {
+          this.setState((state) => ({ ...state, active: false }))
+        }
+      },
+      {}
+    )
+  }
+
   state = {
     active: false,
   }
 
   id = uniqueId('textField-')
+
+  dispose: IReactionDisposer
+
+  componentWillUnmount() {
+    this.dispose()
+  }
+
   inputRef: RefObject<HTMLInputElement | HTMLTextAreaElement> = createRef()
+
+  /** 仅服务于小程序端 */
+  target?: 'INPUT' | 'WRAPPER'
 
   lastValue = ''
 
+  focus() {
+    if (this.inputRef.current) this.inputRef.current.focus()
+  }
+
   onClick(e: MouseEvent<HTMLInputElement> | any) {
     if (!mp) e.persist()
+
     const target = mp ? e.mpEvent.currentTarget : e.target
-    // 小程序端的判断逻辑
-    if (
-      !mp &&
-      target.tagName !== 'INPUT' &&
-      !this.state.active &&
-      this.inputRef.current
-    ) {
-      this.inputRef.current.focus()
+    if (!mp) {
+      // 跳过
+    } else if (target.id === this.id) {
+      this.target = 'WRAPPER'
+    } else {
+      this.target = 'INPUT'
     }
-    // 非小程序端的判断逻辑
-    if (
-      mp &&
-      target.id === this.id &&
-      !this.state.active &&
-      this.inputRef.current
-    ) {
-      this.inputRef.current.focus()
-    }
+
     if (!this.props.disabled) {
-      this.setState((state) => {
-        return { ...state, active: true }
+      runInAction(() => {
+        store.active = this.id
       })
     }
     this.props.onClick && this.props.onClick(e)
@@ -164,13 +191,21 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
       disabled: disabled,
       onInput: this.onInput.bind(this),
       onChange: this.onInput.bind(this),
+      onClick: this.onClick.bind(this),
       onBlur: () => {
         onBlur && onBlur()
+        // 失去焦点更新active
         this.setState((state) => {
           return { ...state, active: false }
         })
+        setTimeout(() => {
+          if (store.active === this.id) {
+            runInAction(() => {
+              store.active = ''
+            })
+          }
+        }, 20)
       },
-      onClick: this.onClick.bind(this),
       ...rest,
     }
     if (mp) {
