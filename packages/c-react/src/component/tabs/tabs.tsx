@@ -5,11 +5,7 @@ import { Text } from '../text'
 import { Flex } from '../flex'
 import { TabsProps } from './types'
 
-<<<<<<< HEAD
-export const Tabs: FC<TabsProps> = ({
-=======
 function Tabs<T = any>({
->>>>>>> feat: changeLog和Tabs加上泛型
   tabs,
   active,
   onChange = _.noop,
