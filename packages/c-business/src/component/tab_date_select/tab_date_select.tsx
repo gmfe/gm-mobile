@@ -165,7 +165,7 @@ const TabDateSelectStatic: TabDateSelectStaticTypes = {
       Popup.render({
         title: title,
         bottom: true,
-        height: '90%',
+        height: '85%',
         children: (
           <TabDateSelect
             {...rest}
