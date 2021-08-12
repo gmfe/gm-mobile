@@ -36,6 +36,8 @@ const getServiceTimeRange = (
   }
 }
 
+const HEIGHT_RATIO = 0.85
+
 function TabDateSelectBase({
   tabs,
   selectedTab,
@@ -100,7 +102,7 @@ function TabDateSelectBase({
   }
 
   const tabbarHeight = CustomTabbar.getCustomTabbarHeight() // 若是有自定已tabbar，需要底部撑开，防止被遮挡
-  const calendarHeight = getScreenHeight() * 0.9 - 180 - tabbarHeight // popup头部 + tab + 底部
+  const calendarHeight = getScreenHeight() * HEIGHT_RATIO - 180 - tabbarHeight // popup头部 + tab + 底部
 
   return (
     <Flex column className='m-tab-date-select'>
@@ -165,7 +167,7 @@ const TabDateSelectStatic: TabDateSelectStaticTypes = {
       Popup.render({
         title: title,
         bottom: true,
-        height: '85%',
+        height: `${HEIGHT_RATIO * 100}%`,
         children: (
           <TabDateSelect
             {...rest}
