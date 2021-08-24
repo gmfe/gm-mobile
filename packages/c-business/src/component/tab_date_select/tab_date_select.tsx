@@ -97,7 +97,11 @@ function TabDateSelectBase({
     if (value !== activeTab.value) {
       const tab = _.find(tabs, (tab) => tab.value === value)
 
-      setTabDate({ beginDate: tab!.max, endDate: tab!.max, activeTab: tab! })
+      setTabDate({
+        beginDate: moment().toDate(),
+        endDate: moment().toDate(),
+        activeTab: tab!,
+      })
     }
   }
 
