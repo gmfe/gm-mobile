@@ -46,12 +46,12 @@ function TabDateSelectBase({
   onSelect,
   serviceTimeList,
 }: TabDateSelectProps): ReactElement<any, any> | null {
-  const [beginDate, setBeginDate] = useState(begin)
-  const [endDate, setEndDate] = useState(end)
-  const [activeTab, setActiveTab] = useState(
-    _.find(tabs, (tab) => tab.value === selectedTab) || tabs[0]
-  )
-
+  const [tabDate, setTabDate] = useState({
+    beginDate: begin,
+    endDate: end,
+    activeTab: _.find(tabs, (tab) => tab.value === selectedTab) || tabs[0],
+  })
+  const { beginDate, endDate, activeTab } = tabDate
   const handleSaveSelect = () => {
     onSelect({
       selectedTab: activeTab.value,
@@ -73,21 +73,22 @@ function TabDateSelectBase({
         (item) => item.value === value
       )
       const { min, max } = getServiceTimeRange(serviceTime!)
+      const newDateState = {} as typeof tabDate
       if (
         moment(beginDate) < moment(min) ||
         moment(beginDate) > moment(max) ||
         moment(endDate) < moment(min) ||
         moment(endDate) > moment(max)
       ) {
-        setBeginDate(max)
-        setEndDate(max)
+        newDateState.beginDate = newDateState.endDate = max
       }
-      setActiveTab({
+      newDateState.activeTab = {
         ...activeTab,
         min,
         max,
         selectedServiceTime: serviceTime,
-      })
+      }
+      setTabDate((tabDate) => ({ ...tabDate, ...newDateState }))
       return null
     })
   }
@@ -95,9 +96,8 @@ function TabDateSelectBase({
   const handleTabChange = (value: string) => {
     if (value !== activeTab.value) {
       const tab = _.find(tabs, (tab) => tab.value === value)
-      setActiveTab(tab!)
-      setBeginDate(tab!.max)
-      setEndDate(tab!.max)
+
+      setTabDate({ beginDate: tab!.max, endDate: tab!.max, activeTab: tab! })
     }
   }
 
@@ -136,8 +136,11 @@ function TabDateSelectBase({
             height={calendarHeight}
             showDateLabel
             onSelect={({ begin, end }) => {
-              setBeginDate(begin)
-              setEndDate(end)
+              setTabDate((tabDate) => ({
+                ...tabDate,
+                beginDate: begin,
+                endDate: end,
+              }))
             }}
           />
         </View>
