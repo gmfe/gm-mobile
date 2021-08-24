@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 import { PopupProps } from '../popup'
 import { Value, Option } from './component/types'
+import { ViewProps } from '../view'
 
 type OptionsProps = PopupProps
 
@@ -40,6 +41,28 @@ interface ConfirmCouplingPickerProps extends Omit<ConfirmPickerProps, 'datas'> {
 }
 type ConfirmCouplingPickerTypes = BasePickerTypes<ConfirmCouplingPickerProps>
 
+interface PickerTextProps {
+  selected?: (string | number)[]
+  placeholder?: string
+  /** 文本是否靠右 */
+  textRight?: boolean
+  map: { [k: string]: string }
+}
+interface PickerV1Props<T extends string | number = string>
+  extends Pick<
+      ConfirmCouplingPickerProps,
+      'title' | 'headers' | 'renderOption'
+    >,
+    Omit<ViewProps, 'onChange'>,
+    Pick<PickerTextProps, 'placeholder' | 'textRight'> {
+  data?: Option<T>[]
+  value?: T[] | T
+  onChange?(value?: T[] | T): void
+  /**  onChange时回调的value是否要array */
+  valueArr?: boolean
+  /** 是否禁用 */
+  disabled?: boolean
+}
 export type {
   Option,
   OptionsProps,
@@ -50,4 +73,6 @@ export type {
   ConfirmPickerTypes,
   ConfirmCouplingPickerTypes,
   ConfirmCouplingPickerProps,
+  PickerV1Props,
+  PickerTextProps,
 }

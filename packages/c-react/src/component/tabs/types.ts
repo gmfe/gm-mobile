@@ -1,10 +1,11 @@
 import { HTMLAttributes } from 'react'
-interface TabsProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
+interface TabsProps<T = any>
+  extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /** tabs数据 */
-  tabs: { value: string; text: string }[]
+  tabs: { value: T; text: string }[]
   /** 当前选中tab对应value值 */
-  active: string
-  onChange?: (value: string) => void
+  active: T
+  onChange?: (value: T) => void
   type?: 'default' | 'label' | 'capsule'
 }
 
