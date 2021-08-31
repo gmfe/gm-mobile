@@ -1,5 +1,8 @@
-# ts
 
+# 3.8.3
+## c-react fix
+1. tabs项active后再次点击不应再触发onChange
+# ts
 ## breaking change
 
 InputProps form => isForm
