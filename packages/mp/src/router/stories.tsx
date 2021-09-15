@@ -14,7 +14,7 @@ Normal.parameters = {
   docs: {
     source: {
       code: `
-import { Router } from '@gm-mobile/c-tool'
+import { Router } from '@gm-mobile/mp'
 const router = new Router({
 /** 开发模式，会在代码变化界面刷新后，自动恢复刷新前的页面 */
 dev: true,

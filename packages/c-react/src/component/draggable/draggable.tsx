@@ -1,5 +1,4 @@
 import { EventProps, ITouchEvent } from '@tarojs/components'
-import { getSystemInfoSync } from '@tarojs/taro'
 import { clamp } from 'lodash'
 import React, {
   CSSProperties,
@@ -84,7 +83,7 @@ export const Draggable: FC<DraggableProps> = ({
   const w = parseInt(width)
   const h = parseInt(height)
   const { screenWidth: screenW, screenHeight: screenH } = mp
-    ? getSystemInfoSync()
+    ? wx.getSystemInfoSync()
     : {
         screenWidth: document.body.clientWidth,
         screenHeight: document.body.clientHeight,

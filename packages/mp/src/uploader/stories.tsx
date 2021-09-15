@@ -8,7 +8,7 @@ Normal.parameters = {
   docs: {
     source: {
       code: `
-import { upload } from '@gm-mobile/c-tool'
+import { upload } from '@gm-mobile/mp'
 import {
   GetQiniuUploadToken,
   GetQiniuUploadTokenResponse,

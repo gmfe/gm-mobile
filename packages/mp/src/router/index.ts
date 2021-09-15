@@ -5,9 +5,8 @@ import Taro, {
   reLaunch,
   redirectTo,
 } from '@tarojs/taro'
-// import { Events } from '@gm-mobile/c-tool'
 import { omit } from 'lodash'
-import Events from './events/event.weapp'
+import { Events } from '@gm-mobile/c-tool'
 
 /** 仅在开发环境下用到，路由变化时记录下来，每次修改代码页面刷新后，回到上次页面 */
 const PAGE_URL_LAST_TIME = '__dev_env_page_url_last_time'

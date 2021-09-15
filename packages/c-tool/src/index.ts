@@ -6,8 +6,6 @@ import pinyin from './pinyin'
 import getCharLength from './get_char_length'
 import groupByWithIndex from './group_by_with_index'
 import Events from './events'
-import Router from './router.weapp'
-import upload from './upload.weapp'
 
 export {
   is,
@@ -20,6 +18,4 @@ export {
   getCharLength,
   groupByWithIndex,
   Events,
-  Router,
-  upload,
 }

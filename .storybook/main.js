@@ -101,6 +101,7 @@ module.exports = {
     '../packages/c-cookie/src/**/*stories.{tsx,ts,js,mdx}',
     '../packages/c-tool/src/**/*stories.{tsx,ts,js,mdx}',
     '../packages/c-font/**/*stories.{tsx,ts,js,mdx}',
+    '../packages/mp/**/*stories.{tsx,ts,js,mdx}',
     '../other/**/*.stories.{tsx,ts,js,mdx}',
     '../other/text_field.stories.mdx',
   ],

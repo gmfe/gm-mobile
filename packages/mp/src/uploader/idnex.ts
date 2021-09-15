@@ -1,5 +1,5 @@
 import moment from 'moment'
-import UUID from './uuid'
+import { UUID } from '@gm-mobile/c-tool'
 
 const DOMAIN = 'https://qncdn.guanmai.cn/'
 const UPLOAD_URL = 'https://upload-z2.qiniup.com'
