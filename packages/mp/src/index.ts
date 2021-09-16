@@ -10,4 +10,6 @@ export * from './component/counter'
 export * from './component/status_bar'
 export * from './component/swiper'
 export * from './component/safe_header'
+export * as Router from './router'
+export * from './uploader'
 export { LocalStorage, useFirstDidShow }
