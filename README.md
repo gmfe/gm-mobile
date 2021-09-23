@@ -130,7 +130,7 @@ web独有的组件
 
    npm login  登陆账号发布，否则发不成功
 
-   账号/密码/邮箱：gmfe / 4rfv5tgb / liyatang@guanmai.cn
+   账号/密码/邮箱：xxx/xxx/xxx
 
    组件库是lerna 管理的，直接跑命令：
 
