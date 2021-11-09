@@ -18,6 +18,8 @@ export const Button: FC<ButtonProps> = ({
   children,
   htmlType = 'button',
   className,
+  style,
+  minWidth,
   ...rest
 }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -62,6 +64,10 @@ export const Button: FC<ButtonProps> = ({
         },
         className
       )}
+      style={{
+        ...style,
+        minWidth,
+      }}
       disabled={!!(loadFlag || disabled)}
       onClick={handleClick}
     >

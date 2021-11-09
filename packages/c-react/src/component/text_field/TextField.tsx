@@ -32,6 +32,7 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
           this.setState((state) => ({ ...state, active: true }))
           // 小程序上同一个input已focus的，再次focus会触发onBlur
           if (this.target === 'WRAPPER') this.focus()
+          if (!mp) this.focus()
         } else {
           this.setState((state) => ({ ...state, active: false }))
         }
@@ -149,7 +150,7 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
       bottomLined,
       mini = false,
       large = false,
-      normal = true,
+      normal = false,
       round = false,
       multiLines = false,
       lines = 3,
@@ -175,18 +176,7 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
 
     const { active } = this.state
     if (!show) return null
-    let height
-    if (multiLines) {
-      height = 'auto'
-    } else if (large) {
-      height = '54px'
-    } else if (mini) {
-      height = '34px'
-    } else if (normal) {
-      height = '44px'
-    } else {
-      height = '44px'
-    }
+
     const common = {
       disabled: disabled,
       onInput: this.onInput.bind(this),
@@ -260,11 +250,14 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
                 'border-radius': round,
                 'padding-10': !mini,
                 'padding-5': mini,
+                mini,
+                normal: normal || (!mini && !normal && !large),
+                large,
+                'multi-line': multiLines,
               },
               innerClassName
             )}
             flex
-            style={{ minHeight: height }}
           >
             <Flex alignCenter={!multiLines} auto>
               {left && (

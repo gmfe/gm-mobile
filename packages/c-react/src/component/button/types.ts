@@ -25,6 +25,7 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   /** 返回 Promise 才有 loading */
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void
   disabled?: boolean
+  minWidth?: string
 }
 interface ButtonTimeProps extends ButtonProps {
   /** 计时的时间 */

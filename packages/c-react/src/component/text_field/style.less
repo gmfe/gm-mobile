@@ -46,6 +46,18 @@
   }
   .text-field-inner {
     cursor: text;
+    &.mini {
+      height: var(--m-textfield-height-mini);
+    }
+    &.normal {
+      height: var(--m-textfield-height-normal);
+    }
+    &.large {
+      height: var(--m-textfield-height-large);
+    }
+    &.multi-line {
+      height: auto;
+    }
     &.border-radius {
       border-radius: 5px;
       overflow: hidden;
