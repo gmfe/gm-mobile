@@ -97,13 +97,28 @@ export const Btn = () => {
         </span>
       </div>
       <div className='m-margin-bottom-10'>
-        <span className='m-button-white block'>+block</span>
+        <span className='m-button block'>+block</span>
       </div>
       <div className='m-margin-bottom-10'>
-        <div className='m-button large'>+large</div>
+        <div className='m-button block large'>+large</div>
       </div>
       <div className='m-margin-bottom-10'>
-        <span className='m-button-white outlined'>+outlined</span>
+        <span className='m-button block outlined large'>+outlined</span>
+      </div>
+      <div className='m-margin-bottom-10'>
+        <span className='m-button block outlined large outlined'>
+          +outlined
+        </span>
+      </div>
+      <div className='m-margin-bottom-10'>
+        <span className='m-button m-line-height-20 block outlined'>
+          +m-line-height-20
+        </span>
+      </div>
+      <div className='m-margin-bottom-10'>
+        <span className='m-button m-line-height-20 m-bg-primary block'>
+          +m-bg-primary
+        </span>
       </div>
     </div>
   )
