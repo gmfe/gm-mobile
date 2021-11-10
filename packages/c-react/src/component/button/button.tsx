@@ -5,6 +5,7 @@ import { Loading } from '../loading'
 import BaseButton from './base'
 import { is } from '@gm-mobile/c-tool'
 import type { ButtonProps } from './types'
+import { Flex } from '../flex'
 
 export const Button: FC<ButtonProps> = ({
   type = 'default',
@@ -72,7 +73,7 @@ export const Button: FC<ButtonProps> = ({
       onClick={handleClick}
     >
       {loadFlag && <Loading className='m-btn-loading' />}
-      {children}
+      <Flex alignCenter>{children}</Flex>
     </BaseButton>
   )
 }
