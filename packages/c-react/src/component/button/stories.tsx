@@ -64,16 +64,15 @@ export const normal: FC<ButtonProps> = (args) => (
     </View>
     block
     <View>
-      <Button {...args} block type='primary'>
+      <Button {...args} block type='primary' round>
         主色
       </Button>
       <Button {...args} block mini plain>
         主色
       </Button>
     </View>
-    noRound
     <View>
-      <Button {...args} noRound type='primary'>
+      <Button {...args} type='primary'>
         主色
       </Button>
     </View>

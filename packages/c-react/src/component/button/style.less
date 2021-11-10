@@ -2,7 +2,6 @@
   height: var(--m-size-form-height);
   line-height: var(--m-size-form-height);
   border-width: 0;
-  border-radius: var(--m-size-form-height);
   display: inline-block;
   text-align: center;
   vertical-align: middle;
@@ -12,7 +11,7 @@
   font-size: var(--m-size-text-16);
   user-select: none;
   outline: none;
-
+  border-radius: var(--m-btn-border-radius);
   &.m-btn-default {
     .mBtnVariants(var(--m-btn-color-bg-default), var(--m-btn-color-bg-default-active));
 
@@ -50,7 +49,6 @@
 
   &.m-btn-link {
     background: transparent;
-    border-radius: 0;
     color: var(--m-color-link);
     padding: 0 15px;
     min-width: 0;
@@ -77,11 +75,11 @@
     width: 100%;
   }
 
-  &.m-btn-no-round {
-    border-radius: 0;
+  &.m-btn-round {
+    border-radius: var(--m-size-form-height);
 
     &::after {
-      border-radius: 0;
+      border-radius: var(--m-size-form-height);
     }
   }
 
@@ -130,7 +128,7 @@
     top: 0;
     left: 0;
     border: 1px solid @borderColor;
-    border-radius: @height;
+    border-radius: calc(var(--m-btn-border-radius) * 2);
     transform: scale(0.5);
     transform-origin: 0 0;
     box-sizing: border-box;

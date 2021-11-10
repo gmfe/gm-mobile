@@ -7,7 +7,8 @@
 // stylelint-disable
 
 // 颜色，会通过主题更改
-:root {
+:root,
+page {
   // color
   --m-color-default: #353535; // 主内容
   --m-color-desc: #888; // 次要内容
@@ -32,13 +33,20 @@
   --m-btn-color-default-active: darken(#888, 10%);
   --m-btn-color-bg-default: #f6f6f6;
   --m-btn-color-bg-default-active: #ececec;
+  --m-btn-border-radius: 8px;
 
   // calendar
   --m-calendar-bg-active: fadeout(rgba(30, 172, 82, 1), 80%);
+
+  // 输入框大小
+  --m-textfield-height-mini: 32px;
+  --m-textfield-height-normal: 48px;
+  --m-textfield-height-large: 64px;
 }
 
 // 不变的颜色
-:root {
+:root,
+page {
   // color
   --m-color-placeholder: #b2b2b2;
   --m-color-accent: #ff6500;
@@ -81,7 +89,8 @@
 }
 
 // 非颜色
-:root {
+:root,
+page {
   // 字体尺寸
   --m-size-text-10: 10px;
   --m-size-text-12: 12px;

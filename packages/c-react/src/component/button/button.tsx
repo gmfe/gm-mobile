@@ -11,7 +11,7 @@ export const Button: FC<ButtonProps> = ({
   plain,
   mini,
   block,
-  noRound,
+  round,
   disabled,
   onClick = _.noop,
   loading,
@@ -59,7 +59,7 @@ export const Button: FC<ButtonProps> = ({
         {
           'm-btn-block': block,
           'm-btn-mini': mini,
-          'm-btn-no-round': noRound,
+          'm-btn-round': round,
           'm-btn-plain': type !== 'link' && plain,
         },
         className

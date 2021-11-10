@@ -14,7 +14,7 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   plain?: boolean
   mini?: boolean
   block?: boolean
-  noRound?: boolean
+  round?: boolean
   loading?: boolean
   /** 仅web 用。原生的 type */
   htmlType?: ButtonHTMLType
