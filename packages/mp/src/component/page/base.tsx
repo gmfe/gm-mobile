@@ -1,6 +1,7 @@
 import React, { CSSProperties, FC, HtmlHTMLAttributes, ReactNode } from 'react'
 import classNames from 'classnames'
 import { Flex, Status, View } from '@gm-mobile/c-react/src'
+import './base.less'
 
 interface PageProps extends HtmlHTMLAttributes<HTMLDivElement> {
   loading?: boolean
@@ -13,6 +14,8 @@ interface PageProps extends HtmlHTMLAttributes<HTMLDivElement> {
   bottom?: ReactNode
   pageClassName?: string
   pageStyle?: CSSProperties
+  /** 去掉底部安全区域 */
+  withoutSafeBottom?: boolean
 }
 
 const Page: FC<PageProps> = ({
@@ -28,6 +31,7 @@ const Page: FC<PageProps> = ({
   className,
   pageClassName,
   pageStyle,
+  withoutSafeBottom,
   ...rest
 }) => {
   const { safeArea, screenHeight } = wx.getSystemInfoSync()
@@ -40,6 +44,7 @@ const Page: FC<PageProps> = ({
         'm-page',
         {
           'm-page-white': white,
+          'without-safe-bottom': withoutSafeBottom,
         },
         className
       )}

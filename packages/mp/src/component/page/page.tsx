@@ -1,11 +1,7 @@
 import React, { useEffect, useRef, FC, useState } from 'react'
-import {
-  LayoutRoot,
-  LayoutRootV1,
-  PageProps as PageMPProps,
-} from '@gm-mobile/c-react'
+import { LayoutRoot, LayoutRootV1 } from '@gm-mobile/c-react'
 import { ScrollView } from '@tarojs/components'
-import PageBase from './base'
+import PageBase, { PageProps as PageMPProps } from './base'
 
 const PageMP: FC<
   PageMPProps & {
