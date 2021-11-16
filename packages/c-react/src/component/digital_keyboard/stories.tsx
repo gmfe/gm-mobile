@@ -3,7 +3,7 @@ import { Story } from '@storybook/react'
 import { TextField } from '../text_field'
 import { DigitalKeyboard, DigitalKeyboardProps } from '.'
 import { Text } from '../text'
-import { Btn } from './Btn'
+import { DKBtn } from './Btn'
 import { View } from '../view'
 import { Toast } from '../toast'
 import { Page } from '../page'
@@ -19,19 +19,17 @@ const Template: Story<DigitalKeyboardProps> = (args) => {
     apple: '1.00',
     peach: '0.50',
   }
-  const { current: keyboard } = useRef(
-    new DigitalKeyboard({
-      ...args,
-      form: form,
-      active: '',
-      async onAction(btn) {
-        if (btn.label === '确认') {
-          console.log('result:', 'apple', keyboard.get('apple'))
-          keyboard.hide()
-        }
-      },
-    })
-  )
+  const keyboard = new DigitalKeyboard({
+    ...args,
+    form: form,
+    active: '',
+    async onAction(btn) {
+      if (btn.label === '确认') {
+        console.log('result:', 'apple', keyboard.get('apple'))
+        keyboard.hide()
+      }
+    },
+  })
 
   return (
     <View style={{ height: '300px' }}>
@@ -122,13 +120,13 @@ Usage.argTypes = {
   },
   onInput: {
     description:
-      '`(value: string | undefined, key: Btn) => void` 虚拟键盘的点击事件',
+      '`(value: string | undefined, key: DKBtn) => void` 虚拟键盘的点击事件',
     control: false,
     type: {},
   },
   onAction: {
     description:
-      '`(value: string | undefined, key: Btn) => void` 虚拟键盘的功能键(actionKeys)点击事件',
+      '`(value: string | undefined, key: DKBtn) => void` 虚拟键盘的功能键(actionKeys)点击事件',
     control: false,
     type: {},
   },
@@ -154,7 +152,7 @@ Usage.argTypes = {
       name: 'function',
     },
   },
-  '.children': {
+  '.node': {
     description: '`ReactComponent` 键盘组件节点',
     type: {
       name: 'function',
@@ -210,12 +208,10 @@ export const CustomLayout = () => {
     apple: '1.00',
     peach: '0.50',
   }
-  const { current: keyboard } = useRef(
-    new DigitalKeyboard({
-      form: form,
-      active: '',
-    })
-  )
+  const keyboard = new DigitalKeyboard({
+    form: form,
+    active: '',
+  })
 
   return (
     <Page style={{ width: '100%' }}>
@@ -228,7 +224,7 @@ export const CustomLayout = () => {
         头部
       </Flex>
       <View>显示在指定位置</View>
-      <View>{keyboard.children}</View>
+      <View>{keyboard.node}</View>
       <Flex
         height='100px'
         className='m-bg-accent m-margin-tb-10'
@@ -246,7 +242,7 @@ export const CustomActions = () => {
   class Keyboard extends DigitalKeyboard {
     get actionKeys() {
       return [
-        new Btn({
+        new DKBtn({
           className: 'm-bg-accent m-text-white',
           label: '自定义',
           fn: (value) => {
@@ -254,7 +250,7 @@ export const CustomActions = () => {
             return '一键输入自定义内容'
           },
         }),
-        new Btn({
+        new DKBtn({
           label: '确认',
           flex: 3,
           className: 'm-bg-primary m-text-white',
@@ -267,20 +263,18 @@ export const CustomActions = () => {
     }
   }
 
-  const { current: keyboard } = useRef(
-    new Keyboard({
-      rewriteMode: true,
-      fractionDigits: 2,
-      min: 0,
-      max: 9999.99,
-      // 也可以通过这里自定义keys
-      // digitalKeys: [],
-      // actionKeys: [],
-      form: {
-        input: '',
-      },
-    })
-  )
+  const keyboard = new Keyboard({
+    rewriteMode: true,
+    fractionDigits: 2,
+    min: 0,
+    max: 9999.99,
+    // 也可以通过这里自定义keys
+    // digitalKeys: [],
+    // actionKeys: [],
+    form: {
+      input: '',
+    },
+  })
   return (
     <View style={{ height: '300px' }}>
       <TextField

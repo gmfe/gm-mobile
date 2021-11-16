@@ -2,7 +2,7 @@ import React, { FC, HTMLAttributes } from 'react'
 // import { Flex, Popup, View } from '@gm-mobile/mp'
 import _ from 'lodash'
 import classNames from 'classnames'
-import Btn from './Btn'
+import DKBtn from './Btn'
 import './base.less'
 import './font/iconfont.css'
 import { View } from '../view'
@@ -11,11 +11,11 @@ import { Flex } from '../flex'
 
 /** 数字按钮 */
 export const defaultDigitalKeys = [
-  ...['7', '8', '9'].map((v, _) => new Btn({ label: v })),
-  ...['4', '5', '6'].map((v, _) => new Btn({ label: v })),
-  ...['1', '2', '3'].map((v, _) => new Btn({ label: v })),
-  new Btn({ label: '0' }),
-  new Btn({
+  ...['7', '8', '9'].map((v, _) => new DKBtn({ label: v })),
+  ...['4', '5', '6'].map((v, _) => new DKBtn({ label: v })),
+  ...['1', '2', '3'].map((v, _) => new DKBtn({ label: v })),
+  new DKBtn({ label: '0' }),
+  new DKBtn({
     label: '.',
     fn: (value = '') => {
       if (value === '') {
@@ -28,7 +28,7 @@ export const defaultDigitalKeys = [
       }
     },
   }),
-  new Btn({
+  new DKBtn({
     className: 'iconfont icon-backspace',
     fn: (value) => {
       if (value.length === 0) return value
@@ -39,9 +39,9 @@ export const defaultDigitalKeys = [
 
 /** 右侧功能按钮  */
 export const defaultActionKeys = [
-  new Btn({ label: '取消', fn: (_) => '' }),
-  new Btn({ label: '完成', className: 'm-bg-primary' }),
-  new Btn({
+  new DKBtn({ label: '取消', fn: (_) => '' }),
+  new DKBtn({ label: '完成', className: 'm-bg-primary' }),
+  new DKBtn({
     label: '大按钮',
     flex: 2,
     className: 'm-bg-primary',
@@ -57,9 +57,9 @@ export interface KeyboardProps
   /** 输入框当前值 */
   value: string
   /** 虚拟键盘的点击事件 */
-  onInput?: (value: string | undefined, key: Btn) => void
+  onInput?: (value: string | undefined, key: DKBtn) => void
   /** 虚拟键盘的功能键(actionKeys)点击事件 */
-  onAction?: (key: Btn) => void
+  onAction?: (key: DKBtn) => void
   /** 自定义功能键盘 */
   actionKeys?: typeof defaultActionKeys
   /** 自定义数字键盘 */
@@ -81,7 +81,7 @@ export const Keyboard: FC<KeyboardProps> = ({
   int,
   ...rest
 }) => {
-  const handleInput = (btn: Btn) => {
+  const handleInput = (btn: DKBtn) => {
     if (!btn.fn) {
       onInput && onInput(undefined, btn)
       return

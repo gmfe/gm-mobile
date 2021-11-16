@@ -197,6 +197,7 @@ export const Draggable: FC<DraggableProps> = ({
     justifyContent: 'center',
     cursor: 'pointer',
     userSelect: 'none',
+    zIndex: 2,
   }
   const options: any = mp
     ? {

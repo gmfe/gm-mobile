@@ -1,4 +1,4 @@
-export class Btn {
+export class DKBtn {
   /** 按钮文本 */
   label?: string
   /** 按钮占位，默认1个位置 */
@@ -8,7 +8,7 @@ export class Btn {
   /** 按钮功能,传入value为输入框当前值，返回一个按钮功能处理后的值 */
   fn?: (value: string) => string
   type?: 'digit' | 'action'
-  constructor({ label = '', flex = 0, className = '', fn }: Btn) {
+  constructor({ label = '', flex = 0, className = '', fn }: DKBtn) {
     this.type = /([0-9.])/.test(label) ? 'digit' : 'action'
     if (!fn && this.type === 'digit') {
       fn = (value = '') => value + label
@@ -17,4 +17,4 @@ export class Btn {
   }
 }
 
-export default Btn
+export default DKBtn

@@ -24,7 +24,6 @@ const LayoutRoot: FC & LayoutRootStatic = () => {
         [type]: component,
       }))
     }
-
     return () => {
       delete cbMap[path]
     }

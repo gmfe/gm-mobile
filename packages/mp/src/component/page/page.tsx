@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, FC, useState } from 'react'
+import React, { useEffect, useRef, FC, useState, ReactNode } from 'react'
 import { LayoutRoot, LayoutRootV1 } from '@gm-mobile/c-react'
 import { ScrollView } from '@tarojs/components'
 import PageBase, { PageProps as PageMPProps } from './base'

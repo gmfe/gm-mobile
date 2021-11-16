@@ -1,10 +1,10 @@
-import React, { ReactNode, useEffect, useState } from 'react'
+import React, { ReactNode, useEffect, useRef, useState } from 'react'
 import { makeObservable } from 'mobx'
 import { Keyboard, KeyboardProps } from './Base'
 import { observer } from 'mobx-react'
 import { clamp } from 'lodash'
 import { View } from '../view'
-import Btn from './Btn'
+import { DKBtn } from './Btn'
 import { Popup } from '../popup'
 
 /** 是否小程序端 */
@@ -49,7 +49,7 @@ export class DigitalKeyboard {
   }: DigitalKeyboardProps) {
     this.form = form
     this.active = active || Object.keys(form)[0]
-    const Children = observer(() => {
+    const Node = observer(() => {
       const sys = mp && wx.getSystemInfoSync()
       const safeMargin =
         withSafeArea && mp ? sys.screenHeight - sys.safeArea.bottom : 5
@@ -125,7 +125,7 @@ export class DigitalKeyboard {
         </View>
       )
     })
-    this.children = <Children />
+    this.node = <Node />
     makeObservable(this, {
       form: true,
       active: true,
@@ -135,6 +135,8 @@ export class DigitalKeyboard {
       int: true,
       setInt: true,
     })
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    return useRef(this).current
   }
 
   active: string
@@ -144,7 +146,7 @@ export class DigitalKeyboard {
   }
 
   /** 键盘组件 */
-  readonly children: ReactNode
+  readonly node: ReactNode
   /** 整数型键盘 */
   int = false
   /** 设置为整数型键盘 */
@@ -156,8 +158,8 @@ export class DigitalKeyboard {
   /** 自定义功能按钮 */
   get actionKeys() {
     return [
-      new Btn({ label: '清零', fn: (_) => '' }),
-      new Btn({
+      new DKBtn({ label: '清零', fn: (_) => '' }),
+      new DKBtn({
         label: '下一个',
         className: 'm-bg-primary m-text-white',
         fn: (value) => {
@@ -165,7 +167,7 @@ export class DigitalKeyboard {
           return this.form[this.active]
         },
       }),
-      new Btn({
+      new DKBtn({
         label: '确认',
         flex: 2,
         className: 'm-bg-primary m-text-white',
@@ -211,7 +213,7 @@ export class DigitalKeyboard {
       disabledHeader: true,
       disabledAnimate: false,
       bottom: true,
-      children: this.children,
+      children: this.node,
     })
     mp && wx.hideKeyboard()
   }
@@ -222,4 +224,4 @@ export class DigitalKeyboard {
 }
 export default DigitalKeyboard
 
-export { Btn } from './Btn'
+export { DKBtn } from './Btn'

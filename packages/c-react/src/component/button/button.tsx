@@ -73,7 +73,9 @@ export const Button: FC<ButtonProps> = ({
       onClick={handleClick}
     >
       {loadFlag && <Loading className='m-btn-loading' />}
-      <Flex alignCenter>{children}</Flex>
+      <Flex alignCenter justifyCenter>
+        {children}
+      </Flex>
     </BaseButton>
   )
 }

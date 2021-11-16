@@ -2,6 +2,7 @@ import React, { CSSProperties, FC, HtmlHTMLAttributes, ReactNode } from 'react'
 import classNames from 'classnames'
 import { Flex, Status, View } from '@gm-mobile/c-react/src'
 import './base.less'
+import SafeBottomMP from '../safe_bottom/safe_bottom'
 
 interface PageProps extends HtmlHTMLAttributes<HTMLDivElement> {
   loading?: boolean
@@ -11,11 +12,14 @@ interface PageProps extends HtmlHTMLAttributes<HTMLDivElement> {
   header?: ReactNode
   tabbar?: ReactNode
   top?: ReactNode
+  /** bottom位置自带底部安全边距，不需要和safeBottom同时使用 */
   bottom?: ReactNode
   pageClassName?: string
   pageStyle?: CSSProperties
-  /** 去掉底部安全区域 */
-  withoutSafeBottom?: boolean
+  /** 底部安全区域 */
+  safeBottom?: boolean
+  /** 用于放置绝对定位组件 */
+  extra?: ReactNode
 }
 
 const Page: FC<PageProps> = ({
@@ -31,11 +35,10 @@ const Page: FC<PageProps> = ({
   className,
   pageClassName,
   pageStyle,
-  withoutSafeBottom,
+  safeBottom,
+  extra,
   ...rest
 }) => {
-  const { safeArea, screenHeight } = wx.getSystemInfoSync()
-  const paddingBottom = screenHeight - safeArea.bottom
   return (
     <Flex
       {...rest}
@@ -44,7 +47,7 @@ const Page: FC<PageProps> = ({
         'm-page',
         {
           'm-page-white': white,
-          'without-safe-bottom': withoutSafeBottom,
+          'safe-bottom': safeBottom,
         },
         className
       )}
@@ -79,19 +82,13 @@ const Page: FC<PageProps> = ({
             {children}
           </View>
           {bottom && (
-            <View className='m-bottom m-flex-none'>
-              {React.cloneElement(bottom as React.ReactElement, {
-                style: {
-                  paddingBottom:
-                    paddingBottom > 0
-                      ? `${paddingBottom}px!important`
-                      : undefined,
-                },
-              })}
-            </View>
+            <SafeBottomMP className='m-bottom m-flex-none'>
+              {bottom}
+            </SafeBottomMP>
           )}
         </>
       )}
+      {extra}
       {tabbar && <View className='m-page-tabbar m-flex-none'>{tabbar}</View>}
     </Flex>
   )

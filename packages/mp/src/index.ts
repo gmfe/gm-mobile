@@ -12,5 +12,6 @@ export * from './component/counter'
 export * from './component/status_bar'
 export * from './component/swiper'
 export * from './component/safe_header'
+export * from './component/safe_bottom'
 
 export { LocalStorage, useFirstDidShow, Router, upload }

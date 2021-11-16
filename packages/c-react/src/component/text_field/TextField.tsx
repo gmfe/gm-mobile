@@ -300,7 +300,9 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
             </Flex>
           )}
           <View
-            className={classNames('text-field-error-message', errClassName)}
+            className={classNames('text-field-error-message', errClassName, {
+              'has-error': err,
+            })}
           >
             {err}
           </View>
