@@ -1,27 +1,3 @@
-.m-text-20 {
-  font-size: var(--m-size-text-20) !important;
-}
-
-.m-text-18 {
-  font-size: var(--m-size-text-18) !important;
-}
-
-.m-text-16 {
-  font-size: var(--m-size-text-16) !important;
-}
-
-.m-text-14 {
-  font-size: var(--m-size-text-14) !important;
-}
-
-.m-text-12 {
-  font-size: var(--m-size-text-12) !important;
-}
-
-.m-text-10 {
-  font-size: var(--m-size-text-10) !important;
-}
-
 .m-text-center {
   text-align: center !important;
 }
@@ -126,14 +102,13 @@ each(@colors,.(@color,@colorKey,@index){
 });
 
 // 生成size, .m-text-{8-32}, --m-size-text-{8-32}
-.generate-size(@size) when (@size<=32) {
-  :root,
-  page {
-    --m-size-text-@{size}: @{size}px;
+.generate-size(@siz) when (@siz<=32) {
+  :root, page {
+    --m-size-text-@{siz}: @siz px;
   }
-  .m-text-@{size} {
-    font-size: e(%("var(--m-size-text-%s ) !important", @size));
+  .m-text-@{siz} {
+    font-size: e(%("var(--m-size-text-%s ) !important", @siz));
   }
-  .generate-size(@size+2);
+  .generate-size(@siz+2);
 }
 .generate-size(8);
