@@ -102,13 +102,13 @@ each(@colors,.(@color,@colorKey,@index){
 });
 
 // 生成size, .m-text-{8-32}, --m-size-text-{8-32}
-.generate-size(@siz) when (@siz<=32) {
+.generate-size(@size) when (@size<=32) {
   :root, page {
-    --m-size-text-@{siz}: @siz px;
+    --m-size-text-@{size}: ~"@{size}px";
   }
-  .m-text-@{siz} {
-    font-size: e(%("var(--m-size-text-%s ) !important", @siz));
+  .m-text-@{size} {
+    font-size: e(%("var(--m-size-text-%s)!important", @size));
   }
-  .generate-size(@siz+2);
+  .generate-size(@size + 2);
 }
 .generate-size(8);
