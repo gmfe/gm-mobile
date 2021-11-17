@@ -99,15 +99,19 @@ each(@colors,.(@color,@colorKey,@index){
     .generate-colors(@opacity+1);
   }
   .generate-colors(0);
+  .m-text-@{colorKey}{
+    color: @color!important;
+  }
 });
 
 // 生成size, .m-text-{8-32}, --m-size-text-{8-32}
 .generate-size(@size) when (@size<=32) {
-  :root, page {
-    --m-size-text-@{size}: ~"@{size}px";
+  :root,
+  page {
+    --m-size-text-@{size}: ~'@{size}px';
   }
   .m-text-@{size} {
-    font-size: e(%("var(--m-size-text-%s)!important", @size));
+    font-size: e(%('var(--m-size-text-%s)!important', @size));
   }
   .generate-size(@size + 2);
 }

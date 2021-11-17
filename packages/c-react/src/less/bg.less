@@ -26,6 +26,10 @@
   background: var(--m-color-bg-accent-light) !important;
 }
 
+.m-bg-transparent {
+  background: transparent !important;
+}
+
 .m-bg-white-active-with {
   .mBgWhiteActiveWith();
 }
@@ -61,4 +65,7 @@ each(@colors,.(@color,@colorKey,@index){
     .generate-colors(@opacity+1);
   }
   .generate-colors(0);
+  .m-bg-@{colorKey}{
+    background-color: @color!important;
+  }
 });

@@ -215,21 +215,24 @@ export const TextOpacity = () => {
       <div>
         生成的透明度：m-text-{'{'}white|black{'}'}-{'{'}0-10{'}'}
       </div>
+      <div className='m-text-black'>100%</div>
       <div className='m-text-black-5'>50%</div>
       <div className='m-text-black-1'>10%</div>
     </div>
   )
 }
 
-export const BackgroundOpacity = () => {
+export const Background = () => {
   return (
     <div>
-      <div>文本透明度</div>
+      <div>背景透明度</div>
       <div>
         生成的透明度：m-bg-{'{'}white|black{'}'}-{'{'}0-10{'}'}
       </div>
+      <div className='m-bg-black'>100%%</div>
       <div className='m-bg-black-5'>50%</div>
       <div className='m-bg-black-1'>10%</div>
+      <div className='m-bg-transparent'>.m-bg-transparent</div>
     </div>
   )
 }
