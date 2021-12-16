@@ -38,6 +38,8 @@ const PopupBase: FC<PopupProps> = ({
   /** 动画有卡顿现象，先禁用 */
   disabledAnimate = true,
   children,
+  hasCustomTab = true,
+  disableBottomSafeArea,
   ...rest
 }) => {
   devWarnForHook(() => {
@@ -57,6 +59,7 @@ const PopupBase: FC<PopupProps> = ({
       'm-animated-slide-in-left': left,
       'm-animated-slide-in-right': right,
       'm-animated-slide-in-bottom': bottom,
+      'm-bottom-safe-area': !disableBottomSafeArea,
     },
     className
   )
@@ -90,7 +93,7 @@ const PopupBase: FC<PopupProps> = ({
           </Flex>
         )}
         <View className='m-popup-content'>{children}</View>
-        <CustomTabbar />
+        {hasCustomTab && <CustomTabbar />}
       </View>
     </View>
   )

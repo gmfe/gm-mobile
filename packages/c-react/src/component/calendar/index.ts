@@ -5,5 +5,6 @@ export { default as MultipleCalendar } from './multiple_calendar'
 export type {
   BaseCalendarProps,
   RangeCalendarProps,
+  CalendarProps,
   MultipleCalendarProps,
 } from './types'

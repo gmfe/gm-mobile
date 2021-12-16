@@ -44,6 +44,11 @@ const ErrorInput: FC<ErrorInputProps> = ({
 
 const DialogStatics: DialogStaticsTypes<string | RenderOptions> = {
   render(options, type) {
+    const autoHide = !(
+      typeof options === 'object' &&
+      options.onConfirm &&
+      typeof options.children === 'object'
+    )
     if (typeof options === 'string') {
       options = {
         children: options as string,
@@ -92,7 +97,7 @@ const DialogStatics: DialogStaticsTypes<string | RenderOptions> = {
         }
 
         Promise.resolve(result).then(() => {
-          DialogStatics.hide()
+          if (autoHide) DialogStatics.hide()
 
           return setTimeout(() => {
             resolve(type === 'prompt' ? inputValue : undefined)

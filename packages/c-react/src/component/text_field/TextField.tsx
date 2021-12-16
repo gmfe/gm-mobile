@@ -170,6 +170,7 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
       onClick,
       onConfirm,
       fractionDigits,
+      alwaysEmbed = true,
       ...rest
       // 注意，不用传给input或area的props要在此列出来，不然rest会带过去
     } = this.props
@@ -207,6 +208,7 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
         focus,
         password,
         placeholderClass: 'text-field-placeholder',
+        alwaysEmbed: alwaysEmbed,
         onConfirm,
       })
     } else {

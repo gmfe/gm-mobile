@@ -30,6 +30,7 @@ export type DigitalKeyboardProps = Omit<KeyboardProps, 'value' | 'int'> & {
   min?: number
   /** 最大值 */
   max?: number
+  withUseRef?: boolean
 }
 
 export class DigitalKeyboard {
@@ -45,6 +46,7 @@ export class DigitalKeyboard {
     min,
     max,
     style,
+    withUseRef = true,
     ...rest
   }: DigitalKeyboardProps) {
     this.form = form
@@ -136,7 +138,7 @@ export class DigitalKeyboard {
       setInt: true,
     })
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    return useRef(this).current
+    return withUseRef ? useRef(this).current : this
   }
 
   active: string

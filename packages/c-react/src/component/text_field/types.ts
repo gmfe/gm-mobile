@@ -7,7 +7,7 @@ interface TextFieldProps
     'style' | 'onBlur' | 'onFocus' | 'onClick' | 'onChange' | 'type'
   > {
   value: string
-  /** 输入事件, e在web中为ChangeEvent，在小程序中为onInputEventDetail */
+  /** 输入事件, e在web中为ChangeEvent(value为e.target.value)，在小程序中为onInputEventDetail(value为e.detail.value) */
   onChange?: (e: any) => void
   /** 输入框类型, web端和小程序端取值有差异 */
   type?: InputProps['type']

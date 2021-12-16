@@ -68,7 +68,6 @@ WithButton.args = {
   right: (
     <Button
       mini
-      noRound
       onClick={() => new Promise((resolve) => setTimeout(resolve, 3000))}
     >
       获取验证码

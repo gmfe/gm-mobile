@@ -30,7 +30,6 @@
       background: var(--m-color-bg-white);
     }
   }
-  .mCellBorderBottomAfter(15px, 0);
 
   &.m-cell-access {
     cursor: pointer;
@@ -39,10 +38,6 @@
       color: var(--m-color-desc);
       margin-right: -2px;
     }
-  }
-
-  &.m-cell-with-icon {
-    .mCellBorderBottomAfter(50px, 0);
   }
 
   .m-cell-icon {
@@ -104,5 +99,13 @@
 
   .m-cell:not(.m-cell-form):last-child::after {
     display: none;
+  }
+  
+  .m-cell {
+    .mCellBorderBottomAfter(15px, 0);
+
+    &.m-cell-with-icon {
+      .mCellBorderBottomAfter(50px, 0);
+    }
   }
 }

@@ -19,6 +19,10 @@ interface PopupProps extends HTMLAttributes<HTMLDivElement> {
   disabledAnimate?: boolean
   /** 内部用 */
   isPickPopup?: boolean
+  /** 禁用下方安全边距，默认为false */
+  disableBottomSafeArea?: boolean
+  /** 预留底部自定义导航高度,默认为true */
+  hasCustomTab?: boolean
 }
 
 interface PopupStaticsTypes {

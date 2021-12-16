@@ -1,6 +1,7 @@
 .m-animated {
-  animation-duration: 0.2s;
-  animation-fill-mode: none;
+  // animation-duration: 0.2s;
+  // animation-fill-mode: none;
+  transition: all 0.2s;
 }
 
 .m-animated-fade-in {
@@ -153,10 +154,14 @@
 
 @keyframes slide-in-bottom {
   from {
-    transform: translate3d(0, 100%, 0);
+    // transform: translate3d(0, 100%, 0);
+    max-height: 0%;
+    overflow: hidden;
   }
 
   to {
-    transform: translate3d(0, 0, 0);
+    // transform: translate3d(0, 0, 0);
+    max-height: 100%;
+    overflow: hidden;
   }
 }

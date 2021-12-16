@@ -58,7 +58,7 @@ const Template: Story<DigitalKeyboardProps> = (args) => {
 export const Usage = Template.bind({})
 Usage.argTypes = {
   form: {
-    description: '`Object` 表单的字段键值对',
+    description: '`Object` 表单的字段键值对，可以通过.set增改，通过.get读取',
     type: {
       required: true,
     },

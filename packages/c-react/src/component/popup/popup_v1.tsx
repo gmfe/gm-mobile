@@ -51,6 +51,7 @@ const PopupBase: FC<PopupV1Props> = ({
   titleClassName,
   titleCenter,
   clickMaskClose = true,
+  disableBottomSafeArea,
   ...rest
 }) => {
   devWarnForHook(() => {
@@ -128,7 +129,7 @@ const PopupBase: FC<PopupV1Props> = ({
           </Flex>
         )}
         <View className='m-popup-content'>{children}</View>
-        <CustomTabbar />
+        {!disableBottomSafeArea && <CustomTabbar />}
       </View>
     </View>
   )
