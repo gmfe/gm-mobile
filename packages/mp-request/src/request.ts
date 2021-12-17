@@ -52,11 +52,11 @@ class RequestBase<Data> {
       const formatRes = formatToResponse<Data>(res)
 
       // log 在这里做，不能在 formatToResponse，因为它可能被调用多次
-      console.groupCollapsed(`request ${res.config.url}`)
-      console.log('code', formatRes.code)
-      console.log('message.description', formatRes.message.description)
-      console.log('message.detail', formatRes.message.detail)
-      console.groupEnd()
+      // console.groupCollapsed(`request ${res.config.url}`)
+      // console.log('code', formatRes.code)
+      // console.log('message.description', formatRes.message.description)
+      // console.log('message.detail', formatRes.message.detail)
+      // console.groupEnd()
 
       return formatRes
     })

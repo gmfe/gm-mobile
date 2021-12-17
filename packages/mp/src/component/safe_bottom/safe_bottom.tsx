@@ -12,7 +12,7 @@ const SafeBottomMP: FC<SafeBottomMPProps> = memo(
 
     return (
       <View className={classNames(className)} {...rest}>
-        {React.cloneElement(children as React.ReactElement, {
+        {React.cloneElement((children as React.ReactElement) || <View />, {
           style: {
             paddingBottom:
               paddingBottom > 0 ? `${paddingBottom}px!important` : undefined,

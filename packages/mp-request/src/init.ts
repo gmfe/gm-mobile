@@ -39,3 +39,12 @@ export function clearAuth() {
   LocalStorage.remove(accessTokenKey)
   accessToken = undefined
 }
+
+/**
+ * @description: 设置新的token
+ * @param {string} newAccessToken 新token
+ */
+export function setAccessToken(newAccessToken: string) {
+  LocalStorage.set(accessTokenKey, newAccessToken)
+  accessToken = newAccessToken
+}
