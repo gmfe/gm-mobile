@@ -20,6 +20,7 @@ interface PageProps extends HtmlHTMLAttributes<HTMLDivElement> {
   safeBottom?: boolean
   /** 用于放置绝对定位组件 */
   extra?: ReactNode
+  onRefresh?: () => Promise<any>
 }
 
 const Page: FC<PageProps> = ({

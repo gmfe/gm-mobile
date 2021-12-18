@@ -159,7 +159,7 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
       disabled,
       highlight,
       cursorSpacing = 30,
-      maxLength,
+      maxLength = -1,
       confirmType,
       adjustPosition,
       block,
@@ -181,7 +181,7 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
     const common = {
       disabled: disabled,
       onInput: this.onInput.bind(this),
-      onChange: this.onInput.bind(this),
+      // onChange: this.onInput.bind(this),
       onClick: this.onClick.bind(this),
       onBlur: () => {
         onBlur && onBlur()

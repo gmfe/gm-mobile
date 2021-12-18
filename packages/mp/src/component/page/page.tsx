@@ -1,15 +1,23 @@
 import React, { useEffect, useRef, FC, useState, ReactNode } from 'react'
-import { LayoutRoot, LayoutRootV1 } from '@gm-mobile/c-react'
+import { Flex, LayoutRoot, LayoutRootV1 } from '@gm-mobile/c-react'
 import { ScrollView } from '@tarojs/components'
-import PageBase, { PageProps as PageMPProps } from './base'
+import PageBase, { PageProps } from './base'
+import { debounce } from 'lodash'
 
-const PageMP: FC<
-  PageMPProps & {
-    onRefresh?: () => Promise<any>
-  }
-> = ({ children, onRefresh, ...props }) => {
+interface PageMPProps extends PageProps {
+  onRefresh?: () => Promise<any>
+  onLoadMore?: () => Promise<any>
+}
+
+const PageMP: FC<PageMPProps> = ({
+  children,
+  onRefresh,
+  onLoadMore,
+  ...props
+}) => {
   const [state, setState] = useState({
     refreshing: false,
+    loadingMore: false,
   })
   const refLoading = useRef<boolean | undefined>(false)
   useEffect(() => {
@@ -44,6 +52,29 @@ const PageMP: FC<
         }
       })
     },
+    loadMore: debounce(
+      async () => {
+        setState((state) => {
+          return {
+            ...state,
+            refreshing: true,
+          }
+        })
+        try {
+          onLoadMore && (await onLoadMore())
+        } catch (err) {
+          console.error(err)
+        }
+        setState((state) => {
+          return {
+            ...state,
+            refreshing: false,
+          }
+        })
+      },
+      1000,
+      { leading: true }
+    ),
   }
 
   return (
@@ -53,13 +84,26 @@ const PageMP: FC<
           <ScrollView
             className='m-flex'
             style={{ height: '100%' }}
+            enableBackToTop
             scrollY
             refresherEnabled
+            scrollWithAnimation
             refresherBackground='transparent'
             refresherTriggered={state.refreshing}
-            onRefresherRefresh={methods.refresh}
+            lowerThreshold={50}
+            onRefresherRefresh={() => methods.refresh()}
+            onScrollToLower={() => methods.loadMore()}
           >
             {children}
+            {state.loadingMore && (
+              <Flex
+                className='loading-more m-margin-tb-20 m-text-placeholder'
+                alignCenter
+                justifyCenter
+              >
+                加载中...
+              </Flex>
+            )}
           </ScrollView>
         )}
         {!onRefresh && children}
