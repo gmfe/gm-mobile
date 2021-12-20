@@ -180,8 +180,8 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
 
     const common = {
       disabled: disabled,
-      onInput: this.onInput.bind(this),
-      // onChange: this.onInput.bind(this),
+      // onInput: this.onInput.bind(this),
+      onChange: this.onInput.bind(this),
       onClick: this.onClick.bind(this),
       onBlur: () => {
         onBlur && onBlur()
