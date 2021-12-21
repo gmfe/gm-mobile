@@ -226,6 +226,7 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
           active: highlight || active,
           highlight,
           disabled,
+          block,
         })}
         width={width}
         style={style}
