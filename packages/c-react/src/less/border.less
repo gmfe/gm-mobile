@@ -98,13 +98,22 @@
 }
 
 .m-border-radius-circle {
-  border-radius: 50%!important;
+  border-radius: 50% !important;
 }
 
 .m-border-radius-chip {
-  border-radius: 100px!important;
+  border-radius: 100px !important;
 }
 
 .m-border-radius-5 {
-  border-radius: 5px!important;
+  border-radius: 5px !important;
 }
+
+// 生成圆角, .m-border-radius-{1-10}
+.generate-size(@size) when (@size<=10) {
+  .m-border-radius-@{size} {
+    border-radius: @size * 1px;
+  }
+  .generate-size(@size + 2);
+}
+.generate-size(1);

@@ -14,6 +14,8 @@ interface PageProps extends HtmlHTMLAttributes<HTMLDivElement> {
   top?: ReactNode
   /** bottom位置自带底部安全边距，不需要和safeBottom同时使用 */
   bottom?: ReactNode
+  /** 左侧内容 */
+  left?: ReactNode
   pageClassName?: string
   pageStyle?: CSSProperties
   /** 底部安全区域 */
@@ -32,6 +34,7 @@ const Page: FC<PageProps> = ({
   tabbar,
   top,
   bottom,
+  left,
   children,
   className,
   pageClassName,
@@ -76,12 +79,15 @@ const Page: FC<PageProps> = ({
             </Flex>
           )}
           {top && <View className='m-top m-flex-none'>{top}</View>}
-          <View
-            className={classNames('m-page-content', pageClassName)}
-            style={pageStyle}
-          >
-            {children}
-          </View>
+          <Flex auto className='m-page-wrapper'>
+            <View className='m-page-side'>{left}</View>
+            <View
+              className={classNames('m-page-content', pageClassName)}
+              style={pageStyle}
+            >
+              {children}
+            </View>
+          </Flex>
           {bottom && (
             <SafeBottomMP className='m-bottom m-flex-none'>
               {bottom}
