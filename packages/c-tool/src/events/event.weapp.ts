@@ -18,6 +18,12 @@ const Events = {
   ): void {
     TaroEvent.off(eventName, handler)
   },
+  once<D = any>(
+    eventName: string,
+    handler: (event: CustomEvent<D>) => void
+  ): void {
+    TaroEvent.once(eventName, handler)
+  },
 }
 
 export default Events

@@ -15,6 +15,12 @@ export const Events = {
   ): void {
     window.removeEventListener(eventName, handler as EventListener)
   },
+  once<D = any>(
+    eventName: string,
+    handler: (event: CustomEvent<D>) => void
+  ): void {
+    window.removeEventListener(eventName, handler as EventListener)
+  },
 }
 
 export default Events

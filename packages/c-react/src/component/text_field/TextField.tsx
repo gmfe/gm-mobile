@@ -94,9 +94,15 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
       !value.endsWith('.') &&
       ['digit', 'number'].includes(this.props.type || '')
     ) {
+      console.log(value)
       const float = parseFloat(value.replace(/\D\./g, ''))
       if (isNaN(float)) {
         value = ''
+      } else if (value.endsWith('.0')) {
+        // 处理特殊情况
+        if (this.props.fractionDigits === 0) {
+          value = value.replace(/\.0$/, '')
+        }
       } else {
         value = clamp(
           float,
