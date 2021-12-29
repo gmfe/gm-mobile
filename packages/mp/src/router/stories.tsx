@@ -16,8 +16,6 @@ Normal.parameters = {
       code: `
 import { Router } from '@gm-mobile/mp'
 const router = new Router({
-/** 开发模式，会在代码变化界面刷新后，自动恢复刷新前的页面 */
-dev: true,
 /** 路由变化前调用，返回false停止路由跳转 */
 auth(from, to) {
   if (!globalStore) {

@@ -54,7 +54,7 @@ export default class Router {
   } = {}
 
   /** navigateTo传入的{data:值} */
-  private _data?: any
+  private _data: { [key: string]: any } = {}
 
   /** 最近一次的路由跳转动作是 */
   currentAction?:
@@ -67,6 +67,7 @@ export default class Router {
   /** 当前路由信息 */
   get route() {
     const page = getCurrentPages().reverse()[0]
+    const data = this._data['/' + this._urlToPath(page.route)]
     return {
       /** 页面config而配置的标题 */
       title: page.config.navigationBarTitleText as string,
@@ -75,7 +76,7 @@ export default class Router {
       /** url参数 */
       options: page.options,
       /** navigateTo传入的{data:值} */
-      data: this._data,
+      data,
     }
   }
 
@@ -122,7 +123,7 @@ export default class Router {
         const data = typeof option === 'object' ? option.data : undefined
         // @ts-ignore
         data && delete parsed.data
-        this._data = data
+        this._data[to] = data
       }
       this._beforeChange(option, () => Taro.navigateTo(parsed))
     })

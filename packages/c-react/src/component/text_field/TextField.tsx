@@ -65,6 +65,7 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
   }
 
   onClick(e: MouseEvent<HTMLInputElement> | any) {
+    console.log(e)
     if (!mp) e.persist()
 
     const target = mp ? e.mpEvent.currentTarget : e.target
@@ -94,7 +95,6 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
       !value.endsWith('.') &&
       ['digit', 'number'].includes(this.props.type || '')
     ) {
-      console.log(value)
       const float = parseFloat(value.replace(/\D\./g, ''))
       if (isNaN(float)) {
         value = ''
