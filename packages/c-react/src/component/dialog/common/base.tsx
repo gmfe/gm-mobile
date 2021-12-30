@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
 import { Flex, Popup, View, Button } from '../../..'
 import { noop } from 'lodash'
+import './base.less'
 
 interface Option<T> {
   title: ReactNode
@@ -54,7 +55,11 @@ export function showDialog<T>({
     const Template = () => {
       return (
         <Flex column className='m-border-radius m-overflow-hidden m-bg-white'>
-          <Flex justifyBetween alignCenter className='m-padding-10 m-bg-back'>
+          <Flex
+            justifyBetween
+            alignCenter
+            className='m-customer-dialog-header m-padding-10'
+          >
             <Flex flex>{left}</Flex>
             <Flex
               flex
