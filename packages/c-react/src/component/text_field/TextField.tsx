@@ -65,7 +65,6 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
   }
 
   onClick(e: MouseEvent<HTMLInputElement> | any) {
-    console.log(e)
     if (!mp) e.persist()
 
     const target = mp ? e.mpEvent.currentTarget : e.target

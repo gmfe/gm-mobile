@@ -24,6 +24,7 @@ export interface ChooseProps {
   /** 搜索功能 */
   // search?: boolean
   maxHeight?: string
+  onCancel?: () => void
 }
 
 /** 底部弹出的选择界面 */
@@ -34,6 +35,7 @@ export default function ({
   multiSelect = false,
   defaultSelected = [],
   maxHeight = '50vh',
+  onCancel,
 }: ChooseProps) {
   if (multiSelect) needConfirm = true
   const selected = [...defaultSelected] as Item[]
@@ -93,6 +95,7 @@ export default function ({
     title,
     children: <Children />,
     onOk: () => selected,
+    onCancel: onCancel,
     bottom: needConfirm ? undefined : <View />,
   })
   return promise

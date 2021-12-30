@@ -68,7 +68,6 @@ export function showDialog<T>({
                 <Button
                   mini
                   plain
-                  noRound
                   type='link'
                   className='m-text-desc m-margin-lr-0'
                   onClick={cancel}
@@ -81,7 +80,7 @@ export function showDialog<T>({
           {children}
           {bottom || (
             <Flex className='m-padding-lr-10'>
-              <Button block noRound type='primary' onClick={() => ok()}>
+              <Button block type='primary' onClick={() => ok()}>
                 {okText}
               </Button>
             </Flex>
@@ -94,7 +93,7 @@ export function showDialog<T>({
       disabledHeader: true,
       [direction]: true,
       disabledAnimate: false,
-      onHide: Popup.hide,
+      onHide: cancel,
       children: <Template />,
     })
   })
