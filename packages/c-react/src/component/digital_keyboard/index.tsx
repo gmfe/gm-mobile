@@ -102,7 +102,12 @@ export class DigitalKeyboard {
 
               if (btn.type === 'digit' && value && !value.endsWith('.')) {
                 const num = parseFloat(value)
-                if (!isNaN(num as number)) {
+                if (value.endsWith('.0')) {
+                  // 处理特殊情况
+                  if (fractionDigits === 0) {
+                    value = value.replace(/\.0$/, '')
+                  }
+                } else if (!isNaN(num as number)) {
                   value = clamp(
                     num,
                     min === undefined ? num : min,
