@@ -109,14 +109,20 @@ each(@colors,.(@color,@colorKey,@index){
 });
 
 // 生成size, .m-text-{8-32}, --m-size-text-{8-32}
-.generate-size(@size) when (@size<=32) {
-  :root,
-  page {
+:root,
+page {
+  .generate-text-variables(@size) when (@size<=32) {
+    .generate-text-variables(@size + 1);
     --m-size-text-@{size}: ~'@{size}px';
   }
-  .m-text-@{size} {
-    font-size: e(%('var(--m-size-text-%s)!important', @size));
-  }
-  .generate-size(@size + 2);
+  .generate-text-variables(8);
 }
-.generate-size(8);
+
+.generate-text-size(@size) when (@size<=32) {
+  .m-text-@{size} {
+    // font-size: e(%('var(--m-size-text-%s)!important', @size));
+    font-size: @size * 1px;
+  }
+  .generate-text-size(@size + 1);
+}
+.generate-text-size(8);
