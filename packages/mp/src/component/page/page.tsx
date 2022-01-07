@@ -88,6 +88,7 @@ const PageMP: FC<PageMPProps> = ({
             scrollY
             refresherEnabled
             scrollWithAnimation
+            scrollAnchoring
             refresherBackground='transparent'
             refresherTriggered={state.refreshing}
             lowerThreshold={50}
