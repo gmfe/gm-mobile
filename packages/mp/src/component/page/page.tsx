@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, FC, useState, ReactNode } from 'react'
-import { Flex, LayoutRoot, LayoutRootV1 } from '@gm-mobile/c-react'
+import { Flex, LayoutRoot, LayoutRootV1, Loading } from '@gm-mobile/c-react'
 import { ScrollView } from '@tarojs/components'
 import PageBase, { PageProps } from './base'
-import { debounce } from 'lodash'
+import { pxTransform } from '@tarojs/taro'
 
 interface PageMPProps extends PageProps {
   onRefresh?: () => Promise<any>
-  onLoadMore?: () => Promise<any>
+  /** 上滑加载更多事件。如果promise返回一个空数组，表示没有更多了 */
+  onLoadMore?: () => Promise<Array<any> | undefined>
 }
 
 const PageMP: FC<PageMPProps> = ({
@@ -19,9 +20,10 @@ const PageMP: FC<PageMPProps> = ({
     refreshing: false,
     loadingMore: false,
   })
+
+  // Page加载状态
   const refLoading = useRef<boolean | undefined>(false)
   useEffect(() => {
-    // 和之前的不一样
     if (props.loading !== refLoading.current) {
       if (props.loading) {
         wx.showNavigationBarLoading()
@@ -32,49 +34,45 @@ const PageMP: FC<PageMPProps> = ({
       refLoading.current = props.loading
     }
   }, [props.loading])
-  const methods = {
-    async refresh() {
-      setState((state) => {
-        return {
-          ...state,
-          refreshing: true,
-        }
-      })
-      try {
-        onRefresh && (await onRefresh())
-      } catch (err) {
-        console.error(err)
+
+  const refresh = async () => {
+    setState((state) => {
+      return {
+        ...state,
+        refreshing: true,
       }
-      setState((state) => {
-        return {
-          ...state,
-          refreshing: false,
-        }
-      })
-    },
-    loadMore: debounce(
-      async () => {
-        setState((state) => {
-          return {
-            ...state,
-            refreshing: true,
-          }
-        })
-        try {
-          onLoadMore && (await onLoadMore())
-        } catch (err) {
-          console.error(err)
-        }
-        setState((state) => {
-          return {
-            ...state,
-            refreshing: false,
-          }
-        })
-      },
-      1000,
-      { leading: true }
-    ),
+    })
+    try {
+      onRefresh && (await onRefresh())
+    } catch (err) {
+      console.error(err)
+    }
+    setState((state) => {
+      return {
+        ...state,
+        refreshing: false,
+      }
+    })
+  }
+
+  const loadMore = async () => {
+    setState((state) => {
+      return {
+        ...state,
+        loadingMore: true,
+      }
+    })
+    try {
+      onLoadMore && (await onLoadMore())
+    } catch (err) {
+      console.error(err)
+    }
+    setState((state) => {
+      return {
+        ...state,
+        loadingMore: false,
+      }
+    })
   }
 
   return (
@@ -92,17 +90,13 @@ const PageMP: FC<PageMPProps> = ({
             refresherBackground='transparent'
             refresherTriggered={state.refreshing}
             lowerThreshold={50}
-            onRefresherRefresh={() => methods.refresh()}
-            onScrollToLower={() => methods.loadMore()}
+            onRefresherRefresh={() => refresh()}
+            onScrollToLower={() => loadMore()}
           >
             {children}
             {state.loadingMore && (
-              <Flex
-                className='loading-more m-margin-tb-20 m-text-placeholder'
-                alignCenter
-                justifyCenter
-              >
-                加载中...
+              <Flex height={pxTransform(60)} alignCenter justifyCenter>
+                <Loading style={{ opacity: 0.5 }} />
               </Flex>
             )}
           </ScrollView>
