@@ -112,7 +112,7 @@
 // 生成圆角, .m-border-radius-{1-10}
 .generate-size(@size) when (@size<=10) {
   .m-border-radius-@{size} {
-    border-radius: @size * 1px;
+    border-radius: @size * 1px !important;
   }
   .generate-size(@size + 1);
 }
