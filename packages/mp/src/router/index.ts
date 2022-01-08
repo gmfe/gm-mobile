@@ -124,6 +124,8 @@ export default class Router {
         // @ts-ignore
         data && delete parsed.data
         this._data[to] = data
+      } else {
+        this._data[to] = undefined
       }
       this._beforeChange(option, () => Taro.navigateTo(parsed))
     })
