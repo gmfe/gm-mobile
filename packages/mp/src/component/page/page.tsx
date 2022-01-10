@@ -56,6 +56,7 @@ const PageMP: FC<PageMPProps> = ({
   }
 
   const loadMore = async () => {
+    console.log('load more')
     setState((state) => {
       return {
         ...state,
@@ -74,24 +75,25 @@ const PageMP: FC<PageMPProps> = ({
       }
     })
   }
+  const withScrollView = !!onRefresh || !!onLoadMore
 
   return (
     <>
       <PageBase {...props}>
-        {onRefresh && (
+        {withScrollView && (
           <ScrollView
             className='m-flex'
             style={{ height: '100%' }}
             enableBackToTop
             scrollY
-            refresherEnabled
+            refresherEnabled={!!onRefresh}
             scrollWithAnimation
             scrollAnchoring
             refresherBackground='transparent'
             refresherTriggered={state.refreshing}
             lowerThreshold={50}
-            onRefresherRefresh={() => refresh()}
-            onScrollToLower={() => loadMore()}
+            onRefresherRefresh={onRefresh ? () => refresh() : undefined}
+            onScrollToLower={onLoadMore ? () => loadMore() : undefined}
           >
             {children}
             {state.loadingMore && (
@@ -101,7 +103,7 @@ const PageMP: FC<PageMPProps> = ({
             )}
           </ScrollView>
         )}
-        {!onRefresh && children}
+        {!withScrollView && children}
       </PageBase>
       <LayoutRoot />
       <LayoutRootV1 />
