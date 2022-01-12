@@ -17,6 +17,8 @@ const ios = mp && wx.getSystemInfoSync().platform === 'ios'
 interface TextFieldState {
   /** 是否输入状态 */
   active: boolean
+  /** 是否需要清空 */
+  needClear: boolean
 }
 
 const store = observable({ active: '' })
@@ -43,6 +45,7 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
 
   state = {
     active: false,
+    needClear: false,
   }
 
   id = uniqueId('textField-')
@@ -82,12 +85,17 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
       })
     }
     this.props.onClick && this.props.onClick(e)
+    this.setState({ ...this.state, needClear: !!this.props.rewriteMode })
   }
 
   onInput(e: any) {
     if (this.props.disabled) return
     if (!mp) e.persist()
     let value = mp ? e.detail.value : e.target.value
+    if (this.state.needClear) {
+      value = value.slice(-1)
+      this.setState({ ...this.state, needClear: false })
+    }
     const { min, max } = this.props
     if (
       value &&

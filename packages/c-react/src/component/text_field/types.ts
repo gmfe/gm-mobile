@@ -63,6 +63,8 @@ interface TextFieldProps
   errClassName?: string
   /** 键盘和输入框距离，小程序特有 */
   cursorSpacing?: number
+  /** 重新获得焦点后，输入前清空现有内容 */
+  rewriteMode?: boolean
   onBlur?: () => void
   onFocus?: () => void
   /**  e在web中和小程序中不一样 */

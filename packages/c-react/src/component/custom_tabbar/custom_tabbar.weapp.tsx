@@ -24,7 +24,12 @@ const CustomTabbar = () => {
     return null
   }
 
-  return <View style={{ height: `${height}px` }} />
+  return (
+    <View
+      className='custom-tabbar-placeholder'
+      style={{ height: `${height}px` }}
+    />
+  )
 }
 
 CustomTabbar.getCustomTabbarHeight = getCustomTabbarHeight
