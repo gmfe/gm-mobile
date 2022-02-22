@@ -1,10 +1,19 @@
-import React, { useEffect, useRef, FC, useState, ReactNode } from 'react'
+import React, {
+  useEffect,
+  useRef,
+  FC,
+  useState,
+  ReactNode,
+  CSSProperties,
+} from 'react'
 import { Flex, LayoutRoot, LayoutRootV1, Loading } from '@gm-mobile/c-react'
-import { ScrollView } from '@tarojs/components'
+import { ScrollView, View } from '@tarojs/components'
 import PageBase, { PageProps } from './base'
 import { pxTransform } from '@tarojs/taro'
 
 interface PageMPProps extends PageProps {
+  /** 最大宽度，默认480(ipad)，对ipad设备做居中变窄处理，设置1025(iPad pro 12.9 inch)可以跳过处理 */
+  maxWidth?: number
   onRefresh?: () => Promise<any>
   /** 上滑加载更多事件。如果promise返回一个空数组，表示没有更多了 */
   onLoadMore?: () => Promise<Array<any> | undefined>
@@ -12,10 +21,16 @@ interface PageMPProps extends PageProps {
 
 const PageMP: FC<PageMPProps> = ({
   children,
+  maxWidth = 480,
   onRefresh,
   onLoadMore,
+  style,
   ...props
 }) => {
+  const { screenWidth } = wx.getSystemInfoSync()
+  const transformRatio = maxWidth / screenWidth
+  const transform = screenWidth > maxWidth
+
   const [state, setState] = useState({
     refreshing: false,
     loadingMore: false,
@@ -77,9 +92,23 @@ const PageMP: FC<PageMPProps> = ({
   }
   const withScrollView = !!onRefresh || !!onLoadMore
 
-  return (
+  const layoutStyle: CSSProperties = transform
+    ? {
+        position: 'absolute',
+        width: '100%',
+        height: `calc(100vh / ${transformRatio})`,
+      }
+    : {}
+
+  const page = (
     <>
-      <PageBase {...props}>
+      <PageBase
+        {...props}
+        style={{
+          ...style,
+          height: transform ? `calc(100vh / ${transformRatio})` : undefined,
+        }}
+      >
         {withScrollView && (
           <ScrollView
             className='m-flex'
@@ -105,10 +134,26 @@ const PageMP: FC<PageMPProps> = ({
         )}
         {!withScrollView && children}
       </PageBase>
-      <LayoutRoot />
-      <LayoutRootV1 />
+      <LayoutRoot style={layoutStyle} />
+      <LayoutRootV1 style={layoutStyle} />
     </>
   )
+
+  if (transform) {
+    return (
+      <View className='transformer'>
+        <View
+          className='transformed-page'
+          style={{
+            transform: `scale(${transformRatio})`,
+          }}
+        >
+          {page}
+        </View>
+      </View>
+    )
+  }
+  return page
 }
 
 export default PageMP

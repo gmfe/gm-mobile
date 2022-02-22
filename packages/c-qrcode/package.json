@@ -26,5 +26,6 @@
   },
   "devDependencies": {
     "@types/qrcode.react": "^1.0.1"
-  }
+  },
+  "gitHead": "216ad1a8f7127b895838785f208455768b382ba2"
 }

@@ -29,5 +29,6 @@
     "lodash": "^4.17.15",
     "taro-axios": "^1.1.1",
     "weapp-cookie": "^1.4.6"
-  }
+  },
+  "gitHead": "216ad1a8f7127b895838785f208455768b382ba2"
 }

@@ -1,4 +1,10 @@
-import React, { FC, useState, ReactNode, useEffect } from 'react'
+import React, {
+  FC,
+  useState,
+  ReactNode,
+  useEffect,
+  HTMLAttributes,
+} from 'react'
 import _ from 'lodash'
 import { is } from '@gm-mobile/c-tool'
 
@@ -13,7 +19,10 @@ import {
 
 const cbMap: CBMapType = {}
 
-const LayoutRoot: FC & LayoutRootStatic = () => {
+const LayoutRoot: FC<HTMLAttributes<HTMLDivElement>> & LayoutRootStatic = ({
+  style,
+  ...rest
+}) => {
   const [state, setState] = useState<LayoutRootState>({})
   const path: string = getPath()
 
@@ -31,7 +40,15 @@ const LayoutRoot: FC & LayoutRootStatic = () => {
 
   // 有层级关系
   return (
-    <View>
+    <View
+      style={{
+        ...style,
+        display: Object.keys(state).find((k) => !!state[k as 'popup'])
+          ? 'block'
+          : 'none',
+      }}
+      {...rest}
+    >
       {state.innerLayer}
       {state.popup}
       {state.picker}

@@ -8,3 +8,14 @@
     padding-bottom: env(safe-area-inset-bottom); /* 兼容 iOS >= 11.2 */
   }
 }
+
+.transformer {
+  background-color: rgba(0, 0, 0, 0.9);
+  width: 100vw;
+  height: 100vh;
+  .transformed-page {
+    .m-page {
+      position: absolute;
+    }
+  }
+}

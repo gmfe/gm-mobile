@@ -1,4 +1,10 @@
-import React, { FC, useState, ReactNode, useEffect } from 'react'
+import React, {
+  FC,
+  useState,
+  ReactNode,
+  useEffect,
+  HTMLAttributes,
+} from 'react'
 import _ from 'lodash'
 import { is } from '@gm-mobile/c-tool'
 
@@ -16,7 +22,10 @@ const cbMap: CBMapV1Type = {}
 /**
  * @description: 目前仅用于Popup的多层弹窗
  */
-const LayoutRootV1: FC & LayoutV1RootStatic = () => {
+const LayoutRootV1: FC<HTMLAttributes<HTMLDivElement>> & LayoutV1RootStatic = ({
+  style,
+  ...rest
+}) => {
   const path = getPath()
   const [state, setState] = useState<LayoutRootState>({})
 
@@ -52,7 +61,13 @@ const LayoutRootV1: FC & LayoutV1RootStatic = () => {
 
   // 有层级关系
   return (
-    <View>
+    <View
+      style={{
+        ...style,
+        display: state.popup && state.popup.length > 0 ? 'block' : 'none',
+      }}
+      {...rest}
+    >
       {/* {state.innerLayer} */}
       {state.popup}
       {/* {state.modal}

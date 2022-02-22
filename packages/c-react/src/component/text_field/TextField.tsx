@@ -329,3 +329,7 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
 }
 
 export default TextField
+
+export function AutoPreview_TextField() {
+  return <TextField value='test' onChange={() => {}} />
+}

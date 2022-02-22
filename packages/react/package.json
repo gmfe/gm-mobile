@@ -31,5 +31,6 @@
     "@gm-mobile/c-react": "^3.9.3-beta.29",
     "@gm-mobile/c-tool": "^3.9.3-beta.29",
     "@gm-mobile/locales": "^3.9.3-beta.29"
-  }
+  },
+  "gitHead": "216ad1a8f7127b895838785f208455768b382ba2"
 }

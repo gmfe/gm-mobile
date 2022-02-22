@@ -1,9 +1,10 @@
 import React from 'react'
 import { addDecorator, addParameters } from '@storybook/react'
 import { withInfo } from '@storybook/addon-info'
-import { LayoutRoot,LayoutRootV1, CSSVariable } from '../packages/react/src'
+import { LayoutRoot, LayoutRootV1, CSSVariable } from '../packages/react/src'
 import { Observer } from 'mobx-react'
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
+import initAutoPreview from 'autopreview/src/react'
 
 import './less.less'
 import '../packages/react/src/index.less'
@@ -17,6 +18,10 @@ addDecorator((storeFn) => (
     <LayoutRootV1 />
   </React.Fragment>
 ))
+
+setTimeout(() => {
+  initAutoPreview('#root')
+}, 1000)
 
 if (
   window.matchMedia &&
