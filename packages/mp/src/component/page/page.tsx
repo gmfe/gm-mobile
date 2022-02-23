@@ -1,18 +1,11 @@
-import React, {
-  useEffect,
-  useRef,
-  FC,
-  useState,
-  ReactNode,
-  CSSProperties,
-} from 'react'
+import React, { useEffect, useRef, FC, useState, CSSProperties } from 'react'
 import { Flex, LayoutRoot, LayoutRootV1, Loading } from '@gm-mobile/c-react'
 import { ScrollView, View } from '@tarojs/components'
 import PageBase, { PageProps } from './base'
 import { pxTransform } from '@tarojs/taro'
 
 interface PageMPProps extends PageProps {
-  /** 最大宽度，默认480(ipad)，对ipad设备做居中变窄处理，设置1025(iPad pro 12.9 inch)可以跳过处理 */
+  /** 最大宽度，对超过最大宽度的页面做做居中变窄处理 */
   maxWidth?: number
   onRefresh?: () => Promise<any>
   /** 上滑加载更多事件。如果promise返回一个空数组，表示没有更多了 */
@@ -21,7 +14,7 @@ interface PageMPProps extends PageProps {
 
 const PageMP: FC<PageMPProps> = ({
   children,
-  maxWidth = 480,
+  maxWidth = 2048,
   onRefresh,
   onLoadMore,
   style,
