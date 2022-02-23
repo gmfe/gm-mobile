@@ -158,3 +158,16 @@ const PageMP: FC<PageMPProps> = ({
 
 export default PageMP
 export type { PageMPProps }
+
+/** 适配后的高度，考虑ipad 大屏裁剪宽度后的比例 */
+export function calcPageHeightWithMaxWidth(maxWidth = 480) {
+  const { screenWidth } = wx.getSystemInfoSync()
+  const transformRatio = maxWidth / screenWidth
+  return `calc(100vh / ${transformRatio})`
+}
+
+export function calcPageWidthWithMaxWidth(maxWidth = 800) {
+  const { screenWidth } = wx.getSystemInfoSync()
+  const transformRatio = maxWidth / screenWidth
+  return `calc(100vw / ${transformRatio})`
+}
