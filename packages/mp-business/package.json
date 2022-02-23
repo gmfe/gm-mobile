@@ -1,6 +1,6 @@
 {
   "name": "@gm-mobile/mp-business",
-  "version": "3.9.3-beta.31",
+  "version": "3.9.3",
   "description": "> TODO: description",
   "author": "liyatang <liyatang@qq.com>",
   "homepage": "https://github.com/gmfe/gm-mobile#readme",
@@ -21,7 +21,7 @@
     "url": "https://github.com/gmfe/gm-mobile/issues"
   },
   "dependencies": {
-    "@gm-mobile/c-business": "^3.9.3-beta.31"
+    "@gm-mobile/c-business": "^3.9.3"
   },
   "gitHead": "216ad1a8f7127b895838785f208455768b382ba2"
 }
