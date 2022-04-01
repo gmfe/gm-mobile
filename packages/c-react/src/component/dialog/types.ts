@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes } from 'react'
+import React, { HTMLAttributes, InputHTMLAttributes } from 'react'
 import { InputProps as TaroInputProps } from '@tarojs/components/types/Input'
 import { CommonEventFunction } from '@tarojs/components'
 
@@ -7,7 +7,7 @@ interface ErrorInputProps extends InputProps {
   defaultValue?: string
 }
 
-interface DialogBaseProps {
+interface DialogBaseProps extends HTMLAttributes<HTMLDivElement> {
   onConfirm?: (value?: string) => Promise<void>
   title?: string
   confirmText?: string

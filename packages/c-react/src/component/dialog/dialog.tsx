@@ -12,6 +12,7 @@ import {
   DialogStaticsTypes,
   RenderOptions,
 } from './types'
+import classNames from 'classnames'
 
 const ErrorInput: FC<ErrorInputProps> = ({
   getError,
@@ -170,9 +171,11 @@ const DialogBase: FC<DialogBaseProps> = ({
   onOther,
   hideBottom,
   children,
+  className,
+  ...rest
 }) => {
   return (
-    <View className='m-dialog-container'>
+    <View className={classNames('m-dialog-container', className)} {...rest}>
       <Mask
         onClick={() => {
           /**
