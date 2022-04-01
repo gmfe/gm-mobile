@@ -32,7 +32,7 @@ interface PromptOptions {
   onConfirm?: (value: string) => void | boolean
 }
 
-interface RenderOptions extends PromptOptions {
+interface RenderOptions extends PromptOptions, HTMLAttributes<HTMLDivElement> {
   children?: string | React.ReactNode
   confirmText?: React.ReactNode
   onCancel?: () => void
