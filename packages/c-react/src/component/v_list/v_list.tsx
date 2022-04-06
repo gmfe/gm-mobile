@@ -32,7 +32,7 @@ const Item: FC<VListItemProps> = memo(
       const doLazy = (event: CustomEvent<{ scrollTop: number }>): void => {
         const { scrollTop } = event.detail
         if (
-          (itemIndex + 1) * itemHeight < scrollTop - distance ||
+          (itemIndex + 2) * itemHeight < scrollTop - distance ||
           itemIndex * itemHeight > scrollTop + listHeight + distance
         ) {
           // unshow
