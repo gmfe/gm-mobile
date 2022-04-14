@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Base from './base'
 
 const List = forwardRef(
-  ({ data, selected, multiple, isGroupList, onSelect, ...rest }, ref) => {
+  ({ data, selected, multiple, isGroupList, onSelect,renderItem, ...rest }, ref) => {
     const refList = useRef(null)
 
     useImperativeHandle(ref, () => ({
@@ -52,6 +52,7 @@ const List = forwardRef(
         onSelect={handleSelected}
         multiple={multiple}
         isGroupList={isGroupList}
+        renderItem={renderItem}
       />
     )
   }
