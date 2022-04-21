@@ -29,5 +29,6 @@
     "@gm-common/tool": "^2.2.9",
     "@gm-mobile/locales": "^1.1.4-alpha.3",
     "classnames": "^2.2.6"
-  }
+  },
+  "gitHead": "bc1ba24fe202323be20bfda472a7e4df10bba6c9"
 }

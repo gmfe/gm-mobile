@@ -23,5 +23,6 @@
   "dependencies": {
     "@gm-mobile/locales": "^1.1.4-alpha.3",
     "@gm-mobile/react": "^1.1.4-alpha.3"
-  }
+  },
+  "gitHead": "bc1ba24fe202323be20bfda472a7e4df10bba6c9"
 }
