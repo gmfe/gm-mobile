@@ -1,8 +1,9 @@
-import React from 'react'
-import Picker from './component/picker'
 import { observable } from 'mobx'
-import ConfirmPicker from './confirm_picker'
+import React from 'react'
+import { SearchPicker } from '.'
+import Picker from './component/picker'
 import ConfirmCouplingPicker from './confirm_coupling_picker'
+import ConfirmPicker from './confirm_picker'
 import SelectPicker from './select_picker'
 
 const datas = [
@@ -254,6 +255,26 @@ export const selectPicker = () => {
   }
 
   return <button onClick={handleClick}>select picker</button>
+}
+
+export const searchPicker = () => {
+  const handleClick = () => {
+    SearchPicker.render({
+      placeholder: '请输入地名',
+      data: selectStore.data.slice(),
+      value: selectStore.value,
+    }).then(
+      (value) => {
+        console.log('resolve', value)
+        selectStore.setValue(value)
+      },
+      () => {
+        console.log('reject')
+      }
+    )
+  }
+
+  return <button onClick={handleClick}>search picker</button>
 }
 
 export default {

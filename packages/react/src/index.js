@@ -1,67 +1,64 @@
 // 表单
-import { Button, ButtonTime } from './component/button'
-import Checkbox from './component/checkbox'
-import Radio from './component/radio'
-import { Input, InputPassword, BorderInput } from './component/input'
-import Switch from './component/switch'
-import Uploader from './component/uploader'
-import Textarea from './component/textarea'
-import { Cells, Cell, CellForm, CellsForm } from './component/cell'
-import {
-  Picker,
-  CouplingPicker,
-  ConfirmPicker,
-  ConfirmCouplingPicker,
-  SelectPicker,
-} from './component/picker'
-import { Keyboard, KeyboardWrap } from './component/keyboard'
-import { Calendar, RangeCalendar, MultipleCalendar } from './component/calendar'
-import ScrollIntoView from './component/scroll_into_view'
-
-// 基础
-import FlipNumber from './component/flip_number'
-import Image from './component/image'
-import Label from './component/label'
-import Loading from './component/loading'
-import Price from './component/price'
-import Counter from './component/counter'
+import ActionSheet from './component/action_sheet'
 import Badge from './component/badge'
-import TagWrap from './component/tag'
-import ProgressBar from './component/progress_bar'
-
+import { Button, ButtonTime } from './component/button'
+import { Calendar, MultipleCalendar, RangeCalendar } from './component/calendar'
+import Canvas from './component/canvas'
+import { Cell, CellForm, Cells, CellsForm } from './component/cell'
+import Checkbox from './component/checkbox'
+import Counter from './component/counter'
+import Dialog from './component/dialog'
+import Divider from './component/divider'
 // 布局
 import Flex from './component/flex'
-import Divider from './component/divider'
-import Page from './component/page'
+// 基础
+import FlipNumber from './component/flip_number'
 import Header from './component/header'
-import { Tabbar, FlowBtnTabbar } from './component/tab_bar'
-import Square from './component/square'
-import Panel from './component/panel'
-import { Lazy, LazyList } from './component/lazy'
-import PullUpDown from './component/pull_up_down'
-import List from './component/list'
-import Scroll from './component/scroll'
-import Nav from './component/nav'
-import Tabs from './component/tabs'
-
+import Image from './component/image'
+import InnerLayer from './component/inner_layer'
+import { BorderInput, Input, InputPassword } from './component/input'
+import { Keyboard, KeyboardWrap } from './component/keyboard'
+import Label from './component/label'
 // 浮层
 import LayoutRoot from './component/layout_root'
-import NProgress from './component/nprogress'
-import InnerLayer from './component/inner_layer'
-import Toast from './component/toast'
-import Dialog from './component/dialog'
-import Mask from './component/mask'
-import Popup from './component/popup'
-import Tooltip from './component/tooltip'
-import ActionSheet from './component/action_sheet'
-
+import { Lazy, LazyList } from './component/lazy'
 // 其他
 import { LetterIndex, LetterIndexMultiple } from './component/letter_index'
-import { LocalStorage, SessionStorage } from './component/storage'
-import CSSVariable from './css_variable'
-import { Search, SearchPage, FakeSearch } from './component/search'
+import List from './component/list'
+import Loading from './component/loading'
+import Mask from './component/mask'
+import Nav from './component/nav'
+import NProgress from './component/nprogress'
+import Page from './component/page'
+import Panel from './component/panel'
+import {
+  ConfirmCouplingPicker,
+  ConfirmPicker,
+  CouplingPicker,
+  Picker,
+  SearchPicker,
+  SelectPicker,
+} from './component/picker'
+import Popup from './component/popup'
+import Price from './component/price'
+import ProgressBar from './component/progress_bar'
+import PullUpDown from './component/pull_up_down'
+import Radio from './component/radio'
 import RepeatTimes from './component/repeat_times'
-import Canvas from './component/canvas'
+import Scroll from './component/scroll'
+import ScrollIntoView from './component/scroll_into_view'
+import { FakeSearch, Search, SearchPage } from './component/search'
+import Square from './component/square'
+import { LocalStorage, SessionStorage } from './component/storage'
+import Switch from './component/switch'
+import Tabs from './component/tabs'
+import { FlowBtnTabbar, Tabbar } from './component/tab_bar'
+import TagWrap from './component/tag'
+import Textarea from './component/textarea'
+import Toast from './component/toast'
+import Tooltip from './component/tooltip'
+import Uploader from './component/uploader'
+import CSSVariable from './css_variable'
 
 const Alert = Dialog.alert
 const Confirm = Dialog.confirm
@@ -69,7 +66,6 @@ const Prompt = Dialog.prompt
 const Delete = Dialog.delete
 
 export {
-  // 表单
   Button,
   ButtonTime,
   Checkbox,
@@ -89,6 +85,7 @@ export {
   ConfirmPicker,
   ConfirmCouplingPicker,
   SelectPicker,
+  SearchPicker,
   Keyboard,
   KeyboardWrap,
   RangeCalendar,

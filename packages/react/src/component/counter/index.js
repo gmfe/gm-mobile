@@ -1,14 +1,13 @@
-import React from 'react'
-import classNames from 'classnames'
-import PropTypes from 'prop-types'
-import _ from 'lodash'
 import Big from 'big.js'
-
+import classNames from 'classnames'
 import { t } from 'gm-i18n'
-import Toast from '@gm-mobile/react/src/component/toast'
-import { KeyboardWrap } from '../keyboard'
-import SVGPlus from '../../../svg/plus.svg'
+import _ from 'lodash'
+import PropTypes from 'prop-types'
+import React from 'react'
 import SVGMinus from '../../../svg/minus.svg'
+import SVGPlus from '../../../svg/plus.svg'
+import { KeyboardWrap } from '../keyboard'
+import Toast from '../toast'
 
 const Counter = ({
   value,
@@ -37,7 +36,11 @@ const Counter = ({
   const checkValue = (value, type) => {
     if (max && value > max) {
       Toast.tip({
-        children: <div className='m-number-keyboard-msg'>{t('下单数量超出当前库存')}</div>,
+        children: (
+          <div className='m-number-keyboard-msg'>
+            {t('下单数量超出当前库存')}
+          </div>
+        ),
       })
       return max
     }
@@ -64,12 +67,16 @@ const Counter = ({
       return
     }
 
-    if (plusDisabled){
+    if (plusDisabled) {
       Toast.tip({
-        children: <div className='m-number-keyboard-msg'>{t('下单数量超出当前库存')}</div>,
+        children: (
+          <div className='m-number-keyboard-msg'>
+            {t('下单数量超出当前库存')}
+          </div>
+        ),
       })
       return
-    } 
+    }
 
     // 如果存在最小值，以最小值开始相加
     v = v + 1
