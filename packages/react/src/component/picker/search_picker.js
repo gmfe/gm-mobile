@@ -18,6 +18,7 @@ class SearchPicker extends React.Component {
     this.state = {
       datas: data.length ? [data] : [],
       values: selectedItem ? [selectedItem.value] : [data[0].value],
+      searchValue: '',
     }
   }
 
@@ -28,6 +29,7 @@ class SearchPicker extends React.Component {
     this.setState({
       datas: searchData.length ? [searchData] : [],
       values: [searchData[0]] || [],
+      searchValue: value,
     })
   }
 
@@ -37,17 +39,19 @@ class SearchPicker extends React.Component {
     })
   }
 
-  handleConfirm = (e) => {
+  handleConfirm = () => {
     this.props.onConfirm(this.state.values)
   }
 
   render() {
     const { headers, placeholder, searchBtnText, renderOption } = this.props
-    const { datas, values } = this.state
+    const { datas, values, searchValue } = this.state
 
     return (
       <div>
         <Search
+          type='cancel'
+          value={searchValue}
           placeholder={placeholder}
           searchText={searchBtnText}
           onChange={this.handleSearch}
