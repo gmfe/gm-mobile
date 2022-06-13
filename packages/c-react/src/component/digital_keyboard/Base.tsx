@@ -11,10 +11,9 @@ import { Flex } from '../flex'
 
 /** 数字按钮 */
 export const defaultDigitalKeys = [
-  ...['7', '8', '9'].map((v, _) => new DKBtn({ label: v })),
-  ...['4', '5', '6'].map((v, _) => new DKBtn({ label: v })),
   ...['1', '2', '3'].map((v, _) => new DKBtn({ label: v })),
-  new DKBtn({ label: '0' }),
+  ...['4', '5', '6'].map((v, _) => new DKBtn({ label: v })),
+  ...['7', '8', '9'].map((v, _) => new DKBtn({ label: v })),
   new DKBtn({
     label: '.',
     fn: (value = '') => {
@@ -28,13 +27,8 @@ export const defaultDigitalKeys = [
       }
     },
   }),
-  new DKBtn({
-    className: 'iconfont icon-backspace',
-    fn: (value) => {
-      if (value.length === 0) return value
-      return value.slice(0, value.length - 1)
-    },
-  }),
+  new DKBtn({ label: '0' }),
+  new DKBtn({ label: '清零', className: 'btn-clear', fn: (_) => '' }),
 ]
 
 /** 右侧功能按钮  */
@@ -121,7 +115,7 @@ export const Keyboard: FC<KeyboardProps> = ({
               >
                 <View
                   className={classNames(
-                    'keyboard-button digital m-text-20',
+                    'keyboard-button digital m-text-22',
                     btn.className
                   )}
                   onClick={() => handleInput(btn)}
@@ -150,7 +144,20 @@ export const Keyboard: FC<KeyboardProps> = ({
                   )}
                   onClick={() => handleInput(btn)}
                 >
-                  {btn.label}
+                  {btn.label ? (
+                    btn.label
+                  ) : (
+                    <Flex alignCenter justifyCenter className='bt-delete'>
+                      <View className='triangle' />
+                      <Flex
+                        alignCenter
+                        justifyCenter
+                        className='m-text-14 m-text-white square'
+                      >
+                        x
+                      </Flex>
+                    </Flex>
+                  )}
                 </View>
               </Flex>
             )
