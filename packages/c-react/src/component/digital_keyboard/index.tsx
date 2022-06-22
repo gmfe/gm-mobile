@@ -165,19 +165,26 @@ export class DigitalKeyboard {
   /** 自定义功能按钮 */
   get actionKeys() {
     return [
-      new DKBtn({ label: '清零', fn: (_) => '' }),
+      new DKBtn({
+        label: '',
+        // className: 'iconfont icon-backspace m-text-26',
+        fn: (value) => {
+          if (value.length === 0) return value
+          return value.slice(0, value.length - 1)
+        },
+      }),
       new DKBtn({
         label: '下一个',
-        className: 'm-bg-primary m-text-white',
+        className: 'm-text-black btn-clear',
         fn: (value) => {
           this.next()
           return this.form[this.active]
         },
       }),
       new DKBtn({
-        label: '确认',
+        label: '确定',
         flex: 2,
-        className: 'm-bg-primary m-text-white',
+        className: 'btn-ok m-text-white',
         fn: (value) => {
           return this.form[this.active]
         },
