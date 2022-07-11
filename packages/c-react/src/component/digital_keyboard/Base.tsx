@@ -14,6 +14,7 @@ export const defaultDigitalKeys = [
   ...['7', '8', '9'].map((v, _) => new DKBtn({ label: v })),
   ...['4', '5', '6'].map((v, _) => new DKBtn({ label: v })),
   ...['1', '2', '3'].map((v, _) => new DKBtn({ label: v })),
+  new DKBtn({ label: '0' }),
   new DKBtn({
     label: '.',
     fn: (value = '') => {
@@ -27,7 +28,6 @@ export const defaultDigitalKeys = [
       }
     },
   }),
-  new DKBtn({ label: '0' }),
   new DKBtn({ label: '清零', className: 'btn-clear', fn: (_) => '' }),
 ]
 
@@ -62,6 +62,7 @@ export interface KeyboardProps
   show?: boolean
   /** 整数类型键盘 */
   int?: boolean
+  isClearBtn?: boolean
 }
 
 export const Keyboard: FC<KeyboardProps> = ({
@@ -72,6 +73,7 @@ export const Keyboard: FC<KeyboardProps> = ({
   digitalKeys = defaultDigitalKeys,
   show = true,
   className,
+  isClearBtn = true,
   int,
   ...rest
 }) => {
@@ -104,27 +106,33 @@ export const Keyboard: FC<KeyboardProps> = ({
     >
       <Flex>
         <Flex flex={3} wrap>
-          {digitalKeys.map((btn, i) => {
-            return (
-              <Flex
-                key={i}
-                width='33.33333%'
-                alignCenter
-                justifyCenter
-                className='keyboard-item'
-              >
-                <View
-                  className={classNames(
-                    'keyboard-button digital m-text-22',
-                    btn.className
-                  )}
-                  onClick={() => handleInput(btn)}
+          {digitalKeys
+            .filter((f) => (isClearBtn ? f : f.label !== '清零'))
+            .map((btn, i) => {
+              return (
+                <Flex
+                  key={i}
+                  width={
+                    !isClearBtn && btn.label === '0'
+                      ? '66.666666%'
+                      : '33.33333%'
+                  }
+                  alignCenter
+                  justifyCenter
+                  className='keyboard-item'
                 >
-                  {btn.label}
-                </View>
-              </Flex>
-            )
-          })}
+                  <View
+                    className={classNames(
+                      'keyboard-button digital m-text-22',
+                      btn.className
+                    )}
+                    onClick={() => handleInput(btn)}
+                  >
+                    {btn.label}
+                  </View>
+                </Flex>
+              )
+            })}
         </Flex>
         <Flex flex={1} column>
           {actionKeys.map((btn, keyIndex) => {
