@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import moment from 'moment'
+import moment from 'dayjs'
 import _ from 'lodash'
 
 import BaseCalendar from './base'

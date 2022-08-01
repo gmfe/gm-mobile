@@ -2,7 +2,7 @@ import { getLocale } from '@gm-mobile/locales'
 import React, { FC } from 'react'
 import { View } from '../view'
 import _ from 'lodash'
-import moment from 'moment'
+import moment from 'dayjs'
 
 import { DateSelectorProps } from './types'
 import Container from './container'

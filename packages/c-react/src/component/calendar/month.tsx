@@ -1,7 +1,7 @@
 import { getLocale } from '@gm-mobile/locales'
 import React, { FC } from 'react'
 import _ from 'lodash'
-import moment, { Moment } from 'moment'
+import moment, { Dayjs } from 'dayjs'
 
 import { Flex } from '../flex'
 import Day from './day'
@@ -32,7 +32,7 @@ const Month: FC<MonthProps> = ({
   currentMoment,
   showDateLabel,
 }) => {
-  const getDayRowOfMonth = (currentMoment: Moment) => {
+  const getDayRowOfMonth = (currentMoment: Dayjs) => {
     if (
       moment(currentMoment).day(0).add(35, 'day').month() !==
       currentMoment.month()
@@ -64,7 +64,7 @@ const Month: FC<MonthProps> = ({
     return disabled
   }
 
-  const lastDay = moment(currentMoment).day(0).add(-1, 'day')
+  let lastDay = moment(currentMoment).day(0).add(-1, 'day')
   const month = currentMoment.month()
   const dayGroup = getDayRowOfMonth(currentMoment)
 
@@ -83,8 +83,8 @@ const Month: FC<MonthProps> = ({
           style={{ padding: _.size(dayGroup) > 5 ? '5px 0' : '9px 0' }}
         >
           {_.map(v, (value, index) => {
-            const day = moment(lastDay.add(1, 'day'))
-
+            lastDay = lastDay.add(1, 'day')
+            const day = moment(lastDay)
             return (
               <Day
                 key={`${value}${index}`}

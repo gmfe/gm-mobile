@@ -2,7 +2,8 @@ import React from 'react'
 import { View } from '../view'
 import _ from 'lodash'
 import { observable } from 'mobx'
-import moment from 'moment'
+import moment from 'dayjs'
+
 import { DateSelector } from './date_selector'
 
 const store = observable({
