@@ -11,9 +11,9 @@ import { Flex } from '../flex'
 
 /** 数字按钮 */
 export const defaultDigitalKeys = [
-  ...['7', '8', '9'].map((v, _) => new DKBtn({ label: v })),
-  ...['4', '5', '6'].map((v, _) => new DKBtn({ label: v })),
   ...['1', '2', '3'].map((v, _) => new DKBtn({ label: v })),
+  ...['4', '5', '6'].map((v, _) => new DKBtn({ label: v })),
+  ...['7', '8', '9'].map((v, _) => new DKBtn({ label: v })),
   new DKBtn({ label: '0' }),
   new DKBtn({
     label: '.',
