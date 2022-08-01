@@ -1,6 +1,6 @@
 import { getLocale } from '@gm-mobile/locales'
 import React, { FC, memo } from 'react'
-import moment from 'moment'
+import moment from 'dayjs'
 import classNames from 'classnames'
 import _ from 'lodash'
 

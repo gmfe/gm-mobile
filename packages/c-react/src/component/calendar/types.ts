@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'react'
-import { Moment } from 'moment'
+import { Dayjs } from 'dayjs'
 
 type CalendarType = 'single' | 'range' | 'multiple'
 
@@ -9,7 +9,7 @@ interface DayProps {
   type: CalendarType
   onClick: (date: Date) => void
   /** 日期，可能是该月 / 上月 / 下月 */
-  value: Moment
+  value: Dayjs
   /** 当前日历所在月份 */
   currentMonth: number
   disabled: boolean
@@ -19,7 +19,7 @@ interface DayProps {
 }
 
 interface MonthProps {
-  currentMoment: Moment
+  currentMoment: Dayjs
   selected: Date[]
   type: CalendarType
   onSelectDay: (date: Date) => void

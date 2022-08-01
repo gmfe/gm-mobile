@@ -1,4 +1,4 @@
-import moment from 'moment'
+import moment from 'dayjs'
 import { UUID } from '@gm-mobile/c-tool'
 
 const DOMAIN = 'https://qncdn.guanmai.cn/'

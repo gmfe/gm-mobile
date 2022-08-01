@@ -1,13 +1,13 @@
 import React, { FC, memo } from 'react'
 import { getLocale } from '@gm-mobile/locales'
 import classNames from 'classnames'
-import moment, { Moment } from 'moment'
+import moment, { Dayjs } from 'dayjs'
 import { View } from '../view'
 import _ from 'lodash'
 
 import { DayProps } from './types'
 
-const formatDay = (day: Date, span = 0): Moment => {
+const formatDay = (day: Date, span = 0): Dayjs => {
   return moment(day).add(span, 'day').startOf('day')
 }
 

@@ -12,7 +12,7 @@ import {
 } from '@gm-mobile/c-react'
 import { getLocale } from '@gm-mobile/locales'
 import _ from 'lodash'
-import moment from 'moment'
+import moment from 'dayjs'
 import getScreenHeight from './get_screen_height'
 import {
   TabDateSelectProps,

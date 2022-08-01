@@ -1,5 +1,5 @@
 import React, { FC, useRef, useEffect } from 'react'
-import moment, { Moment } from 'moment'
+import moment, { Dayjs } from 'dayjs'
 import _ from 'lodash'
 
 import { VList, VListRef } from '../v_list'
@@ -43,7 +43,7 @@ const MonthsList: FC<MonthListProps> = ({
     // eslint-disable-next-line
     while (mMin <= mMax) {
       arr.push(moment(mMin))
-      mMin.add(1, 'month')
+      mMin = mMin.add(1, 'month')
     }
 
     return arr
@@ -74,7 +74,7 @@ const MonthsList: FC<MonthListProps> = ({
       height={height}
       itemHeight={MONTH_HEIGHT}
       distance={0}
-      renderItem={(month: { item: Moment; index: number }) => {
+      renderItem={(month: { item: Dayjs; index: number }) => {
         return (
           <Month
             key={month.index}
