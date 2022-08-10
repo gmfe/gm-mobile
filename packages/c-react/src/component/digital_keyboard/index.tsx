@@ -75,6 +75,7 @@ export class DigitalKeyboard {
             actionKeys={this.actionKeys}
             value={this.form[this.active]}
             onInput={(value, btn) => {
+              if (typeof wx !== 'undefined') wx.vibrateShort({ type: 'light' })
               const oldValue = value
               // rewriteMode
               if (state.needClear) {
