@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react'
 import { getLocale } from '@gm-mobile/locales'
-import moment from 'moment'
+import moment from 'dayjs'
 import classNames from 'classnames'
 import _ from 'lodash'
 

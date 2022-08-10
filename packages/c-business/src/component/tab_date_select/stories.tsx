@@ -1,5 +1,5 @@
 import React from 'react'
-import moment from 'moment'
+import moment from 'dayjs'
 import { TabDateSelect } from './tab_date_select'
 import { Button } from '@gm-mobile/c-react'
 

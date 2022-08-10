@@ -1,12 +1,13 @@
 import React, { FC } from 'react'
 import { View } from '../view'
 import { Flex } from '../flex'
-import moment from 'moment'
+import moment, { extend } from 'dayjs'
 import _ from 'lodash'
 
+import weekday from 'dayjs/plugin/weekday'
 import { ContainerProps } from './types'
 import Day from './day'
-
+extend(weekday)
 const WEEK_COUNT = 7
 
 const Container: FC<ContainerProps> = ({ min, max, selected, ...rest }) => {

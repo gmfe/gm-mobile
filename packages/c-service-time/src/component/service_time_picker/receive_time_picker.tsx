@@ -3,7 +3,7 @@ import { getLocale } from '@gm-mobile/locales'
 import { CouplingPicker, Flex, Button, View } from '@gm-mobile/c-react'
 import _ from 'lodash'
 
-import moment from 'moment'
+import moment from 'dayjs'
 import PickerStatics from './statics'
 import {
   getReceiveTimeParams,

@@ -1,6 +1,5 @@
 import _ from 'lodash'
-import moment, { DurationInputArg1, Moment } from 'moment'
-
+import moment, { Dayjs } from 'dayjs'
 // 注意：为了方便，此库的日期都用 moment 格式表示，非 Date
 // 选开始才选结束
 //
@@ -60,18 +59,14 @@ function processStartEndValuesWithCycleList(receiveTime: any, cycleList: any) {
 
   const start = moment()
     .add(defaultSpanStartFlag, 'days')
-    .set({
-      hours: defaultStart.split(':')[0],
-      minute: defaultStart.split(':')[1],
-    })
+    .set('hours', defaultStart.split(':')[0])
+    .set('minute', defaultStart.split(':')[1])
     .startOf('minute')
 
   const end = moment()
     .add(defaultSpanEndFlag, 'days')
-    .set({
-      hours: defaultEnd.split(':')[0],
-      minute: defaultEnd.split(':')[1],
-    })
+    .set('hours', defaultEnd.split(':')[0])
+    .set('minute', defaultEnd.split(':')[1])
     .startOf('minute')
 
   // 默认
@@ -102,10 +97,8 @@ function getTime(spanTime: DurationInputArg1, timeStr: any, orderTime = null) {
   const time = orderTime ? moment(orderTime) : moment()
   return time
     .add(spanTime, 'days')
-    .set({
-      hours: timeStr.split(':')[0],
-      minute: timeStr.split(':')[1],
-    })
+    .set('hours', timeStr.split(':')[0])
+    .set('minute', timeStr.split(':')[1])
     .startOf('minute')
 }
 
@@ -181,7 +174,7 @@ function cycleListToDayList(cycleList: any) {
   // 打平
   const list = _.flatten(cycleList)
 
-  let dayEnd: Moment | null = null
+  let dayEnd: Dayjs | null = null
   let temp: any[] = []
   _.each(list, (d: any) => {
     if (!dayEnd) {
