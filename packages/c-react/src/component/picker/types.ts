@@ -38,6 +38,7 @@ type ConfirmPickerTypes = BasePickerTypes<ConfirmPickerProps>
 
 interface ConfirmCouplingPickerProps extends Omit<ConfirmPickerProps, 'datas'> {
   datas: Option[]
+  itemHeight?: number
 }
 type ConfirmCouplingPickerTypes = BasePickerTypes<ConfirmCouplingPickerProps>
 

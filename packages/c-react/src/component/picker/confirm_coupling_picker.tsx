@@ -13,6 +13,7 @@ const ConfirmCouplingPickerBase: FC<ConfirmCouplingPickerProps> = ({
   values,
   onConfirm = _.noop,
   renderOption,
+  ...rest
 }) => {
   const [_values, setValues] = useState(values)
 
@@ -32,6 +33,7 @@ const ConfirmCouplingPickerBase: FC<ConfirmCouplingPickerProps> = ({
         values={values}
         renderOption={renderOption}
         onChange={handleValueChange}
+        {...rest}
       />
       <View className='m-margin-15'>
         <Button
