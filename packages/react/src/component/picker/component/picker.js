@@ -51,10 +51,10 @@ const Picker = ({
             onChange={handleChange}
           />
         ))}
-        <div
+        {/* <div
           className='m-picker-highlight m-border-1px-top-before m-border-1px-bottom-after'
           style={highlightStyle}
-        />
+        /> */}
       </div>
     </div>
   )

@@ -12,21 +12,22 @@ class PickerColumn extends React.Component {
       startScrollerTranslate: 0,
       ...this.computeTranslate(props),
     }
+    this.divRef = React.createRef()
   }
 
-  componentDidMount() {
-    ReactDOM.findDOMNode(this.refScroll).addEventListener(
-      'touchmove',
-      this.handleTouchMove
-    )
-  }
+  // componentDidMount() {
+  //   ReactDOM.findDOMNode(this.refScroll).addEventListener(
+  //     'touchmove',
+  //     this.handleTouchMove
+  //   )
+  // }
 
-  componentWillUnmount() {
-    ReactDOM.findDOMNode(this.refScroll).removeEventListener(
-      'touchmove',
-      this.handleTouchMove
-    )
-  }
+  // componentWillUnmount() {
+  //   ReactDOM.findDOMNode(this.refScroll).removeEventListener(
+  //     'touchmove',
+  //     this.handleTouchMove
+  //   )
+  // }
 
   componentWillReceiveProps(nextProps) {
     if (this.state.isMoving) {
@@ -36,7 +37,7 @@ class PickerColumn extends React.Component {
   }
 
   computeTranslate = (props) => {
-    const { options, value, itemHeight, columnHeight } = props
+    const { options, value, columnHeight } = props
     let selectedIndex = _.findIndex(options, (option) => option.value === value)
     if (selectedIndex < 0) {
       // throw new ReferenceError();
@@ -50,10 +51,16 @@ class PickerColumn extends React.Component {
       this.handleOptionSelected(options[0])
       selectedIndex = 0
     }
-
+    // 获取到当前元素的高度
+    const itemHeight =
+      this.divRef?.current?.childNodes?.[selectedIndex]?.clientHeight ?? 40
+    let addHeight = 40
+    // 计算translate3d要移动的距离
+    for (let i = 0; i < selectedIndex; i++) {
+      addHeight += this.divRef?.current?.childNodes?.[i]?.clientHeight ?? 40
+    }
     return {
-      scrollerTranslate:
-        columnHeight / 2 - itemHeight / 2 - selectedIndex * itemHeight,
+      scrollerTranslate: columnHeight / 2 - itemHeight / 2 - addHeight,
       minTranslate:
         columnHeight / 2 - itemHeight * options.length + itemHeight / 2,
       maxTranslate: columnHeight / 2 - itemHeight / 2,
@@ -153,11 +160,17 @@ class PickerColumn extends React.Component {
     const { options, renderOption, itemHeight, value } = this.props
     return options.map((option, index) => {
       const style = {
-        height: itemHeight + 'px',
-        lineHeight: itemHeight + 'px',
+        minHeight: itemHeight + 'px',
+        // height: itemHeight + 'px',
+        // lineHeight: itemHeight + 'px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
       }
       const className = `m-picker-item${
-        option.value === value ? ' m-picker-item-selected' : ''
+        option.value === value
+          ? ' m-picker-highlight m-picker-item-selected m-border-1px-top-before m-border-1px-bottom-after'
+          : ''
       }`
       return (
         <div
@@ -187,7 +200,8 @@ class PickerColumn extends React.Component {
     return (
       <div className='m-picker-column'>
         <div
-          ref={(ref) => (this.refScroll = ref)}
+          // ref={(ref) => (this.refScroll = ref)}
+          ref={this.divRef}
           className='m-picker-scroll'
           style={style}
           onTouchStart={this.handleTouchStart}
