@@ -72,6 +72,7 @@ const PopupBase: FC<PopupV1Props> = ({
       'm-animated-slide-in-left': left,
       'm-animated-slide-in-right': right,
       'm-animated-slide-in-bottom': bottom,
+      'm-bottom-safe-area': !disableBottomSafeArea,
     },
     className
   )
