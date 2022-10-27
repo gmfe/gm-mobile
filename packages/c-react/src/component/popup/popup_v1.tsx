@@ -1,7 +1,6 @@
 import React, { FC } from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
-import { devWarnForHook } from '@gm-mobile/c-tool'
 
 import { Flex } from '../flex'
 import { Mask } from '../mask'
@@ -40,7 +39,7 @@ const PopupBase: FC<PopupV1Props> = ({
   style,
   id,
   onHide = _.noop,
-  isPickPopup,
+  isPickPopup = true,
   disabledHeader,
   disabledMask,
   /** 动画有卡顿现象，先禁用 */
@@ -52,35 +51,31 @@ const PopupBase: FC<PopupV1Props> = ({
   titleCenter,
   clickMaskClose = true,
   disableBottomSafeArea,
+  direction = 'bottom',
   ...rest
 }) => {
-  devWarnForHook(() => {
-    if (!left && !right && !bottom) {
-      console.error('need oneOf left right bottom')
-    }
-  })
-
+  const isLeft = left || direction === 'left'
+  const isRight = right || direction === 'right'
+  const isBottom = bottom || direction === 'bottom'
+  const isCenter = center || direction === 'center'
   const cn = classNames(
     'm-popup',
     {
-      'm-popup-left': left,
-      'm-popup-right': right,
-      'm-popup-bottom': bottom,
-      'm-popup-center': center,
+      'm-popup-left m-animated-slide-in-left': isLeft,
+      'm-popup-right m-animated-slide-in-right': isRight,
+      'm-popup-bottom m-animated-slide-in-bottom': isBottom,
+      'm-popup-center': isCenter,
       'm-popup-box-shadow': opacity === 0 || disabledMask,
       'm-animated': !disabledAnimate,
-      'm-animated-slide-in-left': left,
-      'm-animated-slide-in-right': right,
-      'm-animated-slide-in-bottom': bottom,
       'm-bottom-safe-area': !disableBottomSafeArea,
     },
     className
   )
 
   const s = Object.assign({}, style)
-  if ((left || right) && width) {
+  if ((isLeft || isRight) && width) {
     s.width = width
-  } else if (bottom) {
+  } else if (isBottom) {
     s.height = height
   }
 

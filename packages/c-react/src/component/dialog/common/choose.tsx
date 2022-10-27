@@ -24,6 +24,8 @@ export interface ChooseProps {
   /** 搜索功能 */
   // search?: boolean
   maxHeight?: string
+  /** 高度 */
+  height?: string
   onCancel?: () => void
 }
 
@@ -35,6 +37,7 @@ export default function ({
   multiSelect = false,
   defaultSelected = [],
   maxHeight = '50vh',
+  height,
   onCancel,
 }: ChooseProps) {
   if (multiSelect) needConfirm = true
@@ -45,7 +48,8 @@ export default function ({
       <View
         className='m-padding-tb-5'
         style={{
-          maxHeight: maxHeight,
+          maxHeight,
+          height,
           overflow: 'auto',
         }}
       >

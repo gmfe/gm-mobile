@@ -90,17 +90,15 @@ export const PopupV1 = () => {
       onClick={() => {
         TempPopupV1.render({
           title:
-            '啦啦啦1(加了headerClassName： m-flex-justify-center  m-bg-back）',
+            '啦啦啦1 height: 60vh,(加了headerClassName： m-flex-justify-center  m-bg-back）',
           headerClassName: 'm-flex-justify-center m-bg-back',
           titleCenter: true,
-          bottom: true,
           children: (
             <View>
               <Button
                 onClick={() => {
                   TempPopupV1.render({
-                    title: '啦啦啦2',
-                    bottom: true,
+                    title: '啦啦啦2，height: 50vh',
                     children: (
                       <View>
                         点击关闭会提示【检测到弹窗关闭了，看要做什么回调】
@@ -108,21 +106,20 @@ export const PopupV1 = () => {
                           onClick={() => {
                             TempPopupV1.render({
                               title: '啦啦啦3',
-                              bottom: true,
                               children: (
                                 <View>
                                   <Button
                                     onClick={() => {
                                       const hdeId4 = TempPopupV1.render({
                                         title: '啦啦啦4',
-                                        left: true,
+                                        direction: 'left',
                                         children: (
                                           <Button
                                             type='primary'
                                             onClick={() => {
                                               TempPopupV1.render({
                                                 title: '啦啦啦5',
-                                                right: true,
+                                                direction: 'right',
                                                 children: (
                                                   <Button
                                                     type='primary'
@@ -132,7 +129,7 @@ export const PopupV1 = () => {
                                                   </Button>
                                                 ),
                                                 // onHide: Popup.hide,
-                                                height: '60vh',
+                                                height: '40vh',
                                                 className: 'xxxx',
                                                 closeText: (
                                                   <Text
@@ -165,7 +162,7 @@ export const PopupV1 = () => {
                                   </Button>
                                 </View>
                               ),
-                              height: '60vh',
+                              height: '40vh',
                             })
                           }}
                         >
@@ -176,7 +173,7 @@ export const PopupV1 = () => {
                     onHide: () => {
                       Toast.tip('检测到弹窗关闭了，看要做什么回调')
                     },
-                    height: '60vh',
+                    height: '50vh',
                   })
                 }}
               >
