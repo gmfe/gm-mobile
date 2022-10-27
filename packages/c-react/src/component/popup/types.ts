@@ -29,8 +29,9 @@ interface PopupStaticsTypes {
   render: (options: PopupProps) => void
   hide: () => void
 }
-
-interface PopupV1Props extends Omit<PopupProps, 'onHide'> {
+type PopupDirection = 'bottom' | 'left' | 'right' | 'center'
+interface PopupV1Props
+  extends Omit<PopupProps, 'onHide' | 'left' | 'right' | 'bottom'> {
   /** 默认关闭是个icon，如果不满足可自定义传入 */
   closeText?: ReactNode
   /** header的class,针对的是整个container */
@@ -41,9 +42,18 @@ interface PopupV1Props extends Omit<PopupProps, 'onHide'> {
   titleCenter?: boolean
   /** onHide是监听关闭后的回调，而不是关闭Popup的命令，如果要几秒后关闭弹窗可以返回一个Promise */
   onHide?: () => Promise<any> | void
-  center?: boolean
   /** 点击mask是否关闭弹窗 */
   clickMaskClose?: boolean
+  /** @deprecated 弃用，请用direction='left' 左侧弹出 */
+  left?: boolean
+  /** @deprecated 弃用，请用direction='right' 右侧弹出 */
+  right?: boolean
+  /** @deprecated 弃用，请用direction='bottom' 底部弹出 */
+  bottom?: boolean
+  /** @deprecated 弃用，请用direction='center' 中心弹出 */
+  center?: boolean
+  /** 从哪个方向弹出，默认从底部 */
+  direction?: PopupDirection
 }
 
 interface PopupStaticsV1Types {
