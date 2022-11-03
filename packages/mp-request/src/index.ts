@@ -4,6 +4,7 @@ import configHeaders from './config_headers'
 import configTrace from './config_trace'
 import configError from './config_error'
 import configProgress from './config_progress'
+import configPrivateDomain from './config_private_domain'
 import { initAuth, clearAuth, setAccessToken } from './init'
 
 export {
@@ -16,5 +17,6 @@ export {
   configError,
   configProgress,
   setAccessToken,
+  configPrivateDomain,
 }
 export type { Response } from './types'
