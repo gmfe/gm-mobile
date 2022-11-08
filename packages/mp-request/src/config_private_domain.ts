@@ -85,6 +85,9 @@ export async function configPrivateDomain(defaultBaseUrl: string) {
   })
 }
 
+/** 停用自定义域名 */
 export function clearPrivateDomain() {
+  console.log('[configPrivateDomain] 停用自定义域名', privateBaseUrl)
   privateBaseUrl = ''
+  LocalStorage.remove('privateBaseUrl')
 }
