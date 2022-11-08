@@ -6,11 +6,17 @@ import { LocalStorage } from '@gm-mobile/mp'
 // 如果有值使用此值作为接口请求域名
 let privateBaseUrl: string = LocalStorage.get('privateBaseUrl') || ''
 
-/** 私有化部署实现，监测到登录后，后续所有接口的请求域名将使用group中的private_domain字段值 */
-async function configPrivateDomain(defaultBaseUrl: string) {
+/** 私有化部署实现，监测到登录后，后续所有接口的请求域名将使用group中的private_domain字段值
+ * 退出登录后应该调用clearPrivateDomain恢复
+ */
+export async function configPrivateDomain(defaultBaseUrl: string) {
   instance.interceptors.request.use(async (config) => {
     const { baseURL = '', url, data = '{}' } = config
     const fullUrl = baseURL + url
+    if (url!.indexOf('ceres') === -1) {
+      // 仅处理ceres接口
+      return config
+    }
     const apiName = fullUrl.split('/').reverse()[0]
     const origin = fullUrl.split('/').slice(0, 3).join('/')
     const form: any = /^\{/.test(data) ? JSON.parse(data) : {}
@@ -40,7 +46,7 @@ async function configPrivateDomain(defaultBaseUrl: string) {
             { group_id, customized_code },
             { baseURL: defaultBaseUrl }
           )
-          return get(groups, '0.private_domain_name') || ''
+          return get(groups, '0.private_domain_name')?.replace(/\/^/, '') || ''
         }
         // 登录1和登录2
         if (group_id || group_customized_code) {
@@ -64,16 +70,21 @@ async function configPrivateDomain(defaultBaseUrl: string) {
           )
           privateBaseUrl = (await getPrivateBaseUrl({ group_id })) || ''
           LocalStorage.set('privateBaseUrl', privateBaseUrl)
+          console.log('[configPrivateDomain] 启用自定义域名', privateBaseUrl)
         } else {
           console.warn('不该来到这里')
         }
         break
       }
-      default:
+      default: {
+        break
+      }
     }
-    config.baseURL = privateBaseUrl || defaultBaseUrl
+    config.baseURL = privateBaseUrl || defaultBaseUrl || config.baseURL
     return Promise.resolve(config)
   })
 }
 
-export default configPrivateDomain
+export function clearPrivateDomain() {
+  privateBaseUrl = ''
+}
