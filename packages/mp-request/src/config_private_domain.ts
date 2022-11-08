@@ -56,6 +56,7 @@ export async function configPrivateDomain(defaultBaseUrl: string) {
               customized_code: group_customized_code,
             })) || ''
           LocalStorage.set('privateBaseUrl', privateBaseUrl)
+          console.log('[configPrivateDomain] 启用自定义域名', privateBaseUrl)
         } else if (wechat_app_id) {
           // 登录3
           const {
