@@ -19,12 +19,10 @@ type AutoCancelReturn<T extends RequestFn> = T & {
  * ListOrderWithRelationAutoCancel.cancel()
  */
 function autoCancel<T extends RequestFn>(request: T): AutoCancelReturn<T> {
-  let cancelTokenSource: null | CancelTokenSource = null
+  let cancelTokenSource: CancelTokenSource
   /** 取消请求 */
   function cancel() {
-    if (cancelTokenSource) {
-      ;(cancelTokenSource as CancelTokenSource).cancel()
-    }
+    if (cancelTokenSource) cancelTokenSource.cancel()
   }
   const proxyRequest = (
     r?: { _axiosConfig?: AxiosRequestConfig },
