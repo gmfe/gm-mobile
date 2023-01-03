@@ -9,7 +9,7 @@ import {
   clearPrivateDomain,
 } from './config_private_domain'
 import { initAuth, clearAuth, setAccessToken } from './init'
-
+import autoCancel from './auto_cancel'
 export {
   initAuth,
   clearAuth,
@@ -22,5 +22,6 @@ export {
   setAccessToken,
   configPrivateDomain,
   clearPrivateDomain,
+  autoCancel,
 }
 export type { Response } from './types'
