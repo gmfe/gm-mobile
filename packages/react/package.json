@@ -1,6 +1,6 @@
 {
   "name": "@gm-mobile/react",
-  "version": "3.12.0",
+  "version": "3.12.1",
   "description": "",
   "author": "liyatang <liyatang@qq.com>",
   "homepage": "https://github.com/gmfe/gm-mobile#readme",
@@ -28,9 +28,9 @@
     "react-dom": "^16.13.1"
   },
   "dependencies": {
-    "@gm-mobile/c-react": "^3.12.0",
-    "@gm-mobile/c-tool": "^3.12.0",
-    "@gm-mobile/locales": "^3.12.0"
+    "@gm-mobile/c-react": "^3.12.1",
+    "@gm-mobile/c-tool": "^3.12.1",
+    "@gm-mobile/locales": "^3.12.1"
   },
   "gitHead": "216ad1a8f7127b895838785f208455768b382ba2"
 }
