@@ -28,7 +28,7 @@ class StorageFactory {
     }
   }
 
-  get(key: string): any {
+  get<T = any>(key: string): T | null {
     try {
       let value: any
 
@@ -41,7 +41,7 @@ class StorageFactory {
         }
       }
 
-      return value
+      return value as T
     } catch (err) {
       console.warn('Storage set error', err)
       // 如果 parse 错误，代表这个存储错误，认为就是没有这个存储，保持和没存储的表现一直，返回 null
