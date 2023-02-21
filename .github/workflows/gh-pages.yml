@@ -26,7 +26,7 @@ jobs:
       # 发布到 github pages 上
       - name: Auto Deploy
         env:
-          GH_REF: https://github.com/gmfe/gm-mobile.git # github仓库地址http
+          GH_REF: github.com/gmfe/gm-mobile.git # github仓库地址http
           ACCESS_TOKEN: ${{ secrets.PASSWORD }} # github token
         run: |
           git config --global user.name "gmfe4code"
