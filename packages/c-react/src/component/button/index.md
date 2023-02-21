@@ -1,8 +1,6 @@
-import React, { FC } from 'react'
-import Button from './button'
-import ButtonTime from './button_time'
-import { View } from '../view'
-import { ButtonProps } from './types'
+```tsx
+import {Button, ButtonTime, View, ButtonProps} from '@gm-mobile/c-react'
+
 
 function handleClick(): Promise<void> {
   console.log('click')
@@ -13,7 +11,7 @@ function handleClick(): Promise<void> {
   )
 }
 
-export const normal: FC<ButtonProps> = (args) => (
+const Normal: FC<ButtonProps> = (args) => (
   <View>
     默认
     <View>
@@ -118,7 +116,5 @@ export const normal: FC<ButtonProps> = (args) => (
   </View>
 )
 
-export default {
-  title: '表单/Button',
-  component: Button,
-}
+export default Normal
+```

@@ -1,6 +1,11 @@
-import React from 'react'
+---
+nav: 配置项111
+---
+
+```tsx
+
 import moment from 'dayjs'
-import { TabDateSelect } from './tab_date_select'
+import { TabDateSelect } from '@gm-mobile/c-business'
 import { Button } from '@gm-mobile/c-react'
 
 const tabs = [
@@ -18,7 +23,7 @@ const tabs = [
   },
 ]
 
-export const normal = () => {
+ const Normal = () => {
   const handleClick = () => {
     TabDateSelect.render({
       title: '选择日期',
@@ -33,8 +38,29 @@ export const normal = () => {
   }
   return <Button onClick={handleClick}>Show TabDateSelect</Button>
 }
+export default Normal
+```
 
-export const WithServiceTime = () => {
+```tsx
+import moment from 'dayjs'
+import { TabDateSelect } from '@gm-mobile/c-business'
+import { Button } from '@gm-mobile/c-react'
+
+const tabs = [
+  {
+    text: '按下单日期',
+    value: '1',
+    min: moment().subtract(365, 'day').toDate(),
+    max: moment().toDate(),
+  },
+  {
+    text: '按收货日期',
+    value: '2',
+    min: moment().subtract(365, 'day').toDate(),
+    max: moment().toDate(),
+  },
+]
+const WithServiceTime = () => {
   const data = tabs.map((item) => {
     return {
       ...item,
@@ -78,8 +104,5 @@ export const WithServiceTime = () => {
   }
   return <Button onClick={handleClick}>Show TabDateSelect</Button>
 }
-
-export default {
-  title: '业务/TabDateSelect',
-  component: TabDateSelect,
-}
+export default WithServiceTime
+```
