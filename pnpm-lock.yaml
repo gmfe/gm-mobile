@@ -177,6 +177,120 @@ importers:
       dumi-theme-mobile: registry.npmmirror.com/dumi-theme-mobile/2.0.4_ig3na4wdx3rykeikdk3y2karxa
       father: registry.npmmirror.com/father/4.1.5_sui6hcndfkhodpvzvn7eghj6py
 
+  packages/business:
+    specifiers:
+      '@gm-mobile/c-business': ^3.12.1
+      '@gm-mobile/c-react': ^3.12.1
+      '@gm-mobile/locales': ^3.12.1
+      '@gm-mobile/react': ^3.12.1
+    dependencies:
+      '@gm-mobile/c-business': link:../c-business
+      '@gm-mobile/c-react': link:../c-react
+      '@gm-mobile/locales': link:../locales
+      '@gm-mobile/react': link:../react
+
+  packages/c-business:
+    specifiers:
+      '@gm-mobile/c-react': ^3.12.1
+      '@gm-mobile/locales': ^3.12.1
+      dayjs: ^1.11.6
+    dependencies:
+      '@gm-mobile/c-react': link:../c-react
+      '@gm-mobile/locales': link:../locales
+      dayjs: registry.npmmirror.com/dayjs/1.11.7
+
+  packages/c-cookie:
+    specifiers:
+      '@gm-mobile/c-tool': ^3.12.1
+    dependencies:
+      '@gm-mobile/c-tool': link:../c-tool
+
+  packages/c-font:
+    specifiers: {}
+
+  packages/c-qrcode:
+    specifiers:
+      '@types/qrcode.react': ^1.0.1
+    devDependencies:
+      '@types/qrcode.react': registry.npmmirror.com/@types/qrcode.react/1.0.2
+
+  packages/c-react:
+    specifiers:
+      '@gm-mobile/c-font': ^3.12.1
+      '@gm-mobile/c-tool': ^3.12.1
+      '@gm-mobile/locales': ^3.12.1
+      dayjs: ^1.11.6
+    dependencies:
+      '@gm-mobile/c-font': link:../c-font
+      '@gm-mobile/c-tool': link:../c-tool
+      '@gm-mobile/locales': link:../locales
+      dayjs: registry.npmmirror.com/dayjs/1.11.7
+
+  packages/c-service-time:
+    specifiers:
+      '@gm-mobile/c-react': ^3.12.1
+      '@gm-mobile/locales': ^3.12.1
+      dayjs: ^1.11.6
+    dependencies:
+      '@gm-mobile/c-react': link:../c-react
+      '@gm-mobile/locales': link:../locales
+      dayjs: registry.npmmirror.com/dayjs/1.11.7
+
+  packages/c-tool:
+    specifiers:
+      lodash: ^4.17.20
+    dependencies:
+      lodash: registry.npmmirror.com/lodash/4.17.21
+
+  packages/locales:
+    specifiers: {}
+
+  packages/mp:
+    specifiers:
+      '@gm-mobile/c-react': ^3.12.1
+      '@gm-mobile/c-tool': ^3.12.1
+      '@gm-mobile/locales': ^3.12.1
+      dayjs: ^1.11.6
+    dependencies:
+      '@gm-mobile/c-react': link:../c-react
+      '@gm-mobile/c-tool': link:../c-tool
+      '@gm-mobile/locales': link:../locales
+      dayjs: registry.npmmirror.com/dayjs/1.11.7
+
+  packages/mp-business:
+    specifiers:
+      '@gm-mobile/c-business': ^3.12.1
+    dependencies:
+      '@gm-mobile/c-business': link:../c-business
+
+  packages/mp-request:
+    specifiers:
+      '@gm-mobile/c-tool': ^3.12.1
+      '@gm-mobile/locales': ^3.12.1
+      '@gm-mobile/mp': ^3.12.1
+      js-base64: ^3.6.0
+    dependencies:
+      '@gm-mobile/c-tool': link:../c-tool
+      '@gm-mobile/locales': link:../locales
+      '@gm-mobile/mp': link:../mp
+      js-base64: registry.npmmirror.com/js-base64/3.7.5
+
+  packages/react:
+    specifiers:
+      '@gm-mobile/c-react': ^3.12.1
+      '@gm-mobile/c-tool': ^3.12.1
+      '@gm-mobile/locales': ^3.12.1
+    dependencies:
+      '@gm-mobile/c-react': link:../c-react
+      '@gm-mobile/c-tool': link:../c-tool
+      '@gm-mobile/locales': link:../locales
+
+  packages/swiper:
+    specifiers:
+      '@gm-mobile/react': ^3.12.1
+    dependencies:
+      '@gm-mobile/react': link:../react
+
 packages:
 
   registry.npmmirror.com/@actions/core/1.10.0:
@@ -9014,6 +9128,14 @@ packages:
     name: '@types/q'
     version: 1.5.5
     dev: false
+
+  registry.npmmirror.com/@types/qrcode.react/1.0.2:
+    resolution: {integrity: sha512-I9Oq5Cjlkgy3Tw7krCnCXLw2/zMhizkTere49OOcta23tkvH0xBTP0yInimTh0gstLRtb8Ki9NZVujE5UI6ffQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/qrcode.react/-/qrcode.react-1.0.2.tgz}
+    name: '@types/qrcode.react'
+    version: 1.0.2
+    dependencies:
+      '@types/react': registry.npmmirror.com/@types/react/17.0.53
+    dev: true
 
   registry.npmmirror.com/@types/qs/6.9.7:
     resolution: {integrity: sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/qs/-/qs-6.9.7.tgz}
@@ -22743,6 +22865,12 @@ packages:
     resolution: {integrity: sha512-pZe//GGmwJndub7ZghVHz7vjb2LgC1m8B07Au3eYqeqv9emhESByMXxaEgkUkEqJe87oBbSniGYoQNIBklc7IQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/js-base64/-/js-base64-2.6.4.tgz}
     name: js-base64
     version: 2.6.4
+    dev: false
+
+  registry.npmmirror.com/js-base64/3.7.5:
+    resolution: {integrity: sha512-3MEt5DTINKqfScXKfJFrRbxkrnk2AxPWGBL/ycjz4dK8iqiSJ06UxD8jh8xuh6p10TX4t2+7FsBYVxxQbMg+qA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/js-base64/-/js-base64-3.7.5.tgz}
+    name: js-base64
+    version: 3.7.5
     dev: false
 
   registry.npmmirror.com/js-cookie/2.2.1:
