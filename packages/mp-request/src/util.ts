@@ -154,6 +154,42 @@ function getUrlRandom(url: string): string {
   return stringifyUrl(obj)
 }
 
+/**
+ * 格式化错误信息
+ *
+ * 异常编码不存在或<2000:
+ * <异常编码> <异常详细信息或异常编码翻译> rid: <请求ID> 日期: <请求时间>
+ *
+ * 异常编码>=2000:
+ * <异常编码> <异常详细信息或异常编码翻译>
+ */
+function formatErrorMessage(
+  code: number,
+  message: string,
+  statusCodeMap: Record<string, string>,
+  response?: AxiosResponse
+): string {
+  let customizeReason = response?.data.message.detail?.reason
+  const codeMessage = statusCodeMap[code]
+  const rid = response?.config.headers['X-Request-Id']
+  const timestamp =
+    response?.config.headers['X-Timestamp'] || new Date().valueOf()
+
+  const isGrpcStatusCode = code < 2000
+
+  if (!customizeReason) {
+    customizeReason = codeMessage || message || '服务异常'
+  }
+
+  let reason = `${code} ${customizeReason}`
+
+  if (isGrpcStatusCode) {
+    reason += ` rid: ${rid} 日期: ${timestamp}`
+  }
+
+  return reason
+}
+
 export {
   requestUrl,
   requestEnvUrl,
@@ -165,4 +201,5 @@ export {
   isProduction,
   requestTrim,
   formatToResponse,
+  formatErrorMessage,
 }
