@@ -1,12 +1,10 @@
 {
   "npmClient": "yarn",
-  "packages": [
-    "packages/*"
-  ],
+  "packages": ["packages/*"],
   "command": {
     "publish": {
       "graphType": "all"
     }
   },
-  "version": "3.12.4"
+  "version": "3.12.5-beta.0"
 }
