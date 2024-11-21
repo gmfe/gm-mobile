@@ -164,11 +164,11 @@ function getUrlRandom(url: string): string {
  * <异常编码> <异常详细信息或异常编码翻译>
  */
 function formatErrorMessage(
-  code: number,
   message: string,
   statusCodeMap: Record<string, string>,
   response?: AxiosResponse
 ): string {
+  const code = response?.data?.code || 0
   let customizeReason = response?.data.message.detail?.reason
   const codeMessage = statusCodeMap[code]
   const rid = response?.config.headers['X-Request-Id']
