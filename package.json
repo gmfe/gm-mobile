@@ -132,6 +132,7 @@
     "webpack-iconfont-plugin-nodejs": "^1.0.17"
   },
   "devDependencies": {
-    "chromatic": "^5.9.0"
+    "chromatic": "^5.9.0",
+    "lerna": "6"
   }
 }
