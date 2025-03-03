@@ -23,4 +23,6 @@ export {
   configPrivateDomain,
   clearPrivateDomain,
 }
+
+export { formatErrorMessage } from './util'
 export type { Response } from './types'
