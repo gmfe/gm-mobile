@@ -85,6 +85,10 @@ function configError(errorCallback: ErrorCallback): void {
         // 要转成功
         return error.response
       } else {
+        if (error?.__CANCEL__) {
+          errorCallback('cancel')
+          return Promise.reject(error)
+        }
         errorCallback(message)
         return Promise.reject(error)
       }
