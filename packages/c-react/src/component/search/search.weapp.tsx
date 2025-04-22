@@ -1,5 +1,5 @@
 import { getLocale } from '@gm-mobile/locales'
-import React, { ChangeEvent, FC, FormEvent, MouseEvent } from 'react'
+import React, { ChangeEvent, FC, FormEvent, MouseEvent, useState } from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
 import Input from '../input/input'
@@ -12,6 +12,9 @@ const Search: FC<SearchProps> = ({
   value,
   placeholder = getLocale('搜索'),
   searchText,
+  searchType,
+  onSearchType,
+  searchOptions = [],
   type = 'search',
   onCancel = _.noop,
   onSearch = _.noop,
@@ -20,6 +23,11 @@ const Search: FC<SearchProps> = ({
   autoFocus,
   ...rest
 }) => {
+  const [showSelect, setShowSelect] = useState(false)
+  const needSelect = searchOptions?.length > 0
+  const searchTypeText =
+    searchOptions?.find((item) => item.key === searchType)?.name || '请选择'
+
   const handleSearch = (
     e: FormEvent<HTMLFormElement> | MouseEvent<HTMLButtonElement>
   ) => {
@@ -41,13 +49,48 @@ const Search: FC<SearchProps> = ({
     onChange('')
   }
 
+  const handleSelect = (key: string) => {
+    // eslint-disable-next-line no-unused-expressions
+    onSearchType?.(key)
+    setShowSelect(false)
+  }
+
   return (
     <View
       {...rest}
-      className={classNames('m-search m-flex m-flex-align-center', className)}
+      className={classNames('m-search m-flex m-flex-align-center', className, {
+        'm-search-select': needSelect,
+      })}
     >
       <View className='m-search-input m-flex m-flex-flex'>
-        <Text className='m-font m-font-search m-search-icon-search' />
+        {needSelect ? (
+          <View
+            className='m-search-select-text'
+            onClick={() => setShowSelect((prev) => !prev)}
+          >
+            <Text>{searchTypeText}</Text>
+            <Text className='m-font m-font-arrow-triangle' />
+          </View>
+        ) : (
+          <Text className='m-font m-font-search m-search-icon-search' />
+        )}
+        {showSelect && (
+          <View className='m-search-select-content'>
+            {searchOptions.map((option) => {
+              return (
+                <View
+                  key={option.key}
+                  className={classNames('m-search-select-content-item', {
+                    'm-search-select-active': searchType === option.key,
+                  })}
+                  onClick={() => handleSelect(option.key)}
+                >
+                  <Text>{option.name}</Text>
+                </View>
+              )
+            })}
+          </View>
+        )}
         <Input
           type='text'
           confirmType='search'

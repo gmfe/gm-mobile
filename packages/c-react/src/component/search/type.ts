@@ -10,6 +10,11 @@ interface SearchPageProps extends Omit<PageProps, 'onChange'> {
   onSearch?: () => void
 }
 
+interface SearchOption {
+  name?: string
+  key: string
+}
+
 interface SearchProps {
   value: string
   onChange: (value: string) => void
@@ -24,11 +29,16 @@ interface SearchProps {
   searchText?: string
   className?: string
   style?: CSSProperties
+  /** options */
+  searchType?: string
+  searchOptions?: SearchOption[]
+  onSearchType?: (key: string) => void
 }
+
 interface FakeSearchProps extends HtmlHTMLAttributes<HTMLDivElement> {
   placeholder?: string
   center?: boolean
   light?: boolean
 }
 
-export type { SearchPageProps, SearchProps, FakeSearchProps }
+export type { SearchPageProps, SearchProps, SearchOption, FakeSearchProps }
