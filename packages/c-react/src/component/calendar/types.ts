@@ -31,6 +31,7 @@ interface MonthProps {
 
 interface MonthListProps extends Omit<MonthProps, 'currentMoment'> {
   height: number
+  canScrollWhenMaxOrMinChange?: boolean
 }
 
 interface BaseCalendarProps

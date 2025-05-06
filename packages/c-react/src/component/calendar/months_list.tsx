@@ -6,9 +6,35 @@ import { VList, VListRef } from '../v_list'
 import Month from './month'
 import { CALENDAR_TYPE } from './util'
 import { MonthListProps } from './types'
+import usePreviousObject from './use_previous'
 
 // 目前只支持固定高度，定为265
 const MONTH_HEIGHT = 265
+
+function whichValueChanged(
+  prevArray: [Dayjs, Dayjs],
+  currentArray: [Dayjs, Dayjs]
+) {
+  const changes: number[] = []
+
+  if (!prevArray) {
+    return 0
+  }
+
+  if (!moment(prevArray[0]).isSame(moment(currentArray[0]))) {
+    changes.push(0)
+  }
+
+  if (!moment(prevArray[1]).isSame(moment(currentArray[1]))) {
+    changes.push(1)
+  }
+
+  /** 没有变化 */
+  if (changes.length === 0) return 0
+  /** 两个都变化了 */
+  if (changes.length === 2) return 1
+  return 0
+}
 
 const MonthsList: FC<MonthListProps> = ({
   min,
@@ -19,8 +45,10 @@ const MonthsList: FC<MonthListProps> = ({
   onSelectDay,
   disabledDate,
   showDateLabel,
+  canScrollWhenMaxOrMinChange = false,
 }) => {
   const refList = useRef<VListRef>(null)
+  const previous = usePreviousObject(selected)
 
   const computedMonthList = () => {
     // 优先 min，其次 begin ，其次 当前
@@ -50,7 +78,7 @@ const MonthsList: FC<MonthListProps> = ({
   }
   const monthsList = computedMonthList()
 
-  useEffect(() => {
+  const scrollToTarget = (flag: boolean) => {
     if (selected.length) {
       const date = type === CALENDAR_TYPE.RANGE ? selected[1] : selected[0]
       const targetId = _.findIndex(
@@ -60,11 +88,38 @@ const MonthsList: FC<MonthListProps> = ({
           moment(item).month() === moment(date).month()
       )
 
-      setTimeout(() => {
+      if (flag) {
+        setTimeout(() => {
+          refList.current && refList.current.apiDoScrollToKey(targetId)
+        }, 200)
+      } else {
         refList.current && refList.current.apiDoScrollToKey(targetId)
-      }, 200)
+      }
     }
+  }
+
+  useEffect(() => {
+    scrollToTarget(true)
   }, [])
+
+  useEffect(() => {
+    if (!canScrollWhenMaxOrMinChange) {
+      return
+    }
+    if (max || min) {
+      const flagItem = whichValueChanged(previous as any, selected as any)
+      const date = selected[flagItem]
+      const targetId = _.findIndex(
+        monthsList,
+        (item) =>
+          moment(item).year() === moment(date).year() &&
+          moment(item).month() === moment(date).month()
+      )
+      if (targetId !== -1) {
+        refList.current && refList.current.apiDoScrollToKey(targetId)
+      }
+    }
+  }, [max, min])
 
   return (
     <VList
