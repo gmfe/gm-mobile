@@ -80,6 +80,9 @@ const MonthsList: FC<MonthListProps> = ({
   const monthsList = computedMonthList()
 
   const scrollToTarget = (flag: boolean) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+    }
     if (selected.length) {
       const date = type === CALENDAR_TYPE.RANGE ? selected[1] : selected[0]
       const targetId = _.findIndex(
@@ -89,13 +92,9 @@ const MonthsList: FC<MonthListProps> = ({
           moment(item).month() === moment(date).month()
       )
 
-      if (flag) {
-        setTimeout(() => {
-          refList.current && refList.current.apiDoScrollToKey(targetId)
-        }, 200)
-      } else {
+      timeoutRef.current = setTimeout(() => {
         refList.current && refList.current.apiDoScrollToKey(targetId)
-      }
+      }, 200)
     }
   }
 
@@ -111,8 +110,8 @@ const MonthsList: FC<MonthListProps> = ({
       clearTimeout(timeoutRef.current)
     }
     if (max || min) {
-      const flagItem = whichValueChanged(previous as any, selected as any)
-      const date = selected[flagItem]
+      const date = selected[0]
+
       const targetId = _.findIndex(
         monthsList,
         (item) =>
@@ -120,12 +119,12 @@ const MonthsList: FC<MonthListProps> = ({
           moment(item).month() === moment(date).month()
       )
       if (targetId !== -1) {
-        timeoutRef.current = setTimeout(() => {
+        setTimeout(() => {
           refList.current && refList.current.apiDoScrollToKey(targetId)
         }, 200)
       }
     }
-  }, [max, min])
+  }, [max, min, monthsList])
 
   return (
     <VList
