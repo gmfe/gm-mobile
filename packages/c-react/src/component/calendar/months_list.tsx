@@ -49,6 +49,7 @@ const MonthsList: FC<MonthListProps> = ({
 }) => {
   const refList = useRef<VListRef>(null)
   const previous = usePreviousObject(selected)
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const computedMonthList = () => {
     // 优先 min，其次 begin ，其次 当前
@@ -106,6 +107,9 @@ const MonthsList: FC<MonthListProps> = ({
     if (!canScrollWhenMaxOrMinChange) {
       return
     }
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+    }
     if (max || min) {
       const flagItem = whichValueChanged(previous as any, selected as any)
       const date = selected[flagItem]
@@ -116,7 +120,9 @@ const MonthsList: FC<MonthListProps> = ({
           moment(item).month() === moment(date).month()
       )
       if (targetId !== -1) {
-        refList.current && refList.current.apiDoScrollToKey(targetId)
+        timeoutRef.current = setTimeout(() => {
+          refList.current && refList.current.apiDoScrollToKey(targetId)
+        }, 200)
       }
     }
   }, [max, min])
