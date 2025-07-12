@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import { ActionSheetProps } from './type'
 
+/** 没用了吧 */
 const ActionSheet: ActionSheetProps = {
   render({ data }) {
     return new Promise((resolve, reject) => {
