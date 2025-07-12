@@ -9,7 +9,7 @@ import { MonthListProps } from './types'
 import usePreviousObject from './use_previous'
 
 // 目前只支持固定高度，定为265
-const MONTH_HEIGHT = 265
+const MONTH_HEIGHT = 285
 
 function whichValueChanged(
   prevArray: [Dayjs, Dayjs],
@@ -46,6 +46,7 @@ const MonthsList: FC<MonthListProps> = ({
   disabledDate,
   showDateLabel,
   canScrollWhenMaxOrMinChange = false,
+  itemHeight = MONTH_HEIGHT,
 }) => {
   const refList = useRef<VListRef>(null)
   const previous = usePreviousObject(selected)
@@ -132,7 +133,7 @@ const MonthsList: FC<MonthListProps> = ({
       className='m-calendar-content'
       data={monthsList}
       height={height}
-      itemHeight={MONTH_HEIGHT}
+      itemHeight={itemHeight}
       distance={0}
       renderItem={(month: { item: Dayjs; index: number }) => {
         return (
