@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Search from './search'
 import SearchPage from './page'
 import FakeSearch from './fake_search'
@@ -40,14 +40,24 @@ export const normal = () => {
 }
 
 export const cancel = () => {
+  const [type, setType] = useState('1')
   return (
     <View>
       <View>带取消按钮（点Header的搜索按钮）</View>
       <View>
         <Search
           type='cancel'
+          searchType={type}
+          onSearchType={setType}
+          searchOptions={[
+            { name: '供应商', key: '1' },
+            { name: '商品', key: '2' },
+          ]}
           placeholder='在站内搜索'
           value={store.value}
+          style={{
+            background: '#fff',
+          }}
           onChange={(value) => store.setValue(value)}
           onCancel={() => console.log('cancel')}
         />

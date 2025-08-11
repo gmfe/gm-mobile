@@ -6,9 +6,35 @@ import { VList, VListRef } from '../v_list'
 import Month from './month'
 import { CALENDAR_TYPE } from './util'
 import { MonthListProps } from './types'
+import usePreviousObject from './use_previous'
 
 // 目前只支持固定高度，定为265
-const MONTH_HEIGHT = 265
+const MONTH_HEIGHT = 285
+
+function whichValueChanged(
+  prevArray: [Dayjs, Dayjs],
+  currentArray: [Dayjs, Dayjs]
+) {
+  const changes: number[] = []
+
+  if (!prevArray) {
+    return 0
+  }
+
+  if (!moment(prevArray[0]).isSame(moment(currentArray[0]))) {
+    changes.push(0)
+  }
+
+  if (!moment(prevArray[1]).isSame(moment(currentArray[1]))) {
+    changes.push(1)
+  }
+
+  /** 没有变化 */
+  if (changes.length === 0) return 0
+  /** 两个都变化了 */
+  if (changes.length === 2) return 1
+  return 0
+}
 
 const MonthsList: FC<MonthListProps> = ({
   min,
@@ -19,8 +45,12 @@ const MonthsList: FC<MonthListProps> = ({
   onSelectDay,
   disabledDate,
   showDateLabel,
+  canScrollWhenMaxOrMinChange = false,
+  itemHeight = MONTH_HEIGHT,
 }) => {
   const refList = useRef<VListRef>(null)
+  const previous = usePreviousObject(selected)
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const computedMonthList = () => {
     // 优先 min，其次 begin ，其次 当前
@@ -50,7 +80,10 @@ const MonthsList: FC<MonthListProps> = ({
   }
   const monthsList = computedMonthList()
 
-  useEffect(() => {
+  const scrollToTarget = (flag: boolean) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+    }
     if (selected.length) {
       const date = type === CALENDAR_TYPE.RANGE ? selected[1] : selected[0]
       const targetId = _.findIndex(
@@ -60,11 +93,39 @@ const MonthsList: FC<MonthListProps> = ({
           moment(item).month() === moment(date).month()
       )
 
-      setTimeout(() => {
+      timeoutRef.current = setTimeout(() => {
         refList.current && refList.current.apiDoScrollToKey(targetId)
       }, 200)
     }
+  }
+
+  useEffect(() => {
+    scrollToTarget(true)
   }, [])
+
+  useEffect(() => {
+    if (!canScrollWhenMaxOrMinChange) {
+      return
+    }
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+    }
+    if (max || min) {
+      const date = selected[0]
+
+      const targetId = _.findIndex(
+        monthsList,
+        (item) =>
+          moment(item).year() === moment(date).year() &&
+          moment(item).month() === moment(date).month()
+      )
+      if (targetId !== -1) {
+        setTimeout(() => {
+          refList.current && refList.current.apiDoScrollToKey(targetId)
+        }, 200)
+      }
+    }
+  }, [max, min, monthsList])
 
   return (
     <VList
@@ -72,7 +133,7 @@ const MonthsList: FC<MonthListProps> = ({
       className='m-calendar-content'
       data={monthsList}
       height={height}
-      itemHeight={MONTH_HEIGHT}
+      itemHeight={itemHeight}
       distance={0}
       renderItem={(month: { item: Dayjs; index: number }) => {
         return (

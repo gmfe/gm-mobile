@@ -31,6 +31,7 @@ const BaseCalendar: FC<BaseCalendarProps> = ({
   height = 400,
   className,
   style,
+  canScrollWhenMaxOrMinChange = false,
   ...rest
 }) => {
   const [isSelectBegin, setIsSelectBegin] = useState(true)
@@ -101,6 +102,7 @@ const BaseCalendar: FC<BaseCalendarProps> = ({
         ))}
       </Flex>
       <MonthsList
+        canScrollWhenMaxOrMinChange={canScrollWhenMaxOrMinChange}
         selected={selected}
         type={type}
         height={height - 40} // 固定展示星期头部高度40
