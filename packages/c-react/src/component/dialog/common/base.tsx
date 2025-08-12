@@ -14,6 +14,7 @@ interface Option<T> {
   children: ReactNode
   /** 将取代保存(onOk)按钮 */
   bottom?: ReactNode
+  zIndex?: number
   /** 入场方向 */
   direction?: 'left' | 'right' | 'bottom' | 'top'
   /** 点击确定按钮后的事件，返回值将作为showDialog的返回值 */
@@ -23,6 +24,7 @@ interface Option<T> {
 
 export function showDialog<T>({
   title,
+  zIndex,
   okText = '确定',
   cancelText = '取消',
   left,
@@ -95,6 +97,7 @@ export function showDialog<T>({
     }
 
     Popup.render({
+      zIndex,
       disabledHeader: true,
       [direction]: true,
       disabledAnimate: false,

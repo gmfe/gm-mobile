@@ -35,6 +35,7 @@ const PopupBase: FC<PopupProps> = ({
   isPickPopup,
   disabledHeader,
   disabledMask,
+  zIndex,
   /** 动画有卡顿现象，先禁用 */
   disabledAnimate = true,
   children,
@@ -77,8 +78,13 @@ const PopupBase: FC<PopupProps> = ({
         'm-popup-picker-container': isPickPopup,
       })}
     >
-      {!disabledMask && <Mask opacity={opacity} onClick={onHide} />}
-      <View {...rest} className={cn} style={s}>
+      {!disabledMask && <Mask opacity={opacity} onClick={onHide} style={{
+        zIndex: zIndex,
+      }} />}
+      <View {...rest} className={cn} style={{
+        ...s,
+        zIndex: zIndex ? zIndex + 1 : undefined,
+      }}>
         {!disabledHeader && (
           <Flex justifyBetween alignCenter className='m-popup-top'>
             <Flex flex column className='m-padding-left-15 m-text-16'>
