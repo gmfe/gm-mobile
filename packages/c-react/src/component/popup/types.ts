@@ -23,6 +23,7 @@ interface PopupProps extends HTMLAttributes<HTMLDivElement> {
   disableBottomSafeArea?: boolean
   /** 预留底部自定义导航高度,默认为true */
   hasCustomTab?: boolean
+  zIndex?: number
 }
 
 interface PopupStaticsTypes {

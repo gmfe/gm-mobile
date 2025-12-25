@@ -27,6 +27,8 @@ export interface ChooseProps {
   /** 高度 */
   height?: string
   onCancel?: () => void
+  /** 自定义z-index */
+  zIndex?: number
 }
 
 /** 底部弹出的选择界面 */
@@ -39,6 +41,7 @@ export default function ({
   maxHeight = '50vh',
   height,
   onCancel,
+  zIndex,
 }: ChooseProps) {
   if (multiSelect) needConfirm = true
   const selected = [...defaultSelected] as Item[]
@@ -97,6 +100,7 @@ export default function ({
   })
   const promise = showDialog<Item[]>({
     title,
+    zIndex,
     children: <Children />,
     onOk: () => selected,
     onCancel: onCancel,
