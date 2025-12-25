@@ -81,6 +81,7 @@ export const VList = forwardRef<VListRef, VListProps>(
       delay = 100,
       distance = 100,
       onScrollToKey,
+      bottomNode,
       ...rest
     },
     ref
@@ -152,6 +153,7 @@ export const VList = forwardRef<VListRef, VListProps>(
             </Item>
           )
         })}
+        {bottomNode}
       </ScrollIntoView>
     )
   }
