@@ -27,6 +27,7 @@ interface VListProps extends Omit<ScrollIntoViewProps, 'targetId'> {
   distance?: number
   /** 设置滚动到Key事件, 参数为当前可视区域内第一个元素itemKey */
   onScrollToKey?: (key: string | number) => void
+  bottomNode?: React.ReactNode
 }
 
 interface VListRef {
