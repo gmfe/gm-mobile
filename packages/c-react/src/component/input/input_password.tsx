@@ -14,7 +14,7 @@ const InputPassword: FC<InputPasswordProps> = (props) => {
 
   return (
     <View className='m-input-password'>
-      <Input {...props} type={show ? 'text' : 'password'} />
+      <Input {...props} type={show ? 'text' : 'password'} password={!show} />
       <Text className='m-input-password-icon' onClick={handleShow}>
         <Text
           className={classNames('m-font', {
