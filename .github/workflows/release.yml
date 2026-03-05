@@ -18,17 +18,17 @@ jobs:
           fetch-depth: 0
 
       - name: Set node
-        uses: actions/setup-node@v4 # 更新到 v4
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: '20'
           registry-url: 'https://registry.npmjs.org'
-          cache: 'yarn' # 开启 yarn 缓存，减少 install 时间
+          cache: 'yarn'
 
       - name: Install
-        # 设置 python3 路径，解决 node-gyp 寻找 python2 的问题
         run: |
+          node -v
           yarn config set python python3
-          yarn install --frozen-lockfile
+          yarn install --frozen-lockfile --ignore-engines
         env:
           PYTHON: python3
 
