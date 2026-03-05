@@ -20,7 +20,7 @@ jobs:
       - name: Set node
         uses: actions/setup-node@v4 # 更新到 v4
         with:
-          node-version: 14.21.3
+          node-version: 18
           registry-url: 'https://registry.npmjs.org'
           cache: 'yarn' # 开启 yarn 缓存，减少 install 时间
 
