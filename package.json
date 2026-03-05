@@ -6,7 +6,11 @@
     "build": "build-storybook -c .storybook -o docs",
     "prebuild": "rm -rf docs; mkdir docs;",
     "publish-latest": "lerna publish --force-publish",
-    "publish-beta": "lerna publish --force-publish --dist-tag beta"
+    "publish-beta": "lerna publish --force-publish --dist-tag beta",
+    "release": "lerna version patch --yes",
+    "release:patch": "lerna version patch --yes",
+    "release:minor": "lerna version minor --yes",
+    "release:major": "lerna version major --yes"
   },
   "husky": {
     "hooks": {

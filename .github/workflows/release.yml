@@ -5,8 +5,12 @@ permissions:
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - master_v1
+    paths:
+      - 'packages/**'
+      - 'lerna.json'
+      - 'package.json'
 
 jobs:
   build:
