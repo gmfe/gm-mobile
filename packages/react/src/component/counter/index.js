@@ -20,6 +20,7 @@ const Counter = ({
   disabled,
   getErrorMsg,
   className,
+  keyboardDefaultNone,
   ...rest
 }) => {
   const text2Number = (value) => {
@@ -97,7 +98,7 @@ const Counter = ({
           'm-counter-large': large,
           disabled,
         },
-        className
+        className,
       )}
     >
       <div className='m-counter-icon' onClick={() => handleChange('minus')}>
@@ -108,7 +109,7 @@ const Counter = ({
         />
       </div>
       <KeyboardWrap
-        defaultValue={value}
+        defaultValue={keyboardDefaultNone ? '' : value}
         title={title}
         min={min}
         max={max}
@@ -153,12 +154,15 @@ Counter.propTypes = {
   getErrorMsg: PropTypes.func,
   className: PropTypes.string,
   style: PropTypes.object,
+  /** 键盘默认值不跟随原值 */
+  keyboardDefaultNone: PropTypes.bool,
 }
 
 Counter.defaultProps = {
   value: '',
   min: 0,
   precision: 2,
+  keyboardDefaultNone: false,
 }
 
 export default Counter
