@@ -71,6 +71,7 @@ export const ImageMP: FC<ImageMPProps> = ({
 
   return (
     <Image
+      lazyLoad={lazyLoad}
       {...rest}
       src={pSrc}
       style={{
