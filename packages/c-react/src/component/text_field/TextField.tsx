@@ -93,7 +93,15 @@ export class TextField extends Component<TextFieldProps, TextFieldState> {
     if (!mp) e.persist()
     let value = mp ? e.detail.value : e.target.value
     if (this.state.needClear) {
-      value = value.slice(-1)
+      const oldValue = String(this.props.value || '')
+      const newValue = String(value || '')
+
+      // 找出新增的字符
+      const inputChar = newValue.split('').find((char, index) => {
+        return oldValue[index] !== char
+      })
+      // 这里需要用this.props.value 与当前value对比， 找到不同的值
+      value = inputChar
       this.setState({ ...this.state, needClear: false })
     }
     const { min, max } = this.props
