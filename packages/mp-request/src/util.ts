@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import _, { isObject } from 'lodash'
 
 import { parseUrl, stringifyUrl } from 'query-string'
 import { getLocale } from '@gm-mobile/locales'
@@ -166,8 +166,12 @@ function getUrlRandom(url: string): string {
 function formatErrorMessage(
   message: string,
   statusCodeMap: Record<string, string>,
-  response?: AxiosResponse
+  response?: AxiosResponse,
+  req?: AxiosRequestConfig
 ): string {
+  if (message === '网络连接异常，请检查网络设置') {
+    return message
+  }
   const formatDate = (timestamp: number) => {
     const date = new Date(timestamp)
     const year = date.getFullYear()
@@ -180,30 +184,47 @@ function formatErrorMessage(
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`
   }
 
+  const result = (response?.headers?.['grpc-message'] || '').split('|')
+  const gRPCMessageDetail: string = atob(result.slice(1).join('|'))
+
   const code = response?.data?.code || 0
   let customizeReason = response?.data.message.detail?.reason
   const codeMessage = statusCodeMap[code]
-  const rid = response?.config.headers['X-Request-Id']
+  const rid =
+    response?.config?.headers?.['X-Request-Id'] ||
+    req?.headers?.['X-Request-Id']
   const timestamp =
-    response?.config.headers['X-Timestamp'] || new Date().valueOf()
+    response?.config?.headers?.['X-Timestamp'] ||
+    req?.headers?.['X-Timestamp'] ||
+    new Date().valueOf()
   const formatedDate = formatDate(Number(timestamp))
 
   const isGrpcStatusCode = code < 2000
 
+  if (gRPCMessageDetail && isObject(gRPCMessageDetail)) {
+    try {
+      customizeReason = codeMessage
+      customizeReason += ` ${JSON.stringify(gRPCMessageDetail)}`
+    } catch {}
+  }
+
   if (!customizeReason) {
-    customizeReason = codeMessage || message || '服务异常'
+    customizeReason =
+      gRPCMessageDetail || codeMessage || message || getLocale('服务异常')
   }
 
   let reason = `${code} ${customizeReason}`
 
   // 服务异常没有 rid
-  if (isGrpcStatusCode && customizeReason !== '服务异常') {
-    reason += ` rid: ${rid} 日期: ${formatedDate}`
+  if (isGrpcStatusCode) {
+    if (rid) {
+      reason += ` rid: ${rid}`
+    }
+    reason += ` 日期: ${formatedDate}`
   }
 
   return reason
 }
-
 export {
   requestUrl,
   requestEnvUrl,
