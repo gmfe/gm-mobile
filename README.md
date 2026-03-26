@@ -147,6 +147,10 @@ web独有的组件
      yarn chromatic  
   ```
 
+### 2026 发布
+
+npm run version 更改version 后会触发github 流水线自动发布
+
 
 
 ## 其他问题
