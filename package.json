@@ -12,7 +12,10 @@
     "dev:weapp": "npm run build:weapp -- --watch",
     "svg": "rm -rf packages/components/src/fonts; node svg2font.ts;",
     "chromatic": "npx chromatic --project-token=1706a24a8d6a",
-    "version": "lerna version --force-publish --yes"
+    "version": "lerna version --force-publish --yes",
+    "release:patch": "lerna version patch --force-publish --yes && git push --follow-tags",
+    "release:minor": "lerna version minor --force-publish --yes && git push --follow-tags",
+    "release:major": "lerna version major --force-publish --yes && git push --follow-tags"
   },
   "husky": {
     "hooks": {
