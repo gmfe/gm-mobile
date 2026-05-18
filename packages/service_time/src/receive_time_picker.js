@@ -26,6 +26,35 @@ const weekMap = {
   6: getLocale('周六'),
 }
 
+const isInUndeliveryRange = (timeMoment, undeliveryTimes) => {
+  if (!undeliveryTimes || undeliveryTimes.length === 0) {
+    return false
+  }
+  const timeStr = timeMoment.format('HH:mm')
+  return _.some(undeliveryTimes, ({ start, end }) => {
+    const startMoment = moment(start, 'HH:mm')
+    const endMoment = moment(end, 'HH:mm')
+    return (
+      timeMoment.isSame(startMoment, 'minute') ||
+      timeMoment.isSame(endMoment, 'minute') ||
+      (timeMoment.isAfter(startMoment) && timeMoment.isBefore(endMoment))
+    )
+  })
+}
+
+const filterByUndeliveryTimes = (pickerList, isUndelivery, undeliveryTimes) => {
+  if (isUndelivery !== 1 || !undeliveryTimes || undeliveryTimes.length === 0) {
+    return pickerList
+  }
+  return _.map(pickerList, (item) => ({
+    ...item,
+    children: _.filter(
+      item.children,
+      (child) => !isInUndeliveryRange(child.date, undeliveryTimes)
+    ),
+  }))
+}
+
 const cycleToPickerList = (cycleList) => {
   const dayList = cycleListToDayList(cycleList)
 
@@ -60,7 +89,7 @@ const getStartDateFromValues = (startValues, cycleList) => {
   return two.date
 }
 
-const ReceiveTimePicker = ({ onConfirm, order }) => {
+const ReceiveTimePicker = ({ onConfirm, order, enableUndeliveryFilter }) => {
   const {
     receive_time_limit,
     receive_time,
@@ -69,12 +98,20 @@ const ReceiveTimePicker = ({ onConfirm, order }) => {
     startCycleList,
   } = getReceiveTimeParams(order)
 
+  const { is_undelivery, undelivery_times } = enableUndeliveryFilter
+    ? receive_time_limit || {}
+    : {}
+
   const startEndValue = processStartEndValuesWithCycleList(
     receive_time,
     cycleList
   )
 
-  const startDatas = cycleToPickerList(startCycleList)
+  const startDatas = filterByUndeliveryTimes(
+    cycleToPickerList(startCycleList),
+    is_undelivery,
+    undelivery_times
+  )
   let _startValue = startEndValue.startValues
   if (_startValue.length === 0) {
     _startValue = [startDatas[0].value, startDatas[0].children[0].value]
@@ -86,8 +123,12 @@ const ReceiveTimePicker = ({ onConfirm, order }) => {
     return getStartDateFromValues(startValue, cycleList)
   }, [startValue, cycleList])
   const endDatas = useMemo(() => {
-    return cycleToPickerList(getEndCycleList(startValueDate, cycleList))
-  }, [startValueDate, cycleList])
+    return filterByUndeliveryTimes(
+      cycleToPickerList(getEndCycleList(startValueDate, cycleList)),
+      is_undelivery,
+      undelivery_times
+    )
+  }, [startValueDate, cycleList, is_undelivery, undelivery_times])
 
   let _endValue = startEndValue.endValues
   if (_endValue.length === 0) {
@@ -215,10 +256,12 @@ ReceiveTimePicker.verifyReceiveTime = (order) => {
 ReceiveTimePicker.propTypes = {
   onConfirm: PropTypes.func,
   order: PropTypes.object.isRequired,
+  enableUndeliveryFilter: PropTypes.bool,
 }
 
 ReceiveTimePicker.defaultProps = {
   onConfirm: _.noop,
+  enableUndeliveryFilter: false,
 }
 
 /**
