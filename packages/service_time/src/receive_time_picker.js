@@ -1,19 +1,19 @@
-import React, { useState, useMemo } from 'react'
 import { getLocale } from '@gm-mobile/locales'
-import { CouplingPicker, Flex, Button } from '@gm-mobile/react'
+import { Button, CouplingPicker, Flex } from '@gm-mobile/react'
 import _ from 'lodash'
-import PropTypes from 'prop-types'
 import moment from 'moment'
+import PropTypes from 'prop-types'
+import { useMemo, useState } from 'react'
 import PickerStatics from './statics'
 import {
-  getReceiveTimeParams,
-  processStartEndValuesWithCycleList,
-  processReceiveTimeLimit,
-  getCycleList,
   cycleListToDayList,
-  getFlag,
-  getStartCycleList,
+  getCycleList,
   getEndCycleList,
+  getFlag,
+  getReceiveTimeParams,
+  getStartCycleList,
+  processReceiveTimeLimit,
+  processStartEndValuesWithCycleList,
 } from './utils'
 
 const weekMap = {
@@ -30,10 +30,15 @@ const isInUndeliveryRange = (timeMoment, undeliveryTimes) => {
   if (!undeliveryTimes || undeliveryTimes.length === 0) {
     return false
   }
-  const timeStr = timeMoment.format('HH:mm')
   return _.some(undeliveryTimes, ({ start, end }) => {
-    const startMoment = moment(start, 'HH:mm')
-    const endMoment = moment(end, 'HH:mm')
+    const startMoment = moment(timeMoment).set({
+      hours: start.split(':')[0],
+      minute: start.split(':')[1],
+    })
+    const endMoment = moment(timeMoment).set({
+      hours: end.split(':')[0],
+      minute: end.split(':')[1],
+    })
     return (
       timeMoment.isSame(startMoment, 'minute') ||
       timeMoment.isSame(endMoment, 'minute') ||
