@@ -90,17 +90,67 @@ const columnGenerator = (cycList) => {
   }))
 }
 
-const MutiOrderReceiveTimePicker = ({ onConfirm, order }) => {
+const weekMap = {
+  0: getLocale('周日'),
+  1: getLocale('周一'),
+  2: getLocale('周二'),
+  3: getLocale('周三'),
+  4: getLocale('周四'),
+  5: getLocale('周五'),
+  6: getLocale('周六'),
+}
+
+const isInUndeliveryRange = (timeMoment, undeliveryTimes) => {
+  if (!undeliveryTimes || undeliveryTimes.length === 0) {
+    return false
+  }
+  return _.some(undeliveryTimes, ({ start, end }) => {
+    const startMoment = moment(start, 'HH:mm')
+    const endMoment = moment(end, 'HH:mm')
+    return (
+      timeMoment.isSame(startMoment, 'minute') ||
+      timeMoment.isSame(endMoment, 'minute') ||
+      (timeMoment.isAfter(startMoment) && timeMoment.isBefore(endMoment))
+    )
+  })
+}
+
+const filterByUndeliveryTimes = (pickerList, isUndelivery, undeliveryTimes) => {
+  if (isUndelivery !== 1 || !undeliveryTimes || undeliveryTimes.length === 0) {
+    return pickerList
+  }
+  return _.map(pickerList, (item) => ({
+    ...item,
+    children: _.filter(
+      item.children,
+      (child) => !isInUndeliveryRange(child.moment, undeliveryTimes)
+    ),
+  }))
+}
+
+const MutiOrderReceiveTimePicker = ({
+  onConfirm,
+  order,
+  enableUndeliveryFilter,
+}) => {
   const { receive_time_limit } = useMemo(() => {
     return getReceiveTimeParams(order)
   }, [order])
+
+  const { is_undelivery, undelivery_times } = enableUndeliveryFilter
+    ? receive_time_limit || {}
+    : {}
 
   const _cycleList = getCycList(receive_time_limit)
 
   const startDatas = useMemo(() => {
     const cycleList = getStartCycleList(_cycleList)
-    return columnGenerator(cycleList)
-  }, [_cycleList])
+    return filterByUndeliveryTimes(
+      columnGenerator(cycleList),
+      is_undelivery,
+      undelivery_times
+    )
+  }, [_cycleList, is_undelivery, undelivery_times])
   const [startValue, setStartValue] = useState(() => [
     startDatas[0].value,
     startDatas[0].children[0].value,
@@ -111,8 +161,12 @@ const MutiOrderReceiveTimePicker = ({ onConfirm, order }) => {
   // 右边的列要根据左边联动
   const rightColumn = useMemo(() => {
     const cycList = getEndCycleList(startValue, _cycleList)
-    return columnGenerator(cycList)
-  }, [startValue, _cycleList])
+    return filterByUndeliveryTimes(
+      columnGenerator(cycList),
+      is_undelivery,
+      undelivery_times
+    )
+  }, [startValue, _cycleList, is_undelivery, undelivery_times])
 
   const handleConfirm = () => {
     onConfirm({
@@ -190,10 +244,12 @@ MutiOrderReceiveTimePicker.hide = () => {
 MutiOrderReceiveTimePicker.propTypes = {
   onConfirm: PropTypes.func,
   order: PropTypes.object.isRequired,
+  enableUndeliveryFilter: PropTypes.bool,
 }
 
 MutiOrderReceiveTimePicker.defaultProps = {
   onConfirm: _.noop,
+  enableUndeliveryFilter: false,
 }
 
 /**
