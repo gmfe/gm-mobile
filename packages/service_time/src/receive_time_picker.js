@@ -3,7 +3,6 @@ import { Button, CouplingPicker, Flex } from '@gm-mobile/react'
 import _ from 'lodash'
 import moment from 'moment'
 import PropTypes from 'prop-types'
-import { useMemo, useState } from 'react'
 import React, { useMemo, useState } from 'react'
 import PickerStatics from './statics'
 import {
@@ -27,7 +26,11 @@ const weekMap = {
   6: getLocale('周六'),
 }
 
-const isInUndeliveryRange = (timeMoment, undeliveryTimes, offsetMinutes) => {
+const isInUndeliveryRange = (
+  timeMoment,
+  undeliveryTimes,
+  offsetMinutes = 0
+) => {
   if (!undeliveryTimes || undeliveryTimes.length === 0) {
     return false
   }
@@ -37,7 +40,7 @@ const isInUndeliveryRange = (timeMoment, undeliveryTimes, offsetMinutes) => {
         hours: start.split(':')[0],
         minute: start.split(':')[1],
       })
-      .add(offsetMinutes, 'minutes')
+      .subtract(offsetMinutes, 'minutes')
     const endMoment = moment(timeMoment).set({
       hours: end.split(':')[0],
       minute: end.split(':')[1],
@@ -61,11 +64,13 @@ const filterByUndeliveryTimes = (
   }
   return _.map(pickerList, (item) => ({
     ...item,
-    children: _.filter(
-      item.children,
-      (child) =>
-        !isInUndeliveryRange(child.moment, undeliveryTimes, receiveTimeSpan)
-    ),
+    children: _.filter(item.children, (child) => {
+      return !isInUndeliveryRange(
+        child.date || child.moment,
+        undeliveryTimes,
+        receiveTimeSpan
+      )
+    }),
   }))
 }
 
@@ -120,12 +125,16 @@ const ReceiveTimePicker = ({ onConfirm, order, enableUndeliveryFilter }) => {
     receive_time,
     cycleList
   )
-
+  console.log(
+    'receive_time_limit?.receiveTimeSpan ',
+    receive_time_limit?.receiveTimeSpan,
+    undelivery_times
+  )
   const startDatas = filterByUndeliveryTimes(
     cycleToPickerList(startCycleList),
     is_undelivery,
     undelivery_times,
-    receive_time_limit?.receive_time_span || 0
+    receive_time_limit?.receiveTimeSpan || 0
   )
   let _startValue = startEndValue.startValues
   if (_startValue.length === 0) {
