@@ -27,15 +27,17 @@ const weekMap = {
   6: getLocale('周六'),
 }
 
-const isInUndeliveryRange = (timeMoment, undeliveryTimes) => {
+const isInUndeliveryRange = (timeMoment, undeliveryTimes, offsetMinutes) => {
   if (!undeliveryTimes || undeliveryTimes.length === 0) {
     return false
   }
   return _.some(undeliveryTimes, ({ start, end }) => {
-    const startMoment = moment(timeMoment).set({
-      hours: start.split(':')[0],
-      minute: start.split(':')[1],
-    })
+    const startMoment = moment(timeMoment)
+      .set({
+        hours: start.split(':')[0],
+        minute: start.split(':')[1],
+      })
+      .add(offsetMinutes, 'minutes')
     const endMoment = moment(timeMoment).set({
       hours: end.split(':')[0],
       minute: end.split(':')[1],
@@ -48,7 +50,12 @@ const isInUndeliveryRange = (timeMoment, undeliveryTimes) => {
   })
 }
 
-const filterByUndeliveryTimes = (pickerList, isUndelivery, undeliveryTimes) => {
+const filterByUndeliveryTimes = (
+  pickerList,
+  isUndelivery,
+  undeliveryTimes,
+  receiveTimeSpan = 0
+) => {
   if (isUndelivery !== 1 || !undeliveryTimes || undeliveryTimes.length === 0) {
     return pickerList
   }
@@ -56,7 +63,8 @@ const filterByUndeliveryTimes = (pickerList, isUndelivery, undeliveryTimes) => {
     ...item,
     children: _.filter(
       item.children,
-      (child) => !isInUndeliveryRange(child.date, undeliveryTimes)
+      (child) =>
+        !isInUndeliveryRange(child.moment, undeliveryTimes, receiveTimeSpan)
     ),
   }))
 }
@@ -116,7 +124,8 @@ const ReceiveTimePicker = ({ onConfirm, order, enableUndeliveryFilter }) => {
   const startDatas = filterByUndeliveryTimes(
     cycleToPickerList(startCycleList),
     is_undelivery,
-    undelivery_times
+    undelivery_times,
+    receive_time_limit?.receive_time_span || 0
   )
   let _startValue = startEndValue.startValues
   if (_startValue.length === 0) {
