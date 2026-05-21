@@ -110,7 +110,7 @@ const isInUndeliveryRange = (timeMoment, undeliveryTimes, offsetMinutes) => {
         hours: start.split(':')[0],
         minute: start.split(':')[1],
       })
-      .add(offsetMinutes, 'minutes')
+      .subtract(offsetMinutes, 'minutes')
     const endMoment = moment(timeMoment).set({
       hours: end.split(':')[0],
       minute: end.split(':')[1],
@@ -137,7 +137,11 @@ const filterByUndeliveryTimes = (
     children: _.filter(
       item.children,
       (child) =>
-        !isInUndeliveryRange(child.moment, undeliveryTimes, receiveTimeSpan)
+        !isInUndeliveryRange(
+          child.date || child.moment,
+          undeliveryTimes,
+          receiveTimeSpan
+        )
     ),
   }))
 }
