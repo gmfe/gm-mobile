@@ -132,18 +132,21 @@ const filterByUndeliveryTimes = (
   if (isUndelivery !== 1 || !undeliveryTimes || undeliveryTimes.length === 0) {
     return pickerList
   }
-  return _.map(pickerList, (item) => ({
-    ...item,
-    children: _.filter(
-      item.children,
-      (child) =>
-        !isInUndeliveryRange(
-          child.date || child.moment,
-          undeliveryTimes,
-          receiveTimeSpan
-        )
-    ),
-  }))
+  return _.filter(
+    _.map(pickerList, (item) => ({
+      ...item,
+      children: _.filter(
+        item.children,
+        (child) =>
+          !isInUndeliveryRange(
+            child.date || child.moment,
+            undeliveryTimes,
+            receiveTimeSpan
+          )
+      ),
+    })),
+    (item) => item.children.length > 0
+  )
 }
 
 const MutiOrderReceiveTimePicker = ({
@@ -170,15 +173,21 @@ const MutiOrderReceiveTimePicker = ({
       receive_time_limit?.receive_time_span || 0
     )
   }, [_cycleList, is_undelivery, undelivery_times])
-  const [startValue, setStartValue] = useState(() => [
-    startDatas[0].value,
-    startDatas[0].children[0].value,
-  ])
+
+  const hasAvailableTime =
+    startDatas.length > 0 &&
+    startDatas.some((item) => item.children && item.children.length > 0)
+
+  const [startValue, setStartValue] = useState(() => {
+    if (!hasAvailableTime) return []
+    return [startDatas[0].value, startDatas[0].children[0].value]
+  })
 
   const [endValue, setEndValue] = useState([0, '17:00'])
 
   // 右边的列要根据左边联动
   const rightColumn = useMemo(() => {
+    if (!startValue || startValue.length === 0) return []
     const cycList = getEndCycleList(startValue, _cycleList)
     return filterByUndeliveryTimes(
       columnGenerator(cycList),
@@ -188,6 +197,10 @@ const MutiOrderReceiveTimePicker = ({
   }, [startValue, _cycleList, is_undelivery, undelivery_times])
 
   const handleConfirm = () => {
+    if (!hasAvailableTime) {
+      PickerStatics.hide()
+      return
+    }
     onConfirm({
       startValue,
       endValue,
@@ -204,19 +217,25 @@ const MutiOrderReceiveTimePicker = ({
 
   return (
     <div>
-      <Flex>
-        <CouplingPicker
-          datas={startDatas}
-          values={startValue}
-          onChange={handleStartChange}
-        />
-        <div className='m-gap-20' />
-        <CouplingPicker
-          datas={rightColumn}
-          values={endValue}
-          onChange={handleEndChange}
-        />
-      </Flex>
+      {hasAvailableTime ? (
+        <Flex>
+          <CouplingPicker
+            datas={startDatas}
+            values={startValue}
+            onChange={handleStartChange}
+          />
+          <div className='m-gap-20' />
+          <CouplingPicker
+            datas={rightColumn}
+            values={endValue}
+            onChange={handleEndChange}
+          />
+        </Flex>
+      ) : (
+        <div className='m-text-center m-padding-15'>
+          {getLocale('暂无可选收货时间')}
+        </div>
+      )}
 
       <div className='m-margin-15'>
         <Button

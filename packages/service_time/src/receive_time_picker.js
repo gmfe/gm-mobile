@@ -62,16 +62,19 @@ const filterByUndeliveryTimes = (
   if (isUndelivery !== 1 || !undeliveryTimes || undeliveryTimes.length === 0) {
     return pickerList
   }
-  return _.map(pickerList, (item) => ({
-    ...item,
-    children: _.filter(item.children, (child) => {
-      return !isInUndeliveryRange(
-        child.date || child.moment,
-        undeliveryTimes,
-        receiveTimeSpan
-      )
-    }),
-  }))
+  return _.filter(
+    _.map(pickerList, (item) => ({
+      ...item,
+      children: _.filter(item.children, (child) => {
+        return !isInUndeliveryRange(
+          child.date || child.moment,
+          undeliveryTimes,
+          receiveTimeSpan
+        )
+      }),
+    })),
+    (item) => item.children.length > 0
+  )
 }
 
 const cycleToPickerList = (cycleList) => {
@@ -101,6 +104,11 @@ const getStartDateFromValues = (startValues, cycleList) => {
   const startDatas = cycleToPickerList(getStartCycleList(cycleList))
 
   const one = _.find(startDatas, (v) => v.value === startValues[0])
+  if (!one || !one.children || one.children.length === 0) {
+    return startDatas.length > 0 && startDatas[0].children.length > 0
+      ? startDatas[0].children[0].date
+      : null
+  }
   let two = _.find(one.children, (v) => v.value === startValues[1])
   if (!two) {
     two = one.children[0]
@@ -136,8 +144,13 @@ const ReceiveTimePicker = ({ onConfirm, order, enableUndeliveryFilter }) => {
     undelivery_times,
     receive_time_limit?.receiveTimeSpan || 0
   )
+
+  const hasAvailableTime =
+    startDatas.length > 0 &&
+    startDatas.some((item) => item.children && item.children.length > 0)
+
   let _startValue = startEndValue.startValues
-  if (_startValue.length === 0) {
+  if (_startValue.length === 0 && hasAvailableTime) {
     _startValue = [startDatas[0].value, startDatas[0].children[0].value]
   }
 
@@ -147,6 +160,7 @@ const ReceiveTimePicker = ({ onConfirm, order, enableUndeliveryFilter }) => {
     return getStartDateFromValues(startValue, cycleList)
   }, [startValue, cycleList])
   const endDatas = useMemo(() => {
+    if (!startValueDate) return []
     return filterByUndeliveryTimes(
       cycleToPickerList(getEndCycleList(startValueDate, cycleList)),
       is_undelivery,
@@ -154,13 +168,21 @@ const ReceiveTimePicker = ({ onConfirm, order, enableUndeliveryFilter }) => {
     )
   }, [startValueDate, cycleList, is_undelivery, undelivery_times])
 
+  const hasEndAvailableTime =
+    endDatas.length > 0 &&
+    endDatas.some((item) => item.children && item.children.length > 0)
+
   let _endValue = startEndValue.endValues
-  if (_endValue.length === 0) {
+  if (_endValue.length === 0 && hasEndAvailableTime) {
     _endValue = [endDatas[0].value, endDatas[0].children[0].value]
   }
   const [endValue, setEndValue] = useState(_endValue)
 
   const handleConfirm = () => {
+    if (!hasAvailableTime) {
+      PickerStatics.hide()
+      return
+    }
     onConfirm({
       startValue,
       endValue,
@@ -179,42 +201,48 @@ const ReceiveTimePicker = ({ onConfirm, order, enableUndeliveryFilter }) => {
 
   return (
     <div>
-      <Flex className='m-border-top m-padding-top-10'>
-        <Flex column flex>
-          <div className='m-text-center'>{getLocale('最早收货时间')}</div>
-          <CouplingPicker
-            className='m-text-12'
-            datas={startDatas}
-            values={startValue}
-            renderOption={(dataIndex, option) => {
-              if (dataIndex === 0) {
-                return `${option.text} ${
-                  option.date ? weekMap[moment(option.date).day()] : ''
-                }`
-              }
-              return option.text
-            }}
-            onChange={handleStartChange}
-          />
+      {hasAvailableTime ? (
+        <Flex className='m-border-top m-padding-top-10'>
+          <Flex column flex>
+            <div className='m-text-center'>{getLocale('最早收货时间')}</div>
+            <CouplingPicker
+              className='m-text-12'
+              datas={startDatas}
+              values={startValue}
+              renderOption={(dataIndex, option) => {
+                if (dataIndex === 0) {
+                  return `${option.text} ${
+                    option.date ? weekMap[moment(option.date).day()] : ''
+                  }`
+                }
+                return option.text
+              }}
+              onChange={handleStartChange}
+            />
+          </Flex>
+          <Flex column flex>
+            <div className='m-text-center'>{getLocale('最晚收货时间')}</div>
+            <CouplingPicker
+              className='m-text-12'
+              datas={endDatas}
+              values={endValue}
+              renderOption={(dataIndex, option) => {
+                if (dataIndex === 0) {
+                  return `${option.text}${
+                    option.date ? weekMap[moment(option.date).day()] : ''
+                  }`
+                }
+                return option.text
+              }}
+              onChange={handleEndChange}
+            />
+          </Flex>
         </Flex>
-        <Flex column flex>
-          <div className='m-text-center'>{getLocale('最晚收货时间')}</div>
-          <CouplingPicker
-            className='m-text-12'
-            datas={endDatas}
-            values={endValue}
-            renderOption={(dataIndex, option) => {
-              if (dataIndex === 0) {
-                return `${option.text}${
-                  option.date ? weekMap[moment(option.date).day()] : ''
-                }`
-              }
-              return option.text
-            }}
-            onChange={handleEndChange}
-          />
-        </Flex>
-      </Flex>
+      ) : (
+        <div className='m-text-center m-padding-15'>
+          {getLocale('暂无可选收货时间')}
+        </div>
+      )}
 
       <div className='m-margin-15'>
         <Button
