@@ -174,10 +174,6 @@ const MutiOrderReceiveTimePicker = ({
     )
   }, [_cycleList, is_undelivery, undelivery_times])
 
-  const hasAvailableTime =
-    startDatas.length > 0 &&
-    startDatas.some((item) => item.children && item.children.length > 0)
-
   const [startValue, setStartValue] = useState(() => {
     if (!hasAvailableTime) return []
     return [startDatas[0].value, startDatas[0].children[0].value]
@@ -214,6 +210,12 @@ const MutiOrderReceiveTimePicker = ({
   const handleEndChange = (values) => {
     setEndValue([...values])
   }
+
+  const hasAvailableTime =
+    startDatas.length > 0 &&
+    startDatas.some((item) => item.children && item.children.length > 0) &&
+    rightColumn.length > 0 &&
+    rightColumn.some((item) => item.children && item.children.length > 0)
 
   return (
     <div>
