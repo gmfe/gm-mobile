@@ -145,6 +145,10 @@ const ReceiveTimePicker = ({ onConfirm, order, enableUndeliveryFilter }) => {
     receive_time_limit?.receiveTimeSpan || 0
   )
 
+  const hasAvailableTime =
+    startDatas.length > 0 &&
+    startDatas.some((item) => item.children && item.children.length > 0)
+
   let _startValue = startEndValue.startValues
   if (_startValue.length === 0 && hasAvailableTime) {
     _startValue = [startDatas[0].value, startDatas[0].children[0].value]
@@ -195,15 +199,9 @@ const ReceiveTimePicker = ({ onConfirm, order, enableUndeliveryFilter }) => {
     setEndValue([...values])
   }
 
-  const hasAvailableTime =
-    startDatas.length > 0 &&
-    startDatas.some((item) => item.children && item.children.length > 0) &&
-    endDatas.length > 0 &&
-    endDatas.some((item) => item.children && item.children.length > 0)
-
   return (
     <div>
-      {hasAvailableTime ? (
+      {hasAvailableTime && hasEndAvailableTime ? (
         <Flex className='m-border-top m-padding-top-10'>
           <Flex column flex>
             <div className='m-text-center'>{getLocale('最早收货时间')}</div>
