@@ -7,12 +7,10 @@ import React, { useMemo, useState } from 'react'
 import PickerStatics from './statics'
 import {
   cycleListToDayList,
-  getCycleList,
   getEndCycleList,
   getFlag,
   getReceiveTimeParams,
   getStartCycleList,
-  processReceiveTimeLimit,
   processStartEndValuesWithCycleList,
 } from './utils'
 
@@ -288,21 +286,11 @@ ReceiveTimePicker.hide = () => {
 
 // 校验是否有周期时间
 ReceiveTimePicker.verifyReceiveTime = (order) => {
-  const { order_time_limit } = order
+  const { startCycleList } = getReceiveTimeParams(order)
 
-  // 运营周期
-  const receive_time_limit = _.cloneDeep(order.receive_time.receive_time_limit)
-  const start_order = order_time_limit.start
-  const isLastCycle = moment().isBefore(moment(start_order, 'HH:mm'))
-  // 如果当前时间小于下单的开始和结束时间，则为上个周期
-  if (order_time_limit.e_span_time === 1 && isLastCycle) {
-    receive_time_limit.s_span_time--
-    receive_time_limit.e_span_time--
-  }
-  const receive_time_limit_2 = processReceiveTimeLimit(receive_time_limit)
-  const cycleList = getCycleList(receive_time_limit_2)
-
-  return cycleList.length !== 0
+  // 复用 getReceiveTimeParams，与其渲染逻辑保持一致
+  // （包含 time_config_type 截断、星期过滤等处理）
+  return startCycleList.length > 0
 }
 
 ReceiveTimePicker.propTypes = {
