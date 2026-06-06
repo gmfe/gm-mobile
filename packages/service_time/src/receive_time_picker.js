@@ -285,12 +285,49 @@ ReceiveTimePicker.hide = () => {
 }
 
 // 校验是否有周期时间
-ReceiveTimePicker.verifyReceiveTime = (order) => {
-  const { startCycleList } = getReceiveTimeParams(order)
+ReceiveTimePicker.verifyReceiveTime = (
+  order,
+  enableUndeliveryFilter = false
+) => {
+  const {
+    receive_time_limit,
+    cycleList,
+    startCycleList,
+  } = getReceiveTimeParams(order)
+  const { is_undelivery, undelivery_times } = enableUndeliveryFilter
+    ? receive_time_limit || {}
+    : {}
 
-  // 复用 getReceiveTimeParams，与其渲染逻辑保持一致
-  // （包含 time_config_type 截断、星期过滤等处理）
-  return startCycleList.length > 0
+  // 过滤不可配送时间
+  const startDatas = filterByUndeliveryTimes(
+    cycleToPickerList(startCycleList),
+    is_undelivery,
+    undelivery_times,
+    receive_time_limit?.receiveTimeSpan || 0
+  )
+
+  const hasAvailableTime =
+    startDatas.length > 0 &&
+    startDatas.some((item) => item.children && item.children.length > 0)
+
+  if (!hasAvailableTime) {
+    return false
+  }
+
+  // 检查是否有可用的结束时间
+  const startValue = [startDatas[0].value, startDatas[0].children[0].value]
+  const startValueDate = getStartDateFromValues(startValue, cycleList)
+  const endDatas = filterByUndeliveryTimes(
+    cycleToPickerList(getEndCycleList(startValueDate, cycleList)),
+    is_undelivery,
+    undelivery_times
+  )
+
+  const hasEndAvailableTime =
+    endDatas.length > 0 &&
+    endDatas.some((item) => item.children && item.children.length > 0)
+
+  return hasEndAvailableTime
 }
 
 ReceiveTimePicker.propTypes = {
