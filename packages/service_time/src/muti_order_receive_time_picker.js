@@ -100,12 +100,7 @@ const weekMap = {
   6: getLocale('周六'),
 }
 
-const isInUndeliveryRange = (
-  timeMoment,
-  undeliveryTimes,
-  offsetMinutes = 0,
-  isStart = true
-) => {
+const isInUndeliveryRange = (timeMoment, undeliveryTimes, isStart = true) => {
   if (!undeliveryTimes || undeliveryTimes.length === 0) {
     return false
   }
@@ -134,7 +129,6 @@ const filterByUndeliveryTimes = (
   pickerList,
   isUndelivery,
   undeliveryTimes,
-  receiveTimeSpan = 0,
   isStart = true
 ) => {
   if (isUndelivery !== 1 || !undeliveryTimes || undeliveryTimes.length === 0) {
@@ -148,7 +142,6 @@ const filterByUndeliveryTimes = (
           !isInUndeliveryRange(
             child.date || child.moment,
             undeliveryTimes,
-            receiveTimeSpan,
             isStart
           )
       )
@@ -181,8 +174,7 @@ const MutiOrderReceiveTimePicker = ({
     return filterByUndeliveryTimes(
       columnGenerator(cycleList),
       is_undelivery,
-      undelivery_times,
-      receive_time_limit?.receive_time_span || 0
+      undelivery_times
     )
   }, [_cycleList, is_undelivery, undelivery_times])
 
@@ -201,7 +193,6 @@ const MutiOrderReceiveTimePicker = ({
       columnGenerator(cycList),
       is_undelivery,
       undelivery_times,
-      0,
       false
     )
   }, [startValue, _cycleList, is_undelivery, undelivery_times])

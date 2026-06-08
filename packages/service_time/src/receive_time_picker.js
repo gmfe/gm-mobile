@@ -24,22 +24,15 @@ const weekMap = {
   6: getLocale('周六'),
 }
 
-const isInUndeliveryRange = (
-  timeMoment,
-  undeliveryTimes,
-  offsetMinutes = 0,
-  isStart = true
-) => {
+const isInUndeliveryRange = (timeMoment, undeliveryTimes, isStart = true) => {
   if (!undeliveryTimes || undeliveryTimes.length === 0) {
     return false
   }
   return _.some(undeliveryTimes, ({ start, end }) => {
-    const startMoment = moment(timeMoment)
-      .set({
-        hours: start.split(':')[0],
-        minute: start.split(':')[1],
-      })
-      .subtract(offsetMinutes, 'minutes')
+    const startMoment = moment(timeMoment).set({
+      hours: start.split(':')[0],
+      minute: start.split(':')[1],
+    })
     const endMoment = moment(timeMoment).set({
       hours: end.split(':')[0],
       minute: end.split(':')[1],
@@ -58,7 +51,6 @@ const filterByUndeliveryTimes = (
   pickerList,
   isUndelivery,
   undeliveryTimes,
-  receiveTimeSpan = 0,
   isStart = true
 ) => {
   if (isUndelivery !== 1 || !undeliveryTimes || undeliveryTimes.length === 0) {
@@ -70,7 +62,6 @@ const filterByUndeliveryTimes = (
         return !isInUndeliveryRange(
           child.date || child.moment,
           undeliveryTimes,
-          receiveTimeSpan,
           isStart
         )
       })
@@ -143,8 +134,7 @@ const ReceiveTimePicker = ({ onConfirm, order, enableUndeliveryFilter }) => {
   const startDatas = filterByUndeliveryTimes(
     cycleToPickerList(startCycleList),
     is_undelivery,
-    undelivery_times,
-    receive_time_limit?.receiveTimeSpan || 0
+    undelivery_times
   )
 
   const hasAvailableTime =
@@ -170,7 +160,6 @@ const ReceiveTimePicker = ({ onConfirm, order, enableUndeliveryFilter }) => {
       endDates,
       is_undelivery,
       undelivery_times,
-      0,
       false
     )
   }, [startValueDate, cycleList, is_undelivery, undelivery_times])
@@ -311,8 +300,7 @@ ReceiveTimePicker.verifyReceiveTime = (
   const startDatas = filterByUndeliveryTimes(
     cycleToPickerList(startCycleList),
     is_undelivery,
-    undelivery_times,
-    receive_time_limit?.receiveTimeSpan || 0
+    undelivery_times
   )
 
   const hasAvailableTime =
@@ -330,7 +318,6 @@ ReceiveTimePicker.verifyReceiveTime = (
     cycleToPickerList(getEndCycleList(startValueDate, cycleList)),
     is_undelivery,
     undelivery_times,
-    0,
     false
   )
 
