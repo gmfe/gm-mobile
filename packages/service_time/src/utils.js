@@ -193,7 +193,9 @@ function cycleListToDayList(cycleList) {
     }
   })
 
-  result.push(temp)
+  if (temp.length > 0) {
+    result.push(temp)
+  }
 
   return result
 }

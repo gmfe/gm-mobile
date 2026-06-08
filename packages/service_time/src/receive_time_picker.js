@@ -27,7 +27,8 @@ const weekMap = {
 const isInUndeliveryRange = (
   timeMoment,
   undeliveryTimes,
-  offsetMinutes = 0
+  offsetMinutes = 0,
+  isStart = true
 ) => {
   if (!undeliveryTimes || undeliveryTimes.length === 0) {
     return false
@@ -43,9 +44,11 @@ const isInUndeliveryRange = (
       hours: end.split(':')[0],
       minute: end.split(':')[1],
     })
+    const bool = isStart
+      ? timeMoment.isSame(startMoment, 'minute')
+      : timeMoment.isSame(endMoment, 'minute')
     return (
-      timeMoment.isSame(startMoment, 'minute') ||
-      timeMoment.isSame(endMoment, 'minute') ||
+      bool ||
       (timeMoment.isAfter(startMoment) && timeMoment.isBefore(endMoment))
     )
   })
@@ -55,22 +58,27 @@ const filterByUndeliveryTimes = (
   pickerList,
   isUndelivery,
   undeliveryTimes,
-  receiveTimeSpan = 0
+  receiveTimeSpan = 0,
+  isStart = true
 ) => {
   if (isUndelivery !== 1 || !undeliveryTimes || undeliveryTimes.length === 0) {
     return pickerList
   }
   return _.filter(
-    _.map(pickerList, (item) => ({
-      ...item,
-      children: _.filter(item.children, (child) => {
+    _.map(pickerList, (item) => {
+      const children = _.filter(item.children, (child) => {
         return !isInUndeliveryRange(
           child.date || child.moment,
           undeliveryTimes,
-          receiveTimeSpan
+          receiveTimeSpan,
+          isStart
         )
-      }),
-    })),
+      })
+      return {
+        ...item,
+        children,
+      }
+    }),
     (item) => item.children.length > 0
   )
 }
@@ -80,6 +88,8 @@ const cycleToPickerList = (cycleList) => {
 
   const pickerList = _.map(dayList, (list) => {
     // 不会存在空数组，直接去0即可
+    // 上面那行注释，超绝自信，list数组空就崩溃
+    // 数据生成的时候又不考虑，自信确定在这里没问题，结果崩了
     return {
       date: list[0],
       value: getFlag(list[0]),
@@ -100,7 +110,6 @@ const cycleToPickerList = (cycleList) => {
 
 const getStartDateFromValues = (startValues, cycleList) => {
   const startDatas = cycleToPickerList(getStartCycleList(cycleList))
-
   const one = _.find(startDatas, (v) => v.value === startValues[0])
   if (!one || !one.children || one.children.length === 0) {
     return startDatas.length > 0 && startDatas[0].children.length > 0
@@ -131,11 +140,6 @@ const ReceiveTimePicker = ({ onConfirm, order, enableUndeliveryFilter }) => {
     receive_time,
     cycleList
   )
-  console.log(
-    'receive_time_limit?.receiveTimeSpan ',
-    receive_time_limit?.receiveTimeSpan,
-    undelivery_times
-  )
   const startDatas = filterByUndeliveryTimes(
     cycleToPickerList(startCycleList),
     is_undelivery,
@@ -159,10 +163,15 @@ const ReceiveTimePicker = ({ onConfirm, order, enableUndeliveryFilter }) => {
   }, [startValue, cycleList])
   const endDatas = useMemo(() => {
     if (!startValueDate) return []
+    const endDates = cycleToPickerList(
+      getEndCycleList(startValueDate, cycleList)
+    )
     return filterByUndeliveryTimes(
-      cycleToPickerList(getEndCycleList(startValueDate, cycleList)),
+      endDates,
       is_undelivery,
-      undelivery_times
+      undelivery_times,
+      0,
+      false
     )
   }, [startValueDate, cycleList, is_undelivery, undelivery_times])
 
@@ -320,7 +329,9 @@ ReceiveTimePicker.verifyReceiveTime = (
   const endDatas = filterByUndeliveryTimes(
     cycleToPickerList(getEndCycleList(startValueDate, cycleList)),
     is_undelivery,
-    undelivery_times
+    undelivery_times,
+    0,
+    false
   )
 
   const hasEndAvailableTime =

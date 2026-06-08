@@ -100,7 +100,12 @@ const weekMap = {
   6: getLocale('周六'),
 }
 
-const isInUndeliveryRange = (timeMoment, undeliveryTimes, offsetMinutes) => {
+const isInUndeliveryRange = (
+  timeMoment,
+  undeliveryTimes,
+  offsetMinutes = 0,
+  isStart = true
+) => {
   if (!undeliveryTimes || undeliveryTimes.length === 0) {
     return false
   }
@@ -115,9 +120,11 @@ const isInUndeliveryRange = (timeMoment, undeliveryTimes, offsetMinutes) => {
       hours: end.split(':')[0],
       minute: end.split(':')[1],
     })
+    const bool = isStart
+      ? timeMoment.isSame(startMoment, 'minute')
+      : timeMoment.isSame(endMoment, 'minute')
     return (
-      timeMoment.isSame(startMoment, 'minute') ||
-      timeMoment.isSame(endMoment, 'minute') ||
+      bool ||
       (timeMoment.isAfter(startMoment) && timeMoment.isBefore(endMoment))
     )
   })
@@ -127,24 +134,29 @@ const filterByUndeliveryTimes = (
   pickerList,
   isUndelivery,
   undeliveryTimes,
-  receiveTimeSpan = 0
+  receiveTimeSpan = 0,
+  isStart = true
 ) => {
   if (isUndelivery !== 1 || !undeliveryTimes || undeliveryTimes.length === 0) {
     return pickerList
   }
   return _.filter(
-    _.map(pickerList, (item) => ({
-      ...item,
-      children: _.filter(
+    _.map(pickerList, (item) => {
+      const children = _.filter(
         item.children,
         (child) =>
           !isInUndeliveryRange(
             child.date || child.moment,
             undeliveryTimes,
-            receiveTimeSpan
+            receiveTimeSpan,
+            isStart
           )
-      ),
-    })),
+      )
+      return {
+        ...item,
+        children,
+      }
+    }),
     (item) => item.children.length > 0
   )
 }
@@ -188,7 +200,9 @@ const MutiOrderReceiveTimePicker = ({
     return filterByUndeliveryTimes(
       columnGenerator(cycList),
       is_undelivery,
-      undelivery_times
+      undelivery_times,
+      0,
+      false
     )
   }, [startValue, _cycleList, is_undelivery, undelivery_times])
 
