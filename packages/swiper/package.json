@@ -1,6 +1,6 @@
 {
   "name": "@gm-mobile/swiper",
-  "version": "1.1.25-alpha.0",
+  "version": "1.1.25",
   "description": "> TODO: description",
   "author": "liyatang <liyatang@qq.com>",
   "homepage": "https://github.com/gmfe/gm-mobile#readme",
@@ -21,12 +21,12 @@
     "url": "https://github.com/gmfe/gm-mobile/issues"
   },
   "dependencies": {
-    "@gm-mobile/react": "^1.1.25-alpha.0",
+    "@gm-mobile/react": "^1.1.25",
     "swiper": "^5.3.8"
   },
   "peerDependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
-  "gitHead": "0aa446f0b145a9ab31fd0e36c0ab7043b774e1e9"
+  "gitHead": "2186b669071d81580c242301e19a31ba3039565c"
 }
