@@ -105,12 +105,10 @@ const isInUndeliveryRange = (timeMoment, undeliveryTimes, isStart = true) => {
     return false
   }
   return _.some(undeliveryTimes, ({ start, end }) => {
-    const startMoment = moment(timeMoment)
-      .set({
-        hours: start.split(':')[0],
-        minute: start.split(':')[1],
-      })
-      .subtract(offsetMinutes, 'minutes')
+    const startMoment = moment(timeMoment).set({
+      hours: start.split(':')[0],
+      minute: start.split(':')[1],
+    })
     const endMoment = moment(timeMoment).set({
       hours: end.split(':')[0],
       minute: end.split(':')[1],
