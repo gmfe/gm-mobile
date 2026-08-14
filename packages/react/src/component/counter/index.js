@@ -1,6 +1,6 @@
+import { getLocale } from '@gm-mobile/locales'
 import Big from 'big.js'
 import classNames from 'classnames'
-import { t } from 'gm-i18n'
 import _ from 'lodash'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -39,7 +39,7 @@ const Counter = ({
       Toast.tip({
         children: (
           <div className='m-number-keyboard-msg'>
-            {t('下单数量超出当前库存')}
+            {getLocale('下单数量超出当前库存')}
           </div>
         ),
       })
@@ -72,7 +72,7 @@ const Counter = ({
       Toast.tip({
         children: (
           <div className='m-number-keyboard-msg'>
-            {t('下单数量超出当前库存')}
+            {getLocale('下单数量超出当前库存')}
           </div>
         ),
       })
@@ -98,7 +98,7 @@ const Counter = ({
           'm-counter-large': large,
           disabled,
         },
-        className,
+        className
       )}
     >
       <div className='m-counter-icon' onClick={() => handleChange('minus')}>
