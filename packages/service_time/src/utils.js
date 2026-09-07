@@ -160,6 +160,10 @@ function getStartCycleList(cycleList) {
 
 // 获取开始后货时间的待选项。
 // 当开始选择后，自然有开始时间 startDate，根据此时间去查属于哪个周期，自然得到待选项
+// 结束时间不局限于开始时间所在的周期（相邻周期共享边界点，如 12:00）：
+// 否则开始时间选在周期末尾（如 11:45）时，结束时间会被周期边界截断在 12:00，
+// 选不到下一周期内、不可配送时间段开始前的点（如 14:00）。
+// 放开规则：[开始, 结束] 的跨度不超过一个周期长度，且最多跨入紧邻的下一个周期
 function getEndCycleList(startDate, cycleList) {
   let cycleIndex = 0
   _.each(cycleList, (list, i) => {
@@ -168,7 +172,22 @@ function getEndCycleList(startDate, cycleList) {
     }
   })
 
-  return [_.filter(cycleList[cycleIndex], (v) => v > startDate)]
+  const currentCycle = cycleList[cycleIndex] || []
+  const nextCycle = cycleList[cycleIndex + 1] || []
+  // 一个周期的长度（周期初到周期末）
+  const cycleLength =
+    currentCycle.length > 1
+      ? currentCycle[currentCycle.length - 1] - currentCycle[0]
+      : 0
+  // 结束时间最晚不超过 开始时间 + 一个周期长度
+  const maxEnd = cycleLength ? moment(startDate).add(cycleLength, 'ms') : null
+
+  // 相邻周期共享边界点（12:00），需去重。
+  // 周期可能重叠（如预售跨天），但步长为预设值（15/30 分钟、1/2/4/6 小时）均整除 24h，
+  // 相邻周期网格重合：重叠点去重后，下一周期剩余点必在当前周期末点之后，合并结果天然有序
+  const merged = _.uniqBy(_.flatten([currentCycle, nextCycle]), (v) => +v)
+
+  return [_.filter(merged, (v) => v > startDate && (!maxEnd || v <= maxEnd))]
 }
 
 // 周期列表格式对用户看到的待选项UI并不友好，估需要转换下，按日期格式分
@@ -267,6 +286,44 @@ const convertDay2Bit = (flag) => {
   return 1 << (day - 1)
 }
 
+/**
+ * 判断 [startMoment, endMoment] 组成的收货时间段是否与不可配送时间段交叉
+ * 与商城侧 isValidReceiveTime 逻辑保持一致：
+ * 1、同一天：start < 不可配送结束 && end > 不可配送开始 即交叉
+ * 2、跨天：拆成开始日 [start, 当天最后] 与结束日 [零点, end] 两段分别判断
+ */
+function isWindowCrossUndelivery(startMoment, endMoment, undeliveryTimes) {
+  if (!undeliveryTimes || undeliveryTimes.length === 0) {
+    return false
+  }
+
+  const setHM = (m, timeStr) =>
+    m.set({
+      hours: timeStr.split(':')[0],
+      minute: timeStr.split(':')[1],
+    })
+
+  return _.some(undeliveryTimes, ({ start, end }) => {
+    if (moment(startMoment).isSame(endMoment, 'day')) {
+      const uStart = setHM(moment(startMoment), start)
+      const uEnd = setHM(moment(startMoment), end)
+      return startMoment.isBefore(uEnd) && endMoment.isAfter(uStart)
+    }
+
+    const uStart1 = setHM(moment(startMoment), start)
+    const uEnd1 = setHM(moment(startMoment), end)
+    const uStart2 = setHM(moment(endMoment), start)
+    const uEnd2 = setHM(moment(endMoment), end)
+
+    return (
+      (startMoment.isBefore(uEnd1) &&
+        moment(startMoment).endOf('day').isAfter(uStart1)) ||
+      (moment(endMoment).startOf('day').isBefore(uEnd2) &&
+        endMoment.isAfter(uStart2))
+    )
+  })
+}
+
 export {
   processReceiveTimeLimit,
   processStartEndValuesWithCycleList,
@@ -276,4 +333,5 @@ export {
   getEndCycleList,
   cycleListToDayList,
   getReceiveTimeParams,
+  isWindowCrossUndelivery,
 }

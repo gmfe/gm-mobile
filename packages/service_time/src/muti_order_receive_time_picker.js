@@ -3,9 +3,9 @@ import { Button, CouplingPicker, Flex } from '@gm-mobile/react'
 import _ from 'lodash'
 import moment from 'moment'
 import PropTypes from 'prop-types'
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import PickerStatics from './statics'
-import { getReceiveTimeParams } from './utils'
+import { getReceiveTimeParams, isWindowCrossUndelivery } from './utils'
 
 // 获取运营时间范围
 // 只关注时间，不关注日期
@@ -127,22 +127,27 @@ const filterByUndeliveryTimes = (
   pickerList,
   isUndelivery,
   undeliveryTimes,
-  isStart = true
+  isStart = true,
+  startMoment = null
 ) => {
   if (isUndelivery !== 1 || !undeliveryTimes || undeliveryTimes.length === 0) {
     return pickerList
   }
   return _.filter(
     _.map(pickerList, (item) => {
-      const children = _.filter(
-        item.children,
-        (child) =>
-          !isInUndeliveryRange(
-            child.date || child.moment,
-            undeliveryTimes,
-            isStart
+      const children = _.filter(item.children, (child) => {
+        const childMoment = child.date || child.moment
+        // 结束时间需保证 [开始, 结束] 整段不与不可配送时间段交叉，
+        // 否则会出现 13:00~18:00 这种包含 14:00~17:00 的可选项，确认时才报错
+        if (!isStart && startMoment) {
+          return !isWindowCrossUndelivery(
+            startMoment,
+            childMoment,
+            undeliveryTimes
           )
-      )
+        }
+        return !isInUndeliveryRange(childMoment, undeliveryTimes, isStart)
+      })
       return {
         ...item,
         children,
@@ -190,13 +195,38 @@ const MutiOrderReceiveTimePicker = ({
   const rightColumn = useMemo(() => {
     if (!startValue || startValue.length === 0) return []
     const cycList = getEndCycleList(startValue, _cycleList)
+    const startMoment = moment()
+      .add(startValue[0], 'day')
+      .set({
+        hours: startValue[1].split(':')[0],
+        minute: startValue[1].split(':')[1],
+      })
+      .startOf('minute')
     return filterByUndeliveryTimes(
       columnGenerator(cycList),
       is_undelivery,
       undelivery_times,
-      false
+      false,
+      startMoment
     )
   }, [startValue, _cycleList, is_undelivery, undelivery_times])
+
+  // 开始时间变化后，结束时间可能不再可选（如整段被不可配送时间段截断），需回退到第一个可选项
+  useEffect(() => {
+    if (rightColumn.length === 0) {
+      return
+    }
+    const has = _.some(rightColumn, (item) => {
+      if (item.value !== endValue[0]) {
+        return false
+      }
+      return _.some(item.children, (child) => child.value === endValue[1])
+    })
+    if (!has) {
+      setEndValue([rightColumn[0].value, rightColumn[0].children[0].value])
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rightColumn])
 
   const handleConfirm = () => {
     if (!hasAvailableTime) {
