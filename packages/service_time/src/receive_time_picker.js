@@ -107,8 +107,13 @@ const cycleToPickerList = (cycleList) => {
   return pickerList
 }
 
-const getStartDateFromValues = (startValues, cycleList) => {
-  const startDatas = cycleToPickerList(getStartCycleList(cycleList))
+const getStartDateFromValues = (startValues, cycleList, filteredStartDatas) => {
+  // 优先用过滤不可配送后的可选项做查找与回退：
+  // 否则回退点可能落在不可配送时间段内（如 14:15），
+  // endDatas 会被整段过滤，弹层误显示「暂无可选收货时间」。
+  // 不传 filteredStartDatas 时行为与旧版一致
+  const startDatas =
+    filteredStartDatas || cycleToPickerList(getStartCycleList(cycleList))
   const one = _.find(startDatas, (v) => v.value === startValues[0])
   if (!one || !one.children || one.children.length === 0) {
     return startDatas.length > 0 && startDatas[0].children.length > 0
@@ -157,8 +162,8 @@ const ReceiveTimePicker = ({ onConfirm, order, enableUndeliveryFilter }) => {
   const [startValue, setStartValue] = useState(_startValue)
 
   const startValueDate = useMemo(() => {
-    return getStartDateFromValues(startValue, cycleList)
-  }, [startValue, cycleList])
+    return getStartDateFromValues(startValue, cycleList, startDatas)
+  }, [startValue, cycleList, startDatas])
   const endDatas = useMemo(() => {
     if (!startValueDate) return []
     const endDates = cycleToPickerList(
@@ -338,8 +343,13 @@ ReceiveTimePicker.verifyReceiveTime = (
   }
 
   // 检查是否有可用的结束时间
+  // 与弹层内部使用同一份过滤后的 startDatas 做回退，保证入口校验与弹层展示规则一致
   const startValue = [startDatas[0].value, startDatas[0].children[0].value]
-  const startValueDate = getStartDateFromValues(startValue, cycleList)
+  const startValueDate = getStartDateFromValues(
+    startValue,
+    cycleList,
+    startDatas
+  )
   const endDatas = filterByUndeliveryTimes(
     cycleToPickerList(getEndCycleList(startValueDate, cycleList)),
     is_undelivery,
