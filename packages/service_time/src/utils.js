@@ -160,10 +160,7 @@ function getStartCycleList(cycleList) {
 
 // 获取开始后货时间的待选项。
 // 当开始选择后，自然有开始时间 startDate，根据此时间去查属于哪个周期，自然得到待选项
-// 结束时间不局限于开始时间所在的周期（相邻周期共享边界点，如 12:00）：
-// 否则开始时间选在周期末尾（如 11:45）时，结束时间会被周期边界截断在 12:00，
-// 选不到下一周期内、不可配送时间段开始前的点（如 14:00）。
-// 放开规则：[开始, 结束] 的跨度不超过一个周期长度，且最多跨入紧邻的下一个周期
+// r_start/r_end 周期网格为硬边界：结束时间严格限制在开始时间所在周期内
 function getEndCycleList(startDate, cycleList) {
   let cycleIndex = 0
   _.each(cycleList, (list, i) => {
@@ -172,22 +169,7 @@ function getEndCycleList(startDate, cycleList) {
     }
   })
 
-  const currentCycle = cycleList[cycleIndex] || []
-  const nextCycle = cycleList[cycleIndex + 1] || []
-  // 一个周期的长度（周期初到周期末）
-  const cycleLength =
-    currentCycle.length > 1
-      ? currentCycle[currentCycle.length - 1] - currentCycle[0]
-      : 0
-  // 结束时间最晚不超过 开始时间 + 一个周期长度
-  const maxEnd = cycleLength ? moment(startDate).add(cycleLength, 'ms') : null
-
-  // 相邻周期共享边界点（12:00），需去重。
-  // 周期可能重叠（如预售跨天），但步长为预设值（15/30 分钟、1/2/4/6 小时）均整除 24h，
-  // 相邻周期网格重合：重叠点去重后，下一周期剩余点必在当前周期末点之后，合并结果天然有序
-  const merged = _.uniqBy(_.flatten([currentCycle, nextCycle]), (v) => +v)
-
-  return [_.filter(merged, (v) => v > startDate && (!maxEnd || v <= maxEnd))]
+  return [_.filter(cycleList[cycleIndex], (v) => v > startDate)]
 }
 
 // 周期列表格式对用户看到的待选项UI并不友好，估需要转换下，按日期格式分
