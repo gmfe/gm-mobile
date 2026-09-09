@@ -33,6 +33,7 @@ function fetchClosure({ version, registry, output, execFn }) {
   const tarballsDir = path.join(output, 'tarballs')
   const packDir = path.join(output, 'pack')
   mkdirSync(metadataDir, { recursive: true })
+  mkdirSync(tarballsDir, { recursive: true })
   mkdirSync(packDir, { recursive: true })
 
   const calls = []
