@@ -90,6 +90,18 @@ const columnGenerator = (cycList) => {
   }))
 }
 
+// 日期列联动时，CouplingPicker 只更新被操作的那一列，时间值会保留旧值，
+// 旧值可能不在新日期组内（如跨天配置「次日」组只有凌晨点）：
+// 需回退到组内首个可选项，否则 startMoment 落在无效点上，结束列表会被整段清空
+const getStartValueFromValues = (startValues, startDatas) => {
+  const one = _.find(startDatas, (v) => v.value === startValues[0])
+  if (!one || !one.children || one.children.length === 0) {
+    return startValues
+  }
+  const two = _.find(one.children, (v) => v.value === startValues[1])
+  return two ? startValues : [startValues[0], one.children[0].value]
+}
+
 const weekMap = {
   0: getLocale('周日'),
   1: getLocale('周一'),
@@ -194,12 +206,14 @@ const MutiOrderReceiveTimePicker = ({
   // 右边的列要根据左边联动
   const rightColumn = useMemo(() => {
     if (!startValue || startValue.length === 0) return []
-    const cycList = getEndCycleList(startValue, _cycleList)
+    // 联动产生的组合可能无效（日期列变化时时间值保留旧值），需先归一化
+    const _startValue = getStartValueFromValues(startValue, startDatas)
+    const cycList = getEndCycleList(_startValue, _cycleList)
     const startMoment = moment()
-      .add(startValue[0], 'day')
+      .add(_startValue[0], 'day')
       .set({
-        hours: startValue[1].split(':')[0],
-        minute: startValue[1].split(':')[1],
+        hours: _startValue[1].split(':')[0],
+        minute: _startValue[1].split(':')[1],
       })
       .startOf('minute')
     return filterByUndeliveryTimes(
@@ -209,7 +223,7 @@ const MutiOrderReceiveTimePicker = ({
       false,
       startMoment
     )
-  }, [startValue, _cycleList, is_undelivery, undelivery_times])
+  }, [startValue, startDatas, _cycleList, is_undelivery, undelivery_times])
 
   // 开始时间变化后，结束时间可能不再可选（如整段被不可配送时间段截断），需回退到第一个可选项
   useEffect(() => {
@@ -234,7 +248,8 @@ const MutiOrderReceiveTimePicker = ({
       return
     }
     onConfirm({
-      startValue,
+      // 提交同样走归一化，避免联动产生的无效组合直接落值
+      startValue: getStartValueFromValues(startValue, startDatas),
       endValue,
     })
   }
@@ -253,7 +268,7 @@ const MutiOrderReceiveTimePicker = ({
 
   return (
     <div>
-      {hasAvailableTime && hasRightColumn ? (
+      {hasAvailableTime ? (
         <Flex>
           <CouplingPicker
             datas={startDatas}
@@ -261,11 +276,18 @@ const MutiOrderReceiveTimePicker = ({
             onChange={handleStartChange}
           />
           <div className='m-gap-20' />
-          <CouplingPicker
-            datas={rightColumn}
-            values={endValue}
-            onChange={handleEndChange}
-          />
+          {/* 结束列无数据时仅占位提示，保留开始列可操作，避免整个弹层死锁 */}
+          {hasRightColumn ? (
+            <CouplingPicker
+              datas={rightColumn}
+              values={endValue}
+              onChange={handleEndChange}
+            />
+          ) : (
+            <div className='m-text-center m-padding-15'>
+              {getLocale('暂无可选收货时间')}
+            </div>
+          )}
         </Flex>
       ) : (
         <div className='m-text-center m-padding-15'>
