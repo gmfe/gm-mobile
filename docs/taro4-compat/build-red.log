@@ -1,0 +1,495 @@
+yarn run v1.22.22
+$ taro build --type weapp
+👽 Taro v4.2.1
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+
+● Webpack █████████████████████████  (0%)  
+ 
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (14%) 1/11 entries 11/11 dependen
+cies 0/10 modules 1 active 
+ babel-loader › mini-program/src/app.config.js
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (14%) 1/11 entries 11/11 dependen
+cies 1/10 modules 9 active 
+ ...l-loader › node_modules/@tarojs/webpack5-runner/dist/template/custom-wrapp
+er.js
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (25%) 3/11 entries 41/86 dependen
+cies 2/24 modules 21 active 
+ packages/c-qrcode|sync|/stories\.(js%7Ctsx)$
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (24%) 3/11 entries 78/140 depende
+ncies 2/51 modules 31 active 
+ packages/c-service-time/src/component|sync|/stories\.(js%7Ctsx)$
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (25%) 3/11 entries 116/141 depend
+encies 2/84 modules 51 active 
+ node_modules/query-string/index.js
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (25%) 3/11 entries 419/453 depend
+encies 26/175 modules 67 active 
+ babel-loader › packages/mp/src/index.ts
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (24%) 3/11 entries 535/640 depend
+encies 42/200 modules 123 active 
+ ... node_modules/@tarojs/runtime/dist/dom-external/mutation-observer/implemen
+ts.js
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (25%) 3/11 entries 777/869 depend
+encies 124/284 modules 97 active 
+ babel-loader › packages/mp/src/component/swiper/stories.tsx
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (25%) 3/11 entries 827/900 depend
+encies 157/298 modules 91 active 
+ node_modules/weapp-qrcode/dist/weapp.qrcode.esm.js
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (24%) 3/11 entries 894/991 depend
+encies 178/323 modules 77 active 
+ node_modules/js-cookie/src/js.cookie.js
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (24%) 3/11 entries 956/1047 depen
+dencies 184/345 modules 86 active 
+ node_modules/lodash/_createBaseEach.js
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (24%) 3/11 entries 975/1058 depen
+dencies 184/359 modules 95 active 
+ node_modules/mobx-react-lite/es/useLocalObservable.js
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (25%) 3/11 entries 1062/1130 depe
+ndencies 191/379 modules 104 active 
+ babel-loader › packages/c-react/src/component/input/stories.tsx
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (25%) 3/11 entries 1143/1231 depe
+ndencies 202/390 modules 117 active 
+ babel-loader › packages/c-react/src/component/repeat_times/stories.tsx
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (25%) 3/11 entries 1233/1313 depe
+ndencies 206/418 modules 129 active 
+ babel-loader › packages/c-react/src/component/textarea/stories.tsx
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (35%) 5/11 entries 1274/1355 depe
+ndencies 215/431 modules 138 active 
+ node_modules/lodash/isObject.js
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (35%) 5/11 entries 1379/1451 depe
+ndencies 221/458 modules 156 active 
+ babel-loader › packages/c-react/src/component/inner_layer/index.ts
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (35%) 5/11 entries 1471/1548 depe
+ndencies 228/498 modules 183 active 
+ babel-loader › packages/c-react/src/component/nav/index.ts
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (35%) 5/11 entries 1557/1671 depe
+ndencies 231/520 modules 217 active 
+ babel-loader › packages/c-react/src/component/calendar/range_calendar.tsx
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (35%) 5/11 entries 1702/1792 depe
+ndencies 259/553 modules 213 active 
+ ...ules/@tarojs/webpack5-runner/node_modules/regenerator-runtime/runtime-modu
+le.js
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (35%) 5/11 entries 1878/1968 depe
+ndencies 290/595 modules 232 active 
+ babel-loader › packages/c-react/src/component/search/page.tsx
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (35%) 5/11 entries 2280/2314 depe
+ndencies 303/767 modules 234 active 
+ node_modules/lodash/_listCacheHas.js
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (34%) 5/11 entries 2350/2366 depe
+ndencies 316/777 modules 259 active 
+ node_modules/lodash/eq.js
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (35%) 5/11 entries 2605/2672 depe
+ndencies 393/786 modules 229 active 
+ node_modules/lodash/_memoizeCapped.js
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (34%) 5/11 entries 2685/2730 depe
+ndencies 417/813 modules 296 active 
+ node_modules/moment/dist/locale/mi.js
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (35%) 5/11 entries 2834/2876 depe
+ndencies 530/821 modules 277 active 
+ node_modules/lodash/_arrayAggregator.js
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (35%) 5/11 entries 2994/2998 depe
+ndencies 695/851 modules 145 active 
+ ...tcss-loader › packages/c-react/src/component/digital_keyboard/font/iconfon
+t.css
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (35%) 5/11 entries 3062/3065 depe
+ndencies 796/865 modules 69 active 
+ node_modules/lodash/_basePick.js
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (35%) 5/11 entries 3125/3131 depe
+ndencies 832/880 modules 46 active 
+ ...es/@tarojs/webpack5-runner/node_modules/css-loader/dist/runtime/noSourceMa
+ps.js
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (70%) finish module graph 
+ InnerGraphPlugin
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (75%) chunk optimization 
+ SplitChunksPlugin
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (87%)  
+ code generation
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (88%)  
+ runtime requirements
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (92%) asset processing 
+ CssMinimizerPlugin
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (92%) asset processing 
+ RealContentHashPlugin
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (92%) asset processing 
+ TaroMiniPlugin
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+✖ Webpack
+  Compiled with some errors in 6.28s
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+⚠️ Warnings: 
+
+ModuleDependencyWarning: export 'Text' (imported as 'Text') was not found in '../text/text' (possible exports: default)
+
+ModuleDependencyWarning: export 'Text' (imported as 'Text') was not found in '../text/text' (possible exports: default)
+
+ModuleDependencyWarning: export 'Text' (imported as 'Text') was not found in '../text/text' (possible exports: default)
+
+✖ Errors: 
+
+resolve '/Users/xujiahao/Desktop/workspace/gm-mobile/mini-program/src/pages/taro4_compat/index' in '/Users/xujiahao/Desktop/workspace/gm-mobile/mini-program/src'
+  using description file: /Users/xujiahao/Desktop/workspace/gm-mobile/package.json (relative path: ./mini-program/src)
+    Field 'browser' doesn't contain a valid alias configuration
+    root path /Users/xujiahao/Desktop/workspace/gm-mobile
+      using description file: /Users/xujiahao/Desktop/workspace/gm-mobile/package.json (relative path: ./Users/xujiahao/Desktop/workspace/gm-mobile/mini-program/src/pages/taro4_compat/index)
+        no extension
+          Field 'browser' doesn't contain a valid alias configuration
+          /Users/xujiahao/Desktop/workspace/gm-mobile/Users/xujiahao/Desktop/workspace/gm-mobile/mini-program/src/pages/taro4_compat/index doesn't exist
+        .js
+          Field 'browser' doesn't contain a valid alias configuration
+          /Users/xujiahao/Desktop/workspace/gm-mobile/Users/xujiahao/Desktop/workspace/gm-mobile/mini-program/src/pages/taro4_compat/index.js doesn't exist
+        .jsx
+          Field 'browser' doesn't contain a valid alias configuration
+          /Users/xujiahao/Desktop/workspace/gm-mobile/Users/xujiahao/Desktop/workspace/gm-mobile/mini-program/src/pages/taro4_compat/index.jsx doesn't exist
+        .ts
+          Field 'browser' doesn't contain a valid alias configuration
+          /Users/xujiahao/Desktop/workspace/gm-mobile/Users/xujiahao/Desktop/workspace/gm-mobile/mini-program/src/pages/taro4_compat/index.ts doesn't exist
+        .tsx
+          Field 'browser' doesn't contain a valid alias configuration
+          /Users/xujiahao/Desktop/workspace/gm-mobile/Users/xujiahao/Desktop/workspace/gm-mobile/mini-program/src/pages/taro4_compat/index.tsx doesn't exist
+        .mjs
+          Field 'browser' doesn't contain a valid alias configuration
+          /Users/xujiahao/Desktop/workspace/gm-mobile/Users/xujiahao/Desktop/workspace/gm-mobile/mini-program/src/pages/taro4_compat/index.mjs doesn't exist
+        .vue
+          Field 'browser' doesn't contain a valid alias configuration
+          /Users/xujiahao/Desktop/workspace/gm-mobile/Users/xujiahao/Desktop/workspace/gm-mobile/mini-program/src/pages/taro4_compat/index.vue doesn't exist
+        as directory
+          /Users/xujiahao/Desktop/workspace/gm-mobile/Users/xujiahao/Desktop/workspace/gm-mobile/mini-program/src/pages/taro4_compat/index doesn't exist
+    using description file: /Users/xujiahao/Desktop/workspace/gm-mobile/package.json (relative path: ./mini-program/src/pages/taro4_compat/index)
+      no extension
+        Field 'browser' doesn't contain a valid alias configuration
+        /Users/xujiahao/Desktop/workspace/gm-mobile/mini-program/src/pages/taro4_compat/index doesn't exist
+      .js
+        Field 'browser' doesn't contain a valid alias configuration
+        /Users/xujiahao/Desktop/workspace/gm-mobile/mini-program/src/pages/taro4_compat/index.js doesn't exist
+      .jsx
+        Field 'browser' doesn't contain a valid alias configuration
+        /Users/xujiahao/Desktop/workspace/gm-mobile/mini-program/src/pages/taro4_compat/index.jsx doesn't exist
+      .ts
+        Field 'browser' doesn't contain a valid alias configuration
+        /Users/xujiahao/Desktop/workspace/gm-mobile/mini-program/src/pages/taro4_compat/index.ts doesn't exist
+      .tsx
+        Field 'browser' doesn't contain a valid alias configuration
+        /Users/xujiahao/Desktop/workspace/gm-mobile/mini-program/src/pages/taro4_compat/index.tsx doesn't exist
+      .mjs
+        Field 'browser' doesn't contain a valid alias configuration
+        /Users/xujiahao/Desktop/workspace/gm-mobile/mini-program/src/pages/taro4_compat/index.mjs doesn't exist
+      .vue
+        Field 'browser' doesn't contain a valid alias configuration
+        /Users/xujiahao/Desktop/workspace/gm-mobile/mini-program/src/pages/taro4_compat/index.vue doesn't exist
+      as directory
+        /Users/xujiahao/Desktop/workspace/gm-mobile/mini-program/src/pages/taro4_compat/index doesn't exist
+
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.

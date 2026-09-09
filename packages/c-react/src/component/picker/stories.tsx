@@ -174,7 +174,7 @@ const store = observable({
 const selectStore = observable({
   data: selectData,
   value: null,
-  pickerv1Value: undefined,
+  pickerv1Value: undefined as string | undefined,
   setValue(v: any) {
     this.value = v
   },
@@ -272,7 +272,7 @@ export const PickerV1 = () => {
     <TempPickerV1<string>
       data={selectStore.data.slice()}
       value={selectStore.pickerv1Value}
-      onChange={(value) => selectStore.onPickerv1Change(value)}
+      onChange={(value) => selectStore.onPickerv1Change(value as string)}
       valueArr={false}
       placeholder='请选择区域'
     />

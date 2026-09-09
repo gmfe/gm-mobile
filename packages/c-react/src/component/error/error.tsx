@@ -3,7 +3,6 @@ import classNames from 'classnames'
 import _ from 'lodash'
 import { View } from '../view'
 import { ErrorProps } from './types'
-import { Text } from '../text'
 
 export const Error: FC<ErrorProps> = ({ className, topLine, children }) => {
   return children ? (

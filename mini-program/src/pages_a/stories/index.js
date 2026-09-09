@@ -32,7 +32,9 @@ const Index = () => {
       return require(`../../../../packages/c-service-time/src/component/${folder}/stories`)
     }
     if (packageName === 'c-tool') {
-      return require(`../../../../packages/c-tool/src/${folder}/stories`)
+      // 目录约定 src/<folder>/stories 在 c-tool 下不存在，改为静态 require 实际文件，
+      // 同时避免 Taro 4 MultiPlatformPlugin 将 context 根重写为 main 文件导致解析失败
+      return require('../../../../packages/c-tool/src/is.stories.tsx')
     }
     return require(`../../../../packages/mp/src/component/${folder}/stories`)
   }, [])

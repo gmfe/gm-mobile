@@ -3,7 +3,7 @@ import { Flex } from '../flex'
 import { View } from '../view'
 import { Draggable } from './index'
 
-export const normal = (args) => {
+export const normal = (args: React.ComponentProps<typeof Draggable>) => {
   return (
     <View
       className='m-bg-white m-container-full m-padding-20'

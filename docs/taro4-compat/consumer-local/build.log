@@ -1,0 +1,138 @@
+yarn run v1.22.22
+$ taro build --type weapp
+👽 Taro v4.2.1
+
+Tips:
+1. 建议开启持久化缓存功能，能有效提升二次编译速度，详情请参考: https://docs.taro.zone/docs/config-detail#cache。
+
+
+
+● Webpack █████████████████████████  (0%)  
+ 
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/6 entries 6/6 dependencie
+s 0/6 modules 1 active 
+ babel-loader › src/app.config.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (19%) 1/6 entries 6/6 dependencie
+s 1/6 modules 5 active 
+ ...l-loader › node_modules/@tarojs/webpack5-runner/dist/template/custom-wrapp
+er.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 22/38 dependenc
+ies 3/17 modules 14 active 
+ css-loader › postcss-loader › less-loader › src/app.less
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 34/88 dependenc
+ies 3/25 modules 17 active 
+ babel-loader › node_modules/@tarojs/runtime/dist/env.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 200/272 depende
+ncies 15/69 modules 48 active 
+ ...ate/tmp/gm-taro4-fixture-2UH7/node_modules/@babel/runtime/helpers/esm/type
+of.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 299/371 depende
+ncies 22/92 modules 69 active 
+ ...m-taro4-fixture-2UH7/node_modules/@babel/runtime/helpers/esm/nonIterableRe
+st.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 366/423 depende
+ncies 44/116 modules 62 active 
+ ...rivate/tmp/gm-taro4-fixture-2UH7/node_modules/@babel/runtime/helpers/esm/s
+et.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 2/6 entries 450/455 depende
+ncies 89/166 modules 35 active 
+ ....ts
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (46%) 4/6 entries 457/541 depende
+ncies 112/169 modules 56 active 
+ babel-loader › node_modules/@tarojs/api/dist/env.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (46%) 4/6 entries 960/1044 depend
+encies 125/260 modules 111 active 
+ babel-loader › node_modules/@tarojs/api/dist/interceptor/chain.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (46%) 4/6 entries 1077/1109 depen
+dencies 144/267 modules 122 active 
+ ...ode_modules/@gm-mobile/c-react/src/component/picker/component/picker_colum
+n.tsx
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (46%) 4/6 entries 1107/1126 depen
+dencies 201/275 modules 71 active 
+ ...loader › node_modules/@gm-mobile/c-react/src/component/calendar/months_lis
+t.tsx
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (46%) 4/6 entries 1145/1163 depen
+dencies 210/282 modules 72 active 
+ babel-loader › node_modules/@gm-mobile/c-react/src/hooks/use_form/index.ts
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (46%) 4/6 entries 1429/1449 depen
+dencies 233/432 modules 62 active 
+ babel-loader › node_modules/@gm-mobile/c-tool/src/group_by_with_index.ts
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (46%) 4/6 entries 1546/1609 depen
+dencies 328/444 modules 116 active 
+ babel-loader › node_modules/@gm-mobile/c-react/src/hooks/use_form/utils.ts
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (46%) 4/6 entries 1648/1648 depen
+dencies 410/453 modules 43 active 
+ babel-loader › node_modules/@gm-mobile/c-tool/src/storage_factory/index.ts
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (55%) 5/6 entries 1662/1662 depen
+dencies 445/459 modules 13 active 
+ ... node_modules/@gm-mobile/c-react/src/component/dialog/common/choose.less|0
+|||}}
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (78%)  
+ chunk modules optimization
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (88%)  
+ runtime requirements
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (92%) asset processing 
+ CssMinimizerPlugin
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (92%) asset processing 
+ RealContentHashPlugin
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+✔ Webpack
+  Compiled successfully in 3.66s
+
+⚠️ Warnings: 
+
+AssetsOverSizeLimitWarning: asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+This can impact web performance.
+Assets: 
+  pages/index/index.js (614 KiB)
+    at Generator.next (<anonymous>)
+
+NoAsyncChunksWarning: webpack performance recommendations: 
+You can limit the size of your bundles by using import() or require.ensure to lazy load some parts of your application.
+For more info visit https://webpack.js.org/guides/code-splitting/
+    at Generator.next (<anonymous>)
+
+Done in 5.56s.

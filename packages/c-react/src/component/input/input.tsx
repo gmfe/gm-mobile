@@ -6,7 +6,11 @@ const Input = forwardRef<
   HTMLInputElement,
   Omit<InputProps, 'onInput' | 'value' | 'onChange'> &
     Partial<Pick<InputProps, 'value' | 'onChange'>>
->(({ isForm, className, value = '', ...rest }, ref) => {
+>(
+  (
+    { isForm, className, value = '', onConfirm, ...rest },
+    ref
+  ) => {
   return (
     <input
       ref={ref}

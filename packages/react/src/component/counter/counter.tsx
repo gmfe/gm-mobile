@@ -48,11 +48,12 @@ export const Counter: FC<CounterProps> = ({
   className,
   ...rest
 }) => {
-  const text2Number = (value: string) => {
+  const text2Number = (value: string): number => {
     if (value === '') {
       return 0
     }
-    return _.isNaN(parseFloat(value)) ? '' : parseFloat(value)
+    const num = parseFloat(value)
+    return _.isNaN(num) ? 0 : num
   }
 
   const plusDisabled = max && text2Number(value) >= max

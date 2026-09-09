@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import { Flex, Popup, View, Button } from '../../..'
+import { Flex, Popup, Button } from '../../..'
 import { noop } from 'lodash'
 import './base.less'
 

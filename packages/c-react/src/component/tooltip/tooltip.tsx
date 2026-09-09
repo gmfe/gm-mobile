@@ -9,6 +9,7 @@ import { Popup } from '../popup'
 import { View } from '../view'
 
 interface TooltipProps {
+  children?: ReactNode
   content: ReactNode
   onClick?: (e: MouseEvent<HTMLDivElement>) => void
   title?: string

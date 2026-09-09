@@ -109,7 +109,7 @@ LayoutRootV1.renderWith = (type, component, option) => {
   // 小程序没有 history，也不需要
   if (!is.weApp()) {
     const popstate = (e: any) => {
-      const typeStack = [
+      const typeStack: LayoutRootType[] = [
         LayoutRootType.INNER_LAYER,
         LayoutRootType.POPUP,
         LayoutRootType.PICKER,

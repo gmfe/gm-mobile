@@ -1,4 +1,4 @@
-import { ChangeEvent, CSSProperties, FormEvent, RefObject } from 'react'
+import { ChangeEvent, CSSProperties, FocusEvent } from 'react'
 import { BaseEventOrig } from '@tarojs/components'
 import { InputProps as TaroInputProps } from '@tarojs/components/types/Input'
 
@@ -11,7 +11,7 @@ type InputPasswordProps = Omit<InputProps, 'onInput' | 'value' | 'onChange'> &
 
 interface InputProps {
   value: string
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
   isForm?: boolean
   focus?: boolean
   /** 注意部分小程序特有 */
@@ -22,12 +22,24 @@ interface InputProps {
   /** 小程序特有 */
   autoFocus?: boolean
   /** 小程序特有 */
-  onConfirm?: (e: FormEvent<HTMLFormElement>) => void
+  onConfirm?: (e: BaseEventOrig<TaroInputProps.inputValueEventDetail>) => void
   /** 小程序特有 */
   adjustPosition?: boolean
 
   /** 小程序特有 */
   onInput?: (e: BaseEventOrig<TaroInputProps.inputEventDetail>) => void
+  /** 小程序特有 */
+  onFocus?: (
+    e:
+      | BaseEventOrig<TaroInputProps.inputValueEventDetail>
+      | FocusEvent<HTMLInputElement>
+  ) => void
+  /** 小程序特有 */
+  onBlur?: (
+    e:
+      | BaseEventOrig<TaroInputProps.inputValueEventDetail>
+      | FocusEvent<HTMLInputElement>
+  ) => void
   /** 小程序特有 */
   confirmType?: 'send' | 'search' | 'next' | 'go' | 'done'
   /** 小程序特有 */

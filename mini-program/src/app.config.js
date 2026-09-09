@@ -1,5 +1,5 @@
 export default {
-  pages: ['pages/index/index', 'pages/mp/index'],
+  pages: ['pages/index/index', 'pages/mp/index', 'pages/taro4_compat/index'],
   subpackages: [
     {
       root: 'pages_a',

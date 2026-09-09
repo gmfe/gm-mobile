@@ -90,11 +90,12 @@ _.each(serviceTimeReq.keys(), (key) => {
   })
 })
 
-const toolCom = require.context(
-  '../../../../packages/c-tool/src',
-  true,
-  /stories\.(js|tsx)$/
-)
+// Taro 4 的 MultiPlatformPlugin 会把该目录的 require.context 请求重写为
+// main 字段指向的文件导致目录解析失败；c-tool 下仅一个 stories，改为静态 require
+const toolCom = {
+  keys: () => ['./is.stories.tsx'],
+  './is.stories.tsx': require('../../../../packages/c-tool/src/is.stories.tsx'),
+}
 
 _.each(toolCom.keys(), (key) => {
   storiesList.push({

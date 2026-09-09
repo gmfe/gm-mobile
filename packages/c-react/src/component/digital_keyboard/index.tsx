@@ -76,7 +76,6 @@ export class DigitalKeyboard {
             value={this.form[this.active]}
             onInput={(value, btn) => {
               if (typeof wx !== 'undefined') wx.vibrateShort({ type: 'light' })
-              const oldValue = value
               // rewriteMode
               if (state.needClear) {
                 setState((state) => {
@@ -177,7 +176,7 @@ export class DigitalKeyboard {
       new DKBtn({
         label: '下一个',
         className: 'm-text-black btn-clear',
-        fn: (value) => {
+        fn: () => {
           this.next()
           return this.form[this.active]
         },
@@ -186,7 +185,7 @@ export class DigitalKeyboard {
         label: '确定',
         flex: 2,
         className: 'btn-ok m-text-white',
-        fn: (value) => {
+        fn: () => {
           return this.form[this.active]
         },
       }),

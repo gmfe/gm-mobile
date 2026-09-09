@@ -1,4 +1,6 @@
-import { ChangeEvent, CSSProperties, LegacyRef, Ref, RefObject } from 'react'
+import { ChangeEvent, CSSProperties, RefObject } from 'react'
+import { BaseEventOrig } from '@tarojs/components'
+import { TextareaProps as TaroTextareaProps } from '@tarojs/components/types/Textarea'
 
 interface BaseTextareaProps {
   value?: string
@@ -11,6 +13,8 @@ interface BaseTextareaProps {
   autoHeight?: boolean
   /** 小程序 onInput => onChange */
   onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void
+  /** 小程序特有 */
+  onInput?: (event: BaseEventOrig<TaroTextareaProps.onInputEventDetail>) => void
   className?: string
   style?: CSSProperties
   childRef?: RefObject<HTMLTextAreaElement>

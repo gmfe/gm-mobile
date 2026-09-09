@@ -1,4 +1,4 @@
-import React, { memo, FC } from 'react'
+import React, { FC } from 'react'
 import { View } from '@tarojs/components'
 import classNames from 'classnames'
 import { ViewProps } from '@tarojs/components/types/View'

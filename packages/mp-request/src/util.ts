@@ -36,7 +36,7 @@ function atob(s: string): any {
     // base64 -> utf-8
     return JSON.parse(decode(s))
   } catch (error) {
-    console.warn(error.message)
+    console.warn((error as Error).message)
     return null
   }
 }

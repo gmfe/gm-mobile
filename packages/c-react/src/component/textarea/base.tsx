@@ -4,7 +4,7 @@ import _ from 'lodash'
 import { BaseTextareaProps } from './types'
 
 const Base = forwardRef<HTMLTextAreaElement, BaseTextareaProps>(
-  ({ onChange = _.noop, ...rest }, ref) => {
+  ({ onChange = _.noop, onInput, ...rest }, ref) => {
     return <textarea ref={ref} {...rest} onChange={onChange} />
   }
 )

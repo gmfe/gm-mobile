@@ -12,7 +12,7 @@ export function initAuth(url: string, field: string) {
 
   instance.interceptors.request.use((config) => {
     if (!accessToken) {
-      accessToken = LocalStorage.get(accessTokenKey)
+      accessToken = LocalStorage.get(accessTokenKey) || undefined
     }
     if (accessToken) {
       config.headers.authorization = accessToken

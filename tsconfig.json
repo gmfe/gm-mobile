@@ -7,9 +7,13 @@
   "compilerOptions": {
     "jsx": "react",
     "importsNotUsedAsValues": "preserve",
+    "ignoreDeprecations": "5.0",
+    "skipLibCheck": true,
     "esModuleInterop": true,
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["mini-program/*"]
+      "@/*": ["mini-program/*"],
+      "@gm-mobile/*": ["packages/*"]
     }
   },
   "include": [

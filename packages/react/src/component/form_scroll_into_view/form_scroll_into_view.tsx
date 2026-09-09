@@ -1,8 +1,12 @@
-import { Component, cloneElement, ReactElement } from 'react'
+import { Component, cloneElement, ReactElement, ReactNode } from 'react'
 import { findDOMNode } from 'react-dom'
 import { is } from '@gm-mobile/c-tool'
 
-export class FormScrollIntoView extends Component {
+interface FormScrollIntoViewProps {
+  children?: ReactNode
+}
+
+export class FormScrollIntoView extends Component<FormScrollIntoViewProps> {
   __mounted = false
 
   componentWillUnmount() {

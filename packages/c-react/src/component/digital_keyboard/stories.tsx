@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { Story } from '@storybook/react'
 import { TextField } from '../text_field'
 import { DigitalKeyboard, DigitalKeyboardProps } from '.'
@@ -245,7 +245,7 @@ export const CustomActions = () => {
         new DKBtn({
           className: 'm-bg-accent m-text-white',
           label: '自定义',
-          fn: (value) => {
+          fn: () => {
             Toast.success({ children: '按下了自定义按钮' })
             return '一键输入自定义内容'
           },
@@ -254,7 +254,7 @@ export const CustomActions = () => {
           label: '确认',
           flex: 3,
           className: 'm-bg-primary m-text-white',
-          fn: (value) => {
+          fn: () => {
             this.hide()
             return this.get(this.active)
           },

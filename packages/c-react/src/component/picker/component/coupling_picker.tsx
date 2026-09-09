@@ -12,7 +12,7 @@ class CouplingPicker extends Component<
 > {
   static defaultProps = {
     itemHeight: 40,
-    renderOption: (dataIndex: number, option: Option) => option.text,
+    renderOption: (_dataIndex: number, option: Option) => option.text,
   }
 
   readonly state: CouplingPickerState = {
@@ -40,7 +40,7 @@ class CouplingPicker extends Component<
       itemHeight = 40,
       onChange, // eslint-disable-line
       className,
-      renderOption = (dataIndex: number, option: Option) => option.text,
+      renderOption = (_dataIndex: number, option: Option) => option.text,
       ...rest
     } = this.props
 

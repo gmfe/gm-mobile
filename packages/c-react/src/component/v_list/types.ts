@@ -1,6 +1,8 @@
+import { ReactNode } from 'react'
 import { ScrollIntoViewProps } from '../scroll_into_view'
 
 interface VListItemProps {
+  children?: ReactNode
   itemId: string
   itemHeight: number
   itemIndex: number
@@ -31,7 +33,7 @@ interface VListProps extends Omit<ScrollIntoViewProps, 'targetId'> {
 }
 
 interface VListRef {
-  apiDoScrollToKey: (key: string) => void
+  apiDoScrollToKey: (key: string | number) => void
 }
 
 export type { VListItemProps, VListProps, VListRef }

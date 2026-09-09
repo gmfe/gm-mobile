@@ -12,7 +12,7 @@ export const Picker: FC<PickerProps> = ({
   itemHeight = 40,
   onChange,
   className,
-  renderOption = (dataIndex: number, option: Option) => option.text,
+  renderOption = (_dataIndex: number, option: Option) => option.text,
   headers,
   ...rest
 }) => {

@@ -13,7 +13,7 @@ import { noop } from 'lodash'
 import { useForm, UseFormProps, FormInstance } from '../../hooks'
 import { getRecordPartialObject, isFalsy } from '../../utils'
 import { FormContext, FormContextProps } from './context'
-import { RecordPartial, StringOrKeyofT, anyCallback } from '../../types'
+import { RecordPartial, StringOrKeyofT } from '../../types'
 
 export interface FormProps<K = any> extends UseFormProps<K> {
   /* 表单实例，可拿到一些方法 */
@@ -35,7 +35,7 @@ function Form<K = any>(props: FormProps<K>) {
     // 默认值
     initialValues = getRecordPartialObject<K, any>(),
     // 规格化配置
-    normalizes = getRecordPartialObject<K, anyCallback>(),
+    normalizes = {},
     // 表单提交时是否去除值为undefined, null, ''的项
     isIgnoreFalsy = true,
     isSubmitInit,
@@ -46,8 +46,6 @@ function Form<K = any>(props: FormProps<K>) {
     onFieldsChange = noop,
     // 表单提交的回调
     onSubmit: onTempSubmit,
-    onSubmitValidated,
-    ...res
   } = props
 
   const {

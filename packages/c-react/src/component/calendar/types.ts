@@ -53,8 +53,8 @@ interface BaseCalendarProps
   disabledDate?: (date: Date) => boolean
   /** 定义日历高度，默认400 */
   height?: number
-  /** 当min 和max 改变时是否滚动 */
-  canScrollWhenMaxOrMinChange: boolean
+  /** 当min 和max 改变时是否滚动，默认 false */
+  canScrollWhenMaxOrMinChange?: boolean
 }
 
 interface CalendarProps

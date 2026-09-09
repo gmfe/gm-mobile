@@ -6,35 +6,9 @@ import { VList, VListRef } from '../v_list'
 import Month from './month'
 import { CALENDAR_TYPE } from './util'
 import { MonthListProps } from './types'
-import usePreviousObject from './use_previous'
 
 // 目前只支持固定高度，定为265
 const MONTH_HEIGHT = 285
-
-function whichValueChanged(
-  prevArray: [Dayjs, Dayjs],
-  currentArray: [Dayjs, Dayjs]
-) {
-  const changes: number[] = []
-
-  if (!prevArray) {
-    return 0
-  }
-
-  if (!moment(prevArray[0]).isSame(moment(currentArray[0]))) {
-    changes.push(0)
-  }
-
-  if (!moment(prevArray[1]).isSame(moment(currentArray[1]))) {
-    changes.push(1)
-  }
-
-  /** 没有变化 */
-  if (changes.length === 0) return 0
-  /** 两个都变化了 */
-  if (changes.length === 2) return 1
-  return 0
-}
 
 const MonthsList: FC<MonthListProps> = ({
   min,
@@ -49,7 +23,6 @@ const MonthsList: FC<MonthListProps> = ({
   itemHeight = MONTH_HEIGHT,
 }) => {
   const refList = useRef<VListRef>(null)
-  const previous = usePreviousObject(selected)
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const computedMonthList = () => {
@@ -80,7 +53,7 @@ const MonthsList: FC<MonthListProps> = ({
   }
   const monthsList = computedMonthList()
 
-  const scrollToTarget = (flag: boolean) => {
+  const scrollToTarget = () => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current)
     }
@@ -100,7 +73,7 @@ const MonthsList: FC<MonthListProps> = ({
   }
 
   useEffect(() => {
-    scrollToTarget(true)
+    scrollToTarget()
   }, [])
 
   useEffect(() => {

@@ -7,7 +7,7 @@ import { InputProps } from './type'
 // 做了 onInput 到 onChange 的改变
 
 const Input: FC<Omit<InputProps, 'type'>> = forwardRef(
-  ({ onChange, isForm, onInput, focus, className, ...rest }, ref) => {
+  ({ onChange, isForm, onInput, focus, type, className, ...rest }, ref) => {
     const handleChange = (
       e:
         | BaseEventOrig<TaroInputProps.inputEventDetail>
@@ -19,6 +19,7 @@ const Input: FC<Omit<InputProps, 'type'>> = forwardRef(
     return (
       <TInput
         {...rest}
+        type={type as TaroInputProps['type']}
         ref={ref}
         onInput={handleChange}
         placeholderClass='m-text-placeholder'

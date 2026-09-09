@@ -18,8 +18,8 @@ interface CounterMPProps
   /** 最大值 */
   max?: number
   precision?: number
-  /** inputType */
-  inputType: 'digit' | 'number'
+  /** inputType，默认 digit */
+  inputType?: 'digit' | 'number'
   /** 关闭键盘上下限校验 */
   closeCheck?: boolean
   /** 获取焦点, 微信版本 6.3.30, focus 属性设置无效 */
@@ -39,11 +39,12 @@ interface CounterMPErrorMsg {
   precision?: number
 }
 
-const text2Number = (value: string) => {
+const text2Number = (value: string): number => {
   if (value === '') {
     return 0
   }
-  return _.isNaN(parseFloat(value)) ? '' : parseFloat(value)
+  const num = parseFloat(value)
+  return _.isNaN(num) ? 0 : num
 }
 
 const handleErrorMsg = ({ value, min, max, precision }: CounterMPErrorMsg) => {

@@ -4,6 +4,7 @@ import React, {
   CSSProperties,
   FC,
   MouseEvent,
+  ReactNode,
   useEffect,
   useState,
 } from 'react'
@@ -23,6 +24,7 @@ export const cancelDrag = (e: any) => {
 }
 
 interface DraggableProps {
+  children?: ReactNode
   width: string
   height: string
   /** 初始left值 */
@@ -52,9 +54,9 @@ interface DraggableProps {
   /** 默认中间 */
   center?: boolean
   /** 开始移动 */
-  onBegin?: (e: ITouchEvent<any>) => void
+  onBegin?: (e: ITouchEvent) => void
   /** 结束移动 */
-  onEnd?: (e: ITouchEvent<any>) => void
+  onEnd?: (e: ITouchEvent) => void
   /** 自动贴边 */
   autoCling?: boolean
 }
@@ -151,17 +153,17 @@ export const Draggable: FC<DraggableProps> = ({
     }
     setPosition(x, y, true)
   }, [])
-  start = (e: ITouchEvent<any>) => {
+  start = (e: ITouchEvent) => {
     e.stopPropagation()
     setState((state) => ({ ...state, moving: true }))
     onBegin && onBegin(e)
   }
-  move = (e: ITouchEvent<any>) => {
+  move = (e: ITouchEvent) => {
     e.stopPropagation()
     const { pageX: x, pageY: y } = e.touches[0]
     setPosition(x - w / 2, y - h / 2)
   }
-  end = (e: ITouchEvent<any>) => {
+  end = (e: ITouchEvent) => {
     setState((state) => ({ ...state, moving: false }))
     onEnd && onEnd(e)
     if (autoCling) {

@@ -33,7 +33,7 @@ export const Max = () => {
         max={moment()
           .weekday(0)
           .startOf('day')
-          .days(moment().days() + 7)
+          .add(moment().day() + 7, 'day')
           .toDate()}
       />
     </View>

@@ -22,18 +22,14 @@ const getCycList = ({
 }: any) => {
   let start = moment()
     .add(receiveStartSpan, 'day')
-    .set({
-      hours: r_start.split(':')[0],
-      minute: r_start.split(':')[1],
-    })
+    .set('hours', Number(r_start.split(':')[0]))
+    .set('minute', Number(r_start.split(':')[1]))
     .startOf('minute')
 
   const end = moment()
     .add(receiveEndSpan, 'day')
-    .set({
-      hours: r_end.split(':')[0],
-      minute: r_end.split(':')[1],
-    })
+    .set('hours', Number(r_end.split(':')[0]))
+    .set('minute', Number(r_end.split(':')[1]))
     .startOf('minute')
 
   const result = []
@@ -73,10 +69,8 @@ const getStartCycleList = (cycleList: any[]) => {
 const getEndCycleList = (startValue: any[], cycleList: any[]) => {
   const startMoment = moment()
     .add(startValue[0], 'day')
-    .set({
-      hours: startValue[1].split(':')[0],
-      minute: startValue[1].split(':')[1],
-    })
+    .set('hours', Number(startValue[1].split(':')[0]))
+    .set('minute', Number(startValue[1].split(':')[1]))
   const endDates = _.map(cycleList, (list) => {
     return _.filter(list, (v) => v.moment > startMoment)
   })

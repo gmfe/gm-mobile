@@ -1,6 +1,7 @@
-import { CSSProperties, UIEvent } from 'react'
+import { CSSProperties, ReactNode, UIEvent } from 'react'
 
 interface ScrollIntoViewProps {
+  children?: ReactNode
   /** 滚动目标id */
   targetId: string
   onScroll?: (event: UIEvent<HTMLDivElement>) => void

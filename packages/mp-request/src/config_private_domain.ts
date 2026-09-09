@@ -18,7 +18,6 @@ export async function configPrivateDomain(defaultBaseUrl: string) {
       return config
     }
     const apiName = fullUrl.split('/').reverse()[0]
-    const origin = fullUrl.split('/').slice(0, 3).join('/')
     const form: any = /^\{/.test(data) ? JSON.parse(data) : {}
     switch (apiName) {
       case 'Token': {

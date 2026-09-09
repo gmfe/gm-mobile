@@ -11,6 +11,9 @@ const config = {
   },
   sourceRoot: 'mini-program/src',
   outputRoot: 'dist',
+  cache: {
+    enable: true,
+  },
   plugins: [],
   defineConstants: {
     __NAME__: '"none"',
@@ -22,19 +25,34 @@ const config = {
   framework: 'react',
   alias: {
     '@': path.resolve(__dirname, '..', 'mini-program/src'),
+    // 仓库未使用 workspaces/lerna link，包间引用指向本地源码
+    '@gm-mobile/c-business': path.resolve(__dirname, '..', 'packages/c-business'),
+    '@gm-mobile/c-font': path.resolve(__dirname, '..', 'packages/c-font'),
+    '@gm-mobile/c-react': path.resolve(__dirname, '..', 'packages/c-react'),
+    '@gm-mobile/c-tool': path.resolve(__dirname, '..', 'packages/c-tool'),
+    '@gm-mobile/locales': path.resolve(__dirname, '..', 'packages/locales'),
+    '@gm-mobile/mp-business': path.resolve(__dirname, '..', 'packages/mp-business'),
+    '@gm-mobile/mp-request': path.resolve(__dirname, '..', 'packages/mp-request'),
+    '@gm-mobile/mp': path.resolve(__dirname, '..', 'packages/mp'),
+    '@gm-mobile/react': path.resolve(__dirname, '..', 'packages/react'),
+  },
+  compiler: {
+    type: 'webpack5',
+    prebundle: {
+      enable: false,
+    },
   },
   mini: {
     compile: {
       include: [path.resolve(__dirname, '../packages')],
     },
     webpackChain(chain, webpack) {
-      // chain
-      //   .plugin('analyzer')
-      //   .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin, [])
-
-      chain
-        .plugin('ignorePlugin')
-        .use(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/))
+      chain.plugin('ignorePlugin').use(
+        new webpack.IgnorePlugin({
+          resourceRegExp: /^\.\/locale$/,
+          contextRegExp: /moment$/,
+        })
+      )
     },
     postcss: {
       pxtransform: {

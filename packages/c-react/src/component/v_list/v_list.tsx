@@ -93,7 +93,7 @@ export const VList = forwardRef<VListRef, VListProps>(
     const SCROLL_ITEM = `m-v-list-item-${tag.current}`
 
     useImperativeHandle(ref, () => ({
-      apiDoScrollToKey: (key: string) => {
+      apiDoScrollToKey: (key: string | number) => {
         setScrollTargetId(`${SCROLL_ITEM}-${key}`)
       },
     }))

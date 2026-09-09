@@ -7,9 +7,9 @@ import { pxTransform } from '@tarojs/taro'
 interface PageMPProps extends PageProps {
   /** 最大宽度，对超过最大宽度的页面做做居中变窄处理 */
   maxWidth?: number
-  onRefresh?: () => Promise<any>
+  onRefresh?: () => void | Promise<any>
   /** 上滑加载更多事件。如果promise返回一个空数组，表示没有更多了 */
-  onLoadMore?: () => Promise<Array<any> | undefined>
+  onLoadMore?: () => void | Promise<Array<any> | undefined>
 }
 
 const PageMP: FC<PageMPProps> = ({

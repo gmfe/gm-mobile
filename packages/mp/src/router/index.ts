@@ -1,10 +1,4 @@
-import Taro, {
-  navigateBack,
-  navigateTo,
-  switchTab,
-  reLaunch,
-  redirectTo,
-} from '@tarojs/taro'
+import Taro from '@tarojs/taro'
 import { omit } from 'lodash'
 import { Events } from '@gm-mobile/c-tool'
 
@@ -83,12 +77,12 @@ export default class Router {
   private _auth?: (from: string, to: string) => boolean
 
   /** 监听路由变化,注意小程序默认导航栏的左上方按钮返回的事件监听不到，进入不了下面的回调 */
-  onRouteChange({ detail: route }: { detail: RouteEvent }) {}
+  onRouteChange() {}
 
   private _beforeChange(
     /** 各种路由跳转方法传入的option */
     option: any,
-    next: () => Promise<Taro.General.CallbackResult>
+    next: () => Promise<TaroGeneral.CallbackResult>
   ) {
     const parsed = this._parse(option)
     wx.setStorageSync(PAGE_URL_LAST_TIME, parsed)
@@ -108,11 +102,13 @@ export default class Router {
 
   /** 跳转到指定路径，返回值为跳转后页面中调用navigateBack的传的data */
   navigateTo<T>(
-    option: string | (RouteExtraOption & navigateTo.Option & { data?: any })
+    option:
+      | string
+      | (RouteExtraOption & Taro.navigateTo.Option & { data?: any })
   ): Promise<T> {
     this.currentAction = 'navigateTo'
-    const parsed = this._parse<navigateTo.Option>(option)
-    return new Promise((resolve, reject) => {
+    const parsed = this._parse<Taro.navigateTo.Option>(option)
+    return new Promise((resolve) => {
       const from = this.route.path
       const to = this._urlToPath(parsed.url)
       this._transition[to] = {
@@ -132,7 +128,7 @@ export default class Router {
   }
 
   navigateBack(
-    option?: RouteExtraOption & navigateBack.Option & { data?: any }
+    option?: RouteExtraOption & Taro.navigateBack.Option & { data?: any }
   ) {
     this.currentAction = 'navigateBack'
     const from = this.route.path
@@ -152,21 +148,21 @@ export default class Router {
     return this._beforeChange(option, () => Taro.navigateBack(option))
   }
 
-  switchTab(option: string | (RouteExtraOption & switchTab.Option)) {
+  switchTab(option: string | (RouteExtraOption & Taro.switchTab.Option)) {
     this.currentAction = 'switchTab'
-    const parsed = this._parse<switchTab.Option>(option)
+    const parsed = this._parse<Taro.switchTab.Option>(option)
     return this._beforeChange(option, () => Taro.switchTab(parsed))
   }
 
-  redirectTo(option: string | (RouteExtraOption & redirectTo.Option)) {
+  redirectTo(option: string | (RouteExtraOption & Taro.redirectTo.Option)) {
     this.currentAction = 'redirectTo'
-    const parsed = this._parse<redirectTo.Option>(option)
+    const parsed = this._parse<Taro.redirectTo.Option>(option)
     return this._beforeChange(option, () => Taro.redirectTo(parsed))
   }
 
-  reLaunch(option: string | (RouteExtraOption & reLaunch.Option)) {
+  reLaunch(option: string | (RouteExtraOption & Taro.reLaunch.Option)) {
     this.currentAction = 'reLaunch'
-    const parsed = this._parse<reLaunch.Option>(option)
+    const parsed = this._parse<Taro.reLaunch.Option>(option)
     Taro.reLaunch(parsed)
   }
 
@@ -198,7 +194,7 @@ export default class Router {
       case 'object': {
         const [path, paramStr = ''] = ((option as any).url || '').split('?')
         const options: any = paramStr.split('&').reduce(
-          (pre: string, cur: string, i: number) => {
+          (pre: string, cur: string) => {
             const arr = cur.split('=')
             return Object.assign(pre, {
               [arr[0]]: encodeURI(arr[1]),

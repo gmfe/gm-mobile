@@ -9,7 +9,7 @@ const InputMaxLength = forwardRef<HTMLInputElement, InputMaxLengthProps>(
       <View className='m-input-max-length'>
         <Input ref={ref} {...rest} value={value} />
         <View className='m-input-max-length-length'>
-          {value.length}/{maxLength}
+          {(value || '').length}/{maxLength}
         </View>
       </View>
     )

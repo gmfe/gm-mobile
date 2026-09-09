@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 
 interface ToastProps {
+  children?: ReactNode
   /** 在组件上没意义，单纯给静态方法调用参考 */
   time?: number
   type?: 'success' | 'warning' | 'loading'

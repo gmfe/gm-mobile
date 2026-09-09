@@ -1,5 +1,5 @@
 import { getLocale } from '@gm-mobile/locales'
-import React, { ChangeEvent, FC, FormEvent, MouseEvent, useState } from 'react'
+import React, { ChangeEvent, FC, useState } from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
 import Input from '../input/input'
@@ -28,9 +28,7 @@ const Search: FC<SearchProps> = ({
   const searchTypeText =
     searchOptions?.find((item) => item.key === searchType)?.name || '请选择'
 
-  const handleSearch = (
-    e: FormEvent<HTMLFormElement> | MouseEvent<HTMLButtonElement>
-  ) => {
+  const handleSearch = (e: { preventDefault: () => void }) => {
     e.preventDefault()
 
     onSearch && onSearch(value)

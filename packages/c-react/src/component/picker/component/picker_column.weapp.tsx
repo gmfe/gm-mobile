@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
-import { View, ITouchEvent } from '@tarojs/components'
+import { View, CommonEvent, ITouchEvent } from '@tarojs/components'
 
 import { Option, PickerColumnProps, PickerColumnState } from './types'
 
@@ -34,32 +34,45 @@ class PickerColumn extends Component<PickerColumnProps, PickerColumnState> {
     }
   }
 
-  readonly state: PickerColumnState = {
-    isMoving: false,
-    startTouchY: 0,
-    startScrollerTranslate: 0,
-    ...this.computeTranslate(this.props),
-  }
-
-  UNSAFE_componentWillReceiveProps(nextProps: PickerColumnProps) {
-    if (this.state.isMoving) {
-      return
+  // getDerivedStateFromProps 必须是纯函数；value 不在 options 中时的自动选中
+  // 属于渲染期副作用（React 18 不支持），不再触发，仅回退到第 0 项位置
+  static computeTranslateState(props: PickerColumnProps) {
+    const { options, value, itemHeight, columnHeight } = props
+    const selectedIndex = Math.max(
+      0,
+      _.findIndex(options, (option) => option.value === value)
+    )
+    return {
+      scrollerTranslate:
+        columnHeight / 2 - itemHeight / 2 - selectedIndex * itemHeight,
+      minTranslate:
+        columnHeight / 2 - itemHeight * options.length + itemHeight / 2,
+      maxTranslate: columnHeight / 2 - itemHeight / 2,
     }
-    this.setState(this.computeTranslate(nextProps))
   }
 
-  private _handleTouchStart = (event: ITouchEvent) => {
-    const startTouchY = event.touches[0].pageY
+  static getDerivedStateFromProps(
+    nextProps: PickerColumnProps,
+    state: PickerColumnState
+  ) {
+    if (state.isMoving) {
+      return null
+    }
+    return PickerColumn.computeTranslateState(nextProps)
+  }
+
+  private _handleTouchStart = (event: CommonEvent) => {
+    const startTouchY = (event as ITouchEvent).touches[0].pageY
     this.setState(({ scrollerTranslate }) => ({
       startTouchY,
       startScrollerTranslate: scrollerTranslate,
     }))
   }
 
-  private _handleTouchMove = (event: ITouchEvent) => {
+  private _handleTouchMove = (event: CommonEvent) => {
     event.preventDefault()
 
-    const touchY = event.touches[0].pageY
+    const touchY = (event as ITouchEvent).touches[0].pageY
     this.setState((prevState: PickerColumnState) => {
       if (!prevState.isMoving) {
         return {

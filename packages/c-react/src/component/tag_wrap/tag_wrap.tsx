@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import { View } from '../view'
 
 interface TagWrapProps {
+  children?: ReactNode
   tag: string | ReactNode
   bottom?: boolean
   block?: boolean

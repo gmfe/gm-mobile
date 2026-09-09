@@ -15,6 +15,7 @@ interface LazyProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 interface LazyListItemProps {
+  children?: ReactNode
   targetId: string
   minHeight: number
   delay?: number

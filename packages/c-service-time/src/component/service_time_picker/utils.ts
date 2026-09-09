@@ -93,7 +93,7 @@ function getFlag(m: any) {
   return Math.floor((m - (moment().startOf('day') as any)) / (3600 * 24 * 1000))
 }
 
-function getTime(spanTime: DurationInputArg1, timeStr: any, orderTime = null) {
+function getTime(spanTime: number, timeStr: any, orderTime = null) {
   const time = orderTime ? moment(orderTime) : moment()
   return time
     .add(spanTime, 'days')
@@ -104,7 +104,7 @@ function getTime(spanTime: DurationInputArg1, timeStr: any, orderTime = null) {
 
 // 获取一个周期的时间
 function getOneCycleTimes(
-  spanTime: DurationInputArg1,
+  spanTime: number,
   receive_time_limit: any,
   orderTime = null
 ) {

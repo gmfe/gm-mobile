@@ -24,7 +24,7 @@ export const Normal = () => {
     diyValue: '',
   })
 
-  const handleCheckValue = ({ value, min, max }: CounterMPErrorMsg) => {
+  const handleCheckValue = ({ value }: CounterMPErrorMsg) => {
     if (+value > 10) {
       return '库存不足'
     }
