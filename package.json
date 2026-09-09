@@ -83,5 +83,6 @@
     "stylelint-config-standard": "^20.0.0",
     "url-loader": "^4.1.0",
     "webpack": "^4.43.0"
-  }
+  },
+  "packageManager": "yarn@1.2.0+sha512.6ea21fdf73d08134caf3c5a04b046d885bfdc8ec9060650d924f92d632279077e3d10194786abc1878e5cc76aadcf3eddeade879f59ba456e3f5106a209dd3df"
 }
