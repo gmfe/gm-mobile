@@ -3,7 +3,7 @@ import { Button, CouplingPicker, Flex } from '@gm-mobile/react'
 import _ from 'lodash'
 import moment from 'moment'
 import PropTypes from 'prop-types'
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import PickerStatics from './statics'
 import {
   cycleListToDayList,
@@ -11,6 +11,7 @@ import {
   getFlag,
   getReceiveTimeParams,
   getStartCycleList,
+  isWindowCrossUndelivery,
   processStartEndValuesWithCycleList,
 } from './utils'
 
@@ -51,7 +52,8 @@ const filterByUndeliveryTimes = (
   pickerList,
   isUndelivery,
   undeliveryTimes,
-  isStart = true
+  isStart = true,
+  startMoment = null
 ) => {
   if (isUndelivery !== 1 || !undeliveryTimes || undeliveryTimes.length === 0) {
     return pickerList
@@ -59,11 +61,17 @@ const filterByUndeliveryTimes = (
   return _.filter(
     _.map(pickerList, (item) => {
       const children = _.filter(item.children, (child) => {
-        return !isInUndeliveryRange(
-          child.date || child.moment,
-          undeliveryTimes,
-          isStart
-        )
+        const childMoment = child.date || child.moment
+        // 结束时间需保证 [开始, 结束] 整段不与不可配送时间段交叉，
+        // 否则会出现 13:00~18:00 这种包含 14:00~17:00 的可选项，确认时才报错
+        if (!isStart && startMoment) {
+          return !isWindowCrossUndelivery(
+            startMoment,
+            childMoment,
+            undeliveryTimes
+          )
+        }
+        return !isInUndeliveryRange(childMoment, undeliveryTimes, isStart)
       })
       return {
         ...item,
@@ -99,8 +107,13 @@ const cycleToPickerList = (cycleList) => {
   return pickerList
 }
 
-const getStartDateFromValues = (startValues, cycleList) => {
-  const startDatas = cycleToPickerList(getStartCycleList(cycleList))
+const getStartDateFromValues = (startValues, cycleList, filteredStartDatas) => {
+  // 优先用过滤不可配送后的可选项做查找与回退：
+  // 否则回退点可能落在不可配送时间段内（如 14:15），
+  // endDatas 会被整段过滤，弹层误显示「暂无可选收货时间」。
+  // 不传 filteredStartDatas 时行为与旧版一致
+  const startDatas =
+    filteredStartDatas || cycleToPickerList(getStartCycleList(cycleList))
   const one = _.find(startDatas, (v) => v.value === startValues[0])
   if (!one || !one.children || one.children.length === 0) {
     return startDatas.length > 0 && startDatas[0].children.length > 0
@@ -149,8 +162,8 @@ const ReceiveTimePicker = ({ onConfirm, order, enableUndeliveryFilter }) => {
   const [startValue, setStartValue] = useState(_startValue)
 
   const startValueDate = useMemo(() => {
-    return getStartDateFromValues(startValue, cycleList)
-  }, [startValue, cycleList])
+    return getStartDateFromValues(startValue, cycleList, startDatas)
+  }, [startValue, cycleList, startDatas])
   const endDatas = useMemo(() => {
     if (!startValueDate) return []
     const endDates = cycleToPickerList(
@@ -160,7 +173,8 @@ const ReceiveTimePicker = ({ onConfirm, order, enableUndeliveryFilter }) => {
       endDates,
       is_undelivery,
       undelivery_times,
-      false
+      false,
+      startValueDate
     )
   }, [startValueDate, cycleList, is_undelivery, undelivery_times])
 
@@ -173,6 +187,23 @@ const ReceiveTimePicker = ({ onConfirm, order, enableUndeliveryFilter }) => {
     _endValue = [endDatas[0].value, endDatas[0].children[0].value]
   }
   const [endValue, setEndValue] = useState(_endValue)
+
+  // 开始时间变化后，结束时间可能不再可选（如整段被不可配送时间段截断），需回退到第一个可选项
+  useEffect(() => {
+    if (endDatas.length === 0) {
+      return
+    }
+    const has = _.some(endDatas, (item) => {
+      if (item.value !== endValue[0]) {
+        return false
+      }
+      return _.some(item.children, (child) => child.value === endValue[1])
+    })
+    if (!has) {
+      setEndValue([endDatas[0].value, endDatas[0].children[0].value])
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [endDatas])
 
   const handleConfirm = () => {
     if (!hasAvailableTime) {
@@ -312,13 +343,19 @@ ReceiveTimePicker.verifyReceiveTime = (
   }
 
   // 检查是否有可用的结束时间
+  // 与弹层内部使用同一份过滤后的 startDatas 做回退，保证入口校验与弹层展示规则一致
   const startValue = [startDatas[0].value, startDatas[0].children[0].value]
-  const startValueDate = getStartDateFromValues(startValue, cycleList)
+  const startValueDate = getStartDateFromValues(
+    startValue,
+    cycleList,
+    startDatas
+  )
   const endDatas = filterByUndeliveryTimes(
     cycleToPickerList(getEndCycleList(startValueDate, cycleList)),
     is_undelivery,
     undelivery_times,
-    false
+    false,
+    startValueDate
   )
 
   const hasEndAvailableTime =

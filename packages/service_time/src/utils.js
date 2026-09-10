@@ -160,6 +160,7 @@ function getStartCycleList(cycleList) {
 
 // 获取开始后货时间的待选项。
 // 当开始选择后，自然有开始时间 startDate，根据此时间去查属于哪个周期，自然得到待选项
+// r_start/r_end 周期网格为硬边界：结束时间严格限制在开始时间所在周期内
 function getEndCycleList(startDate, cycleList) {
   let cycleIndex = 0
   _.each(cycleList, (list, i) => {
@@ -267,6 +268,44 @@ const convertDay2Bit = (flag) => {
   return 1 << (day - 1)
 }
 
+/**
+ * 判断 [startMoment, endMoment] 组成的收货时间段是否与不可配送时间段交叉
+ * 与商城侧 isValidReceiveTime 逻辑保持一致：
+ * 1、同一天：start < 不可配送结束 && end > 不可配送开始 即交叉
+ * 2、跨天：拆成开始日 [start, 当天最后] 与结束日 [零点, end] 两段分别判断
+ */
+function isWindowCrossUndelivery(startMoment, endMoment, undeliveryTimes) {
+  if (!undeliveryTimes || undeliveryTimes.length === 0) {
+    return false
+  }
+
+  const setHM = (m, timeStr) =>
+    m.set({
+      hours: timeStr.split(':')[0],
+      minute: timeStr.split(':')[1],
+    })
+
+  return _.some(undeliveryTimes, ({ start, end }) => {
+    if (moment(startMoment).isSame(endMoment, 'day')) {
+      const uStart = setHM(moment(startMoment), start)
+      const uEnd = setHM(moment(startMoment), end)
+      return startMoment.isBefore(uEnd) && endMoment.isAfter(uStart)
+    }
+
+    const uStart1 = setHM(moment(startMoment), start)
+    const uEnd1 = setHM(moment(startMoment), end)
+    const uStart2 = setHM(moment(endMoment), start)
+    const uEnd2 = setHM(moment(endMoment), end)
+
+    return (
+      (startMoment.isBefore(uEnd1) &&
+        moment(startMoment).endOf('day').isAfter(uStart1)) ||
+      (moment(endMoment).startOf('day').isBefore(uEnd2) &&
+        endMoment.isAfter(uStart2))
+    )
+  })
+}
+
 export {
   processReceiveTimeLimit,
   processStartEndValuesWithCycleList,
@@ -276,4 +315,5 @@ export {
   getEndCycleList,
   cycleListToDayList,
   getReceiveTimeParams,
+  isWindowCrossUndelivery,
 }
