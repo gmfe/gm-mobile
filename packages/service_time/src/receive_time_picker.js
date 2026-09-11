@@ -82,6 +82,38 @@ const filterByUndeliveryTimes = (
   )
 }
 
+// noEnd 模式下结束时间固定为「开始 + 一个间隔」，
+// 开始项需保证 [开始, 开始+间隔] 整段不与不可配送时段交叉（与手动模式结束列同一规则），
+// 否则计算出的固定结束时间会落在不可配送时段内
+const filterStartDatasForNoEnd = (
+  pickerList,
+  receiveTimeSpan,
+  isUndelivery,
+  undeliveryTimes
+) => {
+  if (isUndelivery !== 1 || !undeliveryTimes || undeliveryTimes.length === 0) {
+    return pickerList
+  }
+  return _.filter(
+    _.map(pickerList, (item) => {
+      const children = _.filter(
+        item.children,
+        (child) =>
+          !isWindowCrossUndelivery(
+            child.date,
+            moment(child.date).add(~~receiveTimeSpan, 'minutes'),
+            undeliveryTimes
+          )
+      )
+      return {
+        ...item,
+        children,
+      }
+    }),
+    (item) => item.children.length > 0
+  )
+}
+
 const cycleToPickerList = (cycleList) => {
   const dayList = cycleListToDayList(cycleList)
 
@@ -127,7 +159,12 @@ const getStartDateFromValues = (startValues, cycleList, filteredStartDatas) => {
   return two.date
 }
 
-const ReceiveTimePicker = ({ onConfirm, order, enableUndeliveryFilter }) => {
+const ReceiveTimePicker = ({
+  onConfirm,
+  order,
+  enableUndeliveryFilter,
+  noEndReceiveTime,
+}) => {
   const {
     receive_time_limit,
     receive_time,
@@ -140,15 +177,23 @@ const ReceiveTimePicker = ({ onConfirm, order, enableUndeliveryFilter }) => {
     ? receive_time_limit || {}
     : {}
 
+  // noEnd 模式：最晚收货时间固定为「最早 + 一个间隔(receiveTimeSpan)」，
+  // 右列只做静态展示。receiveTimeSpan 缺失或为 0 时无法计算，退化为原双列可编辑模式
+  const isNoEnd = noEndReceiveTime && ~~receive_time_limit.receiveTimeSpan > 0
+
   const startEndValue = processStartEndValuesWithCycleList(
     receive_time,
     cycleList
   )
-  const startDatas = filterByUndeliveryTimes(
-    cycleToPickerList(startCycleList),
-    is_undelivery,
-    undelivery_times
-  )
+  const startList = cycleToPickerList(startCycleList)
+  const startDatas = isNoEnd
+    ? filterStartDatasForNoEnd(
+        startList,
+        receive_time_limit.receiveTimeSpan,
+        is_undelivery,
+        undelivery_times
+      )
+    : filterByUndeliveryTimes(startList, is_undelivery, undelivery_times)
 
   const hasAvailableTime =
     startDatas.length > 0 &&
@@ -164,6 +209,31 @@ const ReceiveTimePicker = ({ onConfirm, order, enableUndeliveryFilter }) => {
   const startValueDate = useMemo(() => {
     return getStartDateFromValues(startValue, cycleList, startDatas)
   }, [startValue, cycleList, startDatas])
+
+  // noEnd 模式下结束时间不经过 state，直接由开始时间推算（同时供展示与回调）
+  const { noEndValue, noEndDatas } = useMemo(() => {
+    if (!isNoEnd || !startValueDate) {
+      return { noEndValue: [], noEndDatas: [] }
+    }
+    const endDate = moment(startValueDate).add(
+      ~~receive_time_limit.receiveTimeSpan,
+      'minutes'
+    )
+    const text = endDate.format('HH:mm')
+    return {
+      noEndValue: [getFlag(endDate), text],
+      // 禁用滚轮只展示固定的结束时间，不给其他可选项
+      noEndDatas: [
+        {
+          date: endDate,
+          value: getFlag(endDate),
+          text: endDate.format('MM-DD'),
+          children: [{ date: endDate, value: text, text }],
+        },
+      ],
+    }
+  }, [isNoEnd, startValueDate, receive_time_limit])
+
   const endDatas = useMemo(() => {
     if (!startValueDate) return []
     const endDates = cycleToPickerList(
@@ -190,7 +260,7 @@ const ReceiveTimePicker = ({ onConfirm, order, enableUndeliveryFilter }) => {
 
   // 开始时间变化后，结束时间可能不再可选（如整段被不可配送时间段截断），需回退到第一个可选项
   useEffect(() => {
-    if (endDatas.length === 0) {
+    if (isNoEnd || endDatas.length === 0) {
       return
     }
     const has = _.some(endDatas, (item) => {
@@ -205,6 +275,8 @@ const ReceiveTimePicker = ({ onConfirm, order, enableUndeliveryFilter }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [endDatas])
 
+  const finalEndValue = isNoEnd ? noEndValue : endValue
+
   const handleConfirm = () => {
     if (!hasAvailableTime) {
       PickerStatics.hide()
@@ -212,7 +284,7 @@ const ReceiveTimePicker = ({ onConfirm, order, enableUndeliveryFilter }) => {
     }
     onConfirm({
       startValue,
-      endValue,
+      endValue: finalEndValue,
       isLastCycle,
       receiveTimeLimit: receive_time_limit,
     })
@@ -226,9 +298,19 @@ const ReceiveTimePicker = ({ onConfirm, order, enableUndeliveryFilter }) => {
     setEndValue([...values])
   }
 
+  // 手动模式与 noEnd 禁用滚轮共用的右列渲染（日期列拼周几）
+  const renderEndOption = (dataIndex, option) => {
+    if (dataIndex === 0) {
+      return `${option.text}${
+        option.date ? weekMap[moment(option.date).day()] : ''
+      }`
+    }
+    return option.text
+  }
+
   return (
     <div>
-      {hasAvailableTime && hasEndAvailableTime ? (
+      {hasAvailableTime && (isNoEnd || hasEndAvailableTime) ? (
         <Flex className='m-border-top m-padding-top-10'>
           <Flex column flex>
             <div className='m-text-center'>{getLocale('最早收货时间')}</div>
@@ -249,20 +331,25 @@ const ReceiveTimePicker = ({ onConfirm, order, enableUndeliveryFilter }) => {
           </Flex>
           <Flex column flex>
             <div className='m-text-center'>{getLocale('最晚收货时间')}</div>
-            <CouplingPicker
-              className='m-text-12'
-              datas={endDatas}
-              values={endValue}
-              renderOption={(dataIndex, option) => {
-                if (dataIndex === 0) {
-                  return `${option.text}${
-                    option.date ? weekMap[moment(option.date).day()] : ''
-                  }`
-                }
-                return option.text
-              }}
-              onChange={handleEndChange}
-            />
+            {isNoEnd && noEndDatas.length > 0 ? (
+              // noEnd 模式：结束时间固定为开始+间隔，滚轮禁用、仅展示这一个选项
+              <CouplingPicker
+                className='m-text-12'
+                datas={noEndDatas}
+                values={noEndValue}
+                renderOption={renderEndOption}
+                onChange={_.noop}
+                style={{ pointerEvents: 'none', opacity: 0.6 }}
+              />
+            ) : (
+              <CouplingPicker
+                className='m-text-12'
+                datas={endDatas}
+                values={endValue}
+                renderOption={renderEndOption}
+                onChange={handleEndChange}
+              />
+            )}
           </Flex>
         </Flex>
       ) : (
@@ -316,7 +403,8 @@ ReceiveTimePicker.hide = () => {
 // 校验是否有周期时间
 ReceiveTimePicker.verifyReceiveTime = (
   order,
-  enableUndeliveryFilter = false
+  enableUndeliveryFilter = false,
+  noEndReceiveTime = false
 ) => {
   const {
     receive_time_limit,
@@ -327,12 +415,21 @@ ReceiveTimePicker.verifyReceiveTime = (
     ? receive_time_limit || {}
     : {}
 
-  // 过滤不可配送时间
-  const startDatas = filterByUndeliveryTimes(
-    cycleToPickerList(startCycleList),
-    is_undelivery,
-    undelivery_times
-  )
+  const isNoEnd = noEndReceiveTime && ~~receive_time_limit.receiveTimeSpan > 0
+
+  // 过滤不可配送时间（noEnd 模式与弹层内使用同一规则，保证入口校验与展示一致）
+  const startDatas = isNoEnd
+    ? filterStartDatasForNoEnd(
+        cycleToPickerList(startCycleList),
+        receive_time_limit.receiveTimeSpan,
+        is_undelivery,
+        undelivery_times
+      )
+    : filterByUndeliveryTimes(
+        cycleToPickerList(startCycleList),
+        is_undelivery,
+        undelivery_times
+      )
 
   const hasAvailableTime =
     startDatas.length > 0 &&
@@ -369,11 +466,13 @@ ReceiveTimePicker.propTypes = {
   onConfirm: PropTypes.func,
   order: PropTypes.object.isRequired,
   enableUndeliveryFilter: PropTypes.bool,
+  noEndReceiveTime: PropTypes.bool,
 }
 
 ReceiveTimePicker.defaultProps = {
   onConfirm: _.noop,
   enableUndeliveryFilter: false,
+  noEndReceiveTime: false,
 }
 
 /**

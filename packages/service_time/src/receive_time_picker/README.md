@@ -16,6 +16,8 @@
 |------|------|------|--------|------|
 | onConfirm | 确认选择后的回调函数，接收选中值 | function | _.noop | 否 |
 | order | 订单对象，包含收货时间配置信息 | object | - | 是 |
+| enableUndeliveryFilter | 是否按不可配送时间（is_undelivery / undelivery_times）过滤可选项 | boolean | false | 否 |
+| noEndReceiveTime | 最晚收货时间不可选，固定为「最早收货时间 + receiveTimeSpan（一个间隔）」，右列为禁用滚轮（仅展示这一个固定值，不可操作）。receiveTimeSpan 缺失或为 0 时该开关退化无效，恢复双列可选 | boolean | false | 否 |
 
 #### 静态方法
 
@@ -23,7 +25,7 @@
 |--------|------|------|--------|
 | render | 渲染收货时间选择弹窗 | props: 组件属性 | Promise，成功时返回选中的时间值 |
 | hide | 关闭收货时间选择弹窗 | - | - |
-| verifyReceiveTime | 校验是否有可用的收货周期时间 | order: 订单对象 | boolean |
+| verifyReceiveTime | 校验是否有可用的收货周期时间 | order: 订单对象；enableUndeliveryFilter: 是否启用不可配送过滤（默认 false）；noEndReceiveTime: 是否为最晚时间自动计算模式（默认 false），与弹层入参保持一致 | boolean |
 
 #### onConfirm 回调参数
 
@@ -78,6 +80,8 @@
 |------|------|------|--------|------|
 | onConfirm | 确认选择后的回调函数，接收选中值 | function | _.noop | 否 |
 | order | 订单对象，包含收货时间配置信息 | object | - | 是 |
+| enableUndeliveryFilter | 是否按不可配送时间（is_undelivery / undelivery_times）过滤可选项 | boolean | false | 否 |
+| noEndReceiveTime | 最晚收货时间不可选，固定为「最早收货时间 + receiveTimeSpan（一个间隔）」，右列为禁用滚轮（仅展示这一个固定值，不可操作）。receiveTimeSpan 缺失或为 0 时该开关退化无效，恢复双列可选 | boolean | false | 否 |
 
 #### 静态方法
 
@@ -175,6 +179,29 @@ const checkReceiveTime = () => {
   ReceiveTimePicker.render({ order: orderData })
 }
 ```
+
+### 最晚收货时间自动计算（noEndReceiveTime）
+
+```jsx
+import { ReceiveTimePicker } from '@gm-mobile/service_time'
+
+const handleSelect = () => {
+  // 开启后用户只选「最早收货时间」；
+  // 最晚收货时间固定为 最早 + receiveTimeSpan（一个间隔），
+  // 右列为禁用滚轮，仅展示这个固定值、不给其他可选项。
+  // onConfirm 的 endValue 仍返回计算值，回调协议不变。
+  ReceiveTimePicker.render({
+    order: orderData,
+    noEndReceiveTime: true
+  }).then((values) => {
+    // receiveTimeSpan 为 "60" 时：
+    // { startValue: [0, "20:30"], endValue: [0, "21:30"], ... }
+    console.log('选中的收货时间:', values)
+  })
+}
+```
+
+MutiOrderReceiveTimePicker 同样支持 `noEndReceiveTime`，计算规则一致（endValue 的当日/次日标记按计算结果返回）。
 
 ### MutiOrderReceiveTimePicker 基础用法
 
@@ -287,6 +314,7 @@ const OrderForm = ({ orderData }) => {
 - MutiOrderReceiveTimePicker 简化了时间计算逻辑，适用于多日订单场景
 - 收货时间配置中的 `weekdays` 使用位掩码表示星期（1-127，每位代表一周中的某天）
 - 时间间隔 `receiveTimeSpan` 会影响可选时间的密度，单位为分钟
+- 开启 `noEndReceiveTime` 后最晚收货时间 = 最早收货时间 + 一个 `receiveTimeSpan`，跨天时 `endValue` 的日期标记自动计算（普通下单为距今天数，多日下单为当日/次日）
 - 调用 `verifyReceiveTime()` 可以避免在没有可用时间时打开选择器
 - 选择器会自动过滤过去的时间点，只显示当前时间之后的选项
 
