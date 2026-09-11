@@ -102,16 +102,6 @@ const getStartValueFromValues = (startValues, startDatas) => {
   return two ? startValues : [startValues[0], one.children[0].value]
 }
 
-const weekMap = {
-  0: getLocale('周日'),
-  1: getLocale('周一'),
-  2: getLocale('周二'),
-  3: getLocale('周三'),
-  4: getLocale('周四'),
-  5: getLocale('周五'),
-  6: getLocale('周六'),
-}
-
 const isInUndeliveryRange = (timeMoment, undeliveryTimes, isStart = true) => {
   if (!undeliveryTimes || undeliveryTimes.length === 0) {
     return false
@@ -169,10 +159,43 @@ const filterByUndeliveryTimes = (
   )
 }
 
+// noEnd 模式下结束时间固定为「开始 + 一个间隔」，
+// 开始项需保证 [开始, 开始+间隔] 整段不与不可配送时段交叉（与手动模式结束列同一规则），
+// 否则计算出的固定结束时间会落在不可配送时段内
+const filterStartDatasForNoEnd = (
+  pickerList,
+  receiveTimeSpan,
+  isUndelivery,
+  undeliveryTimes
+) => {
+  if (isUndelivery !== 1 || !undeliveryTimes || undeliveryTimes.length === 0) {
+    return pickerList
+  }
+  return _.filter(
+    _.map(pickerList, (item) => {
+      const children = _.filter(
+        item.children,
+        (child) =>
+          !isWindowCrossUndelivery(
+            child.moment,
+            moment(child.moment).add(~~receiveTimeSpan, 'minutes'),
+            undeliveryTimes
+          )
+      )
+      return {
+        ...item,
+        children,
+      }
+    }),
+    (item) => item.children.length > 0
+  )
+}
+
 const MutiOrderReceiveTimePicker = ({
   onConfirm,
   order,
   enableUndeliveryFilter,
+  noEndReceiveTime,
 }) => {
   const { receive_time_limit } = useMemo(() => {
     return getReceiveTimeParams(order)
@@ -182,16 +205,31 @@ const MutiOrderReceiveTimePicker = ({
     ? receive_time_limit || {}
     : {}
 
+  // noEnd 模式：最晚收货时间固定为「最早 + 一个间隔(receiveTimeSpan)」，
+  // 右列只做静态展示。receiveTimeSpan 缺失或为 0 时无法计算，退化为原双列可编辑模式
+  const isNoEnd =
+    noEndReceiveTime && ~~receive_time_limit.receiveTimeSpan > 0
+
   const _cycleList = getCycList(receive_time_limit)
 
   const startDatas = useMemo(() => {
     const cycleList = getStartCycleList(_cycleList)
-    return filterByUndeliveryTimes(
-      columnGenerator(cycleList),
-      is_undelivery,
-      undelivery_times
-    )
-  }, [_cycleList, is_undelivery, undelivery_times])
+    const columnList = columnGenerator(cycleList)
+    return isNoEnd
+      ? filterStartDatasForNoEnd(
+          columnList,
+          receive_time_limit.receiveTimeSpan,
+          is_undelivery,
+          undelivery_times
+        )
+      : filterByUndeliveryTimes(columnList, is_undelivery, undelivery_times)
+  }, [
+    _cycleList,
+    isNoEnd,
+    receive_time_limit,
+    is_undelivery,
+    undelivery_times,
+  ])
   const hasAvailableTime =
     startDatas.length > 0 &&
     startDatas.some((item) => item.children && item.children.length > 0)
@@ -202,6 +240,40 @@ const MutiOrderReceiveTimePicker = ({
   })
 
   const [endValue, setEndValue] = useState([0, '17:00'])
+
+  // noEnd 模式下结束时间不经过 state，直接由开始时间推算（同时供展示与回调）
+  const { noEndValue, noEndDatas } = useMemo(() => {
+    if (!isNoEnd || !startValue || startValue.length === 0) {
+      return { noEndValue: [], noEndDatas: [] }
+    }
+    // 与提交同口径：先归一化，避免联动产生的无效组合参与计算
+    const _startValue = getStartValueFromValues(startValue, startDatas)
+    const startMoment = moment()
+      .add(_startValue[0], 'day')
+      .set({
+        hours: _startValue[1].split(':')[0],
+        minute: _startValue[1].split(':')[1],
+      })
+      .startOf('minute')
+    const endDate = moment(startMoment).add(
+      ~~receive_time_limit.receiveTimeSpan,
+      'minutes'
+    )
+    const text = endDate.format('HH:mm')
+    // 当日/次日判定与 columnGenerator 保持一致
+    const flag = endDate.isBefore(moment().endOf('day')) ? 0 : 1
+    return {
+      noEndValue: [flag, text],
+      // 禁用滚轮只展示固定的结束时间，不给其他可选项
+      noEndDatas: [
+        {
+          text: flag === 0 ? getLocale('当日') : getLocale('次日'),
+          value: flag,
+          children: [{ moment: endDate, value: text, text }],
+        },
+      ],
+    }
+  }, [isNoEnd, startValue, startDatas, receive_time_limit])
 
   // 右边的列要根据左边联动
   const rightColumn = useMemo(() => {
@@ -227,7 +299,7 @@ const MutiOrderReceiveTimePicker = ({
 
   // 开始时间变化后，结束时间可能不再可选（如整段被不可配送时间段截断），需回退到第一个可选项
   useEffect(() => {
-    if (rightColumn.length === 0) {
+    if (isNoEnd || rightColumn.length === 0) {
       return
     }
     const has = _.some(rightColumn, (item) => {
@@ -250,7 +322,7 @@ const MutiOrderReceiveTimePicker = ({
     onConfirm({
       // 提交同样走归一化，避免联动产生的无效组合直接落值
       startValue: getStartValueFromValues(startValue, startDatas),
-      endValue,
+      endValue: isNoEnd ? noEndValue : endValue,
     })
   }
 
@@ -276,8 +348,16 @@ const MutiOrderReceiveTimePicker = ({
             onChange={handleStartChange}
           />
           <div className='m-gap-20' />
-          {/* 结束列无数据时仅占位提示，保留开始列可操作，避免整个弹层死锁 */}
-          {hasRightColumn ? (
+          {isNoEnd && noEndDatas.length > 0 ? (
+            // noEnd 模式：结束时间固定为开始+间隔，滚轮禁用、仅展示这一个选项
+            <CouplingPicker
+              datas={noEndDatas}
+              values={noEndValue}
+              onChange={_.noop}
+              style={{ pointerEvents: 'none', opacity: 0.6 }}
+            />
+          ) : hasRightColumn ? (
+            /* 结束列无数据时仅占位提示，保留开始列可操作，避免整个弹层死锁 */
             <CouplingPicker
               datas={rightColumn}
               values={endValue}
@@ -341,11 +421,13 @@ MutiOrderReceiveTimePicker.propTypes = {
   onConfirm: PropTypes.func,
   order: PropTypes.object.isRequired,
   enableUndeliveryFilter: PropTypes.bool,
+  noEndReceiveTime: PropTypes.bool,
 }
 
 MutiOrderReceiveTimePicker.defaultProps = {
   onConfirm: _.noop,
   enableUndeliveryFilter: false,
+  noEndReceiveTime: false,
 }
 
 /**

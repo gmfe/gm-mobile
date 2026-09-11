@@ -40,6 +40,43 @@ export const mutiOrder = () => {
   return <button onClick={handleClick}>MutiOrderReceiveTimePicker</button>
 }
 
+export const orderNoEnd = () => {
+  const handleClick = () => {
+    ReceiveTimePicker.render({
+      order: JSON.parse(orderStr),
+      noEndReceiveTime: true
+    }).then(
+      (values) => {
+        console.log('resolve', values)
+      },
+      () => {
+        console.log('reject')
+      }
+    )
+  }
+
+  return <button onClick={handleClick}>ReceiveTimePicker noEndReceiveTime</button>
+}
+
+export const mutiOrderNoEnd = () => {
+  const handleClick = () => {
+    MutiOrderReceiveTimePicker.render({
+      order: JSON.parse(orderStr),
+      title: '标题',
+      noEndReceiveTime: true
+    }).then(
+      (values) => {
+        console.log('resolve', values)
+      },
+      () => {
+        console.log('reject')
+      }
+    )
+  }
+
+  return <button onClick={handleClick}>MutiOrderReceiveTimePicker noEndReceiveTime</button>
+}
+
 export default {
   title: '业务/ReceiveTimePicker',
 }
