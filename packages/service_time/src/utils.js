@@ -202,9 +202,52 @@ function cycleListToDayList(cycleList) {
 }
 
 /**
+ * 判断某时刻是否落在隔天送达时间段内（HH:mm；end < start 视为跨天段，如 19:00~02:00）
+ * 区间口径与需求场景表一致：含起点、不含终点 [start, end)
+ */
+function isInForcedNextDayRanges(timeRanges, m) {
+  if (!timeRanges || !timeRanges.length) {
+    return false
+  }
+  const minutes = m.hours() * 60 + m.minutes()
+  return _.some(timeRanges, (range) => {
+    const s = range && range.start ? range.start.split(':') : null
+    const e = range && range.end ? range.end.split(':') : null
+    if (!s || !e) {
+      return false
+    }
+    const sMin = +s[0] * 60 + +s[1]
+    const eMin = +e[0] * 60 + +e[1]
+    if (isNaN(sMin) || isNaN(eMin) || sMin === eMin) {
+      return false
+    }
+    // 跨天段：>= 开始 或 < 结束 均命中
+    if (eMin < sMin) {
+      return minutes >= sMin || minutes < eMin
+    }
+    return minutes >= sMin && minutes < eMin
+  })
+}
+
+// 读取隔天送达时间段配置（api.md 全局契约位置：order.time_config.forced_next_day_config；
+// 历史配置兜底返回 {"enable": 0}，字段必有）
+function getForcedNextDayConfig(order) {
+  return order && order.time_config && order.time_config.forced_next_day_config
+}
+
+/**
  * 返回计算收货时间需要的参数
  */
 const getReceiveTimeParams = (order) => {
+  // 隔天送达命中判断须在 cloneDeep 之前执行：_.cloneDeep 不认 MobX observable 数组，
+  // 会把 time_ranges 克隆成保留拦截 getter 但内部已损坏的副本，之后 _.some 遍历直接抛
+  // TypeError（bshop 实测崩溃）；原始数据（纯对象或正常 observable 数组）遍历安全
+  const forcedNextDayConfig = getForcedNextDayConfig(order)
+  const isForcedNextDay =
+    !!forcedNextDayConfig &&
+    +forcedNextDayConfig.enable === 1 &&
+    isInForcedNextDayRanges(forcedNextDayConfig.time_ranges, moment())
+
   order = _.cloneDeep(order)
   const { order_time_limit } = order
 
@@ -224,6 +267,11 @@ const getReceiveTimeParams = (order) => {
   }
   const receive_time_limit_2 = processReceiveTimeLimit(receive_time_limit)
   let cycleList = getCycleList(receive_time_limit_2)
+  // 下单时刻命中隔天送达时间段时，今天的收货时间不可选，
+  // 丢弃今天（含跨天延伸到今天）起算的周期，最早只能选明天
+  if (isForcedNextDay) {
+    cycleList = _.filter(cycleList, (list) => getFlag(list[0]) >= 1)
+  }
   if (receive_time_limit_2.time_config_type === 1) {
     cycleList = _.slice(cycleList, 0, 1)
   }
@@ -316,4 +364,6 @@ export {
   cycleListToDayList,
   getReceiveTimeParams,
   isWindowCrossUndelivery,
+  getForcedNextDayConfig,
+  isInForcedNextDayRanges,
 }
