@@ -66,6 +66,15 @@
     start: "00:00",                   // 下单开始时间
     end: "00:00",                     // 下单结束时间
     e_span_time: 1                    // 下单结束跨度
+  },
+  time_config: {                      // 时间配置（可缺省，历史配置无 forced_next_day_config 字段）
+    forced_next_day_config: {         // 隔天送达时间段配置
+      enable: 1,                      // 0 关闭 / 1 开启
+      time_ranges: [                  // 1~3 段，HH:mm；end < start 表示跨天段（如 19:00~02:00）
+        { start: "10:00", end: "12:00" },
+        { start: "19:00", end: "02:00" }
+      ]
+    }
   }
 }
 ```
@@ -73,6 +82,8 @@
 ### MutiOrderReceiveTimePicker 多日下单收货时间选择器
 
 用于多日下单场景，支持当日/次日的时间选择。
+
+隔天送达（同样读 `order.time_config.forced_next_day_config`）：**收货日期选择器不禁今天**（产品口径）；当下单时刻命中任一时间段 且 已选收货日期（`order.cart_order_data.order_many_days_receive_dates`）包含今天时，「每日收货时间」开始列的「当日」组被过滤、只能选「次日」组——今天的收货时间只能由「收货日期=今天 + 当日」产生，故按组合过滤而非禁日期。收货日期不含今天（最早明天）时「当日」照常可选（明天 + 当日 = 明天，合规）。窗口不跨天（无「次日」组）时过滤后无可选项，展示「暂无可选收货时间」。提交前「已选日期含今天 + 当日时间」的组合拦截由各端业务侧实现（组件库只管弹层内可选项）。
 
 #### Props
 
@@ -203,6 +214,47 @@ const handleSelect = () => {
 
 MutiOrderReceiveTimePicker 同样支持 `noEndReceiveTime`，计算规则一致（endValue 的当日/次日标记按计算结果返回）。
 
+### 隔天送达时间段过滤（order.time_config.forced_next_day_config）
+
+```jsx
+import { ReceiveTimePicker } from '@gm-mobile/service_time'
+
+const handleSelect = () => {
+  // 商家在运营时间上配置了「隔天送达时间段」：下单时刻命中任一时间段时，
+  // 今天的收货时间不可选（含跨天延伸到今天的收货窗口），最早只能选明天。
+  // 组件自动从 order.time_config.forced_next_day_config 读取（api.md 全局契约位置）；
+  // 接口未透传该字段时（如 /order/confirm），由调用方合并进 order.time_config
+  const orderData = {
+    ...orderFromApi,
+    time_config: {
+      forced_next_day_config: {
+        enable: 1,
+        time_ranges: [
+          { start: '10:00', end: '12:00' },
+          { start: '19:00', end: '02:00' }  // 跨天段
+        ]
+      }
+    }
+  }
+
+  // 入口校验与弹层走同一份 order，口径天然一致
+  if (!ReceiveTimePicker.verifyReceiveTime(orderData)) {
+    console.log('当前没有可用的收货时间')
+    return
+  }
+
+  ReceiveTimePicker.render({
+    order: orderData
+  }).then((values) => {
+    console.log('选中的收货时间:', values)
+  })
+}
+```
+
+默认收货时间指向今天时会自动回退到第一个可选项（明天）；enable 为 0、未配置或未命中时间段时行为不变。
+
+单日（ReceiveTimePicker）过滤今天起算的收货周期；多日（MutiOrderReceiveTimePicker）按「日期 × 时间」组合处理（见下节），两者口径不同。
+
 ### MutiOrderReceiveTimePicker 基础用法
 
 ```jsx
@@ -315,6 +367,9 @@ const OrderForm = ({ orderData }) => {
 - 收货时间配置中的 `weekdays` 使用位掩码表示星期（1-127，每位代表一周中的某天）
 - 时间间隔 `receiveTimeSpan` 会影响可选时间的密度，单位为分钟
 - 开启 `noEndReceiveTime` 后最晚收货时间 = 最早收货时间 + 一个 `receiveTimeSpan`，跨天时 `endValue` 的日期标记自动计算（普通下单为距今天数，多日下单为当日/次日）
+- `order.time_config.forced_next_day_config` 开启且下单时刻命中任一时间段时，今天（含跨天延伸到今天）起算的收货周期整体被过滤，最早只能选明天；默认收货时间指向今天时自动回退到第一个可选项
+- 多日选择器不禁收货日期今天，只在「已选日期含今天 + 命中时段」时过滤「当日」时间组（组合合规口径）；提交前的组合拦截由各端业务侧兜底
+- **传给组件的 order 必须是整棵树纯化的普通对象**（如 mobx 的 `toJS(observableOrder)`）：`toJS` 对非 observable 的纯对象原样返回、不递归，若先做 `{...order, xxx}` 之类的字面量合并再造纯外壳再 `toJS`，嵌套 observable（`undelivery_times` / `time_ranges` / 日期数组）会原样泄漏进组件，被组件内 `_.cloneDeep` 损坏后在任何读取 `.length` 的地方崩溃
 - 调用 `verifyReceiveTime()` 可以避免在没有可用时间时打开选择器
 - 选择器会自动过滤过去的时间点，只显示当前时间之后的选项
 

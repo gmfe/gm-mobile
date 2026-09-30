@@ -5,7 +5,12 @@ import moment from 'moment'
 import PropTypes from 'prop-types'
 import React, { useEffect, useMemo, useState } from 'react'
 import PickerStatics from './statics'
-import { getReceiveTimeParams, isWindowCrossUndelivery } from './utils'
+import {
+  getForcedNextDayConfig,
+  getReceiveTimeParams,
+  isInForcedNextDayRanges,
+  isWindowCrossUndelivery,
+} from './utils'
 
 // 获取运营时间范围
 // 只关注时间，不关注日期
@@ -213,7 +218,23 @@ const MutiOrderReceiveTimePicker = ({
 
   const startDatas = useMemo(() => {
     const cycleList = getStartCycleList(_cycleList)
-    const columnList = columnGenerator(cycleList)
+    let columnList = columnGenerator(cycleList)
+    // 隔天送达：命中时段且已选收货日期含今天时，「当日」组不可选
+    // （今天的收货时间只能由「收货日期=今天 + 当日(flag=0)」产生，按组合过滤而非禁日期）；
+    // 收货日期不含今天（最早明天）时「当日」照常可选（明天 + 当日 = 明天，合规）
+    const fndConfig = getForcedNextDayConfig(order)
+    if (
+      fndConfig &&
+      +fndConfig.enable === 1 &&
+      isInForcedNextDayRanges(fndConfig.time_ranges, moment()) &&
+      order.cart_order_data &&
+      _.some(order.cart_order_data.order_many_days_receive_dates, (d) =>
+        moment(d).isSame(moment(), 'day')
+      )
+    ) {
+      // value=0 即「当日」组；只过滤开始列，结束列（> 开始时间）自然全在次日
+      columnList = _.filter(columnList, (item) => item.value !== 0)
+    }
     return isNoEnd
       ? filterStartDatasForNoEnd(
           columnList,
@@ -222,7 +243,14 @@ const MutiOrderReceiveTimePicker = ({
           undelivery_times
         )
       : filterByUndeliveryTimes(columnList, is_undelivery, undelivery_times)
-  }, [_cycleList, isNoEnd, receive_time_limit, is_undelivery, undelivery_times])
+  }, [
+    _cycleList,
+    isNoEnd,
+    receive_time_limit,
+    is_undelivery,
+    undelivery_times,
+    order,
+  ])
   const hasAvailableTime =
     startDatas.length > 0 &&
     startDatas.some((item) => item.children && item.children.length > 0)
