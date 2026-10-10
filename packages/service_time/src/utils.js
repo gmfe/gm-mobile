@@ -267,10 +267,10 @@ const getReceiveTimeParams = (order) => {
   }
   const receive_time_limit_2 = processReceiveTimeLimit(receive_time_limit)
   let cycleList = getCycleList(receive_time_limit_2)
-  // 下单时刻命中隔天送达时间段时，今天的收货时间不可选，
-  // 丢弃今天（含跨天延伸到今天）起算的周期，最早只能选明天
+  // 下单时刻命中隔天送达时间段时，收货时间整体后延一天，
+  // 丢弃今天/明天（含跨天延伸）起算的周期，最早只能选后天
   if (isForcedNextDay) {
-    cycleList = _.filter(cycleList, (list) => getFlag(list[0]) >= 1)
+    cycleList = _.filter(cycleList, (list) => getFlag(list[0]) >= 2)
   }
   if (receive_time_limit_2.time_config_type === 1) {
     cycleList = _.slice(cycleList, 0, 1)
