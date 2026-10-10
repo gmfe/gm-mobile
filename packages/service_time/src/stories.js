@@ -68,7 +68,7 @@ export const orderForcedNextDay = () => {
       time_config: {
         forced_next_day_config: {
           enable: 1,
-          // 三段拼起来覆盖全天，任何时刻打开都能看到效果：今天被过滤，最早只能选明天
+          // 三段拼起来覆盖全天，任何时刻打开都能看到效果：今天/明天被过滤，最早只能选后天
           time_ranges: [
             { start: '00:00', end: '12:00' },
             { start: '11:00', end: '23:59' },
@@ -112,7 +112,7 @@ export const mutiOrderForcedNextDay = () => {
       time_config: {
         forced_next_day_config: {
           enable: 1,
-          // 三段拼起来覆盖全天：命中时段 + 已选收货日期含今天 → 「每日收货时间」只剩「次日」组
+          // 三段拼起来覆盖全天：命中时段 + 已选收货日期最早明天 → 「每日收货时间」只剩「次日」组
           time_ranges: [
             { start: '00:00', end: '12:00' },
             { start: '11:00', end: '23:59' },
@@ -122,8 +122,12 @@ export const mutiOrderForcedNextDay = () => {
       },
       cart_order_data: {
         ...base.cart_order_data,
-        // 已选收货日期含今天
-        order_many_days_receive_dates: [moment().format('YYYY-MM-DD')]
+        // 已选收货日期最早明天（组合门槛 min(日期) + flag >= 后天：
+        // 明天 + 次日 = 后天 ✓、明天 + 当日 = 明天 ✗ → 只剩「次日」组；
+        // 若改为今天则「当日/次日」全滤，展示「暂无可选收货时间」）
+        order_many_days_receive_dates: [
+          moment().add(1, 'day').format('YYYY-MM-DD')
+        ]
       }
     }
 

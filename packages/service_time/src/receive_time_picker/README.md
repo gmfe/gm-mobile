@@ -83,7 +83,7 @@
 
 用于多日下单场景，支持当日/次日的时间选择。
 
-隔天送达（同样读 `order.time_config.forced_next_day_config`）：**收货日期选择器不禁今天**（产品口径）；当下单时刻命中任一时间段 且 已选收货日期（`order.cart_order_data.order_many_days_receive_dates`）包含今天时，「每日收货时间」开始列的「当日」组被过滤、只能选「次日」组——今天的收货时间只能由「收货日期=今天 + 当日」产生，故按组合过滤而非禁日期。收货日期不含今天（最早明天）时「当日」照常可选（明天 + 当日 = 明天，合规）。窗口不跨天（无「次日」组）时过滤后无可选项，展示「暂无可选收货时间」。提交前「已选日期含今天 + 当日时间」的组合拦截由各端业务侧实现（组件库只管弹层内可选项）。
+隔天送达（同样读 `order.time_config.forced_next_day_config`）：**收货日期选择器不禁今天**（产品口径），按「日期 × 时间」组合过滤——绝对收货日 = 收货日期 + 当日/次日 flag，命中时段时门槛为「最早已选日期（`order.cart_order_data.order_many_days_receive_dates` 取 min）+ flag ≥ 后天」：最早日期为今天 → 「当日/次日」组全滤、展示「暂无可选收货时间」（引导用户去掉今天）；最早日期为明天 → 只剩「次日」组（明天 + 次日 = 后天）；最早日期 ≥ 后天 → 全部照常。窗口不跨天（无「次日」组）时命中后同样可能全滤。提交前的组合拦截（命中 且 min(日期) + flag 早于后天）由各端业务侧实现（组件库只管弹层内可选项）。
 
 #### Props
 
@@ -221,7 +221,7 @@ import { ReceiveTimePicker } from '@gm-mobile/service_time'
 
 const handleSelect = () => {
   // 商家在运营时间上配置了「隔天送达时间段」：下单时刻命中任一时间段时，
-  // 今天的收货时间不可选（含跨天延伸到今天的收货窗口），最早只能选明天。
+  // 今天与明天的收货时间均不可选（含跨天延伸窗口），最早只能选后天。
   // 组件自动从 order.time_config.forced_next_day_config 读取（api.md 全局契约位置）；
   // 接口未透传该字段时（如 /order/confirm），由调用方合并进 order.time_config
   const orderData = {
@@ -251,7 +251,7 @@ const handleSelect = () => {
 }
 ```
 
-默认收货时间指向今天时会自动回退到第一个可选项（明天）；enable 为 0、未配置或未命中时间段时行为不变。
+默认收货时间指向今天/明天时会自动回退到第一个可选项（后天）；enable 为 0、未配置或未命中时间段时行为不变。
 
 单日（ReceiveTimePicker）过滤今天起算的收货周期；多日（MutiOrderReceiveTimePicker）按「日期 × 时间」组合处理（见下节），两者口径不同。
 
@@ -367,8 +367,8 @@ const OrderForm = ({ orderData }) => {
 - 收货时间配置中的 `weekdays` 使用位掩码表示星期（1-127，每位代表一周中的某天）
 - 时间间隔 `receiveTimeSpan` 会影响可选时间的密度，单位为分钟
 - 开启 `noEndReceiveTime` 后最晚收货时间 = 最早收货时间 + 一个 `receiveTimeSpan`，跨天时 `endValue` 的日期标记自动计算（普通下单为距今天数，多日下单为当日/次日）
-- `order.time_config.forced_next_day_config` 开启且下单时刻命中任一时间段时，今天（含跨天延伸到今天）起算的收货周期整体被过滤，最早只能选明天；默认收货时间指向今天时自动回退到第一个可选项
-- 多日选择器不禁收货日期今天，只在「已选日期含今天 + 命中时段」时过滤「当日」时间组（组合合规口径）；提交前的组合拦截由各端业务侧兜底
+- `order.time_config.forced_next_day_config` 开启且下单时刻命中任一时间段时，今天/明天（含跨天延伸）起算的收货周期整体被过滤，最早只能选后天；默认收货时间指向今天/明天时自动回退到第一个可选项
+- 多日选择器不禁收货日期今天，命中时段时按「min(已选日期) + 当日/次日 flag ≥ 后天」组合过滤时间组；提交前的组合拦截由各端业务侧兜底
 - **传给组件的 order 必须是整棵树纯化的普通对象**（如 mobx 的 `toJS(observableOrder)`）：`toJS` 对非 observable 的纯对象原样返回、不递归，若先做 `{...order, xxx}` 之类的字面量合并再造纯外壳再 `toJS`，嵌套 observable（`undelivery_times` / `time_ranges` / 日期数组）会原样泄漏进组件，被组件内 `_.cloneDeep` 损坏后在任何读取 `.length` 的地方崩溃
 - 调用 `verifyReceiveTime()` 可以避免在没有可用时间时打开选择器
 - 选择器会自动过滤过去的时间点，只显示当前时间之后的选项
