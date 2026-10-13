@@ -267,10 +267,14 @@ const getReceiveTimeParams = (order) => {
   }
   const receive_time_limit_2 = processReceiveTimeLimit(receive_time_limit)
   let cycleList = getCycleList(receive_time_limit_2)
-  // 下单时刻命中隔天送达时间段时，收货时间整体后延一天，
-  // 丢弃今天/明天（含跨天延伸）起算的周期，最早只能选后天
+  // 下单时刻命中隔天送达时间段时，收货时间整体后延一天（等同于第二天才下的这单），
+  // 丢弃正常第一个收货日（s 起算，含跨天延伸）的周期；
+  // s 用 isLastCycle 修正后的 receive_time_limit_2.s_span_time（凌晨场景第一周期实际从 s-1 起算）
   if (isForcedNextDay) {
-    cycleList = _.filter(cycleList, (list) => getFlag(list[0]) >= 2)
+    cycleList = _.filter(
+      cycleList,
+      (list) => getFlag(list[0]) > receive_time_limit_2.s_span_time
+    )
   }
   if (receive_time_limit_2.time_config_type === 1) {
     cycleList = _.slice(cycleList, 0, 1)
