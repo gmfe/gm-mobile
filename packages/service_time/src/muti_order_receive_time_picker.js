@@ -219,9 +219,9 @@ const MutiOrderReceiveTimePicker = ({
   const startDatas = useMemo(() => {
     const cycleList = getStartCycleList(_cycleList)
     let columnList = columnGenerator(cycleList)
-    // 隔天送达：命中时段时按「日期 × 时间」组合过滤（收货日期不禁选），
-    // 绝对收货日 = 收货日期 + flag（0 当日 / 1 次日），门槛 min(日期) + flag >= 2（后天）：
-    // 最早日期为今天 → 全滤（展示「暂无可选收货时间」引导去掉今天）；最早明天 → 只剩「次日」组；最早 >= 后天 → 全可选
+    // 隔天送达：命中时段 = 等同于第二天才下单，今天不再可能作为绝对收货日，
+    // 按组合过滤：绝对收货日 = 收货日期 + flag（0 当日 / 1 次日），滤掉为今天的组合
+    // （min(日期) + flag < 1）——已选日期含今天 → 只剩「次日」组；最早明天起全可选
     const fndConfig = getForcedNextDayConfig(order)
     const dates =
       order.cart_order_data &&
@@ -236,7 +236,7 @@ const MutiOrderReceiveTimePicker = ({
       isInForcedNextDayRanges(fndConfig.time_ranges, moment())
     ) {
       // 只过滤开始列：开始值被限定在合规组后，结束列（> 开始时间）自然同组合规
-      columnList = _.filter(columnList, (item) => minOffset + item.value >= 2)
+      columnList = _.filter(columnList, (item) => minOffset + item.value >= 1)
     }
     return isNoEnd
       ? filterStartDatasForNoEnd(
