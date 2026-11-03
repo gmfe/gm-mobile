@@ -11,6 +11,7 @@ import {
   getFlag,
   getReceiveTimeParams,
   getStartCycleList,
+  isInUndeliveryRange,
   isWindowCrossUndelivery,
   processStartEndValuesWithCycleList,
 } from './utils'
@@ -23,29 +24,6 @@ const weekMap = {
   4: getLocale('周四'),
   5: getLocale('周五'),
   6: getLocale('周六'),
-}
-
-const isInUndeliveryRange = (timeMoment, undeliveryTimes, isStart = true) => {
-  if (!undeliveryTimes || undeliveryTimes.length === 0) {
-    return false
-  }
-  return _.some(undeliveryTimes, ({ start, end }) => {
-    const startMoment = moment(timeMoment).set({
-      hours: start.split(':')[0],
-      minute: start.split(':')[1],
-    })
-    const endMoment = moment(timeMoment).set({
-      hours: end.split(':')[0],
-      minute: end.split(':')[1],
-    })
-    const bool = isStart
-      ? timeMoment.isSame(startMoment, 'minute')
-      : timeMoment.isSame(endMoment, 'minute')
-    return (
-      bool ||
-      (timeMoment.isAfter(startMoment) && timeMoment.isBefore(endMoment))
-    )
-  })
 }
 
 const filterByUndeliveryTimes = (

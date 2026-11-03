@@ -70,6 +70,28 @@
 }
 ```
 
+#### 不可配送时间 undelivery_times
+
+开启 `enableUndeliveryFilter` 后，组件按 `receive_time_limit.is_undelivery / undelivery_times` 过滤可选项（两个组件共用同一套规则）：
+
+```javascript
+{
+  is_undelivery: 1,
+  undelivery_times: [
+    { start: "14:00", end: "17:00" },                 // 当天 14:00~17:00 不配送
+    { start: "23:30", end: "00:00", e_span_time: 1 }  // 跨天：23:30~次日 00:00 不配送
+  ]
+}
+```
+
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| start | string "HH:MM" | 不配送开始时间 |
+| end | string "HH:MM" | 不配送结束时间 |
+| e_span_time | 0 / 1 | 0=结束时间在当天（缺省，兼容旧数据），1=结束时间在第二天 |
+
+不可配送时段为每日循环规则，跨天时段会同时命中当天晚间与次日凌晨的时间点（如 22:00~次日 06:00 会过滤掉当天 23:00 与次日 05:00）。
+
 ### MutiOrderReceiveTimePicker 多日下单收货时间选择器
 
 用于多日下单场景，支持当日/次日的时间选择。

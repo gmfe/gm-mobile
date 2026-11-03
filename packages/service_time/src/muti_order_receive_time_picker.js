@@ -5,7 +5,11 @@ import moment from 'moment'
 import PropTypes from 'prop-types'
 import React, { useEffect, useMemo, useState } from 'react'
 import PickerStatics from './statics'
-import { getReceiveTimeParams, isWindowCrossUndelivery } from './utils'
+import {
+  getReceiveTimeParams,
+  isInUndeliveryRange,
+  isWindowCrossUndelivery,
+} from './utils'
 
 // 获取运营时间范围
 // 只关注时间，不关注日期
@@ -100,29 +104,6 @@ const getStartValueFromValues = (startValues, startDatas) => {
   }
   const two = _.find(one.children, (v) => v.value === startValues[1])
   return two ? startValues : [startValues[0], one.children[0].value]
-}
-
-const isInUndeliveryRange = (timeMoment, undeliveryTimes, isStart = true) => {
-  if (!undeliveryTimes || undeliveryTimes.length === 0) {
-    return false
-  }
-  return _.some(undeliveryTimes, ({ start, end }) => {
-    const startMoment = moment(timeMoment).set({
-      hours: start.split(':')[0],
-      minute: start.split(':')[1],
-    })
-    const endMoment = moment(timeMoment).set({
-      hours: end.split(':')[0],
-      minute: end.split(':')[1],
-    })
-    const bool = isStart
-      ? timeMoment.isSame(startMoment, 'minute')
-      : timeMoment.isSame(endMoment, 'minute')
-    return (
-      bool ||
-      (timeMoment.isAfter(startMoment) && timeMoment.isBefore(endMoment))
-    )
-  })
 }
 
 const filterByUndeliveryTimes = (
