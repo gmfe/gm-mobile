@@ -321,10 +321,64 @@ const convertDay2Bit = (flag) => {
 }
 
 /**
+ * 判断时间点是否落在不可配送时段内
+ * isStart 为开始时间口径（等于时段开始即不可选），否则为结束时间口径（等于时段结束即不可选）
+ * 不可配送时段每日循环；跨天时段（e_span_time 1=结束在第二天）需同时检查
+ * 当天与前一天锚定的两个窗口，如 23:30~次日00:00 会命中当天 23:45 与次日凌晨的点
+ */
+function isInUndeliveryRange(timeMoment, undeliveryTimes, isStart = true) {
+  if (!undeliveryTimes || undeliveryTimes.length === 0) {
+    return false
+  }
+  return _.some(undeliveryTimes, ({ start, end, e_span_time }) => {
+    // 跨天时段：[锚定日 start, 次日 end]
+    if (Number(e_span_time) === 1) {
+      return _.some([0, -1], (offset) => {
+        const uStart = moment(timeMoment)
+          .add(offset, 'day')
+          .set({
+            hours: start.split(':')[0],
+            minute: start.split(':')[1],
+          })
+        const uEnd = moment(uStart)
+          .add(1, 'day')
+          .set({
+            hours: end.split(':')[0],
+            minute: end.split(':')[1],
+          })
+        const bool = isStart
+          ? timeMoment.isSame(uStart, 'minute')
+          : timeMoment.isSame(uEnd, 'minute')
+        return bool || (timeMoment.isAfter(uStart) && timeMoment.isBefore(uEnd))
+      })
+    }
+
+    // 当天时段（缺省）
+    const startMoment = moment(timeMoment).set({
+      hours: start.split(':')[0],
+      minute: start.split(':')[1],
+    })
+    const endMoment = moment(timeMoment).set({
+      hours: end.split(':')[0],
+      minute: end.split(':')[1],
+    })
+    const bool = isStart
+      ? timeMoment.isSame(startMoment, 'minute')
+      : timeMoment.isSame(endMoment, 'minute')
+    return (
+      bool ||
+      (timeMoment.isAfter(startMoment) && timeMoment.isBefore(endMoment))
+    )
+  })
+}
+
+/**
  * 判断 [startMoment, endMoment] 组成的收货时间段是否与不可配送时间段交叉
  * 与商城侧 isValidReceiveTime 逻辑保持一致：
  * 1、同一天：start < 不可配送结束 && end > 不可配送开始 即交叉
  * 2、跨天：拆成开始日 [start, 当天最后] 与结束日 [零点, end] 两段分别判断
+ * 3、不可配送时段自身支持跨天（e_span_time 1=结束在第二天），时段每日循环，
+ *    从开始日前一天（跨天窗口可能由前一晚开始）到结束日逐日锚定判交
  */
 function isWindowCrossUndelivery(startMoment, endMoment, undeliveryTimes) {
   if (!undeliveryTimes || undeliveryTimes.length === 0) {
@@ -337,7 +391,27 @@ function isWindowCrossUndelivery(startMoment, endMoment, undeliveryTimes) {
       minute: timeStr.split(':')[1],
     })
 
-  return _.some(undeliveryTimes, ({ start, end }) => {
+  return _.some(undeliveryTimes, ({ start, end, e_span_time }) => {
+    // 跨天时段：[锚定日 start, 次日 end]，逐日锚定后与收货时间段判交
+    if (Number(e_span_time) === 1) {
+      const dayCount = moment(endMoment)
+        .startOf('day')
+        .diff(moment(startMoment).startOf('day'), 'days')
+
+      for (let i = -1; i <= dayCount; i++) {
+        const uStart = setHM(
+          moment(startMoment).startOf('day').add(i, 'day'),
+          start
+        )
+        const uEnd = setHM(moment(uStart).add(1, 'day'), end)
+        if (startMoment.isBefore(uEnd) && endMoment.isAfter(uStart)) {
+          return true
+        }
+      }
+      return false
+    }
+
+    // 当天时段（缺省）
     if (moment(startMoment).isSame(endMoment, 'day')) {
       const uStart = setHM(moment(startMoment), start)
       const uEnd = setHM(moment(startMoment), end)
@@ -367,6 +441,7 @@ export {
   getEndCycleList,
   cycleListToDayList,
   getReceiveTimeParams,
+  isInUndeliveryRange,
   isWindowCrossUndelivery,
   getForcedNextDayConfig,
   isInForcedNextDayRanges,
